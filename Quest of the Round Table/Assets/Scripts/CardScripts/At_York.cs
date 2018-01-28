@@ -4,12 +4,7 @@ using System.Collections.Generic;
 
 public class At_York : Tournament
 {
-
-	// Use this for initialization
-	public At_York ()
-	{
-		bonusShields = 0;
-	}
-
+	public At_York() : base () {}
+	public At_York(Player owner, string cardName, int bonusShields) : base (owner, cardName, bonusShields) {}
 }
 

@@ -6,13 +6,11 @@ public class Test : Adventure {
 
 	private int minBidValue;
 
-	// Use this for initialization
-	void Start () {
-		
+	public Test() {
+		minBidValue = 3;
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		
+
+	public int getMinBidValue() {
+		return minBidValue;
 	}
 }

@@ -4,14 +4,21 @@ using UnityEngine;
 
 public class Tournament : Story {
 
-	public int bonusShields;
-	public int playersEntered;
+	protected int bonusShields;
+	protected int playersEntered;
 
-	public Tournament() {
-		bonusShields = 0;
-		playersEntered = 0;
+	public Tournament() : base() {
+		this.bonusShields = 0;
+		this.playersEntered = 0;
 	}
 
+	public Tournament(Player owner, string cardName, int bonusShields): base(owner, cardName) {
+		this.bonusShields = bonusShields;
+		this.playersEntered = 0;
+	}
+		
+
+	/*
 	void enterTournament(){ //IDK how to do this properly but basically increment players enter
 		playersEntered++;
 	}
@@ -19,4 +26,5 @@ public class Tournament : Story {
 	int getNumShieldsWon() {
 		return playersEntered + bonusShields;
 	}
+	*/
 }

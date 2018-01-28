@@ -2,17 +2,23 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Test : Adventure {
+public class Amour : Adventure {
 
+	private int battlePoints;
+	private int bidPoints;
 
-
-	// Use this for initialization
-	void Start () {
-		
+	public Amour() {
+		battlePoints = 10;
+		bidPoints = 1;
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		
+
+	int getBattlePoints() {
+		return battlePoints;
 	}
+
+	int getBidPoints() {
+		return bidPoints;
+	}
+
+
 }

@@ -2,13 +2,9 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class At_Tintagel : Tournament {
-
-	// Use this for initialization
-	public At_Tintagel ()
-	{
-		bonusShields = 1;
-	}
-
+public class At_Tintagel : Tournament
+{
+	public At_Tintagel() : base () {}
+	public At_Tintagel(Player owner, string cardName, int bonusShields) : base (owner, cardName, bonusShields) {}
 }
 

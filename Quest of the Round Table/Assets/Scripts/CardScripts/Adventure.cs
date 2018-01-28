@@ -4,21 +4,15 @@ using UnityEngine;
 
 public class Adventure : Card {
 
-	// Use this for initialization
-	void Start () {
 
-	}
-	
-	// Update is called once per frame
-	void Update () {
+	public Adventure() { }
 		
-	}
 
-	int getBattlePoints() {
+	public int getBattlePoints() {
 		return 0;
 	}
 
-	int getBidPoints() {
+	public int getBidPoints() {
 		return 0;
 	}
 }

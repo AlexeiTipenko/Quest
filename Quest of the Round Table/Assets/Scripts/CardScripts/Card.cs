@@ -2,15 +2,36 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Card : MonoBehaviour {
+public class Card {
 
-	// Use this for initialization
-	void Start () {
-		
+
+	protected Player owner;
+	protected string cardName;
+
+
+	public Card(){ }
+
+	public Card(Player owner, string cardName) {
+		this.owner = owner;
+		this.cardName = cardName;
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		
+
+
+	//Getters
+	public Player getOwner() {
+		return this.owner;
 	}
+
+	public string getCardName() {
+		return this.cardName;
+	}
+
+	//Setters
+	private void setOwner(Player owner){
+		this.owner = owner;
+	}
+
+
+	// public void discardCard() {}
+	// etc
 }
