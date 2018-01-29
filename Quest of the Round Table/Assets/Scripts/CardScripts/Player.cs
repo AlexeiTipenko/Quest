@@ -12,6 +12,7 @@ public class Player
 
 	public Player(string name) {
 		this.name = name;
+		cardsList = new List<Card>();
 	}
 
 
@@ -45,6 +46,7 @@ public class Player
 
 	public void givePlayerCards(List<Card> cardList) {
 		foreach (Card card in cardList) {
+			Debug.Log("derp");
 			cardsList.Add(card);
 		}
 

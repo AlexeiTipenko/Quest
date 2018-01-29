@@ -10,20 +10,37 @@ public class GameManager : MonoBehaviour {
 	private List<Card> cardList;
 	public Text text;
 
+	public static GameManager instance = null;
+
 	// Use this for initialization
-	void Start () {
+	void Awake () {
+
+		print ("fengei");
+
+		if (instance == null)
+			instance = this;
 		
+		else if (instance != this)
+			Destroy (gameObject);
+
+		DontDestroyOnLoad (gameObject);
+
+		print ("fenguu");
+			
 		player1 = new Player("Joey");
-		cardList.Add(new At_Camelot(player1, "At Camelot", 3));
-		cardList.Add(new At_Camelot(player1, "At Camelot", 3));
-		cardList.Add(new At_Camelot(player1, "At Camelot", 3));
+		cardList = new List<Card>();
+		cardList.Add(new At_Camelot(player1, "At Camelot"));
+		cardList.Add(new At_Camelot(player1, "At Camelot"));
+		cardList.Add(new At_Camelot(player1, "At Camelot"));
+
+		print ("fengoiii");
 
 		player1.givePlayerCards(cardList);
 
 		//player1.displayCards();
 		//Console.WriteLine(player1.displayCards());
 
-		print(player1.displayCards());
+		Debug.Log(player1.displayCards());
 
 	}
 	
