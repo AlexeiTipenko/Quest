@@ -29,9 +29,9 @@ public class GameManager : MonoBehaviour {
 			
 		player1 = new Player("Joey");
 		cardList = new List<Card>();
-		cardList.Add(new At_Camelot(player1, "At Camelot"));
-		cardList.Add(new At_Camelot(player1, "At Camelot"));
-		cardList.Add(new At_Camelot(player1, "At Camelot"));
+		cardList.Add(new AtCamelot(player1, "At Camelot"));
+		cardList.Add(new AtCamelot(player1, "At Camelot"));
+		cardList.Add(new AtCamelot(player1, "At Camelot"));
 
 		print ("fengoiii");
 
