@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BattleAxe {
-  public BattleAxe() {
-    battlePoints = 15;
-  }
+public class BattleAxe : Weapon {
+
+	public BattleAxe() : base ("Battle Axe", 15) {
+		
+	}
 }

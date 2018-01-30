@@ -6,8 +6,7 @@ public class SirPercival : Ally {
 
 	private int empoweredBattlePoints;
 
-	public SirPercival() {
-		battlePoints = 5;
+	public SirPercival() : base ("Sir Percival", 5, 0) {
 		empoweredBattlePoints = 25;
 	}
 

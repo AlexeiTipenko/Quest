@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class RescueTheFairMaiden : Quest {
-  public RescueTheFairMaiden() {
-    stagesNum = 3;
-    //dominantFoe = Black Knight
-  }
+
+	public RescueTheFairMaiden() : base ("Rescue the Fair Maiden", 3/*, enum {foes} */) {
+
+	}
+
 }

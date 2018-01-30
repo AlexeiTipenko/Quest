@@ -58,7 +58,7 @@ public class Player
 		string toString = this.name + "'s hand: ";
 
 		foreach (Card card in hand) {
-			toString += card.getCardName() + ", ";
+			toString += card.toString() + ", ";
 		}
 		toString = toString.Substring (0, toString.Length - 2);
 		return toString;

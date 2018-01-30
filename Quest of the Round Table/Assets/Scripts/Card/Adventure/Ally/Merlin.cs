@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Merlin : Ally {
 
-	public Merlin() {
+	public Merlin() : base ("Merlin") {
 		//TODO; special ability
 	}
 }

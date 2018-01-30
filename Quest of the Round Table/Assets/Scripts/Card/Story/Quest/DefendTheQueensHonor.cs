@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class DefendTheQueensHonor : Quest {
-  public DefendTheQueensHonor() {
-    stagesNum = 4;
-    //dominantFoe = All
-  }
+
+	public DefendTheQueensHonor() : base ("Defend the Queen's Honor", 4/*, enum {foes} */) {
+
+	}
+
 }

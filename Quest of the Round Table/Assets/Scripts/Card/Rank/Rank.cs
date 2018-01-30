@@ -6,7 +6,9 @@ public class Rank : Card {
 
 	protected int battlePoints, shieldsToProgress;
 
-	public Rank() { }
+	public Rank(string cardName, int battlePoints) : base (cardName) {
+		this.battlePoints = battlePoints;
+	}
 
 
 	public int getBattlePoints() {

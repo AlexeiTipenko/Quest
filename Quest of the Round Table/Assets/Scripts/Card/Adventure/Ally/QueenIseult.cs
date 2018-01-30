@@ -6,8 +6,7 @@ public class QueenIseult : Ally {
 
 	private int empoweredBidPoints;
 
-	public SirPercival() {
-		bidPoints = 2;
+	public QueenIseult() : base ("Queen Iseult", 0, 2) {
 		empoweredBidPoints = 4;
 	}
 

@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class RepelTheSaxonRaiders : Quest {
-  public RepelTheSaxonRaiders() {
-    stagesNum = 2;
-    //dominantFoe = All Saxons
-  }
+
+	public RepelTheSaxonRaiders() : base ("Repel the Saxon Raiders", 2/*, enum {foes} */) {
+
+	}
+
 }

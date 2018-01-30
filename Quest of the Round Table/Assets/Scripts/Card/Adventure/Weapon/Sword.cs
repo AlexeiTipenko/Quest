@@ -2,8 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Sword {
-  public Sword() {
-    battlePoints = 10;
-  }
+public class Sword : Weapon {
+
+	public Sword() : base ("Sword", 10) {
+		
+	}
+
 }

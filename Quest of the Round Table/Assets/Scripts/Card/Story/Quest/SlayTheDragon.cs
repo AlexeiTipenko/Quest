@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class SlayTheDragon : Quest {
-  public SlayTheDragon() {
-    stagesNum = 3;
-    //dominantFoe = Dragon
-  }
+
+	public SlayTheDragon() : base ("Slay the Dragon", 3/*, enum {foes} */) {
+
+	}
+
 }

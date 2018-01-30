@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class KingArthur : Ally {
 
-	public KingArthur() {
-		battlePoints = 10;
-		bidPoints = 4;
+	public KingArthur() : base ("King Arthur", 10, 4) {
+		
 	}
 }

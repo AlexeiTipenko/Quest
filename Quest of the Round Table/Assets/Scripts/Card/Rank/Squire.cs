@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Squire : Rank {
-	public Squire() {
-		battlePoints = 5;
+	
+	public Squire() : base ("Squire", 5) {
+		
 	}
+
 }

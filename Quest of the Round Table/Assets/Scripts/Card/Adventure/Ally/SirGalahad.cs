@@ -4,11 +4,9 @@ using UnityEngine;
 
 public class SirGalahad : Ally {
 
-	//TODO
 	private int empoweredBattlePoints;
 
-	public SirGalahad() {
-		battlePoints = 10;
+	public SirGalahad() : base ("Sir Galahad", 10, 0) {
 		empoweredBattlePoints = 20;
 	}
 

@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class SearchForTheHolyGrail : Quest {
-  public SearchForTheHolyGrail() {
-    stagesNum = 5;
-    //dominantFoe = All
-  }
+
+	public SearchForTheHolyGrail() : base ("Search for the Holy Grail", 5/*, enum {foes} */) {
+
+	}
+
 }

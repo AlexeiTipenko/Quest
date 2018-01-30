@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class ChampionKnight : Rank {
-	public ChampionKnight() {
-		battlePoints = 20;
+
+	public ChampionKnight() : base ("Champion Knight", 20) {
+
 	}
 }
