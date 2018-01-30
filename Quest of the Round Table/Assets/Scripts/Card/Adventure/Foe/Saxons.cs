@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Saxons : Foe {
 
+	public static int frequency = 5;
 	private int empoweredBattlePoints;
 
 	public Saxons() : base("Saxons", 10) {

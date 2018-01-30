@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class GreenKnight : Foe {
 
+	public static int frequency = 2;
 	private int empoweredBattlePoints;
 
 	public GreenKnight() : base ("Green Knight", 25) {

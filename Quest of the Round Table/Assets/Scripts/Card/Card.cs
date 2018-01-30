@@ -10,6 +10,7 @@ public abstract class Card {
 
 	public Card(string cardName) {
 		this.cardName = cardName;
+		this.owner = null;
 	}
 
 
@@ -30,4 +31,8 @@ public abstract class Card {
 
 	// public void discardCard() {}
 	// etc
+
+	public string toString() {
+		return cardName + " (" + owner + ")";
+	}
 }

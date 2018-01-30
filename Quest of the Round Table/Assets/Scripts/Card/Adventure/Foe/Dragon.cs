@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Dragon : Foe {
 
+	public static int frequency = 1;
 	private int empoweredBattlePoints;
 
 	public Dragon() : base ("Dragon", 50) {

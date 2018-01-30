@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Boar : Foe {
 
+	public static int frequency = 4;
 	private int empoweredBattlePoints;
 
 	public Boar() : base ("Boar", 5) {

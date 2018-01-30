@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Amour : Adventure {
 
+	public static int frequency = 8;
 	private int battlePoints, bidPoints;
 
 	public Amour() : base ("Amour") {
