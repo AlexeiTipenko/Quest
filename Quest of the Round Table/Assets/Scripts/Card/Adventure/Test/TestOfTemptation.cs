@@ -4,4 +4,7 @@ using UnityEngine;
 
 public class TestOfTemptation : Test {
 
+	public TestOfTemptation () : base ("Test of Temptation", 3) {
+		
+	}
 }

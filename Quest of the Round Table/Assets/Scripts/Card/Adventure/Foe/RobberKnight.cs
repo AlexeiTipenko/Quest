@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class RobberKnight : Foe {
 	
-	public RobberKnight() {
-		battlePoints = 15;
+	public RobberKnight() : base ("Robber Knight", 15) {
+		
 	}
 
 }

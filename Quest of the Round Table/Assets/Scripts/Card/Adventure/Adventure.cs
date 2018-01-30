@@ -2,18 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Adventure : Card {
+public abstract class Adventure : Card {
 
-	protected int battlePoints, bidPoints;
-
-	public Adventure() { }
-		
-
-	public int getBattlePoints() {
-		return battlePoints;
+	public Adventure(string cardName) : base (cardName) {
+	
 	}
 
-	public int getBidPoints() {
-		return bidPoints;
-	}
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Giant : Foe {
 
-	public Giant() {
-		battlePoints = 40;
+	public Giant() : base ("Giant", 40) {
+		
 	}
 }

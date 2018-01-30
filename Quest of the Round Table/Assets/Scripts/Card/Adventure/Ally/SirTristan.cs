@@ -6,12 +6,11 @@ public class SirTristan : Ally {
 
 	private int empoweredBattlePoints;
 
-	public SirTristan() {
-		battlePoints = 10;
-		empoweredBattlePoints = 20;
+	public SirTristan() : base ("Sir Tristan", 10, 0) {
+		
 	}
 
-	public new int getBattlePoints() {
+	public override int getBattlePoints() {
 		/*
 		 * if (condition) {
 		 *     return empoweredBattlePoints;

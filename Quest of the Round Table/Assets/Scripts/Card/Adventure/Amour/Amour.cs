@@ -4,9 +4,19 @@ using UnityEngine;
 
 public class Amour : Adventure {
 
-	public Amour() {
+	private int battlePoints, bidPoints;
+
+	public Amour() : base ("Amour") {
 		battlePoints = 10;
 		bidPoints = 1;
+	}
+
+	public int getBattlePoints() {
+		return battlePoints;
+	}
+
+	public int getBidPoints() {
+		return bidPoints;
 	}
 
 }

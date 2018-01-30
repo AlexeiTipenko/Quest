@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Thieves : Foe {
 
-	public Thieves() {
-		battlePoints = 5;
+	public Thieves() : base ("Thieves", 5) {
+		
 	}
 }

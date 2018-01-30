@@ -6,12 +6,11 @@ public class Saxons : Foe {
 
 	private int empoweredBattlePoints;
 
-	public Saxons() {
-		battlePoints = 10;
+	public Saxons() : base("Saxons", 10) {
 		empoweredBattlePoints = 20;
 	}
 
-	public new int getBattlePoints() {
+	public override int getBattlePoints() {
 		/*
 		 * if (condition) {
 		 *     return empoweredBattlePoints;

@@ -6,12 +6,11 @@ public class EvilKnight : Foe {
 
 	private int empoweredBattlePoints;
 
-	public EvilKnight() {
-	  battlePoints = 20;
+	public EvilKnight() : base ("Evil Knight", 20) {
 		empoweredBattlePoints = 30;
 	}
 
-	public new int getBattlePoints() {
+	public override int getBattlePoints() {
 		/*
 		 * if (condition) {
 		 *     return empoweredBattlePoints;

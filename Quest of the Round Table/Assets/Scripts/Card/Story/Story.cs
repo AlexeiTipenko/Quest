@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class Story : Card
-{
-	public Story () : base() {}
+public abstract class Story : Card {
+	
+	public Story (string cardName) : base (cardName) {
+		
+	}
 
-	public Story (Player owner, string cardName) : base (owner, cardName) {}
 }
 
 

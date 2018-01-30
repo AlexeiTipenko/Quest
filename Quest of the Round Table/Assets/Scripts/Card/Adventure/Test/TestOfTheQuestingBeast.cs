@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class TestOfTheQuestingBeast : Test {
 
-	public TestOfTheQuestingBeast() : base (4) {}
+	public TestOfTheQuestingBeast() : base ("Test of the Questing Beast", 4) {
+		
+	}
 
 }

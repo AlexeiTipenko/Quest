@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class BlackKnight : Foe {
 
-	private int empoweredBattlePoints = 35;
+	private int empoweredBattlePoints;
 
-	public BlackKnight() {
-		battlePoints = 25;
+	public BlackKnight() : base("Black Knight", 25) {
+		empoweredBattlePoints = 35;
 	}
 
-	public new int getBattlePoints() {
+	public override int getBattlePoints() {
 		/*
 		 * if (condition) {
 		 *     return empoweredBattlePoints;

@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Mordred : Foe {
 
-	public Mordred() {
-    	battlePoints = 30;
+	public Mordred() : base ("Mordred", 30) {
+		
 	}
 
 	private void sacrificeCard() {
