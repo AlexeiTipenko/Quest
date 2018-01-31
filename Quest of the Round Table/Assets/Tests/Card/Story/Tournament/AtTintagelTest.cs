@@ -7,15 +7,11 @@ public class AtTintagelTest {
 
 	[Test]
 	public void AtTintagelTestSimplePasses() {
-		// Use the Assert class to test conditions.
-	}
+		Assert.IsTrue (AtTintagel.frequency == 1);
 
-	// A UnityTest behaves like a coroutine in PlayMode
-	// and allows you to yield null to skip a frame in EditMode
-	[UnityTest]
-	public IEnumerator AtTintagelTestWithEnumeratorPasses() {
-		// Use the Assert class to test conditions.
-		// yield to skip a frame
-		yield return null;
+		Tournament tintagel = new AtTintagel ();
+
+		Assert.AreEqual("At Tintagel", tintagel.getCardName());
+		Assert.IsTrue(tintagel.getBonusShields() == 1);
 	}
 }

@@ -7,15 +7,9 @@ public class SirTristanTest {
 
 	[Test]
 	public void SirTristanTestSimplePasses() {
-		// Use the Assert class to test conditions.
-	}
-
-	// A UnityTest behaves like a coroutine in PlayMode
-	// and allows you to yield null to skip a frame in EditMode
-	[UnityTest]
-	public IEnumerator SirTristanTestWithEnumeratorPasses() {
-		// Use the Assert class to test conditions.
-		// yield to skip a frame
-		yield return null;
+		Ally sirTristan = new sirTristan();
+		Assert.AreEqual ("Sir Tristan", sirTristan.getCardName());
+		Assert.IsTrue (sirTristan.getBattlePoints() == 10);
+		Assert.IsTrue (sirTristan.getBidPoints() == 0);
 	}
 }

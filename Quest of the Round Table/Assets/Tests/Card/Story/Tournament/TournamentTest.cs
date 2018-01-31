@@ -7,15 +7,6 @@ public class TournamentTest {
 
 	[Test]
 	public void TournamentTestSimplePasses() {
-		// Use the Assert class to test conditions.
-	}
-
-	// A UnityTest behaves like a coroutine in PlayMode
-	// and allows you to yield null to skip a frame in EditMode
-	[UnityTest]
-	public IEnumerator TournamentTestWithEnumeratorPasses() {
-		// Use the Assert class to test conditions.
-		// yield to skip a frame
-		yield return null;
+		//TODO; not sure how to test an abstract class. Could create a "mock" Tournament class for testing purposes but I think testing all the derived classes should be enough.
 	}
 }

@@ -5,4 +5,9 @@ using System.Collections;
 
 public class DeckTest {
 
+	[Test]
+	public void testDealCards() {
+		
+	}
+
 }

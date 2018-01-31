@@ -7,15 +7,11 @@ public class AtCamelotTest {
 
 	[Test]
 	public void AtCamelotTestSimplePasses() {
-		// Use the Assert class to test conditions.
-	}
+		Assert.IsTrue (AtCamelot.frequency == 1);
 
-	// A UnityTest behaves like a coroutine in PlayMode
-	// and allows you to yield null to skip a frame in EditMode
-	[UnityTest]
-	public IEnumerator AtCamelotTestWithEnumeratorPasses() {
-		// Use the Assert class to test conditions.
-		// yield to skip a frame
-		yield return null;
+		Tournament camelot = new AtCamelot ();
+
+		Assert.AreEqual("At Camelot", camelot.getCardName());
+		Assert.IsTrue(camelot.getBonusShields() == 3);
 	}
 }

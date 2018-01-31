@@ -7,7 +7,7 @@ public class CardTest {
 
 	[Test]
 	public void CardTestSimplePasses() {
-		// Use the Assert class to test conditions.
+		
 	}
 
 	// A UnityTest behaves like a coroutine in PlayMode

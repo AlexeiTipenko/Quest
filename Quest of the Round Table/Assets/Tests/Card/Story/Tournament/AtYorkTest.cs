@@ -7,15 +7,11 @@ public class AtYorkTest {
 
 	[Test]
 	public void AtYorkTestSimplePasses() {
-		// Use the Assert class to test conditions.
-	}
+		Assert.IsTrue (AtYork.frequency == 1);
 
-	// A UnityTest behaves like a coroutine in PlayMode
-	// and allows you to yield null to skip a frame in EditMode
-	[UnityTest]
-	public IEnumerator AtYorkTestWithEnumeratorPasses() {
-		// Use the Assert class to test conditions.
-		// yield to skip a frame
-		yield return null;
+		Tournament york = new AtYork ();
+
+		Assert.AreEqual("At York", york.getCardName());
+		Assert.IsTrue(york.getBonusShields() == 0);
 	}
 }

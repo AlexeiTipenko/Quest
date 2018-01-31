@@ -7,15 +7,9 @@ public class QueenIseultTest {
 
 	[Test]
 	public void QueenIseultTestSimplePasses() {
-		// Use the Assert class to test conditions.
-	}
-
-	// A UnityTest behaves like a coroutine in PlayMode
-	// and allows you to yield null to skip a frame in EditMode
-	[UnityTest]
-	public IEnumerator QueenIseultTestWithEnumeratorPasses() {
-		// Use the Assert class to test conditions.
-		// yield to skip a frame
-		yield return null;
+		Ally queenIseult = new QueenIseult();
+		Assert.AreEqual ("Queen Iseult", queenIseult.getCardName());
+		Assert.IsTrue (queenIseult.getBattlePoints() == 10);
+		Assert.IsTrue (queenIseult.getBidPoints() == 4);
 	}
 }

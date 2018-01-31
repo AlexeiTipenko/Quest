@@ -12,7 +12,9 @@ public abstract class Tournament : Story {
 		this.bonusShields = bonusShields;
 	}
 		
-
+	public int getBonusShields() {
+		return bonusShields;
+	}
 	/*
 	void enterTournament(){ //IDK how to do this properly but basically increment players enter
 		playersEntered++;

@@ -26,7 +26,13 @@ public class Deck {
 	}
 
 	protected void instantiateCards(List<string> newCards) {
-		for (int i = 0; i < newCards.Count; i++) { 			Type genericType = Type.GetType(newCards[i], true); 			int frequency = (int) genericType.GetField ("frequency").GetValue(null); 			for (int j = 0; j < frequency; j++) { 				cards.Add((Card) Activator.CreateInstance(genericType)); 			} 		}
+		for (int i = 0; i < newCards.Count; i++) {
+			Type genericType = Type.GetType(newCards[i], true);
+			int frequency = (int) genericType.GetField ("frequency").GetValue(null);
+			for (int j = 0; j < frequency; j++) {
+				cards.Add((Card) Activator.CreateInstance(genericType));
+			}
+		}
 	}
 
 	public string toString() {
@@ -39,4 +45,3 @@ public class Deck {
 	}
 
 }
-
