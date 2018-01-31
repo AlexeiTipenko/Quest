@@ -17,9 +17,6 @@ public class PlayerTest {
 
 		player.dealCards (cards);
 
-		Debug.Log (player.getHand ());
-		Debug.Log (cards);
-
 		Assert.IsTrue (player.getHand().Count == cards.Count);
 	}
 

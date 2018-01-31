@@ -9,7 +9,7 @@ public class QueenIseultTest {
 	public void QueenIseultTestSimplePasses() {
 		Ally queenIseult = new QueenIseult();
 		Assert.AreEqual ("Queen Iseult", queenIseult.getCardName());
-		Assert.IsTrue (queenIseult.getBattlePoints() == 10);
-		Assert.IsTrue (queenIseult.getBidPoints() == 4);
+		Assert.IsTrue (queenIseult.getBattlePoints() == 0);
+		Assert.IsTrue (queenIseult.getBidPoints() == 2);
 	}
 }
