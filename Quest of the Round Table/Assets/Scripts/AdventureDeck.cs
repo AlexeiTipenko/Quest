@@ -8,6 +8,10 @@ public class AdventureDeck : Deck {
 		initAdventureDeck ();
 	}
 
+	public AdventureDeck (Deck deck) : base (deck) {
+			
+	}
+
 	private void initAdventureDeck() {
 		List<string> newCards = new List<string> ();
 
