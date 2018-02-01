@@ -41,6 +41,12 @@ public abstract class Deck {
 		return cards.Count;
 	}
 
+	public Card drawCard () {
+		Card card = cards [0];
+		cards.RemoveAt (0);
+		return card;
+	}
+
 	protected void instantiateCards(List<string> newCards) {
 		for (int i = 0; i < newCards.Count; i++) {
 			Type genericType = Type.GetType(newCards[i], true);
@@ -51,12 +57,14 @@ public abstract class Deck {
 		}
 	}
 
-	public string toString() {
-		string toString = "Cards in Deck: ";
+	public virtual string toString() {
+		string toString = "Deck: ";
 		foreach (Card card in cards) {
 			toString += (card.toString () + ", ");
 		}
-		toString = toString.Substring (0, toString.Length - 2);
+		if (cards.Count > 0) {
+			toString = toString.Substring (0, toString.Length - 2);
+		}
 		return toString;
 	}
 

@@ -47,4 +47,15 @@ public class AdventureDeck : Deck {
 
 		shuffle ();
 	}
+
+	public override string toString() {
+		string toString = "Adventure Deck: ";
+		foreach (Card card in cards) {
+			toString += (card.toString () + ", ");
+		}
+//		if (cards.Count > 0) {
+//			toString = toString.Substring (0, toString.Length - 2);
+//		}
+		return toString;
+	}
 }

@@ -8,12 +8,12 @@ public class PlayerTest {
 
 	[Test]
 	public void testDealCards() {
-		Player player = new Player ("Joey");
+		Player player = new Player ("Joey", false);
 
 		List<Card> cards = new List<Card> ();
 		cards.Add (new AtCamelot ());
-		cards.Add (new AtCamelot ());
-		cards.Add (new AtCamelot ());
+		cards.Add (new Merlin ());
+		cards.Add (new BattleAxe ());
 
 		player.dealCards (cards);
 

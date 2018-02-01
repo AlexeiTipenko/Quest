@@ -33,6 +33,6 @@ public abstract class Card {
 	// etc
 
 	public string toString() {
-		return cardName + " (" + owner + ")";
+		return cardName + " (" + owner.getName() + ")";
 	}
 }
