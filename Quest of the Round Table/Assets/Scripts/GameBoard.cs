@@ -9,7 +9,7 @@ public class GameBoard : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPoi
 
 		//eventData.pointerDrag.name will give you the name of the prefab dropped
 		Debug.Log ("Dropping to " + gameObject.name);
-		this.transform.position = eventData.position;
+		//this.transform.position = eventData.position;
 
 		CardDraggable card = eventData.pointerDrag.GetComponent<CardDraggable>();
 
