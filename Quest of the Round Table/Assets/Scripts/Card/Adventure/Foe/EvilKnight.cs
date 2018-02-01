@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class EvilKnight : Foe {
 
+	public static int frequency = 6;
 	private int empoweredBattlePoints;
 
-	public EvilKnight() {
-	  battlePoints = 20;
+	public EvilKnight() : base ("Evil Knight", 20) {
 		empoweredBattlePoints = 30;
 	}
 
-	public new int getBattlePoints() {
+	public override int getBattlePoints() {
 		/*
 		 * if (condition) {
 		 *     return empoweredBattlePoints;

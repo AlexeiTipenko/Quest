@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class Giant : Foe {
 
-	public Giant() {
-		battlePoints = 40;
+	public static int frequency = 2;
+
+	public Giant() : base ("Giant", 40) {
+		
 	}
 }

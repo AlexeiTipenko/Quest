@@ -2,11 +2,11 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class AtTintagel : Tournament
-{
-	public AtTintagel() : base () {}
-	public AtTintagel(Player owner, string cardName) : base (owner, cardName) {
-		bonusShields = 1;
+public class AtTintagel : Tournament {
+
+	public static int frequency = 1;
+
+	public AtTintagel() : base ("At Tintagel", 1) {
+
 	}
 }
-

@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class Dragon : Foe {
 
+	public static int frequency = 1;
 	private int empoweredBattlePoints;
 
-	public Dragon() {
-		battlePoints = 50;
+	public Dragon() : base ("Dragon", 50) {
 		empoweredBattlePoints = 70;
 	}
 
-	public new int getBattlePoints() {
+	public override int getBattlePoints() {
 		/*
 		 * if (condition) {
 		 *     return empoweredBattlePoints;

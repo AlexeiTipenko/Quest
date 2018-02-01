@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class RobberKnight : Foe {
-	
-	public RobberKnight() {
-		battlePoints = 15;
+
+	public static int frequency = 7;
+
+	public RobberKnight() : base ("Robber Knight", 15) {
+		
 	}
 
 }

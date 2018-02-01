@@ -2,18 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Card {
+public abstract class Card {
 
 
 	protected Player owner;
 	protected string cardName;
 
-
-	public Card(){ }
-
-	public Card(Player owner, string cardName) {
-		this.owner = owner;
+	public Card(string cardName) {
 		this.cardName = cardName;
+		this.owner = null;
 	}
 
 
@@ -27,11 +24,15 @@ public class Card {
 	}
 
 	//Setters
-	private void setOwner(Player owner){
+	public void setOwner(Player owner) {
 		this.owner = owner;
 	}
 
 
 	// public void discardCard() {}
 	// etc
+
+	public string toString() {
+		return cardName + " (" + owner + ")";
+	}
 }

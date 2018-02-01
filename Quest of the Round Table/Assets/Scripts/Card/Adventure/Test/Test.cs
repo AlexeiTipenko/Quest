@@ -2,15 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Test : Adventure {
+public abstract class Test : Adventure {
 
 	protected int minBidValue;
 
-	public Test() {
-		minBidValue = 3;
-	}
-
-	public Test(int minBidValue) {
+	public Test(string cardName, int minBidValue) : base (cardName) {
 		this.minBidValue = minBidValue;
 	}
 

@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class TestOfTheQuestingBeast : Test {
 
-	public TestOfTheQuestingBeast() : base (4) {}
+	public static int frequency = 2;
+
+	public TestOfTheQuestingBeast() : base ("Test of the Questing Beast", 4) {
+		
+	}
 
 }

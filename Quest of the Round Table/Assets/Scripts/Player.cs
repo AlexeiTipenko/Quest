@@ -6,27 +6,38 @@ public class Player
 {
 
 	private string name;
-	private int shieldsNum;
-	private List<Card> cardsList;
+	private int numShields;
+	private List<Card> hand;
 
 
 	public Player(string name) {
 		this.name = name;
-		cardsList = new List<Card>();
+		hand = new List<Card>();
+	}
+
+	public void dealCards(List<Card> cards) {
+		foreach (Card card in cards) {
+			card.setOwner (this);
+			hand.Add (card);
+		}
+
+		if (hand.Count > 12) {
+			//do something
+		}
 	}
 
 
 	//Getters
-	public string getPlayerName() {
+	public string getName() {
 		return this.name;
 	}
 
-	public int getPlayerShieldNum() {
-		return this.shieldsNum;
+	public int getNumShields() {
+		return this.numShields;
 	}
 
-	public List<Card> getPlayerCards() {
-		return this.cardsList;
+	public List<Card> getHand() {
+		return this.hand;
 	}
 
 
@@ -35,33 +46,22 @@ public class Player
 		this.name = name;
 	}
 
-	private void setShieldNum(int shieldsNum) {
-		this.shieldsNum = shieldsNum;
+	private void incrementShields(int numShields) {
+		this.numShields = numShields;
 	}
 
-	private void setCardsList(List<Card> cardsList) {
-		this.cardsList = cardsList;
+	private void decrementShields(int numShields) {
+		this.numShields = numShields;
 	}
 
+	public string toString() {
+		string toString = this.name + "'s hand: ";
 
-	public void givePlayerCards(List<Card> cardList) {
-		foreach (Card card in cardList) {
-			Debug.Log("derp");
-			cardsList.Add(card);
+		foreach (Card card in hand) {
+			toString += card.toString() + ", ";
 		}
-
-		if (cardsList.Count > 12) {
-			//do something
-		}
-	}
-
-	public string displayCards() {
-		string displayStr = "";
-
-		foreach (Card card in cardsList) {
-			displayStr += "Player: " + this.name + " , Card Name: " + card.getCardName();
-		}
-		return displayStr;
+		toString = toString.Substring (0, toString.Length - 2);
+		return toString;
 	}
 }
 
