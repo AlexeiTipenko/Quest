@@ -14,7 +14,6 @@ MonoBehaviour:
   m_PixelRect:
     serializedVersion: 2
     x: 0
-<<<<<<< HEAD
     y: 0
     width: 1280
     height: 800
@@ -22,15 +21,6 @@ MonoBehaviour:
   m_Title: 
   m_RootView: {fileID: 2}
   m_MinSize: {x: 950, y: 542}
-=======
-    y: 45
-    width: 1440
-    height: 855
-  m_ShowMode: 4
-  m_Title: 
-  m_RootView: {fileID: 2}
-  m_MinSize: {x: 950, y: 521}
->>>>>>> 83cd0ce4715d5b517d60c413dca2400a9f7dbe8b
   m_MaxSize: {x: 10000, y: 10000}
 --- !u!114 &2
 MonoBehaviour:
@@ -51,15 +41,9 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
-<<<<<<< HEAD
     width: 1280
     height: 800
-  m_MinSize: {x: 950, y: 542}
-=======
-    width: 1440
-    height: 855
-  m_MinSize: {x: 950, y: 521}
->>>>>>> 83cd0ce4715d5b517d60c413dca2400a9f7dbe8b
+  m_MinSize: {x: 950, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
 --- !u!114 &3
 MonoBehaviour:
@@ -77,11 +61,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
-<<<<<<< HEAD
     width: 1280
-=======
-    width: 1440
->>>>>>> 83cd0ce4715d5b517d60c413dca2400a9f7dbe8b
     height: 30
   m_MinSize: {x: 0, y: 0}
   m_MaxSize: {x: 0, y: 0}
@@ -101,13 +81,8 @@ MonoBehaviour:
   m_Position:
     serializedVersion: 2
     x: 0
-<<<<<<< HEAD
     y: 780
     width: 1280
-=======
-    y: 835
-    width: 1440
->>>>>>> 83cd0ce4715d5b517d60c413dca2400a9f7dbe8b
     height: 20
   m_MinSize: {x: 0, y: 0}
   m_MaxSize: {x: 0, y: 0}
@@ -124,29 +99,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Children:
   - {fileID: 6}
-<<<<<<< HEAD
-=======
-  - {fileID: 11}
->>>>>>> 83cd0ce4715d5b517d60c413dca2400a9f7dbe8b
   m_Position:
     serializedVersion: 2
     x: 0
     y: 30
-<<<<<<< HEAD
     width: 1280
     height: 750
   m_MinSize: {x: 683, y: 492}
   m_MaxSize: {x: 14004, y: 14042}
   vertical: 1
-  controlID: 824
-=======
-    width: 1440
-    height: 805
-  m_MinSize: {x: 406, y: 471}
-  m_MaxSize: {x: 14004, y: 14042}
-  vertical: 0
-  controlID: 1153
->>>>>>> 83cd0ce4715d5b517d60c413dca2400a9f7dbe8b
+  controlID: 2158
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -160,30 +122,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Children:
   - {fileID: 7}
-<<<<<<< HEAD
   - {fileID: 12}
-=======
-  - {fileID: 10}
->>>>>>> 83cd0ce4715d5b517d60c413dca2400a9f7dbe8b
   m_Position:
     serializedVersion: 2
     x: 0
     y: 0
-<<<<<<< HEAD
     width: 1280
     height: 750
   m_MinSize: {x: 683, y: 492}
   m_MaxSize: {x: 14004, y: 14042}
   vertical: 0
-  controlID: 825
-=======
-    width: 1144
-    height: 805
-  m_MinSize: {x: 304, y: 471}
-  m_MaxSize: {x: 10002, y: 14042}
-  vertical: 1
-  controlID: 1154
->>>>>>> 83cd0ce4715d5b517d60c413dca2400a9f7dbe8b
+  controlID: 2159
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -197,30 +146,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Children:
   - {fileID: 8}
-<<<<<<< HEAD
   - {fileID: 11}
-=======
-  - {fileID: 9}
->>>>>>> 83cd0ce4715d5b517d60c413dca2400a9f7dbe8b
   m_Position:
     serializedVersion: 2
     x: 0
     y: 0
-<<<<<<< HEAD
     width: 977
     height: 750
   m_MinSize: {x: 406, y: 492}
   m_MaxSize: {x: 10002, y: 14042}
   vertical: 1
-  controlID: 826
-=======
-    width: 1144
-    height: 534
-  m_MinSize: {x: 304, y: 200}
-  m_MaxSize: {x: 8004, y: 4021}
-  vertical: 0
-  controlID: 1155
->>>>>>> 83cd0ce4715d5b517d60c413dca2400a9f7dbe8b
+  controlID: 2009
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -239,24 +175,12 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
-<<<<<<< HEAD
     width: 977
     height: 462
   m_MinSize: {x: 406, y: 221}
   m_MaxSize: {x: 8006, y: 4021}
   vertical: 0
-  controlID: 827
-=======
-    width: 338
-    height: 534
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
-  m_ActualView: {fileID: 15}
-  m_Panes:
-  - {fileID: 15}
-  m_Selected: 0
-  m_LastSelected: 0
->>>>>>> 83cd0ce4715d5b517d60c413dca2400a9f7dbe8b
+  controlID: 1986
 --- !u!114 &9
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -271,31 +195,17 @@ MonoBehaviour:
   m_Children: []
   m_Position:
     serializedVersion: 2
-    x: 338
+    x: 0
     y: 0
-<<<<<<< HEAD
     width: 227
     height: 462
-  m_MinSize: {x: 202, y: 221}
-  m_MaxSize: {x: 4002, y: 4021}
+  m_MinSize: {x: 200, y: 200}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 16}
   m_Panes:
   - {fileID: 16}
   m_Selected: 0
   m_LastSelected: 0
-=======
-    width: 806
-    height: 534
-  m_MinSize: {x: 104, y: 121}
-  m_MaxSize: {x: 4004, y: 4021}
-  m_ActualView: {fileID: 16}
-  m_Panes:
-  - {fileID: 16}
-  - {fileID: 17}
-  - {fileID: 14}
-  m_Selected: 0
-  m_LastSelected: 2
->>>>>>> 83cd0ce4715d5b517d60c413dca2400a9f7dbe8b
 --- !u!114 &10
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -310,31 +220,18 @@ MonoBehaviour:
   m_Children: []
   m_Position:
     serializedVersion: 2
-<<<<<<< HEAD
     x: 227
     y: 0
     width: 750
     height: 462
-  m_MinSize: {x: 204, y: 221}
-  m_MaxSize: {x: 4004, y: 4021}
+  m_MinSize: {x: 200, y: 200}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 15}
   m_Panes:
   - {fileID: 17}
   - {fileID: 18}
   - {fileID: 15}
   m_Selected: 2
-=======
-    x: 0
-    y: 534
-    width: 1144
-    height: 271
-  m_MinSize: {x: 232, y: 271}
-  m_MaxSize: {x: 10002, y: 10021}
-  m_ActualView: {fileID: 18}
-  m_Panes:
-  - {fileID: 18}
-  m_Selected: 0
->>>>>>> 83cd0ce4715d5b517d60c413dca2400a9f7dbe8b
   m_LastSelected: 0
 --- !u!114 &11
 MonoBehaviour:
@@ -344,19 +241,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 1
-<<<<<<< HEAD
   m_Script: {fileID: 12006, guid: 0000000000000000e000000000000000, type: 0}
-=======
-  m_Script: {fileID: 12010, guid: 0000000000000000e000000000000000, type: 0}
->>>>>>> 83cd0ce4715d5b517d60c413dca2400a9f7dbe8b
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Children:
-  - {fileID: 12}
-  - {fileID: 13}
+  m_Children: []
   m_Position:
     serializedVersion: 2
-<<<<<<< HEAD
     x: 0
     y: 462
     width: 977
@@ -368,16 +258,6 @@ MonoBehaviour:
   - {fileID: 19}
   m_Selected: 0
   m_LastSelected: 0
-=======
-    x: 1144
-    y: 0
-    width: 296
-    height: 805
-  m_MinSize: {x: 102, y: 242}
-  m_MaxSize: {x: 4002, y: 8042}
-  vertical: 1
-  controlID: 1226
->>>>>>> 83cd0ce4715d5b517d60c413dca2400a9f7dbe8b
 --- !u!114 &12
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -386,11 +266,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 1
-<<<<<<< HEAD
   m_Script: {fileID: 12010, guid: 0000000000000000e000000000000000, type: 0}
-=======
-  m_Script: {fileID: 12006, guid: 0000000000000000e000000000000000, type: 0}
->>>>>>> 83cd0ce4715d5b517d60c413dca2400a9f7dbe8b
   m_Name: 
   m_EditorClassIdentifier: 
   m_Children:
@@ -398,7 +274,6 @@ MonoBehaviour:
   - {fileID: 14}
   m_Position:
     serializedVersion: 2
-<<<<<<< HEAD
     x: 977
     y: 0
     width: 303
@@ -406,21 +281,7 @@ MonoBehaviour:
   m_MinSize: {x: 277, y: 171}
   m_MaxSize: {x: 4002, y: 8021}
   vertical: 1
-  controlID: 1019
-=======
-    x: 0
-    y: 0
-    width: 296
-    height: 537
-  m_MinSize: {x: 100, y: 100}
-  m_MaxSize: {x: 4000, y: 4000}
-  m_ActualView: {fileID: 20}
-  m_Panes:
-  - {fileID: 19}
-  - {fileID: 20}
-  m_Selected: 1
-  m_LastSelected: 0
->>>>>>> 83cd0ce4715d5b517d60c413dca2400a9f7dbe8b
+  controlID: 2160
 --- !u!114 &13
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -436,28 +297,18 @@ MonoBehaviour:
   m_Position:
     serializedVersion: 2
     x: 0
-<<<<<<< HEAD
     y: 0
     width: 303
-    height: 389
-  m_MinSize: {x: 277, y: 71}
-  m_MaxSize: {x: 4002, y: 4021}
+    height: 390
+  m_MinSize: {x: 275, y: 50}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 20}
   m_Panes:
   - {fileID: 20}
-=======
-    y: 537
-    width: 296
-    height: 268
-  m_MinSize: {x: 100, y: 100}
-  m_MaxSize: {x: 4000, y: 4000}
-  m_ActualView: {fileID: 21}
-  m_Panes:
->>>>>>> 83cd0ce4715d5b517d60c413dca2400a9f7dbe8b
   - {fileID: 21}
   - {fileID: 22}
   m_Selected: 0
-  m_LastSelected: 0
+  m_LastSelected: 2
 --- !u!114 &14
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -466,7 +317,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 1
-<<<<<<< HEAD
   m_Script: {fileID: 12006, guid: 0000000000000000e000000000000000, type: 0}
   m_Name: 
   m_EditorClassIdentifier: 
@@ -474,11 +324,11 @@ MonoBehaviour:
   m_Position:
     serializedVersion: 2
     x: 0
-    y: 389
+    y: 390
     width: 303
-    height: 361
-  m_MinSize: {x: 102, y: 121}
-  m_MaxSize: {x: 4002, y: 4021}
+    height: 360
+  m_MinSize: {x: 100, y: 100}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 23}
   m_Panes:
   - {fileID: 23}
@@ -492,8 +342,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 1
-=======
->>>>>>> 83cd0ce4715d5b517d60c413dca2400a9f7dbe8b
   m_Script: {fileID: 12015, guid: 0000000000000000e000000000000000, type: 0}
   m_Name: 
   m_EditorClassIdentifier: 
@@ -508,7 +356,6 @@ MonoBehaviour:
   m_DepthBufferBits: 32
   m_Pos:
     serializedVersion: 2
-<<<<<<< HEAD
     x: 229
     y: 49
     width: 746
@@ -517,33 +364,15 @@ MonoBehaviour:
   m_MaximizeOnPlay: 1
   m_Gizmos: 0
   m_Stats: 0
-  m_SelectedSizes: 06000000000000000000000000000000000000000000000000000000000000000000000000000000
-=======
-    x: 340
-    y: 94
-    width: 802
-    height: 513
-  m_PersistentViewDataDictionary: {fileID: 0}
-  m_MaximizeOnPlay: 0
-  m_Gizmos: 0
-  m_Stats: 0
   m_SelectedSizes: 00000000000000000000000000000000000000000000000000000000000000000000000000000000
->>>>>>> 83cd0ce4715d5b517d60c413dca2400a9f7dbe8b
   m_TargetDisplay: 0
   m_ZoomArea:
     m_HRangeLocked: 0
     m_VRangeLocked: 0
-<<<<<<< HEAD
-    m_HBaseRangeMin: -256
-    m_HBaseRangeMax: 256
-    m_VBaseRangeMin: -192
-    m_VBaseRangeMax: 192
-=======
-    m_HBaseRangeMin: -200.5
-    m_HBaseRangeMax: 200.5
-    m_VBaseRangeMin: -124
-    m_VBaseRangeMax: 124
->>>>>>> 83cd0ce4715d5b517d60c413dca2400a9f7dbe8b
+    m_HBaseRangeMin: -186.5
+    m_HBaseRangeMax: 186.5
+    m_VBaseRangeMin: -106
+    m_VBaseRangeMax: 106
     m_HAllowExceedBaseRangeMin: 1
     m_HAllowExceedBaseRangeMax: 1
     m_VAllowExceedBaseRangeMin: 1
@@ -552,11 +381,7 @@ MonoBehaviour:
     m_HSlider: 0
     m_VSlider: 0
     m_IgnoreScrollWheelUntilClicked: 0
-<<<<<<< HEAD
     m_EnableMouseInput: 1
-=======
-    m_EnableMouseInput: 0
->>>>>>> 83cd0ce4715d5b517d60c413dca2400a9f7dbe8b
     m_EnableSliderZoom: 0
     m_UniformScale: 1
     m_UpDirection: 1
@@ -564,30 +389,22 @@ MonoBehaviour:
       serializedVersion: 2
       x: 0
       y: 17
-<<<<<<< HEAD
       width: 746
       height: 424
-    m_Scale: {x: 1, y: 1}
-    m_Translation: {x: 373, y: 212}
-=======
-      width: 802
-      height: 496
     m_Scale: {x: 2, y: 2}
-    m_Translation: {x: 401, y: 248}
->>>>>>> 83cd0ce4715d5b517d60c413dca2400a9f7dbe8b
+    m_Translation: {x: 373, y: 212}
     m_MarginLeft: 0
     m_MarginRight: 0
     m_MarginTop: 0
     m_MarginBottom: 0
     m_LastShownAreaInsideMargins:
       serializedVersion: 2
-<<<<<<< HEAD
-      x: -373
-      y: -212
-      width: 746
-      height: 424
+      x: -186.5
+      y: -106
+      width: 373
+      height: 212
     m_MinimalGUI: 1
-  m_defaultScale: 1
+  m_defaultScale: 2
   m_TargetTexture: {fileID: 0}
   m_CurrentColorSpace: 0
   m_LastWindowPixelSize: {x: 1492, y: 882}
@@ -595,21 +412,6 @@ MonoBehaviour:
   m_NoCameraWarning: 1
   m_LowResolutionForAspectRatios: 01000000000100000100
 --- !u!114 &16
-=======
-      x: -200.5
-      y: -124
-      width: 401
-      height: 248
-    m_MinimalGUI: 1
-  m_defaultScale: 2
-  m_TargetTexture: {fileID: 0}
-  m_CurrentColorSpace: 0
-  m_LastWindowPixelSize: {x: 1604, y: 1026}
-  m_ClearInEditMode: 1
-  m_NoCameraWarning: 1
-  m_LowResolutionForAspectRatios: 01000000000100000100
---- !u!114 &15
->>>>>>> 83cd0ce4715d5b517d60c413dca2400a9f7dbe8b
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_PrefabParentObject: {fileID: 0}
@@ -632,27 +434,15 @@ MonoBehaviour:
   m_Pos:
     serializedVersion: 2
     x: 0
-<<<<<<< HEAD
     y: 49
     width: 225
     height: 441
   m_PersistentViewDataDictionary: {fileID: 0}
   m_TreeViewState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 96290000
-    m_LastClickedID: 10646
-    m_ExpandedIDs: 9efbffff0000000096290000a4290000
-=======
-    y: 94
-    width: 336
-    height: 513
-  m_PersistentViewDataDictionary: {fileID: 0}
-  m_TreeViewState:
-    scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 
+    m_SelectedIDs: 50280000
     m_LastClickedID: 0
-    m_ExpandedIDs: d261fffffa61ffff7468ffff7471ffff9c71ffffcc75ffff2083ffff3c83ffffac86ffff0289ffffa289ffffa08cffff12c1ffffa2c8ffff04c9ffff5ecdffff64cfffffd4cfffff5cd4ffff22d9ffff90d9ffffc4ddffff1ce0ffff7ee0ffffc6e4ffff8ae9ffffeee9ffff22eeffff42fbffff00000000d22e0000c0300000
->>>>>>> 83cd0ce4715d5b517d60c413dca2400a9f7dbe8b
+    m_ExpandedIDs: 2869ffffe469ffff046fffff36c5ffff00f1ffffc6f2ffff9efbffff00000000d42b0000f62b00001a2c0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -668,25 +458,14 @@ MonoBehaviour:
       m_IsRenaming: 0
       m_OriginalEventType: 11
       m_IsRenamingFilename: 0
-<<<<<<< HEAD
       m_ClientGUIView: {fileID: 9}
-    m_SearchString: 
-  m_ExpandedScenes:
-  - PrefabTestScene
-  m_CurrenRootInstanceID: 0
-  m_Locked: 0
-  m_CurrentSortingName: TransformSorting
---- !u!114 &17
-=======
-      m_ClientGUIView: {fileID: 8}
     m_SearchString: 
   m_ExpandedScenes:
   - Main
   m_CurrenRootInstanceID: 0
   m_Locked: 0
   m_CurrentSortingName: TransformSorting
---- !u!114 &16
->>>>>>> 83cd0ce4715d5b517d60c413dca2400a9f7dbe8b
+--- !u!114 &17
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_PrefabParentObject: {fileID: 0}
@@ -708,17 +487,10 @@ MonoBehaviour:
   m_DepthBufferBits: 0
   m_Pos:
     serializedVersion: 2
-<<<<<<< HEAD
     x: 229
     y: 49
     width: 746
     height: 458
-=======
-    x: 340
-    y: 94
-    width: 802
-    height: 513
->>>>>>> 83cd0ce4715d5b517d60c413dca2400a9f7dbe8b
   m_PersistentViewDataDictionary: {fileID: 0}
   m_SceneLighting: 1
   lastFramingTime: 23852.845321893692
@@ -726,15 +498,9 @@ MonoBehaviour:
   m_isRotationLocked: 0
   m_AudioPlay: 0
   m_Position:
-<<<<<<< HEAD
     m_Target: {x: -0.0625, y: 0.015625, z: 80}
     speed: 2
     m_Value: {x: -0.0625, y: 0.015625, z: 80}
-=======
-    m_Target: {x: -0.20760313, y: 0.03418772, z: 90.01439}
-    speed: 2
-    m_Value: {x: -0.20760313, y: 0.03418772, z: 90.01439}
->>>>>>> 83cd0ce4715d5b517d60c413dca2400a9f7dbe8b
   m_RenderMode: 0
   m_ValidateTrueMetals: 0
   m_SceneViewState:
@@ -762,15 +528,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-<<<<<<< HEAD
     m_Target: 31.609554
     speed: 2
     m_Value: 31.609554
-=======
-    m_Target: 14.379447
-    speed: 2
-    m_Value: 14.379447
->>>>>>> 83cd0ce4715d5b517d60c413dca2400a9f7dbe8b
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -782,11 +542,7 @@ MonoBehaviour:
   m_ReplacementString: 
   m_LastLockedObject: {fileID: 0}
   m_ViewIsLockedToObject: 0
-<<<<<<< HEAD
 --- !u!114 &18
-=======
---- !u!114 &17
->>>>>>> 83cd0ce4715d5b517d60c413dca2400a9f7dbe8b
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_PrefabParentObject: {fileID: 0}
@@ -808,17 +564,10 @@ MonoBehaviour:
   m_DepthBufferBits: 0
   m_Pos:
     serializedVersion: 2
-<<<<<<< HEAD
     x: 229
     y: 49
     width: 746
     height: 458
-=======
-    x: 204
-    y: 49
-    width: 957
-    height: 543
->>>>>>> 83cd0ce4715d5b517d60c413dca2400a9f7dbe8b
   m_PersistentViewDataDictionary: {fileID: 0}
   m_ViewTransforms:
     m_KeySerializationHelper: []
@@ -836,11 +585,7 @@ MonoBehaviour:
   m_CurrentEditor: 1
   m_LayerEditor:
     m_SelectedLayerIndex: 0
-<<<<<<< HEAD
 --- !u!114 &19
-=======
---- !u!114 &18
->>>>>>> 83cd0ce4715d5b517d60c413dca2400a9f7dbe8b
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_PrefabParentObject: {fileID: 0}
@@ -863,15 +608,9 @@ MonoBehaviour:
   m_Pos:
     serializedVersion: 2
     x: 0
-<<<<<<< HEAD
     y: 511
     width: 975
     height: 267
-=======
-    y: 628
-    width: 1142
-    height: 250
->>>>>>> 83cd0ce4715d5b517d60c413dca2400a9f7dbe8b
   m_PersistentViewDataDictionary: {fileID: 0}
   m_SearchFilter:
     m_NameFilter: 
@@ -885,31 +624,20 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 0
     m_Folders:
-    - Assets/Tests/Card/Adventure/Ally
+    - Assets/Scenes
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Tests/Card/Adventure/Ally
+  - Assets/Scenes
   m_LastFoldersGridSize: -1
-<<<<<<< HEAD
   m_LastProjectPath: /Users/alexeitipenko/Dropbox/Year3/COMP3004B/Project/Quest/Quest
     of the Round Table
   m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 96.99823}
-    m_SelectedIDs: ea280000
-    m_LastClickedID: 10474
-    m_ExpandedIDs: 0000000082270000e6270000122800002e2800004a280000ea280000f028000000ca9a3bffffff7f
-=======
-  m_LastProjectPath: /Users/AveryVine/Documents/School/Third Year/COMP3004/Quest/Quest
-    of the Round Table
-  m_IsLocked: 0
-  m_FolderTreeState:
-    scrollPos: {x: 0, y: 539}
-    m_SelectedIDs: 942b0000
-    m_LastClickedID: 11156
-    m_ExpandedIDs: 00000000c82a0000d02a0000f22a0000262b0000522b0000702b00008e2b0000ae2b0000342c00007c2c0000982c00000c2d000000ca9a3bffffff7f
->>>>>>> 83cd0ce4715d5b517d60c413dca2400a9f7dbe8b
+    scrollPos: {x: 0, y: 0}
+    m_SelectedIDs: d0280000
+    m_LastClickedID: 10448
+    m_ExpandedIDs: 0000000082270000e6270000122800004a280000f028000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -925,11 +653,7 @@ MonoBehaviour:
       m_IsRenaming: 0
       m_OriginalEventType: 11
       m_IsRenamingFilename: 1
-<<<<<<< HEAD
       m_ClientGUIView: {fileID: 11}
-=======
-      m_ClientGUIView: {fileID: 10}
->>>>>>> 83cd0ce4715d5b517d60c413dca2400a9f7dbe8b
     m_SearchString: 
     m_CreateAssetUtility:
       m_EndAction: {fileID: 0}
@@ -941,11 +665,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: e42b0000
     m_LastClickedID: 11236
-<<<<<<< HEAD
     m_ExpandedIDs: 0000000082270000e6270000122800002e2800004a280000ea280000f028000000ca9a3bffffff7f
-=======
-    m_ExpandedIDs: 00000000c82a0000d02a0000f22a0000262b0000522b0000702b00008e2b0000ae2b0000342c00007c2c0000982c00000c2d000000ca9a3bffffff7f
->>>>>>> 83cd0ce4715d5b517d60c413dca2400a9f7dbe8b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -972,12 +692,8 @@ MonoBehaviour:
   m_ListAreaState:
     m_SelectedInstanceIDs: 
     m_LastClickedInstanceID: 0
-    m_HadKeyboardFocusLastEvent: 0
-<<<<<<< HEAD
+    m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: f829000000000000
-=======
-    m_ExpandedInstanceIDs: f8290000
->>>>>>> 83cd0ce4715d5b517d60c413dca2400a9f7dbe8b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -993,11 +709,7 @@ MonoBehaviour:
       m_IsRenaming: 0
       m_OriginalEventType: 11
       m_IsRenamingFilename: 1
-<<<<<<< HEAD
       m_ClientGUIView: {fileID: 11}
-=======
-      m_ClientGUIView: {fileID: 0}
->>>>>>> 83cd0ce4715d5b517d60c413dca2400a9f7dbe8b
     m_CreateAssetUtility:
       m_EndAction: {fileID: 0}
       m_InstanceID: 0
@@ -1008,7 +720,7 @@ MonoBehaviour:
     m_ScrollPosition: {x: 0, y: 0}
     m_GridSize: 64
   m_DirectoriesAreaWidth: 227
---- !u!114 &19
+--- !u!114 &20
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_PrefabParentObject: {fileID: 0}
@@ -1030,17 +742,10 @@ MonoBehaviour:
   m_DepthBufferBits: 0
   m_Pos:
     serializedVersion: 2
-<<<<<<< HEAD
     x: 979
     y: 49
     width: 301
-    height: 368
-=======
-    x: 1146
-    y: 94
-    width: 294
-    height: 516
->>>>>>> 83cd0ce4715d5b517d60c413dca2400a9f7dbe8b
+    height: 369
   m_PersistentViewDataDictionary: {fileID: 0}
   m_ScrollPosition: {x: 0, y: 0}
   m_InspectorMode: 0
@@ -1049,2302 +754,6 @@ MonoBehaviour:
     m_ControlHash: -371814159
     m_PrefName: Preview_InspectorPreview
   m_PreviewWindow: {fileID: 0}
-<<<<<<< HEAD
-=======
---- !u!114 &20
-MonoBehaviour:
-  m_ObjectHideFlags: 52
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 13401, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_AutoRepaintOnSceneChange: 0
-  m_MinSize: {x: 100, y: 100}
-  m_MaxSize: {x: 4000, y: 4000}
-  m_TitleContent:
-    m_Text: Test Runner
-    m_Image: {fileID: 0}
-    m_Tooltip: 
-  m_DepthBufferBits: 0
-  m_Pos:
-    serializedVersion: 2
-    x: 1146
-    y: 94
-    width: 294
-    height: 516
-  m_PersistentViewDataDictionary: {fileID: 0}
-  m_TestTypeToolbarIndex: 0
-  m_PlayModeTestListGUI:
-    m_Window: {fileID: 20}
-    newResultList:
-    - id: '[Quest of the Round Table][suite]'
-      name: Quest of the Round Table
-      fullName: Quest of the Round Table
-      resultStatus: 1
-      duration: 10.892732
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 1
-    - id: '[/Users/AveryVine/Documents/School/Third Year/COMP3004/Quest/Quest of the
-        Round Table/Library/ScriptAssemblies/Assembly-CSharp.dll][suite]'
-      name: Assembly-CSharp.dll
-      fullName: /Users/AveryVine/Documents/School/Third Year/COMP3004/Quest/Quest
-        of the Round Table/Library/ScriptAssemblies/Assembly-CSharp.dll
-      resultStatus: 1
-      duration: 10.6987
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 1
-    - id: '[Assembly-CSharp][AdventureDeckTest][suite]'
-      name: AdventureDeckTest
-      fullName: AdventureDeckTest
-      resultStatus: 1
-      duration: 0.065023
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 1
-    - id: '[Assembly-CSharp][AdventureDeckTest.testInitAdventureDeck]'
-      name: testInitAdventureDeck
-      fullName: AdventureDeckTest.testInitAdventureDeck
-      resultStatus: 1
-      duration: 0.023911
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-    - id: '[Assembly-CSharp][AdventureTest][suite]'
-      name: AdventureTest
-      fullName: AdventureTest
-      resultStatus: 1
-      duration: 0.118947
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 1
-    - id: '[Assembly-CSharp][AdventureTest.AdventureTestSimplePasses]'
-      name: AdventureTestSimplePasses
-      fullName: AdventureTest.AdventureTestSimplePasses
-      resultStatus: 1
-      duration: 0.016273
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-    - id: '[Assembly-CSharp][AdventureTest.AdventureTestWithEnumeratorPasses]'
-      name: AdventureTestWithEnumeratorPasses
-      fullName: AdventureTest.AdventureTestWithEnumeratorPasses
-      resultStatus: 1
-      duration: 0.034192
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-    - id: '[Assembly-CSharp][AllyTest][suite]'
-      name: AllyTest
-      fullName: AllyTest
-      resultStatus: 1
-      duration: 0.050032
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 1
-    - id: '[Assembly-CSharp][AllyTest.AllyTestSimplePasses]'
-      name: AllyTestSimplePasses
-      fullName: AllyTest.AllyTestSimplePasses
-      resultStatus: 1
-      duration: 0.017241
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-    - id: '[Assembly-CSharp][AmourTest][suite]'
-      name: AmourTest
-      fullName: AmourTest
-      resultStatus: 1
-      duration: 0.129513
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 1
-    - id: '[Assembly-CSharp][AmourTest.AmourTestSimplePasses]'
-      name: AmourTestSimplePasses
-      fullName: AmourTest.AmourTestSimplePasses
-      resultStatus: 1
-      duration: 0.016451
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-    - id: '[Assembly-CSharp][AmourTest.AmourTestWithEnumeratorPasses]'
-      name: AmourTestWithEnumeratorPasses
-      fullName: AmourTest.AmourTestWithEnumeratorPasses
-      resultStatus: 1
-      duration: 0.04367
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-    - id: '[Assembly-CSharp][AtCamelotTest][suite]'
-      name: AtCamelotTest
-      fullName: AtCamelotTest
-      resultStatus: 1
-      duration: 0.060502
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 1
-    - id: '[Assembly-CSharp][AtCamelotTest.AtCamelotTestSimplePasses]'
-      name: AtCamelotTestSimplePasses
-      fullName: AtCamelotTest.AtCamelotTestSimplePasses
-      resultStatus: 1
-      duration: 0.024134
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-    - id: '[Assembly-CSharp][AtOrkneyTest][suite]'
-      name: AtOrkneyTest
-      fullName: AtOrkneyTest
-      resultStatus: 1
-      duration: 0.060152
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 1
-    - id: '[Assembly-CSharp][AtOrkneyTest.AtOrkneyTestSimplePasses]'
-      name: AtOrkneyTestSimplePasses
-      fullName: AtOrkneyTest.AtOrkneyTestSimplePasses
-      resultStatus: 1
-      duration: 0.017513
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-    - id: '[Assembly-CSharp][AtTintagelTest][suite]'
-      name: AtTintagelTest
-      fullName: AtTintagelTest
-      resultStatus: 1
-      duration: 0.098887
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 1
-    - id: '[Assembly-CSharp][AtTintagelTest.AtTintagelTestSimplePasses]'
-      name: AtTintagelTestSimplePasses
-      fullName: AtTintagelTest.AtTintagelTestSimplePasses
-      resultStatus: 1
-      duration: 0.036782
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-    - id: '[Assembly-CSharp][AtYorkTest][suite]'
-      name: AtYorkTest
-      fullName: AtYorkTest
-      resultStatus: 1
-      duration: 0.058204
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 1
-    - id: '[Assembly-CSharp][AtYorkTest.AtYorkTestSimplePasses]'
-      name: AtYorkTestSimplePasses
-      fullName: AtYorkTest.AtYorkTestSimplePasses
-      resultStatus: 1
-      duration: 0.021374
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-    - id: '[Assembly-CSharp][BattleAxeTest][suite]'
-      name: BattleAxeTest
-      fullName: BattleAxeTest
-      resultStatus: 1
-      duration: 0.129008
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 1
-    - id: '[Assembly-CSharp][BattleAxeTest.BattleAxeTestSimplePasses]'
-      name: BattleAxeTestSimplePasses
-      fullName: BattleAxeTest.BattleAxeTestSimplePasses
-      resultStatus: 1
-      duration: 0.016827
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-    - id: '[Assembly-CSharp][BattleAxeTest.BattleAxeTestWithEnumeratorPasses]'
-      name: BattleAxeTestWithEnumeratorPasses
-      fullName: BattleAxeTest.BattleAxeTestWithEnumeratorPasses
-      resultStatus: 1
-      duration: 0.033298
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-    - id: '[Assembly-CSharp][BlackKnightTest][suite]'
-      name: BlackKnightTest
-      fullName: BlackKnightTest
-      resultStatus: 1
-      duration: 0.129895
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 1
-    - id: '[Assembly-CSharp][BlackKnightTest.BlackKnightTestSimplePasses]'
-      name: BlackKnightTestSimplePasses
-      fullName: BlackKnightTest.BlackKnightTestSimplePasses
-      resultStatus: 1
-      duration: 0.016231
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-    - id: '[Assembly-CSharp][BlackKnightTest.BlackKnightTestWithEnumeratorPasses]'
-      name: BlackKnightTestWithEnumeratorPasses
-      fullName: BlackKnightTest.BlackKnightTestWithEnumeratorPasses
-      resultStatus: 1
-      duration: 0.033267
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-    - id: '[Assembly-CSharp][BoarTest][suite]'
-      name: BoarTest
-      fullName: BoarTest
-      resultStatus: 1
-      duration: 0.117232
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 1
-    - id: '[Assembly-CSharp][BoarTest.BoarTestSimplePasses]'
-      name: BoarTestSimplePasses
-      fullName: BoarTest.BoarTestSimplePasses
-      resultStatus: 1
-      duration: 0.016728
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-    - id: '[Assembly-CSharp][BoarTest.BoarTestWithEnumeratorPasses]'
-      name: BoarTestWithEnumeratorPasses
-      fullName: BoarTest.BoarTestWithEnumeratorPasses
-      resultStatus: 1
-      duration: 0.033315
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-    - id: '[Assembly-CSharp][CardTest][suite]'
-      name: CardTest
-      fullName: CardTest
-      resultStatus: 1
-      duration: 0.186341
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 1
-    - id: '[Assembly-CSharp][CardTest.CardTestSimplePasses]'
-      name: CardTestSimplePasses
-      fullName: CardTest.CardTestSimplePasses
-      resultStatus: 1
-      duration: 0.016899
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-    - id: '[Assembly-CSharp][CardTest.CardTestWithEnumeratorPasses]'
-      name: CardTestWithEnumeratorPasses
-      fullName: CardTest.CardTestWithEnumeratorPasses
-      resultStatus: 1
-      duration: 0.036158
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-    - id: '[Assembly-CSharp][ChivalrousDeedTest][suite]'
-      name: ChivalrousDeedTest
-      fullName: ChivalrousDeedTest
-      resultStatus: 1
-      duration: 0.116505
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 1
-    - id: '[Assembly-CSharp][ChivalrousDeedTest.ChivalrousDeedTestSimplePasses]'
-      name: ChivalrousDeedTestSimplePasses
-      fullName: ChivalrousDeedTest.ChivalrousDeedTestSimplePasses
-      resultStatus: 1
-      duration: 0.016658
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-    - id: '[Assembly-CSharp][ChivalrousDeedTest.ChivalrousDeedTestWithEnumeratorPasses]'
-      name: ChivalrousDeedTestWithEnumeratorPasses
-      fullName: ChivalrousDeedTest.ChivalrousDeedTestWithEnumeratorPasses
-      resultStatus: 1
-      duration: 0.034006
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-    - id: '[Assembly-CSharp][CourtCalledCamelotTest][suite]'
-      name: CourtCalledCamelotTest
-      fullName: CourtCalledCamelotTest
-      resultStatus: 1
-      duration: 0.115742
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 1
-    - id: '[Assembly-CSharp][CourtCalledCamelotTest.CourtCalledCamelotTestSimplePasses]'
-      name: CourtCalledCamelotTestSimplePasses
-      fullName: CourtCalledCamelotTest.CourtCalledCamelotTestSimplePasses
-      resultStatus: 1
-      duration: 0.017651
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-    - id: '[Assembly-CSharp][CourtCalledCamelotTest.CourtCalledCamelotTestWithEnumeratorPasses]'
-      name: CourtCalledCamelotTestWithEnumeratorPasses
-      fullName: CourtCalledCamelotTest.CourtCalledCamelotTestWithEnumeratorPasses
-      resultStatus: 1
-      duration: 0.033829
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-    - id: '[Assembly-CSharp][DaggerTest][suite]'
-      name: DaggerTest
-      fullName: DaggerTest
-      resultStatus: 1
-      duration: 0.116019
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 1
-    - id: '[Assembly-CSharp][DaggerTest.DaggerTestSimplePasses]'
-      name: DaggerTestSimplePasses
-      fullName: DaggerTest.DaggerTestSimplePasses
-      resultStatus: 1
-      duration: 0.017164
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-    - id: '[Assembly-CSharp][DaggerTest.DaggerTestWithEnumeratorPasses]'
-      name: DaggerTestWithEnumeratorPasses
-      fullName: DaggerTest.DaggerTestWithEnumeratorPasses
-      resultStatus: 1
-      duration: 0.032614
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-    - id: '[Assembly-CSharp][DeckTest][suite]'
-      name: DeckTest
-      fullName: DeckTest
-      resultStatus: 1
-      duration: 0.049786
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 1
-    - id: '[Assembly-CSharp][DeckTest.testDealCards]'
-      name: testDealCards
-      fullName: DeckTest.testDealCards
-      resultStatus: 1
-      duration: 0.016704
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-    - id: '[Assembly-CSharp][DefendTheQueensHonorTest][suite]'
-      name: DefendTheQueensHonorTest
-      fullName: DefendTheQueensHonorTest
-      resultStatus: 1
-      duration: 0.116485
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 1
-    - id: '[Assembly-CSharp][DefendTheQueensHonorTest.DefendTheQueensHonorTestSimplePasses]'
-      name: DefendTheQueensHonorTestSimplePasses
-      fullName: DefendTheQueensHonorTest.DefendTheQueensHonorTestSimplePasses
-      resultStatus: 1
-      duration: 0.016418
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-    - id: '[Assembly-CSharp][DefendTheQueensHonorTest.DefendTheQueensHonorTestWithEnumeratorPasses]'
-      name: DefendTheQueensHonorTestWithEnumeratorPasses
-      fullName: DefendTheQueensHonorTest.DefendTheQueensHonorTestWithEnumeratorPasses
-      resultStatus: 1
-      duration: 0.033287
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-    - id: '[Assembly-CSharp][DragonTest][suite]'
-      name: DragonTest
-      fullName: DragonTest
-      resultStatus: 1
-      duration: 0.117144
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 1
-    - id: '[Assembly-CSharp][DragonTest.DragonTestSimplePasses]'
-      name: DragonTestSimplePasses
-      fullName: DragonTest.DragonTestSimplePasses
-      resultStatus: 1
-      duration: 0.016676
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-    - id: '[Assembly-CSharp][DragonTest.DragonTestWithEnumeratorPasses]'
-      name: DragonTestWithEnumeratorPasses
-      fullName: DragonTest.DragonTestWithEnumeratorPasses
-      resultStatus: 1
-      duration: 0.033828
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-    - id: '[Assembly-CSharp][EventTest][suite]'
-      name: EventTest
-      fullName: EventTest
-      resultStatus: 1
-      duration: 0.137489
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 1
-    - id: '[Assembly-CSharp][EventTest.EventTestSimplePasses]'
-      name: EventTestSimplePasses
-      fullName: EventTest.EventTestSimplePasses
-      resultStatus: 1
-      duration: 0.016794
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-    - id: '[Assembly-CSharp][EventTest.EventTestWithEnumeratorPasses]'
-      name: EventTestWithEnumeratorPasses
-      fullName: EventTest.EventTestWithEnumeratorPasses
-      resultStatus: 1
-      duration: 0.04286
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-    - id: '[Assembly-CSharp][EvilKnightTest][suite]'
-      name: EvilKnightTest
-      fullName: EvilKnightTest
-      resultStatus: 1
-      duration: 0.127822
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 1
-    - id: '[Assembly-CSharp][EvilKnightTest.EvilKnightTestSimplePasses]'
-      name: EvilKnightTestSimplePasses
-      fullName: EvilKnightTest.EvilKnightTestSimplePasses
-      resultStatus: 1
-      duration: 0.016766
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-    - id: '[Assembly-CSharp][EvilKnightTest.EvilKnightTestWithEnumeratorPasses]'
-      name: EvilKnightTestWithEnumeratorPasses
-      fullName: EvilKnightTest.EvilKnightTestWithEnumeratorPasses
-      resultStatus: 1
-      duration: 0.033339
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-    - id: '[Assembly-CSharp][ExcaliburTest][suite]'
-      name: ExcaliburTest
-      fullName: ExcaliburTest
-      resultStatus: 1
-      duration: 0.117404
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 1
-    - id: '[Assembly-CSharp][ExcaliburTest.ExcaliburTestSimplePasses]'
-      name: ExcaliburTestSimplePasses
-      fullName: ExcaliburTest.ExcaliburTestSimplePasses
-      resultStatus: 1
-      duration: 0.016475
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-    - id: '[Assembly-CSharp][ExcaliburTest.ExcaliburTestWithEnumeratorPasses]'
-      name: ExcaliburTestWithEnumeratorPasses
-      fullName: ExcaliburTest.ExcaliburTestWithEnumeratorPasses
-      resultStatus: 1
-      duration: 0.033801
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-    - id: '[Assembly-CSharp][FoeTest][suite]'
-      name: FoeTest
-      fullName: FoeTest
-      resultStatus: 1
-      duration: 0.116934
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 1
-    - id: '[Assembly-CSharp][FoeTest.FoeTestSimplePasses]'
-      name: FoeTestSimplePasses
-      fullName: FoeTest.FoeTestSimplePasses
-      resultStatus: 1
-      duration: 0.016716
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-    - id: '[Assembly-CSharp][FoeTest.FoeTestWithEnumeratorPasses]'
-      name: FoeTestWithEnumeratorPasses
-      fullName: FoeTest.FoeTestWithEnumeratorPasses
-      resultStatus: 1
-      duration: 0.033672
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-    - id: '[Assembly-CSharp][GameManagerTest][suite]'
-      name: GameManagerTest
-      fullName: GameManagerTest
-      resultStatus: 1
-      duration: 0.151325
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 1
-    - id: '[Assembly-CSharp][GameManagerTest.GameManagerTestSimplePasses]'
-      name: GameManagerTestSimplePasses
-      fullName: GameManagerTest.GameManagerTestSimplePasses
-      resultStatus: 1
-      duration: 0.015939
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-    - id: '[Assembly-CSharp][GameManagerTest.GameManagerTestWithEnumeratorPasses]'
-      name: GameManagerTestWithEnumeratorPasses
-      fullName: GameManagerTest.GameManagerTestWithEnumeratorPasses
-      resultStatus: 1
-      duration: 0.048341
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-    - id: '[Assembly-CSharp][GiantTest][suite]'
-      name: GiantTest
-      fullName: GiantTest
-      resultStatus: 1
-      duration: 0.138985
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 1
-    - id: '[Assembly-CSharp][GiantTest.GiantTestSimplePasses]'
-      name: GiantTestSimplePasses
-      fullName: GiantTest.GiantTestSimplePasses
-      resultStatus: 1
-      duration: 0.016785
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-    - id: '[Assembly-CSharp][GiantTest.GiantTestWithEnumeratorPasses]'
-      name: GiantTestWithEnumeratorPasses
-      fullName: GiantTest.GiantTestWithEnumeratorPasses
-      resultStatus: 1
-      duration: 0.033156
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-    - id: '[Assembly-CSharp][GreenKnightTest][suite]'
-      name: GreenKnightTest
-      fullName: GreenKnightTest
-      resultStatus: 1
-      duration: 0.150081
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 1
-    - id: '[Assembly-CSharp][GreenKnightTest.GreenKnightTestSimplePasses]'
-      name: GreenKnightTestSimplePasses
-      fullName: GreenKnightTest.GreenKnightTestSimplePasses
-      resultStatus: 1
-      duration: 0.018583
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-    - id: '[Assembly-CSharp][GreenKnightTest.GreenKnightTestWithEnumeratorPasses]'
-      name: GreenKnightTestWithEnumeratorPasses
-      fullName: GreenKnightTest.GreenKnightTestWithEnumeratorPasses
-      resultStatus: 1
-      duration: 0.033319
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-    - id: '[Assembly-CSharp][HorseTest][suite]'
-      name: HorseTest
-      fullName: HorseTest
-      resultStatus: 1
-      duration: 0.145216
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 1
-    - id: '[Assembly-CSharp][HorseTest.HorseTestSimplePasses]'
-      name: HorseTestSimplePasses
-      fullName: HorseTest.HorseTestSimplePasses
-      resultStatus: 1
-      duration: 0.0262
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-    - id: '[Assembly-CSharp][HorseTest.HorseTestWithEnumeratorPasses]'
-      name: HorseTestWithEnumeratorPasses
-      fullName: HorseTest.HorseTestWithEnumeratorPasses
-      resultStatus: 1
-      duration: 0.04422
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-    - id: '[Assembly-CSharp][JourneyThroughEnchantedForestTest][suite]'
-      name: JourneyThroughEnchantedForestTest
-      fullName: JourneyThroughEnchantedForestTest
-      resultStatus: 1
-      duration: 0.145854
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 1
-    - id: '[Assembly-CSharp][JourneyThroughEnchantedForestTest.JourneyThroughEnchantedForestTestSimplePasses]'
-      name: JourneyThroughEnchantedForestTestSimplePasses
-      fullName: JourneyThroughEnchantedForestTest.JourneyThroughEnchantedForestTestSimplePasses
-      resultStatus: 1
-      duration: 0.017034
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-    - id: '[Assembly-CSharp][JourneyThroughEnchantedForestTest.JourneyThroughEnchantedForestTestWithEnumeratorPasses]'
-      name: JourneyThroughEnchantedForestTestWithEnumeratorPasses
-      fullName: JourneyThroughEnchantedForestTest.JourneyThroughEnchantedForestTestWithEnumeratorPasses
-      resultStatus: 1
-      duration: 0.033368
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-    - id: '[Assembly-CSharp][KingArthurTest][suite]'
-      name: KingArthurTest
-      fullName: KingArthurTest
-      resultStatus: 1
-      duration: 0.061149
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 1
-    - id: '[Assembly-CSharp][KingArthurTest.KingArthurTestSimplePasses]'
-      name: KingArthurTestSimplePasses
-      fullName: KingArthurTest.KingArthurTestSimplePasses
-      resultStatus: 1
-      duration: 0.017738
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-    - id: '[Assembly-CSharp][KingsCallToArmsTest][suite]'
-      name: KingsCallToArmsTest
-      fullName: KingsCallToArmsTest
-      resultStatus: 1
-      duration: 0.118627
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 1
-    - id: '[Assembly-CSharp][KingsCallToArmsTest.KingsCallToArmsTestSimplePasses]'
-      name: KingsCallToArmsTestSimplePasses
-      fullName: KingsCallToArmsTest.KingsCallToArmsTestSimplePasses
-      resultStatus: 1
-      duration: 0.016687
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-    - id: '[Assembly-CSharp][KingsCallToArmsTest.KingsCallToArmsTestWithEnumeratorPasses]'
-      name: KingsCallToArmsTestWithEnumeratorPasses
-      fullName: KingsCallToArmsTest.KingsCallToArmsTestWithEnumeratorPasses
-      resultStatus: 1
-      duration: 0.033917
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-    - id: '[Assembly-CSharp][KingsRecognitionTest][suite]'
-      name: KingsRecognitionTest
-      fullName: KingsRecognitionTest
-      resultStatus: 1
-      duration: 0.144048
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 1
-    - id: '[Assembly-CSharp][KingsRecognitionTest.KingsRecognitionTestSimplePasses]'
-      name: KingsRecognitionTestSimplePasses
-      fullName: KingsRecognitionTest.KingsRecognitionTestSimplePasses
-      resultStatus: 1
-      duration: 0.026316
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-    - id: '[Assembly-CSharp][KingsRecognitionTest.KingsRecognitionTestWithEnumeratorPasses]'
-      name: KingsRecognitionTestWithEnumeratorPasses
-      fullName: KingsRecognitionTest.KingsRecognitionTestWithEnumeratorPasses
-      resultStatus: 1
-      duration: 0.043968
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-    - id: '[Assembly-CSharp][LanceTest][suite]'
-      name: LanceTest
-      fullName: LanceTest
-      resultStatus: 1
-      duration: 0.141105
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 1
-    - id: '[Assembly-CSharp][LanceTest.LanceTestSimplePasses]'
-      name: LanceTestSimplePasses
-      fullName: LanceTest.LanceTestSimplePasses
-      resultStatus: 1
-      duration: 0.017077
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-    - id: '[Assembly-CSharp][LanceTest.LanceTestWithEnumeratorPasses]'
-      name: LanceTestWithEnumeratorPasses
-      fullName: LanceTest.LanceTestWithEnumeratorPasses
-      resultStatus: 1
-      duration: 0.034094
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-    - id: '[Assembly-CSharp][LoaderTest][suite]'
-      name: LoaderTest
-      fullName: LoaderTest
-      resultStatus: 1
-      duration: 0.117647
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 1
-    - id: '[Assembly-CSharp][LoaderTest.LoaderTestSimplePasses]'
-      name: LoaderTestSimplePasses
-      fullName: LoaderTest.LoaderTestSimplePasses
-      resultStatus: 1
-      duration: 0.017414
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-    - id: '[Assembly-CSharp][LoaderTest.LoaderTestWithEnumeratorPasses]'
-      name: LoaderTestWithEnumeratorPasses
-      fullName: LoaderTest.LoaderTestWithEnumeratorPasses
-      resultStatus: 1
-      duration: 0.034329
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-    - id: '[Assembly-CSharp][MerlinTest][suite]'
-      name: MerlinTest
-      fullName: MerlinTest
-      resultStatus: 1
-      duration: 0.050439
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 1
-    - id: '[Assembly-CSharp][MerlinTest.MerlinTestSimplePasses]'
-      name: MerlinTestSimplePasses
-      fullName: MerlinTest.MerlinTestSimplePasses
-      resultStatus: 1
-      duration: 0.016962
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-    - id: '[Assembly-CSharp][MordredTest][suite]'
-      name: MordredTest
-      fullName: MordredTest
-      resultStatus: 1
-      duration: 0.11602
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 1
-    - id: '[Assembly-CSharp][MordredTest.MordredTestSimplePasses]'
-      name: MordredTestSimplePasses
-      fullName: MordredTest.MordredTestSimplePasses
-      resultStatus: 1
-      duration: 0.017785
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-    - id: '[Assembly-CSharp][MordredTest.MordredTestWithEnumeratorPasses]'
-      name: MordredTestWithEnumeratorPasses
-      fullName: MordredTest.MordredTestWithEnumeratorPasses
-      resultStatus: 1
-      duration: 0.033822
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-    - id: '[Assembly-CSharp][PlagueTest][suite]'
-      name: PlagueTest
-      fullName: PlagueTest
-      resultStatus: 1
-      duration: 0.118349
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 1
-    - id: '[Assembly-CSharp][PlagueTest.PlagueTestSimplePasses]'
-      name: PlagueTestSimplePasses
-      fullName: PlagueTest.PlagueTestSimplePasses
-      resultStatus: 1
-      duration: 0.016544
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-    - id: '[Assembly-CSharp][PlagueTest.PlagueTestWithEnumeratorPasses]'
-      name: PlagueTestWithEnumeratorPasses
-      fullName: PlagueTest.PlagueTestWithEnumeratorPasses
-      resultStatus: 1
-      duration: 0.034333
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-    - id: '[Assembly-CSharp][PlayerTest][suite]'
-      name: PlayerTest
-      fullName: PlayerTest
-      resultStatus: 1
-      duration: 0.049462
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 1
-    - id: '[Assembly-CSharp][PlayerTest.testDealCards]'
-      name: testDealCards
-      fullName: PlayerTest.testDealCards
-      resultStatus: 1
-      duration: 0.017223
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-    - id: '[Assembly-CSharp][PoxTest][suite]'
-      name: PoxTest
-      fullName: PoxTest
-      resultStatus: 1
-      duration: 0.116598
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 1
-    - id: '[Assembly-CSharp][PoxTest.PoxTestSimplePasses]'
-      name: PoxTestSimplePasses
-      fullName: PoxTest.PoxTestSimplePasses
-      resultStatus: 1
-      duration: 0.015849
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-    - id: '[Assembly-CSharp][PoxTest.PoxTestWithEnumeratorPasses]'
-      name: PoxTestWithEnumeratorPasses
-      fullName: PoxTest.PoxTestWithEnumeratorPasses
-      resultStatus: 1
-      duration: 0.034042
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-    - id: '[Assembly-CSharp][ProsperityThroughoutTheRealmTest][suite]'
-      name: ProsperityThroughoutTheRealmTest
-      fullName: ProsperityThroughoutTheRealmTest
-      resultStatus: 1
-      duration: 0.116936
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 1
-    - id: '[Assembly-CSharp][ProsperityThroughoutTheRealmTest.ProsperityThroughoutTheRealmTestSimplePasses]'
-      name: ProsperityThroughoutTheRealmTestSimplePasses
-      fullName: ProsperityThroughoutTheRealmTest.ProsperityThroughoutTheRealmTestSimplePasses
-      resultStatus: 1
-      duration: 0.017035
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-    - id: '[Assembly-CSharp][ProsperityThroughoutTheRealmTest.ProsperityThroughoutTheRealmTestWithEnumeratorPasses]'
-      name: ProsperityThroughoutTheRealmTestWithEnumeratorPasses
-      fullName: ProsperityThroughoutTheRealmTest.ProsperityThroughoutTheRealmTestWithEnumeratorPasses
-      resultStatus: 1
-      duration: 0.033916
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-    - id: '[Assembly-CSharp][QueenGuinevereTest][suite]'
-      name: QueenGuinevereTest
-      fullName: QueenGuinevereTest
-      resultStatus: 1
-      duration: 0.049871
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 1
-    - id: '[Assembly-CSharp][QueenGuinevereTest.QueenGuinevereTestSimplePasses]'
-      name: QueenGuinevereTestSimplePasses
-      fullName: QueenGuinevereTest.QueenGuinevereTestSimplePasses
-      resultStatus: 1
-      duration: 0.016989
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-    - id: '[Assembly-CSharp][QueenIseultTest][suite]'
-      name: QueenIseultTest
-      fullName: QueenIseultTest
-      resultStatus: 1
-      duration: 0.050196
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 1
-    - id: '[Assembly-CSharp][QueenIseultTest.QueenIseultTestSimplePasses]'
-      name: QueenIseultTestSimplePasses
-      fullName: QueenIseultTest.QueenIseultTestSimplePasses
-      resultStatus: 1
-      duration: 0.016834
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-    - id: '[Assembly-CSharp][QueensFavorTest][suite]'
-      name: QueensFavorTest
-      fullName: QueensFavorTest
-      resultStatus: 1
-      duration: 0.116683
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 1
-    - id: '[Assembly-CSharp][QueensFavorTest.QueensFavorTestSimplePasses]'
-      name: QueensFavorTestSimplePasses
-      fullName: QueensFavorTest.QueensFavorTestSimplePasses
-      resultStatus: 1
-      duration: 0.01675
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-    - id: '[Assembly-CSharp][QueensFavorTest.QueensFavorTestWithEnumeratorPasses]'
-      name: QueensFavorTestWithEnumeratorPasses
-      fullName: QueensFavorTest.QueensFavorTestWithEnumeratorPasses
-      resultStatus: 1
-      duration: 0.032756
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-    - id: '[Assembly-CSharp][QuestTest][suite]'
-      name: QuestTest
-      fullName: QuestTest
-      resultStatus: 1
-      duration: 0.281878
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 1
-    - id: '[Assembly-CSharp][QuestTest.QuestTestSimplePasses]'
-      name: QuestTestSimplePasses
-      fullName: QuestTest.QuestTestSimplePasses
-      resultStatus: 1
-      duration: 0.152767
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-    - id: '[Assembly-CSharp][QuestTest.QuestTestWithEnumeratorPasses]'
-      name: QuestTestWithEnumeratorPasses
-      fullName: QuestTest.QuestTestWithEnumeratorPasses
-      resultStatus: 1
-      duration: 0.033378
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-    - id: '[Assembly-CSharp][RepelTheSaxonRaidersTest][suite]'
-      name: RepelTheSaxonRaidersTest
-      fullName: RepelTheSaxonRaidersTest
-      resultStatus: 1
-      duration: 0.133267
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 1
-    - id: '[Assembly-CSharp][RepelTheSaxonRaidersTest.RepelTheSaxonRaidersTestSimplePasses]'
-      name: RepelTheSaxonRaidersTestSimplePasses
-      fullName: RepelTheSaxonRaidersTest.RepelTheSaxonRaidersTestSimplePasses
-      resultStatus: 1
-      duration: 0.017195
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-    - id: '[Assembly-CSharp][RepelTheSaxonRaidersTest.RepelTheSaxonRaidersTestWithEnumeratorPasses]'
-      name: RepelTheSaxonRaidersTestWithEnumeratorPasses
-      fullName: RepelTheSaxonRaidersTest.RepelTheSaxonRaidersTestWithEnumeratorPasses
-      resultStatus: 1
-      duration: 0.033827
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-    - id: '[Assembly-CSharp][RescueTheFairMaidenTest][suite]'
-      name: RescueTheFairMaidenTest
-      fullName: RescueTheFairMaidenTest
-      resultStatus: 1
-      duration: 0.138208
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 1
-    - id: '[Assembly-CSharp][RescueTheFairMaidenTest.RescueTheFairMaidenTestSimplePasses]'
-      name: RescueTheFairMaidenTestSimplePasses
-      fullName: RescueTheFairMaidenTest.RescueTheFairMaidenTestSimplePasses
-      resultStatus: 1
-      duration: 0.016682
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-    - id: '[Assembly-CSharp][RescueTheFairMaidenTest.RescueTheFairMaidenTestWithEnumeratorPasses]'
-      name: RescueTheFairMaidenTestWithEnumeratorPasses
-      fullName: RescueTheFairMaidenTest.RescueTheFairMaidenTestWithEnumeratorPasses
-      resultStatus: 1
-      duration: 0.033265
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-    - id: '[Assembly-CSharp][RobberKnightTest][suite]'
-      name: RobberKnightTest
-      fullName: RobberKnightTest
-      resultStatus: 1
-      duration: 0.1524
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 1
-    - id: '[Assembly-CSharp][RobberKnightTest.RobberKnightTestSimplePasses]'
-      name: RobberKnightTestSimplePasses
-      fullName: RobberKnightTest.RobberKnightTestSimplePasses
-      resultStatus: 1
-      duration: 0.019729
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-    - id: '[Assembly-CSharp][RobberKnightTest.RobberKnightTestWithEnumeratorPasses]'
-      name: RobberKnightTestWithEnumeratorPasses
-      fullName: RobberKnightTest.RobberKnightTestWithEnumeratorPasses
-      resultStatus: 1
-      duration: 0.0334
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-    - id: '[Assembly-CSharp][SaxonKnightTest][suite]'
-      name: SaxonKnightTest
-      fullName: SaxonKnightTest
-      resultStatus: 1
-      duration: 0.129698
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 1
-    - id: '[Assembly-CSharp][SaxonKnightTest.SaxonKnightTestSimplePasses]'
-      name: SaxonKnightTestSimplePasses
-      fullName: SaxonKnightTest.SaxonKnightTestSimplePasses
-      resultStatus: 1
-      duration: 0.016171
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-    - id: '[Assembly-CSharp][SaxonKnightTest.SaxonKnightTestWithEnumeratorPasses]'
-      name: SaxonKnightTestWithEnumeratorPasses
-      fullName: SaxonKnightTest.SaxonKnightTestWithEnumeratorPasses
-      resultStatus: 1
-      duration: 0.033371
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-    - id: '[Assembly-CSharp][SaxonsTest][suite]'
-      name: SaxonsTest
-      fullName: SaxonsTest
-      resultStatus: 1
-      duration: 0.129076
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 1
-    - id: '[Assembly-CSharp][SaxonsTest.SaxonsTestSimplePasses]'
-      name: SaxonsTestSimplePasses
-      fullName: SaxonsTest.SaxonsTestSimplePasses
-      resultStatus: 1
-      duration: 0.01699
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-    - id: '[Assembly-CSharp][SaxonsTest.SaxonsTestWithEnumeratorPasses]'
-      name: SaxonsTestWithEnumeratorPasses
-      fullName: SaxonsTest.SaxonsTestWithEnumeratorPasses
-      resultStatus: 1
-      duration: 0.04385
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-    - id: '[Assembly-CSharp][SearchForTheHolyGrailTest][suite]'
-      name: SearchForTheHolyGrailTest
-      fullName: SearchForTheHolyGrailTest
-      resultStatus: 1
-      duration: 0.147362
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 1
-    - id: '[Assembly-CSharp][SearchForTheHolyGrailTest.SearchForTheHolyGrailTestSimplePasses]'
-      name: SearchForTheHolyGrailTestSimplePasses
-      fullName: SearchForTheHolyGrailTest.SearchForTheHolyGrailTestSimplePasses
-      resultStatus: 1
-      duration: 0.01701
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-    - id: '[Assembly-CSharp][SearchForTheHolyGrailTest.SearchForTheHolyGrailTestWithEnumeratorPasses]'
-      name: SearchForTheHolyGrailTestWithEnumeratorPasses
-      fullName: SearchForTheHolyGrailTest.SearchForTheHolyGrailTestWithEnumeratorPasses
-      resultStatus: 1
-      duration: 0.036902
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-    - id: '[Assembly-CSharp][SearchForTheQuestingBeastTest][suite]'
-      name: SearchForTheQuestingBeastTest
-      fullName: SearchForTheQuestingBeastTest
-      resultStatus: 1
-      duration: 0.134266
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 1
-    - id: '[Assembly-CSharp][SearchForTheQuestingBeastTest.SearchForTheQuestingBeastTestSimplePasses]'
-      name: SearchForTheQuestingBeastTestSimplePasses
-      fullName: SearchForTheQuestingBeastTest.SearchForTheQuestingBeastTestSimplePasses
-      resultStatus: 1
-      duration: 0.016735
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-    - id: '[Assembly-CSharp][SearchForTheQuestingBeastTest.SearchForTheQuestingBeastTestWithEnumeratorPasses]'
-      name: SearchForTheQuestingBeastTestWithEnumeratorPasses
-      fullName: SearchForTheQuestingBeastTest.SearchForTheQuestingBeastTestWithEnumeratorPasses
-      resultStatus: 1
-      duration: 0.033178
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-    - id: '[Assembly-CSharp][SirGalahadTest][suite]'
-      name: SirGalahadTest
-      fullName: SirGalahadTest
-      resultStatus: 1
-      duration: 0.05001
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 1
-    - id: '[Assembly-CSharp][SirGalahadTest.SirGalahadTestSimplePasses]'
-      name: SirGalahadTestSimplePasses
-      fullName: SirGalahadTest.SirGalahadTestSimplePasses
-      resultStatus: 1
-      duration: 0.01665
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-    - id: '[Assembly-CSharp][SirPercivalTest][suite]'
-      name: SirPercivalTest
-      fullName: SirPercivalTest
-      resultStatus: 1
-      duration: 0.050802
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 1
-    - id: '[Assembly-CSharp][SirPercivalTest.SirPercivalTestSimplePasses]'
-      name: SirPercivalTestSimplePasses
-      fullName: SirPercivalTest.SirPercivalTestSimplePasses
-      resultStatus: 1
-      duration: 0.016728
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-    - id: '[Assembly-CSharp][SirTristanTest][suite]'
-      name: SirTristanTest
-      fullName: SirTristanTest
-      resultStatus: 1
-      duration: 0.050052
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 1
-    - id: '[Assembly-CSharp][SirTristanTest.SirTristanTestSimplePasses]'
-      name: SirTristanTestSimplePasses
-      fullName: SirTristanTest.SirTristanTestSimplePasses
-      resultStatus: 1
-      duration: 0.016645
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-    - id: '[Assembly-CSharp][SlayTheDragonTest][suite]'
-      name: SlayTheDragonTest
-      fullName: SlayTheDragonTest
-      resultStatus: 1
-      duration: 0.148165
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 1
-    - id: '[Assembly-CSharp][SlayTheDragonTest.SlayTheDragonTestSimplePasses]'
-      name: SlayTheDragonTestSimplePasses
-      fullName: SlayTheDragonTest.SlayTheDragonTestSimplePasses
-      resultStatus: 1
-      duration: 0.016756
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-    - id: '[Assembly-CSharp][SlayTheDragonTest.SlayTheDragonTestWithEnumeratorPasses]'
-      name: SlayTheDragonTestWithEnumeratorPasses
-      fullName: SlayTheDragonTest.SlayTheDragonTestWithEnumeratorPasses
-      resultStatus: 1
-      duration: 0.036775
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-    - id: '[Assembly-CSharp][StageTest][suite]'
-      name: StageTest
-      fullName: StageTest
-      resultStatus: 1
-      duration: 0.12696
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 1
-    - id: '[Assembly-CSharp][StageTest.StageTestSimplePasses]'
-      name: StageTestSimplePasses
-      fullName: StageTest.StageTestSimplePasses
-      resultStatus: 1
-      duration: 0.01676
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-    - id: '[Assembly-CSharp][StageTest.StageTestWithEnumeratorPasses]'
-      name: StageTestWithEnumeratorPasses
-      fullName: StageTest.StageTestWithEnumeratorPasses
-      resultStatus: 1
-      duration: 0.033359
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-    - id: '[Assembly-CSharp][StoryDeckTest][suite]'
-      name: StoryDeckTest
-      fullName: StoryDeckTest
-      resultStatus: 1
-      duration: 0.049705
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 1
-    - id: '[Assembly-CSharp][StoryDeckTest.testInitStoryDeck]'
-      name: testInitStoryDeck
-      fullName: StoryDeckTest.testInitStoryDeck
-      resultStatus: 1
-      duration: 0.016739
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-    - id: '[Assembly-CSharp][StoryTest][suite]'
-      name: StoryTest
-      fullName: StoryTest
-      resultStatus: 1
-      duration: 0.050297
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 1
-    - id: '[Assembly-CSharp][StoryTest.StoryTestSimplePasses]'
-      name: StoryTestSimplePasses
-      fullName: StoryTest.StoryTestSimplePasses
-      resultStatus: 1
-      duration: 0.016789
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-    - id: '[Assembly-CSharp][SwordTest][suite]'
-      name: SwordTest
-      fullName: SwordTest
-      resultStatus: 1
-      duration: 0.147605
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 1
-    - id: '[Assembly-CSharp][SwordTest.SwordTestSimplePasses]'
-      name: SwordTestSimplePasses
-      fullName: SwordTest.SwordTestSimplePasses
-      resultStatus: 1
-      duration: 0.01689
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-    - id: '[Assembly-CSharp][SwordTest.SwordTestWithEnumeratorPasses]'
-      name: SwordTestWithEnumeratorPasses
-      fullName: SwordTest.SwordTestWithEnumeratorPasses
-      resultStatus: 1
-      duration: 0.04771
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-    - id: '[Assembly-CSharp][TestOfMorganLeFeyTest][suite]'
-      name: TestOfMorganLeFeyTest
-      fullName: TestOfMorganLeFeyTest
-      resultStatus: 1
-      duration: 0.143661
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 1
-    - id: '[Assembly-CSharp][TestOfMorganLeFeyTest.TestOfMorganLeFeyTestSimplePasses]'
-      name: TestOfMorganLeFeyTestSimplePasses
-      fullName: TestOfMorganLeFeyTest.TestOfMorganLeFeyTestSimplePasses
-      resultStatus: 1
-      duration: 0.016985
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-    - id: '[Assembly-CSharp][TestOfMorganLeFeyTest.TestOfMorganLeFeyTestWithEnumeratorPasses]'
-      name: TestOfMorganLeFeyTestWithEnumeratorPasses
-      fullName: TestOfMorganLeFeyTest.TestOfMorganLeFeyTestWithEnumeratorPasses
-      resultStatus: 1
-      duration: 0.033218
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-    - id: '[Assembly-CSharp][TestOfTemptationTest][suite]'
-      name: TestOfTemptationTest
-      fullName: TestOfTemptationTest
-      resultStatus: 1
-      duration: 0.116243
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 1
-    - id: '[Assembly-CSharp][TestOfTemptationTest.TestOfTemptationTestSimplePasses]'
-      name: TestOfTemptationTestSimplePasses
-      fullName: TestOfTemptationTest.TestOfTemptationTestSimplePasses
-      resultStatus: 1
-      duration: 0.017232
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-    - id: '[Assembly-CSharp][TestOfTemptationTest.TestOfTemptationTestWithEnumeratorPasses]'
-      name: TestOfTemptationTestWithEnumeratorPasses
-      fullName: TestOfTemptationTest.TestOfTemptationTestWithEnumeratorPasses
-      resultStatus: 1
-      duration: 0.032888
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-    - id: '[Assembly-CSharp][TestOfTheQuestingBeastTest][suite]'
-      name: TestOfTheQuestingBeastTest
-      fullName: TestOfTheQuestingBeastTest
-      resultStatus: 1
-      duration: 0.134369
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 1
-    - id: '[Assembly-CSharp][TestOfTheQuestingBeastTest.TestOfTheQuestingBeastTestSimplePasses]'
-      name: TestOfTheQuestingBeastTestSimplePasses
-      fullName: TestOfTheQuestingBeastTest.TestOfTheQuestingBeastTestSimplePasses
-      resultStatus: 1
-      duration: 0.016647
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-    - id: '[Assembly-CSharp][TestOfTheQuestingBeastTest.TestOfTheQuestingBeastTestWithEnumeratorPasses]'
-      name: TestOfTheQuestingBeastTestWithEnumeratorPasses
-      fullName: TestOfTheQuestingBeastTest.TestOfTheQuestingBeastTestWithEnumeratorPasses
-      resultStatus: 1
-      duration: 0.0334
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-    - id: '[Assembly-CSharp][TestOfValorTest][suite]'
-      name: TestOfValorTest
-      fullName: TestOfValorTest
-      resultStatus: 1
-      duration: 0.129539
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 1
-    - id: '[Assembly-CSharp][TestOfValorTest.TestOfValorTestSimplePasses]'
-      name: TestOfValorTestSimplePasses
-      fullName: TestOfValorTest.TestOfValorTestSimplePasses
-      resultStatus: 1
-      duration: 0.016751
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-    - id: '[Assembly-CSharp][TestOfValorTest.TestOfValorTestWithEnumeratorPasses]'
-      name: TestOfValorTestWithEnumeratorPasses
-      fullName: TestOfValorTest.TestOfValorTestWithEnumeratorPasses
-      resultStatus: 1
-      duration: 0.044342
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-    - id: '[Assembly-CSharp][TestTest][suite]'
-      name: TestTest
-      fullName: TestTest
-      resultStatus: 1
-      duration: 0.118616
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 1
-    - id: '[Assembly-CSharp][TestTest.TestTestSimplePasses]'
-      name: TestTestSimplePasses
-      fullName: TestTest.TestTestSimplePasses
-      resultStatus: 1
-      duration: 0.016805
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-    - id: '[Assembly-CSharp][TestTest.TestTestWithEnumeratorPasses]'
-      name: TestTestWithEnumeratorPasses
-      fullName: TestTest.TestTestWithEnumeratorPasses
-      resultStatus: 1
-      duration: 0.033224
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-    - id: '[Assembly-CSharp][ThievesTest][suite]'
-      name: ThievesTest
-      fullName: ThievesTest
-      resultStatus: 1
-      duration: 0.130192
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 1
-    - id: '[Assembly-CSharp][ThievesTest.ThievesTestSimplePasses]'
-      name: ThievesTestSimplePasses
-      fullName: ThievesTest.ThievesTestSimplePasses
-      resultStatus: 1
-      duration: 0.016462
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-    - id: '[Assembly-CSharp][ThievesTest.ThievesTestWithEnumeratorPasses]'
-      name: ThievesTestWithEnumeratorPasses
-      fullName: ThievesTest.ThievesTestWithEnumeratorPasses
-      resultStatus: 1
-      duration: 0.0334
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-    - id: '[Assembly-CSharp][TournamentTest][suite]'
-      name: TournamentTest
-      fullName: TournamentTest
-      resultStatus: 1
-      duration: 0.050369
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 1
-    - id: '[Assembly-CSharp][TournamentTest.TournamentTestSimplePasses]'
-      name: TournamentTestSimplePasses
-      fullName: TournamentTest.TournamentTestSimplePasses
-      resultStatus: 1
-      duration: 0.01755
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-    - id: '[Assembly-CSharp][VanquishKingArthursEnemiesTest][suite]'
-      name: VanquishKingArthursEnemiesTest
-      fullName: VanquishKingArthursEnemiesTest
-      resultStatus: 1
-      duration: 0.144703
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 1
-    - id: '[Assembly-CSharp][VanquishKingArthursEnemiesTest.VanquishKingArthursEnemiesTestSimplePasses]'
-      name: VanquishKingArthursEnemiesTestSimplePasses
-      fullName: VanquishKingArthursEnemiesTest.VanquishKingArthursEnemiesTestSimplePasses
-      resultStatus: 1
-      duration: 0.01701
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-    - id: '[Assembly-CSharp][VanquishKingArthursEnemiesTest.VanquishKingArthursEnemiesTestWithEnumeratorPasses]'
-      name: VanquishKingArthursEnemiesTestWithEnumeratorPasses
-      fullName: VanquishKingArthursEnemiesTest.VanquishKingArthursEnemiesTestWithEnumeratorPasses
-      resultStatus: 1
-      duration: 0.044618
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-    - id: '[Assembly-CSharp][WeaponTest][suite]'
-      name: WeaponTest
-      fullName: WeaponTest
-      resultStatus: 1
-      duration: 0.146324
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 1
-    - id: '[Assembly-CSharp][WeaponTest.WeaponTestSimplePasses]'
-      name: WeaponTestSimplePasses
-      fullName: WeaponTest.WeaponTestSimplePasses
-      resultStatus: 1
-      duration: 0.017349
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-    - id: '[Assembly-CSharp][WeaponTest.WeaponTestWithEnumeratorPasses]'
-      name: WeaponTestWithEnumeratorPasses
-      fullName: WeaponTest.WeaponTestWithEnumeratorPasses
-      resultStatus: 1
-      duration: 0.045121
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 0
-    m_ResultText: Quest of the Round Table (10.893s)
-    m_ResultStacktrace: 
-    m_TestListState:
-      scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 00592df3
-      m_LastClickedID: -215131904
-      m_ExpandedIDs: f024cf8600592df3af5d8628a71799649ac10d72ffffff7f
-      m_RenameOverlay:
-        m_UserAcceptedRename: 0
-        m_Name: 
-        m_OriginalName: 
-        m_EditFieldRect:
-          serializedVersion: 2
-          x: 0
-          y: 0
-          width: 0
-          height: 0
-        m_UserData: 0
-        m_IsWaitingForDelay: 0
-        m_IsRenaming: 0
-        m_OriginalEventType: 11
-        m_IsRenamingFilename: 0
-        m_ClientGUIView: {fileID: 0}
-      m_SearchString: 
-    m_TestRunnerUIFilter:
-      PassedHidden: 0
-      FailedHidden: 0
-      NotRunHidden: 0
-      m_SearchString: 
-      selectedCategoryMask: 0
-      availableCategories: []
-  m_EditModeTestListGUI:
-    m_Window: {fileID: 20}
-    newResultList:
-    - id: '[Quest of the Round Table][suite]'
-      name: Quest of the Round Table
-      fullName: Quest of the Round Table
-      resultStatus: 0
-      duration: 0
-      messages: 
-      output: 
-      stacktrace: 
-      notRunnable: 0
-      ignoredOrSkipped: 0
-      description: 
-      isSuite: 1
-    m_ResultText: 
-    m_ResultStacktrace: 
-    m_TestListState:
-      scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 
-      m_LastClickedID: 0
-      m_ExpandedIDs: ffffff7f
-      m_RenameOverlay:
-        m_UserAcceptedRename: 0
-        m_Name: 
-        m_OriginalName: 
-        m_EditFieldRect:
-          serializedVersion: 2
-          x: 0
-          y: 0
-          width: 0
-          height: 0
-        m_UserData: 0
-        m_IsWaitingForDelay: 0
-        m_IsRenaming: 0
-        m_OriginalEventType: 11
-        m_IsRenamingFilename: 0
-        m_ClientGUIView: {fileID: 0}
-      m_SearchString: 
-    m_TestRunnerUIFilter:
-      PassedHidden: 0
-      FailedHidden: 0
-      NotRunHidden: 0
-      m_SearchString: 
-      selectedCategoryMask: 0
-      availableCategories: []
->>>>>>> 83cd0ce4715d5b517d60c413dca2400a9f7dbe8b
 --- !u!114 &21
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -3353,7 +762,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 1
-<<<<<<< HEAD
   m_Script: {fileID: 12157, guid: 0000000000000000e000000000000000, type: 0}
   m_Name: 
   m_EditorClassIdentifier: 
@@ -3422,13 +830,2199 @@ MonoBehaviour:
       ignoredOrSkipped: 0
       description: 
       isSuite: 1
+    - id: '[/Users/alexeitipenko/Dropbox/Year3/COMP3004B/Project/Quest/Quest of the
+        Round Table/Library/ScriptAssemblies/Assembly-CSharp.dll][suite]'
+      name: Assembly-CSharp.dll
+      fullName: /Users/alexeitipenko/Dropbox/Year3/COMP3004B/Project/Quest/Quest of
+        the Round Table/Library/ScriptAssemblies/Assembly-CSharp.dll
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 1
+    - id: '[Assembly-CSharp][AdventureDeckTest][suite]'
+      name: AdventureDeckTest
+      fullName: AdventureDeckTest
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 1
+    - id: '[Assembly-CSharp][AdventureDeckTest.testInitAdventureDeck]'
+      name: testInitAdventureDeck
+      fullName: AdventureDeckTest.testInitAdventureDeck
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+    - id: '[Assembly-CSharp][AdventureTest][suite]'
+      name: AdventureTest
+      fullName: AdventureTest
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 1
+    - id: '[Assembly-CSharp][AdventureTest.AdventureTestSimplePasses]'
+      name: AdventureTestSimplePasses
+      fullName: AdventureTest.AdventureTestSimplePasses
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+    - id: '[Assembly-CSharp][AdventureTest.AdventureTestWithEnumeratorPasses]'
+      name: AdventureTestWithEnumeratorPasses
+      fullName: AdventureTest.AdventureTestWithEnumeratorPasses
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+    - id: '[Assembly-CSharp][AllyTest][suite]'
+      name: AllyTest
+      fullName: AllyTest
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 1
+    - id: '[Assembly-CSharp][AllyTest.AllyTestSimplePasses]'
+      name: AllyTestSimplePasses
+      fullName: AllyTest.AllyTestSimplePasses
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+    - id: '[Assembly-CSharp][AmourTest][suite]'
+      name: AmourTest
+      fullName: AmourTest
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 1
+    - id: '[Assembly-CSharp][AmourTest.AmourTestSimplePasses]'
+      name: AmourTestSimplePasses
+      fullName: AmourTest.AmourTestSimplePasses
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+    - id: '[Assembly-CSharp][AmourTest.AmourTestWithEnumeratorPasses]'
+      name: AmourTestWithEnumeratorPasses
+      fullName: AmourTest.AmourTestWithEnumeratorPasses
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+    - id: '[Assembly-CSharp][AtCamelotTest][suite]'
+      name: AtCamelotTest
+      fullName: AtCamelotTest
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 1
+    - id: '[Assembly-CSharp][AtCamelotTest.AtCamelotTestSimplePasses]'
+      name: AtCamelotTestSimplePasses
+      fullName: AtCamelotTest.AtCamelotTestSimplePasses
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+    - id: '[Assembly-CSharp][AtOrkneyTest][suite]'
+      name: AtOrkneyTest
+      fullName: AtOrkneyTest
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 1
+    - id: '[Assembly-CSharp][AtOrkneyTest.AtOrkneyTestSimplePasses]'
+      name: AtOrkneyTestSimplePasses
+      fullName: AtOrkneyTest.AtOrkneyTestSimplePasses
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+    - id: '[Assembly-CSharp][AtTintagelTest][suite]'
+      name: AtTintagelTest
+      fullName: AtTintagelTest
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 1
+    - id: '[Assembly-CSharp][AtTintagelTest.AtTintagelTestSimplePasses]'
+      name: AtTintagelTestSimplePasses
+      fullName: AtTintagelTest.AtTintagelTestSimplePasses
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+    - id: '[Assembly-CSharp][AtYorkTest][suite]'
+      name: AtYorkTest
+      fullName: AtYorkTest
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 1
+    - id: '[Assembly-CSharp][AtYorkTest.AtYorkTestSimplePasses]'
+      name: AtYorkTestSimplePasses
+      fullName: AtYorkTest.AtYorkTestSimplePasses
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+    - id: '[Assembly-CSharp][BattleAxeTest][suite]'
+      name: BattleAxeTest
+      fullName: BattleAxeTest
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 1
+    - id: '[Assembly-CSharp][BattleAxeTest.BattleAxeTestSimplePasses]'
+      name: BattleAxeTestSimplePasses
+      fullName: BattleAxeTest.BattleAxeTestSimplePasses
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+    - id: '[Assembly-CSharp][BattleAxeTest.BattleAxeTestWithEnumeratorPasses]'
+      name: BattleAxeTestWithEnumeratorPasses
+      fullName: BattleAxeTest.BattleAxeTestWithEnumeratorPasses
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+    - id: '[Assembly-CSharp][BlackKnightTest][suite]'
+      name: BlackKnightTest
+      fullName: BlackKnightTest
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 1
+    - id: '[Assembly-CSharp][BlackKnightTest.BlackKnightTestSimplePasses]'
+      name: BlackKnightTestSimplePasses
+      fullName: BlackKnightTest.BlackKnightTestSimplePasses
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+    - id: '[Assembly-CSharp][BlackKnightTest.BlackKnightTestWithEnumeratorPasses]'
+      name: BlackKnightTestWithEnumeratorPasses
+      fullName: BlackKnightTest.BlackKnightTestWithEnumeratorPasses
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+    - id: '[Assembly-CSharp][BoarTest][suite]'
+      name: BoarTest
+      fullName: BoarTest
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 1
+    - id: '[Assembly-CSharp][BoarTest.BoarTestSimplePasses]'
+      name: BoarTestSimplePasses
+      fullName: BoarTest.BoarTestSimplePasses
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+    - id: '[Assembly-CSharp][BoarTest.BoarTestWithEnumeratorPasses]'
+      name: BoarTestWithEnumeratorPasses
+      fullName: BoarTest.BoarTestWithEnumeratorPasses
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+    - id: '[Assembly-CSharp][CardTest][suite]'
+      name: CardTest
+      fullName: CardTest
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 1
+    - id: '[Assembly-CSharp][CardTest.CardTestSimplePasses]'
+      name: CardTestSimplePasses
+      fullName: CardTest.CardTestSimplePasses
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+    - id: '[Assembly-CSharp][CardTest.CardTestWithEnumeratorPasses]'
+      name: CardTestWithEnumeratorPasses
+      fullName: CardTest.CardTestWithEnumeratorPasses
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+    - id: '[Assembly-CSharp][ChivalrousDeedTest][suite]'
+      name: ChivalrousDeedTest
+      fullName: ChivalrousDeedTest
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 1
+    - id: '[Assembly-CSharp][ChivalrousDeedTest.ChivalrousDeedTestSimplePasses]'
+      name: ChivalrousDeedTestSimplePasses
+      fullName: ChivalrousDeedTest.ChivalrousDeedTestSimplePasses
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+    - id: '[Assembly-CSharp][ChivalrousDeedTest.ChivalrousDeedTestWithEnumeratorPasses]'
+      name: ChivalrousDeedTestWithEnumeratorPasses
+      fullName: ChivalrousDeedTest.ChivalrousDeedTestWithEnumeratorPasses
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+    - id: '[Assembly-CSharp][CourtCalledCamelotTest][suite]'
+      name: CourtCalledCamelotTest
+      fullName: CourtCalledCamelotTest
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 1
+    - id: '[Assembly-CSharp][CourtCalledCamelotTest.CourtCalledCamelotTestSimplePasses]'
+      name: CourtCalledCamelotTestSimplePasses
+      fullName: CourtCalledCamelotTest.CourtCalledCamelotTestSimplePasses
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+    - id: '[Assembly-CSharp][CourtCalledCamelotTest.CourtCalledCamelotTestWithEnumeratorPasses]'
+      name: CourtCalledCamelotTestWithEnumeratorPasses
+      fullName: CourtCalledCamelotTest.CourtCalledCamelotTestWithEnumeratorPasses
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+    - id: '[Assembly-CSharp][DaggerTest][suite]'
+      name: DaggerTest
+      fullName: DaggerTest
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 1
+    - id: '[Assembly-CSharp][DaggerTest.DaggerTestSimplePasses]'
+      name: DaggerTestSimplePasses
+      fullName: DaggerTest.DaggerTestSimplePasses
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+    - id: '[Assembly-CSharp][DaggerTest.DaggerTestWithEnumeratorPasses]'
+      name: DaggerTestWithEnumeratorPasses
+      fullName: DaggerTest.DaggerTestWithEnumeratorPasses
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+    - id: '[Assembly-CSharp][DeckTest][suite]'
+      name: DeckTest
+      fullName: DeckTest
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 1
+    - id: '[Assembly-CSharp][DeckTest.testDealCards]'
+      name: testDealCards
+      fullName: DeckTest.testDealCards
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+    - id: '[Assembly-CSharp][DeckTest.testShuffle]'
+      name: testShuffle
+      fullName: DeckTest.testShuffle
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+    - id: '[Assembly-CSharp][DefendTheQueensHonorTest][suite]'
+      name: DefendTheQueensHonorTest
+      fullName: DefendTheQueensHonorTest
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 1
+    - id: '[Assembly-CSharp][DefendTheQueensHonorTest.DefendTheQueensHonorTestSimplePasses]'
+      name: DefendTheQueensHonorTestSimplePasses
+      fullName: DefendTheQueensHonorTest.DefendTheQueensHonorTestSimplePasses
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+    - id: '[Assembly-CSharp][DefendTheQueensHonorTest.DefendTheQueensHonorTestWithEnumeratorPasses]'
+      name: DefendTheQueensHonorTestWithEnumeratorPasses
+      fullName: DefendTheQueensHonorTest.DefendTheQueensHonorTestWithEnumeratorPasses
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+    - id: '[Assembly-CSharp][DragonTest][suite]'
+      name: DragonTest
+      fullName: DragonTest
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 1
+    - id: '[Assembly-CSharp][DragonTest.DragonTestSimplePasses]'
+      name: DragonTestSimplePasses
+      fullName: DragonTest.DragonTestSimplePasses
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+    - id: '[Assembly-CSharp][DragonTest.DragonTestWithEnumeratorPasses]'
+      name: DragonTestWithEnumeratorPasses
+      fullName: DragonTest.DragonTestWithEnumeratorPasses
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+    - id: '[Assembly-CSharp][EventTest][suite]'
+      name: EventTest
+      fullName: EventTest
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 1
+    - id: '[Assembly-CSharp][EventTest.EventTestSimplePasses]'
+      name: EventTestSimplePasses
+      fullName: EventTest.EventTestSimplePasses
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+    - id: '[Assembly-CSharp][EventTest.EventTestWithEnumeratorPasses]'
+      name: EventTestWithEnumeratorPasses
+      fullName: EventTest.EventTestWithEnumeratorPasses
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+    - id: '[Assembly-CSharp][EvilKnightTest][suite]'
+      name: EvilKnightTest
+      fullName: EvilKnightTest
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 1
+    - id: '[Assembly-CSharp][EvilKnightTest.EvilKnightTestSimplePasses]'
+      name: EvilKnightTestSimplePasses
+      fullName: EvilKnightTest.EvilKnightTestSimplePasses
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+    - id: '[Assembly-CSharp][EvilKnightTest.EvilKnightTestWithEnumeratorPasses]'
+      name: EvilKnightTestWithEnumeratorPasses
+      fullName: EvilKnightTest.EvilKnightTestWithEnumeratorPasses
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+    - id: '[Assembly-CSharp][ExcaliburTest][suite]'
+      name: ExcaliburTest
+      fullName: ExcaliburTest
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 1
+    - id: '[Assembly-CSharp][ExcaliburTest.ExcaliburTestSimplePasses]'
+      name: ExcaliburTestSimplePasses
+      fullName: ExcaliburTest.ExcaliburTestSimplePasses
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+    - id: '[Assembly-CSharp][ExcaliburTest.ExcaliburTestWithEnumeratorPasses]'
+      name: ExcaliburTestWithEnumeratorPasses
+      fullName: ExcaliburTest.ExcaliburTestWithEnumeratorPasses
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+    - id: '[Assembly-CSharp][FoeTest][suite]'
+      name: FoeTest
+      fullName: FoeTest
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 1
+    - id: '[Assembly-CSharp][FoeTest.FoeTestSimplePasses]'
+      name: FoeTestSimplePasses
+      fullName: FoeTest.FoeTestSimplePasses
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+    - id: '[Assembly-CSharp][FoeTest.FoeTestWithEnumeratorPasses]'
+      name: FoeTestWithEnumeratorPasses
+      fullName: FoeTest.FoeTestWithEnumeratorPasses
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+    - id: '[Assembly-CSharp][GameManagerTest][suite]'
+      name: GameManagerTest
+      fullName: GameManagerTest
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 1
+    - id: '[Assembly-CSharp][GameManagerTest.GameManagerTestSimplePasses]'
+      name: GameManagerTestSimplePasses
+      fullName: GameManagerTest.GameManagerTestSimplePasses
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+    - id: '[Assembly-CSharp][GameManagerTest.GameManagerTestWithEnumeratorPasses]'
+      name: GameManagerTestWithEnumeratorPasses
+      fullName: GameManagerTest.GameManagerTestWithEnumeratorPasses
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+    - id: '[Assembly-CSharp][GiantTest][suite]'
+      name: GiantTest
+      fullName: GiantTest
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 1
+    - id: '[Assembly-CSharp][GiantTest.GiantTestSimplePasses]'
+      name: GiantTestSimplePasses
+      fullName: GiantTest.GiantTestSimplePasses
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+    - id: '[Assembly-CSharp][GiantTest.GiantTestWithEnumeratorPasses]'
+      name: GiantTestWithEnumeratorPasses
+      fullName: GiantTest.GiantTestWithEnumeratorPasses
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+    - id: '[Assembly-CSharp][GreenKnightTest][suite]'
+      name: GreenKnightTest
+      fullName: GreenKnightTest
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 1
+    - id: '[Assembly-CSharp][GreenKnightTest.GreenKnightTestSimplePasses]'
+      name: GreenKnightTestSimplePasses
+      fullName: GreenKnightTest.GreenKnightTestSimplePasses
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+    - id: '[Assembly-CSharp][GreenKnightTest.GreenKnightTestWithEnumeratorPasses]'
+      name: GreenKnightTestWithEnumeratorPasses
+      fullName: GreenKnightTest.GreenKnightTestWithEnumeratorPasses
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+    - id: '[Assembly-CSharp][HorseTest][suite]'
+      name: HorseTest
+      fullName: HorseTest
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 1
+    - id: '[Assembly-CSharp][HorseTest.HorseTestSimplePasses]'
+      name: HorseTestSimplePasses
+      fullName: HorseTest.HorseTestSimplePasses
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+    - id: '[Assembly-CSharp][HorseTest.HorseTestWithEnumeratorPasses]'
+      name: HorseTestWithEnumeratorPasses
+      fullName: HorseTest.HorseTestWithEnumeratorPasses
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+    - id: '[Assembly-CSharp][JourneyThroughEnchantedForestTest][suite]'
+      name: JourneyThroughEnchantedForestTest
+      fullName: JourneyThroughEnchantedForestTest
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 1
+    - id: '[Assembly-CSharp][JourneyThroughEnchantedForestTest.JourneyThroughEnchantedForestTestSimplePasses]'
+      name: JourneyThroughEnchantedForestTestSimplePasses
+      fullName: JourneyThroughEnchantedForestTest.JourneyThroughEnchantedForestTestSimplePasses
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+    - id: '[Assembly-CSharp][JourneyThroughEnchantedForestTest.JourneyThroughEnchantedForestTestWithEnumeratorPasses]'
+      name: JourneyThroughEnchantedForestTestWithEnumeratorPasses
+      fullName: JourneyThroughEnchantedForestTest.JourneyThroughEnchantedForestTestWithEnumeratorPasses
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+    - id: '[Assembly-CSharp][KingArthurTest][suite]'
+      name: KingArthurTest
+      fullName: KingArthurTest
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 1
+    - id: '[Assembly-CSharp][KingArthurTest.KingArthurTestSimplePasses]'
+      name: KingArthurTestSimplePasses
+      fullName: KingArthurTest.KingArthurTestSimplePasses
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+    - id: '[Assembly-CSharp][KingsCallToArmsTest][suite]'
+      name: KingsCallToArmsTest
+      fullName: KingsCallToArmsTest
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 1
+    - id: '[Assembly-CSharp][KingsCallToArmsTest.KingsCallToArmsTestSimplePasses]'
+      name: KingsCallToArmsTestSimplePasses
+      fullName: KingsCallToArmsTest.KingsCallToArmsTestSimplePasses
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+    - id: '[Assembly-CSharp][KingsCallToArmsTest.KingsCallToArmsTestWithEnumeratorPasses]'
+      name: KingsCallToArmsTestWithEnumeratorPasses
+      fullName: KingsCallToArmsTest.KingsCallToArmsTestWithEnumeratorPasses
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+    - id: '[Assembly-CSharp][KingsRecognitionTest][suite]'
+      name: KingsRecognitionTest
+      fullName: KingsRecognitionTest
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 1
+    - id: '[Assembly-CSharp][KingsRecognitionTest.KingsRecognitionTestSimplePasses]'
+      name: KingsRecognitionTestSimplePasses
+      fullName: KingsRecognitionTest.KingsRecognitionTestSimplePasses
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+    - id: '[Assembly-CSharp][KingsRecognitionTest.KingsRecognitionTestWithEnumeratorPasses]'
+      name: KingsRecognitionTestWithEnumeratorPasses
+      fullName: KingsRecognitionTest.KingsRecognitionTestWithEnumeratorPasses
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+    - id: '[Assembly-CSharp][LanceTest][suite]'
+      name: LanceTest
+      fullName: LanceTest
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 1
+    - id: '[Assembly-CSharp][LanceTest.LanceTestSimplePasses]'
+      name: LanceTestSimplePasses
+      fullName: LanceTest.LanceTestSimplePasses
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+    - id: '[Assembly-CSharp][LanceTest.LanceTestWithEnumeratorPasses]'
+      name: LanceTestWithEnumeratorPasses
+      fullName: LanceTest.LanceTestWithEnumeratorPasses
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+    - id: '[Assembly-CSharp][LoaderTest][suite]'
+      name: LoaderTest
+      fullName: LoaderTest
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 1
+    - id: '[Assembly-CSharp][LoaderTest.LoaderTestSimplePasses]'
+      name: LoaderTestSimplePasses
+      fullName: LoaderTest.LoaderTestSimplePasses
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+    - id: '[Assembly-CSharp][LoaderTest.LoaderTestWithEnumeratorPasses]'
+      name: LoaderTestWithEnumeratorPasses
+      fullName: LoaderTest.LoaderTestWithEnumeratorPasses
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+    - id: '[Assembly-CSharp][MerlinTest][suite]'
+      name: MerlinTest
+      fullName: MerlinTest
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 1
+    - id: '[Assembly-CSharp][MerlinTest.MerlinTestSimplePasses]'
+      name: MerlinTestSimplePasses
+      fullName: MerlinTest.MerlinTestSimplePasses
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+    - id: '[Assembly-CSharp][MordredTest][suite]'
+      name: MordredTest
+      fullName: MordredTest
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 1
+    - id: '[Assembly-CSharp][MordredTest.MordredTestSimplePasses]'
+      name: MordredTestSimplePasses
+      fullName: MordredTest.MordredTestSimplePasses
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+    - id: '[Assembly-CSharp][MordredTest.MordredTestWithEnumeratorPasses]'
+      name: MordredTestWithEnumeratorPasses
+      fullName: MordredTest.MordredTestWithEnumeratorPasses
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+    - id: '[Assembly-CSharp][PlagueTest][suite]'
+      name: PlagueTest
+      fullName: PlagueTest
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 1
+    - id: '[Assembly-CSharp][PlagueTest.PlagueTestSimplePasses]'
+      name: PlagueTestSimplePasses
+      fullName: PlagueTest.PlagueTestSimplePasses
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+    - id: '[Assembly-CSharp][PlagueTest.PlagueTestWithEnumeratorPasses]'
+      name: PlagueTestWithEnumeratorPasses
+      fullName: PlagueTest.PlagueTestWithEnumeratorPasses
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+    - id: '[Assembly-CSharp][PlayerTest][suite]'
+      name: PlayerTest
+      fullName: PlayerTest
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 1
+    - id: '[Assembly-CSharp][PlayerTest.testDealCards]'
+      name: testDealCards
+      fullName: PlayerTest.testDealCards
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+    - id: '[Assembly-CSharp][PoxTest][suite]'
+      name: PoxTest
+      fullName: PoxTest
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 1
+    - id: '[Assembly-CSharp][PoxTest.PoxTestSimplePasses]'
+      name: PoxTestSimplePasses
+      fullName: PoxTest.PoxTestSimplePasses
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+    - id: '[Assembly-CSharp][PoxTest.PoxTestWithEnumeratorPasses]'
+      name: PoxTestWithEnumeratorPasses
+      fullName: PoxTest.PoxTestWithEnumeratorPasses
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+    - id: '[Assembly-CSharp][ProsperityThroughoutTheRealmTest][suite]'
+      name: ProsperityThroughoutTheRealmTest
+      fullName: ProsperityThroughoutTheRealmTest
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 1
+    - id: '[Assembly-CSharp][ProsperityThroughoutTheRealmTest.ProsperityThroughoutTheRealmTestSimplePasses]'
+      name: ProsperityThroughoutTheRealmTestSimplePasses
+      fullName: ProsperityThroughoutTheRealmTest.ProsperityThroughoutTheRealmTestSimplePasses
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+    - id: '[Assembly-CSharp][ProsperityThroughoutTheRealmTest.ProsperityThroughoutTheRealmTestWithEnumeratorPasses]'
+      name: ProsperityThroughoutTheRealmTestWithEnumeratorPasses
+      fullName: ProsperityThroughoutTheRealmTest.ProsperityThroughoutTheRealmTestWithEnumeratorPasses
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+    - id: '[Assembly-CSharp][QueenGuinevereTest][suite]'
+      name: QueenGuinevereTest
+      fullName: QueenGuinevereTest
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 1
+    - id: '[Assembly-CSharp][QueenGuinevereTest.QueenGuinevereTestSimplePasses]'
+      name: QueenGuinevereTestSimplePasses
+      fullName: QueenGuinevereTest.QueenGuinevereTestSimplePasses
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+    - id: '[Assembly-CSharp][QueenIseultTest][suite]'
+      name: QueenIseultTest
+      fullName: QueenIseultTest
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 1
+    - id: '[Assembly-CSharp][QueenIseultTest.QueenIseultTestSimplePasses]'
+      name: QueenIseultTestSimplePasses
+      fullName: QueenIseultTest.QueenIseultTestSimplePasses
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+    - id: '[Assembly-CSharp][QueensFavorTest][suite]'
+      name: QueensFavorTest
+      fullName: QueensFavorTest
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 1
+    - id: '[Assembly-CSharp][QueensFavorTest.QueensFavorTestSimplePasses]'
+      name: QueensFavorTestSimplePasses
+      fullName: QueensFavorTest.QueensFavorTestSimplePasses
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+    - id: '[Assembly-CSharp][QueensFavorTest.QueensFavorTestWithEnumeratorPasses]'
+      name: QueensFavorTestWithEnumeratorPasses
+      fullName: QueensFavorTest.QueensFavorTestWithEnumeratorPasses
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+    - id: '[Assembly-CSharp][QuestTest][suite]'
+      name: QuestTest
+      fullName: QuestTest
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 1
+    - id: '[Assembly-CSharp][QuestTest.QuestTestSimplePasses]'
+      name: QuestTestSimplePasses
+      fullName: QuestTest.QuestTestSimplePasses
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+    - id: '[Assembly-CSharp][QuestTest.QuestTestWithEnumeratorPasses]'
+      name: QuestTestWithEnumeratorPasses
+      fullName: QuestTest.QuestTestWithEnumeratorPasses
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+    - id: '[Assembly-CSharp][RepelTheSaxonRaidersTest][suite]'
+      name: RepelTheSaxonRaidersTest
+      fullName: RepelTheSaxonRaidersTest
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 1
+    - id: '[Assembly-CSharp][RepelTheSaxonRaidersTest.RepelTheSaxonRaidersTestSimplePasses]'
+      name: RepelTheSaxonRaidersTestSimplePasses
+      fullName: RepelTheSaxonRaidersTest.RepelTheSaxonRaidersTestSimplePasses
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+    - id: '[Assembly-CSharp][RepelTheSaxonRaidersTest.RepelTheSaxonRaidersTestWithEnumeratorPasses]'
+      name: RepelTheSaxonRaidersTestWithEnumeratorPasses
+      fullName: RepelTheSaxonRaidersTest.RepelTheSaxonRaidersTestWithEnumeratorPasses
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+    - id: '[Assembly-CSharp][RescueTheFairMaidenTest][suite]'
+      name: RescueTheFairMaidenTest
+      fullName: RescueTheFairMaidenTest
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 1
+    - id: '[Assembly-CSharp][RescueTheFairMaidenTest.RescueTheFairMaidenTestSimplePasses]'
+      name: RescueTheFairMaidenTestSimplePasses
+      fullName: RescueTheFairMaidenTest.RescueTheFairMaidenTestSimplePasses
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+    - id: '[Assembly-CSharp][RescueTheFairMaidenTest.RescueTheFairMaidenTestWithEnumeratorPasses]'
+      name: RescueTheFairMaidenTestWithEnumeratorPasses
+      fullName: RescueTheFairMaidenTest.RescueTheFairMaidenTestWithEnumeratorPasses
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+    - id: '[Assembly-CSharp][RobberKnightTest][suite]'
+      name: RobberKnightTest
+      fullName: RobberKnightTest
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 1
+    - id: '[Assembly-CSharp][RobberKnightTest.RobberKnightTestSimplePasses]'
+      name: RobberKnightTestSimplePasses
+      fullName: RobberKnightTest.RobberKnightTestSimplePasses
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+    - id: '[Assembly-CSharp][RobberKnightTest.RobberKnightTestWithEnumeratorPasses]'
+      name: RobberKnightTestWithEnumeratorPasses
+      fullName: RobberKnightTest.RobberKnightTestWithEnumeratorPasses
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+    - id: '[Assembly-CSharp][SaxonKnightTest][suite]'
+      name: SaxonKnightTest
+      fullName: SaxonKnightTest
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 1
+    - id: '[Assembly-CSharp][SaxonKnightTest.SaxonKnightTestSimplePasses]'
+      name: SaxonKnightTestSimplePasses
+      fullName: SaxonKnightTest.SaxonKnightTestSimplePasses
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+    - id: '[Assembly-CSharp][SaxonKnightTest.SaxonKnightTestWithEnumeratorPasses]'
+      name: SaxonKnightTestWithEnumeratorPasses
+      fullName: SaxonKnightTest.SaxonKnightTestWithEnumeratorPasses
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+    - id: '[Assembly-CSharp][SaxonsTest][suite]'
+      name: SaxonsTest
+      fullName: SaxonsTest
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 1
+    - id: '[Assembly-CSharp][SaxonsTest.SaxonsTestSimplePasses]'
+      name: SaxonsTestSimplePasses
+      fullName: SaxonsTest.SaxonsTestSimplePasses
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+    - id: '[Assembly-CSharp][SaxonsTest.SaxonsTestWithEnumeratorPasses]'
+      name: SaxonsTestWithEnumeratorPasses
+      fullName: SaxonsTest.SaxonsTestWithEnumeratorPasses
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+    - id: '[Assembly-CSharp][SearchForTheHolyGrailTest][suite]'
+      name: SearchForTheHolyGrailTest
+      fullName: SearchForTheHolyGrailTest
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 1
+    - id: '[Assembly-CSharp][SearchForTheHolyGrailTest.SearchForTheHolyGrailTestSimplePasses]'
+      name: SearchForTheHolyGrailTestSimplePasses
+      fullName: SearchForTheHolyGrailTest.SearchForTheHolyGrailTestSimplePasses
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+    - id: '[Assembly-CSharp][SearchForTheHolyGrailTest.SearchForTheHolyGrailTestWithEnumeratorPasses]'
+      name: SearchForTheHolyGrailTestWithEnumeratorPasses
+      fullName: SearchForTheHolyGrailTest.SearchForTheHolyGrailTestWithEnumeratorPasses
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+    - id: '[Assembly-CSharp][SearchForTheQuestingBeastTest][suite]'
+      name: SearchForTheQuestingBeastTest
+      fullName: SearchForTheQuestingBeastTest
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 1
+    - id: '[Assembly-CSharp][SearchForTheQuestingBeastTest.SearchForTheQuestingBeastTestSimplePasses]'
+      name: SearchForTheQuestingBeastTestSimplePasses
+      fullName: SearchForTheQuestingBeastTest.SearchForTheQuestingBeastTestSimplePasses
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+    - id: '[Assembly-CSharp][SearchForTheQuestingBeastTest.SearchForTheQuestingBeastTestWithEnumeratorPasses]'
+      name: SearchForTheQuestingBeastTestWithEnumeratorPasses
+      fullName: SearchForTheQuestingBeastTest.SearchForTheQuestingBeastTestWithEnumeratorPasses
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+    - id: '[Assembly-CSharp][SirGalahadTest][suite]'
+      name: SirGalahadTest
+      fullName: SirGalahadTest
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 1
+    - id: '[Assembly-CSharp][SirGalahadTest.SirGalahadTestSimplePasses]'
+      name: SirGalahadTestSimplePasses
+      fullName: SirGalahadTest.SirGalahadTestSimplePasses
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+    - id: '[Assembly-CSharp][SirPercivalTest][suite]'
+      name: SirPercivalTest
+      fullName: SirPercivalTest
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 1
+    - id: '[Assembly-CSharp][SirPercivalTest.SirPercivalTestSimplePasses]'
+      name: SirPercivalTestSimplePasses
+      fullName: SirPercivalTest.SirPercivalTestSimplePasses
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+    - id: '[Assembly-CSharp][SirTristanTest][suite]'
+      name: SirTristanTest
+      fullName: SirTristanTest
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 1
+    - id: '[Assembly-CSharp][SirTristanTest.SirTristanTestSimplePasses]'
+      name: SirTristanTestSimplePasses
+      fullName: SirTristanTest.SirTristanTestSimplePasses
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+    - id: '[Assembly-CSharp][SlayTheDragonTest][suite]'
+      name: SlayTheDragonTest
+      fullName: SlayTheDragonTest
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 1
+    - id: '[Assembly-CSharp][SlayTheDragonTest.SlayTheDragonTestSimplePasses]'
+      name: SlayTheDragonTestSimplePasses
+      fullName: SlayTheDragonTest.SlayTheDragonTestSimplePasses
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+    - id: '[Assembly-CSharp][SlayTheDragonTest.SlayTheDragonTestWithEnumeratorPasses]'
+      name: SlayTheDragonTestWithEnumeratorPasses
+      fullName: SlayTheDragonTest.SlayTheDragonTestWithEnumeratorPasses
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+    - id: '[Assembly-CSharp][StageTest][suite]'
+      name: StageTest
+      fullName: StageTest
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 1
+    - id: '[Assembly-CSharp][StageTest.StageTestSimplePasses]'
+      name: StageTestSimplePasses
+      fullName: StageTest.StageTestSimplePasses
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+    - id: '[Assembly-CSharp][StageTest.StageTestWithEnumeratorPasses]'
+      name: StageTestWithEnumeratorPasses
+      fullName: StageTest.StageTestWithEnumeratorPasses
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+    - id: '[Assembly-CSharp][StoryDeckTest][suite]'
+      name: StoryDeckTest
+      fullName: StoryDeckTest
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 1
+    - id: '[Assembly-CSharp][StoryDeckTest.testInitStoryDeck]'
+      name: testInitStoryDeck
+      fullName: StoryDeckTest.testInitStoryDeck
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+    - id: '[Assembly-CSharp][StoryTest][suite]'
+      name: StoryTest
+      fullName: StoryTest
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 1
+    - id: '[Assembly-CSharp][StoryTest.StoryTestSimplePasses]'
+      name: StoryTestSimplePasses
+      fullName: StoryTest.StoryTestSimplePasses
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+    - id: '[Assembly-CSharp][SwordTest][suite]'
+      name: SwordTest
+      fullName: SwordTest
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 1
+    - id: '[Assembly-CSharp][SwordTest.SwordTestSimplePasses]'
+      name: SwordTestSimplePasses
+      fullName: SwordTest.SwordTestSimplePasses
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+    - id: '[Assembly-CSharp][SwordTest.SwordTestWithEnumeratorPasses]'
+      name: SwordTestWithEnumeratorPasses
+      fullName: SwordTest.SwordTestWithEnumeratorPasses
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+    - id: '[Assembly-CSharp][TestOfMorganLeFeyTest][suite]'
+      name: TestOfMorganLeFeyTest
+      fullName: TestOfMorganLeFeyTest
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 1
+    - id: '[Assembly-CSharp][TestOfMorganLeFeyTest.TestOfMorganLeFeyTestSimplePasses]'
+      name: TestOfMorganLeFeyTestSimplePasses
+      fullName: TestOfMorganLeFeyTest.TestOfMorganLeFeyTestSimplePasses
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+    - id: '[Assembly-CSharp][TestOfMorganLeFeyTest.TestOfMorganLeFeyTestWithEnumeratorPasses]'
+      name: TestOfMorganLeFeyTestWithEnumeratorPasses
+      fullName: TestOfMorganLeFeyTest.TestOfMorganLeFeyTestWithEnumeratorPasses
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+    - id: '[Assembly-CSharp][TestOfTemptationTest][suite]'
+      name: TestOfTemptationTest
+      fullName: TestOfTemptationTest
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 1
+    - id: '[Assembly-CSharp][TestOfTemptationTest.TestOfTemptationTestSimplePasses]'
+      name: TestOfTemptationTestSimplePasses
+      fullName: TestOfTemptationTest.TestOfTemptationTestSimplePasses
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+    - id: '[Assembly-CSharp][TestOfTemptationTest.TestOfTemptationTestWithEnumeratorPasses]'
+      name: TestOfTemptationTestWithEnumeratorPasses
+      fullName: TestOfTemptationTest.TestOfTemptationTestWithEnumeratorPasses
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+    - id: '[Assembly-CSharp][TestOfTheQuestingBeastTest][suite]'
+      name: TestOfTheQuestingBeastTest
+      fullName: TestOfTheQuestingBeastTest
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 1
+    - id: '[Assembly-CSharp][TestOfTheQuestingBeastTest.TestOfTheQuestingBeastTestSimplePasses]'
+      name: TestOfTheQuestingBeastTestSimplePasses
+      fullName: TestOfTheQuestingBeastTest.TestOfTheQuestingBeastTestSimplePasses
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+    - id: '[Assembly-CSharp][TestOfTheQuestingBeastTest.TestOfTheQuestingBeastTestWithEnumeratorPasses]'
+      name: TestOfTheQuestingBeastTestWithEnumeratorPasses
+      fullName: TestOfTheQuestingBeastTest.TestOfTheQuestingBeastTestWithEnumeratorPasses
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+    - id: '[Assembly-CSharp][TestOfValorTest][suite]'
+      name: TestOfValorTest
+      fullName: TestOfValorTest
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 1
+    - id: '[Assembly-CSharp][TestOfValorTest.TestOfValorTestSimplePasses]'
+      name: TestOfValorTestSimplePasses
+      fullName: TestOfValorTest.TestOfValorTestSimplePasses
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+    - id: '[Assembly-CSharp][TestOfValorTest.TestOfValorTestWithEnumeratorPasses]'
+      name: TestOfValorTestWithEnumeratorPasses
+      fullName: TestOfValorTest.TestOfValorTestWithEnumeratorPasses
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+    - id: '[Assembly-CSharp][TestTest][suite]'
+      name: TestTest
+      fullName: TestTest
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 1
+    - id: '[Assembly-CSharp][TestTest.TestTestSimplePasses]'
+      name: TestTestSimplePasses
+      fullName: TestTest.TestTestSimplePasses
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+    - id: '[Assembly-CSharp][TestTest.TestTestWithEnumeratorPasses]'
+      name: TestTestWithEnumeratorPasses
+      fullName: TestTest.TestTestWithEnumeratorPasses
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+    - id: '[Assembly-CSharp][ThievesTest][suite]'
+      name: ThievesTest
+      fullName: ThievesTest
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 1
+    - id: '[Assembly-CSharp][ThievesTest.ThievesTestSimplePasses]'
+      name: ThievesTestSimplePasses
+      fullName: ThievesTest.ThievesTestSimplePasses
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+    - id: '[Assembly-CSharp][ThievesTest.ThievesTestWithEnumeratorPasses]'
+      name: ThievesTestWithEnumeratorPasses
+      fullName: ThievesTest.ThievesTestWithEnumeratorPasses
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+    - id: '[Assembly-CSharp][TournamentTest][suite]'
+      name: TournamentTest
+      fullName: TournamentTest
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 1
+    - id: '[Assembly-CSharp][TournamentTest.TournamentTestSimplePasses]'
+      name: TournamentTestSimplePasses
+      fullName: TournamentTest.TournamentTestSimplePasses
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+    - id: '[Assembly-CSharp][VanquishKingArthursEnemiesTest][suite]'
+      name: VanquishKingArthursEnemiesTest
+      fullName: VanquishKingArthursEnemiesTest
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 1
+    - id: '[Assembly-CSharp][VanquishKingArthursEnemiesTest.VanquishKingArthursEnemiesTestSimplePasses]'
+      name: VanquishKingArthursEnemiesTestSimplePasses
+      fullName: VanquishKingArthursEnemiesTest.VanquishKingArthursEnemiesTestSimplePasses
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+    - id: '[Assembly-CSharp][VanquishKingArthursEnemiesTest.VanquishKingArthursEnemiesTestWithEnumeratorPasses]'
+      name: VanquishKingArthursEnemiesTestWithEnumeratorPasses
+      fullName: VanquishKingArthursEnemiesTest.VanquishKingArthursEnemiesTestWithEnumeratorPasses
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+    - id: '[Assembly-CSharp][WeaponTest][suite]'
+      name: WeaponTest
+      fullName: WeaponTest
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 1
+    - id: '[Assembly-CSharp][WeaponTest.WeaponTestSimplePasses]'
+      name: WeaponTestSimplePasses
+      fullName: WeaponTest.WeaponTestSimplePasses
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+    - id: '[Assembly-CSharp][WeaponTest.WeaponTestWithEnumeratorPasses]'
+      name: WeaponTestWithEnumeratorPasses
+      fullName: WeaponTest.WeaponTestWithEnumeratorPasses
+      resultStatus: 0
+      duration: 0
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
     m_ResultText: 
     m_ResultStacktrace: 
     m_TestListState:
       scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: ffffff7f
+      m_ExpandedIDs: 00592df3ffffff7f
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -3514,15 +3108,6 @@ MonoBehaviour:
   m_MinSize: {x: 100, y: 100}
   m_MaxSize: {x: 4000, y: 4000}
   m_TitleContent:
-=======
-  m_Script: {fileID: 12003, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_AutoRepaintOnSceneChange: 0
-  m_MinSize: {x: 100, y: 100}
-  m_MaxSize: {x: 4000, y: 4000}
-  m_TitleContent:
->>>>>>> 83cd0ce4715d5b517d60c413dca2400a9f7dbe8b
     m_Text: Console
     m_Image: {fileID: 111653112392082826, guid: 0000000000000000d000000000000000,
       type: 0}
@@ -3530,15 +3115,8 @@ MonoBehaviour:
   m_DepthBufferBits: 0
   m_Pos:
     serializedVersion: 2
-<<<<<<< HEAD
     x: 979
-    y: 438
+    y: 439
     width: 301
-    height: 340
-=======
-    x: 1146
-    y: 631
-    width: 294
-    height: 247
->>>>>>> 83cd0ce4715d5b517d60c413dca2400a9f7dbe8b
+    height: 339
   m_PersistentViewDataDictionary: {fileID: 0}
