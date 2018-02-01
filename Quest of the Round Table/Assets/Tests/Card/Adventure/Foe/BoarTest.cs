@@ -7,15 +7,14 @@ public class BoarTest {
 
 	[Test]
 	public void BoarTestSimplePasses() {
-		// Use the Assert class to test conditions.
-	}
+		Assert.IsTrue (Boar.frequency == 4);
+		Foe boar = new Boar();
+		Assert.AreEqual ("Boar", boar.getCardName());
 
-	// A UnityTest behaves like a coroutine in PlayMode
-	// and allows you to yield null to skip a frame in EditMode
-	[UnityTest]
-	public IEnumerator BoarTestWithEnumeratorPasses() {
-		// Use the Assert class to test conditions.
-		// yield to skip a frame
-		yield return null;
+		//Not empowered
+		Assert.IsTrue (boar.getBattlePoints() == 5);
+
+		//Card is empowered (need to add to test cases so that below statement is true
+		Assert.IsTrue (boar.getBattlePoints() == 15);
 	}
 }

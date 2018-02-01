@@ -7,15 +7,9 @@ public class LanceTest {
 
 	[Test]
 	public void LanceTestSimplePasses() {
-		// Use the Assert class to test conditions.
-	}
-
-	// A UnityTest behaves like a coroutine in PlayMode
-	// and allows you to yield null to skip a frame in EditMode
-	[UnityTest]
-	public IEnumerator LanceTestWithEnumeratorPasses() {
-		// Use the Assert class to test conditions.
-		// yield to skip a frame
-		yield return null;
+		Assert.IsTrue (Lance.frequency == 6);
+		Weapon lance = new Lance ();
+		Assert.AreEqual ("Lance", lance.getCardName ());
+		Assert.IsTrue (lance.getBattlePoints == 20);
 	}
 }

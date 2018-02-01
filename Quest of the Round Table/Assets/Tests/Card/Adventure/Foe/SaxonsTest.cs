@@ -7,15 +7,14 @@ public class SaxonsTest {
 
 	[Test]
 	public void SaxonsTestSimplePasses() {
-		// Use the Assert class to test conditions.
-	}
+		Assert.IsTrue (SaxonKnight.frequency == 5);
+		Foe saxons = new Saxons();
+		Assert.AreEqual ("Saxons", saxons.getCardName());
 
-	// A UnityTest behaves like a coroutine in PlayMode
-	// and allows you to yield null to skip a frame in EditMode
-	[UnityTest]
-	public IEnumerator SaxonsTestWithEnumeratorPasses() {
-		// Use the Assert class to test conditions.
-		// yield to skip a frame
-		yield return null;
+		//Not empowered
+		Assert.IsTrue (saxons.getBattlePoints() == 10);
+
+		//Card is empowered (need to add to test cases so that below statement is true
+		Assert.IsTrue (saxons.getBattlePoints() == 20);
 	}
 }

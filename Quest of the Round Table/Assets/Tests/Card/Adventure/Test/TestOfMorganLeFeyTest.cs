@@ -7,15 +7,10 @@ public class TestOfMorganLeFeyTest {
 
 	[Test]
 	public void TestOfMorganLeFeyTestSimplePasses() {
-		// Use the Assert class to test conditions.
-	}
+		Assert.IsTrue (TestOfMorganLeFey.frequency == 2);
 
-	// A UnityTest behaves like a coroutine in PlayMode
-	// and allows you to yield null to skip a frame in EditMode
-	[UnityTest]
-	public IEnumerator TestOfMorganLeFeyTestWithEnumeratorPasses() {
-		// Use the Assert class to test conditions.
-		// yield to skip a frame
-		yield return null;
+		Test testOfMorganLeFey = new TestOfMorganLeFey();
+		Assert.AreEqual ("Test of Morgan LaFey", testOfMorganLeFey.getCardName ());
+		Assert.IsTrue (testOfMorganLeFey.getMinBidValue () == 3);
 	}
 }

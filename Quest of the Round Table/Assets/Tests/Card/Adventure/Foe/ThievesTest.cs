@@ -7,15 +7,10 @@ public class ThievesTest {
 
 	[Test]
 	public void ThievesTestSimplePasses() {
-		// Use the Assert class to test conditions.
-	}
+		Assert.IsTrue (Thieves.frequency == 8);
+		Foe thieves = new Thieves();
+		Assert.AreEqual ("Thieves", thieves.getCardName());
 
-	// A UnityTest behaves like a coroutine in PlayMode
-	// and allows you to yield null to skip a frame in EditMode
-	[UnityTest]
-	public IEnumerator ThievesTestWithEnumeratorPasses() {
-		// Use the Assert class to test conditions.
-		// yield to skip a frame
-		yield return null;
+		Assert.IsTrue (thieves.getBattlePoints() == 5);
 	}
 }

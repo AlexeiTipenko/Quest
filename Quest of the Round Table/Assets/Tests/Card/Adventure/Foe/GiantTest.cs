@@ -7,15 +7,10 @@ public class GiantTest {
 
 	[Test]
 	public void GiantTestSimplePasses() {
-		// Use the Assert class to test conditions.
-	}
-
-	// A UnityTest behaves like a coroutine in PlayMode
-	// and allows you to yield null to skip a frame in EditMode
-	[UnityTest]
-	public IEnumerator GiantTestWithEnumeratorPasses() {
-		// Use the Assert class to test conditions.
-		// yield to skip a frame
-		yield return null;
+		Assert.IsTrue (Giant.frequency == 2);
+		Foe giant = new Giant();
+		Assert.AreEqual ("Giant", giant.getCardName());
+	
+		Assert.IsTrue (giant.getBattlePoints() == 40);
 	}
 }

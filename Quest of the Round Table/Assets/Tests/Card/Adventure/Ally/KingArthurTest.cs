@@ -7,6 +7,7 @@ public class KingArthurTest {
 
 	[Test]
 	public void KingArthurTestSimplePasses() {
+		Assert.IsTrue (KingArthur.frequency == 1);
 		Ally kingArthur = new KingArthur();
 		Assert.AreEqual ("King Arthur", kingArthur.getCardName());
 		Assert.IsTrue (kingArthur.getBattlePoints() == 10);

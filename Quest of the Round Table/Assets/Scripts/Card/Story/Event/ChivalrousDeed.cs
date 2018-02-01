@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class ChivalrousDeed : Event {
 
+	public static int frequency = 1;
+
 	public ChivalrousDeed() : base ("Chivalrous Deed") {
 
 	}

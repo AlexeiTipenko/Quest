@@ -7,15 +7,14 @@ public class EvilKnightTest {
 
 	[Test]
 	public void EvilKnightTestSimplePasses() {
-		// Use the Assert class to test conditions.
-	}
+		Assert.IsTrue (EvilKnight.frequency == 6);
+		Foe evilKnight = new EvilKnight();
+		Assert.AreEqual ("Evil Knight", evilKnight.getCardName());
 
-	// A UnityTest behaves like a coroutine in PlayMode
-	// and allows you to yield null to skip a frame in EditMode
-	[UnityTest]
-	public IEnumerator EvilKnightTestWithEnumeratorPasses() {
-		// Use the Assert class to test conditions.
-		// yield to skip a frame
-		yield return null;
+		//Not empowered
+		Assert.IsTrue (evilKnight.getBattlePoints() == 20);
+
+		//Card is empowered (need to add to test cases so that below statement is true
+		Assert.IsTrue (evilKnight.getBattlePoints() == 30);
 	}
 }
