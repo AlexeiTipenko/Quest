@@ -7,6 +7,13 @@ public class SearchForTheHolyGrailTest {
 
 	[Test]
 	public void SearchForTheHolyGrailTestSimplePasses() {
-		
+		Assert.IsTrue (SearchForTheHolyGrail.frequency == 1);
+
+		Quest searchForTheHolyGrail = new SearchForTheHolyGrail ();
+		Assert.AreEqual ("Search for the Holy Grail", searchForTheHolyGrail.getCardName());
+		Assert.IsTrue (searchForTheHolyGrail.getShieldsWon() == 5);
+
+		//need to figure out the dominantFoe business before passing the test case as complete
+		Assert.IsTrue(false);
 	}
 }
