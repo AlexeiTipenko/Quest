@@ -10,6 +10,6 @@ public class BattleAxeTest {
 		Assert.IsTrue (BattleAx.frequency == 8);
 		Weapon battleAx = new BattleAx ();
 		Assert.AreEqual ("Battle Ax", battleAx.getCardName ());
-		Assert.IsTrue (battleAx.getBattlePoints == 15);
+		Assert.IsTrue (battleAx.getBattlePoints() == 15);
 	}
 }

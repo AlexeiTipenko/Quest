@@ -10,6 +10,6 @@ public class LanceTest {
 		Assert.IsTrue (Lance.frequency == 6);
 		Weapon lance = new Lance ();
 		Assert.AreEqual ("Lance", lance.getCardName ());
-		Assert.IsTrue (lance.getBattlePoints == 20);
+		Assert.IsTrue (lance.getBattlePoints() == 20);
 	}
 }

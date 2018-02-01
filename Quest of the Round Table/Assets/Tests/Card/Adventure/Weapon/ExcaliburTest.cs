@@ -10,6 +10,6 @@ public class ExcaliburTest {
 		Assert.IsTrue (Excalibur.frequency == 2);
 		Weapon excalibur = new Excalibur ();
 		Assert.AreEqual ("Excalibur", excalibur.getCardName ());
-		Assert.IsTrue (excalibur.getBattlePoints == 30);
+		Assert.IsTrue (excalibur.getBattlePoints() == 30);
 	}
 }

@@ -10,7 +10,7 @@ public class AmourTest {
 		Assert.IsTrue (Amour.frequency == 8);
 		Amour amour = new Amour();
 		Assert.AreEqual ("Amour", amour.getCardName());
-		Assert.IsTrue (amour.getBattlePoints == 10);
-		Assert.IsTrue (amour.getBidPoints == 1);
+		Assert.IsTrue (amour.getBattlePoints() == 10);
+		Assert.IsTrue (amour.getBidPoints() == 1);
 	}
 }

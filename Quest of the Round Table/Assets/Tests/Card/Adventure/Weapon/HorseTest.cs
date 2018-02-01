@@ -10,6 +10,6 @@ public class HorseTest {
 		Assert.IsTrue (Horse.frequency == 11);
 		Weapon horse = new Horse ();
 		Assert.AreEqual ("Horse", horse.getCardName ());
-		Assert.IsTrue (horse.getBattlePoints == 10);
+		Assert.IsTrue (horse.getBattlePoints() == 10);
 	}
 }

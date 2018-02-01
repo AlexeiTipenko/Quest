@@ -10,6 +10,6 @@ public class SwordTest {
 		Assert.IsTrue (Sword.frequency == 16);
 		Weapon sword = new Sword ();
 		Assert.AreEqual ("Sword", sword.getCardName ());
-		Assert.IsTrue (sword.getBattlePoints == 10);
+		Assert.IsTrue (sword.getBattlePoints() == 10);
 	}
 }
