@@ -6,24 +6,36 @@ using UnityEngine.EventSystems;
 public class GameBoard : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPointerExitHandler {
 
 	public void OnDrop(PointerEventData eventData) {
-
-		//eventData.pointerDrag.name will give you the name of the prefab dropped
 		Debug.Log ("Dropping to " + gameObject.name);
-		//this.transform.position = eventData.position;
 
 		CardDraggable card = eventData.pointerDrag.GetComponent<CardDraggable>();
 
-		if (card != null) {
+		if (card != null) 
 			card.parentToReturnTo = this.transform;
-		}
+		
 			
 	}
 
 	public void OnPointerEnter(PointerEventData eventData) {
 
+		if (eventData.pointerDrag == null)
+			return;
+		
+		CardDraggable card = eventData.pointerDrag.GetComponent<CardDraggable>();
+
+		if (card != null) 
+			card.placeholderParent = this.transform;
+		
 	}
 
 	public void OnPointerExit(PointerEventData eventData) {
 
+		if (eventData.pointerDrag == null)
+			return;
+		
+		CardDraggable card = eventData.pointerDrag.GetComponent<CardDraggable>();
+
+		if (card != null && card.placeholderParent == this.transform) 
+			card.placeholderParent = card.parentToReturnTo;
 	}
 }
