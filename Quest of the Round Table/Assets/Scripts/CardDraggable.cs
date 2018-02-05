@@ -4,12 +4,32 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-public class CardDraggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler {
+public class CardDraggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler,
+							IPointerEnterHandler, IPointerExitHandler {
 
 	public Transform parentToReturnTo = null;
 	public Transform placeholderParent = null;
 
 	public GameObject placeholder = null;
+
+
+	public void OnPointerEnter(PointerEventData eventData) {
+
+		Debug.Log ("Pointer entered card.");
+
+		CardDraggable card = eventData.pointerDrag.GetComponent<CardDraggable>();
+
+
+	}
+
+	public void OnPointerExit(PointerEventData eventData) {
+
+		Debug.Log ("Pointer exited card.");
+
+		//CardDraggable card = eventData.pointerDrag.GetComponent<CardDraggable>();
+
+	}
+
 
 	public void OnBeginDrag(PointerEventData eventData) {
 		Debug.Log ("Begin drag.");
