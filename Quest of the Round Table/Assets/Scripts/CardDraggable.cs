@@ -17,7 +17,7 @@ public class CardDraggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
 
 		Debug.Log ("Pointer entered card.");
 
-		CardDraggable card = eventData.pointerDrag.GetComponent<CardDraggable>();
+		//CardDraggable card = eventData.pointerDrag.GetComponent<CardDraggable>();
 
 
 	}
