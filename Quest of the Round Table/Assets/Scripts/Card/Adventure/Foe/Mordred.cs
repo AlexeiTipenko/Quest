@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Mordred : Foe {
 
-	public static int frequency = 4;
+	public static int frequency = 2;
 
 	public Mordred() : base ("Mordred", 30) {
 		

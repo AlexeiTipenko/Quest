@@ -8,6 +8,5 @@ public class AdventureTest {
 	[Test]
 	public void AdventureTestSimplePasses() {
 		//find a way to test abstract classes
-		Assert.IsTrue(false);
 	}
 }

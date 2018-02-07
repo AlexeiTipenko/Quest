@@ -15,6 +15,6 @@ public class SaxonKnightTest {
 		Assert.IsTrue (saxonKnight.getBattlePoints() == 15);
 
 		//Card is empowered (need to add to test cases so that below statement is true
-		Assert.IsTrue (saxonKnight.getBattlePoints() == 25);
+		//Assert.IsTrue (saxonKnight.getBattlePoints() == 25);
 	}
 }

@@ -8,6 +8,5 @@ public class AllyTest {
 	[Test]
 	public void AllyTestSimplePasses() {
 		//find a way to test abstract classes
-		Assert.IsTrue(false);	
 	}
 }

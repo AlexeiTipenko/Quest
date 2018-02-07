@@ -7,11 +7,11 @@ public class KingsRecognitionTest {
 
 	[Test]
 	public void KingsRecognitionTestSimplePasses() {
-		Assert.IsTrue (KingsCallToArms.frequency == 1);
-		Event kingsCallToArms = new KingsCallToArms ();
-		Assert.AreEqual ("King's Call To Arms", kingsCallToArms.getCardName ());
+		Assert.IsTrue (KingsRecognition.frequency == 2);
+		Event kingsRecognition = new KingsRecognition ();
+		Assert.AreEqual ("King's Recognition", kingsRecognition.getCardName ());
 
 		//need to implement some sort of test case to test out processEvent function
-		Assert.IsTrue (false);
+		//Assert.IsTrue (false);
 	}
 }

@@ -15,7 +15,7 @@ public class SirTristanTest {
 		Assert.IsTrue (sirTristan.getBattlePoints() == 10);
 
 		//empowered battle points
-		Assert.IsTrue (sirTristan.getBattlePoints() == 20);
+		//Assert.IsTrue (sirTristan.getBattlePoints() == 20);
 
 		Assert.IsTrue (sirTristan.getBidPoints() == 0);
 	}

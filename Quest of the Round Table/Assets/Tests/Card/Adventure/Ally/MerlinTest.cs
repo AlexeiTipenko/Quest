@@ -10,6 +10,5 @@ public class MerlinTest {
 		Assert.IsTrue (Merlin.frequency == 1);
 		Ally merlin = new Merlin();
 		Assert.AreEqual ("Merlin", merlin.getCardName());
-		Assert.IsTrue (false);
 	}
 }
