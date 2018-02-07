@@ -7,6 +7,8 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour {
 
 	public static GameManager instance = null;
+	public BoardManager boardManager = null;
+	public ButtonManager buttonManager = null;
 
 	// Use this for initialization
 	void Awake () {
@@ -19,6 +21,11 @@ public class GameManager : MonoBehaviour {
 
 		DontDestroyOnLoad (gameObject);
 
+		print ("Passing playerList to BoardManager");
+		boardManager = GetComponent<BoardManager> ();
+		buttonManager = GetComponent<ButtonManager> ();
+
+		boardManager.initGame (buttonManager.playerList);
 	}
 	
 	// Update is called once per frame

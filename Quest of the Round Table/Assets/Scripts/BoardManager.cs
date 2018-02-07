@@ -12,7 +12,7 @@ public class BoardManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		
+		print ("Board manager started");
 	}
 	
 	// Update is called once per frame
@@ -21,6 +21,10 @@ public class BoardManager : MonoBehaviour {
 	}
 
 	public void initGame (List<Player> players) {
+		print ("Received playersList");
+		foreach (Player player in players) {
+			print (player.toString ());
+		}
 		this.players = players;
 
 		adventureDeck = new AdventureDeck ();

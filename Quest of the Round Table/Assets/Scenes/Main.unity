@@ -430,3 +430,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93d6d7846b39b4b2cbf0c6137fb29c20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  boardManager: {fileID: 114035471996013886, guid: 41bb0f14c0dd845abb260ff5cc56704b,
+    type: 2}
+  buttonManager: {fileID: 114349985613255212, guid: 48c06633a613d4914a1ee7f537f65519,
+    type: 2}
