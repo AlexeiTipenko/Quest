@@ -5,6 +5,6 @@ using UnityEngine;
 public class ChampionKnight : Rank {
 
 	public ChampionKnight() : base ("Champion Knight", 20) {
-
+		nextRank = null;
 	}
 }

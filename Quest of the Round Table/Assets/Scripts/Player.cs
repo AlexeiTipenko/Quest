@@ -7,11 +7,16 @@ public class Player
 
 	private string name;
 	private int numShields;
+	private Rank rank;
 	private List<Card> hand;
+	private bool isAI;
 
 
-	public Player(string name) {
+	public Player(string name, bool isAI) {
 		this.name = name;
+		this.isAI = isAI;
+		rank = new Squire ();
+		numShields = 0;
 		hand = new List<Card>();
 	}
 
@@ -22,12 +27,17 @@ public class Player
 		}
 
 		if (hand.Count > 12) {
-			//do something
+			//prompt player to discard cards
+		}
+	}
+
+	private void checkForRankUp() {
+		if (numShields >= rank.getShieldsToProgress()) {
+			rank = rank.upgrade ();
 		}
 	}
 
 
-	//Getters
 	public string getName() {
 		return this.name;
 	}
@@ -40,23 +50,21 @@ public class Player
 		return this.hand;
 	}
 
-
-	//Setters
-	private void setName(string name) {
-		this.name = name;
+	public Rank getRank() {
+		return this.rank;
 	}
 
-	private void incrementShields(int numShields) {
+	public void incrementShields(int numShields) {
 		this.numShields = numShields;
+		checkForRankUp ();
 	}
 
-	private void decrementShields(int numShields) {
+	public void decrementShields(int numShields) {
 		this.numShields = numShields;
 	}
 
 	public string toString() {
-		string toString = this.name + "'s hand: ";
-
+		string toString = this.name + " (" + (isAI ? "AI" : "human") + "): ";
 		foreach (Card card in hand) {
 			toString += card.toString() + ", ";
 		}

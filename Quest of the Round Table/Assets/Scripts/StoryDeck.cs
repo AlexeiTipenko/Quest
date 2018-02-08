@@ -27,4 +27,15 @@ public class StoryDeck : Deck {
 
 		shuffle ();
 	}
+
+	public override string toString() {
+		string toString = "Story Deck: ";
+		foreach (Card card in cards) {
+			toString += (card.toString () + ", ");
+		}
+		if (cards.Count > 0) {
+			toString = toString.Substring (0, toString.Length - 2);
+		}
+		return toString;
+	}
 }
