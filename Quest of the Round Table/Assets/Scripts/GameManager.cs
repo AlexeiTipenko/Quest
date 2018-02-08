@@ -21,13 +21,14 @@ public class GameManager : MonoBehaviour {
 
 		print ("Passing playerList to BoardManager");
 
-		BoardManager boardManager = GetComponent<BoardManager> ();
+		GameObject boardManager = GameObject.Find("BoardManager");
+		BoardManager boardScripts = boardManager.GetComponent<BoardManager> ();
 
 		foreach (Player player in ButtonManager.playerList) {
 			print (player.toString ());
 		}
 
-		boardManager.initGame (ButtonManager.playerList);
+		boardScripts.initGame (ButtonManager.playerList);
 	}
 	
 	// Update is called once per frame
