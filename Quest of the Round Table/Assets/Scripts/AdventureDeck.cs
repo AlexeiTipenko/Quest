@@ -8,6 +8,10 @@ public class AdventureDeck : Deck {
 		initAdventureDeck ();
 	}
 
+	public AdventureDeck (Deck deck) : base (deck) {
+			
+	}
+
 	private void initAdventureDeck() {
 		List<string> newCards = new List<string> ();
 
@@ -42,5 +46,16 @@ public class AdventureDeck : Deck {
 		instantiateCards (newCards);
 
 		shuffle ();
+	}
+
+	public override string toString() {
+		string toString = "Adventure Deck: ";
+		foreach (Card card in cards) {
+			toString += (card.toString () + ", ");
+		}
+//		if (cards.Count > 0) {
+//			toString = toString.Substring (0, toString.Length - 2);
+//		}
+		return toString;
 	}
 }

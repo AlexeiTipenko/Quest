@@ -2,12 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Rank : Card {
+public abstract class Rank : Card {
 
 	protected int battlePoints, shieldsToProgress;
+	protected Rank nextRank;
 
 	public Rank(string cardName, int battlePoints) : base (cardName) {
 		this.battlePoints = battlePoints;
+		this.nextRank = null;
 	}
 
 
@@ -17,5 +19,9 @@ public class Rank : Card {
 
 	public int getShieldsToProgress() {
 		return shieldsToProgress;
+	}
+
+	public Rank upgrade() {
+		return nextRank;
 	}
 }
