@@ -9,8 +9,11 @@ public class ButtonManager : MonoBehaviour
 	
 	public static ButtonManager instance = null;
 
-	public InputField player1Name, player2Name, player3Name, player4Name;
-	public Dropdown player1AI, player2AI, player3AI, player4AI;
+	public static string[] names = new string[4];
+	public static bool[] hoomans = new bool[4];
+
+	//public InputField player1Name, player2Name, player3Name, player4Name;
+	//public Dropdown player1AI, player2AI, player3AI, player4AI;
 	public List<Player> playerList = new List<Player> ();
 
 	public void SwitchScene(string playerSelection){
@@ -18,7 +21,7 @@ public class ButtonManager : MonoBehaviour
 	}
 
 	public void SwitchSceneWithPlayerList(string playerSelection) {
-		if (player1Name.text != "") {
+		/*if (player1Name.text != "") {
 			string playerName = player1Name.text;
 			string isAIString = player1AI.captionText.text;
 			bool isAI = (isAIString == "Computer" ? true : false);
@@ -48,6 +51,14 @@ public class ButtonManager : MonoBehaviour
 		}
 		foreach (Player player in playerList) {
 			print (player.toString ());
+		}*/
+		for (int i = 0; i < 4; i++) {
+			GameObject inputFieldGo = GameObject.Find("Scene Elements/Canvas/Player" + i);
+			InputField inputFieldCo = inputFieldGo.GetComponent<InputField>();
+			names [i] = inputFieldCo.text;
+			GameObject dropDownGo = GameObject.Find ("Scene Elements/Canvas/Dropdown" + i);
+			Dropdown dropDownCo = dropDownGo.GetComponent<Dropdown> ();
+			hoomans[i] = (dropDownCo.options[dropDownCo.value].text == "Computer" ? true : false);
 		}
 		SceneManager.LoadScene(playerSelection);
 	}

@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour {
 
 	public static GameManager instance = null;
 	public BoardManager boardManager = null;
-	public ButtonManager buttonManager = null;
+	//public ButtonManager buttonManager = null;
 
 	// Use this for initialization
 	void Awake () {
@@ -22,10 +22,24 @@ public class GameManager : MonoBehaviour {
 		DontDestroyOnLoad (gameObject);
 
 		print ("Passing playerList to BoardManager");
-		boardManager = GetComponent<BoardManager> ();
-		buttonManager = GetComponent<ButtonManager> ();
 
-		boardManager.initGame (buttonManager.playerList);
+		GameObject brd = GameObject.Find ("LocalGameBtnManager");
+		//BoardManager boardManager = GetComponent<BoardManager> ();
+		ButtonManager buttonManager = brd.GetComponent<ButtonManager> ();
+
+		Debug.Log ("Player name should be " + ButtonManager.names[0]);
+		Debug.Log ("Player name should be " + ButtonManager.names[1]);
+		Debug.Log ("Player name should be " + ButtonManager.names[2]);
+		Debug.Log ("Player name should be " + ButtonManager.names[3]);
+
+		Debug.Log ("Player computer should be " + ButtonManager.hoomans[0]);
+		Debug.Log ("Player computer should be " + ButtonManager.hoomans[1]);
+		Debug.Log ("Player computer should be " + ButtonManager.hoomans[2]);
+		Debug.Log ("Player computer should be " + ButtonManager.hoomans[3]);
+
+
+
+		//boardManager.initGame (buttonManager.playerList);
 	}
 	
 	// Update is called once per frame
