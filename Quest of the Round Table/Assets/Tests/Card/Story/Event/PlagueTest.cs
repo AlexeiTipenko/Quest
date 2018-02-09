@@ -7,15 +7,11 @@ public class PlagueTest {
 
 	[Test]
 	public void PlagueTestSimplePasses() {
-		// Use the Assert class to test conditions.
-	}
+		Assert.IsTrue (Plague.frequency == 1);
+		Event plague = new Plague ();
+		Assert.AreEqual ("Plague", plague.getCardName ());
 
-	// A UnityTest behaves like a coroutine in PlayMode
-	// and allows you to yield null to skip a frame in EditMode
-	[UnityTest]
-	public IEnumerator PlagueTestWithEnumeratorPasses() {
-		// Use the Assert class to test conditions.
-		// yield to skip a frame
-		yield return null;
+		//need to implement some sort of test case to test out processEvent function
+		//Assert.IsTrue (false);
 	}
 }

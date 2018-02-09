@@ -7,15 +7,13 @@ public class DefendTheQueensHonorTest {
 
 	[Test]
 	public void DefendTheQueensHonorTestSimplePasses() {
-		// Use the Assert class to test conditions.
-	}
+		Assert.IsTrue (DefendTheQueensHonor.frequency == 1);
 
-	// A UnityTest behaves like a coroutine in PlayMode
-	// and allows you to yield null to skip a frame in EditMode
-	[UnityTest]
-	public IEnumerator DefendTheQueensHonorTestWithEnumeratorPasses() {
-		// Use the Assert class to test conditions.
-		// yield to skip a frame
-		yield return null;
+		Quest defendtheQueensHonor = new DefendTheQueensHonor ();
+		Assert.AreEqual ("Defend the Queen's Honor", defendtheQueensHonor.getCardName());
+		Assert.IsTrue (defendtheQueensHonor.getShieldsWon() == 4);
+
+		//need to figure out the dominantFoe business before passing the test case as complete
+		//Assert.IsTrue(false);
 	}
 }

@@ -7,15 +7,13 @@ public class SearchForTheHolyGrailTest {
 
 	[Test]
 	public void SearchForTheHolyGrailTestSimplePasses() {
-		// Use the Assert class to test conditions.
-	}
+		Assert.IsTrue (SearchForTheHolyGrail.frequency == 1);
 
-	// A UnityTest behaves like a coroutine in PlayMode
-	// and allows you to yield null to skip a frame in EditMode
-	[UnityTest]
-	public IEnumerator SearchForTheHolyGrailTestWithEnumeratorPasses() {
-		// Use the Assert class to test conditions.
-		// yield to skip a frame
-		yield return null;
+		Quest searchForTheHolyGrail = new SearchForTheHolyGrail ();
+		Assert.AreEqual ("Search for the Holy Grail", searchForTheHolyGrail.getCardName());
+		Assert.IsTrue (searchForTheHolyGrail.getShieldsWon() == 5);
+
+		//need to figure out the dominantFoe business before passing the test case as complete
+		//Assert.IsTrue(false);
 	}
 }

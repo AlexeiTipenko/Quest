@@ -7,15 +7,7 @@ public class QuestTest {
 
 	[Test]
 	public void QuestTestSimplePasses() {
-		// Use the Assert class to test conditions.
-	}
-
-	// A UnityTest behaves like a coroutine in PlayMode
-	// and allows you to yield null to skip a frame in EditMode
-	[UnityTest]
-	public IEnumerator QuestTestWithEnumeratorPasses() {
-		// Use the Assert class to test conditions.
-		// yield to skip a frame
-		yield return null;
+		//find a way to test abstract classes
+		//Assert.IsTrue(false);	
 	}
 }

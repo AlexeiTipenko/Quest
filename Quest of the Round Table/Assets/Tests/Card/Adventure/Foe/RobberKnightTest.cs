@@ -7,15 +7,11 @@ public class RobberKnightTest {
 
 	[Test]
 	public void RobberKnightTestSimplePasses() {
-		// Use the Assert class to test conditions.
-	}
+		Assert.IsTrue (RobberKnight.frequency == 7);
+		Foe robberKnight = new RobberKnight();
+		Assert.AreEqual ("Robber Knight", robberKnight.getCardName());
 
-	// A UnityTest behaves like a coroutine in PlayMode
-	// and allows you to yield null to skip a frame in EditMode
-	[UnityTest]
-	public IEnumerator RobberKnightTestWithEnumeratorPasses() {
-		// Use the Assert class to test conditions.
-		// yield to skip a frame
-		yield return null;
+		//Not empowered
+		Assert.IsTrue (robberKnight.getBattlePoints() == 15);
 	}
 }

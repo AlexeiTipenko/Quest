@@ -7,15 +7,15 @@ public class TestOfTheQuestingBeastTest {
 
 	[Test]
 	public void TestOfTheQuestingBeastTestSimplePasses() {
-		// Use the Assert class to test conditions.
-	}
+		Assert.IsTrue (TestOfTheQuestingBeast.frequency == 2);
 
-	// A UnityTest behaves like a coroutine in PlayMode
-	// and allows you to yield null to skip a frame in EditMode
-	[UnityTest]
-	public IEnumerator TestOfTheQuestingBeastTestWithEnumeratorPasses() {
-		// Use the Assert class to test conditions.
-		// yield to skip a frame
-		yield return null;
+		Test testOfTheQuestingBeast = new TestOfTheQuestingBeast();
+		Assert.AreEqual ("Test of the Questing Beast", testOfTheQuestingBeast.getCardName ());
+
+		//If not condition, bid == 3
+		Assert.IsTrue (testOfTheQuestingBeast.getMinBidValue () == 3);
+
+		//If condition, then bid == 4
+		//Assert.IsTrue (testOfTheQuestingBeast.getMinBidValue () == 4);
 	}
 }

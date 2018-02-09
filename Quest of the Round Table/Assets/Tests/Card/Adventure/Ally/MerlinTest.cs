@@ -7,6 +7,7 @@ public class MerlinTest {
 
 	[Test]
 	public void MerlinTestSimplePasses() {
+		Assert.IsTrue (Merlin.frequency == 1);
 		Ally merlin = new Merlin();
 		Assert.AreEqual ("Merlin", merlin.getCardName());
 	}

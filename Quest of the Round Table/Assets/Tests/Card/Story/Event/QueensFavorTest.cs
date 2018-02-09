@@ -7,15 +7,11 @@ public class QueensFavorTest {
 
 	[Test]
 	public void QueensFavorTestSimplePasses() {
-		// Use the Assert class to test conditions.
-	}
+		Assert.IsTrue (QueensFavor.frequency == 2);
+		Event queensFavor = new QueensFavor ();
+		Assert.AreEqual ("Queen's Favor", queensFavor.getCardName ());
 
-	// A UnityTest behaves like a coroutine in PlayMode
-	// and allows you to yield null to skip a frame in EditMode
-	[UnityTest]
-	public IEnumerator QueensFavorTestWithEnumeratorPasses() {
-		// Use the Assert class to test conditions.
-		// yield to skip a frame
-		yield return null;
+		//need to implement some sort of test case to test out processEvent function
+		//Assert.IsTrue (false);
 	}
 }

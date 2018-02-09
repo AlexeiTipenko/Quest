@@ -7,6 +7,7 @@ public class QueenGuinevereTest {
 
 	[Test]
 	public void QueenGuinevereTestSimplePasses() {
+		Assert.IsTrue (QueenGuinevere.frequency == 1);
 		Ally queenguinevere = new QueenGuinevere();
 		Assert.AreEqual ("Queen Guinevere", queenguinevere.getCardName());
 		Assert.IsTrue (queenguinevere.getBattlePoints() == 0);
