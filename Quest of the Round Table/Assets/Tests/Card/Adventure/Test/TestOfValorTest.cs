@@ -7,15 +7,10 @@ public class TestOfValorTest {
 
 	[Test]
 	public void TestOfValorTestSimplePasses() {
-		// Use the Assert class to test conditions.
-	}
+		Assert.IsTrue (TestOfValor.frequency == 2);
 
-	// A UnityTest behaves like a coroutine in PlayMode
-	// and allows you to yield null to skip a frame in EditMode
-	[UnityTest]
-	public IEnumerator TestOfValorTestWithEnumeratorPasses() {
-		// Use the Assert class to test conditions.
-		// yield to skip a frame
-		yield return null;
+		Test testOfValor = new TestOfValor();
+		Assert.AreEqual ("Test of Valor", testOfValor.getCardName ());
+		Assert.IsTrue (testOfValor.getMinBidValue() == 3);
 	}
 }

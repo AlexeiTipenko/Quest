@@ -9,7 +9,7 @@ public abstract class Foe : Adventure {
 	private enum dominantFoe {};
 
 	public Foe (string cardName, int battlePoints) : base (cardName) {
-		
+		this.battlePoints = battlePoints;
 	}
 
 	public virtual int getBattlePoints() {

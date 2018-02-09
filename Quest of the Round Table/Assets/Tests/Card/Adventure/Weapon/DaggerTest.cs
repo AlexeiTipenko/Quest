@@ -7,15 +7,9 @@ public class DaggerTest {
 
 	[Test]
 	public void DaggerTestSimplePasses() {
-		// Use the Assert class to test conditions.
-	}
-
-	// A UnityTest behaves like a coroutine in PlayMode
-	// and allows you to yield null to skip a frame in EditMode
-	[UnityTest]
-	public IEnumerator DaggerTestWithEnumeratorPasses() {
-		// Use the Assert class to test conditions.
-		// yield to skip a frame
-		yield return null;
+		Assert.IsTrue (Dagger.frequency == 6);
+		Weapon dagger = new Dagger ();
+		Assert.AreEqual ("Dagger", dagger.getCardName ());
+		Assert.IsTrue (dagger.getBattlePoints() == 5);
 	}
 }

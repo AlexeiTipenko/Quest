@@ -7,15 +7,9 @@ public class ExcaliburTest {
 
 	[Test]
 	public void ExcaliburTestSimplePasses() {
-		// Use the Assert class to test conditions.
-	}
-
-	// A UnityTest behaves like a coroutine in PlayMode
-	// and allows you to yield null to skip a frame in EditMode
-	[UnityTest]
-	public IEnumerator ExcaliburTestWithEnumeratorPasses() {
-		// Use the Assert class to test conditions.
-		// yield to skip a frame
-		yield return null;
+		Assert.IsTrue (Excalibur.frequency == 2);
+		Weapon excalibur = new Excalibur ();
+		Assert.AreEqual ("Excalibur", excalibur.getCardName ());
+		Assert.IsTrue (excalibur.getBattlePoints() == 30);
 	}
 }

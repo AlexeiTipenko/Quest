@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Quest : Story {
+public abstract class Quest : Story {
 
 	protected int numStages;
 	private enum dominantFoe {};

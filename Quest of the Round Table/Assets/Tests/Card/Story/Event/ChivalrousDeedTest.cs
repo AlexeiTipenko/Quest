@@ -7,15 +7,11 @@ public class ChivalrousDeedTest {
 
 	[Test]
 	public void ChivalrousDeedTestSimplePasses() {
-		// Use the Assert class to test conditions.
-	}
+		Assert.IsTrue (ChivalrousDeed.frequency == 1);
+		Event chivalrousDeed = new ChivalrousDeed ();
+		Assert.AreEqual ("Chivalrous Deed", chivalrousDeed.getCardName ());
 
-	// A UnityTest behaves like a coroutine in PlayMode
-	// and allows you to yield null to skip a frame in EditMode
-	[UnityTest]
-	public IEnumerator ChivalrousDeedTestWithEnumeratorPasses() {
-		// Use the Assert class to test conditions.
-		// yield to skip a frame
-		yield return null;
+		//need to implement some sort of test case to test out processEvent function
+		//Assert.IsTrue (false);
 	}
 }

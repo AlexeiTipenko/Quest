@@ -13,7 +13,7 @@ public class PlayerTest {
 		List<Card> cards = new List<Card> ();
 		cards.Add (new AtCamelot ());
 		cards.Add (new Merlin ());
-		cards.Add (new BattleAxe ());
+		cards.Add (new BattleAx ());
 
 		player.dealCards (cards);
 

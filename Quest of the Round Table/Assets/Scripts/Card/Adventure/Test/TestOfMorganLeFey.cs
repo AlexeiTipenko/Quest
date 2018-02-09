@@ -9,4 +9,5 @@ public class TestOfMorganLeFey : Test {
 	public TestOfMorganLeFey() : base ("Test of Morgan LeFey", 3) {
 
 	}
+		
 }

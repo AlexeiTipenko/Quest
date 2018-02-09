@@ -7,15 +7,13 @@ public class RescueTheFairMaidenTest {
 
 	[Test]
 	public void RescueTheFairMaidenTestSimplePasses() {
-		// Use the Assert class to test conditions.
-	}
+		Assert.IsTrue (RescueTheFairMaiden.frequency == 1);
 
-	// A UnityTest behaves like a coroutine in PlayMode
-	// and allows you to yield null to skip a frame in EditMode
-	[UnityTest]
-	public IEnumerator RescueTheFairMaidenTestWithEnumeratorPasses() {
-		// Use the Assert class to test conditions.
-		// yield to skip a frame
-		yield return null;
+		Quest rescueTheFairMaiden = new RescueTheFairMaiden ();
+		Assert.AreEqual ("Rescue the Fair Maiden", rescueTheFairMaiden.getCardName());
+		Assert.IsTrue (rescueTheFairMaiden.getShieldsWon() == 3);
+
+		//need to figure out the dominantFoe business before passing the test case as complete
+		//Assert.IsTrue(false);
 	}
 }

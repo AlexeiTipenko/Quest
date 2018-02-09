@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Pox : Event {
 
+	public static int frequency = 1;
+
 	public Pox () : base ("Pox") {
 
 	}

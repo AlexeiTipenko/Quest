@@ -7,15 +7,11 @@ public class PoxTest {
 
 	[Test]
 	public void PoxTestSimplePasses() {
-		// Use the Assert class to test conditions.
-	}
+		Assert.IsTrue (Pox.frequency == 1);
+		Event pox = new Pox ();
+		Assert.AreEqual ("Pox", pox.getCardName ());
 
-	// A UnityTest behaves like a coroutine in PlayMode
-	// and allows you to yield null to skip a frame in EditMode
-	[UnityTest]
-	public IEnumerator PoxTestWithEnumeratorPasses() {
-		// Use the Assert class to test conditions.
-		// yield to skip a frame
-		yield return null;
+		//need to implement some sort of test case to test out processEvent function
+		//Assert.IsTrue (false);
 	}
 }

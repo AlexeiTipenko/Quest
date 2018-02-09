@@ -7,7 +7,6 @@ public class AllyTest {
 
 	[Test]
 	public void AllyTestSimplePasses() {
-		//TODO; abstract class testing
+		//find a way to test abstract classes
 	}
-
 }

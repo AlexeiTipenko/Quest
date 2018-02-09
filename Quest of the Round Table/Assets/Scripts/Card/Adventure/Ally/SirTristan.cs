@@ -8,7 +8,7 @@ public class SirTristan : Ally {
 	private int empoweredBattlePoints;
 
 	public SirTristan() : base ("Sir Tristan", 10, 0) {
-		
+		empoweredBattlePoints = 20;
 	}
 
 	public override int getBattlePoints() {

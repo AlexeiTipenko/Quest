@@ -7,15 +7,13 @@ public class SlayTheDragonTest {
 
 	[Test]
 	public void SlayTheDragonTestSimplePasses() {
-		// Use the Assert class to test conditions.
-	}
+		Assert.IsTrue (SlayTheDragon.frequency == 1);
 
-	// A UnityTest behaves like a coroutine in PlayMode
-	// and allows you to yield null to skip a frame in EditMode
-	[UnityTest]
-	public IEnumerator SlayTheDragonTestWithEnumeratorPasses() {
-		// Use the Assert class to test conditions.
-		// yield to skip a frame
-		yield return null;
+		Quest slayTheDragon = new SlayTheDragon ();
+		Assert.AreEqual ("Slay the Dragon", slayTheDragon.getCardName());
+		Assert.IsTrue (slayTheDragon.getShieldsWon() == 3);
+
+		//need to figure out the dominantFoe business before passing the test case as complete
+		//Assert.IsTrue(false);
 	}
 }
