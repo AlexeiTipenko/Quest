@@ -6,7 +6,7 @@ public class KnightOfTheRoundTable : Rank {
 
 	public static int frequency = 1;
 
-	public KnightOfTheRoundTable() : base ("Knight of the Round Table", 100000000000) {
+	public KnightOfTheRoundTable() : base ("Knight of the Round Table", 1000000000) {
 
 	}
 }

@@ -55,7 +55,7 @@ public class BoardManager : MonoBehaviour {
 	public void gameLoop() {
 		while (!gameOver ()) {
 			//Draw story card from the deck
-			Story storyCard = storyDeck.drawCard ();
+			Card storyCard = storyDeck.drawCard ();
 
 			//Add the story card visually to the play area (not sure how to do this, Alexei can you take a look?)
 			//Code here
@@ -70,7 +70,7 @@ public class BoardManager : MonoBehaviour {
 
 	private bool gameOver() {
 		foreach (Player player in players) {
-			if (player.getRank ().getCardName == "Knight of the Round Table") {
+			if (player.getRank ().getCardName () == "Knight of the Round Table") {
 				return true;
 			}
 		}

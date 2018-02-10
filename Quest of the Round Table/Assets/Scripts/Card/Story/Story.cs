@@ -9,7 +9,7 @@ public abstract class Story : Card {
 		
 	}
 
-	public void startBehaviour () {
+	public override void startBehaviour () {
 		Debug.Log ("Starting card behaviour for card: " + cardName);
 	}
 
