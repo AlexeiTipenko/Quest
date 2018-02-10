@@ -18,10 +18,26 @@ public class StoryDeck : Deck {
 		newCards.Add ("AtYork");
 
 		//events
-		//insert events here
+		newCards.Add ("KingsRecognition");
+		newCards.Add ("QueensFavor");
+		newCards.Add ("CourtCalledToCamelot");
+		newCards.Add ("Pox");
+		newCards.Add ("Plague");
+		newCards.Add ("ChivalrousDeed");
+		newCards.Add ("ProsperityThroughoutTheRealm");
+		newCards.Add ("KingsCallToArms");
 
 		//quests
-		//insert quests here
+		newCards.Add("SearchForTheHolyGrail");
+		newCards.Add ("TestOfTheGreenKnight");
+		newCards.Add ("SearchForTheQuestingBeast");
+		newCards.Add ("DefendTheQueensHonor");
+		newCards.Add ("RescueTheFairMaiden");
+		newCards.Add ("JourneyThroughTheEnchantedForest");
+		newCards.Add ("VanquishKingArthursEnemies");
+		newCards.Add ("SlayTheDragon");
+		newCards.Add ("BoarHunt");
+		newCards.Add ("RepelTheSaxonRaiders");
 
 		instantiateCards (newCards);
 

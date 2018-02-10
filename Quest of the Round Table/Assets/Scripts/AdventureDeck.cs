@@ -35,13 +35,27 @@ public class AdventureDeck : Deck {
 		newCards.Add ("TestOfTheQuestingBeast");
 
 		//allies
+		newCards.Add ("SirGalahad");
+		newCards.Add ("SirLancelot");
+		newCards.Add ("KingArthur");
 		newCards.Add ("SirTristan");
+		newCards.Add ("KingPellinore");
+		newCards.Add ("SirGawain");
+		newCards.Add ("SirPercival");
+		newCards.Add ("QueenGuinevere");
+		newCards.Add ("QueenIseult");
+		newCards.Add ("Merlin");
 
 		//amours
 		newCards.Add ("Amour");
 
 		//weapons
-		//insert weapons here
+		newCards.Add ("Excalibur");
+		newCards.Add ("Lance");
+		newCards.Add ("BattleAx");
+		newCards.Add ("Sword");
+		newCards.Add ("Horse");
+		newCards.Add ("Dagger");
 
 		instantiateCards (newCards);
 
@@ -53,9 +67,9 @@ public class AdventureDeck : Deck {
 		foreach (Card card in cards) {
 			toString += (card.toString () + ", ");
 		}
-//		if (cards.Count > 0) {
-//			toString = toString.Substring (0, toString.Length - 2);
-//		}
+		if (cards.Count > 0) {
+			toString = toString.Substring (0, toString.Length - 2);
+		}
 		return toString;
 	}
 }
