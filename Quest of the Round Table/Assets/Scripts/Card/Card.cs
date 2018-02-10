@@ -13,6 +13,8 @@ public abstract class Card {
 		this.owner = null;
 	}
 
+	public virtual void startBehaviour () {}
+
 
 	//Getters
 	public Player getOwner() {
