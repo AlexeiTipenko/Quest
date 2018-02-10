@@ -173,22 +173,22 @@ Prefab:
     - target: {fileID: 224754600255667264, guid: fc166911e3e9547aca34917fdebbf514,
         type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 653.0208
+      value: 317.72153
       objectReference: {fileID: 0}
     - target: {fileID: 224754600255667264, guid: fc166911e3e9547aca34917fdebbf514,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -57.840958
       objectReference: {fileID: 0}
     - target: {fileID: 224754600255667264, guid: fc166911e3e9547aca34917fdebbf514,
         type: 2}
       propertyPath: m_SizeDelta.x
-      value: 100
+      value: 89
       objectReference: {fileID: 0}
     - target: {fileID: 224754600255667264, guid: fc166911e3e9547aca34917fdebbf514,
         type: 2}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: 115.681915
       objectReference: {fileID: 0}
     - target: {fileID: 224754600255667264, guid: fc166911e3e9547aca34917fdebbf514,
         type: 2}
@@ -223,6 +223,16 @@ Prefab:
     - target: {fileID: 1271370962937560, guid: fc166911e3e9547aca34917fdebbf514, type: 2}
       propertyPath: m_Name
       value: KingArthur (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 114494267719803734, guid: fc166911e3e9547aca34917fdebbf514,
+        type: 2}
+      propertyPath: m_PreferredWidth
+      value: 89
+      objectReference: {fileID: 0}
+    - target: {fileID: 114494267719803734, guid: fc166911e3e9547aca34917fdebbf514,
+        type: 2}
+      propertyPath: m_PreferredHeight
+      value: 157
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fc166911e3e9547aca34917fdebbf514, type: 2}
@@ -277,22 +287,22 @@ Prefab:
     - target: {fileID: 224754600255667264, guid: fc166911e3e9547aca34917fdebbf514,
         type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 1013.0208
+      value: 581.72156
       objectReference: {fileID: 0}
     - target: {fileID: 224754600255667264, guid: fc166911e3e9547aca34917fdebbf514,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -57.840958
       objectReference: {fileID: 0}
     - target: {fileID: 224754600255667264, guid: fc166911e3e9547aca34917fdebbf514,
         type: 2}
       propertyPath: m_SizeDelta.x
-      value: 100
+      value: 89
       objectReference: {fileID: 0}
     - target: {fileID: 224754600255667264, guid: fc166911e3e9547aca34917fdebbf514,
         type: 2}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: 115.681915
       objectReference: {fileID: 0}
     - target: {fileID: 224754600255667264, guid: fc166911e3e9547aca34917fdebbf514,
         type: 2}
@@ -327,6 +337,16 @@ Prefab:
     - target: {fileID: 1271370962937560, guid: fc166911e3e9547aca34917fdebbf514, type: 2}
       propertyPath: m_Name
       value: KingArthur (9)
+      objectReference: {fileID: 0}
+    - target: {fileID: 114494267719803734, guid: fc166911e3e9547aca34917fdebbf514,
+        type: 2}
+      propertyPath: m_PreferredWidth
+      value: 89
+      objectReference: {fileID: 0}
+    - target: {fileID: 114494267719803734, guid: fc166911e3e9547aca34917fdebbf514,
+        type: 2}
+      propertyPath: m_PreferredHeight
+      value: 157
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fc166911e3e9547aca34917fdebbf514, type: 2}
@@ -423,7 +443,7 @@ MonoBehaviour:
     m_Top: 0
     m_Bottom: 0
   m_ChildAlignment: 4
-  m_Spacing: 5
+  m_Spacing: -20
   m_ChildForceExpandWidth: 0
   m_ChildForceExpandHeight: 0
   m_ChildControlWidth: 1
@@ -489,22 +509,22 @@ Prefab:
     - target: {fileID: 224754600255667264, guid: fc166911e3e9547aca34917fdebbf514,
         type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 893.0208
+      value: 493.72153
       objectReference: {fileID: 0}
     - target: {fileID: 224754600255667264, guid: fc166911e3e9547aca34917fdebbf514,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -57.840958
       objectReference: {fileID: 0}
     - target: {fileID: 224754600255667264, guid: fc166911e3e9547aca34917fdebbf514,
         type: 2}
       propertyPath: m_SizeDelta.x
-      value: 100
+      value: 89
       objectReference: {fileID: 0}
     - target: {fileID: 224754600255667264, guid: fc166911e3e9547aca34917fdebbf514,
         type: 2}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: 115.681915
       objectReference: {fileID: 0}
     - target: {fileID: 224754600255667264, guid: fc166911e3e9547aca34917fdebbf514,
         type: 2}
@@ -539,6 +559,16 @@ Prefab:
     - target: {fileID: 1271370962937560, guid: fc166911e3e9547aca34917fdebbf514, type: 2}
       propertyPath: m_Name
       value: KingArthur (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 114494267719803734, guid: fc166911e3e9547aca34917fdebbf514,
+        type: 2}
+      propertyPath: m_PreferredWidth
+      value: 89
+      objectReference: {fileID: 0}
+    - target: {fileID: 114494267719803734, guid: fc166911e3e9547aca34917fdebbf514,
+        type: 2}
+      propertyPath: m_PreferredHeight
+      value: 157
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fc166911e3e9547aca34917fdebbf514, type: 2}
@@ -703,22 +733,22 @@ Prefab:
     - target: {fileID: 224869363723178880, guid: a105f68fe4248449abe1f6f2c94959c3,
         type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 473.0208
+      value: 185.72153
       objectReference: {fileID: 0}
     - target: {fileID: 224869363723178880, guid: a105f68fe4248449abe1f6f2c94959c3,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -57.840958
       objectReference: {fileID: 0}
     - target: {fileID: 224869363723178880, guid: a105f68fe4248449abe1f6f2c94959c3,
         type: 2}
       propertyPath: m_SizeDelta.x
-      value: 100
+      value: 89
       objectReference: {fileID: 0}
     - target: {fileID: 224869363723178880, guid: a105f68fe4248449abe1f6f2c94959c3,
         type: 2}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: 115.681915
       objectReference: {fileID: 0}
     - target: {fileID: 224869363723178880, guid: a105f68fe4248449abe1f6f2c94959c3,
         type: 2}
@@ -749,6 +779,16 @@ Prefab:
         type: 2}
       propertyPath: m_Pivot.y
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114984444563472556, guid: a105f68fe4248449abe1f6f2c94959c3,
+        type: 2}
+      propertyPath: m_PreferredWidth
+      value: 89
+      objectReference: {fileID: 0}
+    - target: {fileID: 114984444563472556, guid: a105f68fe4248449abe1f6f2c94959c3,
+        type: 2}
+      propertyPath: m_PreferredHeight
+      value: 157
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a105f68fe4248449abe1f6f2c94959c3, type: 2}
@@ -837,7 +877,7 @@ MonoBehaviour:
   m_Script: {fileID: 1980459831, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
@@ -917,22 +957,22 @@ Prefab:
     - target: {fileID: 224754600255667264, guid: fc166911e3e9547aca34917fdebbf514,
         type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 593.0208
+      value: 273.72153
       objectReference: {fileID: 0}
     - target: {fileID: 224754600255667264, guid: fc166911e3e9547aca34917fdebbf514,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -57.840958
       objectReference: {fileID: 0}
     - target: {fileID: 224754600255667264, guid: fc166911e3e9547aca34917fdebbf514,
         type: 2}
       propertyPath: m_SizeDelta.x
-      value: 100
+      value: 89
       objectReference: {fileID: 0}
     - target: {fileID: 224754600255667264, guid: fc166911e3e9547aca34917fdebbf514,
         type: 2}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: 115.681915
       objectReference: {fileID: 0}
     - target: {fileID: 224754600255667264, guid: fc166911e3e9547aca34917fdebbf514,
         type: 2}
@@ -968,39 +1008,19 @@ Prefab:
       propertyPath: m_Name
       value: KingArthur (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 114494267719803734, guid: fc166911e3e9547aca34917fdebbf514,
+        type: 2}
+      propertyPath: m_PreferredWidth
+      value: 89
+      objectReference: {fileID: 0}
+    - target: {fileID: 114494267719803734, guid: fc166911e3e9547aca34917fdebbf514,
+        type: 2}
+      propertyPath: m_PreferredHeight
+      value: 157
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fc166911e3e9547aca34917fdebbf514, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &991374680 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1271370962937560, guid: fc166911e3e9547aca34917fdebbf514,
-    type: 2}
-  m_PrefabInternal: {fileID: 1918450946}
---- !u!61 &991374681
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 991374680}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
 --- !u!1 &1041026507
 GameObject:
   m_ObjectHideFlags: 0
@@ -1035,8 +1055,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.012}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.0000114443255, y: -2.982}
-  m_SizeDelta: {x: 0.000061035, y: 5.964}
+  m_AnchoredPosition: {x: -0.024975, y: -2.975}
+  m_SizeDelta: {x: 0.050049, y: 5.95}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1041026509
 MonoBehaviour:
@@ -1121,22 +1141,22 @@ Prefab:
     - target: {fileID: 224754600255667264, guid: fc166911e3e9547aca34917fdebbf514,
         type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 833.0208
+      value: 449.72153
       objectReference: {fileID: 0}
     - target: {fileID: 224754600255667264, guid: fc166911e3e9547aca34917fdebbf514,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -57.840958
       objectReference: {fileID: 0}
     - target: {fileID: 224754600255667264, guid: fc166911e3e9547aca34917fdebbf514,
         type: 2}
       propertyPath: m_SizeDelta.x
-      value: 100
+      value: 89
       objectReference: {fileID: 0}
     - target: {fileID: 224754600255667264, guid: fc166911e3e9547aca34917fdebbf514,
         type: 2}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: 115.681915
       objectReference: {fileID: 0}
     - target: {fileID: 224754600255667264, guid: fc166911e3e9547aca34917fdebbf514,
         type: 2}
@@ -1171,6 +1191,16 @@ Prefab:
     - target: {fileID: 1271370962937560, guid: fc166911e3e9547aca34917fdebbf514, type: 2}
       propertyPath: m_Name
       value: KingArthur (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 114494267719803734, guid: fc166911e3e9547aca34917fdebbf514,
+        type: 2}
+      propertyPath: m_PreferredWidth
+      value: 89
+      objectReference: {fileID: 0}
+    - target: {fileID: 114494267719803734, guid: fc166911e3e9547aca34917fdebbf514,
+        type: 2}
+      propertyPath: m_PreferredHeight
+      value: 157
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fc166911e3e9547aca34917fdebbf514, type: 2}
@@ -1225,22 +1255,22 @@ Prefab:
     - target: {fileID: 224754600255667264, guid: fc166911e3e9547aca34917fdebbf514,
         type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 713.0208
+      value: 361.72153
       objectReference: {fileID: 0}
     - target: {fileID: 224754600255667264, guid: fc166911e3e9547aca34917fdebbf514,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -57.840958
       objectReference: {fileID: 0}
     - target: {fileID: 224754600255667264, guid: fc166911e3e9547aca34917fdebbf514,
         type: 2}
       propertyPath: m_SizeDelta.x
-      value: 100
+      value: 89
       objectReference: {fileID: 0}
     - target: {fileID: 224754600255667264, guid: fc166911e3e9547aca34917fdebbf514,
         type: 2}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: 115.681915
       objectReference: {fileID: 0}
     - target: {fileID: 224754600255667264, guid: fc166911e3e9547aca34917fdebbf514,
         type: 2}
@@ -1275,6 +1305,16 @@ Prefab:
     - target: {fileID: 1271370962937560, guid: fc166911e3e9547aca34917fdebbf514, type: 2}
       propertyPath: m_Name
       value: KingArthur (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 114494267719803734, guid: fc166911e3e9547aca34917fdebbf514,
+        type: 2}
+      propertyPath: m_PreferredWidth
+      value: 89
+      objectReference: {fileID: 0}
+    - target: {fileID: 114494267719803734, guid: fc166911e3e9547aca34917fdebbf514,
+        type: 2}
+      propertyPath: m_PreferredHeight
+      value: 157
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fc166911e3e9547aca34917fdebbf514, type: 2}
@@ -1329,22 +1369,22 @@ Prefab:
     - target: {fileID: 224902829574440032, guid: 5ce7bb2bf35af4f4b8e19e84075a1da4,
         type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 413.0208
+      value: 141.72153
       objectReference: {fileID: 0}
     - target: {fileID: 224902829574440032, guid: 5ce7bb2bf35af4f4b8e19e84075a1da4,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -57.840958
       objectReference: {fileID: 0}
     - target: {fileID: 224902829574440032, guid: 5ce7bb2bf35af4f4b8e19e84075a1da4,
         type: 2}
       propertyPath: m_SizeDelta.x
-      value: 100
+      value: 89
       objectReference: {fileID: 0}
     - target: {fileID: 224902829574440032, guid: 5ce7bb2bf35af4f4b8e19e84075a1da4,
         type: 2}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: 115.681915
       objectReference: {fileID: 0}
     - target: {fileID: 224902829574440032, guid: 5ce7bb2bf35af4f4b8e19e84075a1da4,
         type: 2}
@@ -1375,6 +1415,16 @@ Prefab:
         type: 2}
       propertyPath: m_Pivot.y
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114722612223341376, guid: 5ce7bb2bf35af4f4b8e19e84075a1da4,
+        type: 2}
+      propertyPath: m_PreferredWidth
+      value: 89
+      objectReference: {fileID: 0}
+    - target: {fileID: 114722612223341376, guid: 5ce7bb2bf35af4f4b8e19e84075a1da4,
+        type: 2}
+      propertyPath: m_PreferredHeight
+      value: 157
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5ce7bb2bf35af4f4b8e19e84075a1da4, type: 2}
@@ -1434,22 +1484,22 @@ Prefab:
     - target: {fileID: 224754600255667264, guid: fc166911e3e9547aca34917fdebbf514,
         type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 953.0208
+      value: 537.72156
       objectReference: {fileID: 0}
     - target: {fileID: 224754600255667264, guid: fc166911e3e9547aca34917fdebbf514,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -57.840958
       objectReference: {fileID: 0}
     - target: {fileID: 224754600255667264, guid: fc166911e3e9547aca34917fdebbf514,
         type: 2}
       propertyPath: m_SizeDelta.x
-      value: 100
+      value: 89
       objectReference: {fileID: 0}
     - target: {fileID: 224754600255667264, guid: fc166911e3e9547aca34917fdebbf514,
         type: 2}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: 115.681915
       objectReference: {fileID: 0}
     - target: {fileID: 224754600255667264, guid: fc166911e3e9547aca34917fdebbf514,
         type: 2}
@@ -1484,6 +1534,16 @@ Prefab:
     - target: {fileID: 1271370962937560, guid: fc166911e3e9547aca34917fdebbf514, type: 2}
       propertyPath: m_Name
       value: KingArthur (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 114494267719803734, guid: fc166911e3e9547aca34917fdebbf514,
+        type: 2}
+      propertyPath: m_PreferredWidth
+      value: 89
+      objectReference: {fileID: 0}
+    - target: {fileID: 114494267719803734, guid: fc166911e3e9547aca34917fdebbf514,
+        type: 2}
+      propertyPath: m_PreferredHeight
+      value: 157
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fc166911e3e9547aca34917fdebbf514, type: 2}
@@ -1538,22 +1598,22 @@ Prefab:
     - target: {fileID: 224754600255667264, guid: fc166911e3e9547aca34917fdebbf514,
         type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 773.0208
+      value: 405.72153
       objectReference: {fileID: 0}
     - target: {fileID: 224754600255667264, guid: fc166911e3e9547aca34917fdebbf514,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -57.840958
       objectReference: {fileID: 0}
     - target: {fileID: 224754600255667264, guid: fc166911e3e9547aca34917fdebbf514,
         type: 2}
       propertyPath: m_SizeDelta.x
-      value: 100
+      value: 89
       objectReference: {fileID: 0}
     - target: {fileID: 224754600255667264, guid: fc166911e3e9547aca34917fdebbf514,
         type: 2}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: 115.681915
       objectReference: {fileID: 0}
     - target: {fileID: 224754600255667264, guid: fc166911e3e9547aca34917fdebbf514,
         type: 2}
@@ -1588,6 +1648,16 @@ Prefab:
     - target: {fileID: 1271370962937560, guid: fc166911e3e9547aca34917fdebbf514, type: 2}
       propertyPath: m_Name
       value: KingArthur (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 114494267719803734, guid: fc166911e3e9547aca34917fdebbf514,
+        type: 2}
+      propertyPath: m_PreferredWidth
+      value: 89
+      objectReference: {fileID: 0}
+    - target: {fileID: 114494267719803734, guid: fc166911e3e9547aca34917fdebbf514,
+        type: 2}
+      propertyPath: m_PreferredHeight
+      value: 157
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fc166911e3e9547aca34917fdebbf514, type: 2}
@@ -1645,7 +1715,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 6.333767
+  orthographic size: 481.88828
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -1686,22 +1756,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   boardManager: {fileID: 474883549}
---- !u!224 &1768712432 stripped
-RectTransform:
-  m_PrefabParentObject: {fileID: 224754600255667264, guid: fc166911e3e9547aca34917fdebbf514,
-    type: 2}
-  m_PrefabInternal: {fileID: 1207460368}
---- !u!224 &1899308075 stripped
-RectTransform:
-  m_PrefabParentObject: {fileID: 224754600255667264, guid: fc166911e3e9547aca34917fdebbf514,
-    type: 2}
-  m_PrefabInternal: {fileID: 378431756}
---- !u!224 &1908241095 stripped
-RectTransform:
-  m_PrefabParentObject: {fileID: 224754600255667264, guid: fc166911e3e9547aca34917fdebbf514,
-    type: 2}
-  m_PrefabInternal: {fileID: 195834120}
---- !u!1001 &1918450946
+--- !u!1001 &1517403278
 Prefab:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -1726,17 +1781,17 @@ Prefab:
     - target: {fileID: 224754600255667264, guid: fc166911e3e9547aca34917fdebbf514,
         type: 2}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 224754600255667264, guid: fc166911e3e9547aca34917fdebbf514,
         type: 2}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 224754600255667264, guid: fc166911e3e9547aca34917fdebbf514,
         type: 2}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 224754600255667264, guid: fc166911e3e9547aca34917fdebbf514,
         type: 2}
@@ -1751,22 +1806,22 @@ Prefab:
     - target: {fileID: 224754600255667264, guid: fc166911e3e9547aca34917fdebbf514,
         type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 353.0208
+      value: 97.72153
       objectReference: {fileID: 0}
     - target: {fileID: 224754600255667264, guid: fc166911e3e9547aca34917fdebbf514,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -57.840958
       objectReference: {fileID: 0}
     - target: {fileID: 224754600255667264, guid: fc166911e3e9547aca34917fdebbf514,
         type: 2}
       propertyPath: m_SizeDelta.x
-      value: 100
+      value: 89
       objectReference: {fileID: 0}
     - target: {fileID: 224754600255667264, guid: fc166911e3e9547aca34917fdebbf514,
         type: 2}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: 115.681915
       objectReference: {fileID: 0}
     - target: {fileID: 224754600255667264, guid: fc166911e3e9547aca34917fdebbf514,
         type: 2}
@@ -1798,14 +1853,53 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 1271370962937560, guid: fc166911e3e9547aca34917fdebbf514, type: 2}
+      propertyPath: m_Name
+      value: KingArthur
+      objectReference: {fileID: 0}
+    - target: {fileID: 114494267719803734, guid: fc166911e3e9547aca34917fdebbf514,
+        type: 2}
+      propertyPath: m_PreferredWidth
+      value: 89
+      objectReference: {fileID: 0}
+    - target: {fileID: 114494267719803734, guid: fc166911e3e9547aca34917fdebbf514,
+        type: 2}
+      propertyPath: m_PreferredHeight
+      value: 157
+      objectReference: {fileID: 0}
+    - target: {fileID: 224754600255667264, guid: fc166911e3e9547aca34917fdebbf514,
+        type: 2}
+      propertyPath: m_LocalScale.x
+      value: 0.99999994
+      objectReference: {fileID: 0}
+    - target: {fileID: 224754600255667264, guid: fc166911e3e9547aca34917fdebbf514,
+        type: 2}
+      propertyPath: m_LocalScale.y
+      value: 0.99999994
+      objectReference: {fileID: 0}
+    - target: {fileID: 224754600255667264, guid: fc166911e3e9547aca34917fdebbf514,
+        type: 2}
+      propertyPath: m_LocalScale.z
+      value: 0.99999994
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fc166911e3e9547aca34917fdebbf514, type: 2}
   m_IsPrefabParent: 0
---- !u!224 &1918450947 stripped
+--- !u!224 &1768712432 stripped
 RectTransform:
   m_PrefabParentObject: {fileID: 224754600255667264, guid: fc166911e3e9547aca34917fdebbf514,
     type: 2}
-  m_PrefabInternal: {fileID: 1918450946}
+  m_PrefabInternal: {fileID: 1207460368}
+--- !u!224 &1899308075 stripped
+RectTransform:
+  m_PrefabParentObject: {fileID: 224754600255667264, guid: fc166911e3e9547aca34917fdebbf514,
+    type: 2}
+  m_PrefabInternal: {fileID: 378431756}
+--- !u!224 &1908241095 stripped
+RectTransform:
+  m_PrefabParentObject: {fileID: 224754600255667264, guid: fc166911e3e9547aca34917fdebbf514,
+    type: 2}
+  m_PrefabInternal: {fileID: 195834120}
 --- !u!1001 &1959275038
 Prefab:
   m_ObjectHideFlags: 0
@@ -1856,22 +1950,22 @@ Prefab:
     - target: {fileID: 224754600255667264, guid: fc166911e3e9547aca34917fdebbf514,
         type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 533.0208
+      value: 229.72153
       objectReference: {fileID: 0}
     - target: {fileID: 224754600255667264, guid: fc166911e3e9547aca34917fdebbf514,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -57.840958
       objectReference: {fileID: 0}
     - target: {fileID: 224754600255667264, guid: fc166911e3e9547aca34917fdebbf514,
         type: 2}
       propertyPath: m_SizeDelta.x
-      value: 100
+      value: 89
       objectReference: {fileID: 0}
     - target: {fileID: 224754600255667264, guid: fc166911e3e9547aca34917fdebbf514,
         type: 2}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: 115.681915
       objectReference: {fileID: 0}
     - target: {fileID: 224754600255667264, guid: fc166911e3e9547aca34917fdebbf514,
         type: 2}
@@ -1907,6 +2001,16 @@ Prefab:
       propertyPath: m_Name
       value: KingArthur (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 114494267719803734, guid: fc166911e3e9547aca34917fdebbf514,
+        type: 2}
+      propertyPath: m_PreferredWidth
+      value: 89
+      objectReference: {fileID: 0}
+    - target: {fileID: 114494267719803734, guid: fc166911e3e9547aca34917fdebbf514,
+        type: 2}
+      propertyPath: m_PreferredHeight
+      value: 157
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fc166911e3e9547aca34917fdebbf514, type: 2}
   m_IsPrefabParent: 0
@@ -1939,7 +2043,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 1918450947}
+  - {fileID: 2095451832}
   - {fileID: 1239421266}
   - {fileID: 623592889}
   - {fileID: 101255559}
@@ -1956,8 +2060,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0.86, y: 0.25}
-  m_AnchoredPosition: {x: -6.6992188, y: -3.8520203}
-  m_SizeDelta: {x: -13.3984375, y: -1.199997}
+  m_AnchoredPosition: {x: -4.740349, y: 0}
+  m_SizeDelta: {x: -9.5, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1990726558
 MonoBehaviour:
@@ -2009,7 +2113,7 @@ MonoBehaviour:
     m_Top: 0
     m_Bottom: 0
   m_ChildAlignment: 4
-  m_Spacing: -40
+  m_Spacing: -45
   m_ChildForceExpandWidth: 0
   m_ChildForceExpandHeight: 0
   m_ChildControlWidth: 1
@@ -2025,3 +2129,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a88d9f53f3924a93a4933ef66977186, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!224 &2095451832 stripped
+RectTransform:
+  m_PrefabParentObject: {fileID: 224754600255667264, guid: fc166911e3e9547aca34917fdebbf514,
+    type: 2}
+  m_PrefabInternal: {fileID: 1517403278}

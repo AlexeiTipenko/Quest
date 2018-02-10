@@ -33,7 +33,7 @@ public class Player
 
 	private void checkForRankUp() {
 		if (numShields >= rank.getShieldsToProgress()) {
-			rank = rank.upgrade ();
+			upgradeRank ();
 		}
 	}
 
@@ -61,6 +61,10 @@ public class Player
 
 	public void decrementShields(int numShields) {
 		this.numShields = numShields;
+	}
+
+	public void upgradeRank(){
+		rank = rank.upgrade ();
 	}
 
 	public string toString() {
