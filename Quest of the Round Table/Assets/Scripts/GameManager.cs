@@ -29,6 +29,8 @@ public class GameManager : MonoBehaviour {
 		}
 
 		boardScripts.initGame (ButtonManager.playerList);
+//		boardScripts.gameLoop (); // uncomment this when the game loop is implemented
+								  // in such a way that we don't get into an immediate infinite loop
 	}
 	
 	// Update is called once per frame

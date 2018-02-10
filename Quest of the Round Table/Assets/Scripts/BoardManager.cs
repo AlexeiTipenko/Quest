@@ -23,10 +23,10 @@ public class BoardManager : MonoBehaviour {
 
 	public void initGame (List<Player> players) {
 		print ("Received playersList");
+		this.players = players;
 		foreach (Player player in players) {
 			print (player.toString ());
 		}
-		this.players = players;
 
 		adventureDeck = new AdventureDeck ();
 		storyDeck = new StoryDeck ();
@@ -35,6 +35,10 @@ public class BoardManager : MonoBehaviour {
 
 		foreach (Player player in players) {
 			dealCardsToPlayer (player, adventureDeck, 12);
+			print (player.getName ());
+			foreach (Card card in player.getHand()) {
+				print (card.toString ());
+			}
 		}
 
 		playerTurn = 0;
