@@ -11,20 +11,25 @@ public class BoardManager : MonoBehaviour {
 	DiscardDeck adventureDiscard, storyDiscard;
 	int playerTurn;
 
-	// Use this for initialization
 	void Start () {
 		print ("Board manager started");
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		
+		if(Input.GetKeyDown(KeyCode.C)){
+			Debug.Log ("Listening");
+			Debug.Log(players [playerTurn].getName ());
+			Debug.Log(players [playerTurn].getRank ());
+			players [playerTurn].upgradeRank ();
+			Debug.Log(players [playerTurn].getRank ());
+		}
 	}
 
 	public void initGame (List<Player> players) {
 		print ("Received playersList");
 		this.players = players;
-		foreach (Player player in players) {
+		foreach (Player player in this.players) {
 			print (player.toString ());
 		}
 
@@ -80,4 +85,5 @@ public class BoardManager : MonoBehaviour {
 		}
 		return false;
 	}
+
 }

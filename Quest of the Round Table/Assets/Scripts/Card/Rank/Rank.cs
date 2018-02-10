@@ -7,9 +7,9 @@ public abstract class Rank : Card {
 	protected int battlePoints, shieldsToProgress;
 	protected Rank nextRank;
 
-	public Rank(string cardName, int battlePoints) : base (cardName) {
+	public Rank(string cardName, int battlePoints, Rank nextRank) : base (cardName) {
 		this.battlePoints = battlePoints;
-		this.nextRank = null;
+		this.nextRank = nextRank;
 	}
 
 
