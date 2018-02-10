@@ -17,12 +17,14 @@ public class BoardManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if(Input.GetKeyDown(KeyCode.C)){
-			Debug.Log ("Listening");
-			Debug.Log(players [playerTurn].getName ());
-			Debug.Log(players [playerTurn].getRank ());
+		if(Input.GetKeyDown(KeyCode.R)){
+			//Debug.Log ("Listening");
+			Debug.Log("Current player is: " + players [playerTurn].getName ());
 			players [playerTurn].upgradeRank ();
-			Debug.Log(players [playerTurn].getRank ());
+			Debug.Log("After upgrading rank: " + players [playerTurn].getRank ());
+		}
+		else if (Input.GetKeyDown(KeyCode.T)){
+			//Debug.Log ("Listening");
 		}
 	}
 
