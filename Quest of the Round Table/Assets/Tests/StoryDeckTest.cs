@@ -8,6 +8,6 @@ public class StoryDeckTest {
 	[Test]
 	public void testInitStoryDeck() {
 		Deck deck = new StoryDeck ();
-		Assert.IsTrue (deck.getCards ().Count == 4);
+		Assert.IsTrue (deck.getCards ().Count == 28);
 	}
 }
