@@ -28,7 +28,7 @@ public class StoryDeck : Deck {
 		newCards.Add ("KingsCallToArms");
 
 		//quests
-		newCards.Add("SearchForTheHolyGrail");
+		newCards.Add ("SearchForTheHolyGrail");
 		newCards.Add ("TestOfTheGreenKnight");
 		newCards.Add ("SearchForTheQuestingBeast");
 		newCards.Add ("DefendTheQueensHonor");
