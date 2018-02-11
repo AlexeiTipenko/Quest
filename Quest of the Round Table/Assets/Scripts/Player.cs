@@ -33,12 +33,14 @@ public class Player
 
 	private void checkForRankUp() {
 		if (numShields == rank.getShieldsToProgress ()) {
+			numShields = 0;
 			upgradeRank ();
 			//numShields = numShields - rank.getShieldsToProgress ();
 			Debug.Log ("Rank is now: " + getRank ());
 		} else if (numShields > rank.getShieldsToProgress ()) {
-			upgradeRank ();
 			numShields -= rank.getShieldsToProgress ();
+			upgradeRank ();
+			Debug.Log ("Rank is now: " + getRank ());
 		}
 	}
 

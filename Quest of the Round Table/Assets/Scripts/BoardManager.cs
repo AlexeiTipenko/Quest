@@ -17,16 +17,16 @@ public class BoardManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if(Input.GetKeyDown("r")){
+		if(Input.GetKeyUp("r")){
 			//Debug.Log ("Listening");
 			Debug.Log("Current player is: " + players [playerTurn].getName ());
 			players [playerTurn].upgradeRank ();
 			Debug.Log("After upgrading rank: " + players [playerTurn].getRank ());
 		}
-		else if (Input.GetKeyDown("s")){
+		else if (Input.GetKeyUp("s")){
 			//Debug.Log ("Listening");
 			Debug.Log("Player now has : " + players [playerTurn].getNumShields () + " shields");
-			players [playerTurn].incrementShields(5);
+			players [playerTurn].incrementShields(3);
 			Debug.Log("Player now has : " + players [playerTurn].getNumShields () + " after incremented shields");
 		}
 	}
