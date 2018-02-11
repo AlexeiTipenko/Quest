@@ -11,12 +11,9 @@ public class ChivalrousDeed : Event {
 	}
 
 	//Event description: Player with both lowest rank and least amount of shields, receives 3 shields.
-	public override void startBehaviour() { //compartmentalize GameObjects so that testing can be done
-		List<Player> allPlayers = BoardManager.getPlayers();
-		runEvent (allPlayers);
-	}
+	public override void startBehaviour() { 
+		List<Player> allPlayers = BoardManagerData.getPlayers();
 
-	public void runEvent(List<Player> allPlayers) { 
 		List<Player> lowestRankPlayers = new List<Player>();
 		List<Player> lowestPlayers = new List<Player> ();
 

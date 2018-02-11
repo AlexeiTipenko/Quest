@@ -12,10 +12,7 @@ public class Plague : Event {
 
 	//Event description: Drawer loses 2 shields if possible.
 	public override void startBehaviour() {
-		GameObject boardManager = GameObject.Find("BoardManager");
-		BoardManager boardScripts = boardManager.GetComponent<BoardManager> ();
-
-		Player currentPlayer = boardScripts.getCurrentPlayer ();
+		Player currentPlayer = BoardManagerData.getCurrentPlayer ();
 
 		currentPlayer.decrementShields (2);
 	}

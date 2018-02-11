@@ -13,9 +13,7 @@ public class CourtCalledToCamelot : Event {
 	//Event description: All Allies in play must be discarded.
 	//TODO; Waiting to get reference to the play section for the player
 	public override void startBehaviour() {
-		GameObject boardManager = GameObject.Find("BoardManager");
-		BoardManager boardScripts = boardManager.GetComponent<BoardManager> ();
-		List<Player> allPlayers = boardScripts.getPlayers();
+		List<Player> allPlayers = BoardManagerData.getPlayers();
 
 		foreach (Player player in allPlayers) {
 			

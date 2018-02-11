@@ -13,8 +13,6 @@ public class ChivalrousDeedTest {
 
 		chivalrousDeed.startBehaviour ();
 
-		chivalrousDeed.runEvent ();
-
 		//need to implement some sort of test case to test out processEvent function
 		//Assert.IsTrue (false);
 	}
