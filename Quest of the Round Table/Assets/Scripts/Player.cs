@@ -76,6 +76,11 @@ public class Player
 		rank = rank.upgrade ();
 	}
 
+	public bool acceptQuest(){
+		//prompt user if they want to sponsor quest
+		return true;
+	}
+
 	public string toString() {
 		string toString = this.name + " (" + (isAI ? "AI" : "human") + "): ";
 		foreach (Card card in hand) {
