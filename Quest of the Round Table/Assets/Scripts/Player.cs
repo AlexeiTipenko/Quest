@@ -31,8 +31,15 @@ public class Player
 	}
 
 	private void checkForRankUp() {
-		if (numShields >= rank.getShieldsToProgress()) {
-			rank = rank.upgrade ();
+		if (numShields == rank.getShieldsToProgress ()) {
+			numShields = 0;
+			upgradeRank ();
+			//numShields = numShields - rank.getShieldsToProgress ();
+			Debug.Log ("Rank is now: " + getRank ());
+		} else if (numShields > rank.getShieldsToProgress ()) {
+			numShields -= rank.getShieldsToProgress ();
+			upgradeRank ();
+			Debug.Log ("Rank is now: " + getRank ());
 		}
 	}
 
@@ -55,12 +62,25 @@ public class Player
 	}
 
 	public void incrementShields(int numShields) {
-		this.numShields = numShields;
+		this.numShields += numShields;
 		checkForRankUp ();
 	}
 
 	public void decrementShields(int numShields) {
-		this.numShields = numShields;
+		if (this.numShields-numShields < 0) {
+			this.numShields = 0;
+		} else {
+			this.numShields -= numShields;
+		}
+	}
+
+	public void upgradeRank(){
+		rank = rank.upgrade ();
+	}
+
+	public bool acceptQuest(){
+		//prompt user if they want to sponsor quest
+		return true;
 	}
 
 	public string toString() {

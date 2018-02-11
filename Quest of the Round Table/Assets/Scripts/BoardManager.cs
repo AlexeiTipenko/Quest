@@ -11,20 +11,42 @@ public static class BoardManager : MonoBehaviour {
 	static DiscardDeck adventureDiscard, storyDiscard;
 	int playerTurn;
 
-	// Use this for initialization
-	static void Start () {
+
+	void Start () {
 		print ("Board manager started");
 	}
-	
-	// Update is called once per frame
-	static void Update () {
-		
+
+	void Update () {
+		if (Input.GetKeyUp ("r")) {
+			Debug.Log ("Current player is: " + players [playerTurn].getName ());
+			players [playerTurn].upgradeRank ();
+			Debug.Log ("After upgrading rank: " + players [playerTurn].getRank ());
+		} else if (Input.GetKeyUp ("s")) {
+			Debug.Log ("Player now has : " + players [playerTurn].getNumShields () + " shields");
+			players [playerTurn].incrementShields (3);
+			Debug.Log ("Player now has : " + players [playerTurn].getNumShields () + " after incremented shields");
+		} else if (Input.GetKeyUp ("p")) {
+			Debug.Log ("Drawing Prosperity throughout the kingdom into current players hand");
+			ProsperityThroughoutTheRealm prospCard = new ProsperityThroughoutTheRealm ();
+			players [playerTurn].getHand ().Add (prospCard);
+			foreach (Card card in players[playerTurn].getHand()) {
+				Debug.Log (card.getCardName ());
+			}
+		} else if (Input.GetKeyUp ("c")) {
+			Debug.Log ("Drawing Chivalrous Deeds into current players hand");
+			ChivalrousDeed chivCard = new ChivalrousDeed ();
+			players [playerTurn].getHand ().Add (chivCard);
+			Debug.Log ("Listing current players hand");
+			foreach (Card card in players[playerTurn].getHand()) {
+				Debug.Log (card.getCardName ());
+			}
+		}
 	}
 
 	public static void initGame (List<Player> players) {
 		print ("Received playersList");
 		this.players = players;
-		foreach (Player player in players) {
+		foreach (Player player in this.players) {
 			print (player.toString ());
 		}
 
@@ -73,7 +95,7 @@ public static class BoardManager : MonoBehaviour {
 			//Code here
 
 			//Act on the story card
-			storyCard.startBehaviour ();
+			storyCard.startBehaviour();
 
 			//End of turn, move to next player
 			playerTurn = (playerTurn + 1) % players.Count;
@@ -88,4 +110,5 @@ public static class BoardManager : MonoBehaviour {
 		}
 		return false;
 	}
+
 }
