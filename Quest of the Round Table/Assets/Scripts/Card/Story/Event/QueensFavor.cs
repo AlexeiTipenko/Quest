@@ -10,7 +10,29 @@ public class QueensFavor : Event {
 
 	}
 		
-	public override void processEvent() {
+	//Event description: The lowest ranked player(s) immediately receives 2 Adventure Cards.
+	public override void startBehaviour() {
+		GameObject boardManager = GameObject.Find("BoardManager");
+		BoardManager boardScripts = boardManager.GetComponent<BoardManager> ();
+		List<Player> allPlayers = boardScripts.getPlayers();
 
+		List<Player> lowestRankPlayers = new List<Player>();
+
+		//populate a list of players with the lowest rank
+		foreach (Player player in allPlayers) {
+			if (lowestRankPlayers.Count == 0) {
+				lowestRankPlayers.Add (player);
+			} else if (player.getRank ().getBattlePoints() < lowestRankPlayers [0].getRank ().getBattlePoints()) {
+				lowestRankPlayers.Clear ();
+				lowestRankPlayers.Add (player);
+			} else if (player.getRank ().getBattlePoints() == lowestRankPlayers [0].getRank ().getBattlePoints()) {
+				lowestRankPlayers.Add (player);
+			}
+		}
+
+		//Award 2 Adventure cards
+		foreach (Player player in lowestRankPlayers) {
+			boardScripts.dealCardsToPlayer (player, 2);
+		}
 	}
 }

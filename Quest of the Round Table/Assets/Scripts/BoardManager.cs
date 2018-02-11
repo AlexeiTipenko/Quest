@@ -3,25 +3,25 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class BoardManager : MonoBehaviour {
+public static class BoardManager : MonoBehaviour {
 
-	List<Player> players;
-	AdventureDeck adventureDeck;
-	StoryDeck storyDeck;
-	DiscardDeck adventureDiscard, storyDiscard;
+	static List<Player> players;
+	static AdventureDeck adventureDeck;
+	static StoryDeck storyDeck;
+	static DiscardDeck adventureDiscard, storyDiscard;
 	int playerTurn;
 
 	// Use this for initialization
-	void Start () {
+	static void Start () {
 		print ("Board manager started");
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	static void Update () {
 		
 	}
 
-	public void initGame (List<Player> players) {
+	public static void initGame (List<Player> players) {
 		print ("Received playersList");
 		this.players = players;
 		foreach (Player player in players) {
@@ -34,7 +34,7 @@ public class BoardManager : MonoBehaviour {
 		storyDiscard = new DiscardDeck ();
 
 		foreach (Player player in players) {
-			dealCardsToPlayer (player, adventureDeck, 12);
+			dealCardsToPlayer (player, 12);
 			print (player.getName ());
 			foreach (Card card in player.getHand()) {
 				print (card.toString ());
@@ -44,19 +44,27 @@ public class BoardManager : MonoBehaviour {
 		playerTurn = 0;
 	}
 
-	private void dealCardsToPlayer(Player player, AdventureDeck sourceDeck, int numCardsToDeal) {
+	public static List<Player> getPlayers() {
+		return players;
+	}
+		
+	public static Player getCurrentPlayer() {
+		return players [playerTurn];
+	}
+
+	public static void dealCardsToPlayer(Player player, int numCardsToDeal) {
 		List<Card> cardsToDeal = new List<Card> ();
 		for (int i = 0; i < numCardsToDeal; i++) {
-			cardsToDeal.Add (sourceDeck.drawCard ());
-			if (sourceDeck.getSize () <= 0) {
-				sourceDeck = new AdventureDeck (adventureDiscard);
+			cardsToDeal.Add (adventureDeck.drawCard ());
+			if (adventureDeck.getSize () <= 0) {
+				adventureDeck = new AdventureDeck (adventureDiscard);
 				adventureDiscard.empty ();
 			}
 		}
 		player.dealCards (cardsToDeal);
 	}
 
-	public void gameLoop() {
+	public static void gameLoop() {
 		while (!gameOver ()) {
 			//Draw story card from the deck
 			Card storyCard = storyDeck.drawCard ();
@@ -72,7 +80,7 @@ public class BoardManager : MonoBehaviour {
 		}
 	}
 
-	private bool gameOver() {
+	private static bool gameOver() {
 		foreach (Player player in players) {
 			if (player.getRank ().getCardName () == "Knight of the Round Table") {
 				return true;

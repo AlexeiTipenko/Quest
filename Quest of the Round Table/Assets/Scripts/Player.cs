@@ -11,7 +11,6 @@ public class Player
 	private List<Card> hand;
 	private bool isAI;
 
-
 	public Player(string name, bool isAI) {
 		this.name = name;
 		this.isAI = isAI;
@@ -36,6 +35,7 @@ public class Player
 			rank = rank.upgrade ();
 		}
 	}
+
 
 
 	public string getName() {
