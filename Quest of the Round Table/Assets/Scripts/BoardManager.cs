@@ -17,17 +17,29 @@ public class BoardManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if(Input.GetKeyUp("r")){
-			//Debug.Log ("Listening");
-			Debug.Log("Current player is: " + players [playerTurn].getName ());
+		if (Input.GetKeyUp ("r")) {
+			Debug.Log ("Current player is: " + players [playerTurn].getName ());
 			players [playerTurn].upgradeRank ();
-			Debug.Log("After upgrading rank: " + players [playerTurn].getRank ());
-		}
-		else if (Input.GetKeyUp("s")){
-			//Debug.Log ("Listening");
-			Debug.Log("Player now has : " + players [playerTurn].getNumShields () + " shields");
-			players [playerTurn].incrementShields(3);
-			Debug.Log("Player now has : " + players [playerTurn].getNumShields () + " after incremented shields");
+			Debug.Log ("After upgrading rank: " + players [playerTurn].getRank ());
+		} else if (Input.GetKeyUp ("s")) {
+			Debug.Log ("Player now has : " + players [playerTurn].getNumShields () + " shields");
+			players [playerTurn].incrementShields (3);
+			Debug.Log ("Player now has : " + players [playerTurn].getNumShields () + " after incremented shields");
+		} else if (Input.GetKeyUp ("p")) {
+			Debug.Log ("Drawing Prosperity throughout the kingdom into current players hand");
+			ProsperityThroughoutTheRealm prospCard = new ProsperityThroughoutTheRealm ();
+			players [playerTurn].getHand ().Add (prospCard);
+			foreach (Card card in players[playerTurn].getHand()) {
+				Debug.Log (card.getCardName ());
+			}
+		} else if (Input.GetKeyUp ("c")) {
+			Debug.Log ("Drawing Chivalrous Deeds into current players hand");
+			ChivalrousDeed chivCard = new ChivalrousDeed ();
+			players [playerTurn].getHand ().Add (chivCard);
+			Debug.Log ("Listing current players hand");
+			foreach (Card card in players[playerTurn].getHand()) {
+				Debug.Log (card.getCardName ());
+			}
 		}
 	}
 
