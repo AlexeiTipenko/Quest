@@ -72,7 +72,7 @@ public class BoardManager : MonoBehaviour {
 			//Code here
 
 			//Act on the story card
-			storyCard.startBehaviour ();
+			storyCard.startBehaviour();
 
 			//End of turn, move to next player
 			playerTurn = (playerTurn + 1) % players.Count;
