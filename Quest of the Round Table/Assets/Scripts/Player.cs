@@ -32,8 +32,13 @@ public class Player
 	}
 
 	private void checkForRankUp() {
-		if (numShields >= rank.getShieldsToProgress()) {
+		if (numShields == rank.getShieldsToProgress ()) {
 			upgradeRank ();
+			//numShields = numShields - rank.getShieldsToProgress ();
+			Debug.Log ("Rank is now: " + getRank ());
+		} else if (numShields > rank.getShieldsToProgress ()) {
+			upgradeRank ();
+			numShields -= rank.getShieldsToProgress ();
 		}
 	}
 
@@ -55,12 +60,16 @@ public class Player
 	}
 
 	public void incrementShields(int numShields) {
-		this.numShields = numShields;
+		this.numShields += numShields;
 		checkForRankUp ();
 	}
 
 	public void decrementShields(int numShields) {
-		this.numShields = numShields;
+		if (this.numShields-numShields < 0) {
+			this.numShields = 0;
+		} else {
+			this.numShields -= numShields;
+		}
 	}
 
 	public void upgradeRank(){
