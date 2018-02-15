@@ -74,8 +74,9 @@ public class Player
 		}
 	}
 
-	public void upgradeRank(){
+	public Player upgradeRank(){
 		rank = rank.upgrade ();
+		return this; //returns the player object for cascading for testing
 	}
 
 	public bool acceptQuest(){

@@ -2,18 +2,26 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public static class BoardManagerData
+public class BoardManagerMediator
 {
-	static BoardManager boardManager;
-	static List<Player> players;
-	static AdventureDeck adventureDeck;
-	static StoryDeck storyDeck;
-	static DiscardDeck adventureDiscard, storyDiscard;
-	static int playerTurn;
+	static BoardManagerMediator instance;
+	BoardManager boardManager;
+	List<Player> players;
+	AdventureDeck adventureDeck;
+	StoryDeck storyDeck;
+	DiscardDeck adventureDiscard, storyDiscard;
+	int playerTurn;
 
-	public static void initGame (List<Player> players) {
+	public static BoardManagerMediator getInstance() {
+		if (instance == null) {
+			instance = new BoardManagerMediator ();
+		}
+		return instance;
+	}
+
+	public void initGame (List<Player> players) {
 		Debug.Log ("Received playersList");
-		BoardManagerData.players = players;
+		this.players = players;
 		foreach (Player player in players) {
 			Debug.Log (player.toString ());
 		}
@@ -34,15 +42,15 @@ public static class BoardManagerData
 		playerTurn = 0;
 	}
 
-	public static List<Player> getPlayers() {
+	public List<Player> getPlayers() {
 		return players;
 	}
 
-	public static Player getCurrentPlayer() {
+	public Player getCurrentPlayer() {
 		return players [playerTurn];
 	}
 
-	public static void dealCardsToPlayer(Player player, int numCardsToDeal) {
+	public void dealCardsToPlayer(Player player, int numCardsToDeal) {
 		List<Card> cardsToDeal = new List<Card> ();
 		for (int i = 0; i < numCardsToDeal; i++) {
 			cardsToDeal.Add (adventureDeck.drawCard ());
@@ -54,7 +62,7 @@ public static class BoardManagerData
 		player.dealCards (cardsToDeal);
 	}
 
-	public static void gameLoop() {
+	public void gameLoop() {
 		while (!gameOver ()) {
 			//Draw story card from the deck
 			Card storyCard = storyDeck.drawCard ();
@@ -70,7 +78,7 @@ public static class BoardManagerData
 		}
 	}
 
-	private static bool gameOver() {
+	private bool gameOver() {
 		foreach (Player player in players) {
 			if (player.getRank ().getCardName () == "Knight of the Round Table") {
 				return true;

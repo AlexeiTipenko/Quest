@@ -12,10 +12,10 @@ public class ProsperityThroughoutTheRealm : Event {
 
 	//Event description: All players may immediately draw 2 Adventure Cards. 
 	public override void startBehaviour() {
-		List<Player> allPlayers = BoardManagerData.getPlayers();
+		List<Player> allPlayers = BoardManagerMediator.getInstance().getPlayers();
 
 		foreach (Player player in allPlayers) {
-			BoardManagerData.dealCardsToPlayer (player, 2);
+			BoardManagerMediator.getInstance().dealCardsToPlayer (player, 2);
 		}
 	}
 }

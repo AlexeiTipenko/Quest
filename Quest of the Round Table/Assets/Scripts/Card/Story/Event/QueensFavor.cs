@@ -12,7 +12,7 @@ public class QueensFavor : Event {
 		
 	//Event description: The lowest ranked player(s) immediately receives 2 Adventure Cards.
 	public override void startBehaviour() {
-		List<Player> allPlayers = BoardManagerData.getPlayers();
+		List<Player> allPlayers = BoardManagerMediator.getInstance().getPlayers();
 
 		List<Player> lowestRankPlayers = new List<Player>();
 
@@ -30,7 +30,7 @@ public class QueensFavor : Event {
 
 		//Award 2 Adventure cards
 		foreach (Player player in lowestRankPlayers) {
-			BoardManagerData.dealCardsToPlayer (player, 2);
+			BoardManagerMediator.getInstance().dealCardsToPlayer (player, 2);
 		}
 	}
 }

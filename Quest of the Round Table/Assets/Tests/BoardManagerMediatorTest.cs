@@ -13,7 +13,7 @@ public class BoardManagerDataTest {
 		playerList.Add(new Player("Julie", false));
 		playerList.Add(new Player("Jimmy", false));
 		playerList.Add(new Player("Jesse", false));
-		BoardManagerData.initGame (playerList);
+		BoardManagerMediator.getInstance().initGame (playerList);
 		foreach (Player player in playerList) {
 			Debug.Log (player.toString ());
 			Assert.AreEqual (player.getHand ().Count, 12);

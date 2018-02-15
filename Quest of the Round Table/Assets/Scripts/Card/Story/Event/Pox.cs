@@ -12,9 +12,9 @@ public class Pox : Event {
 		
 	//Event description: All players except the player drawing this card lose 1 shield.
 	public override void startBehaviour() {
-		List<Player> allPlayers = BoardManagerData.getPlayers();
+		List<Player> allPlayers = BoardManagerMediator.getInstance().getPlayers();
 
-		Player currentPlayer = BoardManagerData.getCurrentPlayer ();
+		Player currentPlayer = BoardManagerMediator.getInstance().getCurrentPlayer ();
 
 		foreach (Player player in allPlayers) {
 			if (player != currentPlayer) {

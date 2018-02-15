@@ -12,7 +12,7 @@ public class Plague : Event {
 
 	//Event description: Drawer loses 2 shields if possible.
 	public override void startBehaviour() {
-		Player currentPlayer = BoardManagerData.getCurrentPlayer ();
+		Player currentPlayer = BoardManagerMediator.getInstance().getCurrentPlayer ();
 
 		currentPlayer.decrementShields (2);
 	}

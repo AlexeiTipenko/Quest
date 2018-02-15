@@ -25,7 +25,7 @@ public class GameManager : MonoBehaviour {
 			print (player.toString ());
 		}
 
-		BoardManagerData.initGame (ButtonManager.playerList);
+		BoardManagerMediator.getInstance().initGame (ButtonManager.playerList);
 		//BoardManagerData.gameLoop (); // uncomment this when the game loop is implemented
 								  // in such a way that we don't get into an immediate infinite loop
 	}
