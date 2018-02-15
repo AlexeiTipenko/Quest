@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using UnityEditor;
+using UnityEngine.UI;
 
 public class BoardManager : MonoBehaviour {
 
@@ -11,8 +13,34 @@ public class BoardManager : MonoBehaviour {
 	DiscardDeck adventureDiscard, storyDiscard;
 	int playerTurn;
 
+	public GameObject cardPrefab;
+	public GameObject board;
+	public List<CardUI> cards = new List<CardUI>();
+
 	void Start () {
 		print ("Board manager started");
+
+		//Adding prefab to hand area
+		/*
+		print ("Loading prefab...");
+		GameObject cardPrefab = AssetDatabase.LoadAssetAtPath("Assets/Prefabs/Allies/Merlin.prefab", typeof(GameObject)) as GameObject;
+
+		var handArea = GameObject.Find("HandArea").transform;
+		if (handArea != null) {
+			var card = GameObject.Instantiate (cardPrefab);
+
+			//Add Image Component to it(This will add RectTransform as-well)
+			card.AddComponent<Image>();
+
+			//Center Image to screen
+			card.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
+
+			card.transform.SetParent (handArea.transform, false);
+			print ("Prefab should be in hand.");
+		}
+		else
+			print ("Prefab has not been found.");
+			*/
 	}
 	
 	// Update is called once per frame
@@ -41,6 +69,7 @@ public class BoardManager : MonoBehaviour {
 		storyDiscard = new DiscardDeck ();
 
 		foreach (Player player in players) {
+			print (".......");
 			dealCardsToPlayer (player, adventureDeck, 12);
 			print (player.getName ());
 			foreach (Card card in player.getHand()) {
@@ -50,11 +79,32 @@ public class BoardManager : MonoBehaviour {
 
 		playerTurn = 0;
 	}
+		
 
 	private void dealCardsToPlayer(Player player, AdventureDeck sourceDeck, int numCardsToDeal) {
+
+		print ("Entered private method...");
+
+		var handArea = GameObject.Find("HandArea").transform;
 		List<Card> cardsToDeal = new List<Card> ();
+
 		for (int i = 0; i < numCardsToDeal; i++) {
-			cardsToDeal.Add (sourceDeck.drawCard ());
+
+			Card card = sourceDeck.drawCard ();
+			cardsToDeal.Add(card);
+
+			print ("Loading prefab...");
+			GameObject cardPrefab = AssetDatabase.LoadAssetAtPath("Assets/Prefabs/Allies/KingArthur.prefab",
+				typeof(GameObject)) as GameObject;
+			
+			var cardObj = GameObject.Instantiate(cardPrefab);
+			cardObj.AddComponent<Image>();
+			cardObj.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
+			cardObj.AddComponent<CardUI>();
+			cardObj.GetComponent<CardUI> ().CreateCard(card.getCardName());
+			cardObj.transform.SetParent (handArea.transform, false);
+			print ("Card should be in hand.");
+
 			if (sourceDeck.getSize () <= 0) {
 				sourceDeck = new AdventureDeck (adventureDiscard);
 				adventureDiscard.empty ();

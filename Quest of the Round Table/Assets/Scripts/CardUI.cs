@@ -4,13 +4,21 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-public class CardDraggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler,
+public class CardUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler,
 							IPointerEnterHandler, IPointerExitHandler {
 
 	public Transform parentToReturnTo = null;
 	public Transform placeholderParent = null;
 
 	public GameObject placeholder = null;
+
+
+	public void CreateCard(string cardName)
+	{
+		//this.gameObject.renderer.material.mainTexture = Resources.Load ("Graphics/" + cardName) as Texture2D;
+		//GetComponent<Renderer>().material.mainTexture = Resources.Load ("Resources/cards" + cardName) as Texture2D;
+		this.gameObject.GetComponent<Image>().sprite = Resources.Load ("Assets/Resources/cards/KingArthur.png") as Sprite;
+	}
 
 
 	public void OnPointerEnter(PointerEventData eventData) {
