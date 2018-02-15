@@ -7,7 +7,8 @@ public abstract class Quest : Story {
 	protected int numStages;
 	private enum dominantFoe {};
 	private List<Stage> stages;
-	Player sponsor;
+	Player sponsor, playerToPrompt;
+	List<Player> playersParticipating, allPlayers;
 
 	public Quest (string cardName, int numStages/*, enum dominantFoe*/) : base (cardName) {
 		this.numStages = numStages;
@@ -22,31 +23,58 @@ public abstract class Quest : Story {
 		Debug.Log ("Quest behaviour started");
 
 		sponsor = owner;
-		checkForValidSponsor ();
-
-		BoardManagerData.getInstance ().promptQuest (sponsor);
+		allPlayers = BoardManagerMediator.getInstance ().getPlayers ();
+		promptSponsorQuest ();
 	}
 
-	public void sponsorQuest () {
-
+	private void promptSponsorQuest() {
+		if (isValidSponsor ()) {
+			BoardManagerMediator.getInstance ().promptSponsorQuest (sponsor);
+		} else {
+			incrementSponsor ();
+		}
 	}
 
-	private bool checkForValidSponsor () {
+	public void promptSponsorQuestResponse (bool sponsorAccepted) {
+		if (sponsorAccepted) {
+			BoardManagerMediator.getInstance ().setupQuest (sponsor);
+		} else {
+			incrementSponsor ();
+		}
+	}
+
+	private void incrementSponsor() {
+		sponsor = BoardManagerMediator.getInstance ().getNextPlayer (sponsor);
+		if (sponsor == owner) {
+//				discard();
+		} else {
+			promptSponsorQuest ();
+		}
+	}
+
+	public void setupQuestComplete() {
+		playerToPrompt = BoardManagerMediator.getInstance ().getNextPlayer (sponsor);
+		BoardManagerMediator.getInstance ().promptAcceptQuest (playerToPrompt);
+	}
+
+	public void promptAcceptQuestResponse(bool questAccepted) {
+		if (questAccepted) {
+			playersParticipating.Add (playerToPrompt);
+		}
+		playerToPrompt = BoardManagerMediator.getInstance ().getNextPlayer (playerToPrompt);
+	}
+
+	private bool isValidSponsor () {
 		
 		//validate if current player has needed cards.
 		List<Card> hand = sponsor.getHand();
 
 		int foeCount = 0;
 		foreach (Card card in hand) {
-			if (typeof(Card).IsSubclassOf(typeof(Foe))) {
+			if (card.GetType().IsSubclassOf(typeof(Foe))) {
 				foeCount++;
 			}
 		}
-
-		if (foeCount >= numStages)
-			return true;
-		
-		else
-			return false;
+		return (foeCount >= numStages);
 	}
 }

@@ -103,12 +103,17 @@ public class BoardManager : MonoBehaviour {
 		return players [playerTurn];
 	}
 
-	public int getCurrentPlayerTurn() {
-		return playerTurn;
+	public Player getNextPlayer(Player player) {
+		int index = players.FindIndex (player);
+		if (index != -1) {
+			return players [(index + 1) % players.Count];
+		}
+		return null;
 	}
 
 	public void dealCardsToPlayer(Player player, int numCardsToDeal) {
 		List<Card> cardsToDeal = new List<Card> ();
+
 		for (int i = 0; i < numCardsToDeal; i++) {
 			cardsToDeal.Add (adventureDeck.drawCard ());
 			if (adventureDeck.getSize () <= 0) {
