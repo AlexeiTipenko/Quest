@@ -10,4 +10,10 @@ public class QuestTest {
 		//find a way to test abstract classes
 		//Assert.IsTrue(false);	
 	}
+
+	[Test]
+	public void sponsorValid() {
+		
+		//Assert.IsTrue(false);	
+	}
 }

@@ -17,30 +17,49 @@ public abstract class Quest : Story {
 		return numStages;
 	}
 
-	protected void startBehaviour(){
+	public override void startBehaviour(){
 
-		// 1) prompt user if they want to sponsor quest.
+		GameObject boardManager = GameObject.Find("BoardManager");
+		BoardManager boardScripts = boardManager.GetComponent<BoardManager> ();
+		List<Player> allPlayers = boardScripts.getPlayers();
 
-		if (owner.acceptQuest ())
-			validateSponsor ();
 
-		// 2) if yes, validate that they have the required num of foes
-		//		else, loop through the rest of the players
+		Debug.Log ("Quest behaviour started");
 
-		// 3) Player places desired foes onto board
-		// 4) Player clicks "Ready button"
-		// 5) card validation
+		foreach (Player player in allPlayers) {
+			if (player.acceptQuest ()) {		
+				if (sponsorValid (player)) {
+
+					// game continues
+					// 3) Player places desired foes onto board???
+					// 4) Player clicks "Ready button"
+					// 5) card validation
+
+				}
+			} 
+		}
+			
 
 		// 6) loop through players to see if they pass each round (with only their current rank points)
 
-
+		 
 	}
 
-	private bool validateSponsor(){
+	private bool sponsorValid(Player player){
 		
 		//validate if current player has needed cards.
-		List<Card> hand = owner.getHand();
-		return true;
-	}
+		List<Card> hand = player.getHand();
+
+		int foeCount = 0;
+		foreach (Card card in hand) {
+			//if (card.GetType().subclass == Quest)
+			//foeCount++;
+		}
+
+		if (foeCount >= numStages)
+			return true;
 		
+		else
+			return false;
+	}
 }

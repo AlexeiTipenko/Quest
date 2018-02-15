@@ -1,7 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 using System;
+using UnityEditor;
+using UnityEngine.UI;
 
 public class BoardManager : MonoBehaviour {
 
@@ -11,27 +16,42 @@ public class BoardManager : MonoBehaviour {
 	DiscardDeck adventureDiscard, storyDiscard;
 	int playerTurn;
 
+	// Use this for initialization
 	void Start () {
 		print ("Board manager started");
+
+		//Adding prefab to hand area
+		print ("Loading prefab...");
+		GameObject cardPrefab = AssetDatabase.LoadAssetAtPath("Assets/Prefabs/Allies/Merlin.prefab", typeof(GameObject)) as GameObject;
+
+		var handArea = GameObject.Find("HandArea").transform;
+		if (handArea != null) {
+			var card = GameObject.Instantiate (cardPrefab);
+
+			//Add Image Component to it(This will add RectTransform as-well)
+			card.AddComponent<Image>();
+
+			//Center Image to screen
+			card.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
+
+			card.transform.SetParent (handArea.transform, false);
+			print ("Prefab should be in hand.");
+		}
+		else
+			print ("Prefab has not been found.");
+
+
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
-		if(Input.GetKeyDown(KeyCode.R)){
-			//Debug.Log ("Listening");
-			Debug.Log("Current player is: " + players [playerTurn].getName ());
-			players [playerTurn].upgradeRank ();
-			Debug.Log("After upgrading rank: " + players [playerTurn].getRank ());
-		}
-		else if (Input.GetKeyDown(KeyCode.T)){
-			//Debug.Log ("Listening");
-		}
+		
 	}
 
 	public void initGame (List<Player> players) {
 		print ("Received playersList");
 		this.players = players;
-		foreach (Player player in this.players) {
+		foreach (Player player in players) {
 			print (player.toString ());
 		}
 
@@ -41,9 +61,10 @@ public class BoardManager : MonoBehaviour {
 		storyDiscard = new DiscardDeck ();
 
 		foreach (Player player in players) {
-			dealCardsToPlayer (player, adventureDeck, 12);
+			dealCardsToPlayer (player, 12);
 			print (player.getName ());
 			foreach (Card card in player.getHand()) {
+				//add cards to hand area
 				print (card.toString ());
 			}
 		}
@@ -51,12 +72,20 @@ public class BoardManager : MonoBehaviour {
 		playerTurn = 0;
 	}
 
-	private void dealCardsToPlayer(Player player, AdventureDeck sourceDeck, int numCardsToDeal) {
+	public List<Player> getPlayers() {
+		return this.players;
+	}
+
+	public Player getCurrentPlayer() {
+		return players [playerTurn];
+	}
+
+	public void dealCardsToPlayer(Player player, int numCardsToDeal) {
 		List<Card> cardsToDeal = new List<Card> ();
 		for (int i = 0; i < numCardsToDeal; i++) {
-			cardsToDeal.Add (sourceDeck.drawCard ());
-			if (sourceDeck.getSize () <= 0) {
-				sourceDeck = new AdventureDeck (adventureDiscard);
+			cardsToDeal.Add (adventureDeck.drawCard ());
+			if (adventureDeck.getSize () <= 0) {
+				adventureDeck = new AdventureDeck (adventureDiscard);
 				adventureDiscard.empty ();
 			}
 		}
@@ -65,14 +94,15 @@ public class BoardManager : MonoBehaviour {
 
 	public void gameLoop() {
 		while (!gameOver ()) {
+			
 			//Draw story card from the deck
-			Card storyCard = storyDeck.drawCard ();
+			Card storyCard = storyDeck.drawCard();
+	
 
-			//Add the story card visually to the play area (not sure how to do this, Alexei can you take a look?)
-			//Code here
+			// need to add cards to hand area here
 
 			//Act on the story card
-			storyCard.startBehaviour();
+			storyCard.startBehaviour ();
 
 			//End of turn, move to next player
 			playerTurn = (playerTurn + 1) % players.Count;
@@ -87,5 +117,4 @@ public class BoardManager : MonoBehaviour {
 		}
 		return false;
 	}
-
 }
