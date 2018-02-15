@@ -11,7 +11,6 @@ public class Player
 	private List<Card> hand;
 	private bool isAI;
 
-
 	public Player(string name, bool isAI) {
 		this.name = name;
 		this.isAI = isAI;
@@ -45,6 +44,7 @@ public class Player
 	}
 
 
+
 	public string getName() {
 		return this.name;
 	}
@@ -74,8 +74,9 @@ public class Player
 		}
 	}
 
-	public void upgradeRank(){
+	public Player upgradeRank(){
 		rank = rank.upgrade ();
+		return this; //returns the player object for cascading for testing
 	}
 
 	public bool acceptQuest(){

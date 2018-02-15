@@ -9,8 +9,11 @@ public class Plague : Event {
 	public Plague () : base ("Plague") {
 
 	}
-		
-	public override void processEvent() {
 
+	//Event description: Drawer loses 2 shields if possible.
+	public override void startBehaviour() {
+		Player currentPlayer = BoardManagerMediator.getInstance().getCurrentPlayer ();
+
+		currentPlayer.decrementShields (2);
 	}
 }

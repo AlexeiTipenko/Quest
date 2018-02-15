@@ -8,7 +8,6 @@ public abstract class Event : Story {
 
 	}
 
-	public virtual void processEvent() {
+	public override void startBehaviour () {}
 
-	}
 }

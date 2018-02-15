@@ -10,7 +10,16 @@ public class Pox : Event {
 
 	}
 		
-	public override void processEvent() {
+	//Event description: All players except the player drawing this card lose 1 shield.
+	public override void startBehaviour() {
+		List<Player> allPlayers = BoardManagerMediator.getInstance().getPlayers();
 
+		Player currentPlayer = BoardManagerMediator.getInstance().getCurrentPlayer ();
+
+		foreach (Player player in allPlayers) {
+			if (player != currentPlayer) {
+				player.decrementShields (1);
+			}
+		}
 	}
 }

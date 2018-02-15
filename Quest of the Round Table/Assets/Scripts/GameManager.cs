@@ -21,15 +21,12 @@ public class GameManager : MonoBehaviour {
 
 		print ("Passing playerList to BoardManager");
 
-		GameObject boardManager = GameObject.Find("BoardManager");
-		BoardManager boardScripts = boardManager.GetComponent<BoardManager> ();
-
 		foreach (Player player in ButtonManager.playerList) {
 			print (player.toString ());
 		}
 
-		boardScripts.initGame (ButtonManager.playerList);
-//		boardScripts.gameLoop (); // uncomment this when the game loop is implemented
+		BoardManagerMediator.getInstance().initGame (ButtonManager.playerList);
+		//BoardManagerData.gameLoop (); // uncomment this when the game loop is implemented
 								  // in such a way that we don't get into an immediate infinite loop
 	}
 	
