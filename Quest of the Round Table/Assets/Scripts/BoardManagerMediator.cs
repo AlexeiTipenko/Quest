@@ -99,7 +99,7 @@ public class BoardManagerMediator
 			players [playerTurn].incrementShields (3);
 			Debug.Log ("Player now has : " + players [playerTurn].getNumShields () + " after incremented shields");
 			break;
-		case "propsperity":
+		case "prosperity":
 			Debug.Log ("Drawing Prosperity throughout the kingdom into current players hand");
 			ProsperityThroughoutTheRealm prospCard = new ProsperityThroughoutTheRealm ();
 			players [playerTurn].getHand ().Add (prospCard);
