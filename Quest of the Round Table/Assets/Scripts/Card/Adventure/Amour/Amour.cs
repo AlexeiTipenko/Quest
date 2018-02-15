@@ -12,11 +12,11 @@ public class Amour : Adventure {
 		bidPoints = 1;
 	}
 
-	public int getBattlePoints() {
+	public override int getBattlePoints() {
 		return battlePoints;
 	}
 
-	public int getBidPoints() {
+	public override int getBidPoints() {
 		return bidPoints;
 	}
 

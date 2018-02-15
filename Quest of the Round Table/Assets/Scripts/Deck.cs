@@ -44,7 +44,7 @@ public abstract class Deck {
 	public Card drawCard () {
 		Card card = cards [0];
 		cards.RemoveAt (0);
-		card.setOwner (BoardManagerData.getInstance ().getCurrentPlayer ());
+		card.setOwner (BoardManagerMediator.getInstance ().getCurrentPlayer ());
 		return card;
 	}
 

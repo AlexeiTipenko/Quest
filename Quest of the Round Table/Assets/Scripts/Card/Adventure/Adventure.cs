@@ -8,4 +8,12 @@ public abstract class Adventure : Card {
 	
 	}
 
+	public virtual int getBattlePoints() {
+		return 0;
+	}
+
+	public virtual int getBidPoints() {
+		return 0;
+	}
+
 }

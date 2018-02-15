@@ -10,7 +10,7 @@ public abstract class Weapon : Adventure {
 		this.battlePoints = battlePoints;
 	}
 
-	public int getBattlePoints() {
+	public override int getBattlePoints() {
 		return battlePoints;
 	}
 }

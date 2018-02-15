@@ -9,6 +9,7 @@ public class Player
 	private int numShields;
 	private Rank rank;
 	private List<Card> hand;
+	private PlayerPlayArea playArea;
 	private bool isAI;
 
 	public Player(string name, bool isAI) {
@@ -16,7 +17,8 @@ public class Player
 		this.isAI = isAI;
 		rank = new Squire ();
 		numShields = 0;
-		hand = new List<Card>();
+		hand = new List<Card> ();
+		playArea = new PlayerPlayArea ();
 	}
 
 	public void dealCards(List<Card> cards) {
@@ -55,6 +57,10 @@ public class Player
 
 	public List<Card> getHand() {
 		return this.hand;
+	}
+
+	public PlayerPlayArea getPlayArea () {
+		return this.playArea;
 	}
 
 	public Rank getRank() {

@@ -16,11 +16,11 @@ public abstract class Ally : Adventure {
 		this.bidPoints = bidPoints;
 	}
 
-	public virtual int getBattlePoints() {
+	public override int getBattlePoints() {
 		return battlePoints;
 	}
 
-	public virtual int getBidPoints() {
+	public override int getBidPoints() {
 		return bidPoints;
 	}
 

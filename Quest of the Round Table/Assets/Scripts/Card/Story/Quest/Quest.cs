@@ -3,14 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public abstract class Quest : Story {
+	private BoardManagerMediator board;
 
 	protected int numStages;
 	private enum dominantFoe {};
 	private List<Stage> stages;
 	Player sponsor, playerToPrompt;
-	List<Player> playersParticipating, allPlayers;
+	List<Player> participatingPlayers;
 
 	public Quest (string cardName, int numStages/*, enum dominantFoe*/) : base (cardName) {
+		board = BoardManagerMediator.getInstance ();
+
 		this.numStages = numStages;
 		/*this.dominantFoe = dominantFoe;*/
 	}
@@ -23,13 +26,12 @@ public abstract class Quest : Story {
 		Debug.Log ("Quest behaviour started");
 
 		sponsor = owner;
-		allPlayers = BoardManagerMediator.getInstance ().getPlayers ();
 		promptSponsorQuest ();
 	}
 
 	private void promptSponsorQuest() {
 		if (isValidSponsor ()) {
-			BoardManagerMediator.getInstance ().promptSponsorQuest (sponsor);
+			board.promptSponsorQuest (sponsor);
 		} else {
 			incrementSponsor ();
 		}
@@ -37,44 +39,82 @@ public abstract class Quest : Story {
 
 	public void promptSponsorQuestResponse (bool sponsorAccepted) {
 		if (sponsorAccepted) {
-			BoardManagerMediator.getInstance ().setupQuest (sponsor);
+			board.setupQuest (sponsor);
 		} else {
 			incrementSponsor ();
 		}
 	}
 
 	private void incrementSponsor() {
-		sponsor = BoardManagerMediator.getInstance ().getNextPlayer (sponsor);
+		sponsor = board.getNextPlayer (sponsor);
 		if (sponsor == owner) {
-//				discard();
+			//TODO: discard();
 		} else {
 			promptSponsorQuest ();
 		}
 	}
 
-	public void setupQuestComplete() {
-		playerToPrompt = BoardManagerMediator.getInstance ().getNextPlayer (sponsor);
-		BoardManagerMediator.getInstance ().promptAcceptQuest (playerToPrompt);
+	public void setupQuestComplete(List<Stage> stages) {
+		this.stages = stages;
+		playerToPrompt = board.getNextPlayer (sponsor);
+		board.promptAcceptQuest (playerToPrompt);
 	}
 
 	public void promptAcceptQuestResponse(bool questAccepted) {
 		if (questAccepted) {
-			playersParticipating.Add (playerToPrompt);
+			participatingPlayers.Add (playerToPrompt);
 		}
-		playerToPrompt = BoardManagerMediator.getInstance ().getNextPlayer (playerToPrompt);
+		playerToPrompt = board.getNextPlayer (playerToPrompt);
+		if (playerToPrompt != sponsor) {
+			board.promptAcceptQuest (playerToPrompt);
+		} else {
+			startQuest ();
+		}
+	}
+
+	private void startQuest() {
+		foreach (Stage stage in stages) {
+			stage.prepare ();
+		}
 	}
 
 	private bool isValidSponsor () {
-		
-		//validate if current player has needed cards.
 		List<Card> hand = sponsor.getHand();
 
-		int foeCount = 0;
+		int validCardCount = 0;
+		bool hasTest = false;
 		foreach (Card card in hand) {
-			if (card.GetType().IsSubclassOf(typeof(Foe))) {
-				foeCount++;
+			if (card.GetType ().IsSubclassOf (typeof(Foe))) {
+				validCardCount++;
+			} else if (card.GetType ().IsSubclassOf (typeof(Test))) {
+				hasTest = true;
 			}
 		}
-		return (foeCount >= numStages);
+		if (hasTest) {
+			validCardCount++;
+		}
+		return (validCardCount >= numStages);
+	}
+
+	public void removeParticipatingPlayer(Player player) {
+		if (participatingPlayers.Contains(player)) {
+			participatingPlayers.Remove (player);
+		}
+	}
+
+	public Player getSponsor() {
+		return sponsor;
+	}
+
+	public Player getNextPlayer(Player previousPlayer) {
+		int index = participatingPlayers.IndexOf (previousPlayer);
+		if (index != -1) {
+			return participatingPlayers [(index + 1) % participatingPlayers.Count];
+		}
+		return null;
+	}
+
+	public List<Player> getPlayers() {
+		return participatingPlayers;
 	}
 }

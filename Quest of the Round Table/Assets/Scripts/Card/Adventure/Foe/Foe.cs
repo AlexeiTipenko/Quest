@@ -12,7 +12,7 @@ public abstract class Foe : Adventure {
 		this.battlePoints = battlePoints;
 	}
 
-	public virtual int getBattlePoints() {
+	public override int getBattlePoints() {
 		return battlePoints;
 	}
 
