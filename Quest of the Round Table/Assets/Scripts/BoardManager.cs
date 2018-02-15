@@ -80,6 +80,10 @@ public class BoardManager : MonoBehaviour {
 		return players [playerTurn];
 	}
 
+	public int getCurrentPlayerTurn() {
+		return playerTurn;
+	}
+
 	public void dealCardsToPlayer(Player player, int numCardsToDeal) {
 		List<Card> cardsToDeal = new List<Card> ();
 		for (int i = 0; i < numCardsToDeal; i++) {

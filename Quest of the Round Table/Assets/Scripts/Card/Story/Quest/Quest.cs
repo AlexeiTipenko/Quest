@@ -7,53 +7,40 @@ public abstract class Quest : Story {
 	protected int numStages;
 	private enum dominantFoe {};
 	private List<Stage> stages;
+	Player sponsor;
 
 	public Quest (string cardName, int numStages/*, enum dominantFoe*/) : base (cardName) {
 		this.numStages = numStages;
 		/*this.dominantFoe = dominantFoe;*/
 	}
 
-	public int getShieldsWon() {
+	public int getShieldsWon () {
 		return numStages;
 	}
 
-	public override void startBehaviour(){
-
-		GameObject boardManager = GameObject.Find("BoardManager");
-		BoardManager boardScripts = boardManager.GetComponent<BoardManager> ();
-		List<Player> allPlayers = boardScripts.getPlayers();
-
-
+	public override void startBehaviour () {
 		Debug.Log ("Quest behaviour started");
 
-		foreach (Player player in allPlayers) {
-			if (player.acceptQuest ()) {		
-				if (sponsorValid (player)) {
+		sponsor = owner;
+		checkForValidSponsor ();
 
-					// game continues
-					// 3) Player places desired foes onto board???
-					// 4) Player clicks "Ready button"
-					// 5) card validation
-
-				}
-			} 
-		}
-			
-
-		// 6) loop through players to see if they pass each round (with only their current rank points)
-
-		 
+		BoardManagerData.getInstance ().promptQuest (sponsor);
 	}
 
-	private bool sponsorValid(Player player){
+	public void sponsorQuest () {
+
+	}
+
+	private bool checkForValidSponsor () {
 		
 		//validate if current player has needed cards.
-		List<Card> hand = player.getHand();
+		List<Card> hand = sponsor.getHand();
 
 		int foeCount = 0;
 		foreach (Card card in hand) {
-			//if (card.GetType().subclass == Quest)
-			//foeCount++;
+			if (typeof(Card).IsSubclassOf(typeof(Foe))) {
+				foeCount++;
+			}
 		}
 
 		if (foeCount >= numStages)
