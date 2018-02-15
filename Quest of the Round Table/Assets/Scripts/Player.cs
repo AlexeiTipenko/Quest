@@ -11,7 +11,6 @@ public class Player
 	private List<Card> hand;
 	private bool isAI;
 
-
 	public Player(string name, bool isAI) {
 		this.name = name;
 		this.isAI = isAI;
@@ -32,10 +31,18 @@ public class Player
 	}
 
 	private void checkForRankUp() {
-		if (numShields >= rank.getShieldsToProgress()) {
+		if (numShields == rank.getShieldsToProgress ()) {
+			numShields = 0;
 			upgradeRank ();
+			//numShields = numShields - rank.getShieldsToProgress ();
+			Debug.Log ("Rank is now: " + getRank ());
+		} else if (numShields > rank.getShieldsToProgress ()) {
+			numShields -= rank.getShieldsToProgress ();
+			upgradeRank ();
+			Debug.Log ("Rank is now: " + getRank ());
 		}
 	}
+
 
 
 	public string getName() {
@@ -55,16 +62,21 @@ public class Player
 	}
 
 	public void incrementShields(int numShields) {
-		this.numShields = numShields;
+		this.numShields += numShields;
 		checkForRankUp ();
 	}
 
 	public void decrementShields(int numShields) {
-		this.numShields = numShields;
+		if (this.numShields-numShields < 0) {
+			this.numShields = 0;
+		} else {
+			this.numShields -= numShields;
+		}
 	}
 
-	public void upgradeRank(){
+	public Player upgradeRank(){
 		rank = rank.upgrade ();
+		return this; //returns the player object for cascading for testing
 	}
 
 	public bool acceptQuest(){

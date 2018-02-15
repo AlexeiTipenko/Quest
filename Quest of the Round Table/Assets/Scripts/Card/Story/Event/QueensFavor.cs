@@ -10,7 +10,27 @@ public class QueensFavor : Event {
 
 	}
 		
-	public override void processEvent() {
+	//Event description: The lowest ranked player(s) immediately receives 2 Adventure Cards.
+	public override void startBehaviour() {
+		List<Player> allPlayers = BoardManagerMediator.getInstance().getPlayers();
 
+		List<Player> lowestRankPlayers = new List<Player>();
+
+		//populate a list of players with the lowest rank
+		foreach (Player player in allPlayers) {
+			if (lowestRankPlayers.Count == 0) {
+				lowestRankPlayers.Add (player);
+			} else if (player.getRank ().getBattlePoints() < lowestRankPlayers [0].getRank ().getBattlePoints()) {
+				lowestRankPlayers.Clear ();
+				lowestRankPlayers.Add (player);
+			} else if (player.getRank ().getBattlePoints() == lowestRankPlayers [0].getRank ().getBattlePoints()) {
+				lowestRankPlayers.Add (player);
+			}
+		}
+
+		//Award 2 Adventure cards
+		foreach (Player player in lowestRankPlayers) {
+			BoardManagerMediator.getInstance().dealCardsToPlayer (player, 2);
+		}
 	}
 }

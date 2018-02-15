@@ -10,7 +10,8 @@ public class KingsRecognition : Event {
 
 	}
 		
-	public override void processEvent() {
-
+	//Event description: The next player(s) to complete a Quest will receive 2 extra shields.
+	public override void startBehaviour() {
+		
 	}
 }

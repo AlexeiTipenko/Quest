@@ -9,8 +9,13 @@ public class ProsperityThroughoutTheRealm : Event {
 	public ProsperityThroughoutTheRealm () : base ("Prosperity Throughout the Realm") {
 
 	}
-		
-	public override void processEvent() {
-    	
+
+	//Event description: All players may immediately draw 2 Adventure Cards. 
+	public override void startBehaviour() {
+		List<Player> allPlayers = BoardManagerMediator.getInstance().getPlayers();
+
+		foreach (Player player in allPlayers) {
+			BoardManagerMediator.getInstance().dealCardsToPlayer (player, 2);
+		}
 	}
 }

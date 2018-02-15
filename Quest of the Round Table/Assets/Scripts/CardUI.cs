@@ -25,6 +25,9 @@ public class CardUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHa
 
 		Debug.Log ("Pointer entered card.");
 
+		transform.localScale += new Vector3(0.5F, 0.5F, 0);
+		transform.localPosition += new Vector3 (0.25F, 0.25F, 0);
+
 		//CardDraggable card = eventData.pointerDrag.GetComponent<CardDraggable>();
 
 
@@ -33,6 +36,9 @@ public class CardUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHa
 	public void OnPointerExit(PointerEventData eventData) {
 
 		Debug.Log ("Pointer exited card.");
+
+		transform.localScale -= new Vector3(0.5F, 0.5F, 0);
+		transform.localPosition -= new Vector3 (0.25F, 0.25F, 0);
 
 		//CardDraggable card = eventData.pointerDrag.GetComponent<CardDraggable>();
 
