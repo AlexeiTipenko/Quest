@@ -4,7 +4,6 @@ using UnityEngine;
 
 public abstract class Card {
 
-
 	protected Player owner;
 	protected string cardName;
 

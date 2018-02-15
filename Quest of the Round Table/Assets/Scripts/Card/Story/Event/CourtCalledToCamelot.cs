@@ -10,7 +10,13 @@ public class CourtCalledToCamelot : Event {
 
 	}
 		
-	public override void processEvent() {
+	//Event description: All Allies in play must be discarded.
+	//TODO; Waiting to get reference to the play section for the player
+	public override void startBehaviour() {
+		List<Player> allPlayers = BoardManagerMediator.getInstance().getPlayers();
 
+		foreach (Player player in allPlayers) {
+			
+		}
 	}
 }
