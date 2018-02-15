@@ -86,5 +86,37 @@ public class BoardManagerMediator
 		}
 		return false;
 	}
+
+	public void cheat(string cheatCode) {
+		switch (cheatCode) {
+		case "rankUp":
+			Debug.Log ("Current player is: " + players [playerTurn].getName ());
+			players [playerTurn].upgradeRank ();
+			Debug.Log ("After upgrading rank: " + players [playerTurn].getRank ());
+			break;
+		case "shieldsUp":
+			Debug.Log ("Player now has : " + players [playerTurn].getNumShields () + " shields");
+			players [playerTurn].incrementShields (3);
+			Debug.Log ("Player now has : " + players [playerTurn].getNumShields () + " after incremented shields");
+			break;
+		case "propsperity":
+			Debug.Log ("Drawing Prosperity throughout the kingdom into current players hand");
+			ProsperityThroughoutTheRealm prospCard = new ProsperityThroughoutTheRealm ();
+			players [playerTurn].getHand ().Add (prospCard);
+			foreach (Card card in players[playerTurn].getHand()) {
+				Debug.Log (card.getCardName ());
+			}
+			break;
+		case "chivalrous":
+			Debug.Log ("Drawing Chivalrous Deeds into current players hand");
+			ChivalrousDeed chivCard = new ChivalrousDeed ();
+			players [playerTurn].getHand ().Add (chivCard);
+			Debug.Log ("Listing current players hand");
+			foreach (Card card in players[playerTurn].getHand()) {
+				Debug.Log (card.getCardName ());
+			}
+			break;
+		}
+	}
 }
 
