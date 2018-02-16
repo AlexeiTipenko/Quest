@@ -66,13 +66,11 @@ public class Stage {
 
 	private void promptTest() {
 		if (isValidBidder ()) {
-			board.promptTest ();
+			board.promptTest (playerToPrompt, currentBid);
 		} else {
 			quest.removeParticipatingPlayer (playerToPrompt);
 			incrementBidder ();
 		}
-
-		board.promptTest (playerToPrompt, currentBid);
 	}
 
 	private bool isValidBidder() {

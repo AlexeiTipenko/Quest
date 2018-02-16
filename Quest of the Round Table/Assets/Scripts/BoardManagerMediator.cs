@@ -89,7 +89,7 @@ public class BoardManagerMediator
 		//TODO: prompt foe
 	}
 
-	public void promptTest(Player player) {
+	public void promptTest(Player player, int currentBid) {
 		//TODO: prompt test
 	}
 
