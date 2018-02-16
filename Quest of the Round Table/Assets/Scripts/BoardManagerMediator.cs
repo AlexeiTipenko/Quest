@@ -73,6 +73,10 @@ public class BoardManagerMediator
 		player.dealCards (cardsToDeal);
 	}
 
+    public void setCardInPlay(Card card) {
+        cardInPlay = (Story) card;
+    }
+
 	public void promptSponsorQuest(Player player) {
 		//TODO: prompt sponsor quest
 	}

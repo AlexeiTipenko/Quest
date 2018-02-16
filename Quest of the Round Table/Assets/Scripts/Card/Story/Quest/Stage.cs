@@ -23,15 +23,21 @@ public class Stage {
 		int battlePoints = 0;
 		if (stageCard.GetType ().IsSubclassOf (typeof(Foe))) {
 			battlePoints += ((Foe)stageCard).getBattlePoints ();
-			foreach (Weapon weapon in weapons) {
-				battlePoints += weapon.getBattlePoints ();
-			}
+            if (weapons != null) {
+                foreach (Weapon weapon in weapons) {
+                    battlePoints += weapon.getBattlePoints();
+                }
+            }
 		}
 		return battlePoints;
 	}
 
 	public int getTotalCards() {
-		return weapons.Count + 1;
+        int totalCards = 1;
+        if (weapons != null) {
+            totalCards += weapons.Count;
+        }
+        return totalCards;
 	}
 
 	public void prepare() {
