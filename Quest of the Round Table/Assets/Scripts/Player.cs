@@ -67,6 +67,15 @@ public class Player
 		return this.rank;
 	}
 
+	public int getTotalAvailableBids() {
+		int availableBids = hand.Count;
+		List<Card> playAreaCards = playArea.getCards ();
+		foreach (Card card in playAreaCards) {
+			availableBids += ((Adventure)card).getBidPoints (); //TODO: Make sure empowered bid points work (and battle points while you're at it!)
+		}
+		return availableBids;
+	}
+
 	public void incrementShields(int numShields) {
 		this.numShields += numShields;
 		checkForRankUp ();

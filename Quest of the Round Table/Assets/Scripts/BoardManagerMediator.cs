@@ -39,8 +39,6 @@ public class BoardManagerMediator
 				Debug.Log (card.toString ());
 			}
 		}
-
-		playerTurn = 0;
 	}
 
 	public List<Player> getPlayers() {
@@ -76,35 +74,45 @@ public class BoardManagerMediator
 	}
 
 	public void promptSponsorQuest(Player player) {
-
+		//TODO: prompt sponsor quest
 	}
 
 	public void setupQuest(Player player) {
-
+		//TODO: prompt setup quest
 	}
 
 	public void promptAcceptQuest(Player player) {
-
+		//TODO: prompt accept quest
 	}
 
-	public void promptStage(Player player) {
-
+	public void promptFoe(Player player) {
+		//TODO: prompt foe
 	}
 
-	public void gameLoop() {
-		while (!gameOver ()) {
-			//Draw story card from the deck
-			cardInPlay = (Story) storyDeck.drawCard ();
+	public void promptTest(Player player) {
+		//TODO: prompt test
+	}
 
-			//Add the story card visually to the play area (not sure how to do this, Alexei can you take a look?)
-			//Code here
+	public void startGame() {
+		playerTurn = 0;
+		playTurn ();
+	}
 
-			//Act on the story card
+	private void playTurn() {
+		if (!gameOver ()) {
+			cardInPlay = (Story)storyDeck.drawCard ();
 			cardInPlay.startBehaviour ();
-
-			//End of turn, move to next player
-			playerTurn = (playerTurn + 1) % players.Count;
+		} else {
+			//TODO: Game over!
 		}
+	}
+
+	public void nextTurn() {
+		storyDiscard.addCard (cardInPlay);
+		//TODO: Remove from scene visually
+		cardInPlay = null;
+		playerTurn = (playerTurn + 1) % players.Count;
+		playTurn ();
 	}
 
 	private bool gameOver() {

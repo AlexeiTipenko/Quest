@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,27 +6,31 @@ using UnityEngine;
 public abstract class Quest : Story {
 	private BoardManagerMediator board;
 
-	protected int numStages;
-	private enum dominantFoe {};
+	protected int numStages, currentStage, totalCardsCounter;
+	protected List<Type> dominantFoes;
 	private List<Stage> stages;
 	Player sponsor, playerToPrompt;
 	List<Player> participatingPlayers;
 
-	public Quest (string cardName, int numStages/*, enum dominantFoe*/) : base (cardName) {
+	public Quest (string cardName, int numStages) : base (cardName) {
 		board = BoardManagerMediator.getInstance ();
 
 		this.numStages = numStages;
-		/*this.dominantFoe = dominantFoe;*/
 	}
 
 	public int getShieldsWon () {
 		return numStages;
 	}
 
+	public List<Type> getDominantFoes() {
+		return dominantFoes;
+	}
+
 	public override void startBehaviour () {
 		Debug.Log ("Quest behaviour started");
 
 		sponsor = owner;
+		totalCardsCounter = 0;
 		promptSponsorQuest ();
 	}
 
@@ -68,14 +73,30 @@ public abstract class Quest : Story {
 		if (playerToPrompt != sponsor) {
 			board.promptAcceptQuest (playerToPrompt);
 		} else {
-			startQuest ();
+			currentStage = -1;
+			playStage ();
 		}
 	}
 
-	private void startQuest() {
-		foreach (Stage stage in stages) {
-			stage.prepare ();
+	public void playStage() {
+		currentStage++;
+		if (currentStage < numStages) {
+			totalCardsCounter += stages [currentStage].getTotalCards ();
+			stages [currentStage].prepare ();
+		} else {
+			completeQuest ();
 		}
+	}
+
+	private void completeQuest() {
+		foreach (Player player in board.getPlayers()) {
+			player.getPlayArea ().discardAmours ();
+		}
+		foreach (Player player in participatingPlayers) {
+			player.incrementShields (numStages);
+		}
+		board.dealCardsToPlayer (sponsor, totalCardsCounter);
+		board.nextTurn ();
 	}
 
 	private bool isValidSponsor () {

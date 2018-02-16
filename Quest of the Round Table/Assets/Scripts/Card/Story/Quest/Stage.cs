@@ -5,7 +5,7 @@ using UnityEngine;
 public class Stage {
 	private BoardManagerMediator board;
 
-	private int currentStageNum;
+	private int currentStageNum, currentBid;
 	private Adventure stageCard;
 	private List<Weapon> weapons;
 
@@ -30,34 +30,74 @@ public class Stage {
 		return battlePoints;
 	}
 
+	public int getTotalCards() {
+		return weapons.Count + 1;
+	}
+
 	public void prepare() {
 		quest = (Quest)BoardManagerMediator.getInstance ().getCardInPlay ();
 
 		if (stageCard.GetType ().IsSubclassOf (typeof(Foe))) {
 			playerToPrompt = quest.getNextPlayer (quest.getSponsor ());
-			board.promptStage (playerToPrompt);
+			board.promptFoe (playerToPrompt);
 		} else {
-			//TODO: reveal();
+			//TODO: reveal visually;
+			currentBid = ((Test)stageCard).getMinBidValue();
+			playerToPrompt = quest.getNextPlayer (quest.getSponsor ());
+			promptTest ();
 		}
 	}
 
-	public void promptStageResponse(bool dropOut) {
+	public void promptFoeResponse(bool dropOut) {
 		if (!dropOut) {
 			playerToPrompt = quest.getNextPlayer (playerToPrompt);
 			if (playerToPrompt != quest.getSponsor ()) {
-				board.promptStage (playerToPrompt);
+				board.promptFoe (playerToPrompt);
 			} else {
-				play ();
+				playFoe ();
 			}
 		} else {
 			quest.removeParticipatingPlayer (playerToPrompt);
 			if (quest.getPlayers ().Count < 1) {
-				//TODO: finish quest somehow
+				//TODO: finish quest early somehow
 			}
 		}
 	}
 
-	private void play() {
+	private void promptTest() {
+		if (isValidBidder ()) {
+			board.promptTest ();
+		} else {
+			quest.removeParticipatingPlayer (playerToPrompt);
+			incrementBidder ();
+		}
+
+		board.promptTest (playerToPrompt, currentBid);
+	}
+
+	private bool isValidBidder() {
+		return (playerToPrompt.getTotalAvailableBids () > currentBid);
+	}
+
+	private void incrementBidder() {
+		playerToPrompt = quest.getNextPlayer (playerToPrompt);
+		promptTest ();
+	}
+
+	public void promptTestResponse(int bid) { //TODO: maybe return should be the cards to be discarded? as well as bid number (to account for ally bids)
+		if (bid == 0) {
+			quest.removeParticipatingPlayer (playerToPrompt);
+			if (quest.getPlayers ().Count == 1) {
+				board.dealCardsToPlayer (quest.getPlayers()[0], 1);
+				//TODO: discard specifically selected cards
+				quest.playStage ();
+			}
+		} else {
+			currentBid = bid;
+		}
+	}
+
+	private void playFoe() {
 		foreach (Player player in quest.getPlayers()) {
 			int playerBattlePoints = player.getRank ().getBattlePoints ();
 			List<Card> stageCards = player.getPlayArea ().getCards ();
@@ -67,7 +107,7 @@ public class Stage {
 			if (playerBattlePoints >= getTotalBattlePoints ()) {
 				board.dealCardsToPlayer (player, 1);
 				player.getPlayArea ().discardWeapons ();
-				//TODO: advance quest
+				quest.playStage ();
 			} else {
 				quest.removeParticipatingPlayer (player);
 				//TODO: somehow finish removing a player from the quest. Does this require more work?
