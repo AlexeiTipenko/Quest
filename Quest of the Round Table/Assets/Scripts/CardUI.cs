@@ -17,13 +17,29 @@ public class CardUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHa
 	{
 		//this.gameObject.renderer.material.mainTexture = Resources.Load ("Graphics/" + cardName) as Texture2D;
 		//GetComponent<Renderer>().material.mainTexture = Resources.Load ("Resources/cards" + cardName) as Texture2D;
-		this.gameObject.GetComponent<Image>().sprite = Resources.Load ("Assets/Resources/cards/KingArthur.png") as Sprite;
+
+		//this.GetComponent<Image>().overrideSprite = 
+			//Resources.Load("Assets/Resources/cards/" + cardName +".png") as Sprite;
+
+        print ("Card sprite to be created: " + cardName);
+
+        Sprite mySprite = Resources.Load<Sprite>("Assets/Resources/cards/KingArthur");
+
+        GetComponent<Image>().sprite = mySprite;
+                                // Resources.Load<Sprite>("Assets/Resources/cards/KingArthur") as Sprite;
+        //Resources.Load("Assets/Resources/cards/" + cardName + ".png") as Sprite;
+
+        //this.GetComponent<SpriteRenderer> ().sprite = 
+        //Resources.Load<Sprite> ("Assets/Resources/cards/" + cardName + ".png") as Sprite;
+
+        //GetComponent<SpriteRenderer>().color = Color.green;
+            //Resources.Load<Sprite> ("Assets/Resources/cards/" + cardName + ".png") as Sprite;
 	}
 
 
 	public void OnPointerEnter(PointerEventData eventData) {
 
-		Debug.Log ("Pointer entered card.");
+		//Debug.Log ("Pointer entered card.");
 
 		transform.localScale += new Vector3(0.5F, 0.5F, 0);
 		transform.localPosition += new Vector3 (0.25F, 0.25F, 0);
@@ -35,7 +51,7 @@ public class CardUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHa
 
 	public void OnPointerExit(PointerEventData eventData) {
 
-		Debug.Log ("Pointer exited card.");
+		//Debug.Log ("Pointer exited card.");
 
 		transform.localScale -= new Vector3(0.5F, 0.5F, 0);
 		transform.localPosition -= new Vector3 (0.25F, 0.25F, 0);

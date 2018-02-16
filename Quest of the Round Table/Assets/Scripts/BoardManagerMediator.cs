@@ -1,9 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEditor;
 
 public class BoardManagerMediator
 {
+	
 	static BoardManagerMediator instance;
 	BoardManager boardManager;
 	List<Player> players;
@@ -11,6 +14,11 @@ public class BoardManagerMediator
 	StoryDeck storyDeck;
 	DiscardDeck adventureDiscard, storyDiscard;
 	int playerTurn;
+
+	public GameObject cardPrefab;
+	public GameObject board;
+	public List<CardUI> cards = new List<CardUI>();
+
 
 	public static BoardManagerMediator getInstance() {
 		if (instance == null) {
@@ -31,6 +39,7 @@ public class BoardManagerMediator
 		adventureDiscard = new DiscardDeck ();
 		storyDiscard = new DiscardDeck ();
 
+
 		foreach (Player player in players) {
 			dealCardsToPlayer (player, 12);
 			Debug.Log (player.getName ());
@@ -40,6 +49,20 @@ public class BoardManagerMediator
 		}
 
 		playerTurn = 0;
+		var handArea = GameObject.Find("HandArea").transform;
+		GameObject cardPrefab = AssetDatabase.LoadAssetAtPath("Assets/Prefabs/CardPrefab4.prefab",
+			typeof(GameObject)) as GameObject;
+
+		foreach (Card card in getCurrentPlayer().getHand()) {
+
+			var cardObj = GameObject.Instantiate(cardPrefab);
+			cardObj.AddComponent<Image>();
+			cardObj.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
+			cardObj.AddComponent<CardUI>();
+			cardObj.GetComponent<Image> ().raycastTarget = true;
+			cardObj.GetComponent<CardUI> ().CreateCard(card.cardImageName);
+			cardObj.transform.SetParent (handArea.transform, false);
+		}
 	}
 
 	public List<Player> getPlayers() {
@@ -67,7 +90,8 @@ public class BoardManagerMediator
 			//Draw story card from the deck
 			Card storyCard = storyDeck.drawCard ();
 
-			//Add the story card visually to the play area (not sure how to do this, Alexei can you take a look?)
+			//Add the story card visually to the play area (not sure how to do this, Alexei can you take a look?
+			//No Avery, leave me alone, jeeeez)
 			//Code here
 
 			//Act on the story card
