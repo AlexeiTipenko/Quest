@@ -5,17 +5,56 @@ using System.Collections;
 
 public class PlayerPlayAreaTest {
 
+    private PlayerPlayArea PreparePlayArea() {
+        PlayerPlayArea playArea = new PlayerPlayArea();
+        playArea.addCard(new SirTristan());
+        playArea.addCard(new QueenIseult());
+        playArea.addCard(new BoarHunt());
+        playArea.addCard(new Amour());
+        playArea.addCard(new Amour());
+        playArea.addCard(new Excalibur());
+        playArea.addCard(new Horse());
+        return playArea;
+    }
+
 	[Test]
-	public void PlayerPlayAreaTestSimplePasses() {
-		// Use the Assert class to test conditions.
+	public void testDiscardWeapons() {
+        PlayerPlayArea playArea = PreparePlayArea();
+        playArea.discardWeapons();
+        foreach (Card card in playArea.getCards()) {
+            Assert.AreNotEqual(card.GetType(), typeof(Excalibur));
+            Assert.AreNotEqual(card.GetType(), typeof(Horse));
+        }
 	}
 
-	// A UnityTest behaves like a coroutine in PlayMode
-	// and allows you to yield null to skip a frame in EditMode
-	[UnityTest]
-	public IEnumerator PlayerPlayAreaTestWithEnumeratorPasses() {
-		// Use the Assert class to test conditions.
-		// yield to skip a frame
-		yield return null;
-	}
+    [Test]
+    public void testDiscardAmours() {
+        PlayerPlayArea playArea = PreparePlayArea();
+        playArea.discardAmours();
+        foreach (Card card in playArea.getCards())
+        {
+            Assert.AreNotEqual(card.GetType(), typeof(Amour));
+        }
+    }
+
+    [Test]
+    public void testDiscardAllies() {
+        PlayerPlayArea playArea = PreparePlayArea();
+        playArea.discardAllies();
+        foreach (Card card in playArea.getCards())
+        {
+            Assert.AreNotEqual(card.GetType(), typeof(SirTristan));
+            Assert.AreNotEqual(card.GetType(), typeof(QueenIseult));
+        }
+    }
+
+    [Test]
+    public void testDiscardSpecificAlly() {
+        PlayerPlayArea playArea = PreparePlayArea();
+        playArea.discardAlly(typeof(SirTristan));
+        foreach (Card card in playArea.getCards())
+        {
+            Assert.AreNotEqual(card.GetType(), typeof(SirTristan));
+        }
+    }
 }

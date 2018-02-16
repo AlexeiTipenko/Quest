@@ -8,7 +8,7 @@ public class PlayerPlayArea {
 	List<Card> cards;
 
 	public PlayerPlayArea() {
-
+        cards = new List<Card>();
 	}
 
 	public List<Card> getCards() {
@@ -20,27 +20,37 @@ public class PlayerPlayArea {
 	}
 
 	public void discardWeapons() {
+        List<Card> tempCards = new List<Card>();
 		foreach (Card card in cards) {
-			if (card.GetType ().IsSubclassOf (typeof(Weapon))) {
-				cards.Remove (card);
-			}
+            if (!card.GetType().IsSubclassOf(typeof(Weapon))) {
+                tempCards.Add(card);
+            }
 		}
+        cards = tempCards;
 	}
 
 	public void discardAmours() {
-		foreach (Card card in cards) {
-			if (card.GetType ().IsSubclassOf (typeof(Amour))) {
-				cards.Remove (card);
-			}
-		}
+        List<Card> tempCards = new List<Card>();
+        foreach (Card card in cards)
+        {
+            if (!card.GetType().Equals(typeof(Amour)))
+            {
+                tempCards.Add(card);
+            }
+        }
+        cards = tempCards;
 	}
 
 	public void discardAllies() {
-		foreach (Card card in cards) {
-			if (card.GetType ().IsSubclassOf (typeof(Ally))) {
-				cards.Remove (card);
-			}
-		}
+        List<Card> tempCards = new List<Card>();
+        foreach (Card card in cards)
+        {
+            if (!card.GetType().IsSubclassOf(typeof(Ally)))
+            {
+                tempCards.Add(card);
+            }
+        }
+        cards = tempCards;
 	}
 
 	public void discardAlly(Type type) {
