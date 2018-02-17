@@ -9,6 +9,7 @@ public class Player
 	private int numShields;
 	private Rank rank;
 	private List<Card> hand;
+	private PlayerPlayArea playArea;
 	private bool isAI;
 
 	public Player(string name, bool isAI) {
@@ -16,7 +17,8 @@ public class Player
 		this.isAI = isAI;
 		rank = new Squire ();
 		numShields = 0;
-		hand = new List<Card>();
+		hand = new List<Card> ();
+		playArea = new PlayerPlayArea ();
 	}
 
 	public void dealCards(List<Card> cards) {
@@ -57,8 +59,21 @@ public class Player
 		return this.hand;
 	}
 
+	public PlayerPlayArea getPlayArea () {
+		return this.playArea;
+	}
+
 	public Rank getRank() {
 		return this.rank;
+	}
+
+	public int getTotalAvailableBids() {
+		int availableBids = hand.Count;
+		List<Card> playAreaCards = playArea.getCards ();
+		foreach (Card card in playAreaCards) {
+			availableBids += ((Adventure)card).getBidPoints (); //TODO: Make sure empowered bid points work (and battle points while you're at it!)
+		}
+		return availableBids;
 	}
 
 	public void incrementShields(int numShields) {
@@ -76,11 +91,15 @@ public class Player
 
 	public Player upgradeRank(){
 		rank = rank.upgrade ();
+        BoardManager.DestroyRank();
+        BoardManager.DrawRank(this);
 		return this; //returns the player object for cascading for testing
 	}
 
 	public bool acceptQuest(){
 		//prompt user if they want to sponsor quest
+		//UI has to be implemented here to actually 
+		//cycle through players and prmpt them
 		return true;
 	}
 

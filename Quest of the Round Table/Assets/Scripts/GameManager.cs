@@ -26,12 +26,13 @@ public class GameManager : MonoBehaviour {
 		}
 
 		BoardManagerMediator.getInstance().initGame (ButtonManager.playerList);
-		//BoardManagerData.gameLoop (); // uncomment this when the game loop is implemented
-								  // in such a way that we don't get into an immediate infinite loop
+		BoardManagerMediator.getInstance ().startGame ();
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		
 	}
+
+
 }

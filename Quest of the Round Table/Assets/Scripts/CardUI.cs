@@ -1,39 +1,21 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-public class CardDraggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler,
+public class CardUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler,
 							IPointerEnterHandler, IPointerExitHandler {
 
 	public Transform parentToReturnTo = null;
 	public Transform placeholderParent = null;
-
 	public GameObject placeholder = null;
 
 
 	public void OnPointerEnter(PointerEventData eventData) {
-
-		Debug.Log ("Pointer entered card.");
-
-		transform.localScale += new Vector3(0.5F, 0.5F, 0);
-		transform.localPosition += new Vector3 (0.25F, 0.25F, 0);
-
-		//CardDraggable card = eventData.pointerDrag.GetComponent<CardDraggable>();
-
-
+        //TODO: add outline
 	}
 
 	public void OnPointerExit(PointerEventData eventData) {
-
-		Debug.Log ("Pointer exited card.");
-
-		transform.localScale -= new Vector3(0.5F, 0.5F, 0);
-		transform.localPosition -= new Vector3 (0.25F, 0.25F, 0);
-
-		//CardDraggable card = eventData.pointerDrag.GetComponent<CardDraggable>();
-
+        //TODO: remove outline
 	}
 
 

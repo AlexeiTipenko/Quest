@@ -1,16 +1,24 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEditor;
 
 public class BoardManagerMediator
 {
 	static BoardManagerMediator instance;
-	BoardManager boardManager;
+	GameObject boardManager;
 	List<Player> players;
 	AdventureDeck adventureDeck;
 	StoryDeck storyDeck;
 	DiscardDeck adventureDiscard, storyDiscard;
+	Story cardInPlay;
 	int playerTurn;
+
+	public GameObject cardPrefab;
+	public GameObject board;
+	public List<CardUI> cards = new List<CardUI>();
+
 
 	public static BoardManagerMediator getInstance() {
 		if (instance == null) {
@@ -31,6 +39,7 @@ public class BoardManagerMediator
 		adventureDiscard = new DiscardDeck ();
 		storyDiscard = new DiscardDeck ();
 
+
 		foreach (Player player in players) {
 			dealCardsToPlayer (player, 12);
 			Debug.Log (player.getName ());
@@ -38,8 +47,6 @@ public class BoardManagerMediator
 				Debug.Log (card.toString ());
 			}
 		}
-
-		playerTurn = 0;
 	}
 
 	public List<Player> getPlayers() {
@@ -50,7 +57,20 @@ public class BoardManagerMediator
 		return players [playerTurn];
 	}
 
+	public Player getNextPlayer(Player previousPlayer) {
+		int index = players.IndexOf (previousPlayer);
+		if (index != -1) {
+			return players [(index + 1) % players.Count];
+		}
+		return null;
+	}
+
+	public Story getCardInPlay() {
+		return cardInPlay;
+	}
+
 	public void dealCardsToPlayer(Player player, int numCardsToDeal) {
+        Debug.Log("Dealing " + numCardsToDeal + " cards");
 		List<Card> cardsToDeal = new List<Card> ();
 		for (int i = 0; i < numCardsToDeal; i++) {
 			cardsToDeal.Add (adventureDeck.drawCard ());
@@ -62,20 +82,51 @@ public class BoardManagerMediator
 		player.dealCards (cardsToDeal);
 	}
 
-	public void gameLoop() {
-		while (!gameOver ()) {
-			//Draw story card from the deck
-			Card storyCard = storyDeck.drawCard ();
+    public void setCardInPlay(Card card) {
+        cardInPlay = (Story) card;
+    }
 
-			//Add the story card visually to the play area (not sure how to do this, Alexei can you take a look?)
-			//Code here
+	public void promptSponsorQuest(Player player) {
+		//TODO: prompt sponsor quest
+	}
 
-			//Act on the story card
-			storyCard.startBehaviour ();
+	public void setupQuest(Player player) {
+		//TODO: prompt setup quest
+	}
 
-			//End of turn, move to next player
-			playerTurn = (playerTurn + 1) % players.Count;
+	public void promptAcceptQuest(Player player) {
+		//TODO: prompt accept quest
+	}
+
+	public void promptFoe(Player player) {
+		//TODO: prompt foe
+	}
+
+	public void promptTest(Player player, int currentBid) {
+		//TODO: prompt test
+	}
+
+	public void startGame() {
+		playerTurn = 0;
+		playTurn ();
+	}
+
+	private void playTurn() {
+		if (!gameOver ()) {
+			cardInPlay = (Story)storyDeck.drawCard ();
+            BoardManager.DisplayCards(players[playerTurn]);
+			cardInPlay.startBehaviour ();
+		} else {
+			//TODO: Game over!
 		}
+	}
+
+	public void nextTurn() {
+		storyDiscard.addCard (cardInPlay);
+        BoardManager.DestroyCards(players[playerTurn]);
+		cardInPlay = null;
+		playerTurn = (playerTurn + 1) % players.Count;
+		playTurn ();
 	}
 
 	private bool gameOver() {
@@ -89,33 +140,40 @@ public class BoardManagerMediator
 
 	public void cheat(string cheatCode) {
 		switch (cheatCode) {
-		case "rankUp":
-			Debug.Log ("Current player is: " + players [playerTurn].getName ());
-			players [playerTurn].upgradeRank ();
-			Debug.Log ("After upgrading rank: " + players [playerTurn].getRank ());
-			break;
-		case "shieldsUp":
-			Debug.Log ("Player now has : " + players [playerTurn].getNumShields () + " shields");
-			players [playerTurn].incrementShields (3);
-			Debug.Log ("Player now has : " + players [playerTurn].getNumShields () + " after incremented shields");
-			break;
-		case "prosperity":
-			Debug.Log ("Drawing Prosperity throughout the kingdom into current players hand");
-			ProsperityThroughoutTheRealm prospCard = new ProsperityThroughoutTheRealm ();
-			players [playerTurn].getHand ().Add (prospCard);
-			foreach (Card card in players[playerTurn].getHand()) {
-				Debug.Log (card.getCardName ());
-			}
-			break;
-		case "chivalrous":
-			Debug.Log ("Drawing Chivalrous Deeds into current players hand");
-			ChivalrousDeed chivCard = new ChivalrousDeed ();
-			players [playerTurn].getHand ().Add (chivCard);
-			Debug.Log ("Listing current players hand");
-			foreach (Card card in players[playerTurn].getHand()) {
-				Debug.Log (card.getCardName ());
-			}
-			break;
+    		case "rankUp":
+    			Debug.Log ("Current player is: " + players [playerTurn].getName ());
+    			players [playerTurn].upgradeRank ();
+    			Debug.Log ("After upgrading rank: " + players [playerTurn].getRank ());
+    			break;
+    		case "shieldsUp":
+    			Debug.Log ("Player now has : " + players [playerTurn].getNumShields () + " shields");
+    			players [playerTurn].incrementShields (3);
+    			Debug.Log ("Player now has : " + players [playerTurn].getNumShields () + " after incremented shields");
+                break;
+            case "nextPlayer":
+                Debug.Log("Current player is: " + players[playerTurn].getName());
+                nextTurn();
+                Debug.Log("New player is: " + players[playerTurn].getName());
+                break;
+
+			//TODO: Fix this! Event cards should not be able to be dealt to the player's hand
+    		//case "prosperity":
+    		//	Debug.Log ("Drawing Prosperity throughout the kingdom into current players hand");
+    		//	ProsperityThroughoutTheRealm prospCard = new ProsperityThroughoutTheRealm ();
+    		//	players [playerTurn].getHand ().Add (prospCard);
+    		//	foreach (Card card in players[playerTurn].getHand()) {
+    		//		Debug.Log (card.getCardName ());
+    		//	}
+    		//	break;
+    		//case "chivalrous":
+    			//Debug.Log ("Drawing Chivalrous Deeds into current players hand");
+    			//ChivalrousDeed chivCard = new ChivalrousDeed ();
+    			//players [playerTurn].getHand ().Add (chivCard);
+    			//Debug.Log ("Listing current players hand");
+    			//foreach (Card card in players[playerTurn].getHand()) {
+    			//	Debug.Log (card.getCardName ());
+    			//}
+    			//break;
 		}
 	}
 }

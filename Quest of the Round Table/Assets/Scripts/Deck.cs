@@ -44,6 +44,7 @@ public abstract class Deck {
 	public Card drawCard () {
 		Card card = cards [0];
 		cards.RemoveAt (0);
+		card.setOwner (BoardManagerMediator.getInstance ().getCurrentPlayer ());
 		return card;
 	}
 
@@ -52,7 +53,9 @@ public abstract class Deck {
 			Type genericType = Type.GetType(newCards[i], true);
 			int frequency = (int) genericType.GetField ("frequency").GetValue(null);
 			for (int j = 0; j < frequency; j++) {
-				cards.Add((Card) Activator.CreateInstance(genericType));
+				Card card = (Card)Activator.CreateInstance (genericType);
+				card.setCardImageName(newCards[i]);
+				cards.Add(card);
 			}
 		}
 	}

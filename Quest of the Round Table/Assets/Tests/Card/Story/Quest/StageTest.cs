@@ -2,12 +2,46 @@
 using UnityEngine.TestTools;
 using NUnit.Framework;
 using System.Collections;
+using System.Collections.Generic;
 
 public class StageTest {
 
+    [Test]
+    public void testGetTotalCards() {
+        Story questCard = new SlayTheDragon();
+        Adventure stageCard = new Thieves();
+        BoardManagerMediator.getInstance().setCardInPlay(questCard);
+        Stage stage = new Stage(stageCard, null);
+        Assert.AreEqual(stage.getTotalCards(), 1);
+    }
+
 	[Test]
-	public void StageTestSimplePasses() {
-		//Need to figure out the logic behind getBattlePoints in stage.cs before testing
-		//Assert.IsTrue (false);
+	public void testGetTotalBattlePointsNoWeapons() {
+        Story questCard = new SlayTheDragon();
+        Adventure stageCard = new Thieves();
+        BoardManagerMediator.getInstance().setCardInPlay(questCard);
+        Stage stage = new Stage(stageCard, null);
+        Assert.AreEqual(stage.getTotalBattlePoints(), 5);
 	}
+
+    [Test]
+    public void testGetTotalBattlePointsWeapons() {
+        Story questCard = new SlayTheDragon();
+        Adventure stageCard = new Thieves();
+        List<Weapon> weapons = new List<Weapon>();
+        weapons.Add(new Excalibur());
+        weapons.Add(new Dagger());
+        BoardManagerMediator.getInstance().setCardInPlay(questCard);
+        Stage stage = new Stage(stageCard, weapons);
+        Assert.AreEqual(stage.getTotalBattlePoints(), 40);
+    }
+
+    [Test]
+    public void testGetTotalBattlePointsEmpowered() {
+        Story questCard = new SlayTheDragon();
+        Adventure stageCard = new Dragon();
+        BoardManagerMediator.getInstance().setCardInPlay(questCard);
+        Stage stage = new Stage(stageCard, null);
+        Assert.AreEqual(stage.getTotalBattlePoints(), 70);
+    }
 }

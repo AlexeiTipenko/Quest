@@ -8,7 +8,7 @@ public class GameBoard : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPoi
 	public void OnDrop(PointerEventData eventData) {
 		Debug.Log ("Dropping to " + gameObject.name);
 
-		CardDraggable card = eventData.pointerDrag.GetComponent<CardDraggable>();
+		CardUI card = eventData.pointerDrag.GetComponent<CardUI>();
 
 		if (card != null) 
 			card.parentToReturnTo = this.transform;
@@ -21,7 +21,7 @@ public class GameBoard : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPoi
 		if (eventData.pointerDrag == null)
 			return;
 		
-		CardDraggable card = eventData.pointerDrag.GetComponent<CardDraggable>();
+		CardUI card = eventData.pointerDrag.GetComponent<CardUI>();
 
 		if (card != null) 
 			card.placeholderParent = this.transform;
@@ -33,7 +33,7 @@ public class GameBoard : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPoi
 		if (eventData.pointerDrag == null)
 			return;
 		
-		CardDraggable card = eventData.pointerDrag.GetComponent<CardDraggable>();
+		CardUI card = eventData.pointerDrag.GetComponent<CardUI>();
 
 		if (card != null && card.placeholderParent == this.transform) 
 			card.placeholderParent = card.parentToReturnTo;
