@@ -6,6 +6,7 @@ public abstract class Card {
 
 	protected Player owner;
 	protected string cardName;
+	public string cardImageName;
 
 	public Card(string cardName) {
 		this.cardName = cardName;
@@ -21,9 +22,14 @@ public abstract class Card {
 		return this.cardName;
 	}
 
+
 	//Setters
 	public void setOwner(Player owner) {
 		this.owner = owner;
+	}
+
+	public void setCardImageName(string name) {
+		cardImageName = name;
 	}
 
 

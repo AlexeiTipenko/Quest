@@ -91,6 +91,8 @@ public class Player
 
 	public Player upgradeRank(){
 		rank = rank.upgrade ();
+        BoardManager.DestroyRank();
+        BoardManager.DrawRank(this);
 		return this; //returns the player object for cascading for testing
 	}
 
