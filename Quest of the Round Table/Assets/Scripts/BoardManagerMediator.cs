@@ -6,9 +6,8 @@ using UnityEditor;
 
 public class BoardManagerMediator
 {
-	
 	static BoardManagerMediator instance;
-	BoardManager boardManager;
+	GameObject boardManager;
 	List<Player> players;
 	AdventureDeck adventureDeck;
 	StoryDeck storyDeck;
@@ -49,20 +48,9 @@ public class BoardManagerMediator
 		}
 
 		playerTurn = 0;
-		var handArea = GameObject.Find("HandArea").transform;
-		GameObject cardPrefab = AssetDatabase.LoadAssetAtPath("Assets/Prefabs/CardPrefab4.prefab",
-			typeof(GameObject)) as GameObject;
 
-		foreach (Card card in getCurrentPlayer().getHand()) {
 
-			var cardObj = GameObject.Instantiate(cardPrefab);
-			cardObj.AddComponent<Image>();
-			cardObj.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
-			cardObj.AddComponent<CardUI>();
-			cardObj.GetComponent<Image> ().raycastTarget = true;
-			cardObj.GetComponent<CardUI> ().CreateCard(card.cardImageName);
-			cardObj.transform.SetParent (handArea.transform, false);
-		}
+        BoardManager.DisplayCards(players);
 	}
 
 	public List<Player> getPlayers() {

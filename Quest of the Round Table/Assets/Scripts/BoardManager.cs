@@ -9,8 +9,6 @@ public class BoardManager : MonoBehaviour {
 
 	void Start () {
 		print ("Board manager started");
-
-		//Adding prefab to hand area
 		/*
 		print ("Loading prefab...");
 		GameObject cardPrefab = AssetDatabase.LoadAssetAtPath("Assets/Prefabs/Allies/Merlin.prefab", typeof(GameObject)) as GameObject;
@@ -45,5 +43,21 @@ public class BoardManager : MonoBehaviour {
 			BoardManagerMediator.getInstance ().cheat ("chivalrous");
 		}
 	}
+
+    public static void DisplayCards(List<Player> players)
+    {
+        Debug.Log("Received playersList");
+
+        GameObject handArea = GameObject.Find("Canvas/TabletopImage/HandArea");
+        GameObject instance = Instantiate(Resources.Load("CardPrefab", typeof(GameObject))) as GameObject;
+
+        foreach(Card card in players[0].getHand()){
+            Image cardImg = instance.GetComponent<Image>();
+            cardImg.sprite = Resources.Load<Sprite>("cards/" + card.cardImageName);
+            GameObject cardObj = Instantiate(instance);
+            cardObj.transform.SetParent (handArea.transform, false);
+        }
+
+    }
 
 }
