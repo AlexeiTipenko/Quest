@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using System;
 using UnityEditor;
 using UnityEngine.UI;
@@ -26,7 +27,34 @@ public class BoardManager : MonoBehaviour {
         }
 	}
 
-    public static void DisplayCards(Player player) {
+    public static void SetInteractionText(String text) {
+        GameObject interactionText = GameObject.Find("Canvas/TabletopImage/InteractionPanel/InteractionText");
+        interactionText.GetComponent<Text>().text = text;
+    }
+
+    public static void SetInteractionButtons(String text1, String text2, Action func1, Action func2) {
+        GameObject button1 = GameObject.Find("Canvas/TabletopImage/InteractionPanel/InteractionButton1");
+        GameObject button2 = GameObject.Find("Canvas/TabletopImage/InteractionPanel/InteractionButton2");
+        GameObject buttonText1 = GameObject.Find("Canvas/TabletopImage/InteractionPanel/InteractionButton1/Text");
+        GameObject buttonText2 = GameObject.Find("Canvas/TabletopImage/InteractionPanel/InteractionButton2/Text");
+
+        buttonText1.GetComponent<Text>().text = text1;
+        buttonText2.GetComponent<Text>().text = text2;
+
+        button1.GetComponent<Button>().onClick.RemoveAllListeners();
+        button2.GetComponent<Button>().onClick.RemoveAllListeners();
+
+        if (func1 != null) {
+            button1.GetComponent<Button>().onClick.AddListener(new UnityAction(func1));
+        }
+
+        if (func2 != null) {
+            button2.GetComponent<Button>().onClick.AddListener(new UnityAction(func2));
+        }
+    }
+
+    public static void DrawCards(Player player) {
+        DestroyCards();
         DrawHand(player);
         DrawRank(player);
         DrawCardInPlay();
@@ -35,6 +63,7 @@ public class BoardManager : MonoBehaviour {
     }
 
     public static void DrawHand(Player player) {
+        DestroyHand();
         foreach (Card card in player.getHand()) {
             GameObject handArea = GameObject.Find("Canvas/TabletopImage/HandArea");
             GameObject instance = Instantiate(Resources.Load("CardPrefab", typeof(GameObject))) as GameObject;
@@ -48,6 +77,7 @@ public class BoardManager : MonoBehaviour {
     }
 
     public static void DrawRank(Player player) {
+        DestroyRank();
         GameObject rankArea = GameObject.Find("Canvas/TabletopImage/RankArea");
         GameObject noDragInstance = Instantiate(Resources.Load("NoDragCardPrefab", typeof(GameObject))) as GameObject;
 
@@ -73,10 +103,15 @@ public class BoardManager : MonoBehaviour {
     }
 
     public static void DestroyCardInPlay() {
-        Destroy(GameObject.FindGameObjectWithTag("CardInPlay"));
+        print("Destroying card in play");
+        GameObject[] cardObjs = GameObject.FindGameObjectsWithTag("CardInPlay");
+        foreach (GameObject gameObj in cardObjs) {
+            Destroy(gameObj);
+        }
     }
 
     public static void DrawCardInPlay() {
+        DestroyCardInPlay();
         GameObject cardInPlayArea = GameObject.Find("Canvas/TabletopImage/CardInPlayArea");
         GameObject noDragInstance = Instantiate(Resources.Load("NoDragCardPrefab", typeof(GameObject))) as GameObject;
 
@@ -88,7 +123,7 @@ public class BoardManager : MonoBehaviour {
         cardObj.transform.SetParent(cardInPlayArea.transform, false);
     }
 
-    public static void DestroyCards(Player player) {
+    public static void DestroyCards() {
         DestroyHand();
         DestroyRank();
         DestroyCardInPlay();

@@ -91,8 +91,7 @@ public class Player
 
 	public Player upgradeRank(){
 		rank = rank.upgrade ();
-        BoardManager.DestroyRank();
-        BoardManager.DrawRank(this);
+        BoardManagerMediator.getInstance().DrawRank(this);
 		return this; //returns the player object for cascading for testing
 	}
 
@@ -104,12 +103,12 @@ public class Player
 	}
 
 	public string toString() {
-		string toString = this.name + " (" + (isAI ? "AI" : "human") + "): ";
+		string output = this.name + " (" + (isAI ? "AI" : "human") + "): ";
 		foreach (Card card in hand) {
-			toString += card.toString() + ", ";
+			output += card.toString() + ", ";
 		}
-		toString = toString.Substring (0, toString.Length - 2);
-		return toString;
+		output = output.Substring (0, output.Length - 2);
+		return output;
 	}
 }
 
