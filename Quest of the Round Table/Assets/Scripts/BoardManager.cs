@@ -41,16 +41,30 @@ public class BoardManager : MonoBehaviour {
         buttonText1.GetComponent<Text>().text = text1;
         buttonText2.GetComponent<Text>().text = text2;
 
-        button1.GetComponent<Button>().onClick.RemoveAllListeners();
-        button2.GetComponent<Button>().onClick.RemoveAllListeners();
-
         if (func1 != null) {
+            button1.SetActive(true);
+            button1.GetComponent<Button>().onClick.AddListener(ClearInteractions);
             button1.GetComponent<Button>().onClick.AddListener(new UnityAction(func1));
         }
 
         if (func2 != null) {
+            button2.SetActive(true);
+            button2.GetComponent<Button>().onClick.AddListener(ClearInteractions);
             button2.GetComponent<Button>().onClick.AddListener(new UnityAction(func2));
         }
+    }
+
+    private static void ClearInteractions() {
+        GameObject interactionText = GameObject.Find("Canvas/TabletopImage/InteractionPanel/InteractionText");
+        GameObject button1 = GameObject.Find("Canvas/TabletopImage/InteractionPanel/InteractionButton1");
+        GameObject button2 = GameObject.Find("Canvas/TabletopImage/InteractionPanel/InteractionButton2");
+
+        button1.GetComponent<Button>().onClick.RemoveAllListeners();
+        button2.GetComponent<Button>().onClick.RemoveAllListeners();
+
+        interactionText.GetComponent<Text>().text = "";
+        button1.SetActive(false);
+        button2.SetActive(false);
     }
 
     public static void DrawCards(Player player) {
