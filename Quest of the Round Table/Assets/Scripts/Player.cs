@@ -98,7 +98,7 @@ public class Player
 	public bool acceptQuest(){
 		//prompt user if they want to sponsor quest
 		//UI has to be implemented here to actually 
-		//cycle through players and prmpt them
+		//cycle through players and prompt them
 		return true;
 	}
 

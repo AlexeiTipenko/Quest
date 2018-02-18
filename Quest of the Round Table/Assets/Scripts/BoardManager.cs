@@ -81,12 +81,11 @@ public class BoardManager : MonoBehaviour {
         foreach (Card card in player.getHand()) {
             GameObject handArea = GameObject.Find("Canvas/TabletopImage/HandArea");
             GameObject instance = Instantiate(Resources.Load("CardPrefab", typeof(GameObject))) as GameObject;
-
+            instance.name = card.getCardName();
             Image cardImg = instance.GetComponent<Image>();
             cardImg.sprite = Resources.Load<Sprite>("cards/" + card.cardImageName);
-            GameObject cardObj = Instantiate(instance);
-            cardObj.tag = "HandCard";
-            cardObj.transform.SetParent(handArea.transform, false);
+            instance.tag = "HandCard";
+            instance.transform.SetParent(handArea.transform, false);
         }
     }
 
@@ -94,12 +93,11 @@ public class BoardManager : MonoBehaviour {
         DestroyRank();
         GameObject rankArea = GameObject.Find("Canvas/TabletopImage/RankArea");
         GameObject noDragInstance = Instantiate(Resources.Load("NoDragCardPrefab", typeof(GameObject))) as GameObject;
-
         Image cardImg = noDragInstance.GetComponent<Image>();
+        noDragInstance.name = player.getRank().getCardName();
         cardImg.sprite = Resources.Load<Sprite>("cards/ranks/" + player.getRank().getCardName());
-        GameObject cardObj = Instantiate(noDragInstance);
-        cardObj.tag = "RankCard";
-        cardObj.transform.SetParent(rankArea.transform, false);
+        noDragInstance.tag = "RankCard";
+        noDragInstance.transform.SetParent(rankArea.transform, false);
     }
 
     public static void DestroyHand() {
@@ -128,13 +126,12 @@ public class BoardManager : MonoBehaviour {
         DestroyCardInPlay();
         GameObject cardInPlayArea = GameObject.Find("Canvas/TabletopImage/CardInPlayArea");
         GameObject noDragInstance = Instantiate(Resources.Load("NoDragCardPrefab", typeof(GameObject))) as GameObject;
-
         Card cardInPlay = BoardManagerMediator.getInstance().getCardInPlay();
         Image cardImg = noDragInstance.GetComponent<Image>();
+        noDragInstance.name = cardInPlay.getCardName();
         cardImg.sprite = Resources.Load<Sprite>("cards/" + cardInPlay.cardImageName);
-        GameObject cardObj = Instantiate(noDragInstance);
-        cardObj.tag = "CardInPlay";
-        cardObj.transform.SetParent(cardInPlayArea.transform, false);
+        noDragInstance.tag = "CardInPlay";
+        noDragInstance.transform.SetParent(cardInPlayArea.transform, false);
     }
 
     public static void DestroyCards() {
