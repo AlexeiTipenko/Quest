@@ -61,6 +61,10 @@ public class BoardManagerMediator
 		return cardInPlay;
 	}
 
+    public void GetSelectedCards() {
+        BoardManager.GetSelectedCards();
+    }
+
 	public void dealCardsToPlayer(Player player, int numCardsToDeal) {
         Debug.Log("Dealing " + numCardsToDeal + " cards");
 		List<Card> cardsToDeal = new List<Card> ();

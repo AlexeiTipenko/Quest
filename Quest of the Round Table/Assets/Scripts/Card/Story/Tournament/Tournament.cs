@@ -59,6 +59,9 @@ public abstract class Tournament : Story {
         //Get cards from player area (need to connect PlayerPlayArea to CardUI next)
         //Add up battle points for current player
 
+       // List<Card> chosenCards = board.GetSelectedCards();
+        board.GetSelectedCards();
+
         Debug.Log("Player finished turn.");
         //sponsor = board.getNextPlayer(sponsor);
         playerToPrompt = GetNextPlayer(playerToPrompt);
