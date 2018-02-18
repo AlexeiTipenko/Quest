@@ -8,7 +8,7 @@ public abstract class Tournament : Story {
 	protected int bonusShields;
 	protected int playersEntered;
     Player sponsor, playerToPrompt;
-    List<Player> participatingPlayers;
+    List<Player> participatingPlayers, allPlayers;
 
 
 	public Tournament(string cardName, int bonusShields): base(cardName) {
@@ -16,6 +16,8 @@ public abstract class Tournament : Story {
 		this.playersEntered = 0;
 		this.bonusShields = bonusShields;
         board = BoardManagerMediator.getInstance();
+        participatingPlayers = new List<Player>();
+        allPlayers = board.getPlayers();
 	}
 		
 
@@ -29,46 +31,26 @@ public abstract class Tournament : Story {
         Debug.Log("Tournament behaviour started");
 
         sponsor = owner;
-        board.promptSponsorQuest(sponsor);
+        playerToPrompt = sponsor;
+        board.PromptEnterTournament(sponsor);
     }
 
 
-    public void PromptEnterTournamentResponse(bool sponsorAccepted)
+
+    public void PromptEnterTournamentResponse(bool tournamentAccepted)
     {
-        if (sponsorAccepted)
-        {
+        if (tournamentAccepted){
             playersEntered++;
-            board.setupQuest(sponsor);
-        }
-        else
-        {
-            sponsor = board.getNextPlayer(sponsor);
-
-            if (sponsor == owner)
-            {
-                //TODO: discard();
-            }
-
-            else
-                board.promptSponsorQuest(sponsor);
-        }
-    }
-
-
-
-    public void PromptAcceptTournamentResponse(bool tournamentAccepted)
-    {
-        if (tournamentAccepted)
             participatingPlayers.Add(playerToPrompt);
-
-        playerToPrompt = board.getNextPlayer(playerToPrompt);
+        }
+                              
+        playerToPrompt = GetNextPlayer(playerToPrompt);
 
         if (playerToPrompt != sponsor)
-            board.promptAcceptTournament(playerToPrompt);
+            board.PromptEnterTournament(playerToPrompt);
         
         else
-            board.promptCardSelection(playerToPrompt);
-
+            board.PromptCardSelection(playerToPrompt);
     }
 
 
@@ -77,20 +59,44 @@ public abstract class Tournament : Story {
         //Get cards from player area (need to connect PlayerPlayArea to CardUI next)
         //Add up battle points for current player
 
-        sponsor = board.getNextPlayer(sponsor);
+        Debug.Log("Player finished turn.");
+        //sponsor = board.getNextPlayer(sponsor);
+        playerToPrompt = GetNextPlayer(playerToPrompt);
 
-        if (sponsor == owner)
+        if (playerToPrompt == sponsor)
             TournamentComplete();
 
         else
-            board.promptCardSelection(playerToPrompt);
+            board.PromptCardSelection(playerToPrompt);
     }
 
 
     private void TournamentComplete() {
-        //Processing winner here
+        Debug.Log("Tournament complete!");
+
+        //Check who has the most battle points
+        //Award them the proper amount of shields plus bonus shields
+
+        foreach (Player player in board.getPlayers())
+        {
+            player.getPlayArea().discardAmours();
+        }
+
+        board.nextTurn();
     }
 
 
+    public Player GetNextPlayer(Player previousPlayer)
+    {
+        int index = allPlayers.IndexOf(previousPlayer);
+        if (index != -1)
+        {
+            if (index < (allPlayers.Count - 1))
+                return allPlayers[index + 1];
 
+            return allPlayers[0];
+        }
+
+        return null;
+    }
 }

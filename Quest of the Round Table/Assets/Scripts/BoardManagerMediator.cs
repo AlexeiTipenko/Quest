@@ -211,19 +211,31 @@ public class BoardManagerMediator
 		//TODO: prompt test
 	}
 
-    public void promptEnterTournament(Player player)
+
+    public void PromptEnterTournament(Player player)
     {
-        //TODO: prompt sponsor quest
+        BoardManager.DrawCards(player);
+        BoardManager.SetInteractionText("Would you like to enter this tournament?");
+        Action action1 = () => {
+            ((Tournament)cardInPlay).PromptEnterTournamentResponse(true);
+        };
+        Action action2 = () => {
+            ((Tournament)cardInPlay).PromptEnterTournamentResponse(false);
+        };
+        BoardManager.SetInteractionButtons("Accept", "Decline", action1, action2);
+        Debug.Log("Prompting " + player.getName() + " to enter tournament.");
     }
 
-    public void setupTournament(Player player)
+    public void PromptCardSelection(Player player)
     {
-        //TODO: prompt setup quest
+        BoardManager.DrawCards(player);
+        BoardManager.SetInteractionText("Prepare for the tournament using a combination of weapon, ally and amour cards.");
+        Action action = () => {
+            ((Tournament)cardInPlay).CardsSelectionResponse();
+        };
+        BoardManager.SetInteractionButtons("Complete", "", action, null);
+        Debug.Log("Prompting " + player.getName() + " to prepare cards.");
     }
 
-    public void promptAcceptTournament(Player player)
-    {
-        //TODO: prompt accept quest
-    }
 }
 
