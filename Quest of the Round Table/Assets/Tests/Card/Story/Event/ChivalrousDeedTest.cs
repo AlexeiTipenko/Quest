@@ -20,11 +20,6 @@ public class ChivalrousDeedTest {
 		Player jimmy = new Player ("Jimmy", false);
 		Player jesse = new Player ("Jesse", false);
 
-		players.Add (joey);
-		players.Add (julie);
-		players.Add (jimmy);
-		players.Add (jesse);
-
 		joey.upgradeRank ().upgradeRank ();
 		joey.incrementShields (4);
 
@@ -35,6 +30,11 @@ public class ChivalrousDeedTest {
 
 		jesse.upgradeRank ().upgradeRank ();
 		jesse.incrementShields (4);
+
+		players.Add (joey);
+		players.Add (julie);
+		players.Add (jimmy);
+		players.Add (jesse);
 
 		BoardManagerMediator.getInstance().initGame (players);
 

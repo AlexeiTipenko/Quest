@@ -5,6 +5,7 @@ using System.Collections;
 
 public class CourtCalledToCamelotTest {
 
+	//Event description: All Allies in play must be discarded.
 	[Test]
 	public void CourtCalledToCamelotTestSimplePasses() {
 		Assert.IsTrue (CourtCalledToCamelot.frequency == 2);

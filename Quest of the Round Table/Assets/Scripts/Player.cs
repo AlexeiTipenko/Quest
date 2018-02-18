@@ -45,7 +45,13 @@ public class Player
 		}
 	}
 
-
+	public void removeCards(int numCards) {
+		if (numCards <= hand.Count) {
+			for (int i = 0; i < numCards; i++) {
+				hand.RemoveAt (hand.Count - 1);
+			}
+		}
+	}
 
 	public string getName() {
 		return this.name;
@@ -91,8 +97,6 @@ public class Player
 
 	public Player upgradeRank(){
 		rank = rank.upgrade ();
-        BoardManager.DestroyRank();
-        BoardManager.DrawRank(this);
 		return this; //returns the player object for cascading for testing
 	}
 

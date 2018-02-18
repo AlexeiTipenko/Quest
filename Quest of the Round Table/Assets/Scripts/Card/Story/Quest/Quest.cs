@@ -6,11 +6,12 @@ using UnityEngine;
 public abstract class Quest : Story {
 	private BoardManagerMediator board;
 
-	protected int numStages, currentStage, totalCardsCounter;
+	protected int numStages, currentStage, totalCardsCounter, numShieldsAwarded;
 	protected List<Type> dominantFoes;
 	private List<Stage> stages;
 	Player sponsor, playerToPrompt;
 	List<Player> participatingPlayers;
+	public static bool KingsRecognitionActive = false;
 
 	public Quest (string cardName, int numStages) : base (cardName) {
 		board = BoardManagerMediator.getInstance ();
@@ -19,7 +20,7 @@ public abstract class Quest : Story {
 	}
 
 	public int getShieldsWon () {
-		return numStages;
+		return numShieldsAwarded;
 	}
 
 	public List<Type> getDominantFoes() {
@@ -92,8 +93,13 @@ public abstract class Quest : Story {
 		foreach (Player player in board.getPlayers()) {
 			player.getPlayArea ().discardAmours ();
 		}
+		numShieldsAwarded = numStages;
+		if (KingsRecognitionActive) {
+			numShieldsAwarded += 2;
+			KingsRecognitionActive = false;
+		}
 		foreach (Player player in participatingPlayers) {
-			player.incrementShields (numStages);
+			player.incrementShields (numShieldsAwarded);
 		}
 		board.dealCardsToPlayer (sponsor, totalCardsCounter);
 		board.nextTurn ();
