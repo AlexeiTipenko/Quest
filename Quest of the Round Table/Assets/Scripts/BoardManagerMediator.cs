@@ -90,13 +90,27 @@ public class BoardManagerMediator
 		//TODO: prompt sponsor quest
 	}
 
+    public void promptEnterTournament(Player player) {
+        //TODO: prompt sponsor quest
+    }
+
 	public void setupQuest(Player player) {
 		//TODO: prompt setup quest
 	}
 
+    public void setupTournament(Player player)
+    {
+        //TODO: prompt setup quest
+    }
+
 	public void promptAcceptQuest(Player player) {
 		//TODO: prompt accept quest
 	}
+
+    public void promptAcceptTournament(Player player)
+    {
+        //TODO: prompt accept quest
+    }
 
 	public void promptFoe(Player player) {
 		//TODO: prompt foe
