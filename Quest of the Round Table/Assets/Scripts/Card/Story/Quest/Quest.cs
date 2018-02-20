@@ -13,7 +13,6 @@ public abstract class Quest : Story {
 
 	public Quest (string cardName, int numStages) : base (cardName) {
 		board = BoardManagerMediator.getInstance ();
-
 		this.numStages = numStages;
         participatingPlayers = new List<Player>();
 	}
@@ -67,8 +66,21 @@ public abstract class Quest : Story {
 	public void SetupQuestComplete() {
         this.stages = new List<Stage>(); //TODO: get the cards in the story card play area
         GameObject boardArea = GameObject.Find("Canvas/TabletopImage/BoardArea");
-        //boardArea.transform.GetChild(0);
-        Debug.Log("card name is: " + boardArea.transform.GetChild(0).name);
+        foreach(Transform child in boardArea.transform ){
+            Debug.Log("card name is: " + child);
+            foreach(Card card in sponsor.getHand()){
+                if(child.name == card.getCardName() && ((card.GetType().IsSubclassOf(typeof(Foe))) || (card.GetType().IsSubclassOf(typeof(Test))))){
+                    //typeof doesn't work
+                    //how to use gettype
+                    Debug.Log("Ayy lemao ");
+                }
+            }
+        }
+
+
+        //TODO: get the card from player, make sure they match the ones played on the playarea, then keep doing setup quest
+        // setup panels based on number of stages, then make sure each panel has attack less than another
+        // use playarea for working with quest in playerplayarea (area where they drag cards when participating)
         Debug.Log("Finished quest setup.");
 		playerToPrompt = board.getNextPlayer (sponsor);
 		board.PromptAcceptQuest (playerToPrompt);
