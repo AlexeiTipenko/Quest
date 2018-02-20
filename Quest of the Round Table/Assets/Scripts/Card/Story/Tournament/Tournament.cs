@@ -3,34 +3,38 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
-public abstract class Tournament : Story {
+public abstract class Tournament : Story
+{
 
     private BoardManagerMediator board;
-	protected int bonusShields;
-	protected int playersEntered;
+    protected int bonusShields, playersEntered;
     Player sponsor, playerToPrompt;
-    List<Player> participatingPlayers; //, allPlayers;
-    Dictionary<Player, int> pointsDict = new Dictionary<Player, int>();
+    List<Player> participatingPlayers;
+    Dictionary<Player, int> pointsDict;
+    bool rematch;
 
 
-	public Tournament(string cardName, int bonusShields): base(cardName) {
-        
-		this.playersEntered = 0;
-		this.bonusShields = bonusShields;
+    public Tournament(string cardName, int bonusShields) : base(cardName)
+    {
+
+        this.playersEntered = 0;
+        this.bonusShields = bonusShields;
         board = BoardManagerMediator.getInstance();
         participatingPlayers = new List<Player>();
-	}
-		
+        pointsDict = new Dictionary<Player, int>();
+        rematch = false;
+    }
 
-	public int GetBonusShields() {
-		return bonusShields;
-	}
+
+    public int GetBonusShields()
+    {
+        return bonusShields;
+    }
 
 
     public override void startBehaviour()
     {
-        Debug.Log("Tournament behaviour started");
-
+        Debug.Log("Tournament behaviour started.");
         sponsor = owner;
         playerToPrompt = sponsor;
         board.PromptEnterTournament(sponsor);
@@ -40,16 +44,37 @@ public abstract class Tournament : Story {
 
     public void PromptEnterTournamentResponse(bool tournamentAccepted)
     {
-        if (tournamentAccepted){
+        if (tournamentAccepted)
+        {
             playersEntered++;
             participatingPlayers.Add(playerToPrompt);
         }
-                              
+
         playerToPrompt = board.getNextPlayer(playerToPrompt);
 
         if (playerToPrompt != sponsor)
             board.PromptEnterTournament(playerToPrompt);
-        
+
+        else
+            NumParticipantsAction();
+    }
+
+
+    private void NumParticipantsAction()
+    {
+        if (participatingPlayers.Count() == 0)
+        {
+            Debug.Log("No participants in tournament.");
+            board.nextTurn();
+        }
+
+        else if (participatingPlayers.Count() == 1) 
+        {
+            Debug.Log("TOURNAMENT DEFAULT WINNER: " + participatingPlayers[0].getName());
+            participatingPlayers[0].incrementShields(1);
+            board.nextTurn();
+        }
+
         else
             board.PromptCardSelection(playerToPrompt);
     }
@@ -77,7 +102,7 @@ public abstract class Tournament : Story {
             playerToPrompt = GetNextPlayer(playerToPrompt);
 
             if (playerToPrompt == sponsor)
-                TournamentComplete();
+                TournamentRoundComplete();
 
             else
                 board.PromptCardSelection(playerToPrompt);
@@ -97,16 +122,6 @@ public abstract class Tournament : Story {
         pointsDict.Add(playerToPrompt, pointsTotal);
     }
 
-    /*
-    public void compare() {
-        List<int> battlePointList = new List<int>();
-        foreach (Player player in participatingPlayers) {
-            battlePointList.Add(player.getBattlePoints());
-        }
-
-    }
-    */
-
 
     private bool ValidateChosenCards(List<Card> chosenCards){
 
@@ -115,7 +130,6 @@ public abstract class Tournament : Story {
         if (chosenCards.GroupBy(c => c.getCardName()).Any(g => g.Count() > 1))
             cardsValid = false;
 
-        //validate chosen cards
         foreach (Card card in chosenCards)
         {
             if (!(card.GetType().IsSubclassOf(typeof(Weapon))) &&
@@ -130,37 +144,56 @@ public abstract class Tournament : Story {
     }
 
 
-    private void TournamentComplete() {
-        Debug.Log("Tournament complete!");
-
-        //Check who has the most battle points
-        //Award them the proper amount of shields plus bonus shields
-
-
-        IEnumerable<Player> tempCollection = from p in pointsDict where p.Value == pointsDict.Max(v => v.Value) select p.Key;
+    private void TournamentRoundComplete() {
+        
+        IEnumerable<Player> tempCollection = from p in pointsDict 
+                where p.Value == pointsDict.Max(v => v.Value) select p.Key;
+        
         List<Player> winnerList = tempCollection.ToList();
 
-        if (winnerList.Count() == 1) {
-            Debug.Log("TOURNEMENT WINNER: " + winnerList[0].getName());
-            winnerList[0].incrementShields(playersEntered);
-        }
-
-        else if (winnerList.Count() > 1) {
-            Debug.Log("MORE THAN ONE PLAYER WON!");
-            participatingPlayers = winnerList;
-            sponsor = participatingPlayers[0];
-            playerToPrompt = sponsor;
-            board.PromptEnterTournament(playerToPrompt);
-        }
-
-        //winners.Dump();
-
-        foreach (Player player in board.getPlayers())
+        if (winnerList.Count() == 1) 
         {
-            player.getPlayArea().discardAmours();
+            Debug.Log("TOURNAMENT WINNER: " + winnerList[0].getName());
+            winnerList[0].incrementShields(playersEntered);
+            DiscardCards();
+            board.nextTurn();
         }
 
-        board.nextTurn();
+        else if (winnerList.Count() > 1) 
+        {
+            Debug.Log("MORE THAN ONE PLAYER WON!");
+
+            if (rematch == false)
+            {
+                Debug.Log("ROUND 2");
+                participatingPlayers = winnerList;
+                rematch = true;
+                pointsDict.Clear();
+                sponsor = participatingPlayers[0];
+                playerToPrompt = sponsor;
+                //board.PromptEnterTournament(playerToPrompt);
+                board.PromptCardSelection(playerToPrompt);
+            }
+
+            else{
+                Debug.Log("ROUND 3 AND END OF TOURNAMENT.");
+                foreach(Player player in winnerList){
+                    player.incrementShields(playersEntered);
+                }
+                DiscardCards();
+                board.nextTurn();
+            }
+        }
+        //winners.Dump();
+    }
+
+    private void DiscardCards() {
+        //NOT WORKING IN UI
+        foreach(Player player in board.getPlayers()){
+            player.getPlayArea().discardWeapons();
+            player.getPlayArea().discardAmours();
+            //Not allies
+        }
     }
 
 
