@@ -45,6 +45,9 @@ public class Player
 		}
 	}
 
+    public int getBattlePoints() {
+        return rank.getBattlePoints() + playArea.getBattlePoints();
+    }
 
 
 	public string getName() {
