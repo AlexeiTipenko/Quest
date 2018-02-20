@@ -28,7 +28,7 @@ public class BoardManagerMediator
 	}
 
 	public void initGame (List<Player> players) {
-		Debug.Log ("Received playersList");
+		//Debug.Log ("Received playersList");
 		this.players = players;
 
 		adventureDeck = new AdventureDeck ();
@@ -61,8 +61,18 @@ public class BoardManagerMediator
 		return cardInPlay;
 	}
 
-    public void GetSelectedCards() {
-        BoardManager.GetSelectedCards();
+    public List<Card> GetSelectedCards(Player player) {
+        List<string> cardNames = BoardManager.GetSelectedCardNames();
+        List<Card> cardList = new List<Card>();
+
+        foreach(string name in cardNames){
+            cardList.Add(player.getHand().Find(c => c.getCardName() == name));
+        }
+        return cardList;
+    }
+
+    public void ReturnCardsToPlayer(){
+        BoardManager.ReturnCardsToPlayer();
     }
 
 	public void dealCardsToPlayer(Player player, int numCardsToDeal) {
@@ -106,6 +116,7 @@ public class BoardManagerMediator
     {
         storyDiscard.addCard(cardInPlay);
         BoardManager.DestroyCards();
+        BoardManager.ClearInteractions();
         cardInPlay = null;
         playerTurn = (playerTurn + 1) % players.Count;
         playTurn();
@@ -240,6 +251,5 @@ public class BoardManagerMediator
         BoardManager.SetInteractionButtons("Complete", "", action, null);
         Debug.Log("Prompting " + player.getName() + " to prepare cards.");
     }
-
 }
 

@@ -66,6 +66,9 @@ public abstract class Quest : Story {
 
 	public void SetupQuestComplete() {
         this.stages = new List<Stage>(); //TODO: get the cards in the story card play area
+        GameObject boardArea = GameObject.Find("Canvas/TabletopImage/BoardArea");
+        //boardArea.transform.GetChild(0);
+        Debug.Log("card name is: " + boardArea.transform.GetChild(0).name);
         Debug.Log("Finished quest setup.");
 		playerToPrompt = board.getNextPlayer (sponsor);
 		board.PromptAcceptQuest (playerToPrompt);

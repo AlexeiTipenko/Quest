@@ -6,7 +6,7 @@ using UnityEngine.EventSystems;
 public class GameBoard : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPointerExitHandler {
 
 	public void OnDrop(PointerEventData eventData) {
-		Debug.Log ("Dropping to " + gameObject.name);
+		//Debug.Log ("Dropping to " + gameObject.name);
 
 		CardUI card = eventData.pointerDrag.GetComponent<CardUI>();
 
