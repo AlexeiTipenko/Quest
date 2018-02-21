@@ -192,4 +192,23 @@ public class BoardManager : MonoBehaviour
         //TODO: destroy what's on the table
     }
 
+    public static void SetupQuestPanels(int numStages){
+        GameObject board = GameObject.Find("Canvas/TabletopImage");
+        Debug.Log("Num stages is: " + numStages);
+        float position = -180;
+        for (int i = 0; i < numStages; i++){
+            GameObject BoardAreaFoe = Instantiate(Resources.Load("BoardAreaPrefab", typeof(GameObject))) as GameObject;
+            GameObject BoardAreaWep = Instantiate(Resources.Load("BoardAreaPrefabWep", typeof(GameObject))) as GameObject;
+            Debug.Log("Position is: " + position);
+
+            BoardAreaFoe.name = "BoardAreaFoe" + i;
+            BoardAreaFoe.transform.position = new Vector3(position, BoardAreaFoe.transform.position.y, BoardAreaFoe.transform.position.z);
+            BoardAreaFoe.transform.SetParent(board.transform, false);
+
+            BoardAreaWep.name = "BoardAreaWep" + i;
+            BoardAreaWep.transform.position = new Vector3(position, BoardAreaWep.transform.position.y, BoardAreaWep.transform.position.z);
+            BoardAreaWep.transform.SetParent(board.transform, false);
+            position += 91;
+        }
+    }
 }

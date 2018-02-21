@@ -5,7 +5,8 @@ using UnityEngine;
 public abstract class Quest : Story {
 	private BoardManagerMediator board;
 
-	protected int numStages, currentStage, totalCardsCounter;
+    public int numStages, currentStage;
+    protected int totalCardsCounter;
 	protected List<Type> dominantFoes;
 	private List<Stage> stages;
 	Player sponsor, playerToPrompt;
@@ -65,18 +66,33 @@ public abstract class Quest : Story {
 
 	public void SetupQuestComplete() {
         this.stages = new List<Stage>(); //TODO: get the cards in the story card play area
-        GameObject boardArea = GameObject.Find("Canvas/TabletopImage/BoardArea");
-        foreach(Transform child in boardArea.transform ){
-            Debug.Log("card name is: " + child);
-            foreach(Card card in sponsor.getHand()){
-                if(child.name == card.getCardName() && ((card.GetType().IsSubclassOf(typeof(Foe))) || (card.GetType().IsSubclassOf(typeof(Test))))){
-                    //typeof doesn't work
-                    //how to use gettype
-                    Debug.Log("Ayy lemao ");
+        for (int i = 0; i < numStages; i++)
+        {
+            GameObject boardAreaFoe = GameObject.Find("Canvas/TabletopImage/BoardAreaFoe" + i);
+            foreach (Transform child in boardAreaFoe.transform)
+            {
+                Debug.Log("card name is: " + child);
+                foreach (Card card in sponsor.getHand())
+                {
+                    if (child.name == card.getCardName() && ((card.GetType().IsSubclassOf(typeof(Foe))) || (card.GetType().IsSubclassOf(typeof(Test)))))
+                    {
+                        Debug.Log("Ayy lemao this is a foe");
+                    }
+                }
+            }
+            GameObject boardAreaWep = GameObject.Find("Canvas/TabletopImage/BoardAreaWep" + i);
+            foreach (Transform child in boardAreaWep.transform)
+            {
+                Debug.Log("card name is: " + child);
+                foreach (Card card in sponsor.getHand())
+                {
+                    if (child.name == card.getCardName() && ((card.GetType().IsSubclassOf(typeof(Weapon)))))
+                    {
+                        Debug.Log("Ayy lemao this is a weapon ");
+                    }
                 }
             }
         }
-
 
         //TODO: get the card from player, make sure they match the ones played on the playarea, then keep doing setup quest
         // setup panels based on number of stages, then make sure each panel has attack less than another

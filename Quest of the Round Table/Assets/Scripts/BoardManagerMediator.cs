@@ -201,6 +201,11 @@ public class BoardManagerMediator
         Action action = () => {
             ((Quest)cardInPlay).SetupQuestComplete();
         };
+        Debug.Log(((Quest)cardInPlay).numStages);
+
+        //Generate panels
+        BoardManager.SetupQuestPanels(((Quest)cardInPlay).numStages);
+
         BoardManager.SetInteractionButtons("Complete", "", action, null);
         Debug.Log("Prompting " + player.getName() + " to setup quest.");
 	}
