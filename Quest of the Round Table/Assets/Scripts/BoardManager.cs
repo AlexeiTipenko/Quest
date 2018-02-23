@@ -195,20 +195,16 @@ public class BoardManager : MonoBehaviour
     public static void SetupQuestPanels(int numStages){
         GameObject board = GameObject.Find("Canvas/TabletopImage");
         Debug.Log("Num stages is: " + numStages);
-        float position = -180;
+        float position = -465;
         for (int i = 0; i < numStages; i++){
-            GameObject BoardAreaFoe = Instantiate(Resources.Load("BoardAreaPrefab", typeof(GameObject))) as GameObject;
-            GameObject BoardAreaWep = Instantiate(Resources.Load("BoardAreaPrefabWep", typeof(GameObject))) as GameObject;
+            GameObject BoardAreaFoe = Instantiate(Resources.Load("StageAreaPrefab", typeof(GameObject))) as GameObject;
             Debug.Log("Position is: " + position);
 
-            BoardAreaFoe.name = "BoardAreaFoe" + i;
+            BoardAreaFoe.name = "StageAreaFoe" + i;
             BoardAreaFoe.transform.position = new Vector3(position, BoardAreaFoe.transform.position.y, BoardAreaFoe.transform.position.z);
             BoardAreaFoe.transform.SetParent(board.transform, false);
 
-            BoardAreaWep.name = "BoardAreaWep" + i;
-            BoardAreaWep.transform.position = new Vector3(position, BoardAreaWep.transform.position.y, BoardAreaWep.transform.position.z);
-            BoardAreaWep.transform.SetParent(board.transform, false);
-            position += 91;
+            position += 155;
         }
     }
 }

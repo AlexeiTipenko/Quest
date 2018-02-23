@@ -68,7 +68,7 @@ public abstract class Quest : Story {
         this.stages = new List<Stage>(); //TODO: get the cards in the story card play area
         for (int i = 0; i < numStages; i++)
         {
-            GameObject boardAreaFoe = GameObject.Find("Canvas/TabletopImage/BoardAreaFoe" + i);
+            GameObject boardAreaFoe = GameObject.Find("Canvas/TabletopImage/StageAreaFoe" + i);
             foreach (Transform child in boardAreaFoe.transform)
             {
                 Debug.Log("card name is: " + child);
@@ -77,18 +77,6 @@ public abstract class Quest : Story {
                     if (child.name == card.getCardName() && ((card.GetType().IsSubclassOf(typeof(Foe))) || (card.GetType().IsSubclassOf(typeof(Test)))))
                     {
                         Debug.Log("Ayy lemao this is a foe");
-                    }
-                }
-            }
-            GameObject boardAreaWep = GameObject.Find("Canvas/TabletopImage/BoardAreaWep" + i);
-            foreach (Transform child in boardAreaWep.transform)
-            {
-                Debug.Log("card name is: " + child);
-                foreach (Card card in sponsor.getHand())
-                {
-                    if (child.name == card.getCardName() && ((card.GetType().IsSubclassOf(typeof(Weapon)))))
-                    {
-                        Debug.Log("Ayy lemao this is a weapon ");
                     }
                 }
             }
