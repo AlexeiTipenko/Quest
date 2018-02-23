@@ -62,11 +62,17 @@ public class BoardManagerMediator
 	}
 
     public List<Card> GetSelectedCards(Player player) {
+        
         List<string> cardNames = BoardManager.GetSelectedCardNames();
         List<Card> cardList = new List<Card>();
 
         foreach(string name in cardNames){
-            cardList.Add(player.getHand().Find(c => c.getCardName() == name));
+            foreach (Card card in player.getHand()) {
+                if (card.getCardName() == name) {
+                    cardList.Add(card);
+                }
+            }
+            //cardList.Add(player.getHand().Find(c => c.getCardName() == name));
         }
         return cardList;
     }
@@ -248,6 +254,18 @@ public class BoardManagerMediator
         Action action = () => {
             ((Tournament)cardInPlay).CardsSelectionResponse();
         };
+        BoardManager.SetInteractionButtons("Complete", "", action, null);
+        Debug.Log("Prompting " + player.getName() + " to prepare cards.");
+    }
+
+    public void PromptCardRemoveSelection(Player player)
+    {
+        BoardManager.DrawCards(player);
+        BoardManager.SetInteractionText("Please remove cards until you have at most 12.");
+        Action action = () => {
+            player.RemoveCardsResponse();
+        };
+
         BoardManager.SetInteractionButtons("Complete", "", action, null);
         Debug.Log("Prompting " + player.getName() + " to prepare cards.");
     }
