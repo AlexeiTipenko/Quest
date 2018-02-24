@@ -170,6 +170,14 @@ public class BoardManager : MonoBehaviour
         }
     }
 
+    public static void DestroyStage(int stages)
+    {
+        for (int i = 0; i < stages; i++){
+            GameObject boardAreaFoe = GameObject.Find("Canvas/TabletopImage/StageAreaFoe" + i);
+            Destroy(boardAreaFoe);
+        }
+    }
+
     public static void DrawCardInPlay()
     {
         DestroyCardInPlay();

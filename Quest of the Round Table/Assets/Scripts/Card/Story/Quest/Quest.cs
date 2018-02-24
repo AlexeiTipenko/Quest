@@ -124,6 +124,8 @@ public abstract class Quest : Story {
 			player.incrementShields (numStages);
 		}
 		board.dealCardsToPlayer (sponsor, totalCardsCounter);
+        Debug.Log("Complete Quest");
+        BoardManager.DestroyStage(numStages);
 		board.nextTurn ();
 	}
 
