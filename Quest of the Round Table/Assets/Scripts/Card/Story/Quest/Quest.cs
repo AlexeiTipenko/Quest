@@ -74,9 +74,11 @@ public abstract class Quest : Story {
                 Debug.Log("card name is: " + child);
                 foreach (Card card in sponsor.getHand())
                 {
-                    if (child.name == card.getCardName() && ((card.GetType().IsSubclassOf(typeof(Foe))) || (card.GetType().IsSubclassOf(typeof(Test)))))
+                    if (child.name == card.getCardName() && card.GetType().IsSubclassOf(typeof(Test)))
                     {
-                        Debug.Log("Ayy lemao this is a foe");
+                        while(boardAreaFoe.transform.childCount > 1){
+                            
+                        }
                     }
                 }
             }
