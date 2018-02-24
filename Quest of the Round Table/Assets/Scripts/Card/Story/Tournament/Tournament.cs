@@ -47,6 +47,7 @@ public abstract class Tournament : Story
         if (tournamentAccepted)
         {
             playersEntered++;
+            //board.dealCardsToPlayer(playerToPrompt, 1);
             participatingPlayers.Add(playerToPrompt);
         }
 
@@ -95,6 +96,12 @@ public abstract class Tournament : Story
 
         else
         {
+            foreach(Card card in chosenCards)
+            {
+                playerToPrompt.RemoveCard(card);
+                playerToPrompt.getPlayArea().addCard(card);
+            }
+
             Debug.Log("All cards valid.");
             AddPlayerBattlePoints(chosenCards);
 

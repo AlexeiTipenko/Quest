@@ -67,6 +67,8 @@ public class BoardManager : MonoBehaviour
             button2.GetComponent<Button>().onClick.AddListener(ClearInteractions);
             button2.GetComponent<Button>().onClick.AddListener(new UnityAction(func2));
         }
+
+        //yield return new WaitUntil(() => button1.GetComponent<Button>().onClick);
     }
 
 

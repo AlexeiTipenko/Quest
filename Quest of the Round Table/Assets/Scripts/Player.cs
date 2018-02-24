@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class Player
 {
@@ -10,6 +11,7 @@ public class Player
 	private Rank rank;
 	private List<Card> hand;
 	private PlayerPlayArea playArea;
+    private BoardManagerMediator board;
 	private bool isAI;
 
 	public Player(string name, bool isAI) {
@@ -19,6 +21,7 @@ public class Player
 		numShields = 0;
 		hand = new List<Card> ();
 		playArea = new PlayerPlayArea ();
+        board = BoardManagerMediator.getInstance();
 	}
 
 	public void dealCards(List<Card> cards) {
@@ -28,7 +31,8 @@ public class Player
 		}
 
 		if (hand.Count > 12) {
-			//prompt player to discard cards
+            Debug.Log("MORE THAN 12 CARDS IN HAND");
+            board.PromptCardRemoveSelection(this);
 		}
 	}
 
@@ -74,10 +78,39 @@ public class Player
 		int availableBids = hand.Count;
 		List<Card> playAreaCards = playArea.getCards ();
 		foreach (Card card in playAreaCards) {
-			availableBids += ((Adventure)card).getBidPoints (); //TODO: Make sure empowered bid points work (and battle points while you're at it!)
+			availableBids += ((Adventure)card).getBidPoints (); 
+            //TODO: Make sure empowered bid points work (and battle points while you're at it!)
 		}
 		return availableBids;
 	}
+
+    public void RemoveCard(Card card)
+    {
+        //var value = MyList.First(item => item.name == "foo").value;
+        //Card cardToRemove = hand.Find(c => c.getCardName() == card.getCardName());
+        //Card cardToRemove = hand.First(c => c.getCardName() == card.getCardName());
+
+        for (int i = 0; i < hand.Count(); i++)
+        {
+            if (card.getCardName() == hand[i].getCardName())
+            {
+                hand.RemoveAt(i);
+                return;
+            }
+        }
+    }
+
+    public void RemoveCardsResponse()
+    {
+        List<Card> chosenCards = board.GetSelectedCards(this);
+
+        foreach (Card card in chosenCards)
+        {
+            RemoveCard(card);
+            playArea.addCard(card);
+        } 
+
+    }
 
 	public void incrementShields(int numShields) {
 		this.numShields += numShields;
