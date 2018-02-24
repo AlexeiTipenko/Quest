@@ -47,7 +47,10 @@ public abstract class Quest : Story {
 	public void PromptSponsorQuestResponse (bool sponsorAccepted) {
 		if (sponsorAccepted) {
             Debug.Log("Sponsor accepted: " + sponsor.getName());
-			board.SetupQuest (sponsor);
+            Action action = () => {
+                ((Quest)BoardManagerMediator.getInstance().getCardInPlay()).SetupQuestComplete();
+            };
+			board.SetupQuest (sponsor, action);
 		} else {
             Debug.Log("Sponsor declined: " + sponsor.getName());
 			IncrementSponsor ();
@@ -76,9 +79,10 @@ public abstract class Quest : Story {
                 {
                     if (child.name == card.getCardName() && card.GetType().IsSubclassOf(typeof(Test)))
                     {
-                        while(boardAreaFoe.transform.childCount > 1){
-                            
-                        }
+                        Debug.Log("This is Test");
+                    }
+                    else if(child.name == card.getCardName() && card.GetType().IsSubclassOf(typeof(Foe))){
+                        Debug.Log("This is Foe");
                     }
                 }
             }

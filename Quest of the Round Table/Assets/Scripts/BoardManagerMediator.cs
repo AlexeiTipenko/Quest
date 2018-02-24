@@ -196,17 +196,14 @@ public class BoardManagerMediator
         Debug.Log("Prompting " + player.getName() + " to sponsor quest.");
 	}
 
-	public void SetupQuest(Player player) {
+	public void SetupQuest(Player player, Action action1) {
         BoardManager.SetInteractionText("Prepare your quest using a combination of foes (and weapons) and a test.");
-        Action action = () => {
-            ((Quest)cardInPlay).SetupQuestComplete();
-        };
         Debug.Log(((Quest)cardInPlay).numStages);
 
         //Generate panels
         BoardManager.SetupQuestPanels(((Quest)cardInPlay).numStages);
 
-        BoardManager.SetInteractionButtons("Complete", "", action, null);
+        BoardManager.SetInteractionButtons("Complete", "", action1, null);
         Debug.Log("Prompting " + player.getName() + " to setup quest.");
 	}
 
