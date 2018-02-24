@@ -45,7 +45,7 @@ public class Stage {
 
 		if (stageCard.GetType ().IsSubclassOf (typeof(Foe))) {
 			playerToPrompt = quest.getNextPlayer (quest.getSponsor ());
-			board.promptFoe (playerToPrompt);
+			board.PromptFoe (playerToPrompt);
 		} else {
 			//TODO: reveal visually;
 			currentBid = ((Test)stageCard).getMinBidValue();
@@ -58,7 +58,7 @@ public class Stage {
 		if (!dropOut) {
 			playerToPrompt = quest.getNextPlayer (playerToPrompt);
 			if (playerToPrompt != quest.getSponsor ()) {
-				board.promptFoe (playerToPrompt);
+				board.PromptFoe (playerToPrompt);
 			} else {
 				playFoe ();
 			}
@@ -72,7 +72,7 @@ public class Stage {
 
 	private void promptTest() {
 		if (isValidBidder ()) {
-			board.promptTest (playerToPrompt, currentBid);
+			board.PromptTest (playerToPrompt, currentBid);
 		} else {
 			quest.removeParticipatingPlayer (playerToPrompt);
 			incrementBidder ();

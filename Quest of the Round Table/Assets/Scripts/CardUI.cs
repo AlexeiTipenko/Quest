@@ -20,7 +20,7 @@ public class CardUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHa
 
 
 	public void OnBeginDrag(PointerEventData eventData) {
-		Debug.Log ("Begin drag.");
+		//Debug.Log ("Begin drag.");
 
 		placeholder = new GameObject();
 		placeholder.transform.SetParent(this.transform.parent);
@@ -68,7 +68,7 @@ public class CardUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHa
 
 
 	public void OnEndDrag(PointerEventData eventData) {
-		Debug.Log ("End drag.");
+		//Debug.Log ("End drag.");
 		this.transform.SetParent(parentToReturnTo);
 		this.transform.SetSiblingIndex(placeholder.transform.GetSiblingIndex());
 

@@ -1,8 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class Amour : Adventure {
+﻿public class Amour : Adventure {
 
 	public static int frequency = 8;
 	private int battlePoints, bidPoints;

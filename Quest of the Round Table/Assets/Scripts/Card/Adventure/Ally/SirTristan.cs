@@ -1,8 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class SirTristan : Ally {
+﻿public class SirTristan : Ally {
 
 	public static int frequency = 1;
 	private int empoweredBattlePoints;
@@ -12,11 +8,11 @@ public class SirTristan : Ally {
 	}
 
 	public override int getBattlePoints() {
-		/*
-		 * if (condition) {
-		 *     return empoweredBattlePoints;
-		 * }
-		*/
+        foreach (Player player in BoardManagerMediator.getInstance().getPlayers()) {
+            if (player.getPlayArea().containsCard("Queen Iseult")) {
+                return empoweredBattlePoints;
+            }
+        }
 		return battlePoints;
 	}
 }

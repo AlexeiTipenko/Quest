@@ -1,8 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class KingPellinore : Ally {
+﻿public class KingPellinore : Ally {
 
 	public static int frequency = 1;
 	private int empoweredBidPoints;
@@ -12,11 +8,9 @@ public class KingPellinore : Ally {
 	}
 
 	public override int getBidPoints() {
-		/*
-		 * if (condition) {
-		 *     return empoweredBidPoints;
-		 * }
-		*/
+        if (BoardManagerMediator.getInstance().getCardInPlay().getCardName() == "Search for the Questing Beast") {
+            return empoweredBidPoints;
+        }
 		return bidPoints;
 	}
 }
