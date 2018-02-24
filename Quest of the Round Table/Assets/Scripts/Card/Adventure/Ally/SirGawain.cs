@@ -1,8 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class SirGawain : Ally {
+﻿public class SirGawain : Ally {
 
 	public static int frequency = 1;
 	private int empoweredBattlePoints;
@@ -11,14 +7,10 @@ public class SirGawain : Ally {
 		empoweredBattlePoints = 20;
 	}
 
-	public new int getBattlePoints() {
-		/*
-		 * if (condition) {
-		 *     return empoweredBattlePoints;
-		 * }
-		*/
+	public override int getBattlePoints() {
+        if (BoardManagerMediator.getInstance().getCardInPlay().getCardName() == "Test of the Green Knight") {
+            return empoweredBattlePoints;
+        }
 		return battlePoints;
 	}
 }
-
-

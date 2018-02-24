@@ -1,7 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
 public abstract class Ally : Adventure {
 
 	protected int battlePoints, bidPoints;
