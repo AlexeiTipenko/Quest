@@ -1,5 +1,4 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -17,6 +16,7 @@ public abstract class Quest : Story {
 		board = BoardManagerMediator.getInstance ();
 
 		this.numStages = numStages;
+        participatingPlayers = new List<Player>();
 	}
 
 	public int getShieldsWon () {
@@ -32,49 +32,61 @@ public abstract class Quest : Story {
 
 		sponsor = owner;
 		totalCardsCounter = 0;
-		promptSponsorQuest ();
+		PromptSponsorQuest ();
 	}
 
-	private void promptSponsorQuest() {
+	private void PromptSponsorQuest() {
 		if (isValidSponsor ()) {
-			board.promptSponsorQuest (sponsor);
+            Debug.Log("Requesting sponsor: " + sponsor.getName());
+			board.PromptSponsorQuest (sponsor);
 		} else {
-			incrementSponsor ();
+            Debug.Log("Invalid sponsor: " + sponsor.getName());
+			IncrementSponsor ();
 		}
 	}
 
-	public void promptSponsorQuestResponse (bool sponsorAccepted) {
+	public void PromptSponsorQuestResponse (bool sponsorAccepted) {
 		if (sponsorAccepted) {
-			board.setupQuest (sponsor);
+            Debug.Log("Sponsor accepted: " + sponsor.getName());
+			board.SetupQuest (sponsor);
 		} else {
-			incrementSponsor ();
+            Debug.Log("Sponsor declined: " + sponsor.getName());
+			IncrementSponsor ();
 		}
 	}
 
-	private void incrementSponsor() {
+	private void IncrementSponsor() {
 		sponsor = board.getNextPlayer (sponsor);
 		if (sponsor == owner) {
+            Debug.Log("All sponsors asked, none accepted.");
 			//TODO: discard();
 		} else {
-			promptSponsorQuest ();
+			PromptSponsorQuest ();
 		}
 	}
 
-	public void setupQuestComplete(List<Stage> stages) {
-		this.stages = stages;
+	public void SetupQuestComplete() {
+        this.stages = new List<Stage>(); //TODO: get the cards in the story card play area
+        GameObject boardArea = GameObject.Find("Canvas/TabletopImage/BoardArea");
+        //boardArea.transform.GetChild(0);
+        Debug.Log("card name is: " + boardArea.transform.GetChild(0).name);
+        Debug.Log("Finished quest setup.");
 		playerToPrompt = board.getNextPlayer (sponsor);
-		board.promptAcceptQuest (playerToPrompt);
+		board.PromptAcceptQuest (playerToPrompt);
 	}
 
-	public void promptAcceptQuestResponse(bool questAccepted) {
+	public void PromptAcceptQuestResponse(bool questAccepted) {
 		if (questAccepted) {
+            Debug.Log(playerToPrompt.getName() + " has accepted to participate in the quest.");
 			participatingPlayers.Add (playerToPrompt);
 		}
 		playerToPrompt = board.getNextPlayer (playerToPrompt);
 		if (playerToPrompt != sponsor) {
-			board.promptAcceptQuest (playerToPrompt);
+			board.PromptAcceptQuest (playerToPrompt);
 		} else {
 			currentStage = -1;
+            numStages = stages.Count;
+            Debug.Log("Starting quest.");
 			playStage ();
 		}
 	}
