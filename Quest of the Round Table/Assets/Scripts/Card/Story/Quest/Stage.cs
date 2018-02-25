@@ -10,7 +10,7 @@ public class Stage {
 	private List<Weapon> weapons;
 
 	private Quest quest;
-	private Player playerToPrompt;
+    Player playerToPrompt;
 
 	public Stage(Adventure stageCard, List<Weapon> weapons) {
 		board = BoardManagerMediator.getInstance ();
@@ -53,31 +53,59 @@ public class Stage {
 		quest = (Quest)BoardManagerMediator.getInstance ().getCardInPlay ();
 
 		if (stageCard.GetType ().IsSubclassOf (typeof(Foe))) {
-			playerToPrompt = quest.getNextPlayer (quest.getSponsor ());
-			board.PromptFoe (playerToPrompt);
+			Debug.Log ("Is foe, going to player");
+            Debug.Log("quest sponsor is: " + quest.getSponsor().getName());
+			playerToPrompt = board.getNextPlayer (quest.getSponsor());
+            Debug.Log("Current player is: " + playerToPrompt.getName());
+            board.PromptFoe (playerToPrompt, currentStageNum);
 		} else {
 			//TODO: reveal visually;
 			currentBid = ((Test)stageCard).getMinBidValue();
+			Debug.Log ("Current bid is: " + currentBid);
 			playerToPrompt = quest.getNextPlayer (quest.getSponsor ());
 			promptTest ();
 		}
 	}
 
-	public void promptFoeResponse(bool dropOut) {
-		if (!dropOut) {
-			playerToPrompt = quest.getNextPlayer (playerToPrompt);
-			if (playerToPrompt != quest.getSponsor ()) {
-				board.PromptFoe (playerToPrompt);
-			} else {
-				playFoe ();
-			}
-		} else {
-			quest.removeParticipatingPlayer (playerToPrompt);
-			if (quest.getPlayers ().Count < 1) {
-				//TODO: finish quest early somehow
-			}
-		}
+    public void promptFoeResponse(bool dropOut) { //TODO: I don't know how we can do last player in tournament
+        if (playerToPrompt == quest.getSponsor()){
+            playFoe();
+        }
+        else {
+            if (!dropOut) {
+                continueQuest(playerToPrompt);
+            }
+            else {
+                Debug.Log("Dropped out");
+                Player temp = playerToPrompt;
+                playerToPrompt = quest.getNextPlayer(playerToPrompt);
+                quest.removeParticipatingPlayer(playerToPrompt);
+                Debug.Log("Removed participant: " + quest.getPlayers().Count);
+                continueQuest(temp);
+            }
+        }
 	}
+
+    public void continueQuest(Player currPlayer){
+        //Debug.Log("Current amount of players is: " + quest.getPlayers().Count);
+        if (quest.getPlayers().Count <= 1)
+        {
+            Debug.Log("less than one player");
+            //TODO: finish quest early somehow
+        }
+        else{
+            //Debug.Log("Next player is now " + currPlayer.getName());
+            //if (currPlayer != quest.getSponsor()) {
+                Debug.Log("Next player isn't sponsor");
+                board.PromptFoe(currPlayer, currentStageNum);
+            //}
+            //else {
+            //    Debug.Log("Next player is sponsor");
+            //    playFoe();
+            //}
+        }
+
+    }
 
 	private void promptTest() {
 		if (isValidBidder ()) {
@@ -118,6 +146,7 @@ public class Stage {
 				playerBattlePoints += ((Adventure) card).getBattlePoints ();
 			}
 			if (playerBattlePoints >= getTotalBattlePoints ()) {
+                Debug.Log("player " + player.getName() + " past stage.");
 				board.dealCardsToPlayer (player, 1);
 				player.getPlayArea ().discardWeapons ();
 				quest.playStage ();

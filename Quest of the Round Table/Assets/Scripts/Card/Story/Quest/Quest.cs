@@ -134,6 +134,7 @@ public abstract class Quest : Story {
 		if (sponsor == owner) {
             Debug.Log("All sponsors asked, none accepted.");
 			//TODO: discard();
+			board.nextTurn ();
 		} else {
 			PromptSponsorQuest ();
 		}

@@ -207,6 +207,7 @@ public class BoardManager : MonoBehaviour
         }
     }
 
+
     public static void DrawCardInPlay()
     {
         DestroyCardInPlay();
@@ -236,7 +237,6 @@ public class BoardManager : MonoBehaviour
         float position = -462;
         for (int i = 0; i < numStages; i++){
             GameObject BoardAreaFoe = Instantiate(Resources.Load("StageAreaPrefab", typeof(GameObject))) as GameObject;
-            Debug.Log("Position is: " + position);
 
             BoardAreaFoe.name = "StageAreaFoe" + i;
             BoardAreaFoe.transform.position = new Vector3(position, BoardAreaFoe.transform.position.y, BoardAreaFoe.transform.position.z);
@@ -276,4 +276,21 @@ public class BoardManager : MonoBehaviour
         }
         return stages;
     }
+
+	public static void GetPlayArea(Player player) {
+		GameObject PlayArea = GameObject.Find ("Canvas/TabletopImage/PlayerPlayArea");
+		foreach (Transform child in PlayArea.transform) {
+            foreach(Card card in player.getHand()) {
+                Debug.Log("Going in players hand");
+                Type cardType = card.GetType();
+                if(child.name == card.getCardName()) {
+                    Debug.Log("adding card");
+                    player.getPlayArea().addCard(card);
+                    player.RemoveCard(card);
+                    break;
+                }
+            }
+		}
+	}
+
 }

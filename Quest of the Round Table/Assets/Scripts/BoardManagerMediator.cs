@@ -241,8 +241,22 @@ public class BoardManagerMediator
         Debug.Log("Prompting " + player.getName() + " to accept quest.");
 	}
 
-	public void PromptFoe(Player player) {
+	public void PromptFoe(Player player, int stageNum) {
 		//TODO: prompt foe
+        BoardManager.DrawCards(player);
+		BoardManager.SetInteractionText("Card is a foe. Place cards to continue, or drop out.");
+		Action action1 = () => {
+            Debug.Log("Did not dropout");
+            BoardManager.GetPlayArea(player);
+            Debug.Log("Total battle points is: " + player.getPlayArea().getBattlePoints());
+            ((Quest)cardInPlay).getStage(stageNum).promptFoeResponse(false);
+		};
+        Action action2 = () => {
+            Debug.Log("Dropped out");
+            ((Quest)cardInPlay).getStage(stageNum).promptFoeResponse(true);
+        };
+
+		BoardManager.SetInteractionButtons ("Continue", "Drop Out", action1, action2);
 	}
 
 	public void PromptTest(Player player, int currentBid) {
