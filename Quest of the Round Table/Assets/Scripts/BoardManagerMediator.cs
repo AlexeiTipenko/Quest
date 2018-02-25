@@ -278,6 +278,7 @@ public class BoardManagerMediator
 		BoardManager.SetInteractionText("Please discard " + numFoes +  " Foes.");
 		//Assume player choice is valid for now
 		Action action = () => {
+			player.RemoveCardsResponse();
 			((KingsCallToArms)cardInPlay).PlayerFinishedResponse();
 		};
 		BoardManager.SetInteractionButtons("Complete", "", action, null);
