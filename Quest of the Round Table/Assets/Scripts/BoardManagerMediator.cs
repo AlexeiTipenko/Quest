@@ -3,11 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEditor;
+using System.Collections;
 
 public class BoardManagerMediator
 {
+    
 	static BoardManagerMediator instance;
-	GameObject boardManager;
+	//GameObject boardManager;
+    public static bool buttonClicked;
 	List<Player> players;
 	AdventureDeck adventureDeck;
 	StoryDeck storyDeck;
@@ -30,6 +33,7 @@ public class BoardManagerMediator
 	public void initGame (List<Player> players) {
 		//Debug.Log ("Received playersList");
 		this.players = players;
+        buttonClicked = false;
 
 		adventureDeck = new AdventureDeck ();
 		storyDeck = new StoryDeck ();
@@ -70,6 +74,28 @@ public class BoardManagerMediator
             foreach (Card card in player.getHand()) {
                 if (card.getCardName() == name) {
                     cardList.Add(card);
+                    break;
+                }
+            }
+            //cardList.Add(player.getHand().Find(c => c.getCardName() == name));
+        }
+        return cardList;
+    }
+
+    public List<Card> GetDiscardedCards(Player player)
+    {
+
+        List<string> cardNames = BoardManager.GetSelectedDiscardNames();
+        List<Card> cardList = new List<Card>();
+
+        foreach (string name in cardNames)
+        {
+            foreach (Card card in player.getHand())
+            {
+                if (card.getCardName() == name)
+                {
+                    cardList.Add(card);
+                    break;
                 }
             }
             //cardList.Add(player.getHand().Find(c => c.getCardName() == name));
@@ -93,6 +119,13 @@ public class BoardManagerMediator
 		}
 		player.dealCards (cardsToDeal);
 	}
+
+    public void dealOneCardToPlayer(Player player, Action func)
+    {
+        Debug.Log("Dealing " + 1 + " card");
+        Card card = adventureDeck.drawCard();
+        player.dealCard(card, func);
+    }
 
     public void setCardInPlay(Card card) {
         cardInPlay = (Story) card;
@@ -291,12 +324,21 @@ public class BoardManagerMediator
     {
         BoardManager.DrawCards(player);
         BoardManager.SetInteractionText("Please remove cards until you have at most 12.");
+
         Action action = () => {
+            buttonClicked = true;
+            BoardManager.DestroyDiscardArea();
             player.RemoveCardsResponse();
+            player.PromptNextPlayer();
         };
 
         BoardManager.SetInteractionButtons("Complete", "", action, null);
+        BoardManager.SetupDiscardPanel();
         Debug.Log("Prompting " + player.getName() + " to prepare cards.");
+
+        //BoardManager.WaitUntilButtonClick(buttonClicked);
+        //coroutine = Coroutine(buttonClicked);
+        //StartCoroutine(coroutine);
     }
 }
 

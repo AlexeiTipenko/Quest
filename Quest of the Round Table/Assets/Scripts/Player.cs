@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using System;
 
 public class Player
 {
@@ -13,6 +14,7 @@ public class Player
 	private PlayerPlayArea playArea;
     private BoardManagerMediator board;
 	private bool isAI;
+    public Action func;
 
 	public Player(string name, bool isAI) {
 		this.name = name;
@@ -29,12 +31,32 @@ public class Player
 			card.setOwner (this);
 			hand.Add (card);
 		}
+        checkNumCards();
+	}
 
-		if (hand.Count > 12) {
+    public void dealCard(Card card, Action func)
+    {
+        this.func = func;
+        card.setOwner(this);
+        hand.Add(card);
+        checkNumCards();
+    }
+
+    public void checkNumCards(){
+        if (hand.Count > 12)
+        {
             Debug.Log("MORE THAN 12 CARDS IN HAND");
             board.PromptCardRemoveSelection(this);
-		}
-	}
+        }
+    }
+
+    public void PromptNextPlayer(){
+        if (func != null){
+            func();
+            func = null;
+        }
+    }
+
 
 	private void checkForRankUp() {
 		if (numShields == rank.getShieldsToProgress ()) {
@@ -100,14 +122,14 @@ public class Player
             if (card.getCardName() == hand[i].getCardName())
             {
                 hand.RemoveAt(i);
-                return;
+                break;
             }
         }
     }
 
     public void RemoveCardsResponse()
     {
-        List<Card> chosenCards = board.GetSelectedCards(this);
+        List<Card> chosenCards = board.GetDiscardedCards(this);
 
         foreach (Card card in chosenCards)
         {

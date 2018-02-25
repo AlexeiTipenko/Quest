@@ -9,8 +9,12 @@ using UnityEngine.UI;
 public class BoardManager : MonoBehaviour
 {
 
+    Logger logger;
+
     void Start()
     {
+        logger = new Logger(false);
+        logger.info("Board manager started");
         print("Board manager started");
     }
 
@@ -67,9 +71,28 @@ public class BoardManager : MonoBehaviour
             button2.GetComponent<Button>().onClick.AddListener(ClearInteractions);
             button2.GetComponent<Button>().onClick.AddListener(new UnityAction(func2));
         }
-
-        //yield return new WaitUntil(() => button1.GetComponent<Button>().onClick);
     }
+
+    /*
+    public static void WaitUntilButtonClick(bool buttonClicked){
+
+        //coroutine = Coroutine(buttonClicked);
+        //StartCoroutine(coroutine);
+
+        //yield return StartCoroutine(Coroutine(buttonClicked));
+        StartCoroutine("Coroutine");
+    }
+
+
+    IEnumerator Coroutine()
+    {
+        while (true)
+        {
+            //yield return new WaitForSeconds(waitTime);
+            yield return null;
+        }
+    }
+    */
 
 
     public static void ClearInteractions() {
@@ -96,7 +119,19 @@ public class BoardManager : MonoBehaviour
 
     public static List<string> GetSelectedCardNames()
     {
-        GameObject boardArea = GameObject.Find("Canvas/TabletopImage/BoardArea");
+        GameObject playArea = GameObject.Find("Canvas/TabletopImage/PlayerPlayArea");
+        List<string> cardNames = new List<string>();
+
+        foreach (Transform child in playArea.transform)
+        {
+            cardNames.Add(child.gameObject.name);
+        }
+        return cardNames;
+    }
+
+    public static List<string> GetSelectedDiscardNames()
+    {
+        GameObject boardArea = GameObject.Find("Canvas/TabletopImage/DiscardArea");
         List<string> cardNames = new List<string>();
 
         foreach (Transform child in boardArea.transform)
@@ -108,10 +143,10 @@ public class BoardManager : MonoBehaviour
 
     public static void ReturnCardsToPlayer()
     {
-        GameObject boardArea = GameObject.Find("Canvas/TabletopImage/BoardArea");
+        GameObject playArea = GameObject.Find("Canvas/TabletopImage/PlayerPlayArea");
         GameObject handArea = GameObject.Find("Canvas/TabletopImage/HandArea");
 
-        foreach (Transform child in boardArea.transform)
+        foreach (Transform child in playArea.transform)
         {
             child.gameObject.transform.SetParent(handArea.transform, false);
         }
@@ -180,6 +215,14 @@ public class BoardManager : MonoBehaviour
         }
     }
 
+    public static void DestroyDiscardArea()
+    {
+
+        GameObject discardArea = GameObject.Find("Canvas/TabletopImage/DiscardArea");
+        Destroy(discardArea);
+
+    }
+
     public static void DrawCardInPlay()
     {
         DestroyCardInPlay();
@@ -216,5 +259,22 @@ public class BoardManager : MonoBehaviour
 
             position += 155;
         }
+    }
+
+    public static void SetupDiscardPanel()
+    {
+        GameObject board = GameObject.Find("Canvas/TabletopImage");
+
+        //float position = -465;
+
+        GameObject DiscardArea = Instantiate(Resources.Load("DiscardArea", typeof(GameObject))) as GameObject;
+        //Debug.Log("Position is: " + position);
+
+        DiscardArea.name = "DiscardArea";
+        //DiscardArea.transform.position = new Vector3(position, DiscardArea.transform.position.y, DiscardArea.transform.position.z);
+        DiscardArea.transform.SetParent(board.transform, false);
+
+        //position += 155;
+
     }
 }

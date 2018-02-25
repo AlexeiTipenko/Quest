@@ -2,15 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using System;
 
 public abstract class Tournament : Story
 {
 
     private BoardManagerMediator board;
     protected int bonusShields, playersEntered;
-    Player sponsor, playerToPrompt;
-    List<Player> participatingPlayers;
-    Dictionary<Player, int> pointsDict;
+    public Player sponsor, playerToPrompt;
+    public List<Player> participatingPlayers;
+    public Dictionary<Player, int> pointsDict;
     bool rematch;
 
 
@@ -47,10 +48,30 @@ public abstract class Tournament : Story
         if (tournamentAccepted)
         {
             playersEntered++;
-            //board.dealCardsToPlayer(playerToPrompt, 1);
             participatingPlayers.Add(playerToPrompt);
+
+            if ((playerToPrompt.getHand().Count() + 1) > 12)
+            {
+                Action action = () => {
+                    PromptNextPlayer();
+                };
+
+                board.dealOneCardToPlayer(playerToPrompt, action);
+            }
+
+            else
+            {
+                board.dealCardsToPlayer(playerToPrompt, 1);
+                PromptNextPlayer();
+            }
         }
 
+        else{
+            PromptNextPlayer();
+        }
+    }
+
+    public void PromptNextPlayer(){
         playerToPrompt = board.getNextPlayer(playerToPrompt);
 
         if (playerToPrompt != sponsor)
@@ -117,7 +138,7 @@ public abstract class Tournament : Story
     }
 
 
-    private void AddPlayerBattlePoints(List<Card> chosenCards){
+    public void AddPlayerBattlePoints(List<Card> chosenCards){
         int pointsTotal = 0;
         foreach (Card card in chosenCards)
         {
@@ -130,7 +151,7 @@ public abstract class Tournament : Story
     }
 
 
-    private bool ValidateChosenCards(List<Card> chosenCards){
+    public bool ValidateChosenCards(List<Card> chosenCards){
 
         bool cardsValid = true;
         
@@ -151,7 +172,7 @@ public abstract class Tournament : Story
     }
 
 
-    private void TournamentRoundComplete() {
+    public void TournamentRoundComplete() {
         
         IEnumerable<Player> tempCollection = from p in pointsDict 
                 where p.Value == pointsDict.Max(v => v.Value) select p.Key;
