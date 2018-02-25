@@ -53,6 +53,7 @@ public abstract class Quest : Story {
 	public void PromptSponsorQuestResponse (bool sponsorAccepted) {
 		if (sponsorAccepted) {
             Debug.Log("Sponsor accepted: " + sponsor.getName());
+            participatingPlayers.Add(sponsor);
             board.SetupQuest (sponsor, "Prepare your quest using a combination of foes(and weapons) and a test.");
 		} else {
             Debug.Log("Sponsor declined: " + sponsor.getName());

@@ -249,11 +249,11 @@ public class BoardManagerMediator
             Debug.Log("Did not dropout");
             BoardManager.GetPlayArea(player);
             Debug.Log("Total battle points is: " + player.getPlayArea().getBattlePoints());
-            ((Quest)cardInPlay).getStage(stageNum).promptFoeResponse(false);
+            ((Quest)cardInPlay).getStage(stageNum).promptFoeResp(false);
 		};
         Action action2 = () => {
             Debug.Log("Dropped out");
-            ((Quest)cardInPlay).getStage(stageNum).promptFoeResponse(true);
+            ((Quest)cardInPlay).getStage(stageNum).promptFoeResp(true);
         };
 
 		BoardManager.SetInteractionButtons ("Continue", "Drop Out", action1, action2);

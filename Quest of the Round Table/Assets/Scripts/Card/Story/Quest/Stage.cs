@@ -22,7 +22,7 @@ public class Stage {
 	public int getTotalBattlePoints() {
 		int battlePoints = 0;
 		if (stageCard.GetType ().IsSubclassOf (typeof(Foe))) {
-			battlePoints += ((Foe)stageCard).getBattlePoints ();
+			battlePoints += ((Foe)stageCard).getBattlePoints (); // here is breaking for some reason.
             if (weapons != null) {
                 foreach (Weapon weapon in weapons) {
                     battlePoints += weapon.getBattlePoints();
@@ -79,12 +79,37 @@ public class Stage {
                 Debug.Log("Dropped out");
                 Player temp = playerToPrompt;
                 playerToPrompt = quest.getNextPlayer(playerToPrompt);
-                quest.removeParticipatingPlayer(playerToPrompt);
+                quest.removeParticipatingPlayer(temp);
                 Debug.Log("Removed participant: " + quest.getPlayers().Count);
                 continueQuest(temp);
             }
         }
 	}
+
+    public void promptFoeResp(bool dropOut) {
+        if (!dropOut) {
+            if (quest.getNextPlayer(playerToPrompt) != quest.getSponsor()) {
+                Debug.Log("Sponsor is next");
+                playerToPrompt = quest.getNextPlayer(playerToPrompt);
+                board.PromptFoe(playerToPrompt, currentStageNum);
+            }
+            else{
+                playFoe();
+            }
+        }
+        else{
+            Debug.Log("Drop out");
+            if (quest.getNextPlayer(playerToPrompt) != quest.getSponsor()){
+                Player temp = playerToPrompt;
+                playerToPrompt = quest.getNextPlayer(playerToPrompt);
+                quest.removeParticipatingPlayer(temp);
+                board.PromptFoe(playerToPrompt, currentStageNum);
+            }
+            else {
+                playFoe();
+            }
+        }
+    }
 
     public void continueQuest(Player currPlayer){
         //Debug.Log("Current amount of players is: " + quest.getPlayers().Count);
@@ -139,6 +164,7 @@ public class Stage {
 	}
 
 	private void playFoe() {
+        Debug.Log("playing foe");
 		foreach (Player player in quest.getPlayers()) {
 			int playerBattlePoints = player.getRank ().getBattlePoints ();
 			List<Card> stageCards = player.getPlayArea ().getCards ();
