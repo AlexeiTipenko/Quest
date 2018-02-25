@@ -95,7 +95,6 @@ public class Player
         //var value = MyList.First(item => item.name == "foo").value;
         //Card cardToRemove = hand.Find(c => c.getCardName() == card.getCardName());
         //Card cardToRemove = hand.First(c => c.getCardName() == card.getCardName());
-
         for (int i = 0; i < hand.Count(); i++)
         {
             if (card.getCardName() == hand[i].getCardName())
@@ -113,7 +112,7 @@ public class Player
         foreach (Card card in chosenCards)
         {
             RemoveCard(card);
-            playArea.addCard(card);
+            //playArea.addCard(card);
         } 
 
     }
@@ -133,7 +132,6 @@ public class Player
 
 	public Player upgradeRank(){
 		rank = rank.upgrade ();
-        BoardManagerMediator.getInstance().DrawRank(this);
 		return this; //returns the player object for cascading for testing
 	}
 

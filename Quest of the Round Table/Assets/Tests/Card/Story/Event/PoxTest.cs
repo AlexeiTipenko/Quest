@@ -12,6 +12,11 @@ public class PoxTest {
 		Assert.IsTrue (Pox.frequency == 1);
 		Event pox = new Pox ();
 		Assert.AreEqual ("Pox", pox.getCardName ());
+	}
+
+	[Test]
+	public void PoxTestBehaviour() {
+		Event pox = new Pox ();
 
 		List<Player> players = new List<Player>();
 

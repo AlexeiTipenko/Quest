@@ -12,6 +12,11 @@ public class ProsperityThroughoutTheRealmTest {
 		Assert.IsTrue (ProsperityThroughoutTheRealm.frequency == 1);
 		Event prosperityThroughoutTheRealm = new ProsperityThroughoutTheRealm ();
 		Assert.AreEqual ("Prosperity Throughout the Realm", prosperityThroughoutTheRealm.getCardName ());
+	}
+
+	[Test]
+	public void ProsperityThroughoutTheRealmTestBehaviour() {
+		Event prosperityThroughoutTheRealm = new ProsperityThroughoutTheRealm ();
 
 		List<Player> players = new List<Player>();
 

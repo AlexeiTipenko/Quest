@@ -11,11 +11,18 @@ public class KingsRecognitionTest {
 		Assert.IsTrue (KingsRecognition.frequency == 2);
 		Event kingsRecognition = new KingsRecognition ();
 		Assert.AreEqual ("King's Recognition", kingsRecognition.getCardName ());
+	}
+
+	[Test]
+	public void KingsRecognitionTestBehaviour() {
+		Event kingsRecognition = new KingsRecognition ();
+
+		Assert.IsTrue (Quest.KingsRecognitionActive == false);
 
 		kingsRecognition.startBehaviour ();
 
 		//see if active when card drawn, potentially implement other test cases depending on future game logic
-	
-		Assert.IsTrue (Quest.KingsRecognitionActive == false);
+
+		Assert.IsTrue (Quest.KingsRecognitionActive == true);
 	}
 }

@@ -12,6 +12,11 @@ public class QueensFavorTest {
 		Assert.IsTrue (QueensFavor.frequency == 2);
 		Event queensFavor = new QueensFavor ();
 		Assert.AreEqual ("Queen's Favor", queensFavor.getCardName ());
+	}
+
+	[Test]
+	public void QueensFavorTestBehaviour() {
+		Event queensFavor = new QueensFavor ();
 
 		List<Player> players = new List<Player>();
 

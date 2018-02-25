@@ -258,6 +258,32 @@ public class BoardManagerMediator
         Debug.Log("Prompting " + player.getName() + " to prepare cards.");
     }
 
+	public void PromptToDiscardWeapon(Player player) 
+	{
+		BoardManager.DrawCards(player);
+		BoardManager.SetInteractionText("Please discard 1 weapon.");
+		//Assume player choice is valid for now
+		Action action = () => {
+			player.RemoveCardsResponse();
+			((KingsCallToArms)cardInPlay).PlayerFinishedResponse();
+		};
+		BoardManager.SetInteractionButtons("Complete", "", action, null);
+		Debug.Log("Prompting " + player.getName() + " to prepare cards.");
+
+	}
+		
+	public void PromptToDiscardFoes(Player player, int numFoes) 
+	{
+		BoardManager.DrawCards(player);
+		BoardManager.SetInteractionText("Please discard " + numFoes +  " Foes.");
+		//Assume player choice is valid for now
+		Action action = () => {
+			((KingsCallToArms)cardInPlay).PlayerFinishedResponse();
+		};
+		BoardManager.SetInteractionButtons("Complete", "", action, null);
+		Debug.Log("Prompting " + player.getName() + " to prepare cards.");
+	}
+
     public void PromptCardRemoveSelection(Player player)
     {
         BoardManager.DrawCards(player);
