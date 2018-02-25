@@ -238,8 +238,6 @@ public class BoardManager : MonoBehaviour
         }
     }
 
-<<<<<<< HEAD
-=======
     public static void DestroyDiscardArea()
     {
 
@@ -247,7 +245,6 @@ public class BoardManager : MonoBehaviour
         Destroy(discardArea);
 
     }
->>>>>>> origin/tourney
 
     public static void DrawCardInPlay()
     {
@@ -340,6 +337,5 @@ public class BoardManager : MonoBehaviour
         GameObject DiscardArea = Instantiate(Resources.Load("DiscardArea", typeof(GameObject))) as GameObject;
         DiscardArea.name = "DiscardArea";
         DiscardArea.transform.SetParent(board.transform, false);
-
     }
 }
