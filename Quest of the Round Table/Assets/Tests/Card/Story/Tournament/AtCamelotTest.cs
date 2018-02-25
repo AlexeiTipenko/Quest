@@ -14,4 +14,20 @@ public class AtCamelotTest {
 		Assert.AreEqual("At Camelot", camelot.getCardName());
 		//Assert.IsTrue(camelot.getBonusShields() == 3);
 	}
+
+    /*
+    [Test]
+    public void TestGetBonusShields()
+    {
+        Tournament camelot = new AtCamelot();
+        Assert.IsTrue(camelot.GetBonusShields() == 3);
+    }
+
+    [Test]
+    public void TeststartBehaviour()
+    {
+        Tournament camelot = new AtCamelot();
+        Assert.IsTrue(camelot.GetBonusShields() == 3);
+    }
+    */
 }

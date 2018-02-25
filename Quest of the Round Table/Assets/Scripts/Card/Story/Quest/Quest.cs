@@ -14,7 +14,6 @@ public abstract class Quest : Story {
 
 	public Quest (string cardName, int numStages) : base (cardName) {
 		board = BoardManagerMediator.getInstance ();
-
 		this.numStages = numStages;
         participatingPlayers = new List<Player>();
 	}
@@ -48,7 +47,10 @@ public abstract class Quest : Story {
 	public void PromptSponsorQuestResponse (bool sponsorAccepted) {
 		if (sponsorAccepted) {
             Debug.Log("Sponsor accepted: " + sponsor.getName());
-			board.SetupQuest (sponsor);
+            Action action = () => {
+                ((Quest)BoardManagerMediator.getInstance().getCardInPlay()).SetupQuestComplete();
+            };
+			board.SetupQuest (sponsor, action);
 		} else {
             Debug.Log("Sponsor declined: " + sponsor.getName());
 			IncrementSponsor ();
@@ -67,9 +69,28 @@ public abstract class Quest : Story {
 
 	public void SetupQuestComplete() {
         this.stages = new List<Stage>(); //TODO: get the cards in the story card play area
-        GameObject boardArea = GameObject.Find("Canvas/TabletopImage/BoardArea");
-        //boardArea.transform.GetChild(0);
-        Debug.Log("card name is: " + boardArea.transform.GetChild(0).name);
+        for (int i = 0; i < numStages; i++)
+        {
+            GameObject boardAreaFoe = GameObject.Find("Canvas/TabletopImage/StageAreaFoe" + i);
+            foreach (Transform child in boardAreaFoe.transform)
+            {
+                Debug.Log("card name is: " + child);
+                foreach (Card card in sponsor.getHand())
+                {
+                    if (child.name == card.getCardName() && card.GetType().IsSubclassOf(typeof(Test)))
+                    {
+                        Debug.Log("This is Test");
+                    }
+                    else if(child.name == card.getCardName() && card.GetType().IsSubclassOf(typeof(Foe))){
+                        Debug.Log("This is Foe");
+                    }
+                }
+            }
+        }
+
+        //TODO: get the card from player, make sure they match the ones played on the playarea, then keep doing setup quest
+        // setup panels based on number of stages, then make sure each panel has attack less than another
+        // use playarea for working with quest in playerplayarea (area where they drag cards when participating)
         Debug.Log("Finished quest setup.");
 		playerToPrompt = board.getNextPlayer (sponsor);
 		board.PromptAcceptQuest (playerToPrompt);
@@ -114,6 +135,8 @@ public abstract class Quest : Story {
 			player.incrementShields (numShieldsAwarded);
 		}
 		board.dealCardsToPlayer (sponsor, totalCardsCounter);
+        Debug.Log("Complete Quest");
+        BoardManager.DestroyStage(numStages);
 		board.nextTurn ();
 	}
 

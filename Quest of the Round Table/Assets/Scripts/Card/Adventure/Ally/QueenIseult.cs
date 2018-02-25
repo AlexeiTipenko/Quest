@@ -1,8 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class QueenIseult : Ally {
+﻿public class QueenIseult : Ally {
 
 	public static int frequency = 1;
 	private int empoweredBidPoints;
@@ -12,11 +8,11 @@ public class QueenIseult : Ally {
 	}
 
 	public new int getBidPoints() {
-		/*
-		 * if (condition) {
-		 *     return empoweredBidPoints;
-		 * }
-		*/
+        foreach (Player player in BoardManagerMediator.getInstance().getPlayers()) {
+            if (player.getPlayArea().containsCard("Sir Tristan")) {
+                return empoweredBidPoints;
+            }
+        }
 		return bidPoints;
 	}
 }

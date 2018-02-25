@@ -78,4 +78,13 @@ public class PlayerPlayArea {
 			}
 		}
 	}
+
+    public bool containsCard(String cardName) {
+        foreach (Card card in cards) {
+            if (card.getCardName() == cardName) {
+                return true;
+            }
+        }
+        return false;
+    }
 }

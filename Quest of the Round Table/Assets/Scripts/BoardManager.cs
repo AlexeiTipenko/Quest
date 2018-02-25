@@ -172,6 +172,14 @@ public class BoardManager : MonoBehaviour
         }
     }
 
+    public static void DestroyStage(int stages)
+    {
+        for (int i = 0; i < stages; i++){
+            GameObject boardAreaFoe = GameObject.Find("Canvas/TabletopImage/StageAreaFoe" + i);
+            Destroy(boardAreaFoe);
+        }
+    }
+
     public static void DrawCardInPlay()
     {
         DestroyCardInPlay();
@@ -194,4 +202,19 @@ public class BoardManager : MonoBehaviour
         //TODO: destroy what's on the table
     }
 
+    public static void SetupQuestPanels(int numStages){
+        GameObject board = GameObject.Find("Canvas/TabletopImage");
+        Debug.Log("Num stages is: " + numStages);
+        float position = -465;
+        for (int i = 0; i < numStages; i++){
+            GameObject BoardAreaFoe = Instantiate(Resources.Load("StageAreaPrefab", typeof(GameObject))) as GameObject;
+            Debug.Log("Position is: " + position);
+
+            BoardAreaFoe.name = "StageAreaFoe" + i;
+            BoardAreaFoe.transform.position = new Vector3(position, BoardAreaFoe.transform.position.y, BoardAreaFoe.transform.position.z);
+            BoardAreaFoe.transform.SetParent(board.transform, false);
+
+            position += 155;
+        }
+    }
 }
