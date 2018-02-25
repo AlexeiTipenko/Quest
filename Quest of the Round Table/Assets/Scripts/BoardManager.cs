@@ -233,7 +233,7 @@ public class BoardManager : MonoBehaviour
     public static void SetupQuestPanels(int numStages){
         GameObject board = GameObject.Find("Canvas/TabletopImage");
         Debug.Log("Num stages is: " + numStages);
-        float position = -465;
+        float position = -462;
         for (int i = 0; i < numStages; i++){
             GameObject BoardAreaFoe = Instantiate(Resources.Load("StageAreaPrefab", typeof(GameObject))) as GameObject;
             Debug.Log("Position is: " + position);
@@ -242,7 +242,7 @@ public class BoardManager : MonoBehaviour
             BoardAreaFoe.transform.position = new Vector3(position, BoardAreaFoe.transform.position.y, BoardAreaFoe.transform.position.z);
             BoardAreaFoe.transform.SetParent(board.transform, false);
 
-            position += 155;
+            position += 160;
         }
     }
 
