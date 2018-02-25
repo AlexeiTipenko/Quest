@@ -9,8 +9,12 @@ using UnityEngine.UI;
 public class BoardManager : MonoBehaviour
 {
 
+    Logger logger;
+
     void Start()
     {
+        logger = new Logger(false);
+        logger.info("Board manager started");
         print("Board manager started");
     }
 
