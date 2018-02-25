@@ -7,7 +7,7 @@ public class TestOfTheQuestingBeast : Test {
 	public static int frequency = 2;
 	private int empoweredMinBidValue;
 
-	public TestOfTheQuestingBeast() : base ("Test of the Questing Beast", 3) {
+	public TestOfTheQuestingBeast() : base ("Test Of The Questing Beast", 3) {
 		empoweredMinBidValue = 4;
 	}
 

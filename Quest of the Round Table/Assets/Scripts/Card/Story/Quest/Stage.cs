@@ -32,6 +32,15 @@ public class Stage {
 		return battlePoints;
 	}
 
+    public List<Card> getCards() {
+        List<Card> cards = new List<Card>();
+        cards.Add(stageCard);
+        foreach (Weapon weapon in weapons) {
+            cards.Add(weapon);
+        }
+        return cards;
+    }
+
 	public int getTotalCards() {
         int totalCards = 1;
         if (weapons != null) {

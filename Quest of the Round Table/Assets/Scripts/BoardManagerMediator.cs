@@ -120,6 +120,9 @@ public class BoardManagerMediator
 
     public void nextTurn()
     {
+        if (cardInPlay.GetType().IsSubclassOf(typeof(Quest))) {
+            BoardManager.DestroyStage(((Quest)cardInPlay).getNumStages());   
+        }
         storyDiscard.addCard(cardInPlay);
         BoardManager.DestroyCards();
         BoardManager.ClearInteractions();
@@ -202,14 +205,26 @@ public class BoardManagerMediator
         Debug.Log("Prompting " + player.getName() + " to sponsor quest.");
 	}
 
-	public void SetupQuest(Player player, Action action1) {
-        BoardManager.SetInteractionText("Prepare your quest using a combination of foes (and weapons) and a test.");
+	public void SetupQuest(Player player, String text) {
+        BoardManager.SetInteractionText(text);
         Debug.Log(((Quest)cardInPlay).numStages);
 
-        //Generate panels
-        BoardManager.SetupQuestPanels(((Quest)cardInPlay).numStages);
+        Action action = () => {
+            if (((Quest)cardInPlay).isValidQuest()) {
+                List<Stage> stages = BoardManager.CollectStageCards();
+                ((Quest)cardInPlay).SetupQuestComplete(stages);
+            }
+            else {
+                SetupQuest(player, "Invalid selections.");
+            }
+        };
 
-        BoardManager.SetInteractionButtons("Complete", "", action1, null);
+        if (!BoardManager.QuestPanelsExist()) {
+            //Generate panels
+            BoardManager.SetupQuestPanels(((Quest)cardInPlay).numStages);
+        }
+
+        BoardManager.SetInteractionButtons("Complete", "", action, null);
         Debug.Log("Prompting " + player.getName() + " to setup quest.");
 	}
 
@@ -233,6 +248,10 @@ public class BoardManagerMediator
 	public void PromptTest(Player player, int currentBid) {
 		//TODO: prompt test
 	}
+
+    public void SetInteractionText(String text) {
+        BoardManager.SetInteractionText(text);
+    }
 
 
     public void PromptEnterTournament(Player player)

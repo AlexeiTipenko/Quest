@@ -7,6 +7,7 @@ TagManager:
   - HandCard
   - RankCard
   - CardInPlay
+  - StageCard
   layers:
   - Default
   - TransparentFX
