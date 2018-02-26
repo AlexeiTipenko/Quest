@@ -143,6 +143,8 @@ public class BoardManagerMediator
         {
             cardInPlay = (Story)storyDeck.drawCard();
             BoardManager.DrawCards(players[playerTurn]);
+            BoardManager.DestroyPlayerInfo();
+            BoardManager.DisplayPlayers(players);
             cardInPlay.startBehaviour();
         }
         else

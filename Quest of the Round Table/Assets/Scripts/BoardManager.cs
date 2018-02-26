@@ -276,6 +276,14 @@ public class BoardManager : MonoBehaviour
 
     }
 
+    public static void DestroyPlayerInfo() {
+        GameObject[] cardObjs = GameObject.FindGameObjectsWithTag("PlayerInfo");
+        foreach (GameObject gameObj in cardObjs)
+        {
+            Destroy(gameObj);
+        }
+    }
+
     public static void DrawCardInPlay()
     {
         DestroyCardInPlay();
@@ -367,5 +375,23 @@ public class BoardManager : MonoBehaviour
         GameObject DiscardArea = Instantiate(Resources.Load("DiscardArea", typeof(GameObject))) as GameObject;
         DiscardArea.name = "DiscardArea";
         DiscardArea.transform.SetParent(board.transform, false);
+    }
+
+    public static void DisplayPlayers(List<Player> players){
+        GameObject PlayersInfo = GameObject.Find("Canvas/TabletopImage/PlayersInfo");
+        float position = -320;
+        foreach(Player currPlayer in players){
+            GameObject CurrentPlayerInfo = Instantiate(Resources.Load("PlayerInfo", typeof(GameObject))) as GameObject;
+            CurrentPlayerInfo.name = "PlayerInfo" + currPlayer.getName();
+            CurrentPlayerInfo.tag = "PlayerInfo";
+            CurrentPlayerInfo.transform.position = new Vector3(position, CurrentPlayerInfo.transform.position.y, CurrentPlayerInfo.transform.position.z);
+            Text[] texts = CurrentPlayerInfo.transform.GetComponentsInChildren<Text>();
+            texts[0].text = "Player Name: " + currPlayer.getName();
+            texts[1].text = "Player Rank: " + currPlayer.getRank().ToString();
+            texts[2].text = "Player: " + currPlayer.getName() + " has " + currPlayer.getHand().Count.ToString() + " cards";
+            CurrentPlayerInfo.transform.SetParent(PlayersInfo.transform, false);
+            position += 150;
+        }
+
     }
 }
