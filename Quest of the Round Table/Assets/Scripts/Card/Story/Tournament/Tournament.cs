@@ -17,7 +17,7 @@ public abstract class Tournament : Story
 
     public Tournament(string cardName, int bonusShields) : base(cardName)
     {
-
+		Logger.getInstance ().info ("Starting the Tournament class");
         this.playersEntered = 0;
         this.bonusShields = bonusShields;
         board = BoardManagerMediator.getInstance();
@@ -29,13 +29,14 @@ public abstract class Tournament : Story
 
     public int GetBonusShields()
     {
+		Logger.getInstance ().trace ("getting bonus shields: " + bonusShields);
         return bonusShields;
     }
 
 
     public override void startBehaviour()
     {
-        Debug.Log("Tournament behaviour started.");
+		Logger.getInstance().info("Started Tournament behaviour.");
         sponsor = owner;
         playerToPrompt = sponsor;
         board.PromptEnterTournament(sponsor);
@@ -45,6 +46,8 @@ public abstract class Tournament : Story
 
     public void PromptEnterTournamentResponse(bool tournamentAccepted)
     {
+		Logger.getInstance().debug("Started PromptEnterTournamentResponse behaviour, tournamentAccepted is " + tournamentAccepted);
+
         if (tournamentAccepted)
         {
             playersEntered++;
@@ -52,6 +55,7 @@ public abstract class Tournament : Story
 
             if ((playerToPrompt.getHand().Count() + 1) > 12)
             {
+				Logger.getInstance().debug("Dealing One Card to Player");
                 Action action = () => {
                     PromptNextPlayer();
                 };
@@ -61,17 +65,21 @@ public abstract class Tournament : Story
 
             else
             {
+				Logger.getInstance().trace("Dealing a card to player and prompt the next player");
                 board.dealCardsToPlayer(playerToPrompt, 1);
                 PromptNextPlayer();
             }
         }
 
-        else{
+		else {
+			Logger.getInstance().trace("Else: prompting next player");
             PromptNextPlayer();
         }
     }
 
     public void PromptNextPlayer(){
+		Logger.getInstance().debug("prompting next player");
+
         playerToPrompt = board.getNextPlayer(playerToPrompt);
 
         if (playerToPrompt != sponsor)
@@ -84,6 +92,8 @@ public abstract class Tournament : Story
 
     private void NumParticipantsAction()
     {
+		//Logger.getInstance().("prompting next player");
+
         if (participatingPlayers.Count() == 0)
         {
             Debug.Log("No participants in tournament.");

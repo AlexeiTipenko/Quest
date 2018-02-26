@@ -12,6 +12,8 @@ public class QueensFavor : Event {
 		
 	//Event description: The lowest ranked player(s) immediately receives 2 Adventure Cards.
 	public override void startBehaviour() {
+		Logger.getInstance ().info ("Started Queen's Favor behaviour");
+
 		List<Player> allPlayers = BoardManagerMediator.getInstance().getPlayers();
 
 		List<Player> lowestRankPlayers = new List<Player>();
@@ -28,9 +30,13 @@ public class QueensFavor : Event {
 			}
 		}
 
+		Logger.getInstance ().info ("Populated list of players with the lowest rank");
+
 		//Award 2 Adventure cards
 		foreach (Player player in lowestRankPlayers) {
 			BoardManagerMediator.getInstance().dealCardsToPlayer (player, 2);
+			Logger.getInstance ().trace ("Finished dealing 2 cards to player " + player.getName());
 		}
+		Logger.getInstance ().info ("Finished Queen's Favor behaviour");
 	}
 }

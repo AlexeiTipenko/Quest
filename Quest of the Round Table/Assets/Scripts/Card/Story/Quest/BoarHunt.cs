@@ -8,6 +8,8 @@ public class BoarHunt : Quest {
 	public static int frequency = 2;
 
 	public BoarHunt() : base ("Boar Hunt", 2) {
+		Logger.getInstance ().info ("Initializing the Boar Hunt card");
+
 		dominantFoes = new List<Type> ();
 		dominantFoes.Add(Type.GetType("Boar", true));
 	}

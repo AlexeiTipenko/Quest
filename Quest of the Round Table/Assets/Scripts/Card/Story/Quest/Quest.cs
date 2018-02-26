@@ -5,7 +5,8 @@ using UnityEngine;
 public abstract class Quest : Story {
 	private BoardManagerMediator board;
 
-	protected int numStages, currentStage, totalCardsCounter, numShieldsAwarded;
+	protected int currentStage, totalCardsCounter, numShieldsAwarded;
+	public int numStages;
 	protected List<Type> dominantFoes;
 	private List<Stage> stages;
 	Player sponsor, playerToPrompt;
@@ -13,21 +14,25 @@ public abstract class Quest : Story {
 	public static bool KingsRecognitionActive = false;
 
 	public Quest (string cardName, int numStages) : base (cardName) {
+		Logger.getInstance ().info ("Initializing a Quest");
+
 		board = BoardManagerMediator.getInstance ();
 		this.numStages = numStages;
         participatingPlayers = new List<Player>();
 	}
 
 	public int getShieldsWon () {
+		Logger.getInstance ().trace ("numShieldsAwarded is " + numShieldsAwarded);
 		return numShieldsAwarded;
 	}
 
 	public List<Type> getDominantFoes() {
+		Logger.getInstance ().trace ("dominantFoes are " + dominantFoes.ToString());
 		return dominantFoes;
 	}
 
 	public override void startBehaviour () {
-		Debug.Log ("Quest behaviour started");
+		Logger.getInstance().info ("Quest behaviour started");
 
 		sponsor = owner;
 		totalCardsCounter = 0;
@@ -36,23 +41,23 @@ public abstract class Quest : Story {
 
 	private void PromptSponsorQuest() {
 		if (isValidSponsor ()) {
-            Debug.Log("Requesting sponsor: " + sponsor.getName());
+			Logger.getInstance().trace("Requesting sponsor: " + sponsor.getName());
 			board.PromptSponsorQuest (sponsor);
 		} else {
-            Debug.Log("Invalid sponsor: " + sponsor.getName());
+			Logger.getInstance().trace("Invalid sponsor: " + sponsor.getName());
 			IncrementSponsor ();
 		}
 	}
 
 	public void PromptSponsorQuestResponse (bool sponsorAccepted) {
 		if (sponsorAccepted) {
-            Debug.Log("Sponsor accepted: " + sponsor.getName());
+			Logger.getInstance().trace("Sponsor accepted: " + sponsor.getName());
             Action action = () => {
                 ((Quest)BoardManagerMediator.getInstance().getCardInPlay()).SetupQuestComplete();
             };
 			board.SetupQuest (sponsor, action);
 		} else {
-            Debug.Log("Sponsor declined: " + sponsor.getName());
+			Logger.getInstance().trace("Sponsor declined: " + sponsor.getName());
 			IncrementSponsor ();
 		}
 	}
@@ -60,7 +65,7 @@ public abstract class Quest : Story {
 	private void IncrementSponsor() {
 		sponsor = board.getNextPlayer (sponsor);
 		if (sponsor == owner) {
-            Debug.Log("All sponsors asked, none accepted.");
+			Logger.getInstance().trace("All sponsors asked, none accepted.");
 			//TODO: discard();
 		} else {
 			PromptSponsorQuest ();
@@ -68,21 +73,22 @@ public abstract class Quest : Story {
 	}
 
 	public void SetupQuestComplete() {
+		Logger.getInstance().info("Setting up the Quest is complete");
         this.stages = new List<Stage>(); //TODO: get the cards in the story card play area
         for (int i = 0; i < numStages; i++)
         {
             GameObject boardAreaFoe = GameObject.Find("Canvas/TabletopImage/StageAreaFoe" + i);
             foreach (Transform child in boardAreaFoe.transform)
             {
-                Debug.Log("card name is: " + child);
+				Logger.getInstance().trace("card name is: " + child);
                 foreach (Card card in sponsor.getHand())
                 {
                     if (child.name == card.getCardName() && card.GetType().IsSubclassOf(typeof(Test)))
                     {
-                        Debug.Log("This is Test");
+						Logger.getInstance().trace("This is Test");
                     }
                     else if(child.name == card.getCardName() && card.GetType().IsSubclassOf(typeof(Foe))){
-                        Debug.Log("This is Foe");
+						Logger.getInstance().trace("This is Foe");
                     }
                 }
             }
@@ -91,14 +97,14 @@ public abstract class Quest : Story {
         //TODO: get the card from player, make sure they match the ones played on the playarea, then keep doing setup quest
         // setup panels based on number of stages, then make sure each panel has attack less than another
         // use playarea for working with quest in playerplayarea (area where they drag cards when participating)
-        Debug.Log("Finished quest setup.");
+		Logger.getInstance().info("Finished Quest setup");
 		playerToPrompt = board.getNextPlayer (sponsor);
 		board.PromptAcceptQuest (playerToPrompt);
 	}
 
 	public void PromptAcceptQuestResponse(bool questAccepted) {
 		if (questAccepted) {
-            Debug.Log(playerToPrompt.getName() + " has accepted to participate in the quest.");
+			Logger.getInstance().debug(playerToPrompt.getName() + " has accepted to participate in the quest.");
 			participatingPlayers.Add (playerToPrompt);
 		}
 		playerToPrompt = board.getNextPlayer (playerToPrompt);
@@ -107,7 +113,7 @@ public abstract class Quest : Story {
 		} else {
 			currentStage = -1;
             numStages = stages.Count;
-            Debug.Log("Starting quest.");
+			Logger.getInstance().debug("Starting quest.");
 			playStage ();
 		}
 	}
@@ -141,38 +147,46 @@ public abstract class Quest : Story {
 	}
 
 	private bool isValidSponsor () {
+		Logger.getInstance().debug("Starting isValidSponsor.");
 		List<Card> hand = sponsor.getHand();
-
 		int validCardCount = 0;
 		bool hasTest = false;
 		foreach (Card card in hand) {
 			if (card.GetType ().IsSubclassOf (typeof(Foe))) {
 				validCardCount++;
+				Logger.getInstance().trace("Increasing validCardCount is now " + validCardCount);
 			} else if (card.GetType ().IsSubclassOf (typeof(Test))) {
 				hasTest = true;
+				Logger.getInstance().trace("hasTest is now true");
 			}
 		}
 		if (hasTest) {
 			validCardCount++;
+			Logger.getInstance().trace("Increasing validCardCount is now " + validCardCount);
 		}
 		return (validCardCount >= numStages);
 	}
 
 	public void removeParticipatingPlayer(Player player) {
+		Logger.getInstance().debug("Starting removeParticipatingPlayer function on " + player.getName());
 		if (participatingPlayers.Contains(player)) {
 			participatingPlayers.Remove (player);
+			Logger.getInstance ().trace ("Removed the player.");
 		}
 	}
 
 	public Player getSponsor() {
+		Logger.getInstance ().trace ("getSponsor; the sponsor is " + sponsor.getName());
 		return sponsor;
 	}
 
 	public Player getNextPlayer(Player previousPlayer) {
+		Logger.getInstance().debug("Starting removeParticipatingPlayer function on " + previousPlayer.getName());
 		int index = participatingPlayers.IndexOf (previousPlayer);
 		if (index != -1) {
 			return participatingPlayers [(index + 1) % participatingPlayers.Count];
 		}
+		Logger.getInstance ().trace ("No next player.");
 		return null;
 	}
 

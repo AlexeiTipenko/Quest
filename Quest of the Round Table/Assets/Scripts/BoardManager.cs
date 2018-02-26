@@ -13,8 +13,7 @@ public class BoardManager : MonoBehaviour
 
     void Start()
     {
-        logger = new Logger(false);
-        logger.info("Board manager started");
+		Logger.getInstance().info("Board manager started");
         print("Board manager started");
     }
 

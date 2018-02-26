@@ -14,6 +14,8 @@ public class KingsCallToArms : Event {
 
 	//Event description: The highest ranked player(s) must place 1 weapon in the discard pile. If unable to do so, 2 Foe Cards must be discarded.
 	public override void startBehaviour() {
+		Logger.getInstance ().info ("Started the Kings Call To Arms behaviour");
+
 		List<Player> allPlayers = BoardManagerMediator.getInstance().getPlayers();
 
 		//Find highest ranked player(s)
@@ -31,28 +33,33 @@ public class KingsCallToArms : Event {
 			}
 		}
 
+		Logger.getInstance ().debug ("Populated a list of players with the lowest rank");
+
 		if (highestRankPlayers.Count != 0) { // For safety
 			currentPlayer = highestRankPlayers [0];
+			Logger.getInstance ().debug ("Prompting event action for player " + currentPlayer.getName());
 			PromptEventAction ();
 		}
 	}
 
 	public void PromptEventAction() {
 		int numFoeCards = getNumFoeCards ();
+		Logger.getInstance ().trace ("numFoeCards for the current player is " + numFoeCards);
 
 		if (hasWeapons ()) {
-			Debug.Log ("Player " + currentPlayer.getName () + " to discard a weapon");
+			Logger.getInstance ().debug ("Player to discard weapon");
 			BoardManagerMediator.getInstance().PromptToDiscardWeapon (currentPlayer);
 		} 
 		else if (numFoeCards > 0) {
-			Debug.Log ("Player " + currentPlayer.getName () + " to discard " + numFoeCards + " foes.");
+			Logger.getInstance ().debug ("Player to discard foes.");
 			BoardManagerMediator.getInstance().PromptToDiscardFoes (currentPlayer, numFoeCards);
 		}
 		else {
 			//call same function on next player
+			Logger.getInstance ().debug ("Player is unable to discard weapons/foes, moving onto next player");
 			currentPlayer = getNextPlayer(currentPlayer);
 			if (currentPlayer != null) {
-				Debug.Log ("Prompting event action for next player");
+				Logger.getInstance ().debug ("Prompting action for the next player " + currentPlayer.getName());
 				PromptEventAction ();
 			}
 		}
@@ -64,10 +71,12 @@ public class KingsCallToArms : Event {
 		if (index != -1) {
 			return highestRankPlayers [(index + 1) % highestRankPlayers.Count];
 		}
+		Logger.getInstance ().trace ("Next player in getNextPlayer is null, previous player is " + previousPlayer.getName());
 		return null;
 	}
 		
 	public void PlayerFinishedResponse() {
+		Logger.getInstance ().debug ("Got finished response from last player, moving onto next player...");
 		//call action on next player
 		currentPlayer = getNextPlayer (currentPlayer);
 		PromptEventAction ();

@@ -7,7 +7,7 @@ public class AtCamelot : Tournament {
 	public static int frequency = 1;
 
 	public AtCamelot() : base ("At Camelot", 3) {
-		
+		Logger.getInstance ().info ("Initialized the At Camelot card");
 	}
 
 }

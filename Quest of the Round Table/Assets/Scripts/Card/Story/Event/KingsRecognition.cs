@@ -12,6 +12,8 @@ public class KingsRecognition : Event {
 		
 	//Event description: The next player(s) to complete a Quest will receive 2 extra shields.
 	public override void startBehaviour() {
+		Logger.getInstance ().info ("Started King's Recognition behaviour");
 		Quest.KingsRecognitionActive = true;
+		Logger.getInstance ().info ("Finished King's Recognition behaviour");
 	}
 }

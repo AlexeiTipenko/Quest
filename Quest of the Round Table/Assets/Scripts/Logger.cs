@@ -4,39 +4,56 @@ using UnityEngine;
 
 public class Logger {
 
+	public static Logger logger;
+	private static string logFilePath = Directory.GetCurrentDirectory() + "/Logs/BuildLog.txt"; 
+
 	//This constructor will call the init function
 	//Should only be called once in your code
 	public Logger() {
 		this.init();
 	}
 
+	public static Logger getInstance() {
+		if (logger == null) {
+			logger = new Logger();
+			System.IO.File.Delete (logFilePath); //delete previous log file
+		}
+		return logger;
+	}
+
 	//Can be called as many time as you want in your code (as it will still construct the logger but won't call the init function
-	public Logger(bool b) {} //This constructor won't call the init function
+	//public Logger(bool b) {} //This constructor won't call the init function
 
 	public void logCustom(string n, string type) {
 		printToFile(generateTimestamp() + " [" + type.ToUpper() + "]: " + n + "\n");
 	}
 
+	//Designates informational messages that highlight the progress of the application at noticeable level.
 	public void info(string n) {
 		printToFile(generateTimestamp() + " [INFO]: " + n + "\n");
 	}
 
+	//Designates fine-grained informational events that are most useful to debug an application.
 	public void debug(string n) {
 		printToFile(generateTimestamp() + " [DEBUG]: " + n + "\n");
 	}
 
+	//Designates potentially harmful situations.
 	public void warn(string n) {
 		printToFile(generateTimestamp() + " [WARN]: " + n + "\n");
 	}
 
+	//Designates error events that might still allow the application to continue running.
 	public void error(string n) {
 		printToFile(generateTimestamp() + " [ERROR]: " + n + "\n");
 	}
 
+	//Designates finer-grained informational events than the DEBUG.
 	public void trace(string n) {
 		printToFile(generateTimestamp() + " [TRACE]: " + n + "\n");
 	}
 
+	//TEST case logging
 	public void test(string n) {
 		printToFile(generateTimestamp() + " [TEST]: " + n + "\n");
 	}
@@ -47,7 +64,7 @@ public class Logger {
 	}
 
 	private void printToFile(string n) {
-		System.IO.File.AppendAllText(Directory.GetCurrentDirectory() + "/Logs/EventLog.txt", n);
+		System.IO.File.AppendAllText(logFilePath, n);
 	}
 
 	private string generateTimestamp() {
