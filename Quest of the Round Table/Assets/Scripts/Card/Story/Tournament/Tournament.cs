@@ -55,7 +55,7 @@ public abstract class Tournament : Story
 
             if ((playerToPrompt.getHand().Count() + 1) > 12)
             {
-				Logger.getInstance().debug("Dealing One Card to Player");
+				Logger.getInstance().trace("Dealing One Card to Player");
                 Action action = () => {
                     PromptNextPlayer();
                 };
@@ -92,17 +92,15 @@ public abstract class Tournament : Story
 
     private void NumParticipantsAction()
     {
-		//Logger.getInstance().("prompting next player");
-
         if (participatingPlayers.Count() == 0)
         {
-            Debug.Log("No participants in tournament.");
+			Logger.getInstance().debug("No participants in tournament.");
             board.nextTurn();
         }
 
         else if (participatingPlayers.Count() == 1) 
         {
-            Debug.Log("TOURNAMENT DEFAULT WINNER: " + participatingPlayers[0].getName());
+			Logger.getInstance().debug("TOURNAMENT DEFAULT WINNER: " + participatingPlayers[0].getName());
             participatingPlayers[0].incrementShields(1);
             board.nextTurn();
         }
@@ -120,7 +118,7 @@ public abstract class Tournament : Story
 
         if (!cardsValid)
         {
-            Debug.Log("Card selection invalid.");
+			Logger.getInstance().debug("Card selection invalid.");
             board.ReturnCardsToPlayer();
             board.PromptCardSelection(playerToPrompt);
         }
@@ -133,10 +131,10 @@ public abstract class Tournament : Story
                 playerToPrompt.getPlayArea().addCard(card);
             }
 
-            Debug.Log("All cards valid.");
+			Logger.getInstance().debug("All cards valid.");
             AddPlayerBattlePoints(chosenCards);
 
-            Debug.Log("Player finished turn.");
+			Logger.getInstance().debug("Player finished turn.");
             playerToPrompt = GetNextPlayer(playerToPrompt);
 
             if (playerToPrompt == sponsor)
@@ -162,7 +160,7 @@ public abstract class Tournament : Story
 
 
     public bool ValidateChosenCards(List<Card> chosenCards){
-
+		Logger.getInstance ().debug ("Validating chosen cards");
         bool cardsValid = true;
         
         if (chosenCards.GroupBy(c => c.getCardName()).Any(g => g.Count() > 1))
@@ -183,7 +181,7 @@ public abstract class Tournament : Story
 
 
     public void TournamentRoundComplete() {
-        
+		Logger.getInstance ().debug ("Tournament round is complete");
         IEnumerable<Player> tempCollection = from p in pointsDict 
                 where p.Value == pointsDict.Max(v => v.Value) select p.Key;
         
@@ -191,7 +189,7 @@ public abstract class Tournament : Story
 
         if (winnerList.Count() == 1) 
         {
-            Debug.Log("TOURNAMENT WINNER: " + winnerList[0].getName());
+			Logger.getInstance ().trace("TOURNAMENT WINNER: " + winnerList[0].getName());
             winnerList[0].incrementShields(playersEntered);
             DiscardCards();
             board.nextTurn();
@@ -199,11 +197,11 @@ public abstract class Tournament : Story
 
         else if (winnerList.Count() > 1) 
         {
-            Debug.Log("MORE THAN ONE PLAYER WON!");
+			Logger.getInstance ().trace("MORE THAN ONE PLAYER WON!");
 
             if (rematch == false)
             {
-                Debug.Log("ROUND 2");
+				Logger.getInstance ().trace("ROUND 2");
                 participatingPlayers = winnerList;
                 rematch = true;
                 pointsDict.Clear();
@@ -214,7 +212,7 @@ public abstract class Tournament : Story
             }
 
             else{
-                Debug.Log("ROUND 3 AND END OF TOURNAMENT.");
+				Logger.getInstance ().trace("ROUND 3 AND END OF TOURNAMENT.");
                 foreach(Player player in winnerList){
                     player.incrementShields(playersEntered);
                 }
@@ -226,6 +224,7 @@ public abstract class Tournament : Story
     }
 
     private void DiscardCards() {
+		Logger.getInstance ().debug ("Discarding all cards...");
         //NOT WORKING IN UI
         foreach(Player player in board.getPlayers()){
             player.getPlayArea().discardWeapons();
@@ -237,6 +236,7 @@ public abstract class Tournament : Story
 
     public Player GetNextPlayer(Player previousPlayer)
     {
+		Logger.getInstance ().debug ("Getting next player...");
         int index = participatingPlayers.IndexOf(previousPlayer);
         if (index != -1)
         {
@@ -245,7 +245,7 @@ public abstract class Tournament : Story
 
             return participatingPlayers[0];
         }
-
+		Logger.getInstance ().trace("There is no next player");
         return null;
     }
 }

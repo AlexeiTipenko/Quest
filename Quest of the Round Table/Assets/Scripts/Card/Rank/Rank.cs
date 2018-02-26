@@ -23,6 +23,7 @@ public abstract class Rank : Card {
 	}
 
 	public Rank upgrade() {
+		Logger.getInstance ().debug ("There has been an upgrade to " + nextRank.getCardName());
 		return nextRank;
 	}
 }

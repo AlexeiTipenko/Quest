@@ -9,6 +9,7 @@ public abstract class Card {
 	public string cardImageName;
 
 	public Card(string cardName) {
+		Logger.getInstance ().debug ("Creating card with name " + cardName);
 		this.cardName = cardName;
 		this.owner = null;
 	}
