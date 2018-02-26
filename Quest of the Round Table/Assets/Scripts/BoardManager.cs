@@ -110,6 +110,7 @@ public class BoardManager : MonoBehaviour
         DrawRank(player);
         DrawCardInPlay();
         DrawStageAreaCards();
+        DrawPlayArea(player);
 
         //TODO: draw cards in play area
     }
@@ -133,8 +134,11 @@ public class BoardManager : MonoBehaviour
 
         foreach (Transform child in boardArea.transform)
         {
+            child.tag = "DiscardedCard";
             cardNames.Add(child.gameObject.name);
         }
+        DestroyDiscardArea();
+
         return cardNames;
     }
 
@@ -161,6 +165,28 @@ public class BoardManager : MonoBehaviour
             cardImg.sprite = Resources.Load<Sprite>("cards/" + card.cardImageName);
             instance.tag = "HandCard";
             instance.transform.SetParent(handArea.transform, false);
+        }
+    }
+
+    public static void DrawPlayArea(Player player) {
+        DestroyPlayArea();
+        foreach (Card card in player.getPlayArea().getCards())
+        {
+            GameObject playArea = GameObject.Find("Canvas/TabletopImage/PlayerPlayArea");
+            GameObject instance = Instantiate(Resources.Load("NoDragCardPrefab", typeof(GameObject))) as GameObject;
+            instance.name = card.getCardName();
+            Image cardImg = instance.GetComponent<Image>();
+            cardImg.sprite = Resources.Load<Sprite>("cards/" + card.cardImageName);
+            instance.tag = "PlayAreaCard";
+            instance.transform.SetParent(playArea.transform, false);
+        }
+    }
+
+    public static void DestroyPlayArea() {
+        GameObject[] cardObjs = GameObject.FindGameObjectsWithTag("PlayAreaCard");
+        foreach (GameObject gameObj in cardObjs)
+        {
+            Destroy(gameObj);
         }
     }
 
@@ -240,7 +266,11 @@ public class BoardManager : MonoBehaviour
 
     public static void DestroyDiscardArea()
     {
-
+        GameObject[] cardObjs = GameObject.FindGameObjectsWithTag("DiscardedCard");
+        foreach (GameObject gameObj in cardObjs)
+        {
+            Destroy(gameObj);
+        }
         GameObject discardArea = GameObject.Find("Canvas/TabletopImage/DiscardArea");
         Destroy(discardArea);
 

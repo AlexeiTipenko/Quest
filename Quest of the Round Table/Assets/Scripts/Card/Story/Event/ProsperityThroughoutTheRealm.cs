@@ -1,21 +1,39 @@
-using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
+using System;
 
 public class ProsperityThroughoutTheRealm : Event {
 
 	public static int frequency = 1;
+    private BoardManagerMediator board;
+    private Player playerToPrompt;
 
 	public ProsperityThroughoutTheRealm () : base ("Prosperity Throughout the Realm") {
-
+        board = BoardManagerMediator.getInstance();
 	}
 
 	//Event description: All players may immediately draw 2 Adventure Cards. 
 	public override void startBehaviour() {
-		List<Player> allPlayers = BoardManagerMediator.getInstance().getPlayers();
-
-		foreach (Player player in allPlayers) {
-			BoardManagerMediator.getInstance().dealCardsToPlayer (player, 2);
-		}
+        playerToPrompt = board.getCurrentPlayer();
+        DealCards();
 	}
+
+    private void DealCards() {
+        Action action = () => {
+            board.TransferFromHandToPlayArea(playerToPrompt);
+            List<Card> chosenCards = board.GetDiscardedCards(playerToPrompt);
+            foreach (Card card in chosenCards)
+            {
+                playerToPrompt.RemoveCard(card);
+            }
+            playerToPrompt = board.getNextPlayer(playerToPrompt);
+            if (playerToPrompt != board.getCurrentPlayer()) {
+                DealCards();
+            } else {
+                board.nextTurn();
+            }
+        };
+
+        playerToPrompt.giveAction(action);
+        BoardManagerMediator.getInstance().dealCardsToPlayer(playerToPrompt, 2);
+    }
 }

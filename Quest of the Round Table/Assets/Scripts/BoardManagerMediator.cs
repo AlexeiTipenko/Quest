@@ -120,12 +120,12 @@ public class BoardManagerMediator
 		player.dealCards (cardsToDeal);
 	}
 
-    public void dealOneCardToPlayer(Player player, Action func)
-    {
-        Debug.Log("Dealing " + 1 + " card");
-        Card card = adventureDeck.drawCard();
-        player.dealCard(card, func);
-    }
+    //public void dealOneCardToPlayer(Player player, Action func)
+    //{
+    //    Debug.Log("Dealing " + 1 + " card");
+    //    Card card = adventureDeck.drawCard();
+    //    player.dealCard(card, func);
+    //}
 
     public void setCardInPlay(Card card) {
         cardInPlay = (Story) card;
@@ -158,6 +158,7 @@ public class BoardManagerMediator
         }
         storyDiscard.addCard(cardInPlay);
         BoardManager.DestroyCards();
+        BoardManager.DestroyDiscardArea();
         BoardManager.ClearInteractions();
         cardInPlay = null;
         playerTurn = (playerTurn + 1) % players.Count;
@@ -280,7 +281,7 @@ public class BoardManagerMediator
 		BoardManager.SetInteractionText("Card is a foe. Place cards to continue, or drop out.");
 		Action action1 = () => {
             Debug.Log("Did not dropout");
-            BoardManager.GetPlayArea(player);
+            TransferFromHandToPlayArea(player);
             Debug.Log("Total battle points is: " + player.getPlayArea().getBattlePoints());
             ((Quest)cardInPlay).getStage(stageNum).promptFoeResp(false);
 		};
@@ -291,6 +292,10 @@ public class BoardManagerMediator
 
 		BoardManager.SetInteractionButtons ("Continue", "Drop Out", action1, action2);
 	}
+
+    public void TransferFromHandToPlayArea(Player player) {
+        BoardManager.GetPlayArea(player);
+    }
 
 	public void PromptTest(Player player, int currentBid) {
 		//TODO: prompt test
@@ -326,17 +331,17 @@ public class BoardManagerMediator
         Debug.Log("Prompting " + player.getName() + " to prepare cards.");
     }
 
-    public void PromptCardRemoveSelection(Player player)
+    public void PromptCardRemoveSelection(Player player, Action action)
     {
         BoardManager.DrawCards(player);
         BoardManager.SetInteractionText("Please remove cards until you have at most 12.");
 
-        Action action = () => {
-            buttonClicked = true;
-            BoardManager.DestroyDiscardArea();
-            player.RemoveCardsResponse();
-            player.PromptNextPlayer();
-        };
+        //Action action = () => {
+        //    buttonClicked = true;
+        //    BoardManager.DestroyDiscardArea();
+        //    player.RemoveCardsResponse();
+        //    player.PromptNextPlayer();
+        //};
 
         BoardManager.SetInteractionButtons("Complete", "", action, null);
         BoardManager.SetupDiscardPanel();

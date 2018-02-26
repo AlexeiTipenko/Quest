@@ -8,6 +8,8 @@ TagManager:
   - RankCard
   - CardInPlay
   - StageCard
+  - DiscardedCard
+  - PlayAreaCard
   layers:
   - Default
   - TransparentFX

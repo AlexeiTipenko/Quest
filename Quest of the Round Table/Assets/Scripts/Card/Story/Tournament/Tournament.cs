@@ -53,10 +53,18 @@ public abstract class Tournament : Story
             if ((playerToPrompt.getHand().Count() + 1) > 12)
             {
                 Action action = () => {
+                    board.TransferFromHandToPlayArea(playerToPrompt);
+                    List<Card> chosenCards = board.GetDiscardedCards(playerToPrompt);
+                    foreach (Card card in playerToPrompt.getPlayArea().getCards()) {
+                        Debug.Log("Play area: " + card.toString());
+                    }
+                    foreach (Card card in chosenCards) {
+                        playerToPrompt.RemoveCard(card);
+                    }
                     PromptNextPlayer();
                 };
-
-                board.dealOneCardToPlayer(playerToPrompt, action);
+                playerToPrompt.giveAction(action);
+                board.dealCardsToPlayer(playerToPrompt, 1);
             }
 
             else
@@ -66,7 +74,7 @@ public abstract class Tournament : Story
             }
         }
 
-        else{
+        else {
             PromptNextPlayer();
         }
     }
@@ -162,7 +170,7 @@ public abstract class Tournament : Story
         {
             if (!(card.GetType().IsSubclassOf(typeof(Weapon))) &&
                 !(card.GetType().IsSubclassOf(typeof(Ally))) &&
-                !(card.GetType().IsSubclassOf(typeof(Amour))))
+                (card.GetType() != typeof(Amour)))
             {
 
                 cardsValid = false;

@@ -34,20 +34,24 @@ public class Player
         checkNumCards();
 	}
 
-    public void dealCard(Card card, Action func)
-    {
-        this.func = func;
-        card.setOwner(this);
-        hand.Add(card);
-        checkNumCards();
-    }
+    //public void dealCard(Card card, Action func)
+    //{
+    //    this.func = func;
+    //    card.setOwner(this);
+    //    hand.Add(card);
+    //    checkNumCards();
+    //}
 
     public void checkNumCards(){
         if (hand.Count > 12)
         {
             Debug.Log("MORE THAN 12 CARDS IN HAND");
-            board.PromptCardRemoveSelection(this);
+            board.PromptCardRemoveSelection(this, func);
         }
+    }
+
+    public void giveAction(Action action) {
+        func = action;
     }
 
     public void PromptNextPlayer(){
@@ -124,6 +128,7 @@ public class Player
 
     public void RemoveCardsResponse()
     {
+        board.TransferFromHandToPlayArea(this);
         List<Card> chosenCards = board.GetDiscardedCards(this);
 
         foreach (Card card in chosenCards)
