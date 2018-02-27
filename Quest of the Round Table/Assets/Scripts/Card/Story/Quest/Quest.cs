@@ -159,6 +159,10 @@ public abstract class Quest : Story {
         return stages[stageNum];
     }
 
+    public Stage getCurrentStage() {
+        return stages[currentStage];
+    }
+
 	public void PromptAcceptQuestResponse(bool questAccepted) {
 		if (questAccepted) {
             Debug.Log(playerToPrompt.getName() + " has accepted to participate in the quest.");

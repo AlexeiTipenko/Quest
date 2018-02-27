@@ -5,18 +5,19 @@ using UnityEngine;
 public class Stage {
 	private BoardManagerMediator board;
 
-	private int currentStageNum, currentBid;
+	private int stageNum, currentBid;
 	private Adventure stageCard;
 	private List<Weapon> weapons;
 
 	private Quest quest;
     Player playerToPrompt, originalPlayer;
 
-	public Stage(Adventure stageCard, List<Weapon> weapons) {
+	public Stage(Adventure stageCard, List<Weapon> weapons, int stageNum) {
 		board = BoardManagerMediator.getInstance ();
 
 		this.stageCard = stageCard;
 		this.weapons = weapons;
+        this.stageNum = stageNum;
 	}
 
 	public int getTotalBattlePoints() {
@@ -56,14 +57,14 @@ public class Stage {
 			Debug.Log ("Is foe, going to player");
             Debug.Log("quest sponsor is: " + quest.getSponsor().getName());
 			playerToPrompt = board.getNextPlayer (quest.getSponsor());
+            originalPlayer = playerToPrompt;
             Debug.Log("Current player is: " + playerToPrompt.getName());
-            board.PromptFoe (playerToPrompt, currentStageNum);
+            board.PromptFoe (playerToPrompt, stageNum);
 		} else {
 			//TODO: reveal visually;
 			currentBid = ((Test)stageCard).getMinBidValue();
 			Debug.Log ("Current bid is: " + currentBid);
 			playerToPrompt = quest.getNextPlayer (quest.getSponsor ());
-            originalPlayer = playerToPrompt;
 			promptTest ();
 		}
 	}
@@ -96,13 +97,15 @@ public class Stage {
             quest.PlayStage();
         }
         else{
+            Debug.Log("Original player: " + originalPlayer.getName());
+            Debug.Log("Next player: " + currPlayer.getName());
             if (currPlayer != originalPlayer) {
-                Debug.Log("Next player isn't sponsor");
-                board.PromptFoe(currPlayer, currentStageNum);
+                Debug.Log("Prompting player");
+                board.PromptFoe(currPlayer, stageNum);
             }
             else {
-                Debug.Log("Next player is sponsor");
-                playFoe();
+                Debug.Log("All players have been prompted");
+                PlayFoe();
             }
         }
 
@@ -139,8 +142,10 @@ public class Stage {
 		}
 	}
 
-	private void playFoe() {
-        Debug.Log("playing foe");
+	private void PlayFoe() {
+        Debug.Log("Playing foe");
+        Debug.Log("Num participating players: " + quest.getPlayers().Count);
+        List<Player> playersToRemove = new List<Player>();
 		foreach (Player player in quest.getPlayers()) {
 			int playerBattlePoints = player.getRank ().getBattlePoints ();
 			List<Card> stageCards = player.getPlayArea ().getCards ();
@@ -148,14 +153,24 @@ public class Stage {
 				playerBattlePoints += ((Adventure) card).getBattlePoints ();
 			}
 			if (playerBattlePoints >= getTotalBattlePoints ()) {
-                Debug.Log("player " + player.getName() + " past stage.");
+                Debug.Log("Player " + player.getName() + " passed stage.");
 				board.dealCardsToPlayer (player, 1);
 				player.getPlayArea ().discardWeapons ();
-				quest.PlayStage ();
 			} else {
-				quest.removeParticipatingPlayer (player);
-				//TODO: somehow finish removing a player from the quest. Does this require more work?
+                playersToRemove.Add(player);
 			}
 		}
+        foreach (Player player in playersToRemove) {
+            quest.removeParticipatingPlayer(player);
+        }
+        quest.PlayStage();
 	}
+
+    public int getStageNum() {
+        return stageNum;
+    }
+
+    public Card getStageCard() {
+        return stageCard;
+    }
 }

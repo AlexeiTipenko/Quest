@@ -11,7 +11,7 @@ public class StageTest {
         Story questCard = new SlayTheDragon();
         Adventure stageCard = new Thieves();
         BoardManagerMediator.getInstance().setCardInPlay(questCard);
-        Stage stage = new Stage(stageCard, null);
+        Stage stage = new Stage(stageCard, null, 0);
         Assert.AreEqual(stage.getTotalCards(), 1);
     }
 
@@ -20,7 +20,7 @@ public class StageTest {
         Story questCard = new SlayTheDragon();
         Adventure stageCard = new Thieves();
         BoardManagerMediator.getInstance().setCardInPlay(questCard);
-        Stage stage = new Stage(stageCard, null);
+        Stage stage = new Stage(stageCard, null, 0);
         Assert.AreEqual(stage.getTotalBattlePoints(), 5);
 	}
 
@@ -32,7 +32,7 @@ public class StageTest {
         weapons.Add(new Excalibur());
         weapons.Add(new Dagger());
         BoardManagerMediator.getInstance().setCardInPlay(questCard);
-        Stage stage = new Stage(stageCard, weapons);
+        Stage stage = new Stage(stageCard, weapons, 0);
         Assert.AreEqual(stage.getTotalBattlePoints(), 40);
     }
 
@@ -41,7 +41,7 @@ public class StageTest {
         Story questCard = new SlayTheDragon();
         Adventure stageCard = new Dragon();
         BoardManagerMediator.getInstance().setCardInPlay(questCard);
-        Stage stage = new Stage(stageCard, null);
+        Stage stage = new Stage(stageCard, null, 0);
         Assert.AreEqual(stage.getTotalBattlePoints(), 70);
     }
 }
