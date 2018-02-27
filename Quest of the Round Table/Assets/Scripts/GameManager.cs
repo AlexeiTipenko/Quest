@@ -8,11 +8,8 @@ public class GameManager : MonoBehaviour {
 
 	public static GameManager instance = null;
 	public BoardManager boardManager = null;
-    Logger logger;
 
 	void Awake () {
-
-        logger = new Logger();
 
 		if (instance == null)
 			instance = this;
@@ -23,10 +20,11 @@ public class GameManager : MonoBehaviour {
 		DontDestroyOnLoad (gameObject);
 
 		print ("Passing playerList to BoardManager");
-        logger.info("Passing playerList to BoardManager");
+        Logger.getInstance().info("Player list passed to BoardManager");
 
 		foreach (Player player in ButtonManager.playerList) {
 			print (player.toString ());
+            Logger.getInstance().info("Player entered: " + player.toString());
 		}
 
 		BoardManagerMediator.getInstance().initGame (ButtonManager.playerList);

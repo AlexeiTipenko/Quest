@@ -1,0 +1,68 @@
+-------------------- INITIALIZE LOGGER ---------------------
+2018-02-26T21:21:10.2942100-05:00: Logger initialized
+2018-02-26T21:21:10.2945030-05:00 [DEBUG]: A Knight of the Round Table instance has been initialized
+2018-02-26T21:21:10.2950430-05:00 [DEBUG]: A Champion Knight instance has been initialized
+2018-02-26T21:21:10.2952310-05:00 [DEBUG]: A Knight instance has been initialized
+2018-02-26T21:21:10.3051830-05:00 [DEBUG]: A Squire instance has been initialized
+2018-02-26T21:21:10.3069720-05:00 [DEBUG]: A Knight of the Round Table instance has been initialized
+2018-02-26T21:21:10.3073060-05:00 [DEBUG]: A Champion Knight instance has been initialized
+2018-02-26T21:21:10.3075330-05:00 [DEBUG]: A Knight instance has been initialized
+2018-02-26T21:21:10.3077220-05:00 [DEBUG]: A Squire instance has been initialized
+2018-02-26T21:21:10.3079890-05:00 [DEBUG]: A Knight of the Round Table instance has been initialized
+2018-02-26T21:21:10.3082030-05:00 [DEBUG]: A Champion Knight instance has been initialized
+2018-02-26T21:21:10.3084560-05:00 [DEBUG]: A Knight instance has been initialized
+2018-02-26T21:21:10.3087250-05:00 [DEBUG]: A Squire instance has been initialized
+2018-02-26T21:21:10.3090130-05:00 [DEBUG]: A Knight of the Round Table instance has been initialized
+2018-02-26T21:21:10.3092720-05:00 [DEBUG]: A Champion Knight instance has been initialized
+2018-02-26T21:21:10.3095400-05:00 [DEBUG]: A Knight instance has been initialized
+2018-02-26T21:21:10.3098320-05:00 [DEBUG]: A Squire instance has been initialized
+2018-02-26T21:21:10.3535400-05:00 [INFO]: Player list passed to BoardManager
+2018-02-26T21:21:10.3544540-05:00 [INFO]: Player entered: Alexei (human)
+2018-02-26T21:21:10.3549510-05:00 [INFO]: Player entered: Kirk (human)
+2018-02-26T21:21:10.3554030-05:00 [INFO]: Player entered: Avery (human)
+2018-02-26T21:21:10.3558730-05:00 [INFO]: Player entered: Maxim (human)
+2018-02-26T21:21:10.3609450-05:00 [INFO]: Initialized the At Orkney card
+2018-02-26T21:21:10.3613380-05:00 [INFO]: Initialized the At Camelot card
+2018-02-26T21:21:10.3616220-05:00 [INFO]: Initialized the At Tintagel card
+2018-02-26T21:21:10.3618960-05:00 [INFO]: Initialized the At York card
+2018-02-26T21:21:10.3629970-05:00 [INFO]: Initializing a Quest
+2018-02-26T21:21:10.3632120-05:00 [INFO]: Initializing the Search for the Holy Grail card
+2018-02-26T21:21:10.3636200-05:00 [INFO]: Initializing a Quest
+2018-02-26T21:21:10.3638510-05:00 [INFO]: Initializing the Test of the Green Knight card
+2018-02-26T21:21:10.3642430-05:00 [INFO]: Initializing a Quest
+2018-02-26T21:21:10.3644460-05:00 [INFO]: Initializing the Search for the Questing Beast card
+2018-02-26T21:21:10.3648380-05:00 [INFO]: Initializing a Quest
+2018-02-26T21:21:10.3650200-05:00 [INFO]: Initializing the Defend the Queen's Honor card
+2018-02-26T21:21:10.3654040-05:00 [INFO]: Initializing a Quest
+2018-02-26T21:21:10.3655830-05:00 [INFO]: Initializing the Rescue the Fair Maiden card
+2018-02-26T21:21:10.3658950-05:00 [INFO]: Initializing a Quest
+2018-02-26T21:21:10.3660770-05:00 [INFO]: Initializing the Journey through the Enchanted Forest card
+2018-02-26T21:21:10.3663710-05:00 [INFO]: Initializing a Quest
+2018-02-26T21:21:10.3665430-05:00 [INFO]: Initializing the Vanquish King Arthur's Enemies card
+2018-02-26T21:21:10.3667050-05:00 [INFO]: Initializing a Quest
+2018-02-26T21:21:10.3668550-05:00 [INFO]: Initializing the Vanquish King Arthur's Enemies card
+2018-02-26T21:21:10.3671610-05:00 [INFO]: Initializing a Quest
+2018-02-26T21:21:10.3673350-05:00 [INFO]: Initializing the Slay the Dragon card
+2018-02-26T21:21:10.3676610-05:00 [INFO]: Initializing a Quest
+2018-02-26T21:21:10.3678430-05:00 [INFO]: Initializing the Boar Hunt card
+2018-02-26T21:21:10.3680310-05:00 [INFO]: Initializing a Quest
+2018-02-26T21:21:10.3681840-05:00 [INFO]: Initializing the Boar Hunt card
+2018-02-26T21:21:10.3685750-05:00 [INFO]: Initializing a Quest
+2018-02-26T21:21:10.3687530-05:00 [INFO]: Initializing the Repel the Saxon Raiders card
+2018-02-26T21:21:10.3689420-05:00 [INFO]: Initializing a Quest
+2018-02-26T21:21:10.3690970-05:00 [INFO]: Initializing the Repel the Saxon Raiders card
+2018-02-26T21:21:10.3694140-05:00 [INFO]: Card decks created
+2018-02-26T21:21:10.3709180-05:00 [INFO]: Dealt 12 cards to Alexei
+2018-02-26T21:21:10.3716120-05:00 [INFO]: Dealt 12 cards to Kirk
+2018-02-26T21:21:10.3722380-05:00 [INFO]: Dealt 12 cards to Avery
+2018-02-26T21:21:10.3728410-05:00 [INFO]: Dealt 12 cards to Maxim
+2018-02-26T21:21:10.3731020-05:00 [INFO]: Game started...
+2018-02-26T21:21:10.3736390-05:00 [INFO]: Alexei's turn
+2018-02-26T21:21:10.4160300-05:00 [INFO]: Alexei's cards drawn to GUI
+2018-02-26T21:21:10.4168740-05:00 [INFO]: Started the Kings Call To Arms behaviour
+2018-02-26T21:21:10.4173200-05:00 [DEBUG]: Populated a list of players with the lowest rank
+2018-02-26T21:21:10.4175270-05:00 [DEBUG]: Prompting event action for player Alexei
+2018-02-26T21:21:10.4180580-05:00 [TRACE]: numFoeCards for the current player is 2
+2018-02-26T21:21:10.4183970-05:00 [DEBUG]: Player to discard weapon
+2018-02-26T21:21:10.4208830-05:00 [INFO]: Alexei's cards drawn to GUI
+2018-02-26T21:21:10.4755570-05:00 [INFO]: Board manager started

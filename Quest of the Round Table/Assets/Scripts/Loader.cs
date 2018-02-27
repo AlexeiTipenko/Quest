@@ -11,5 +11,6 @@ public class Loader : MonoBehaviour {
 
 		if (GameManager.instance == null)
 			Instantiate (gameManager);
+            Logger.getInstance().info("Game manager instantiated");
 	}
 }

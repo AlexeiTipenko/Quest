@@ -16,7 +16,8 @@ public class Logger {
 	public static Logger getInstance() {
 		if (logger == null) {
 			logger = new Logger();
-			System.IO.File.Delete (logFilePath); //delete previous log file
+			File.Delete (logFilePath); //delete previous log file
+            logger.init();
 		}
 		return logger;
 	}

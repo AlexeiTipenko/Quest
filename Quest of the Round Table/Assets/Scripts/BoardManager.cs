@@ -9,8 +9,6 @@ using UnityEngine.UI;
 public class BoardManager : MonoBehaviour
 {
 
-    Logger logger;
-
     void Start()
     {
 		Logger.getInstance().info("Board manager started");
@@ -112,7 +110,7 @@ public class BoardManager : MonoBehaviour
         DrawHand(player);
         DrawRank(player);
         DrawCardInPlay();
-
+        Logger.getInstance().info(player.getName() + "'s cards drawn to GUI");
         //TODO: draw cards in play area
     }
 

@@ -10,7 +10,6 @@ public class BoardManagerMediator
     
 	static BoardManagerMediator instance;
 	//GameObject boardManager;
-    public static bool buttonClicked;
 	List<Player> players;
 	AdventureDeck adventureDeck;
 	StoryDeck storyDeck;
@@ -31,14 +30,13 @@ public class BoardManagerMediator
 	}
 
 	public void initGame (List<Player> players) {
-		//Debug.Log ("Received playersList");
+        
 		this.players = players;
-        buttonClicked = false;
-
 		adventureDeck = new AdventureDeck ();
 		storyDeck = new StoryDeck ();
 		adventureDiscard = new DiscardDeck ();
 		storyDiscard = new DiscardDeck ();
+        Logger.getInstance().info("Card decks created");
 
 		foreach (Player player in players) {
 			dealCardsToPlayer (player, 12);
@@ -118,7 +116,9 @@ public class BoardManagerMediator
 			}
 		}
 		player.dealCards (cardsToDeal);
+        Logger.getInstance().info("Dealt " + numCardsToDeal + " cards to " + player.getName());
 	}
+
 
     public void dealOneCardToPlayer(Player player, Action func)
     {
@@ -127,20 +127,25 @@ public class BoardManagerMediator
         player.dealCard(card, func);
     }
 
+
     public void setCardInPlay(Card card) {
         cardInPlay = (Story) card;
     }
 
+
     public void startGame()
     {
+        Logger.getInstance().info("Game started...");
         playerTurn = 0;
         playTurn();
     }
+
 
     private void playTurn()
     {
         if (!gameOver())
         {
+            Logger.getInstance().info(players[playerTurn].getName() + "'s turn");
             cardInPlay = (Story)storyDeck.drawCard();
             BoardManager.DrawCards(players[playerTurn]);
             cardInPlay.startBehaviour();
@@ -151,6 +156,7 @@ public class BoardManagerMediator
         }
     }
 
+
     public void nextTurn()
     {
         storyDiscard.addCard(cardInPlay);
@@ -160,6 +166,7 @@ public class BoardManagerMediator
         playerTurn = (playerTurn + 1) % players.Count;
         playTurn();
     }
+
 
     private bool gameOver()
     {
@@ -172,6 +179,7 @@ public class BoardManagerMediator
         }
         return false;
     }
+
 
     public void cheat(string cheatCode)
     {
@@ -218,9 +226,11 @@ public class BoardManagerMediator
     //--------------------------- Visual Functions ---------------------------//
     //------------------------------------------------------------------------//
 
+
     public void DrawRank(Player player) {
         BoardManager.DrawRank(player);
     }
+
 
 	public void PromptSponsorQuest(Player player) {
         BoardManager.DrawCards(player);
@@ -235,6 +245,7 @@ public class BoardManagerMediator
         Debug.Log("Prompting " + player.getName() + " to sponsor quest.");
 	}
 
+
 	public void SetupQuest(Player player, Action action1) {
         BoardManager.SetInteractionText("Prepare your quest using a combination of foes (and weapons) and a test.");
         Debug.Log(((Quest)cardInPlay).numStages);
@@ -245,6 +256,7 @@ public class BoardManagerMediator
         BoardManager.SetInteractionButtons("Complete", "", action1, null);
         Debug.Log("Prompting " + player.getName() + " to setup quest.");
 	}
+
 
 	public void PromptAcceptQuest(Player player) {
         BoardManager.DrawCards(player);
@@ -259,9 +271,11 @@ public class BoardManagerMediator
         Debug.Log("Prompting " + player.getName() + " to accept quest.");
 	}
 
+
 	public void PromptFoe(Player player) {
 		//TODO: prompt foe
 	}
+
 
 	public void PromptTest(Player player, int currentBid) {
 		//TODO: prompt test
@@ -282,6 +296,7 @@ public class BoardManagerMediator
         Debug.Log("Prompting " + player.getName() + " to enter tournament.");
     }
 
+
     public void PromptCardSelection(Player player)
     {
         BoardManager.DrawCards(player);
@@ -292,6 +307,7 @@ public class BoardManagerMediator
         BoardManager.SetInteractionButtons("Complete", "", action, null);
         Debug.Log("Prompting " + player.getName() + " to prepare cards.");
     }
+
 
 	public void PromptToDiscardWeapon(Player player) 
 	{
@@ -306,6 +322,7 @@ public class BoardManagerMediator
 		Debug.Log("Prompting " + player.getName() + " to prepare cards.");
 
 	}
+
 		
 	public void PromptToDiscardFoes(Player player, int numFoes) 
 	{
@@ -320,13 +337,13 @@ public class BoardManagerMediator
 		Debug.Log("Prompting " + player.getName() + " to prepare cards.");
 	}
 
+
     public void PromptCardRemoveSelection(Player player)
     {
         BoardManager.DrawCards(player);
         BoardManager.SetInteractionText("Please remove cards until you have at most 12.");
 
         Action action = () => {
-            buttonClicked = true;
             BoardManager.DestroyDiscardArea();
             player.RemoveCardsResponse();
             player.PromptNextPlayer();
@@ -335,10 +352,6 @@ public class BoardManagerMediator
         BoardManager.SetInteractionButtons("Complete", "", action, null);
         BoardManager.SetupDiscardPanel();
         Debug.Log("Prompting " + player.getName() + " to prepare cards.");
-
-        //BoardManager.WaitUntilButtonClick(buttonClicked);
-        //coroutine = Coroutine(buttonClicked);
-        //StartCoroutine(coroutine);
     }
 }
 
