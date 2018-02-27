@@ -17,7 +17,6 @@ public abstract class Tournament : Story
 
     public Tournament(string cardName, int bonusShields) : base(cardName)
     {
-
         this.playersEntered = 0;
         this.bonusShields = bonusShields;
         board = BoardManagerMediator.getInstance();
@@ -30,17 +29,17 @@ public abstract class Tournament : Story
     public int GetBonusShields()
     {
         return bonusShields;
+        //Logger.getInstance().trace("getting bonus shields: " + bonusShields);
     }
 
 
     public override void startBehaviour()
     {
-        Debug.Log("Tournament behaviour started.");
+		Logger.getInstance().info("Started Tournament behaviour");
         sponsor = owner;
         playerToPrompt = sponsor;
         board.PromptEnterTournament(sponsor);
     }
-
 
 
     public void PromptEnterTournamentResponse(bool tournamentAccepted)
@@ -52,6 +51,7 @@ public abstract class Tournament : Story
 
             if ((playerToPrompt.getHand().Count() + 1) > 12)
             {
+                Logger.getInstance().trace("Dealing One Card to " + playerToPrompt.getName());
                 Action action = () => {
                     board.TransferFromHandToPlayArea(playerToPrompt);
                     playerToPrompt.RemoveCardsResponse();
@@ -69,11 +69,14 @@ public abstract class Tournament : Story
         }
 
         else {
+
             PromptNextPlayer();
         }
     }
 
+
     public void PromptNextPlayer(){
+
         playerToPrompt = board.getNextPlayer(playerToPrompt);
 
         if (playerToPrompt != sponsor)
@@ -88,21 +91,21 @@ public abstract class Tournament : Story
     {
         if (participatingPlayers.Count() == 0)
         {
-            Debug.Log("No participants in tournament.");
+			Logger.getInstance().info("No participants in tournament");
             board.nextTurn();
         }
 
         else if (participatingPlayers.Count() == 1) 
         {
-            Debug.Log("TOURNAMENT DEFAULT WINNER: " + participatingPlayers[0].getName());
+            Logger.getInstance().info("TOURNAMENT DEFAULT WINNER: " + participatingPlayers[0].getName().ToUpper());
             participatingPlayers[0].incrementShields(1);
+            Logger.getInstance().info("Number of shields: " + participatingPlayers[0].getNumShields());
             board.nextTurn();
         }
 
         else
             board.PromptCardSelection(playerToPrompt);
     }
-
 
 
     public void CardsSelectionResponse() {
@@ -112,7 +115,7 @@ public abstract class Tournament : Story
 
         if (!cardsValid)
         {
-            Debug.Log("Card selection invalid.");
+            Logger.getInstance().warn(playerToPrompt.getName() + "'s card selection INVALID");
             board.ReturnCardsToPlayer();
             board.PromptCardSelection(playerToPrompt);
         }
@@ -125,10 +128,9 @@ public abstract class Tournament : Story
                 playerToPrompt.getPlayArea().addCard(card);
             }
 
-            Debug.Log("All cards valid.");
+            Logger.getInstance().info(playerToPrompt.getName() + "'s card selection VALID");
             AddPlayerBattlePoints(chosenCards);
 
-            Debug.Log("Player finished turn.");
             playerToPrompt = GetNextPlayer(playerToPrompt);
 
             if (playerToPrompt == sponsor)
@@ -150,11 +152,11 @@ public abstract class Tournament : Story
             }
         }
         pointsDict.Add(playerToPrompt, pointsTotal);
+        Logger.getInstance().info(playerToPrompt.getName() + " has " + pointsTotal + " battle points");
     }
 
 
     public bool ValidateChosenCards(List<Card> chosenCards){
-
         bool cardsValid = true;
         
         if (chosenCards.GroupBy(c => c.getCardName()).Any(g => g.Count() > 1))
@@ -175,7 +177,7 @@ public abstract class Tournament : Story
 
 
     public void TournamentRoundComplete() {
-        
+		Logger.getInstance ().info ("Tournament round complete");
         IEnumerable<Player> tempCollection = from p in pointsDict 
                 where p.Value == pointsDict.Max(v => v.Value) select p.Key;
         
@@ -183,7 +185,7 @@ public abstract class Tournament : Story
 
         if (winnerList.Count() == 1) 
         {
-            Debug.Log("TOURNAMENT WINNER: " + winnerList[0].getName());
+			Logger.getInstance ().info("Tournament winner: " + winnerList[0].getName());
             winnerList[0].incrementShields(playersEntered);
             DiscardCards();
             board.nextTurn();
@@ -191,11 +193,11 @@ public abstract class Tournament : Story
 
         else if (winnerList.Count() > 1) 
         {
-            Debug.Log("MORE THAN ONE PLAYER WON!");
+			Logger.getInstance ().trace("More than one player has won");
 
             if (rematch == false)
             {
-                Debug.Log("ROUND 2");
+				Logger.getInstance ().info("Round 2 of tournament started");
                 participatingPlayers = winnerList;
                 rematch = true;
                 pointsDict.Clear();
@@ -206,7 +208,7 @@ public abstract class Tournament : Story
             }
 
             else{
-                Debug.Log("ROUND 3 AND END OF TOURNAMENT.");
+                Logger.getInstance ().info("Round 3 (final) of tournament started");
                 foreach(Player player in winnerList){
                     player.incrementShields(playersEntered);
                 }
@@ -214,15 +216,13 @@ public abstract class Tournament : Story
                 board.nextTurn();
             }
         }
-        //winners.Dump();
     }
 
+
     private void DiscardCards() {
-        //NOT WORKING IN UI
         foreach(Player player in board.getPlayers()){
             player.getPlayArea().discardWeapons();
             player.getPlayArea().discardAmours();
-            //Not allies
         }
     }
 
@@ -237,7 +237,6 @@ public abstract class Tournament : Story
 
             return participatingPlayers[0];
         }
-
         return null;
     }
 }

@@ -6,12 +6,12 @@ public class ChivalrousDeed : Event {
 
 	public static int frequency = 1;
 
-	public ChivalrousDeed() : base ("Chivalrous Deed") {
-
-	}
+	public ChivalrousDeed() : base ("Chivalrous Deed") { }
 
 	//Event description: Player with both lowest rank and least amount of shields, receives 3 shields.
 	public override void startBehaviour() { 
+		Logger.getInstance ().info ("Started the Chivalrous Deed behaviour");
+
 		List<Player> allPlayers = BoardManagerMediator.getInstance().getPlayers();
 
 		List<Player> lowestRankPlayers = new List<Player>();
@@ -29,6 +29,7 @@ public class ChivalrousDeed : Event {
 			}
 		}
 
+		Logger.getInstance ().debug ("Finished getting list of players with lowest rank");
 		//in the list of players with the lowest rank, make a list of players among those with the lowest # of shields
 		foreach (Player player in lowestRankPlayers) {
 			if (lowestPlayers.Count == 0) {
@@ -40,10 +41,15 @@ public class ChivalrousDeed : Event {
 				lowestPlayers.Add (player);
 			}
 		}
+		Logger.getInstance ().debug ("Finished getting list of players with lowest # shields");
 
 		//Award 3 shields
 		foreach (Player player in lowestPlayers) {
 			player.incrementShields (3);
 		}
+		Logger.getInstance ().info ("Awarded 3 shields to lowest ranked + lowest shields players, finishing behaviour");
+
+        Player currentPlayer = BoardManagerMediator.getInstance().getCurrentPlayer();
+        BoardManagerMediator.getInstance().NextPlayerTurn(currentPlayer);
 	}
 }

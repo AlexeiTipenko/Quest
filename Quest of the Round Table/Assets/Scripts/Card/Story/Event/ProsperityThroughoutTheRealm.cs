@@ -13,8 +13,10 @@ public class ProsperityThroughoutTheRealm : Event {
 
 	//Event description: All players may immediately draw 2 Adventure Cards. 
 	public override void startBehaviour() {
+		Logger.getInstance ().info ("Started Prosperity Throughout the Realm behaviour");	
         playerToPrompt = board.getCurrentPlayer();
         DealCards();
+        Logger.getInstance().info("Finished Prosperity Throughout the Realm behaviour");
 	}
 
     private void DealCards() {

@@ -5,13 +5,24 @@ using System.Collections;
 
 public class KingsRecognitionTest {
 
+	//Event description: The next player(s) to complete a Quest will receive 2 extra shields.
 	[Test]
 	public void KingsRecognitionTestSimplePasses() {
 		Assert.IsTrue (KingsRecognition.frequency == 2);
 		Event kingsRecognition = new KingsRecognition ();
 		Assert.AreEqual ("King's Recognition", kingsRecognition.getCardName ());
+	}
 
-		//need to implement some sort of test case to test out processEvent function
-		//Assert.IsTrue (false);
+	[Test]
+	public void KingsRecognitionTestBehaviour() {
+		Event kingsRecognition = new KingsRecognition ();
+
+		Assert.IsTrue (Quest.KingsRecognitionActive == false);
+
+		kingsRecognition.startBehaviour ();
+
+		//see if active when card drawn, potentially implement other test cases depending on future game logic
+
+		Assert.IsTrue (Quest.KingsRecognitionActive == true);
 	}
 }

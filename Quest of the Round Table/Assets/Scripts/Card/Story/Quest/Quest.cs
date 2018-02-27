@@ -5,14 +5,16 @@ using UnityEngine;
 public abstract class Quest : Story {
 	private BoardManagerMediator board;
 
-    public int numStages, currentStage;
-    protected int totalCardsCounter;
+	protected int currentStage, totalCardsCounter, numShieldsAwarded;
+	public int numStages;
 	protected List<Type> dominantFoes;
 	private List<Stage> stages;
 	Player sponsor, playerToPrompt;
 	List<Player> participatingPlayers;
+	public static bool KingsRecognitionActive = false;
 
 	public Quest (string cardName, int numStages) : base (cardName) {
+
 		board = BoardManagerMediator.getInstance ();
 		this.numStages = numStages;
         participatingPlayers = new List<Player>();
@@ -21,10 +23,12 @@ public abstract class Quest : Story {
 	}
 
 	public int getShieldsWon () {
-		return numStages;
+		Logger.getInstance ().trace ("numShieldsAwarded is " + numShieldsAwarded);
+		return numShieldsAwarded;
 	}
 
 	public List<Type> getDominantFoes() {
+		Logger.getInstance ().trace ("dominantFoes are " + dominantFoes.ToString());
 		return dominantFoes;
 	}
 
@@ -33,7 +37,7 @@ public abstract class Quest : Story {
     }
 
 	public override void startBehaviour () {
-		Debug.Log ("Quest behaviour started");
+        Logger.getInstance().info ("Started Quest behaviour");
 
 		sponsor = owner;
 		totalCardsCounter = 0;
@@ -42,20 +46,20 @@ public abstract class Quest : Story {
 
 	private void PromptSponsorQuest() {
 		if (isValidSponsor ()) {
-            Debug.Log("Requesting sponsor: " + sponsor.getName());
 			board.PromptSponsorQuest (sponsor);
 		} else {
-            Debug.Log("Invalid sponsor: " + sponsor.getName());
+			Logger.getInstance().warn("Invalid sponsor: " + sponsor.getName());
 			IncrementSponsor ();
 		}
 	}
 
 	public void PromptSponsorQuestResponse (bool sponsorAccepted) {
 		if (sponsorAccepted) {
+			Logger.getInstance().info("Sponsor accepted: " + sponsor.getName());
             Debug.Log("Sponsor accepted: " + sponsor.getName());
             board.SetupQuest (sponsor, "PREPARE YOUR QUEST\n- Each stage contains a foe or a test\n- Maximum one test per quest\n- Foe stages may contain (unique) weapons\n- Battle points must increase between stages");
 		} else {
-            Debug.Log("Sponsor declined: " + sponsor.getName());
+			Logger.getInstance().trace("Sponsor declined: " + sponsor.getName());
 			IncrementSponsor ();
 		}
 	}
@@ -80,12 +84,14 @@ public abstract class Quest : Story {
                             break;
                         } else {
                             Debug.Log("Quest setup failed due to multiple tests.");
+                            Logger.getInstance().warn("Quest setup failed due to multiple tests");
                             return false;
                         }
                     }
                     else if (child.name == card.getCardName() && cardType.IsSubclassOf(typeof(Foe))) {
                         if (currentStageHasTest) {
                             Debug.Log("Quest setup failed due to test existing in stage with foe/weapon.");
+                            Logger.getInstance().warn("Quest setup failed due to test existing in stage with foe/weapon");
                             return false;
                         }
                         if (!hasFoe) {
@@ -95,12 +101,14 @@ public abstract class Quest : Story {
                         }
                         else {
                             Debug.Log("Quest setup failed due to multiple foes in a stage.");
+                            Logger.getInstance().warn("Quest setup failed due to multiple foes in a stage");
                             return false;
                         }
                     }
                     else if (child.name == card.getCardName() && cardType.IsSubclassOf(typeof(Weapon))) {
                         if (currentStageHasTest) {
                             Debug.Log("Quest setup failed due to test existing in stage with foe/weapon.");
+                            Logger.getInstance().warn("Quest setup failed due to test existing in stage with foe/weapon");
                             return false;
                         }
                         if (!weaponsInStage.Contains(cardType)) {
@@ -109,6 +117,7 @@ public abstract class Quest : Story {
                             break;
                         } else {
                             Debug.Log("Quest setup failed due to multiple weapons of the same type in a stage.");
+                            Logger.getInstance().warn("Quest setup failed due to multiple weapons of the same type in a stage");
                             return false;
                         }
                     }
@@ -120,6 +129,7 @@ public abstract class Quest : Story {
                 }
                 else {
                     Debug.Log("Quest setup failed due to battle points.");
+                    Logger.getInstance().warn("Quest setup failed due to battle points");
                     return false;
                 }
             }
@@ -130,8 +140,6 @@ public abstract class Quest : Story {
 	private void IncrementSponsor() {
 		sponsor = board.getNextPlayer (sponsor);
 		if (sponsor == owner) {
-            Debug.Log("All sponsors asked, none accepted.");
-			//TODO: discard();
 			board.nextTurn ();
 		} else {
 			PromptSponsorQuest ();
@@ -146,6 +154,7 @@ public abstract class Quest : Story {
             }
         }
         Debug.Log("Finished quest setup.");
+        Logger.getInstance().info("Quest setup complete");
 		playerToPrompt = board.getNextPlayer (sponsor);
 		board.PromptAcceptQuest (playerToPrompt);
 	}
@@ -163,7 +172,7 @@ public abstract class Quest : Story {
 
 	public void PromptAcceptQuestResponse(bool questAccepted) {
 		if (questAccepted) {
-            Debug.Log(playerToPrompt.getName() + " has accepted to participate in the quest.");
+			Logger.getInstance().debug(playerToPrompt.getName() + " has accepted to participate in the quest");
 			participatingPlayers.Add (playerToPrompt);
 		}
 		playerToPrompt = board.getNextPlayer (playerToPrompt);
@@ -172,7 +181,8 @@ public abstract class Quest : Story {
 		} else {
 			currentStage = -1;
             numStages = stages.Count;
-            Debug.Log("Starting quest.");
+			Logger.getInstance().debug("Starting quest.");
+            Debug.Log("Starting quest");
 			PlayStage ();
 		}
 	}
@@ -191,18 +201,23 @@ public abstract class Quest : Story {
 		foreach (Player player in board.getPlayers()) {
 			player.getPlayArea ().discardAmours ();
 		}
+		numShieldsAwarded = numStages;
+		if (KingsRecognitionActive) {
+			numShieldsAwarded += 2;
+			KingsRecognitionActive = false;
+		}
 		foreach (Player player in participatingPlayers) {
-			player.incrementShields (numStages);
+			player.incrementShields (numShieldsAwarded);
 		}
 		board.dealCardsToPlayer (sponsor, totalCardsCounter);
         Debug.Log("Complete Quest");
+        Debug.Log("Quest complete");
         BoardManager.DestroyStage(numStages);
 		board.nextTurn ();
 	}
 
 	private bool isValidSponsor () {
 		List<Card> hand = sponsor.getHand();
-
 		int validCardCount = 0;
 		bool hasTest = false;
 		foreach (Card card in hand) {
@@ -221,6 +236,7 @@ public abstract class Quest : Story {
 	public void removeParticipatingPlayer(Player player) {
 		if (participatingPlayers.Contains(player)) {
 			participatingPlayers.Remove (player);
+            Logger.getInstance ().trace (player.getName() + " removed from quest");
 		}
 	}
 

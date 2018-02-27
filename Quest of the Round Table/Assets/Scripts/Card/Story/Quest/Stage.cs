@@ -13,6 +13,7 @@ public class Stage {
     Player playerToPrompt, originalPlayer;
 
 	public Stage(Adventure stageCard, List<Weapon> weapons, int stageNum) {
+		Logger.getInstance ().info ("Starting the Stage class");
 		board = BoardManagerMediator.getInstance ();
 
 		this.stageCard = stageCard;
@@ -30,6 +31,7 @@ public class Stage {
                 }
             }
 		}
+		Logger.getInstance ().trace ("The total battle points are " + battlePoints);
 		return battlePoints;
 	}
 
@@ -47,13 +49,17 @@ public class Stage {
         if (weapons != null) {
             totalCards += weapons.Count;
         }
+		Logger.getInstance ().trace ("The total cards are " + totalCards);
         return totalCards;
 	}
 
 	public void prepare() {
+		Logger.getInstance ().debug ("Prepare function has started");
+
 		quest = (Quest)BoardManagerMediator.getInstance ().getCardInPlay ();
 
 		if (stageCard.GetType ().IsSubclassOf (typeof(Foe))) {
+			Logger.getInstance ().trace ("Stage card is subclass type of foe");
 			Debug.Log ("Is foe, going to player");
             Debug.Log("quest sponsor is: " + quest.getSponsor().getName());
 			playerToPrompt = board.getNextPlayer (quest.getSponsor());
@@ -62,12 +68,14 @@ public class Stage {
             board.PromptFoe (playerToPrompt, stageNum);
 		} else {
 			//TODO: reveal visually;
+			Logger.getInstance ().trace ("Stage card is NOT subclass type of foe");
 			currentBid = ((Test)stageCard).getMinBidValue();
 			Debug.Log ("Current bid is: " + currentBid);
 			playerToPrompt = quest.getNextPlayer (quest.getSponsor ());
 			promptTest ();
 		}
 	}
+
 
     public void promptFoeResponse(bool dropOut) {
         if (!dropOut) {
@@ -88,6 +96,7 @@ public class Stage {
             ContinueQuest(playerToPrompt);
         }
 	}
+
 
     public void ContinueQuest(Player currPlayer){
         //Debug.Log("Current amount of players is: " + quest.getPlayers().Count);
@@ -112,9 +121,12 @@ public class Stage {
     }
 
 	private void promptTest() {
+		Logger.getInstance ().debug ("prompting Test...");
 		if (isValidBidder ()) {
+			Logger.getInstance ().trace ("Bidder is valid; about to prompt test to " + playerToPrompt.getName());
 			board.PromptTest (playerToPrompt, currentBid);
 		} else {
+			Logger.getInstance ().debug ("Removing Participating player...");
 			quest.removeParticipatingPlayer (playerToPrompt);
 			incrementBidder ();
 		}
@@ -130,6 +142,7 @@ public class Stage {
 	}
 
 	public void promptTestResponse(int bid) { //TODO: maybe return should be the cards to be discarded? as well as bid number (to account for ally bids)
+		Logger.getInstance ().debug ("prompting Test Response...");
 		if (bid == 0) {
 			quest.removeParticipatingPlayer (playerToPrompt);
 			if (quest.getPlayers ().Count == 1) {
@@ -138,6 +151,7 @@ public class Stage {
 				quest.PlayStage ();
 			}
 		} else {
+			Logger.getInstance ().trace ("Bid != 0");
 			currentBid = bid;
 		}
 	}
@@ -153,10 +167,12 @@ public class Stage {
 				playerBattlePoints += ((Adventure) card).getBattlePoints ();
 			}
 			if (playerBattlePoints >= getTotalBattlePoints ()) {
+				Logger.getInstance ().trace ("playerBattlePoints >= getTotalbattlePoints");
                 Debug.Log("Player " + player.getName() + " passed stage.");
 				board.dealCardsToPlayer (player, 1);
 				player.getPlayArea ().discardWeapons ();
 			} else {
+                Logger.getInstance ().trace ("Removing participating player " + player.getName());
                 playersToRemove.Add(player);
 			}
 		}

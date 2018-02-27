@@ -22,8 +22,9 @@ public abstract class Foe : Adventure {
         if (dominantFoes.Contains (Type.GetType(cardImageName, true))) {
             Debug.Log(cardName + " battle points returned: " + empoweredBattlePoints);
 			return empoweredBattlePoints;
+
 		}
-        Debug.Log(cardName + " battle points returned: " + battlePoints);
+    Debug.Log(cardName + " battle points returned: " + battlePoints);
 		return battlePoints;
 	}
 

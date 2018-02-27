@@ -20,9 +20,11 @@ public class GameManager : MonoBehaviour {
 		DontDestroyOnLoad (gameObject);
 
 		print ("Passing playerList to BoardManager");
+        Logger.getInstance().info("Player list passed to BoardManager");
 
 		foreach (Player player in ButtonManager.playerList) {
 			print (player.toString ());
+            Logger.getInstance().info("Player entered: " + player.toString());
 		}
 
 		BoardManagerMediator.getInstance().initGame (ButtonManager.playerList);

@@ -8,6 +8,7 @@ public class DefendTheQueensHonor : Quest {
 	public static int frequency = 1;
 
 	public DefendTheQueensHonor() : base ("Defend the Queen's Honor", 4) {
+
 		dominantFoes = new List<Type> ();
 		dominantFoes.Add(Type.GetType("BlackKnight", true));
 		dominantFoes.Add(Type.GetType("Boar", true));

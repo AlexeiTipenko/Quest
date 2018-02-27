@@ -8,6 +8,7 @@ public class SearchForTheHolyGrail : Quest {
 	public static int frequency = 1;
 
 	public SearchForTheHolyGrail() : base ("Search for the Holy Grail", 5) {
+
 		dominantFoes = new List<Type> ();
 		dominantFoes.Add(Type.GetType("BlackKnight", true));
 		dominantFoes.Add(Type.GetType("Boar", true));

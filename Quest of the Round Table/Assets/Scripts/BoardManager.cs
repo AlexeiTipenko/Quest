@@ -14,6 +14,7 @@ public class BoardManager : MonoBehaviour
 
     void Start()
     {
+		Logger.getInstance().info("Board manager started");
         print("Board manager started");
     }
 
@@ -96,6 +97,7 @@ public class BoardManager : MonoBehaviour
         DrawStageAreaCards(player);
         DrawPlayArea(player);
         previousPlayer = player;
+        Logger.getInstance().info(player.getName() + "'s cards drawn to GUI");
     }
 
     public static List<string> GetSelectedCardNames()
