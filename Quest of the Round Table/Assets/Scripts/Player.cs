@@ -128,14 +128,7 @@ public class Player
 
     public void RemoveCardsResponse()
     {
-        board.TransferFromHandToPlayArea(this);
-        List<Card> chosenCards = board.GetDiscardedCards(this);
-
-        foreach (Card card in chosenCards)
-        {
-            RemoveCard(card);
-            //playArea.addCard(card);
-        } 
+        
 
     }
 

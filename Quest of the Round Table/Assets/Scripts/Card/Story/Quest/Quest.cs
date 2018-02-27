@@ -53,7 +53,6 @@ public abstract class Quest : Story {
 	public void PromptSponsorQuestResponse (bool sponsorAccepted) {
 		if (sponsorAccepted) {
             Debug.Log("Sponsor accepted: " + sponsor.getName());
-            participatingPlayers.Add(sponsor);
             board.SetupQuest (sponsor, "Prepare your quest using a combination of foes(and weapons) and a test.");
 		} else {
             Debug.Log("Sponsor declined: " + sponsor.getName());
@@ -172,21 +171,21 @@ public abstract class Quest : Story {
 			currentStage = -1;
             numStages = stages.Count;
             Debug.Log("Starting quest.");
-			playStage ();
+			PlayStage ();
 		}
 	}
 
-	public void playStage() {
+	public void PlayStage() {
 		currentStage++;
-		if (currentStage < numStages) {
+        if (currentStage < numStages && participatingPlayers.Count > 0) {
 			totalCardsCounter += stages [currentStage].getTotalCards ();
 			stages [currentStage].prepare ();
 		} else {
-			completeQuest ();
+			CompleteQuest ();
 		}
 	}
 
-	private void completeQuest() {
+	private void CompleteQuest() {
 		foreach (Player player in board.getPlayers()) {
 			player.getPlayArea ().discardAmours ();
 		}

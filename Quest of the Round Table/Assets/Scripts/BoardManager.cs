@@ -1,9 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using System;
-using UnityEditor;
 using UnityEngine.UI;
 
 public class BoardManager : MonoBehaviour

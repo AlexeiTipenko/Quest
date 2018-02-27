@@ -10,7 +10,7 @@ public class Stage {
 	private List<Weapon> weapons;
 
 	private Quest quest;
-    Player playerToPrompt;
+    Player playerToPrompt, originalPlayer;
 
 	public Stage(Adventure stageCard, List<Weapon> weapons) {
 		board = BoardManagerMediator.getInstance ();
@@ -63,71 +63,47 @@ public class Stage {
 			currentBid = ((Test)stageCard).getMinBidValue();
 			Debug.Log ("Current bid is: " + currentBid);
 			playerToPrompt = quest.getNextPlayer (quest.getSponsor ());
+            originalPlayer = playerToPrompt;
 			promptTest ();
 		}
 	}
 
-    public void promptFoeResponse(bool dropOut) { //TODO: I don't know how we can do last player in tournament
-        if (playerToPrompt == quest.getSponsor()){
-            playFoe();
+    public void promptFoeResponse(bool dropOut) {
+        if (!dropOut) {
+            playerToPrompt = quest.getNextPlayer(playerToPrompt);
+            ContinueQuest(playerToPrompt);
         }
         else {
-            if (!dropOut) {
-                continueQuest(playerToPrompt);
+            Debug.Log("Dropped out");
+            Player temp = playerToPrompt;
+            playerToPrompt = quest.getNextPlayer(playerToPrompt);
+            if (originalPlayer == temp) {
+                originalPlayer = quest.getNextPlayer(originalPlayer);
             }
-            else {
-                Debug.Log("Dropped out");
-                Player temp = playerToPrompt;
-                playerToPrompt = quest.getNextPlayer(playerToPrompt);
-                quest.removeParticipatingPlayer(temp);
-                Debug.Log("Removed participant: " + quest.getPlayers().Count);
-                continueQuest(temp);
-            }
+            Debug.Log("Removing player: " + temp.getName());
+            quest.removeParticipatingPlayer(temp);
+            Debug.Log("New total participant: " + quest.getPlayers().Count);
+            Debug.Log("Next player: " + playerToPrompt.getName());
+            ContinueQuest(playerToPrompt);
         }
 	}
 
-    public void promptFoeResp(bool dropOut) {
-        if (!dropOut) {
-            if (quest.getNextPlayer(playerToPrompt) != quest.getSponsor()) {
-                Debug.Log("Sponsor is next");
-                playerToPrompt = quest.getNextPlayer(playerToPrompt);
-                board.PromptFoe(playerToPrompt, currentStageNum);
-            }
-            else{
-                playFoe();
-            }
-        }
-        else{
-            Debug.Log("Drop out");
-            if (quest.getNextPlayer(playerToPrompt) != quest.getSponsor()){
-                Player temp = playerToPrompt;
-                playerToPrompt = quest.getNextPlayer(playerToPrompt);
-                quest.removeParticipatingPlayer(temp);
-                board.PromptFoe(playerToPrompt, currentStageNum);
-            }
-            else {
-                playFoe();
-            }
-        }
-    }
-
-    public void continueQuest(Player currPlayer){
+    public void ContinueQuest(Player currPlayer){
         //Debug.Log("Current amount of players is: " + quest.getPlayers().Count);
-        if (quest.getPlayers().Count <= 1)
+        if (quest.getPlayers().Count < 1)
         {
-            Debug.Log("less than one player");
-            //TODO: finish quest early somehow
+            Debug.Log("No quest participants left");
+            quest.PlayStage();
         }
         else{
-            //Debug.Log("Next player is now " + currPlayer.getName());
-            //if (currPlayer != quest.getSponsor()) {
+            if (currPlayer != originalPlayer) {
                 Debug.Log("Next player isn't sponsor");
                 board.PromptFoe(currPlayer, currentStageNum);
-            //}
-            //else {
-            //    Debug.Log("Next player is sponsor");
-            //    playFoe();
-            //}
+            }
+            else {
+                Debug.Log("Next player is sponsor");
+                playFoe();
+            }
         }
 
     }
@@ -156,7 +132,7 @@ public class Stage {
 			if (quest.getPlayers ().Count == 1) {
 				board.dealCardsToPlayer (quest.getPlayers()[0], 1);
 				//TODO: discard specifically selected cards
-				quest.playStage ();
+				quest.PlayStage ();
 			}
 		} else {
 			currentBid = bid;
@@ -175,7 +151,7 @@ public class Stage {
                 Debug.Log("player " + player.getName() + " past stage.");
 				board.dealCardsToPlayer (player, 1);
 				player.getPlayArea ().discardWeapons ();
-				quest.playStage ();
+				quest.PlayStage ();
 			} else {
 				quest.removeParticipatingPlayer (player);
 				//TODO: somehow finish removing a player from the quest. Does this require more work?

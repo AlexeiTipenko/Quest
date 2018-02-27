@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
-using UnityEditor;
-using System.Collections;
 
 public class BoardManagerMediator
 {
@@ -284,12 +281,12 @@ public class BoardManagerMediator
 		Action action1 = () => {
             Debug.Log("Did not dropout");
             TransferFromHandToPlayArea(player);
-            Debug.Log("Total battle points is: " + player.getPlayArea().getBattlePoints());
-            ((Quest)cardInPlay).getStage(stageNum).promptFoeResp(false);
+            Debug.Log("Total battle points in play area is: " + player.getPlayArea().getBattlePoints());
+            ((Quest)cardInPlay).getStage(stageNum).promptFoeResponse(false);
 		};
         Action action2 = () => {
             Debug.Log("Dropped out");
-            ((Quest)cardInPlay).getStage(stageNum).promptFoeResp(true);
+            ((Quest)cardInPlay).getStage(stageNum).promptFoeResponse(true);
         };
 
 		BoardManager.SetInteractionButtons ("Continue", "Drop Out", action1, action2);

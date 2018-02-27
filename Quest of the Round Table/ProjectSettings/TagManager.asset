@@ -10,6 +10,7 @@ TagManager:
   - StageCard
   - DiscardedCard
   - PlayAreaCard
+  - PlayerInfo
   layers:
   - Default
   - TransparentFX
