@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -169,18 +170,59 @@ public class Stage {
 			if (playerBattlePoints >= getTotalBattlePoints ()) {
 				Logger.getInstance ().trace ("playerBattlePoints >= getTotalbattlePoints");
                 Debug.Log("Player " + player.getName() + " passed stage.");
-				board.dealCardsToPlayer (player, 1);
-				player.getPlayArea ().discardWeapons ();
 			} else {
-                Logger.getInstance ().trace ("Removing participating player " + player.getName());
+                Logger.getInstance ().trace ("Did not pass. Player will be removed: " + player.getName());
                 playersToRemove.Add(player);
 			}
+            player.getPlayArea().discardWeapons();
 		}
         foreach (Player player in playersToRemove) {
+            Debug.Log("Removing player: " + player.getName());
             quest.removeParticipatingPlayer(player);
+            if (player == playerToPrompt) {
+                playerToPrompt = quest.getNextPlayer(playerToPrompt);
+            }
         }
-        quest.PlayStage();
+        originalPlayer = playerToPrompt;
+        if (quest.getPlayers().Count > 0) {
+            DealCards();
+        } else {
+            quest.PlayStage();
+        }
 	}
+
+    private void DealCards() {
+        if (playerToPrompt.getHand().Count + 1 > 12)
+        {
+            Action action = () => {
+                board.TransferFromHandToPlayArea(playerToPrompt);
+                playerToPrompt.RemoveCardsResponse();
+                DealCardsNextPlayer();
+            };
+            playerToPrompt.giveAction(action);
+            board.dealCardsToPlayer(playerToPrompt, 1);
+        } else 
+        {
+            board.dealCardsToPlayer(playerToPrompt, 1);
+            DealCardsNextPlayer();
+        }
+    }
+
+
+    public void DealCardsNextPlayer() {
+        playerToPrompt = quest.getNextPlayer(playerToPrompt);
+        Debug.Log("Original player: " + originalPlayer.getName());
+        if (playerToPrompt == null) {
+            Debug.Log("No players remaining");
+        } else {
+            Debug.Log("New player: " + playerToPrompt.getName());   
+        }
+        if (playerToPrompt != originalPlayer) {
+            DealCards();
+        } else {
+            quest.PlayStage();
+        }
+    }
 
     public int getStageNum() {
         return stageNum;

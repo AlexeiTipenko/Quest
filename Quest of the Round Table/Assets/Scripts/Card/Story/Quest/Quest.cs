@@ -6,7 +6,7 @@ public abstract class Quest : Story {
 	private BoardManagerMediator board;
 
 	protected int currentStage, totalCardsCounter, numShieldsAwarded;
-	public int numStages;
+	private int numStages;
 	protected List<Type> dominantFoes;
 	private List<Stage> stages;
 	Player sponsor, playerToPrompt;
@@ -181,6 +181,9 @@ public abstract class Quest : Story {
 		} else {
 			currentStage = -1;
             numStages = stages.Count;
+            foreach (Stage stage in stages) {
+                totalCardsCounter += stage.getTotalCards();
+            }
 			Logger.getInstance().debug("Starting quest.");
             Debug.Log("Starting quest");
 			PlayStage ();
@@ -190,8 +193,7 @@ public abstract class Quest : Story {
 	public void PlayStage() {
 		currentStage++;
         if (currentStage < numStages && participatingPlayers.Count > 0) {
-			totalCardsCounter += stages [currentStage].getTotalCards ();
-			stages [currentStage].prepare ();
+            getStage(currentStage).prepare();
 		} else {
 			CompleteQuest ();
 		}
@@ -210,9 +212,7 @@ public abstract class Quest : Story {
 			player.incrementShields (numShieldsAwarded);
 		}
 		board.dealCardsToPlayer (sponsor, totalCardsCounter);
-        Debug.Log("Complete Quest");
         Debug.Log("Quest complete");
-        BoardManager.DestroyStage(numStages);
 		board.nextTurn ();
 	}
 

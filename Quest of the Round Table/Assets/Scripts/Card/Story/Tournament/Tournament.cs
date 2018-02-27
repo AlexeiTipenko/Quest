@@ -9,7 +9,7 @@ public abstract class Tournament : Story
 
     private BoardManagerMediator board;
     protected int bonusShields, playersEntered;
-    public Player sponsor, playerToPrompt;
+    public Player playerToPrompt;
     public List<Player> participatingPlayers;
     public Dictionary<Player, int> pointsDict;
     bool rematch;
@@ -36,9 +36,8 @@ public abstract class Tournament : Story
     public override void startBehaviour()
     {
 		Logger.getInstance().info("Started Tournament behaviour");
-        sponsor = owner;
-        playerToPrompt = sponsor;
-        board.PromptEnterTournament(sponsor);
+        playerToPrompt = owner;
+        board.PromptEnterTournament(owner);
     }
 
 
@@ -79,7 +78,7 @@ public abstract class Tournament : Story
 
         playerToPrompt = board.getNextPlayer(playerToPrompt);
 
-        if (playerToPrompt != sponsor)
+        if (playerToPrompt != owner)
             board.PromptEnterTournament(playerToPrompt);
 
         else
@@ -91,6 +90,7 @@ public abstract class Tournament : Story
     {
         if (participatingPlayers.Count() == 0)
         {
+            Debug.Log("No participants in tournament");
 			Logger.getInstance().info("No participants in tournament");
             board.nextTurn();
         }
@@ -133,7 +133,7 @@ public abstract class Tournament : Story
 
             playerToPrompt = GetNextPlayer(playerToPrompt);
 
-            if (playerToPrompt == sponsor)
+            if (playerToPrompt == owner)
                 TournamentRoundComplete();
 
             else
@@ -201,9 +201,8 @@ public abstract class Tournament : Story
                 participatingPlayers = winnerList;
                 rematch = true;
                 pointsDict.Clear();
-                sponsor = participatingPlayers[0];
-                playerToPrompt = sponsor;
-                //board.PromptEnterTournament(playerToPrompt);
+                owner = participatingPlayers[0];
+                playerToPrompt = owner;
                 board.PromptCardSelection(playerToPrompt);
             }
 
