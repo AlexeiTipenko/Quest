@@ -399,6 +399,21 @@ public class BoardManager : MonoBehaviour
 		}
 	}
 
+    public static int GetCardsNumHandArea(Player player)
+    {
+        int count = 0;
+        GameObject HandArea = GameObject.Find("Canvas/TabletopImage/HandArea");
+        foreach (Transform child in HandArea.transform)
+        {
+            count++;
+        }
+
+        Debug.Log("Cards in hand (UI): " + count);
+        return count;
+    }
+
+
+
     public static void SetupDiscardPanel()
     {
         GameObject board = GameObject.Find("Canvas/TabletopImage");
