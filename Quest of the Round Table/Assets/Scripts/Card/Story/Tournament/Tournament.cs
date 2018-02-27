@@ -6,7 +6,7 @@ using System;
 
 public abstract class Tournament : Story
 {
-
+    Action action = null;
     private BoardManagerMediator board;
     protected int bonusShields, playersEntered;
     public Player sponsor, playerToPrompt;
@@ -52,10 +52,17 @@ public abstract class Tournament : Story
             if ((playerToPrompt.getHand().Count() + 1) > 12)
             {
                 Logger.getInstance().trace("Dealing One Card to " + playerToPrompt.getName());
-                Action action = () => {
+                action = () => {
                     board.TransferFromHandToPlayArea(playerToPrompt);
                     playerToPrompt.RemoveCardsResponse();
-                    PromptNextPlayer();
+
+                    if (playerToPrompt.getHand().Count() > 12){
+                        board.PromptCardRemoveSelection(playerToPrompt, action);
+                    }
+
+                    else{
+                        PromptNextPlayer();
+                    }
                 };
                 playerToPrompt.giveAction(action);
                 board.dealCardsToPlayer(playerToPrompt, 1);
