@@ -6,6 +6,11 @@ using UnityEngine.UI;
 
 public class BoardManager : MonoBehaviour
 {
+    private static GameObject coverCanvas = null;
+    private static GameObject coverInteractionText = null;
+    private static GameObject coverInteractionButton = null;
+    private static GameObject coverInteractionButtonText = null;
+    private static Player previousPlayer = null;
 
     void Start()
     {
@@ -55,19 +60,20 @@ public class BoardManager : MonoBehaviour
         buttonText2.GetComponent<Text>().text = text2;
 
 
-        if (func1 != null) {
+        if (func1 != null)
+        {
             button1.SetActive(true);
             button1.GetComponent<Button>().onClick.AddListener(ClearInteractions);
             button1.GetComponent<Button>().onClick.AddListener(new UnityAction(func1));
         }
 
-        if (func2 != null) {
+        if (func2 != null)
+        {
             button2.SetActive(true);
             button2.GetComponent<Button>().onClick.AddListener(ClearInteractions);
             button2.GetComponent<Button>().onClick.AddListener(new UnityAction(func2));
         }
     }
-
 
     public static void ClearInteractions() {
         GameObject interactionText = GameObject.Find("Canvas/TabletopImage/InteractionPanel/InteractionText");
@@ -84,11 +90,13 @@ public class BoardManager : MonoBehaviour
 
     public static void DrawCards(Player player) {
         DestroyCards();
+        DrawCover(player);
         DrawHand(player);
         DrawRank(player);
         DrawCardInPlay();
-        DrawStageAreaCards();
+        DrawStageAreaCards(player);
         DrawPlayArea(player);
+        previousPlayer = player;
         Logger.getInstance().info(player.getName() + "'s cards drawn to GUI");
     }
 
@@ -128,6 +136,26 @@ public class BoardManager : MonoBehaviour
         {
             child.gameObject.transform.SetParent(handArea.transform, false);
         }
+    }
+
+    public static void DrawCover(Player player) {
+        HideCover();
+        if (player != previousPlayer) {
+            coverInteractionText.GetComponent<Text>().text = "NEXT PLAYER: " + player.getName() + "\nPress continue when you are ready.";
+            coverInteractionButton.GetComponent<Button>().onClick.AddListener(new UnityAction(HideCover));
+            coverInteractionButtonText.GetComponent<Text>().text = "Continue";
+            coverCanvas.SetActive(true);
+        }
+    }
+
+    public static void HideCover() {
+        if (coverCanvas == null) {
+            coverCanvas = GameObject.Find("CoverCanvas");
+            coverInteractionText = GameObject.Find("CoverCanvas/CoverInteractionPanel/CoverInteractionText");
+            coverInteractionButton = GameObject.Find("CoverCanvas/CoverInteractionPanel/CoverInteractionButton");
+            coverInteractionButtonText = GameObject.Find("CoverCanvas/CoverInteractionPanel/CoverInteractionButton/Text");
+        }
+        coverCanvas.SetActive(false);
     }
 
     public static void DrawHand(Player player)
@@ -179,7 +207,7 @@ public class BoardManager : MonoBehaviour
         noDragInstance.transform.SetParent(rankArea.transform, false);
     }
 
-    public static void DrawStageAreaCards() {
+    public static void DrawStageAreaCards(Player player) {
         DestroyStageAreaCards();
         if (BoardManagerMediator.getInstance().getCardInPlay().GetType().IsSubclassOf(typeof(Quest))) {
             Quest questInPlay = (Quest)BoardManagerMediator.getInstance().getCardInPlay();
@@ -188,11 +216,25 @@ public class BoardManager : MonoBehaviour
                 GameObject boardAreaFoe = GameObject.Find("Canvas/TabletopImage/StageAreaFoe" + i);
                 Stage currentStage = questInPlay.getStage(i);
                 if (currentStage != null) {
-                    foreach (Card card in currentStage.getCards()) {
+                    Debug.Log("Drawing stage: " + i);
+                    Debug.Log("Current stage: " + questInPlay.getCurrentStage());
+                    if (questInPlay.getSponsor() == player 
+                        || i < questInPlay.getCurrentStage().getStageNum() 
+                        || (i == questInPlay.getCurrentStage().getStageNum()
+                            && questInPlay.getStage(i).getStageCard().GetType().IsSubclassOf(typeof(Test)))) {
+                        foreach (Card card in currentStage.getCards()) {
+                            GameObject noDragInstance = Instantiate(Resources.Load("NoDragCardPrefab", typeof(GameObject))) as GameObject;
+                            Image cardImg = noDragInstance.GetComponent<Image>();
+                            noDragInstance.name = card.getCardName();
+                            cardImg.sprite = Resources.Load<Sprite>("cards/" + card.cardImageName);
+                            noDragInstance.tag = "StageCard";
+                            noDragInstance.transform.SetParent(boardAreaFoe.transform, false);
+                        }
+                    } else {
                         GameObject noDragInstance = Instantiate(Resources.Load("NoDragCardPrefab", typeof(GameObject))) as GameObject;
                         Image cardImg = noDragInstance.GetComponent<Image>();
-                        noDragInstance.name = card.getCardName();
-                        cardImg.sprite = Resources.Load<Sprite>("cards/" + card.cardImageName);
+                        noDragInstance.name = "HiddenCard";
+                        cardImg.sprite = Resources.Load<Sprite>("cards/facedown/adventure");
                         noDragInstance.tag = "StageCard";
                         noDragInstance.transform.SetParent(boardAreaFoe.transform, false);
                     }
@@ -324,7 +366,7 @@ public class BoardManager : MonoBehaviour
                         stageCard = (Adventure)card;
                     }
                 }
-                stages.Add(new Stage(stageCard, weapons));
+                stages.Add(new Stage(stageCard, weapons, i));
             }
         }
         return stages;
