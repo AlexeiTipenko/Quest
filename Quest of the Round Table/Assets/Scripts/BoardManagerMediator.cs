@@ -94,6 +94,10 @@ public class BoardManagerMediator
         return cardList;
     }
 
+    public int GetCardsNumHandArea(Player player){
+        return BoardManager.GetCardsNumHandArea(player);
+    }
+
     public void ReturnCardsToPlayer(){
         BoardManager.ReturnCardsToPlayer();
     }
@@ -379,6 +383,7 @@ public class BoardManagerMediator
         Logger.getInstance().info("Prompted " + player.getName() + " to prepare cards to discard.");
     }
   
+
     public void NextPlayerTurn(Player player) {
         BoardManager.DrawCards(player);
         BoardManager.SetInteractionText("Event action complete.");

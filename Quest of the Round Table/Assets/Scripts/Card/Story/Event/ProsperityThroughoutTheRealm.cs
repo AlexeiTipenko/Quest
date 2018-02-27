@@ -6,6 +6,7 @@ public class ProsperityThroughoutTheRealm : Event {
 	public static int frequency = 1;
     private BoardManagerMediator board;
     private Player playerToPrompt;
+    Action action;
 
 	public ProsperityThroughoutTheRealm () : base ("Prosperity Throughout the Realm") {
         board = BoardManagerMediator.getInstance();
@@ -20,15 +21,25 @@ public class ProsperityThroughoutTheRealm : Event {
 	}
 
     private void DealCards() {
-        Action action = () => {
-            board.TransferFromHandToPlayArea(playerToPrompt);
-            playerToPrompt.RemoveCardsResponse();
-            playerToPrompt = board.getNextPlayer(playerToPrompt);
-            if (playerToPrompt != board.getCurrentPlayer()) {
-                DealCards();
-            } else {
-                board.nextTurn();
-            }
+        
+        action = () => {
+
+            if (BoardManagerMediator.getInstance().GetCardsNumHandArea(playerToPrompt) > 12)
+                board.PromptCardRemoveSelection(playerToPrompt, action);
+
+            else
+            {
+                board.TransferFromHandToPlayArea(playerToPrompt);
+                playerToPrompt.RemoveCardsResponse();
+
+                playerToPrompt = board.getNextPlayer(playerToPrompt);
+
+                if (playerToPrompt != board.getCurrentPlayer())
+                    DealCards();
+                
+                else
+                    board.nextTurn();
+            }       
         };
 
         playerToPrompt.giveAction(action);
