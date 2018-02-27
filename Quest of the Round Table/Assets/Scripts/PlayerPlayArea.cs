@@ -17,14 +17,18 @@ public class PlayerPlayArea {
 
 
     public int getBattlePoints() {
-        
-        GameObject boardArea = GameObject.Find("Canvas/TabletopImage/BoardArea");
+        int totalPoints = 0;
+        /*GameObject boardArea = GameObject.Find("Canvas/TabletopImage/BoardArea");
         int totalPoints = 0;
 
         foreach (Transform child in boardArea.transform)
         {
             Card tempCard = cards.Find(c => c.getCardName() == child.gameObject.name);
             Adventure card = (Adventure)tempCard;
+            totalPoints += card.getBattlePoints();
+        }*/
+
+        foreach(Adventure card in cards){
             totalPoints += card.getBattlePoints();
         }
         return totalPoints;

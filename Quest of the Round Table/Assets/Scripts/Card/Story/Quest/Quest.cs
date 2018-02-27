@@ -19,6 +19,8 @@ public abstract class Quest : Story {
 		board = BoardManagerMediator.getInstance ();
 		this.numStages = numStages;
         participatingPlayers = new List<Player>();
+        dominantFoes = new List<Type>();
+        stages = new List<Stage>();
 	}
 
 	public int getShieldsWon () {
@@ -30,6 +32,10 @@ public abstract class Quest : Story {
 		Logger.getInstance ().trace ("dominantFoes are " + dominantFoes.ToString());
 		return dominantFoes;
 	}
+
+    public int getNumStages() {
+        return numStages;
+    }
 
 	public override void startBehaviour () {
 		Logger.getInstance().info ("Quest behaviour started");
@@ -52,55 +58,114 @@ public abstract class Quest : Story {
 	public void PromptSponsorQuestResponse (bool sponsorAccepted) {
 		if (sponsorAccepted) {
 			Logger.getInstance().trace("Sponsor accepted: " + sponsor.getName());
-            Action action = () => {
-                ((Quest)BoardManagerMediator.getInstance().getCardInPlay()).SetupQuestComplete();
-            };
-			board.SetupQuest (sponsor, action);
+            Debug.Log("Sponsor accepted: " + sponsor.getName());
+            board.SetupQuest (sponsor, "Prepare your quest using a combination of foes(and weapons) and a test.");
 		} else {
 			Logger.getInstance().trace("Sponsor declined: " + sponsor.getName());
 			IncrementSponsor ();
 		}
 	}
 
+    public Boolean isValidQuest() {
+        int minBattlePoints = 0;
+        bool hasTest = false;
+        for (int i = 0; i < numStages; i++) {
+            GameObject boardAreaFoe = GameObject.Find("Canvas/TabletopImage/StageAreaFoe" + i);
+            List<Type> weaponsInStage = new List<Type>();
+            bool hasFoe = false;
+            bool currentStageHasTest = false;
+            int currentBattlePoints = 0;
+            foreach (Transform child in boardAreaFoe.transform) {
+                Debug.Log("card name is: " + child.name);
+                foreach (Card card in sponsor.getHand()) {
+                    Type cardType = card.GetType();
+                    if (child.name == card.getCardName() && cardType.IsSubclassOf(typeof(Test))) {
+                        Debug.Log("This is Test");
+                        if (!hasTest) {
+                            hasTest = true;
+                            currentStageHasTest = true;
+                            break;
+                        } else {
+                            Debug.Log("Quest setup failed due to multiple tests.");
+                            return false;
+                        }
+                    }
+                    else if (child.name == card.getCardName() && cardType.IsSubclassOf(typeof(Foe))) {
+                        Debug.Log("This is Foe");
+                        if (currentStageHasTest) {
+                            Debug.Log("Quest setup failed due to test existing in stage with foe/weapon.");
+                            return false;
+                        }
+                        if (!hasFoe) {
+                            hasFoe = true;
+                            currentBattlePoints += ((Foe)card).getBattlePoints();
+                            break;
+                        }
+                        else {
+                            Debug.Log("Quest setup failed due to multiple foes in a stage.");
+                            return false;
+                        }
+                    }
+                    else if (child.name == card.getCardName() && cardType.IsSubclassOf(typeof(Weapon))) {
+                        if (currentStageHasTest) {
+                            Debug.Log("Quest setup failed due to test existing in stage with foe/weapon.");
+                            return false;
+                        }
+                        if (!weaponsInStage.Contains(cardType)) {
+                            weaponsInStage.Add(cardType);
+                            currentBattlePoints += ((Weapon)card).getBattlePoints();
+                            break;
+                        } else {
+                            Debug.Log("Quest setup failed due to multiple weapons of the same type in a stage.");
+                            return false;
+                        }
+                    }
+                }
+            }
+            if (!currentStageHasTest) {
+                if (currentBattlePoints > minBattlePoints) {
+                    minBattlePoints = currentBattlePoints;
+                }
+                else {
+                    Debug.Log("Quest setup failed due to battle points.");
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
 	private void IncrementSponsor() {
 		sponsor = board.getNextPlayer (sponsor);
 		if (sponsor == owner) {
 			Logger.getInstance().trace("All sponsors asked, none accepted.");
 			//TODO: discard();
+			board.nextTurn ();
 		} else {
 			PromptSponsorQuest ();
 		}
 	}
 
-	public void SetupQuestComplete() {
-		Logger.getInstance().info("Setting up the Quest is complete");
-        this.stages = new List<Stage>(); //TODO: get the cards in the story card play area
-        for (int i = 0; i < numStages; i++)
-        {
-            GameObject boardAreaFoe = GameObject.Find("Canvas/TabletopImage/StageAreaFoe" + i);
-            foreach (Transform child in boardAreaFoe.transform)
-            {
-				Logger.getInstance().trace("card name is: " + child);
-                foreach (Card card in sponsor.getHand())
-                {
-                    if (child.name == card.getCardName() && card.GetType().IsSubclassOf(typeof(Test)))
-                    {
-						Logger.getInstance().trace("This is Test");
-                    }
-                    else if(child.name == card.getCardName() && card.GetType().IsSubclassOf(typeof(Foe))){
-						Logger.getInstance().trace("This is Foe");
-                    }
-                }
+	public void SetupQuestComplete(List<Stage> stages) {
+            Logger.getInstance().info("Setting up the Quest is complete");
+        this.stages = stages;
+        foreach (Stage stage in stages) {
+            foreach (Card card in stage.getCards()) {
+                sponsor.RemoveCard(card);
             }
         }
-
-        //TODO: get the card from player, make sure they match the ones played on the playarea, then keep doing setup quest
-        // setup panels based on number of stages, then make sure each panel has attack less than another
-        // use playarea for working with quest in playerplayarea (area where they drag cards when participating)
-		Logger.getInstance().info("Finished Quest setup");
+        Debug.Log("Finished quest setup.");
+        Logger.getInstance().info("Finished Quest setup");
 		playerToPrompt = board.getNextPlayer (sponsor);
 		board.PromptAcceptQuest (playerToPrompt);
 	}
+
+    public Stage getStage(int stageNum) {
+        if (stages.Count == 0) {
+            return null;
+        }
+        return stages[stageNum];
+    }
 
 	public void PromptAcceptQuestResponse(bool questAccepted) {
 		if (questAccepted) {
@@ -114,21 +179,22 @@ public abstract class Quest : Story {
 			currentStage = -1;
             numStages = stages.Count;
 			Logger.getInstance().debug("Starting quest.");
-			playStage ();
+            Debug.Log("Starting quest.");
+			PlayStage ();
 		}
 	}
 
-	public void playStage() {
+	public void PlayStage() {
 		currentStage++;
-		if (currentStage < numStages) {
+        if (currentStage < numStages && participatingPlayers.Count > 0) {
 			totalCardsCounter += stages [currentStage].getTotalCards ();
 			stages [currentStage].prepare ();
 		} else {
-			completeQuest ();
+			CompleteQuest ();
 		}
 	}
 
-	private void completeQuest() {
+	private void CompleteQuest() {
 		foreach (Player player in board.getPlayers()) {
 			player.getPlayArea ().discardAmours ();
 		}

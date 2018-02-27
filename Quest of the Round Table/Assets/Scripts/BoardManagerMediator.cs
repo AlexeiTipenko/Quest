@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
-using UnityEditor;
-using System.Collections;
 
 public class BoardManagerMediator
 {
@@ -120,14 +117,6 @@ public class BoardManagerMediator
 	}
 
 
-    public void dealOneCardToPlayer(Player player, Action func)
-    {
-        Debug.Log("Dealing " + 1 + " card");
-        Card card = adventureDeck.drawCard();
-        player.dealCard(card, func);
-    }
-
-
     public void setCardInPlay(Card card) {
         cardInPlay = (Story) card;
     }
@@ -148,6 +137,8 @@ public class BoardManagerMediator
             Logger.getInstance().info(players[playerTurn].getName() + "'s turn");
             cardInPlay = (Story)storyDeck.drawCard();
             BoardManager.DrawCards(players[playerTurn]);
+            BoardManager.DestroyPlayerInfo();
+            BoardManager.DisplayPlayers(players);
             cardInPlay.startBehaviour();
         }
         else
@@ -159,8 +150,12 @@ public class BoardManagerMediator
 
     public void nextTurn()
     {
+        if (cardInPlay.GetType().IsSubclassOf(typeof(Quest))) {
+            BoardManager.DestroyStage(((Quest)cardInPlay).getNumStages());   
+        }
         storyDiscard.addCard(cardInPlay);
         BoardManager.DestroyCards();
+        BoardManager.DestroyDiscardArea();
         BoardManager.ClearInteractions();
         cardInPlay = null;
         playerTurn = (playerTurn + 1) % players.Count;
@@ -245,15 +240,26 @@ public class BoardManagerMediator
         Debug.Log("Prompting " + player.getName() + " to sponsor quest.");
 	}
 
-
-	public void SetupQuest(Player player, Action action1) {
-        BoardManager.SetInteractionText("Prepare your quest using a combination of foes (and weapons) and a test.");
+	public void SetupQuest(Player player, String text) {
+        BoardManager.SetInteractionText(text);
         Debug.Log(((Quest)cardInPlay).numStages);
 
-        //Generate panels
-        BoardManager.SetupQuestPanels(((Quest)cardInPlay).numStages);
+        Action action = () => {
+            if (((Quest)cardInPlay).isValidQuest()) {
+                List<Stage> stages = BoardManager.CollectStageCards();
+                ((Quest)cardInPlay).SetupQuestComplete(stages);
+            }
+            else {
+                SetupQuest(player, "Invalid selections.");
+            }
+        };
 
-        BoardManager.SetInteractionButtons("Complete", "", action1, null);
+        if (!BoardManager.QuestPanelsExist()) {
+            //Generate panels
+            BoardManager.SetupQuestPanels(((Quest)cardInPlay).numStages);
+        }
+
+        BoardManager.SetInteractionButtons("Complete", "", action, null);
         Debug.Log("Prompting " + player.getName() + " to setup quest.");
 	}
 
@@ -272,14 +278,37 @@ public class BoardManagerMediator
 	}
 
 
-	public void PromptFoe(Player player) {
+	public void PromptFoe(Player player, int stageNum) {
 		//TODO: prompt foe
+        BoardManager.DrawCards(player);
+		BoardManager.SetInteractionText("Card is a foe. Place cards to continue, or drop out.");
+		Action action1 = () => {
+            Debug.Log("Did not dropout");
+            TransferFromHandToPlayArea(player);
+            Debug.Log("Total battle points in play area is: " + player.getPlayArea().getBattlePoints());
+            ((Quest)cardInPlay).getStage(stageNum).promptFoeResponse(false);
+		};
+        Action action2 = () => {
+            Debug.Log("Dropped out");
+            ((Quest)cardInPlay).getStage(stageNum).promptFoeResponse(true);
+        };
+
+		BoardManager.SetInteractionButtons ("Continue", "Drop Out", action1, action2);
 	}
+
+
+    public void TransferFromHandToPlayArea(Player player) {
+        BoardManager.GetPlayArea(player);
+    }
 
 
 	public void PromptTest(Player player, int currentBid) {
 		//TODO: prompt test
 	}
+
+    public void SetInteractionText(String text) {
+        BoardManager.SetInteractionText(text);
+    }
 
 
     public void PromptEnterTournament(Player player)
@@ -338,16 +367,20 @@ public class BoardManagerMediator
 	}
 
 
-    public void PromptCardRemoveSelection(Player player)
+
+    public void PromptCardRemoveSelection(Player player, Action action)
+
     {
         BoardManager.DrawCards(player);
         BoardManager.SetInteractionText("Please remove cards until you have at most 12.");
 
-        Action action = () => {
-            BoardManager.DestroyDiscardArea();
-            player.RemoveCardsResponse();
-            player.PromptNextPlayer();
-        };
+        //Action action = () => {
+        //    buttonClicked = true;
+        //    BoardManager.DestroyDiscardArea();
+        //    player.RemoveCardsResponse();
+        //    player.PromptNextPlayer();
+        //};
+
 
         BoardManager.SetInteractionButtons("Complete", "", action, null);
         BoardManager.SetupDiscardPanel();

@@ -13,12 +13,10 @@ public abstract class Foe : Adventure {
 	}
 
 	public override int getBattlePoints() {
-		Card cardInPlay = BoardManagerMediator.getInstance ().getCardInPlay ();
-		if (cardInPlay != null) {
-			List<Type> dominantFoes = ((Quest)cardInPlay).getDominantFoes ();
-			if (dominantFoes.Contains (this.GetType ())) {
-				return empoweredBattlePoints;
-			}
+		List<Type> dominantFoes = ((Quest)BoardManagerMediator.getInstance ().getCardInPlay ()).getDominantFoes ();
+        if (dominantFoes.Contains (Type.GetType(cardImageName, true))) {
+			return empoweredBattlePoints;
+
 		}
 
 		return battlePoints;
