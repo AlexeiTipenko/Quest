@@ -20,11 +20,7 @@ public class ProsperityThroughoutTheRealm : Event {
     private void DealCards() {
         Action action = () => {
             board.TransferFromHandToPlayArea(playerToPrompt);
-            List<Card> chosenCards = board.GetDiscardedCards(playerToPrompt);
-            foreach (Card card in chosenCards)
-            {
-                playerToPrompt.RemoveCard(card);
-            }
+            playerToPrompt.RemoveCardsResponse();
             playerToPrompt = board.getNextPlayer(playerToPrompt);
             if (playerToPrompt != board.getCurrentPlayer()) {
                 DealCards();

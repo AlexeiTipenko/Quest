@@ -10,6 +10,7 @@ public class BoardManager : MonoBehaviour
     private static GameObject coverInteractionText = null;
     private static GameObject coverInteractionButton = null;
     private static GameObject coverInteractionButtonText = null;
+    private static Player previousPlayer = null;
 
     void Start()
     {
@@ -94,8 +95,7 @@ public class BoardManager : MonoBehaviour
         DrawCardInPlay();
         DrawStageAreaCards(player);
         DrawPlayArea(player);
-
-        //TODO: draw cards in play area
+        previousPlayer = player;
     }
 
     public static List<string> GetSelectedCardNames()
@@ -138,10 +138,12 @@ public class BoardManager : MonoBehaviour
 
     public static void DrawCover(Player player) {
         HideCover();
-        coverInteractionText.GetComponent<Text>().text = player.getName() + ": press continue when you are ready.";
-        coverInteractionButton.GetComponent<Button>().onClick.AddListener(new UnityAction(HideCover));
-        coverInteractionButtonText.GetComponent<Text>().text = "Continue";
-        coverCanvas.SetActive(true);
+        if (player != previousPlayer) {
+            coverInteractionText.GetComponent<Text>().text = "NEXT PLAYER: " + player.getName() + "\nPress continue when you are ready.";
+            coverInteractionButton.GetComponent<Button>().onClick.AddListener(new UnityAction(HideCover));
+            coverInteractionButtonText.GetComponent<Text>().text = "Continue";
+            coverCanvas.SetActive(true);
+        }
     }
 
     public static void HideCover() {

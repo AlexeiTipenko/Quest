@@ -54,13 +54,7 @@ public abstract class Tournament : Story
             {
                 Action action = () => {
                     board.TransferFromHandToPlayArea(playerToPrompt);
-                    List<Card> chosenCards = board.GetDiscardedCards(playerToPrompt);
-                    foreach (Card card in playerToPrompt.getPlayArea().getCards()) {
-                        Debug.Log("Play area: " + card.toString());
-                    }
-                    foreach (Card card in chosenCards) {
-                        playerToPrompt.RemoveCard(card);
-                    }
+                    playerToPrompt.RemoveCardsResponse();
                     PromptNextPlayer();
                 };
                 playerToPrompt.giveAction(action);

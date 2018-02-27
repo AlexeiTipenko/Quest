@@ -42,11 +42,7 @@ public class QueensFavor : Event {
     {
         Action action = () => {
             board.TransferFromHandToPlayArea(playerToPrompt);
-            List<Card> chosenCards = board.GetDiscardedCards(playerToPrompt);
-            foreach (Card card in chosenCards)
-            {
-                playerToPrompt.RemoveCard(card);
-            }
+            playerToPrompt.RemoveCardsResponse();
             playerToPrompt = GetNextPlayer(playerToPrompt);
             if (playerToPrompt != originalPlayer)
             {
