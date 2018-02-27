@@ -15,5 +15,7 @@ public class Plague : Event {
 
 		currentPlayer.decrementShields (2);
 		Logger.getInstance().info("Finished Plague behaviour");
+
+        BoardManagerMediator.getInstance().NextPlayerTurn(currentPlayer);
 	}
 }

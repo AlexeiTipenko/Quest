@@ -13,5 +13,8 @@ public class KingsRecognition : Event {
 		Logger.getInstance ().info ("Started King's Recognition behaviour");
 		Quest.KingsRecognitionActive = true;
 		Logger.getInstance ().info ("Finished King's Recognition behaviour");
+
+        Player currentPlayer = BoardManagerMediator.getInstance().getCurrentPlayer();
+        BoardManagerMediator.getInstance().NextPlayerTurn(currentPlayer);
 	}
 }

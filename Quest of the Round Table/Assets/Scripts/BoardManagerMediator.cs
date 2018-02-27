@@ -394,5 +394,16 @@ public class BoardManagerMediator
         Debug.Log("Prompting " + player.getName() + " to prepare cards.");
         Logger.getInstance().info("Prompted " + player.getName() + " to prepare cards to discard.");
     }
+
+
+    public void NextPlayerTurn(Player player) {
+        BoardManager.DrawCards(player);
+        BoardManager.SetInteractionText("Event action complete.");
+
+        Action action = () => {
+            nextTurn();
+        };
+        BoardManager.SetInteractionButtons("Next player", "", action, null);
+    }
 }
 

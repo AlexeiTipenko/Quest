@@ -22,5 +22,6 @@ public class Pox : Event {
 			Logger.getInstance ().trace ("Finished decrementing shields for player " + player.getName());
 		}
 		Logger.getInstance ().info ("Finished Pox behaviour");
+        BoardManagerMediator.getInstance().NextPlayerTurn(currentPlayer);
 	}
 }
