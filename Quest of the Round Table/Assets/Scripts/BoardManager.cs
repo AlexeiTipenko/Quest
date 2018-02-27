@@ -1,9 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using System;
-using UnityEditor;
 using UnityEngine.UI;
 
 public class BoardManager : MonoBehaviour
@@ -11,6 +9,7 @@ public class BoardManager : MonoBehaviour
 
     void Start()
     {
+		Logger.getInstance().info("Board manager started");
         print("Board manager started");
     }
 
@@ -67,8 +66,6 @@ public class BoardManager : MonoBehaviour
             button2.GetComponent<Button>().onClick.AddListener(ClearInteractions);
             button2.GetComponent<Button>().onClick.AddListener(new UnityAction(func2));
         }
-
-        //yield return new WaitUntil(() => button1.GetComponent<Button>().onClick);
     }
 
 
@@ -90,28 +87,44 @@ public class BoardManager : MonoBehaviour
         DrawHand(player);
         DrawRank(player);
         DrawCardInPlay();
-
-        //TODO: draw cards in play area
+        DrawStageAreaCards();
+        DrawPlayArea(player);
+        Logger.getInstance().info(player.getName() + "'s cards drawn to GUI");
     }
 
     public static List<string> GetSelectedCardNames()
     {
-        GameObject boardArea = GameObject.Find("Canvas/TabletopImage/BoardArea");
+        GameObject playArea = GameObject.Find("Canvas/TabletopImage/PlayerPlayArea");
         List<string> cardNames = new List<string>();
 
-        foreach (Transform child in boardArea.transform)
+        foreach (Transform child in playArea.transform)
         {
             cardNames.Add(child.gameObject.name);
         }
         return cardNames;
     }
 
-    public static void ReturnCardsToPlayer()
+    public static List<string> GetSelectedDiscardNames()
     {
-        GameObject boardArea = GameObject.Find("Canvas/TabletopImage/BoardArea");
-        GameObject handArea = GameObject.Find("Canvas/TabletopImage/HandArea");
+        GameObject boardArea = GameObject.Find("Canvas/TabletopImage/DiscardArea");
+        List<string> cardNames = new List<string>();
 
         foreach (Transform child in boardArea.transform)
+        {
+            child.tag = "DiscardedCard";
+            cardNames.Add(child.gameObject.name);
+        }
+        DestroyDiscardArea();
+
+        return cardNames;
+    }
+
+    public static void ReturnCardsToPlayer()
+    {
+        GameObject playArea = GameObject.Find("Canvas/TabletopImage/PlayerPlayArea");
+        GameObject handArea = GameObject.Find("Canvas/TabletopImage/HandArea");
+
+        foreach (Transform child in playArea.transform)
         {
             child.gameObject.transform.SetParent(handArea.transform, false);
         }
@@ -132,6 +145,28 @@ public class BoardManager : MonoBehaviour
         }
     }
 
+    public static void DrawPlayArea(Player player) {
+        DestroyPlayArea();
+        foreach (Card card in player.getPlayArea().getCards())
+        {
+            GameObject playArea = GameObject.Find("Canvas/TabletopImage/PlayerPlayArea");
+            GameObject instance = Instantiate(Resources.Load("NoDragCardPrefab", typeof(GameObject))) as GameObject;
+            instance.name = card.getCardName();
+            Image cardImg = instance.GetComponent<Image>();
+            cardImg.sprite = Resources.Load<Sprite>("cards/" + card.cardImageName);
+            instance.tag = "PlayAreaCard";
+            instance.transform.SetParent(playArea.transform, false);
+        }
+    }
+
+    public static void DestroyPlayArea() {
+        GameObject[] cardObjs = GameObject.FindGameObjectsWithTag("PlayAreaCard");
+        foreach (GameObject gameObj in cardObjs)
+        {
+            Destroy(gameObj);
+        }
+    }
+
     public static void DrawRank(Player player)
     {
         DestroyRank();
@@ -144,11 +179,32 @@ public class BoardManager : MonoBehaviour
         noDragInstance.transform.SetParent(rankArea.transform, false);
     }
 
+    public static void DrawStageAreaCards() {
+        DestroyStageAreaCards();
+        if (BoardManagerMediator.getInstance().getCardInPlay().GetType().IsSubclassOf(typeof(Quest))) {
+            Quest questInPlay = (Quest)BoardManagerMediator.getInstance().getCardInPlay();
+            for (int i = 0; i < questInPlay.getNumStages(); i++)
+            {
+                GameObject boardAreaFoe = GameObject.Find("Canvas/TabletopImage/StageAreaFoe" + i);
+                Stage currentStage = questInPlay.getStage(i);
+                if (currentStage != null) {
+                    foreach (Card card in currentStage.getCards()) {
+                        GameObject noDragInstance = Instantiate(Resources.Load("NoDragCardPrefab", typeof(GameObject))) as GameObject;
+                        Image cardImg = noDragInstance.GetComponent<Image>();
+                        noDragInstance.name = card.getCardName();
+                        cardImg.sprite = Resources.Load<Sprite>("cards/" + card.cardImageName);
+                        noDragInstance.tag = "StageCard";
+                        noDragInstance.transform.SetParent(boardAreaFoe.transform, false);
+                    }
+                }
+            }
+        }
+    }
+
     public static void DestroyHand()
     {
         GameObject[] cardObjs = GameObject.FindGameObjectsWithTag("HandCard");
-        foreach (GameObject gameObj in cardObjs)
-        {
+        foreach (GameObject gameObj in cardObjs) {
             Destroy(gameObj);
         }
     }
@@ -156,8 +212,14 @@ public class BoardManager : MonoBehaviour
     public static void DestroyRank()
     {
         GameObject[] cardObjs = GameObject.FindGameObjectsWithTag("RankCard");
-        foreach (GameObject gameObj in cardObjs)
-        {
+        foreach (GameObject gameObj in cardObjs) {
+            Destroy(gameObj);
+        }
+    }
+
+    public static void DestroyStageAreaCards() {
+        GameObject[] cardObjs = GameObject.FindGameObjectsWithTag("StageCard");
+        foreach (GameObject gameObj in cardObjs) {
             Destroy(gameObj);
         }
     }
@@ -166,8 +228,7 @@ public class BoardManager : MonoBehaviour
     {
         //print("Destroying card in play");
         GameObject[] cardObjs = GameObject.FindGameObjectsWithTag("CardInPlay");
-        foreach (GameObject gameObj in cardObjs)
-        {
+        foreach (GameObject gameObj in cardObjs) {
             Destroy(gameObj);
         }
     }
@@ -177,6 +238,26 @@ public class BoardManager : MonoBehaviour
         for (int i = 0; i < stages; i++){
             GameObject boardAreaFoe = GameObject.Find("Canvas/TabletopImage/StageAreaFoe" + i);
             Destroy(boardAreaFoe);
+        }
+    }
+
+    public static void DestroyDiscardArea()
+    {
+        GameObject[] cardObjs = GameObject.FindGameObjectsWithTag("DiscardedCard");
+        foreach (GameObject gameObj in cardObjs)
+        {
+            Destroy(gameObj);
+        }
+        GameObject discardArea = GameObject.Find("Canvas/TabletopImage/DiscardArea");
+        Destroy(discardArea);
+
+    }
+
+    public static void DestroyPlayerInfo() {
+        GameObject[] cardObjs = GameObject.FindGameObjectsWithTag("PlayerInfo");
+        foreach (GameObject gameObj in cardObjs)
+        {
+            Destroy(gameObj);
         }
     }
 
@@ -198,6 +279,7 @@ public class BoardManager : MonoBehaviour
         DestroyHand();
         DestroyRank();
         DestroyCardInPlay();
+        DestroyStageAreaCards();
 
         //TODO: destroy what's on the table
     }
@@ -205,16 +287,88 @@ public class BoardManager : MonoBehaviour
     public static void SetupQuestPanels(int numStages){
         GameObject board = GameObject.Find("Canvas/TabletopImage");
         Debug.Log("Num stages is: " + numStages);
-        float position = -465;
+        float position = -462;
         for (int i = 0; i < numStages; i++){
             GameObject BoardAreaFoe = Instantiate(Resources.Load("StageAreaPrefab", typeof(GameObject))) as GameObject;
-            Debug.Log("Position is: " + position);
 
             BoardAreaFoe.name = "StageAreaFoe" + i;
             BoardAreaFoe.transform.position = new Vector3(position, BoardAreaFoe.transform.position.y, BoardAreaFoe.transform.position.z);
             BoardAreaFoe.transform.SetParent(board.transform, false);
 
-            position += 155;
+            position += 160;
         }
+    }
+
+    public static bool QuestPanelsExist() {
+        GameObject panels = GameObject.Find("Canvas/TabletopImage/StageAreaFoe0");
+        return (!(panels == null));
+    }
+
+    public static List<Stage> CollectStageCards() {
+        List<Stage> stages = new List<Stage>();
+        if (BoardManagerMediator.getInstance().getCardInPlay().GetType().IsSubclassOf(typeof(Quest)))
+        {
+            Quest questInPlay = (Quest)BoardManagerMediator.getInstance().getCardInPlay();
+            for (int i = 0; i < questInPlay.getNumStages(); i++)
+            {
+                GameObject boardAreaFoe = GameObject.Find("Canvas/TabletopImage/StageAreaFoe" + i);
+                Adventure stageCard = null;
+                List<Weapon> weapons = new List<Weapon>();
+                foreach (Transform child in boardAreaFoe.transform) {
+                    Type genericType = Type.GetType(child.name.Replace(" ", ""), true);
+                    Card card = (Card)Activator.CreateInstance(genericType);
+                    card.cardImageName = child.name.Replace(" ", "");
+                    if (genericType.IsSubclassOf(typeof(Weapon))) {
+                        weapons.Add((Weapon)card);
+                    } else {
+                        stageCard = (Adventure)card;
+                    }
+                }
+                stages.Add(new Stage(stageCard, weapons));
+            }
+        }
+        return stages;
+    }
+
+	public static void GetPlayArea(Player player) {
+		GameObject PlayArea = GameObject.Find ("Canvas/TabletopImage/PlayerPlayArea");
+		foreach (Transform child in PlayArea.transform) {
+            foreach(Card card in player.getHand()) {
+                Debug.Log("Going in players hand");
+                Type cardType = card.GetType();
+                if(child.name == card.getCardName()) {
+                    Debug.Log("adding card");
+                    player.getPlayArea().addCard(card);
+                    player.RemoveCard(card);
+                    break;
+                }
+            }
+		}
+	}
+
+    public static void SetupDiscardPanel()
+    {
+        GameObject board = GameObject.Find("Canvas/TabletopImage");
+        GameObject DiscardArea = Instantiate(Resources.Load("DiscardArea", typeof(GameObject))) as GameObject;
+        DiscardArea.name = "DiscardArea";
+        DiscardArea.transform.SetParent(board.transform, false);
+    }
+
+    public static void DisplayPlayers(List<Player> players){
+        GameObject PlayersInfo = GameObject.Find("Canvas/TabletopImage/PlayersInfo");
+        float position = -320;
+        foreach(Player currPlayer in players){
+            GameObject CurrentPlayerInfo = Instantiate(Resources.Load("PlayerInfo", typeof(GameObject))) as GameObject;
+            CurrentPlayerInfo.name = "PlayerInfo" + currPlayer.getName();
+            CurrentPlayerInfo.tag = "PlayerInfo";
+            CurrentPlayerInfo.transform.position = new Vector3(position, CurrentPlayerInfo.transform.position.y, CurrentPlayerInfo.transform.position.z);
+            Text[] texts = CurrentPlayerInfo.transform.GetComponentsInChildren<Text>();
+            texts[0].text = "Player Name: " + currPlayer.getName();
+            texts[1].text = "Player Rank: " + currPlayer.getRank().ToString();
+            texts[2].text = "Player: " + currPlayer.getName() + " has " + currPlayer.getHand().Count.ToString() + " cards";
+            CurrentPlayerInfo.transform.SetParent(PlayersInfo.transform, false);
+            position += 150;
+        }
+
     }
 }

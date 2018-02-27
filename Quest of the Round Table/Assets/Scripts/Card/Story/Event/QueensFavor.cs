@@ -1,20 +1,24 @@
-using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
+using System;
 
 public class QueensFavor : Event {
 
 	public static int frequency = 2;
+    private BoardManagerMediator board;
+    private Player playerToPrompt, originalPlayer;
+    List<Player> lowestRankPlayers;
 
 	public QueensFavor () : base ("Queen's Favor") {
-
+        board = BoardManagerMediator.getInstance();
 	}
 		
 	//Event description: The lowest ranked player(s) immediately receives 2 Adventure Cards.
 	public override void startBehaviour() {
+		Logger.getInstance ().info ("Started Queen's Favor behaviour");
+
 		List<Player> allPlayers = BoardManagerMediator.getInstance().getPlayers();
 
-		List<Player> lowestRankPlayers = new List<Player>();
+		lowestRankPlayers = new List<Player>();
 
 		//populate a list of players with the lowest rank
 		foreach (Player player in allPlayers) {
@@ -28,9 +32,48 @@ public class QueensFavor : Event {
 			}
 		}
 
-		//Award 2 Adventure cards
-		foreach (Player player in lowestRankPlayers) {
-			BoardManagerMediator.getInstance().dealCardsToPlayer (player, 2);
-		}
+		Logger.getInstance ().info ("Populated list of players with the lowest rank");
+
+        playerToPrompt = board.getCurrentPlayer();
+        while (!lowestRankPlayers.Contains(playerToPrompt)) {
+            playerToPrompt = board.getNextPlayer(playerToPrompt);
+        }
+        originalPlayer = playerToPrompt;
+        DealCards();
+        Logger.getInstance ().info ("Finished Queen's Favor behaviour");
 	}
+
+    private void DealCards()
+    {
+        Action action = () => {
+            board.TransferFromHandToPlayArea(playerToPrompt);
+            List<Card> chosenCards = board.GetDiscardedCards(playerToPrompt);
+            foreach (Card card in chosenCards)
+            {
+                playerToPrompt.RemoveCard(card);
+            }
+            playerToPrompt = GetNextPlayer(playerToPrompt);
+            if (playerToPrompt != originalPlayer)
+            {
+                DealCards();
+            }
+            else
+            {
+                board.nextTurn();
+            }
+        };
+
+        playerToPrompt.giveAction(action);
+        BoardManagerMediator.getInstance().dealCardsToPlayer(playerToPrompt, 2);
+    }
+
+    public Player GetNextPlayer(Player previousPlayer)
+    {
+        int index = lowestRankPlayers.IndexOf(previousPlayer);
+        if (index != -1)
+        {
+            return lowestRankPlayers[(index + 1) % lowestRankPlayers.Count];
+        }
+        return null;
+    }
 }

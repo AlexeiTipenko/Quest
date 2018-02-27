@@ -14,9 +14,11 @@ public abstract class Foe : Adventure {
 
 	public override int getBattlePoints() {
 		List<Type> dominantFoes = ((Quest)BoardManagerMediator.getInstance ().getCardInPlay ()).getDominantFoes ();
-		if (dominantFoes.Contains (this.GetType ())) {
+        if (dominantFoes.Contains (Type.GetType(cardImageName, true))) {
 			return empoweredBattlePoints;
+
 		}
+
 		return battlePoints;
 	}
 

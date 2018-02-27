@@ -12,18 +12,18 @@ public class ChivalrousDeedTest {
 		Assert.IsTrue (ChivalrousDeed.frequency == 1);
 		ChivalrousDeed chivalrousDeed = new ChivalrousDeed ();
 		Assert.AreEqual ("Chivalrous Deed", chivalrousDeed.getCardName ());
+	}
+
+	[Test]
+	public void ChivalrousDeedTestBehaviour() {
+		ChivalrousDeed chivalrousDeed = new ChivalrousDeed ();
 
 		List<Player> players = new List<Player>();
-	
+
 		Player joey = new Player ("Joey", false);
 		Player julie = new Player("Julie", false);
 		Player jimmy = new Player ("Jimmy", false);
 		Player jesse = new Player ("Jesse", false);
-
-		players.Add (joey);
-		players.Add (julie);
-		players.Add (jimmy);
-		players.Add (jesse);
 
 		joey.upgradeRank ().upgradeRank ();
 		joey.incrementShields (4);
@@ -35,6 +35,11 @@ public class ChivalrousDeedTest {
 
 		jesse.upgradeRank ().upgradeRank ();
 		jesse.incrementShields (4);
+
+		players.Add (joey);
+		players.Add (julie);
+		players.Add (jimmy);
+		players.Add (jesse);
 
 		BoardManagerMediator.getInstance().initGame (players);
 
@@ -48,7 +53,7 @@ public class ChivalrousDeedTest {
 		julie = players [1];
 		jimmy = players [2];
 		jesse = players [3];
-			
+
 		Debug.Log ("Joey's Battle Points: " + joey.getRank ().getBattlePoints ());
 		Debug.Log ("Joey's # Shields: " + joey.getNumShields());
 		Assert.IsTrue (joey.getRank ().getBattlePoints () == 20);
@@ -65,7 +70,5 @@ public class ChivalrousDeedTest {
 		Debug.Log ("Jesse's # Shields: " + jesse.getNumShields());
 		Assert.IsTrue (jesse.getRank ().getBattlePoints () == 20);
 		Assert.IsTrue (jesse.getNumShields() == 4);
-		//need to implement some sort of test case to test out processEvent function
-		//Assert.IsTrue (false);
 	}
 }

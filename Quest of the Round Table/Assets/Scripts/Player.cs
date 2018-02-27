@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using System;
 
 public class Player
 {
@@ -13,6 +14,8 @@ public class Player
 	private PlayerPlayArea playArea;
     private BoardManagerMediator board;
 	private bool isAI;
+    public Action func;
+
 
 	public Player(string name, bool isAI) {
 		this.name = name;
@@ -24,17 +27,37 @@ public class Player
         board = BoardManagerMediator.getInstance();
 	}
 
+
 	public void dealCards(List<Card> cards) {
 		foreach (Card card in cards) {
 			card.setOwner (this);
 			hand.Add (card);
 		}
-
-		if (hand.Count > 12) {
-            Debug.Log("MORE THAN 12 CARDS IN HAND");
-            board.PromptCardRemoveSelection(this);
-		}
+        checkNumCards();
 	}
+
+
+    public void checkNumCards(){
+        if (hand.Count > 12)
+        {
+            Debug.Log("MORE THAN 12 CARDS IN HAND");
+            board.PromptCardRemoveSelection(this, func);
+        }
+    }
+
+
+    public void giveAction(Action action) {
+        func = action;
+    }
+
+
+    public void PromptNextPlayer(){
+        if (func != null){
+            func();
+            func = null;
+        }
+    }
+
 
 	private void checkForRankUp() {
 		if (numShields == rank.getShieldsToProgress ()) {
@@ -49,30 +72,44 @@ public class Player
 		}
 	}
 
+	public void removeCards(int numCards) {
+		if (numCards <= hand.Count) {
+			for (int i = 0; i < numCards; i++) {
+				hand.RemoveAt (hand.Count - 1);
+			}
+		}
+	}
+
+
     public int getBattlePoints() {
         return rank.getBattlePoints() + playArea.getBattlePoints();
     }
 
-
+		
 	public string getName() {
 		return this.name;
 	}
+
 
 	public int getNumShields() {
 		return this.numShields;
 	}
 
+
 	public List<Card> getHand() {
 		return this.hand;
 	}
+
 
 	public PlayerPlayArea getPlayArea () {
 		return this.playArea;
 	}
 
+
 	public Rank getRank() {
 		return this.rank;
 	}
+
 
 	public int getTotalAvailableBids() {
 		int availableBids = hand.Count;
@@ -84,38 +121,35 @@ public class Player
 		return availableBids;
 	}
 
+
     public void RemoveCard(Card card)
     {
         //var value = MyList.First(item => item.name == "foo").value;
         //Card cardToRemove = hand.Find(c => c.getCardName() == card.getCardName());
         //Card cardToRemove = hand.First(c => c.getCardName() == card.getCardName());
-
         for (int i = 0; i < hand.Count(); i++)
         {
             if (card.getCardName() == hand[i].getCardName())
             {
                 hand.RemoveAt(i);
-                return;
+                break;
             }
         }
     }
 
+
     public void RemoveCardsResponse()
     {
-        List<Card> chosenCards = board.GetSelectedCards(this);
-
-        foreach (Card card in chosenCards)
-        {
-            RemoveCard(card);
-            playArea.addCard(card);
-        } 
+        
 
     }
+
 
 	public void incrementShields(int numShields) {
 		this.numShields += numShields;
 		checkForRankUp ();
 	}
+
 
 	public void decrementShields(int numShields) {
 		if (this.numShields-numShields < 0) {
@@ -125,11 +159,12 @@ public class Player
 		}
 	}
 
+
 	public Player upgradeRank(){
 		rank = rank.upgrade ();
-        BoardManagerMediator.getInstance().DrawRank(this);
 		return this; //returns the player object for cascading for testing
 	}
+
 
 	public bool acceptQuest(){
 		//prompt user if they want to sponsor quest
@@ -137,6 +172,7 @@ public class Player
 		//cycle through players and prompt them
 		return true;
 	}
+
 
 	public string toString() {
 		string output = this.name + " (" + (isAI ? "AI" : "human") + "): ";
