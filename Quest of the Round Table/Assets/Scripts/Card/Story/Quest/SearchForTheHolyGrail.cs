@@ -8,7 +8,6 @@ public class SearchForTheHolyGrail : Quest {
 	public static int frequency = 1;
 
 	public SearchForTheHolyGrail() : base ("Search for the Holy Grail", 5) {
-		Logger.getInstance ().info ("Initializing the Search for the Holy Grail card");
 
 		dominantFoes = new List<Type> ();
 		dominantFoes.Add(Type.GetType("BlackKnight", true));

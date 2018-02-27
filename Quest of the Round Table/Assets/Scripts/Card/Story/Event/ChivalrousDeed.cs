@@ -6,9 +6,7 @@ public class ChivalrousDeed : Event {
 
 	public static int frequency = 1;
 
-	public ChivalrousDeed() : base ("Chivalrous Deed") {
-		
-	}
+	public ChivalrousDeed() : base ("Chivalrous Deed") { }
 
 	//Event description: Player with both lowest rank and least amount of shields, receives 3 shields.
 	public override void startBehaviour() { 

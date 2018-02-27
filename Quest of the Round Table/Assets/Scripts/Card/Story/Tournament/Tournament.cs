@@ -17,7 +17,6 @@ public abstract class Tournament : Story
 
     public Tournament(string cardName, int bonusShields) : base(cardName)
     {
-		//Logger.getInstance ().info ("Starting the Tournament class");
         this.playersEntered = 0;
         this.bonusShields = bonusShields;
         board = BoardManagerMediator.getInstance();
@@ -41,7 +40,6 @@ public abstract class Tournament : Story
         playerToPrompt = sponsor;
         board.PromptEnterTournament(sponsor);
     }
-
 
 
     public void PromptEnterTournamentResponse(bool tournamentAccepted)
@@ -82,10 +80,10 @@ public abstract class Tournament : Story
         }
     }
 
+
     public void PromptNextPlayer(){
 
         playerToPrompt = board.getNextPlayer(playerToPrompt);
-        Logger.getInstance().info("Prompted " + playerToPrompt.getName() + "to enter tournament");
 
         if (playerToPrompt != sponsor)
             board.PromptEnterTournament(playerToPrompt);
@@ -105,7 +103,7 @@ public abstract class Tournament : Story
 
         else if (participatingPlayers.Count() == 1) 
         {
-			Logger.getInstance().info("TOURNAMENT DEFAULT WINNER: " + participatingPlayers[0].getName());
+            Logger.getInstance().info("TOURNAMENT DEFAULT WINNER: " + participatingPlayers[0].getName().ToUpper());
             participatingPlayers[0].incrementShields(1);
             Logger.getInstance().info("Number of shields: " + participatingPlayers[0].getNumShields());
             board.nextTurn();
@@ -114,7 +112,6 @@ public abstract class Tournament : Story
         else
             board.PromptCardSelection(playerToPrompt);
     }
-
 
 
     public void CardsSelectionResponse() {
@@ -194,7 +191,7 @@ public abstract class Tournament : Story
 
         if (winnerList.Count() == 1) 
         {
-			Logger.getInstance ().info("TOURNAMENT WINNER: " + winnerList[0].getName());
+			Logger.getInstance ().info("Tournament winner: " + winnerList[0].getName());
             winnerList[0].incrementShields(playersEntered);
             DiscardCards();
             board.nextTurn();
@@ -202,11 +199,11 @@ public abstract class Tournament : Story
 
         else if (winnerList.Count() > 1) 
         {
-			Logger.getInstance ().trace("MORE THAN ONE PLAYER WON");
+			Logger.getInstance ().trace("More than one player has won");
 
             if (rematch == false)
             {
-				Logger.getInstance ().info("ROUND 2");
+				Logger.getInstance ().info("Round 2 of tournament started");
                 participatingPlayers = winnerList;
                 rematch = true;
                 pointsDict.Clear();
@@ -217,7 +214,7 @@ public abstract class Tournament : Story
             }
 
             else{
-				Logger.getInstance ().info("ROUND 3 AND END OF TOURNAMENT");
+                Logger.getInstance ().info("Round 3 (final) of tournament started");
                 foreach(Player player in winnerList){
                     player.incrementShields(playersEntered);
                 }
@@ -225,23 +222,19 @@ public abstract class Tournament : Story
                 board.nextTurn();
             }
         }
-        //winners.Dump();
     }
 
+
     private void DiscardCards() {
-		//Logger.getInstance ().debug ("Discarding all cards...");
-        //NOT WORKING IN UI
         foreach(Player player in board.getPlayers()){
             player.getPlayArea().discardWeapons();
             player.getPlayArea().discardAmours();
-            //Not allies
         }
     }
 
 
     public Player GetNextPlayer(Player previousPlayer)
     {
-		//Logger.getInstance ().debug ("Getting next player...");
         int index = participatingPlayers.IndexOf(previousPlayer);
         if (index != -1)
         {
@@ -250,7 +243,6 @@ public abstract class Tournament : Story
 
             return participatingPlayers[0];
         }
-		//Logger.getInstance ().trace("There is no next player");
         return null;
     }
 }

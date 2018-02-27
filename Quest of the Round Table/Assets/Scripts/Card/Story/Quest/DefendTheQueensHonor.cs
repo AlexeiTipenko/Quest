@@ -8,7 +8,6 @@ public class DefendTheQueensHonor : Quest {
 	public static int frequency = 1;
 
 	public DefendTheQueensHonor() : base ("Defend the Queen's Honor", 4) {
-		Logger.getInstance ().info ("Initializing the Defend the Queen's Honor card");
 
 		dominantFoes = new List<Type> ();
 		dominantFoes.Add(Type.GetType("BlackKnight", true));

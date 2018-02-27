@@ -14,7 +14,6 @@ public abstract class Quest : Story {
 	public static bool KingsRecognitionActive = false;
 
 	public Quest (string cardName, int numStages) : base (cardName) {
-		Logger.getInstance ().info ("Initializing a Quest");
 
 		board = BoardManagerMediator.getInstance ();
 		this.numStages = numStages;
@@ -38,7 +37,7 @@ public abstract class Quest : Story {
     }
 
 	public override void startBehaviour () {
-		Logger.getInstance().info ("Quest behaviour started");
+        Logger.getInstance().info ("Started Quest behaviour");
 
 		sponsor = owner;
 		totalCardsCounter = 0;
@@ -47,17 +46,16 @@ public abstract class Quest : Story {
 
 	private void PromptSponsorQuest() {
 		if (isValidSponsor ()) {
-			Logger.getInstance().trace("Requesting sponsor: " + sponsor.getName());
 			board.PromptSponsorQuest (sponsor);
 		} else {
-			Logger.getInstance().trace("Invalid sponsor: " + sponsor.getName());
+			Logger.getInstance().warn("Invalid sponsor: " + sponsor.getName());
 			IncrementSponsor ();
 		}
 	}
 
 	public void PromptSponsorQuestResponse (bool sponsorAccepted) {
 		if (sponsorAccepted) {
-			Logger.getInstance().trace("Sponsor accepted: " + sponsor.getName());
+			Logger.getInstance().info("Sponsor accepted: " + sponsor.getName());
             Debug.Log("Sponsor accepted: " + sponsor.getName());
             board.SetupQuest (sponsor, "Prepare your quest using a combination of foes(and weapons) and a test.");
 		} else {
@@ -87,6 +85,7 @@ public abstract class Quest : Story {
                             break;
                         } else {
                             Debug.Log("Quest setup failed due to multiple tests.");
+                            Logger.getInstance().warn("Quest setup failed due to multiple tests");
                             return false;
                         }
                     }
@@ -94,6 +93,7 @@ public abstract class Quest : Story {
                         Debug.Log("This is Foe");
                         if (currentStageHasTest) {
                             Debug.Log("Quest setup failed due to test existing in stage with foe/weapon.");
+                            Logger.getInstance().warn("Quest setup failed due to test existing in stage with foe/weapon");
                             return false;
                         }
                         if (!hasFoe) {
@@ -103,12 +103,14 @@ public abstract class Quest : Story {
                         }
                         else {
                             Debug.Log("Quest setup failed due to multiple foes in a stage.");
+                            Logger.getInstance().warn("Quest setup failed due to multiple foes in a stage");
                             return false;
                         }
                     }
                     else if (child.name == card.getCardName() && cardType.IsSubclassOf(typeof(Weapon))) {
                         if (currentStageHasTest) {
                             Debug.Log("Quest setup failed due to test existing in stage with foe/weapon.");
+                            Logger.getInstance().warn("Quest setup failed due to test existing in stage with foe/weapon");
                             return false;
                         }
                         if (!weaponsInStage.Contains(cardType)) {
@@ -117,6 +119,7 @@ public abstract class Quest : Story {
                             break;
                         } else {
                             Debug.Log("Quest setup failed due to multiple weapons of the same type in a stage.");
+                            Logger.getInstance().warn("Quest setup failed due to multiple weapons of the same type in a stage");
                             return false;
                         }
                     }
@@ -128,6 +131,7 @@ public abstract class Quest : Story {
                 }
                 else {
                     Debug.Log("Quest setup failed due to battle points.");
+                    Logger.getInstance().warn("Quest setup failed due to battle points");
                     return false;
                 }
             }
@@ -138,8 +142,6 @@ public abstract class Quest : Story {
 	private void IncrementSponsor() {
 		sponsor = board.getNextPlayer (sponsor);
 		if (sponsor == owner) {
-			Logger.getInstance().trace("All sponsors asked, none accepted.");
-			//TODO: discard();
 			board.nextTurn ();
 		} else {
 			PromptSponsorQuest ();
@@ -147,7 +149,6 @@ public abstract class Quest : Story {
 	}
 
 	public void SetupQuestComplete(List<Stage> stages) {
-            Logger.getInstance().info("Setting up the Quest is complete");
         this.stages = stages;
         foreach (Stage stage in stages) {
             foreach (Card card in stage.getCards()) {
@@ -155,7 +156,7 @@ public abstract class Quest : Story {
             }
         }
         Debug.Log("Finished quest setup.");
-        Logger.getInstance().info("Finished Quest setup");
+        Logger.getInstance().info("Quest setup complete");
 		playerToPrompt = board.getNextPlayer (sponsor);
 		board.PromptAcceptQuest (playerToPrompt);
 	}
@@ -169,7 +170,7 @@ public abstract class Quest : Story {
 
 	public void PromptAcceptQuestResponse(bool questAccepted) {
 		if (questAccepted) {
-			Logger.getInstance().debug(playerToPrompt.getName() + " has accepted to participate in the quest.");
+			Logger.getInstance().debug(playerToPrompt.getName() + " has accepted to participate in the quest");
 			participatingPlayers.Add (playerToPrompt);
 		}
 		playerToPrompt = board.getNextPlayer (playerToPrompt);
@@ -179,7 +180,7 @@ public abstract class Quest : Story {
 			currentStage = -1;
             numStages = stages.Count;
 			Logger.getInstance().debug("Starting quest.");
-            Debug.Log("Starting quest.");
+            Debug.Log("Starting quest");
 			PlayStage ();
 		}
 	}
@@ -208,51 +209,44 @@ public abstract class Quest : Story {
 		}
 		board.dealCardsToPlayer (sponsor, totalCardsCounter);
         Debug.Log("Complete Quest");
+        Debug.Log("Quest complete");
         BoardManager.DestroyStage(numStages);
 		board.nextTurn ();
 	}
 
 	private bool isValidSponsor () {
-		Logger.getInstance().debug("Starting isValidSponsor.");
 		List<Card> hand = sponsor.getHand();
 		int validCardCount = 0;
 		bool hasTest = false;
 		foreach (Card card in hand) {
 			if (card.GetType ().IsSubclassOf (typeof(Foe))) {
 				validCardCount++;
-				Logger.getInstance().trace("Increasing validCardCount is now " + validCardCount);
 			} else if (card.GetType ().IsSubclassOf (typeof(Test))) {
 				hasTest = true;
-				Logger.getInstance().trace("hasTest is now true");
 			}
 		}
 		if (hasTest) {
 			validCardCount++;
-			Logger.getInstance().trace("Increasing validCardCount is now " + validCardCount);
 		}
 		return (validCardCount >= numStages);
 	}
 
 	public void removeParticipatingPlayer(Player player) {
-		Logger.getInstance().debug("Starting removeParticipatingPlayer function on " + player.getName());
 		if (participatingPlayers.Contains(player)) {
 			participatingPlayers.Remove (player);
-			Logger.getInstance ().trace ("Removed the player.");
+            Logger.getInstance ().trace (player.getName() + " removed from quest");
 		}
 	}
 
 	public Player getSponsor() {
-		Logger.getInstance ().trace ("getSponsor; the sponsor is " + sponsor.getName());
 		return sponsor;
 	}
 
 	public Player getNextPlayer(Player previousPlayer) {
-		Logger.getInstance().debug("Starting removeParticipatingPlayer function on " + previousPlayer.getName());
 		int index = participatingPlayers.IndexOf (previousPlayer);
 		if (index != -1) {
 			return participatingPlayers [(index + 1) % participatingPlayers.Count];
 		}
-		Logger.getInstance ().trace ("No next player.");
 		return null;
 	}
 

@@ -16,6 +16,7 @@ public class Player
 	private bool isAI;
     public Action func;
 
+
 	public Player(string name, bool isAI) {
 		this.name = name;
 		this.isAI = isAI;
@@ -26,6 +27,7 @@ public class Player
         board = BoardManagerMediator.getInstance();
 	}
 
+
 	public void dealCards(List<Card> cards) {
 		foreach (Card card in cards) {
 			card.setOwner (this);
@@ -34,13 +36,6 @@ public class Player
         checkNumCards();
 	}
 
-    //public void dealCard(Card card, Action func)
-    //{
-    //    this.func = func;
-    //    card.setOwner(this);
-    //    hand.Add(card);
-    //    checkNumCards();
-    //}
 
     public void checkNumCards(){
         if (hand.Count > 12)
@@ -50,9 +45,11 @@ public class Player
         }
     }
 
+
     public void giveAction(Action action) {
         func = action;
     }
+
 
     public void PromptNextPlayer(){
         if (func != null){
@@ -82,29 +79,37 @@ public class Player
 			}
 		}
 	}
+
+
     public int getBattlePoints() {
         return rank.getBattlePoints() + playArea.getBattlePoints();
     }
+
 		
 	public string getName() {
 		return this.name;
 	}
 
+
 	public int getNumShields() {
 		return this.numShields;
 	}
+
 
 	public List<Card> getHand() {
 		return this.hand;
 	}
 
+
 	public PlayerPlayArea getPlayArea () {
 		return this.playArea;
 	}
 
+
 	public Rank getRank() {
 		return this.rank;
 	}
+
 
 	public int getTotalAvailableBids() {
 		int availableBids = hand.Count;
@@ -115,6 +120,7 @@ public class Player
 		}
 		return availableBids;
 	}
+
 
     public void RemoveCard(Card card)
     {
@@ -131,16 +137,19 @@ public class Player
         }
     }
 
+
     public void RemoveCardsResponse()
     {
         
 
     }
 
+
 	public void incrementShields(int numShields) {
 		this.numShields += numShields;
 		checkForRankUp ();
 	}
+
 
 	public void decrementShields(int numShields) {
 		if (this.numShields-numShields < 0) {
@@ -150,10 +159,12 @@ public class Player
 		}
 	}
 
+
 	public Player upgradeRank(){
 		rank = rank.upgrade ();
 		return this; //returns the player object for cascading for testing
 	}
+
 
 	public bool acceptQuest(){
 		//prompt user if they want to sponsor quest
@@ -161,6 +172,7 @@ public class Player
 		//cycle through players and prompt them
 		return true;
 	}
+
 
 	public string toString() {
 		string output = this.name + " (" + (isAI ? "AI" : "human") + "): ";

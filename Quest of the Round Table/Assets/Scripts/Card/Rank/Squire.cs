@@ -6,8 +6,6 @@ public class Squire : Rank {
 
 	public static int frequency = 4;
 
-	public Squire() : base ("Squire", 5, 5, new Knight()) {
-		Logger.getInstance ().debug ("A Squire instance has been initialized");
-	}
+	public Squire() : base ("Squire", 5, 5, new Knight()) { }
 
 }

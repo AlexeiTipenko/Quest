@@ -6,9 +6,7 @@ public class Plague : Event {
 
 	public static int frequency = 1;
 
-	public Plague () : base ("Plague") {
-
-	}
+	public Plague () : base ("Plague") { }
 
 	//Event description: Drawer loses 2 shields if possible.
 	public override void startBehaviour() {

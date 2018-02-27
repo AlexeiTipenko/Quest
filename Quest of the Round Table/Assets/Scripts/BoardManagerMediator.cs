@@ -134,7 +134,7 @@ public class BoardManagerMediator
     {
         if (!gameOver())
         {
-            Logger.getInstance().info(players[playerTurn].getName() + "'s turn");
+            Logger.getInstance().info(players[playerTurn].getName().ToUpper() + "'S TURN");
             cardInPlay = (Story)storyDeck.drawCard();
             BoardManager.DrawCards(players[playerTurn]);
             BoardManager.DestroyPlayerInfo();
@@ -238,6 +238,7 @@ public class BoardManagerMediator
         };
         BoardManager.SetInteractionButtons("Accept", "Decline", action1, action2);
         Debug.Log("Prompting " + player.getName() + " to sponsor quest.");
+        Logger.getInstance().info("Prompted " + player.getName() + " to sponsor quest.");
 	}
 
 	public void SetupQuest(Player player, String text) {
@@ -261,6 +262,7 @@ public class BoardManagerMediator
 
         BoardManager.SetInteractionButtons("Complete", "", action, null);
         Debug.Log("Prompting " + player.getName() + " to setup quest.");
+        Logger.getInstance().info("Prompted " + player.getName() + " to setup quest.");
 	}
 
 
@@ -275,6 +277,7 @@ public class BoardManagerMediator
         };
         BoardManager.SetInteractionButtons("Accept", "Decline", action1, action2);
         Debug.Log("Prompting " + player.getName() + " to accept quest.");
+        Logger.getInstance().info("Prompted " + player.getName() + " to accept quest.");
 	}
 
 
@@ -323,6 +326,7 @@ public class BoardManagerMediator
         };
         BoardManager.SetInteractionButtons("Accept", "Decline", action1, action2);
         Debug.Log("Prompting " + player.getName() + " to enter tournament.");
+        Logger.getInstance().info("Prompted " + player.getName() + " to enter tournament.");
     }
 
 
@@ -335,6 +339,7 @@ public class BoardManagerMediator
         };
         BoardManager.SetInteractionButtons("Complete", "", action, null);
         Debug.Log("Prompting " + player.getName() + " to prepare cards.");
+        Logger.getInstance().info("Prompted " + player.getName() + " to prepare cards.");
     }
 
 
@@ -349,6 +354,7 @@ public class BoardManagerMediator
 		};
 		BoardManager.SetInteractionButtons("Complete", "", action, null);
 		Debug.Log("Prompting " + player.getName() + " to prepare cards.");
+        Logger.getInstance().info("Prompted " + player.getName() + " to prepare weapon cards to discard.");
 
 	}
 
@@ -364,6 +370,7 @@ public class BoardManagerMediator
 		};
 		BoardManager.SetInteractionButtons("Complete", "", action, null);
 		Debug.Log("Prompting " + player.getName() + " to prepare cards.");
+        Logger.getInstance().info("Prompted " + player.getName() + " to prepare foe weapon cards to discard.");
 	}
 
 
@@ -385,6 +392,7 @@ public class BoardManagerMediator
         BoardManager.SetInteractionButtons("Complete", "", action, null);
         BoardManager.SetupDiscardPanel();
         Debug.Log("Prompting " + player.getName() + " to prepare cards.");
+        Logger.getInstance().info("Prompted " + player.getName() + " to prepare cards to discard.");
     }
 }
 
