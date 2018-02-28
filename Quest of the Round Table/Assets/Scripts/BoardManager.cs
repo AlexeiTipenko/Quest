@@ -225,6 +225,10 @@ public class BoardManager : MonoBehaviour
             for (int i = 0; i < questInPlay.getNumStages(); i++)
             {
                 GameObject boardAreaFoe = GameObject.Find("Canvas/TabletopImage/StageAreaFoe" + i);
+                if (boardAreaFoe == null) {
+                    SetupQuestPanels(questInPlay.getNumStages());
+                    boardAreaFoe = GameObject.Find("Canvas/TabletopImage/StageAreaFoe" + i);
+                }
                 Stage currentStage = questInPlay.getStage(i);
                 if (currentStage != null) {
                     if (questInPlay.getSponsor() == player 
@@ -368,7 +372,7 @@ public class BoardManager : MonoBehaviour
             {
                 GameObject boardAreaFoe = GameObject.Find("Canvas/TabletopImage/StageAreaFoe" + i);
                 Adventure stageCard = null;
-                List<Weapon> weapons = new List<Weapon>();
+                List<Card> weapons = new List<Card>();
                 foreach (Transform child in boardAreaFoe.transform) {
                     Type genericType = Type.GetType(child.name.Replace(" ", ""), true);
                     Card card = (Card)Activator.CreateInstance(genericType);
@@ -388,21 +392,17 @@ public class BoardManager : MonoBehaviour
 	public static void GetPlayArea(Player player) {
 		GameObject PlayArea = GameObject.Find ("Canvas/TabletopImage/PlayerPlayArea");
 		foreach (Transform child in PlayArea.transform) {
-            Debug.Log("VisualCardName: " + child.name);
             foreach(Card card in player.getHand()) {
-                Type cardType = card.GetType();
                 if(child.name == card.getCardName()) {
-                    Debug.Log("Found a match: " + card.getCardName());
                     bool amourExistsInPlayArea = false;
                     foreach (Card playAreaCard in player.getPlayArea().getCards()) {
-                        Debug.Log("Play area card: " + playAreaCard.getCardName());
                         if (playAreaCard.GetType() == typeof(Amour)) {
                             amourExistsInPlayArea = true;
                             break;
                         }
                     }
                     if (!amourExistsInPlayArea) {
-                        Debug.Log("Moving card");
+                        Debug.Log("Moving card from hand to play area: " + card.getCardName());
                         player.getPlayArea().addCard(card);
                         player.RemoveCard(card);
                         break;

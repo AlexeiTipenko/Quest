@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
@@ -7,10 +6,9 @@ using UnityEngine.SceneManagement;
 public class ButtonManager : MonoBehaviour 
 {
 	
-	public static ButtonManager instance = null;
+	public static ButtonManager instance;
 
 	public static string[] names = new string[4];
-	public static bool[] hoomans = new bool[4];
 
 	public static List<Player> playerList = new List<Player> ();
 
@@ -19,17 +17,35 @@ public class ButtonManager : MonoBehaviour
 	}
 
 	public void SwitchSceneWithPlayerList(string playerSelection) {
+        bool validSetup = false;
+        playerList = new List<Player>();
 		for (int i = 0; i < 4; i++) {
 			GameObject inputFieldGo = GameObject.Find("Scene Elements/Canvas/Player" + i);
 			InputField inputFieldCo = inputFieldGo.GetComponent<InputField>();
 			names [i] = inputFieldCo.text;
-			GameObject dropDownGo = GameObject.Find ("Scene Elements/Canvas/Dropdown" + i);
-			Dropdown dropDownCo = dropDownGo.GetComponent<Dropdown> ();
-			hoomans[i] = (dropDownCo.options[dropDownCo.value].text == "Computer" ? true : false);
-			Player player = new Player (names [i], hoomans [i]);
-			playerList.Add (player);
+            if (names[i] != "") {
+                GameObject dropDownGo = GameObject.Find("Scene Elements/Canvas/Dropdown" + i);
+                Dropdown dropDownCo = dropDownGo.GetComponent<Dropdown>();
+                Player player;
+                if (dropDownCo.options[dropDownCo.value].text == "AI 1")
+                {
+                    player = new AIPlayer(names[i], new Strategy1());
+                }
+                else if (dropDownCo.options[dropDownCo.value].text == "AI 2")
+                {
+                    player = new AIPlayer(names[i], new Strategy2());
+                }
+                else
+                {
+                    player = new HumanPlayer(names[i]);
+                    validSetup = true;
+                }
+                playerList.Add(player);
+            }
 		}
-		SceneManager.LoadScene(playerSelection);
+        if (validSetup && playerList.Count > 1) {
+            SceneManager.LoadScene(playerSelection);
+        }
 	}
 
 	public void ExitGame(){

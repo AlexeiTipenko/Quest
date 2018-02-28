@@ -8,12 +8,12 @@ public class Stage {
 
 	private int stageNum, currentBid;
 	private Adventure stageCard;
-	private List<Weapon> weapons;
+	private List<Card> weapons;
 
 	private Quest quest;
     Player playerToPrompt, originalPlayer;
 
-	public Stage(Adventure stageCard, List<Weapon> weapons, int stageNum) {
+	public Stage(Adventure stageCard, List<Card> weapons, int stageNum) {
 		Logger.getInstance ().info ("Starting the Stage class");
 		board = BoardManagerMediator.getInstance ();
 
@@ -39,8 +39,10 @@ public class Stage {
     public List<Card> getCards() {
         List<Card> cards = new List<Card>();
         cards.Add(stageCard);
-        foreach (Weapon weapon in weapons) {
-            cards.Add(weapon);
+        if (weapons != null) {
+            foreach (Weapon weapon in weapons) {
+                cards.Add(weapon);
+            }
         }
         return cards;
     }

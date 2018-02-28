@@ -20,10 +20,10 @@ public class CourtCalledToCamelotTest {
 
 		List<Player> players = new List<Player>();
 
-		Player joey = new Player ("Joey", false);
-		Player julie = new Player("Julie", false);
-		Player jimmy = new Player ("Jimmy", false);
-		Player jesse = new Player ("Jesse", false);
+		Player joey = new HumanPlayer ("Joey");
+		Player julie = new HumanPlayer("Julie");
+		Player jimmy = new HumanPlayer ("Jimmy");
+		Player jesse = new HumanPlayer ("Jesse");
 
 		players.Add (joey);
 		players.Add (julie);
@@ -37,11 +37,9 @@ public class CourtCalledToCamelotTest {
 		players = BoardManagerMediator.getInstance ().getPlayers ();
 
 		PlayerPlayArea playArea;
-		List<Card> playerHand;
 
 		foreach (Player player in players) {
 			playArea = player.getPlayArea ();
-			playerHand = player.getHand ();
 
 			foreach (Card card in player.getHand()) {
 				if (card.GetType ().IsSubclassOf (typeof(Ally))) {

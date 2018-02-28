@@ -1,204 +1,237 @@
 -------------------- INITIALIZE LOGGER ---------------------
-2018-02-27T20:47:20.7220710-05:00: Logger initialized
-2018-02-27T20:47:20.7223300-05:00 [INFO]: Creating card: Knight of the Round Table
-2018-02-27T20:47:20.7227130-05:00 [INFO]: Creating card: Champion Knight
-2018-02-27T20:47:20.7229180-05:00 [INFO]: Creating card: Knight
-2018-02-27T20:47:20.7231350-05:00 [INFO]: Creating card: Squire
-2018-02-27T20:47:20.7246800-05:00 [INFO]: Creating card: Knight of the Round Table
-2018-02-27T20:47:20.7249540-05:00 [INFO]: Creating card: Champion Knight
-2018-02-27T20:47:20.7251810-05:00 [INFO]: Creating card: Knight
-2018-02-27T20:47:20.7254120-05:00 [INFO]: Creating card: Squire
-2018-02-27T20:47:20.7256030-05:00 [INFO]: Creating card: Knight of the Round Table
-2018-02-27T20:47:20.7257490-05:00 [INFO]: Creating card: Champion Knight
-2018-02-27T20:47:20.7258990-05:00 [INFO]: Creating card: Knight
-2018-02-27T20:47:20.7261050-05:00 [INFO]: Creating card: Squire
-2018-02-27T20:47:20.7262970-05:00 [INFO]: Creating card: Knight of the Round Table
-2018-02-27T20:47:20.7264390-05:00 [INFO]: Creating card: Champion Knight
-2018-02-27T20:47:20.7266780-05:00 [INFO]: Creating card: Knight
-2018-02-27T20:47:20.7268330-05:00 [INFO]: Creating card: Squire
-2018-02-27T20:47:20.7809390-05:00 [INFO]: Player list passed to BoardManager
-2018-02-27T20:47:20.7817860-05:00 [INFO]: Player entered: a (human)
-2018-02-27T20:47:20.7822820-05:00 [INFO]: Player entered: b (human)
-2018-02-27T20:47:20.7827470-05:00 [INFO]: Player entered: c (human)
-2018-02-27T20:47:20.7832100-05:00 [INFO]: Player entered: d (human)
-2018-02-27T20:47:20.7843560-05:00 [INFO]: Creating card: Dragon
-2018-02-27T20:47:20.7847210-05:00 [INFO]: Creating card: Giant
-2018-02-27T20:47:20.7849010-05:00 [INFO]: Creating card: Giant
-2018-02-27T20:47:20.7851650-05:00 [INFO]: Creating card: Mordred
-2018-02-27T20:47:20.7853340-05:00 [INFO]: Creating card: Mordred
-2018-02-27T20:47:20.7854840-05:00 [INFO]: Creating card: Mordred
-2018-02-27T20:47:20.7856300-05:00 [INFO]: Creating card: Mordred
-2018-02-27T20:47:20.7858790-05:00 [INFO]: Creating card: Green Knight
-2018-02-27T20:47:20.7860430-05:00 [INFO]: Creating card: Green Knight
-2018-02-27T20:47:20.7863740-05:00 [INFO]: Creating card: Black Knight
-2018-02-27T20:47:20.7866670-05:00 [INFO]: Creating card: Black Knight
-2018-02-27T20:47:20.7868500-05:00 [INFO]: Creating card: Black Knight
-2018-02-27T20:47:20.7871650-05:00 [INFO]: Creating card: Evil Knight
-2018-02-27T20:47:20.7873470-05:00 [INFO]: Creating card: Evil Knight
-2018-02-27T20:47:20.7875110-05:00 [INFO]: Creating card: Evil Knight
-2018-02-27T20:47:20.7876720-05:00 [INFO]: Creating card: Evil Knight
-2018-02-27T20:47:20.7878310-05:00 [INFO]: Creating card: Evil Knight
-2018-02-27T20:47:20.7880130-05:00 [INFO]: Creating card: Evil Knight
-2018-02-27T20:47:20.7884290-05:00 [INFO]: Creating card: Saxon Knight
-2018-02-27T20:47:20.7886700-05:00 [INFO]: Creating card: Saxon Knight
-2018-02-27T20:47:20.7888490-05:00 [INFO]: Creating card: Saxon Knight
-2018-02-27T20:47:20.7890060-05:00 [INFO]: Creating card: Saxon Knight
-2018-02-27T20:47:20.7891610-05:00 [INFO]: Creating card: Saxon Knight
-2018-02-27T20:47:20.7894870-05:00 [INFO]: Creating card: Saxon Knight
-2018-02-27T20:47:20.7897810-05:00 [INFO]: Creating card: Saxon Knight
-2018-02-27T20:47:20.7900370-05:00 [INFO]: Creating card: Saxon Knight
-2018-02-27T20:47:20.7903900-05:00 [INFO]: Creating card: Robber Knight
-2018-02-27T20:47:20.7905800-05:00 [INFO]: Creating card: Robber Knight
-2018-02-27T20:47:20.7907480-05:00 [INFO]: Creating card: Robber Knight
-2018-02-27T20:47:20.7909120-05:00 [INFO]: Creating card: Robber Knight
-2018-02-27T20:47:20.7910720-05:00 [INFO]: Creating card: Robber Knight
-2018-02-27T20:47:20.7912800-05:00 [INFO]: Creating card: Robber Knight
-2018-02-27T20:47:20.7915650-05:00 [INFO]: Creating card: Robber Knight
-2018-02-27T20:47:20.7920010-05:00 [INFO]: Creating card: Saxons
-2018-02-27T20:47:20.7921920-05:00 [INFO]: Creating card: Saxons
-2018-02-27T20:47:20.7923650-05:00 [INFO]: Creating card: Saxons
-2018-02-27T20:47:20.7925210-05:00 [INFO]: Creating card: Saxons
-2018-02-27T20:47:20.7928500-05:00 [INFO]: Creating card: Saxons
-2018-02-27T20:47:20.7932690-05:00 [INFO]: Creating card: Boar
-2018-02-27T20:47:20.7934850-05:00 [INFO]: Creating card: Boar
-2018-02-27T20:47:20.7936540-05:00 [INFO]: Creating card: Boar
-2018-02-27T20:47:20.7938120-05:00 [INFO]: Creating card: Boar
-2018-02-27T20:47:20.7941040-05:00 [INFO]: Creating card: Thieves
-2018-02-27T20:47:20.7942700-05:00 [INFO]: Creating card: Thieves
-2018-02-27T20:47:20.7944180-05:00 [INFO]: Creating card: Thieves
-2018-02-27T20:47:20.7946540-05:00 [INFO]: Creating card: Thieves
-2018-02-27T20:47:20.8031790-05:00 [INFO]: Creating card: Thieves
-2018-02-27T20:47:20.8035460-05:00 [INFO]: Creating card: Thieves
-2018-02-27T20:47:20.8037800-05:00 [INFO]: Creating card: Thieves
-2018-02-27T20:47:20.8039730-05:00 [INFO]: Creating card: Thieves
-2018-02-27T20:47:20.8043820-05:00 [INFO]: Creating card: Test Of Valor
-2018-02-27T20:47:20.8046230-05:00 [INFO]: Creating card: Test Of Valor
-2018-02-27T20:47:20.8050030-05:00 [INFO]: Creating card: Test Of Temptation
-2018-02-27T20:47:20.8052760-05:00 [INFO]: Creating card: Test Of Temptation
-2018-02-27T20:47:20.8056430-05:00 [INFO]: Creating card: Test Of Morgan LeFey
-2018-02-27T20:47:20.8059660-05:00 [INFO]: Creating card: Test Of Morgan LeFey
-2018-02-27T20:47:20.8064920-05:00 [INFO]: Creating card: Test Of The Questing Beast
-2018-02-27T20:47:20.8067870-05:00 [INFO]: Creating card: Test Of The Questing Beast
-2018-02-27T20:47:20.8071910-05:00 [INFO]: Creating card: Sir Galahad
-2018-02-27T20:47:20.8075830-05:00 [INFO]: Creating card: Sir Lancelot
-2018-02-27T20:47:20.8078760-05:00 [INFO]: Creating card: King Arthur
-2018-02-27T20:47:20.8082270-05:00 [INFO]: Creating card: Sir Tristan
-2018-02-27T20:47:20.8085310-05:00 [INFO]: Creating card: King Pellinore
-2018-02-27T20:47:20.8088500-05:00 [INFO]: Creating card: Sir Gawain
-2018-02-27T20:47:20.8092350-05:00 [INFO]: Creating card: Sir Percival
-2018-02-27T20:47:20.8095420-05:00 [INFO]: Creating card: Queen Guinevere
-2018-02-27T20:47:20.8098220-05:00 [INFO]: Creating card: Queen Iseult
-2018-02-27T20:47:20.8101280-05:00 [INFO]: Creating card: Merlin
-2018-02-27T20:47:20.8104060-05:00 [INFO]: Creating card: Amour
-2018-02-27T20:47:20.8105760-05:00 [INFO]: Creating card: Amour
-2018-02-27T20:47:20.8107410-05:00 [INFO]: Creating card: Amour
-2018-02-27T20:47:20.8108980-05:00 [INFO]: Creating card: Amour
-2018-02-27T20:47:20.8112170-05:00 [INFO]: Creating card: Amour
-2018-02-27T20:47:20.8114410-05:00 [INFO]: Creating card: Amour
-2018-02-27T20:47:20.8116140-05:00 [INFO]: Creating card: Amour
-2018-02-27T20:47:20.8117680-05:00 [INFO]: Creating card: Amour
-2018-02-27T20:47:20.8121380-05:00 [INFO]: Creating card: Excalibur
-2018-02-27T20:47:20.8123130-05:00 [INFO]: Creating card: Excalibur
-2018-02-27T20:47:20.8127450-05:00 [INFO]: Creating card: Lance
-2018-02-27T20:47:20.8129650-05:00 [INFO]: Creating card: Lance
-2018-02-27T20:47:20.8131200-05:00 [INFO]: Creating card: Lance
-2018-02-27T20:47:20.8135340-05:00 [INFO]: Creating card: Lance
-2018-02-27T20:47:20.8137520-05:00 [INFO]: Creating card: Lance
-2018-02-27T20:47:20.8139150-05:00 [INFO]: Creating card: Lance
-2018-02-27T20:47:20.8142370-05:00 [INFO]: Creating card: Battle Ax
-2018-02-27T20:47:20.8144060-05:00 [INFO]: Creating card: Battle Ax
-2018-02-27T20:47:20.8145660-05:00 [INFO]: Creating card: Battle Ax
-2018-02-27T20:47:20.8147220-05:00 [INFO]: Creating card: Battle Ax
-2018-02-27T20:47:20.8148820-05:00 [INFO]: Creating card: Battle Ax
-2018-02-27T20:47:20.8150380-05:00 [INFO]: Creating card: Battle Ax
-2018-02-27T20:47:20.8151960-05:00 [INFO]: Creating card: Battle Ax
-2018-02-27T20:47:20.8153490-05:00 [INFO]: Creating card: Battle Ax
-2018-02-27T20:47:20.8157400-05:00 [INFO]: Creating card: Sword
-2018-02-27T20:47:20.8160070-05:00 [INFO]: Creating card: Sword
-2018-02-27T20:47:20.8162600-05:00 [INFO]: Creating card: Sword
-2018-02-27T20:47:20.8164720-05:00 [INFO]: Creating card: Sword
-2018-02-27T20:47:20.8166610-05:00 [INFO]: Creating card: Sword
-2018-02-27T20:47:20.8168450-05:00 [INFO]: Creating card: Sword
-2018-02-27T20:47:20.8171060-05:00 [INFO]: Creating card: Sword
-2018-02-27T20:47:20.8173410-05:00 [INFO]: Creating card: Sword
-2018-02-27T20:47:20.8176390-05:00 [INFO]: Creating card: Sword
-2018-02-27T20:47:20.8179790-05:00 [INFO]: Creating card: Sword
-2018-02-27T20:47:20.8183200-05:00 [INFO]: Creating card: Sword
-2018-02-27T20:47:20.8186460-05:00 [INFO]: Creating card: Sword
-2018-02-27T20:47:20.8190070-05:00 [INFO]: Creating card: Sword
-2018-02-27T20:47:20.8194130-05:00 [INFO]: Creating card: Sword
-2018-02-27T20:47:20.8197370-05:00 [INFO]: Creating card: Sword
-2018-02-27T20:47:20.8199530-05:00 [INFO]: Creating card: Sword
-2018-02-27T20:47:20.8203200-05:00 [INFO]: Creating card: Horse
-2018-02-27T20:47:20.8205140-05:00 [INFO]: Creating card: Horse
-2018-02-27T20:47:20.8207000-05:00 [INFO]: Creating card: Horse
-2018-02-27T20:47:20.8208760-05:00 [INFO]: Creating card: Horse
-2018-02-27T20:47:20.8210470-05:00 [INFO]: Creating card: Horse
-2018-02-27T20:47:20.8212160-05:00 [INFO]: Creating card: Horse
-2018-02-27T20:47:20.8213820-05:00 [INFO]: Creating card: Horse
-2018-02-27T20:47:20.8215500-05:00 [INFO]: Creating card: Horse
-2018-02-27T20:47:20.8217190-05:00 [INFO]: Creating card: Horse
-2018-02-27T20:47:20.8218840-05:00 [INFO]: Creating card: Horse
-2018-02-27T20:47:20.8220480-05:00 [INFO]: Creating card: Horse
-2018-02-27T20:47:20.8223490-05:00 [INFO]: Creating card: Dagger
-2018-02-27T20:47:20.8225250-05:00 [INFO]: Creating card: Dagger
-2018-02-27T20:47:20.8226940-05:00 [INFO]: Creating card: Dagger
-2018-02-27T20:47:20.8228600-05:00 [INFO]: Creating card: Dagger
-2018-02-27T20:47:20.8230240-05:00 [INFO]: Creating card: Dagger
-2018-02-27T20:47:20.8231880-05:00 [INFO]: Creating card: Dagger
-2018-02-27T20:47:20.8250510-05:00 [INFO]: Creating card: At Orkney
-2018-02-27T20:47:20.8258530-05:00 [INFO]: Creating card: At Camelot
-2018-02-27T20:47:20.8261680-05:00 [INFO]: Creating card: At Tintagel
-2018-02-27T20:47:20.8264660-05:00 [INFO]: Creating card: At York
-2018-02-27T20:47:20.8267770-05:00 [INFO]: Creating card: King's Recognition
-2018-02-27T20:47:20.8269570-05:00 [INFO]: Creating card: King's Recognition
-2018-02-27T20:47:20.8272240-05:00 [INFO]: Creating card: Queen's Favor
-2018-02-27T20:47:20.8274260-05:00 [INFO]: Creating card: Queen's Favor
-2018-02-27T20:47:20.8279710-05:00 [INFO]: Creating card: Court Called to Camelot
-2018-02-27T20:47:20.8282600-05:00 [INFO]: Creating card: Court Called to Camelot
-2018-02-27T20:47:20.8286110-05:00 [INFO]: Creating card: Pox
-2018-02-27T20:47:20.8289310-05:00 [INFO]: Creating card: Plague
-2018-02-27T20:47:20.8292410-05:00 [INFO]: Creating card: Chivalrous Deed
-2018-02-27T20:47:20.8295520-05:00 [INFO]: Creating card: Prosperity Throughout the Realm
-2018-02-27T20:47:20.8298560-05:00 [INFO]: Creating card: King's Call to Arms
-2018-02-27T20:47:20.8304730-05:00 [INFO]: Creating card: Search for the Holy Grail
-2018-02-27T20:47:20.8310410-05:00 [INFO]: Creating card: Test of the Green Knight
-2018-02-27T20:47:20.8313820-05:00 [INFO]: Creating card: Search for the Questing Beast
-2018-02-27T20:47:20.8318160-05:00 [INFO]: Creating card: Defend the Queen's Honor
-2018-02-27T20:47:20.8322310-05:00 [INFO]: Creating card: Rescue the Fair Maiden
-2018-02-27T20:47:20.8325970-05:00 [INFO]: Creating card: Journey through the Enchanted Forest
-2018-02-27T20:47:20.8329260-05:00 [INFO]: Creating card: Vanquish King Arthur's Enemies
-2018-02-27T20:47:20.8331400-05:00 [INFO]: Creating card: Vanquish King Arthur's Enemies
-2018-02-27T20:47:20.8334710-05:00 [INFO]: Creating card: Slay the Dragon
-2018-02-27T20:47:20.8338550-05:00 [INFO]: Creating card: Boar Hunt
-2018-02-27T20:47:20.8340860-05:00 [INFO]: Creating card: Boar Hunt
-2018-02-27T20:47:20.8344210-05:00 [INFO]: Creating card: Repel the Saxon Raiders
-2018-02-27T20:47:20.8347040-05:00 [INFO]: Creating card: Repel the Saxon Raiders
-2018-02-27T20:47:20.8350110-05:00 [INFO]: Card decks created
-2018-02-27T20:47:20.8365910-05:00 [INFO]: Dealt 12 cards to a
-2018-02-27T20:47:20.8373450-05:00 [INFO]: Dealt 12 cards to b
-2018-02-27T20:47:20.8379550-05:00 [INFO]: Dealt 12 cards to c
-2018-02-27T20:47:20.8387420-05:00 [INFO]: Dealt 12 cards to d
-2018-02-27T20:47:20.8390800-05:00 [INFO]: Game started...
-2018-02-27T20:47:20.8399150-05:00 [INFO]: A'S TURN
-2018-02-27T20:47:20.8402340-05:00 [INFO]: Started Quest behaviour
-2018-02-27T20:47:20.9053090-05:00 [INFO]: a's cards drawn to GUI
-2018-02-27T20:47:20.9068190-05:00 [INFO]: Prompted a to sponsor quest.
-2018-02-27T20:47:20.9668340-05:00 [INFO]: Board manager started
-2018-02-27T20:47:22.8480900-05:00 [DEBUG]: There has been an upgrade to Knight
-2018-02-27T20:47:23.6990220-05:00 [INFO]: Sponsor accepted: a
-2018-02-27T20:47:23.7047510-05:00 [INFO]: Prompted a to setup quest.
-2018-02-27T20:47:24.8011450-05:00 [INFO]: B'S TURN
-2018-02-27T20:47:24.8015310-05:00 [INFO]: Started King's Recognition behaviour
-2018-02-27T20:47:24.8025580-05:00 [INFO]: Finished King's Recognition behaviour
-2018-02-27T20:47:24.8423630-05:00 [INFO]: b's cards drawn to GUI
-2018-02-27T20:47:27.0494280-05:00 [DEBUG]: There has been an upgrade to Knight
-2018-02-27T20:47:28.9526350-05:00 [DEBUG]: There has been an upgrade to Champion Knight
-2018-02-27T20:47:29.3341400-05:00 [INFO]: C'S TURN
-2018-02-27T20:47:29.3348450-05:00 [INFO]: Starting Pox behaviour
-2018-02-27T20:47:29.3357720-05:00 [TRACE]: Finished decrementing shields for player a
-2018-02-27T20:47:29.3360190-05:00 [TRACE]: Finished decrementing shields for player b
-2018-02-27T20:47:29.3361920-05:00 [TRACE]: Finished decrementing shields for player c
-2018-02-27T20:47:29.3363560-05:00 [TRACE]: Finished decrementing shields for player d
-2018-02-27T20:47:29.3365340-05:00 [INFO]: Finished Pox behaviour
-2018-02-27T20:47:29.3705820-05:00 [INFO]: c's cards drawn to GUI
+2018-02-28T01:26:18.4036100-05:00: Logger initialized
+2018-02-28T01:26:18.4038380-05:00 [INFO]: Creating card: Knight of the Round Table
+2018-02-28T01:26:18.4040230-05:00 [INFO]: Creating card: Champion Knight
+2018-02-28T01:26:18.4041840-05:00 [INFO]: Creating card: Knight
+2018-02-28T01:26:18.4043350-05:00 [INFO]: Creating card: Squire
+2018-02-28T01:26:18.4047510-05:00 [INFO]: Creating card: Knight of the Round Table
+2018-02-28T01:26:18.4049150-05:00 [INFO]: Creating card: Champion Knight
+2018-02-28T01:26:18.4050670-05:00 [INFO]: Creating card: Knight
+2018-02-28T01:26:18.4052160-05:00 [INFO]: Creating card: Squire
+2018-02-28T01:26:18.4053770-05:00 [INFO]: Creating card: Knight of the Round Table
+2018-02-28T01:26:18.4055250-05:00 [INFO]: Creating card: Champion Knight
+2018-02-28T01:26:18.4056720-05:00 [INFO]: Creating card: Knight
+2018-02-28T01:26:18.4058200-05:00 [INFO]: Creating card: Squire
+2018-02-28T01:26:18.4059870-05:00 [INFO]: Creating card: Knight of the Round Table
+2018-02-28T01:26:18.4061540-05:00 [INFO]: Creating card: Champion Knight
+2018-02-28T01:26:18.4063200-05:00 [INFO]: Creating card: Knight
+2018-02-28T01:26:18.4064840-05:00 [INFO]: Creating card: Squire
+2018-02-28T01:26:18.4508790-05:00 [INFO]: Player list passed to BoardManager
+2018-02-28T01:26:18.4519590-05:00 [INFO]: Player entered: Alexei (AI - Strategy 2)
+2018-02-28T01:26:18.4524570-05:00 [INFO]: Player entered: Avery (Human)
+2018-02-28T01:26:18.4529530-05:00 [INFO]: Player entered: Kirk (Human)
+2018-02-28T01:26:18.4534580-05:00 [INFO]: Player entered: Max (Human)
+2018-02-28T01:26:18.4546770-05:00 [INFO]: Creating card: Dragon
+2018-02-28T01:26:18.4551170-05:00 [INFO]: Creating card: Giant
+2018-02-28T01:26:18.4553330-05:00 [INFO]: Creating card: Giant
+2018-02-28T01:26:18.4556050-05:00 [INFO]: Creating card: Mordred
+2018-02-28T01:26:18.4557900-05:00 [INFO]: Creating card: Mordred
+2018-02-28T01:26:18.4559590-05:00 [INFO]: Creating card: Mordred
+2018-02-28T01:26:18.4561240-05:00 [INFO]: Creating card: Mordred
+2018-02-28T01:26:18.4563940-05:00 [INFO]: Creating card: Green Knight
+2018-02-28T01:26:18.4565680-05:00 [INFO]: Creating card: Green Knight
+2018-02-28T01:26:18.4568570-05:00 [INFO]: Creating card: Black Knight
+2018-02-28T01:26:18.4570160-05:00 [INFO]: Creating card: Black Knight
+2018-02-28T01:26:18.4571940-05:00 [INFO]: Creating card: Black Knight
+2018-02-28T01:26:18.4575530-05:00 [INFO]: Creating card: Evil Knight
+2018-02-28T01:26:18.4577100-05:00 [INFO]: Creating card: Evil Knight
+2018-02-28T01:26:18.4578850-05:00 [INFO]: Creating card: Evil Knight
+2018-02-28T01:26:18.4580580-05:00 [INFO]: Creating card: Evil Knight
+2018-02-28T01:26:18.4582300-05:00 [INFO]: Creating card: Evil Knight
+2018-02-28T01:26:18.4584000-05:00 [INFO]: Creating card: Evil Knight
+2018-02-28T01:26:18.4586620-05:00 [INFO]: Creating card: Saxon Knight
+2018-02-28T01:26:18.4588320-05:00 [INFO]: Creating card: Saxon Knight
+2018-02-28T01:26:18.4589990-05:00 [INFO]: Creating card: Saxon Knight
+2018-02-28T01:26:18.4591620-05:00 [INFO]: Creating card: Saxon Knight
+2018-02-28T01:26:18.4593490-05:00 [INFO]: Creating card: Saxon Knight
+2018-02-28T01:26:18.4595310-05:00 [INFO]: Creating card: Saxon Knight
+2018-02-28T01:26:18.4597110-05:00 [INFO]: Creating card: Saxon Knight
+2018-02-28T01:26:18.4599020-05:00 [INFO]: Creating card: Saxon Knight
+2018-02-28T01:26:18.4601950-05:00 [INFO]: Creating card: Robber Knight
+2018-02-28T01:26:18.4603950-05:00 [INFO]: Creating card: Robber Knight
+2018-02-28T01:26:18.4605790-05:00 [INFO]: Creating card: Robber Knight
+2018-02-28T01:26:18.4607800-05:00 [INFO]: Creating card: Robber Knight
+2018-02-28T01:26:18.4609710-05:00 [INFO]: Creating card: Robber Knight
+2018-02-28T01:26:18.4611600-05:00 [INFO]: Creating card: Robber Knight
+2018-02-28T01:26:18.4613500-05:00 [INFO]: Creating card: Robber Knight
+2018-02-28T01:26:18.4616410-05:00 [INFO]: Creating card: Saxons
+2018-02-28T01:26:18.4618270-05:00 [INFO]: Creating card: Saxons
+2018-02-28T01:26:18.4620120-05:00 [INFO]: Creating card: Saxons
+2018-02-28T01:26:18.4622250-05:00 [INFO]: Creating card: Saxons
+2018-02-28T01:26:18.4626140-05:00 [INFO]: Creating card: Saxons
+2018-02-28T01:26:18.4629620-05:00 [INFO]: Creating card: Boar
+2018-02-28T01:26:18.4631660-05:00 [INFO]: Creating card: Boar
+2018-02-28T01:26:18.4633650-05:00 [INFO]: Creating card: Boar
+2018-02-28T01:26:18.4635530-05:00 [INFO]: Creating card: Boar
+2018-02-28T01:26:18.4638530-05:00 [INFO]: Creating card: Thieves
+2018-02-28T01:26:18.4640450-05:00 [INFO]: Creating card: Thieves
+2018-02-28T01:26:18.4642320-05:00 [INFO]: Creating card: Thieves
+2018-02-28T01:26:18.4644230-05:00 [INFO]: Creating card: Thieves
+2018-02-28T01:26:18.4646120-05:00 [INFO]: Creating card: Thieves
+2018-02-28T01:26:18.4648020-05:00 [INFO]: Creating card: Thieves
+2018-02-28T01:26:18.4649910-05:00 [INFO]: Creating card: Thieves
+2018-02-28T01:26:18.4651930-05:00 [INFO]: Creating card: Thieves
+2018-02-28T01:26:18.4655370-05:00 [INFO]: Creating card: Test Of Valor
+2018-02-28T01:26:18.4657220-05:00 [INFO]: Creating card: Test Of Valor
+2018-02-28T01:26:18.4659910-05:00 [INFO]: Creating card: Test Of Temptation
+2018-02-28T01:26:18.4661730-05:00 [INFO]: Creating card: Test Of Temptation
+2018-02-28T01:26:18.4664390-05:00 [INFO]: Creating card: Test Of Morgan LeFey
+2018-02-28T01:26:18.4666260-05:00 [INFO]: Creating card: Test Of Morgan LeFey
+2018-02-28T01:26:18.4669110-05:00 [INFO]: Creating card: Test Of The Questing Beast
+2018-02-28T01:26:18.4670930-05:00 [INFO]: Creating card: Test Of The Questing Beast
+2018-02-28T01:26:18.4674190-05:00 [INFO]: Creating card: Sir Galahad
+2018-02-28T01:26:18.4676910-05:00 [INFO]: Creating card: Sir Lancelot
+2018-02-28T01:26:18.4679610-05:00 [INFO]: Creating card: King Arthur
+2018-02-28T01:26:18.4682460-05:00 [INFO]: Creating card: Sir Tristan
+2018-02-28T01:26:18.4685990-05:00 [INFO]: Creating card: King Pellinore
+2018-02-28T01:26:18.4690530-05:00 [INFO]: Creating card: Sir Gawain
+2018-02-28T01:26:18.4694030-05:00 [INFO]: Creating card: Sir Percival
+2018-02-28T01:26:18.4697160-05:00 [INFO]: Creating card: Queen Guinevere
+2018-02-28T01:26:18.4700430-05:00 [INFO]: Creating card: Queen Iseult
+2018-02-28T01:26:18.4704480-05:00 [INFO]: Creating card: Merlin
+2018-02-28T01:26:18.4707710-05:00 [INFO]: Creating card: Amour
+2018-02-28T01:26:18.4709530-05:00 [INFO]: Creating card: Amour
+2018-02-28T01:26:18.4711290-05:00 [INFO]: Creating card: Amour
+2018-02-28T01:26:18.4713040-05:00 [INFO]: Creating card: Amour
+2018-02-28T01:26:18.4714880-05:00 [INFO]: Creating card: Amour
+2018-02-28T01:26:18.4716630-05:00 [INFO]: Creating card: Amour
+2018-02-28T01:26:18.4718350-05:00 [INFO]: Creating card: Amour
+2018-02-28T01:26:18.4720070-05:00 [INFO]: Creating card: Amour
+2018-02-28T01:26:18.4724010-05:00 [INFO]: Creating card: Excalibur
+2018-02-28T01:26:18.4726550-05:00 [INFO]: Creating card: Excalibur
+2018-02-28T01:26:18.4729630-05:00 [INFO]: Creating card: Lance
+2018-02-28T01:26:18.4731510-05:00 [INFO]: Creating card: Lance
+2018-02-28T01:26:18.4733320-05:00 [INFO]: Creating card: Lance
+2018-02-28T01:26:18.4735390-05:00 [INFO]: Creating card: Lance
+2018-02-28T01:26:18.4737190-05:00 [INFO]: Creating card: Lance
+2018-02-28T01:26:18.4738950-05:00 [INFO]: Creating card: Lance
+2018-02-28T01:26:18.4741650-05:00 [INFO]: Creating card: Battle Ax
+2018-02-28T01:26:18.4743730-05:00 [INFO]: Creating card: Battle Ax
+2018-02-28T01:26:18.4746050-05:00 [INFO]: Creating card: Battle Ax
+2018-02-28T01:26:18.4748390-05:00 [INFO]: Creating card: Battle Ax
+2018-02-28T01:26:18.4750710-05:00 [INFO]: Creating card: Battle Ax
+2018-02-28T01:26:18.4753140-05:00 [INFO]: Creating card: Battle Ax
+2018-02-28T01:26:18.4755440-05:00 [INFO]: Creating card: Battle Ax
+2018-02-28T01:26:18.4757700-05:00 [INFO]: Creating card: Battle Ax
+2018-02-28T01:26:18.4761200-05:00 [INFO]: Creating card: Sword
+2018-02-28T01:26:18.4763580-05:00 [INFO]: Creating card: Sword
+2018-02-28T01:26:18.4765880-05:00 [INFO]: Creating card: Sword
+2018-02-28T01:26:18.4768160-05:00 [INFO]: Creating card: Sword
+2018-02-28T01:26:18.4770450-05:00 [INFO]: Creating card: Sword
+2018-02-28T01:26:18.4772740-05:00 [INFO]: Creating card: Sword
+2018-02-28T01:26:18.4775670-05:00 [INFO]: Creating card: Sword
+2018-02-28T01:26:18.4777700-05:00 [INFO]: Creating card: Sword
+2018-02-28T01:26:18.4779670-05:00 [INFO]: Creating card: Sword
+2018-02-28T01:26:18.4781520-05:00 [INFO]: Creating card: Sword
+2018-02-28T01:26:18.4784760-05:00 [INFO]: Creating card: Sword
+2018-02-28T01:26:18.4877070-05:00 [INFO]: Creating card: Sword
+2018-02-28T01:26:18.4880740-05:00 [INFO]: Creating card: Sword
+2018-02-28T01:26:18.4883140-05:00 [INFO]: Creating card: Sword
+2018-02-28T01:26:18.4885400-05:00 [INFO]: Creating card: Sword
+2018-02-28T01:26:18.4887350-05:00 [INFO]: Creating card: Sword
+2018-02-28T01:26:18.4892850-05:00 [INFO]: Creating card: Horse
+2018-02-28T01:26:18.4895260-05:00 [INFO]: Creating card: Horse
+2018-02-28T01:26:18.4897590-05:00 [INFO]: Creating card: Horse
+2018-02-28T01:26:18.4899830-05:00 [INFO]: Creating card: Horse
+2018-02-28T01:26:18.4902120-05:00 [INFO]: Creating card: Horse
+2018-02-28T01:26:18.4904350-05:00 [INFO]: Creating card: Horse
+2018-02-28T01:26:18.4906870-05:00 [INFO]: Creating card: Horse
+2018-02-28T01:26:18.4909220-05:00 [INFO]: Creating card: Horse
+2018-02-28T01:26:18.4911140-05:00 [INFO]: Creating card: Horse
+2018-02-28T01:26:18.4912820-05:00 [INFO]: Creating card: Horse
+2018-02-28T01:26:18.4914450-05:00 [INFO]: Creating card: Horse
+2018-02-28T01:26:18.4917380-05:00 [INFO]: Creating card: Dagger
+2018-02-28T01:26:18.4918880-05:00 [INFO]: Creating card: Dagger
+2018-02-28T01:26:18.4920560-05:00 [INFO]: Creating card: Dagger
+2018-02-28T01:26:18.4922190-05:00 [INFO]: Creating card: Dagger
+2018-02-28T01:26:18.4924020-05:00 [INFO]: Creating card: Dagger
+2018-02-28T01:26:18.4925740-05:00 [INFO]: Creating card: Dagger
+2018-02-28T01:26:18.4940810-05:00 [INFO]: Creating card: At Orkney
+2018-02-28T01:26:18.4947220-05:00 [INFO]: Creating card: At Camelot
+2018-02-28T01:26:18.4949810-05:00 [INFO]: Creating card: At Tintagel
+2018-02-28T01:26:18.4952310-05:00 [INFO]: Creating card: At York
+2018-02-28T01:26:18.4955100-05:00 [INFO]: Creating card: King's Recognition
+2018-02-28T01:26:18.4956730-05:00 [INFO]: Creating card: King's Recognition
+2018-02-28T01:26:18.4959230-05:00 [INFO]: Creating card: Queen's Favor
+2018-02-28T01:26:18.4960830-05:00 [INFO]: Creating card: Queen's Favor
+2018-02-28T01:26:18.4963270-05:00 [INFO]: Creating card: Court Called to Camelot
+2018-02-28T01:26:18.4964880-05:00 [INFO]: Creating card: Court Called to Camelot
+2018-02-28T01:26:18.4967280-05:00 [INFO]: Creating card: Pox
+2018-02-28T01:26:18.4969700-05:00 [INFO]: Creating card: Plague
+2018-02-28T01:26:18.4972120-05:00 [INFO]: Creating card: Chivalrous Deed
+2018-02-28T01:26:18.4974850-05:00 [INFO]: Creating card: Prosperity Throughout the Realm
+2018-02-28T01:26:18.4978810-05:00 [INFO]: Creating card: King's Call to Arms
+2018-02-28T01:26:18.4984870-05:00 [INFO]: Creating card: Search for the Holy Grail
+2018-02-28T01:26:18.4990720-05:00 [INFO]: Creating card: Test of the Green Knight
+2018-02-28T01:26:18.4993880-05:00 [INFO]: Creating card: Search for the Questing Beast
+2018-02-28T01:26:18.4997620-05:00 [INFO]: Creating card: Defend the Queen's Honor
+2018-02-28T01:26:18.5001360-05:00 [INFO]: Creating card: Rescue the Fair Maiden
+2018-02-28T01:26:18.5004530-05:00 [INFO]: Creating card: Journey through the Enchanted Forest
+2018-02-28T01:26:18.5007730-05:00 [INFO]: Creating card: Vanquish King Arthur's Enemies
+2018-02-28T01:26:18.5009440-05:00 [INFO]: Creating card: Vanquish King Arthur's Enemies
+2018-02-28T01:26:18.5012740-05:00 [INFO]: Creating card: Slay the Dragon
+2018-02-28T01:26:18.5016870-05:00 [INFO]: Creating card: Boar Hunt
+2018-02-28T01:26:18.5019030-05:00 [INFO]: Creating card: Boar Hunt
+2018-02-28T01:26:18.5022320-05:00 [INFO]: Creating card: Repel the Saxon Raiders
+2018-02-28T01:26:18.5024320-05:00 [INFO]: Creating card: Repel the Saxon Raiders
+2018-02-28T01:26:18.5026850-05:00 [INFO]: Card decks created
+2018-02-28T01:26:18.5039400-05:00 [INFO]: Dealt 12 cards to Alexei
+2018-02-28T01:26:18.5045150-05:00 [INFO]: Dealt 12 cards to Avery
+2018-02-28T01:26:18.5050730-05:00 [INFO]: Dealt 12 cards to Kirk
+2018-02-28T01:26:18.5056990-05:00 [INFO]: Dealt 12 cards to Max
+2018-02-28T01:26:18.5059310-05:00 [INFO]: Game started...
+2018-02-28T01:26:18.5066650-05:00 [INFO]: ALEXEI'S TURN
+2018-02-28T01:26:18.5069390-05:00 [INFO]: Started Quest behaviour
+2018-02-28T01:26:18.5110870-05:00 [TRACE]: dominantFoes are System.Collections.Generic.List`1[System.Type]
+2018-02-28T01:26:18.5117270-05:00 [TRACE]: dominantFoes are System.Collections.Generic.List`1[System.Type]
+2018-02-28T01:26:18.5119150-05:00 [TRACE]: dominantFoes are System.Collections.Generic.List`1[System.Type]
+2018-02-28T01:26:18.5159330-05:00 [TRACE]: dominantFoes are System.Collections.Generic.List`1[System.Type]
+2018-02-28T01:26:18.5161120-05:00 [TRACE]: dominantFoes are System.Collections.Generic.List`1[System.Type]
+2018-02-28T01:26:18.5162920-05:00 [TRACE]: dominantFoes are System.Collections.Generic.List`1[System.Type]
+2018-02-28T01:26:18.5166160-05:00 [TRACE]: dominantFoes are System.Collections.Generic.List`1[System.Type]
+2018-02-28T01:26:18.5173880-05:00 [TRACE]: dominantFoes are System.Collections.Generic.List`1[System.Type]
+2018-02-28T01:26:18.5180630-05:00 [TRACE]: dominantFoes are System.Collections.Generic.List`1[System.Type]
+2018-02-28T01:26:18.5196410-05:00 [INFO]: Starting the Stage class
+2018-02-28T01:26:18.5212000-05:00 [INFO]: Starting the Stage class
+2018-02-28T01:26:18.5221850-05:00 [TRACE]: dominantFoes are System.Collections.Generic.List`1[System.Type]
+2018-02-28T01:26:18.5223910-05:00 [TRACE]: dominantFoes are System.Collections.Generic.List`1[System.Type]
+2018-02-28T01:26:18.5231130-05:00 [INFO]: Starting the Stage class
+2018-02-28T01:26:18.5285870-05:00 [INFO]: Quest setup complete
+2018-02-28T01:26:18.5694140-05:00 [INFO]: Avery's cards drawn to GUI
+2018-02-28T01:26:18.5708410-05:00 [INFO]: Prompted Avery to accept quest.
+2018-02-28T01:26:18.6249390-05:00 [INFO]: Board manager started
+2018-02-28T01:27:27.2472280-05:00 [DEBUG]: Avery has accepted to participate in the quest
+2018-02-28T01:27:27.2762120-05:00 [INFO]: Kirk's cards drawn to GUI
+2018-02-28T01:27:27.2775120-05:00 [INFO]: Prompted Kirk to accept quest.
+2018-02-28T01:28:19.7370720-05:00 [DEBUG]: Kirk has accepted to participate in the quest
+2018-02-28T01:28:19.7589550-05:00 [INFO]: Max's cards drawn to GUI
+2018-02-28T01:28:19.7600900-05:00 [INFO]: Prompted Max to accept quest.
+2018-02-28T01:28:26.1203240-05:00 [DEBUG]: Max has accepted to participate in the quest
+2018-02-28T01:28:26.1212220-05:00 [TRACE]: The total cards are 1
+2018-02-28T01:28:26.1215180-05:00 [TRACE]: The total cards are 1
+2018-02-28T01:28:26.1218020-05:00 [TRACE]: The total cards are 2
+2018-02-28T01:28:26.1220750-05:00 [DEBUG]: Starting quest.
+2018-02-28T01:28:26.1238790-05:00 [DEBUG]: Prepare function has started
+2018-02-28T01:28:26.1241500-05:00 [TRACE]: Stage card is subclass type of foe
+2018-02-28T01:28:26.1532880-05:00 [INFO]: Avery's cards drawn to GUI
+2018-02-28T01:28:46.0241400-05:00 [INFO]: Kirk's cards drawn to GUI
+2018-02-28T01:29:58.1480770-05:00 [INFO]: Max's cards drawn to GUI
+2018-02-28T01:30:17.2426390-05:00 [TRACE]: dominantFoes are System.Collections.Generic.List`1[System.Type]
+2018-02-28T01:30:17.2429270-05:00 [TRACE]: The total battle points are 5
+2018-02-28T01:30:17.2435000-05:00 [TRACE]: playerBattlePoints >= getTotalbattlePoints
+2018-02-28T01:30:17.2447780-05:00 [TRACE]: dominantFoes are System.Collections.Generic.List`1[System.Type]
+2018-02-28T01:30:17.2449930-05:00 [TRACE]: The total battle points are 5
+2018-02-28T01:30:17.2451880-05:00 [TRACE]: playerBattlePoints >= getTotalbattlePoints
+2018-02-28T01:30:17.2464180-05:00 [TRACE]: dominantFoes are System.Collections.Generic.List`1[System.Type]
+2018-02-28T01:30:17.2466660-05:00 [TRACE]: The total battle points are 5
+2018-02-28T01:30:17.2469220-05:00 [TRACE]: playerBattlePoints >= getTotalbattlePoints
+2018-02-28T01:30:17.2503660-05:00 [INFO]: Dealt 1 cards to Avery
+2018-02-28T01:30:17.2877610-05:00 [INFO]: Kirk's cards drawn to GUI
+2018-02-28T01:30:17.2922050-05:00 [INFO]: Prompted Kirk to prepare cards to discard.
+2018-02-28T01:30:17.2925990-05:00 [INFO]: Dealt 1 cards to Kirk
+2018-02-28T01:30:42.6038240-05:00 [INFO]: Max's cards drawn to GUI
+2018-02-28T01:30:42.6063160-05:00 [INFO]: Prompted Max to prepare cards to discard.
+2018-02-28T01:30:42.6064830-05:00 [INFO]: Dealt 1 cards to Max
+2018-02-28T01:31:26.6966630-05:00 [DEBUG]: Prepare function has started
+2018-02-28T01:31:26.6970510-05:00 [TRACE]: Stage card is NOT subclass type of foe
+2018-02-28T01:31:26.6991940-05:00 [DEBUG]: prompting Test...

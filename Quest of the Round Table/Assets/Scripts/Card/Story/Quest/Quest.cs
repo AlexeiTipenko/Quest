@@ -38,19 +38,21 @@ public abstract class Quest : Story {
 
 	public override void startBehaviour () {
         Logger.getInstance().info ("Started Quest behaviour");
-
 		sponsor = owner;
 		totalCardsCounter = 0;
 		PromptSponsorQuest ();
 	}
 
 	private void PromptSponsorQuest() {
-		//if (isValidSponsor ()) {
-			board.PromptSponsorQuest (sponsor);
-		//} else {
-		//	Logger.getInstance().warn("Invalid sponsor: " + sponsor.getName());
-		//	IncrementSponsor ();
-		//}
+        if (sponsor.GetType() == typeof(AIPlayer)) {
+            if (((AIPlayer)sponsor).GetStrategy().DoISponsorAQuest()) {
+                ((AIPlayer)sponsor).GetStrategy().SponsorQuest();
+            } else {
+                IncrementSponsor();
+            }
+        } else {
+            board.PromptSponsorQuest(sponsor);
+        }
 	}
 
 	public void PromptSponsorQuestResponse (bool sponsorAccepted) {
@@ -147,13 +149,17 @@ public abstract class Quest : Story {
 	}
 
 	public void SetupQuestComplete(List<Stage> stages) {
+        Debug.Log("Finished quest setup.");
         this.stages = stages;
         foreach (Stage stage in stages) {
+            Debug.Log("Stage " + stage.getStageNum());
             foreach (Card card in stage.getCards()) {
-                sponsor.RemoveCard(card);
+                Debug.Log(card.getCardName());
+                if (sponsor.GetType() != typeof(AIPlayer)) {
+                    sponsor.RemoveCard(card);
+                }
             }
         }
-        Debug.Log("Finished quest setup.");
         Logger.getInstance().info("Quest setup complete");
 		playerToPrompt = board.getNextPlayer (sponsor);
 		board.PromptAcceptQuest (playerToPrompt);

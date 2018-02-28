@@ -28,7 +28,7 @@ public class AtCamelotTest
     public void TestAddPlayerBattlePoints()
     {
         Tournament camelot = new AtCamelot();
-        camelot.playerToPrompt = new Player("Ghandi", false);
+        camelot.playerToPrompt = new HumanPlayer("Ghandi");
         int points;
 
         List<Card> cardList1 = new List<Card>();
@@ -61,7 +61,7 @@ public class AtCamelotTest
     public void TestValidateChosenCards()
     {
         Tournament camelot = new AtCamelot();
-        camelot.playerToPrompt = new Player("Ghandi", false);
+        camelot.playerToPrompt = new HumanPlayer("Ghandi");
 
         List<Card> cardList1 = new List<Card>();
         cardList1.Add(new BattleAx());
@@ -83,7 +83,6 @@ public class AtCamelotTest
 
 
 
-        List<Card> cardList3 = new List<Card>();
         cardList2.Add(new Sword());
         cardList2.Add(new Sword());
         cardList2.Add(new BattleAx());
@@ -97,14 +96,14 @@ public class AtCamelotTest
     public void TestGetNextPlayer(){
         
         Tournament camelot = new AtCamelot();
-        camelot.playerToPrompt = new Player("Ghandi", false);
-        Player nextPlayer = new Player("Rasputin", false);
+        camelot.playerToPrompt = new HumanPlayer("Ghandi");
+        Player nextPlayer = new HumanPlayer("Rasputin");
 
         List<Player> playersList = new List<Player>();
         playersList.Add(camelot.playerToPrompt);
         playersList.Add(nextPlayer);
-        playersList.Add(new Player("Kobe", false));
-        playersList.Add(new Player("LUCINE", false));
+        playersList.Add(new HumanPlayer("Kobe"));
+        playersList.Add(new HumanPlayer("LUCINE"));
 
         camelot.participatingPlayers = playersList;
 

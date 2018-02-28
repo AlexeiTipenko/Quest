@@ -9,10 +9,10 @@ public class BoardManagerDataTest {
 	[Test]
 	public void testInitGame() {
 		List<Player> playerList = new List<Player> ();
-		playerList.Add(new Player("Joey", false));
-		playerList.Add(new Player("Julie", false));
-		playerList.Add(new Player("Jimmy", false));
-		playerList.Add(new Player("Jesse", false));
+		playerList.Add(new HumanPlayer("Joey"));
+		playerList.Add(new HumanPlayer("Julie"));
+		playerList.Add(new HumanPlayer("Jimmy"));
+		playerList.Add(new HumanPlayer("Jesse"));
 		BoardManagerMediator.getInstance().initGame (playerList);
 		foreach (Player player in playerList) {
 			Debug.Log (player.toString ());

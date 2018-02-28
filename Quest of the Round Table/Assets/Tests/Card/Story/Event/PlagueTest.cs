@@ -20,10 +20,10 @@ public class PlagueTest {
 
 		List<Player> players = new List<Player>();
 
-		Player joey = new Player ("Joey", false);
-		Player julie = new Player("Julie", false);
-		Player jimmy = new Player ("Jimmy", false);
-		Player jesse = new Player ("Jesse", false);
+		Player joey = new HumanPlayer ("Joey");
+		Player julie = new HumanPlayer("Julie");
+		Player jimmy = new HumanPlayer ("Jimmy");
+		Player jesse = new HumanPlayer ("Jesse");
 
 		players.Add (joey);
 		players.Add (julie);

@@ -1467,7 +1467,9 @@ MonoBehaviour:
     m_Options:
     - m_Text: Human
       m_Image: {fileID: 0}
-    - m_Text: Computer
+    - m_Text: Computer - Strategy 1
+      m_Image: {fileID: 0}
+    - m_Text: Computer - Strategy 2
       m_Image: {fileID: 0}
   m_OnValueChanged:
     m_PersistentCalls:
@@ -2000,7 +2002,9 @@ MonoBehaviour:
     m_Options:
     - m_Text: Human
       m_Image: {fileID: 0}
-    - m_Text: Computer
+    - m_Text: Computer - Strategy 1
+      m_Image: {fileID: 0}
+    - m_Text: Computer - Strategy 2
       m_Image: {fileID: 0}
   m_OnValueChanged:
     m_PersistentCalls:
@@ -3055,7 +3059,9 @@ MonoBehaviour:
     m_Options:
     - m_Text: Human
       m_Image: {fileID: 0}
-    - m_Text: Computer
+    - m_Text: Computer - Strategy 1
+      m_Image: {fileID: 0}
+    - m_Text: Computer - Strategy 2
       m_Image: {fileID: 0}
   m_OnValueChanged:
     m_PersistentCalls:
@@ -5421,7 +5427,9 @@ MonoBehaviour:
     m_Options:
     - m_Text: Human
       m_Image: {fileID: 0}
-    - m_Text: Computer
+    - m_Text: Computer - Strategy 1
+      m_Image: {fileID: 0}
+    - m_Text: Computer - Strategy 2
       m_Image: {fileID: 0}
   m_OnValueChanged:
     m_PersistentCalls:
