@@ -103,7 +103,7 @@ public class BoardManagerMediator
     }
 
 	public void dealCardsToPlayer(Player player, int numCardsToDeal) {
-        Debug.Log("Dealing " + numCardsToDeal + " cards");
+        Debug.Log("Dealing " + numCardsToDeal + " cards to player: " + player.getName());
 		List<Card> cardsToDeal = new List<Card> ();
 		for (int i = 0; i < numCardsToDeal; i++) {
 			cardsToDeal.Add (adventureDeck.drawCard ());
@@ -135,9 +135,7 @@ public class BoardManagerMediator
         {
             Logger.getInstance().info(players[playerTurn].getName().ToUpper() + "'S TURN");
             cardInPlay = (Story)storyDeck.drawCard();
-            BoardManager.DrawCards(players[playerTurn]);
-            BoardManager.DestroyPlayerInfo();
-            BoardManager.DisplayPlayers(players);
+            //BoardManager.DrawCards(players[playerTurn]);
             cardInPlay.startBehaviour();
         }
         else
@@ -150,12 +148,13 @@ public class BoardManagerMediator
     public void nextTurn()
     {
         if (cardInPlay.GetType().IsSubclassOf(typeof(Quest))) {
-            BoardManager.DestroyStage(((Quest)cardInPlay).getNumStages());   
+            BoardManager.DestroyStages();
         }
         storyDiscard.addCard(cardInPlay);
         BoardManager.DestroyCards();
         BoardManager.DestroyDiscardArea();
         BoardManager.ClearInteractions();
+        BoardManager.setIsFreshTurn(true);
         cardInPlay = null;
         playerTurn = (playerTurn + 1) % players.Count;
         playTurn();
@@ -242,7 +241,6 @@ public class BoardManagerMediator
 
 	public void SetupQuest(Player player, String text) {
         BoardManager.SetInteractionText(text);
-        Debug.Log(((Quest)cardInPlay).numStages);
 
         Action action = () => {
             if (((Quest)cardInPlay).isValidQuest()) {
@@ -256,7 +254,7 @@ public class BoardManagerMediator
 
         if (!BoardManager.QuestPanelsExist()) {
             //Generate panels
-            BoardManager.SetupQuestPanels(((Quest)cardInPlay).numStages);
+            BoardManager.SetupQuestPanels(((Quest)cardInPlay).getNumStages());
         }
 
         BoardManager.SetInteractionButtons("Complete", "", action, null);

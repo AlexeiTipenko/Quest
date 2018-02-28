@@ -147,6 +147,7 @@ public class Player
 
 	public void incrementShields(int numShields) {
 		this.numShields += numShields;
+        Debug.Log("Awarded " + numShields + " shields to " + name);
 		checkForRankUp ();
 	}
 
@@ -160,9 +161,10 @@ public class Player
 	}
 
 
-	public Player upgradeRank(){
+	public Player upgradeRank() {
 		rank = rank.upgrade ();
-		return this; //returns the player object for cascading for testing
+        Debug.Log("Upgraded " + name + "'s rank to " + rank.getCardName());
+		return this;
 	}
 
 

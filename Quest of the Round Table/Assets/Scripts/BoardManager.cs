@@ -11,6 +11,7 @@ public class BoardManager : MonoBehaviour
     private static GameObject coverInteractionButton = null;
     private static GameObject coverInteractionButtonText = null;
     private static Player previousPlayer = null;
+    private static bool isFreshTurn = true;
 
     void Start()
     {
@@ -96,8 +97,15 @@ public class BoardManager : MonoBehaviour
         DrawCardInPlay();
         DrawStageAreaCards(player);
         DrawPlayArea(player);
+        DestroyPlayerInfo();
+        DisplayPlayers();
         previousPlayer = player;
+        Debug.Log(player.getName() + "'s cards drawn to GUI");
         Logger.getInstance().info(player.getName() + "'s cards drawn to GUI");
+    }
+
+    public static void setIsFreshTurn(bool isFreshTurn) {
+        BoardManager.isFreshTurn = isFreshTurn;
     }
 
     public static List<string> GetSelectedCardNames()
@@ -140,8 +148,11 @@ public class BoardManager : MonoBehaviour
 
     public static void DrawCover(Player player) {
         HideCover();
-        if (player != previousPlayer) {
-            coverInteractionText.GetComponent<Text>().text = "NEXT PLAYER: " + player.getName() + "\nPress continue when you are ready.";
+        Debug.Log("Current player: " + player.getName());
+        Debug.Log("Previous player: " + player.getName());
+        if (player != previousPlayer || isFreshTurn) {
+            isFreshTurn = false;
+            coverInteractionText.GetComponent<Text>().text = "NEXT PLAYER: " + player.getName().ToUpper() + "\nPress continue when you are ready.";
             coverInteractionButton.GetComponent<Button>().onClick.AddListener(new UnityAction(HideCover));
             coverInteractionButtonText.GetComponent<Text>().text = "Continue";
             coverCanvas.SetActive(true);
@@ -216,8 +227,6 @@ public class BoardManager : MonoBehaviour
                 GameObject boardAreaFoe = GameObject.Find("Canvas/TabletopImage/StageAreaFoe" + i);
                 Stage currentStage = questInPlay.getStage(i);
                 if (currentStage != null) {
-                    Debug.Log("Drawing stage: " + i);
-                    Debug.Log("Current stage: " + questInPlay.getCurrentStage());
                     if (questInPlay.getSponsor() == player 
                         || i < questInPlay.getCurrentStage().getStageNum() 
                         || (i == questInPlay.getCurrentStage().getStageNum()
@@ -275,11 +284,15 @@ public class BoardManager : MonoBehaviour
         }
     }
 
-    public static void DestroyStage(int stages)
+    public static void DestroyStages()
     {
-        for (int i = 0; i < stages; i++){
-            GameObject boardAreaFoe = GameObject.Find("Canvas/TabletopImage/StageAreaFoe" + i);
-            Destroy(boardAreaFoe);
+        if (BoardManagerMediator.getInstance().getCardInPlay().GetType().IsSubclassOf(typeof(Quest)))
+        {
+            Quest questInPlay = (Quest)BoardManagerMediator.getInstance().getCardInPlay();
+            for (int i = 0; i < questInPlay.getNumStages(); i++) {
+                GameObject boardAreaFoe = GameObject.Find("Canvas/TabletopImage/StageAreaFoe" + i);
+                Destroy(boardAreaFoe);
+            }
         }
     }
 
@@ -376,10 +389,8 @@ public class BoardManager : MonoBehaviour
 		GameObject PlayArea = GameObject.Find ("Canvas/TabletopImage/PlayerPlayArea");
 		foreach (Transform child in PlayArea.transform) {
             foreach(Card card in player.getHand()) {
-                Debug.Log("Going in players hand");
                 Type cardType = card.GetType();
                 if(child.name == card.getCardName()) {
-                    Debug.Log("adding card");
                     player.getPlayArea().addCard(card);
                     player.RemoveCard(card);
                     break;
@@ -411,7 +422,8 @@ public class BoardManager : MonoBehaviour
         DiscardArea.transform.SetParent(board.transform, false);
     }
 
-    public static void DisplayPlayers(List<Player> players){
+    public static void DisplayPlayers(){
+        List<Player> players = BoardManagerMediator.getInstance().getPlayers();
         GameObject PlayersInfo = GameObject.Find("Canvas/TabletopImage/PlayersInfo");
         float position = -320;
         foreach(Player currPlayer in players){
