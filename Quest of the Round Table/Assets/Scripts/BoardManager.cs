@@ -388,12 +388,17 @@ public class BoardManager : MonoBehaviour
 	public static void GetPlayArea(Player player) {
 		GameObject PlayArea = GameObject.Find ("Canvas/TabletopImage/PlayerPlayArea");
 		foreach (Transform child in PlayArea.transform) {
+            Debug.Log("VisualCardName: " + child.name);
             foreach(Card card in player.getHand()) {
                 Type cardType = card.GetType();
                 if(child.name == card.getCardName()) {
-                    player.getPlayArea().addCard(card);
-                    player.RemoveCard(card);
-                    break;
+                    Debug.Log("Found a match: " + card.getCardName());
+                    if (cardType != typeof(Amour) || (cardType == typeof(Amour) && !player.getPlayArea().getCards().Contains(card))) {
+                        Debug.Log("Moving card");
+                        player.getPlayArea().addCard(card);
+                        player.RemoveCard(card);
+                        break;
+                    }
                 }
             }
 		}
@@ -416,10 +421,16 @@ public class BoardManager : MonoBehaviour
 
     public static void SetupDiscardPanel()
     {
-        GameObject board = GameObject.Find("Canvas/TabletopImage");
-        GameObject DiscardArea = Instantiate(Resources.Load("DiscardArea", typeof(GameObject))) as GameObject;
-        DiscardArea.name = "DiscardArea";
-        DiscardArea.transform.SetParent(board.transform, false);
+        Debug.Log("In setupdiscardpanel");
+        DestroyDiscardArea();
+        GameObject discardArea = GameObject.Find("Canvas/TabletopImage/DiscardArea");
+        //if (discardArea == null) {
+            //Debug.Log("discardArea is null");
+            GameObject board = GameObject.Find("Canvas/TabletopImage");
+            discardArea = Instantiate(Resources.Load("DiscardArea", typeof(GameObject))) as GameObject;
+            discardArea.name = "DiscardArea";
+            discardArea.transform.SetParent(board.transform, false);
+        //}
     }
 
     public static void DisplayPlayers(){
