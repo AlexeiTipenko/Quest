@@ -8,7 +8,6 @@ public abstract class Deck {
 	private static System.Random rand;
 
 	protected List<Card> cards;
-	protected int size;
 
 	public Deck() {
 		if (rand == null) {
@@ -58,6 +57,15 @@ public abstract class Deck {
 				cards.Add(card);
 			}
 		}
+	}
+
+	protected int getCardIndexByName(string cardName) {
+		for (int i = 0; i < cards.Count; i++) {
+			if (cards [i].cardImageName.Equals (cardName)) {
+				return i;
+			}
+		}
+		return -1;
 	}
 
 	public virtual string toString() {

@@ -42,6 +42,14 @@ public class BoardManagerMediator
 		return players;
 	}
 
+	public void setAdventureDeck(AdventureDeck adventureDeck) {
+		this.adventureDeck = adventureDeck;
+	}
+
+	public void setStoryDeck(StoryDeck storyDeck) {
+		this.storyDeck = storyDeck;
+	}
+
 	public Player getCurrentPlayer() {
 		return players [playerTurn];
 	}
@@ -120,6 +128,10 @@ public class BoardManagerMediator
         cardInPlay = (Story) card;
     }
 
+	//used for scenarios, nowhere anywhere else
+	public void setPlayers(List<Player> players) {
+		this.players = players;
+	}
 
     public void startGame()
     {
@@ -177,23 +189,46 @@ public class BoardManagerMediator
 
     public void cheat(string cheatCode)
     {
-        switch (cheatCode)
-        {
-            case "rankUp":
-                Debug.Log("Current player is: " + players[playerTurn].getName());
-                players[playerTurn].upgradeRank();
-                Debug.Log("After upgrading rank: " + players[playerTurn].getRank());
-                break;
-            case "shieldsUp":
-                Debug.Log("Player now has : " + players[playerTurn].getNumShields() + " shields");
-                players[playerTurn].incrementShields(3);
-                Debug.Log("Player now has : " + players[playerTurn].getNumShields() + " after incremented shields");
-                break;
-            case "nextPlayer":
-                Debug.Log("Current player is: " + players[playerTurn].getName());
-                nextTurn();
-                Debug.Log("New player is: " + players[playerTurn].getName());
-                break;
+		switch (cheatCode) {
+		case "rankUp":
+			Debug.Log ("Current player is: " + players [playerTurn].getName ());
+			players [playerTurn].upgradeRank ();
+			Debug.Log ("After upgrading rank: " + players [playerTurn].getRank ());
+			break;
+		case "shieldsUp":
+			Debug.Log ("Player now has : " + players [playerTurn].getNumShields () + " shields");
+			players [playerTurn].incrementShields (3);
+			Debug.Log ("Player now has : " + players [playerTurn].getNumShields () + " after incremented shields");
+			break;
+		case "nextPlayer":
+			Debug.Log ("Current player is: " + players [playerTurn].getName ());
+			nextTurn ();
+			Debug.Log ("New player is: " + players [playerTurn].getName ());
+			break;
+		case "scenario1":
+			if (players.Count != 4) {
+				Debug.Log ("There are only " + players.Count + " players in the game; need 4 to start scenario.");
+				Logger.getInstance ().debug ("There are only " + players.Count + " players in the game; need 4 to start scenario.");
+				break;
+			}
+			Logger.getInstance ().debug ("Scenario 1 is setting up: Players' cards and deck are updating to meet scenario.");
+			Debug.Log ("Scenario 1 is setting up: Players' cards and deck are updating to meet scenario.");
+			Scenario1.getInstance ().setupScenario (adventureDeck, storyDeck);
+			Logger.getInstance ().debug ("Done setting up.");
+			Debug.Log ("Done setting up.");
+			break;
+		case "scenario2":
+			if (players.Count != 4) {
+				Debug.Log ("There are only " + players.Count + " players in the game; need 4 to start scenario.");
+				Logger.getInstance ().debug ("There are only " + players.Count + " players in the game; need 4 to start scenario.");
+				break;
+			}
+			Logger.getInstance ().debug ("Scenario 2 is setting up: Players' cards and deck are updating to meet scenario.");
+			Debug.Log ("Scenario 2 is setting up: Players' cards and deck are updating to meet scenario.");
+			Scenario1.getInstance ().setupScenario (adventureDeck, storyDeck);
+			Logger.getInstance ().debug ("Done setting up.");
+			Debug.Log ("Done setting up.");
+			break;
 
                 //TODO: Fix this! Event cards should not be able to be dealt to the player's hand
                 //case "prosperity":
@@ -229,6 +264,7 @@ public class BoardManagerMediator
 	public void PromptSponsorQuest(Player player) {
         BoardManager.DrawCards(player);
         BoardManager.SetInteractionText("NEW QUEST DRAWN\nWould you like to sponsor this quest?");
+		Debug.Log ("The card in play is " + cardInPlay.cardImageName);
         Action action1 = () => {
             ((Quest)cardInPlay).PromptSponsorQuestResponse(true);
         };
