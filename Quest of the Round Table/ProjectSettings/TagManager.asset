@@ -11,6 +11,7 @@ TagManager:
   - DiscardedCard
   - PlayAreaCard
   - PlayerInfo
+  - CurrentPlayAreaCards
   layers:
   - Default
   - TransparentFX
