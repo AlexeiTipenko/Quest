@@ -35,3 +35,6 @@ sysinfo.txt
 
 # MacOS
 *.DS_Store
+
+# Logs
+Quest of the Round Table/Logs/BuildLog.txt
