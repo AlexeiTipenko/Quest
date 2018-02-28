@@ -5,18 +5,19 @@ public abstract class Strategy {
     
     protected readonly BoardManagerMediator board;
     protected AIPlayer strategyOwner;
-    protected int minimumFinalStageBattlePoints;
+    protected int minimumFinalStageBattlePoints, discardableCardsThreshold;
 
-    protected Strategy(int minimumFinalStageBattlePoints) {
+    protected Strategy(int minimumFinalStageBattlePoints, int discardableCardsThreshold) {
         board = BoardManagerMediator.getInstance();
         this.minimumFinalStageBattlePoints = minimumFinalStageBattlePoints;
+        this.discardableCardsThreshold = discardableCardsThreshold;
     }
     
     public abstract void DoIParticipateInTournament();
 
     public abstract bool DoISponsorAQuest();
 
-    public abstract void DoIParticipateInQuest();
+    public abstract bool DoIParticipateInQuest();
 
     public abstract void NextBid();
 
@@ -116,7 +117,7 @@ public abstract class Strategy {
                 totalBattlePoints += ((Foe)card).getBattlePoints();
             } else if (card.GetType().IsSubclassOf(typeof(Weapon))) {
                 totalBattlePoints += ((Weapon)card).getBattlePoints();
-            } else if (card.GetType().IsSubclassOf(typeof(Amour))) {
+            } else if (card.GetType() == typeof(Amour)) {
                 totalBattlePoints += ((Amour)card).getBattlePoints();
             } else if (card.GetType().IsSubclassOf(typeof(Ally))) {
                 totalBattlePoints += ((Ally)card).getBattlePoints();
@@ -148,5 +149,9 @@ public abstract class Strategy {
             }
         }
         return stage;
+    }
+
+    protected bool SufficientDiscardableCards() {
+        return false;
     }
 }

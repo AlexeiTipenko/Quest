@@ -1,9 +1,10 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using System.Collections.Generic;
 
 public class Strategy2 : Strategy
 {
-    public Strategy2() : base (40) {
+    public Strategy2() : base (40, 25) {
         
     }
 
@@ -12,9 +13,12 @@ public class Strategy2 : Strategy
         throw new System.NotImplementedException();
     }
 
-    public override void DoIParticipateInQuest()
+    public override bool DoIParticipateInQuest()
     {
-        throw new System.NotImplementedException();
+        if (IncrementableCardsOverEachStage() && SufficientDiscardableCards()) {
+            return true;
+        }
+        return false;
     }
 
     public override void DoIParticipateInTournament()
@@ -24,10 +28,7 @@ public class Strategy2 : Strategy
 
     public override bool DoISponsorAQuest()
     {
-        if (SomeoneElseCanWinOrEvolveWithQuest()) {
-            return false;
-        }
-        else if (SufficientCardsToSponsorQuest()) {
+        if (!SomeoneElseCanWinOrEvolveWithQuest() && SufficientCardsToSponsorQuest()) {
             return true;
         }
         return false;
@@ -117,5 +118,101 @@ public class Strategy2 : Strategy
             }
         }
         return weakestFoe;
+    }
+
+    bool IncrementableCardsOverEachStage() {
+        Quest quest = (Quest)board.getCardInPlay();
+        List<Card> cards = strategyOwner.getHand();
+        List<Card> sortedList = SortCardsForQuestParticipation(cards);
+        List<Card> participationList = new List<Card>();
+
+        int previousBattlePoints = 10;
+        int permanentBattlePoints = 0;
+        int currentBattlePoints = 0;
+        for (int i = 0; i < quest.getNumStages(); i++) {
+            List<Card> tempList = new List<Card>(sortedList);
+            currentBattlePoints = permanentBattlePoints;
+
+            foreach (Card card in sortedList) {
+                if (card.GetType() == typeof(Amour)) {
+                    permanentBattlePoints += ((Amour)card).getBattlePoints();
+                    currentBattlePoints += ((Amour)card).getBattlePoints();
+                } else if (card.GetType().IsSubclassOf(typeof(Ally))) {
+                    permanentBattlePoints += ((Ally)card).getBattlePoints();
+                    currentBattlePoints += ((Ally)card).getBattlePoints();
+                } else {
+                    currentBattlePoints += ((Weapon)card).getBattlePoints();
+                }
+                participationList.Add(card);
+                tempList.Remove(card);
+                if (currentBattlePoints >= previousBattlePoints + 10) {
+                    break;
+                }
+            }
+            sortedList = new List<Card>(tempList);
+
+            if (currentBattlePoints < previousBattlePoints + 10) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    List<Card> SortCardsForQuestParticipation(List<Card> cards) {
+        Amour amour = null;
+        List<Ally> allies = new List<Ally>();
+        List<Weapon> weapons = new List<Weapon>();
+        List<Card> sortedList = new List<Card>();
+        foreach (Card card in cards)
+        {
+            bool inserted = false;
+            if (card.GetType() == typeof(Amour))
+            {
+                if (amour != null)
+                {
+                    amour = (Amour)card;
+                }
+            }
+            else if (card.GetType().IsSubclassOf(typeof(Ally)))
+            {
+                foreach (Ally ally in allies)
+                {
+                    if (((Ally)card).getBattlePoints() <= ally.getBattlePoints())
+                    {
+                        allies.Insert(allies.IndexOf(ally), (Ally)card);
+                        inserted = true;
+                    }
+                }
+                if (!inserted) {
+                    allies.Add((Ally)card);
+                }
+            }
+            else if (card.GetType().IsSubclassOf(typeof(Weapon)))
+            {
+                foreach (Weapon weapon in weapons)
+                {
+                    if (((Weapon)card).getBattlePoints() <= weapon.getBattlePoints())
+                    {
+                        weapons.Insert(weapons.IndexOf(weapon), (Weapon)card);
+                        inserted = true;
+                    }
+                }
+                if (!inserted) {
+                    weapons.Add((Weapon)card);
+                }
+            }
+        }
+        if (amour != null) {
+            sortedList.Add(amour);
+        }
+        foreach (Ally ally in allies)
+        {
+            sortedList.Add(ally);
+        }
+        foreach (Weapon weapon in weapons)
+        {
+            sortedList.Add(weapon);
+        }
+        return sortedList;
     }
 }

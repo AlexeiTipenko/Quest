@@ -1,6 +1,6 @@
 ﻿public class Strategy1 : Strategy
 {
-    public Strategy1() : base (50) {
+    public Strategy1() : base (50, 20) {
         
     }
 
@@ -9,7 +9,7 @@
         throw new System.NotImplementedException();
     }
 
-    public override void DoIParticipateInQuest()
+    public override bool DoIParticipateInQuest()
     {
         throw new System.NotImplementedException();
     }
