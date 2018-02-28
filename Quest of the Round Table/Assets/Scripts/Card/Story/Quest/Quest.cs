@@ -211,9 +211,19 @@ public abstract class Quest : Story {
 		foreach (Player player in participatingPlayers) {
 			player.incrementShields (numShieldsAwarded);
 		}
-		board.dealCardsToPlayer (sponsor, totalCardsCounter);
         Debug.Log("Quest complete");
-		board.nextTurn ();
+        if (sponsor.getHand().Count + totalCardsCounter > 12) {
+            Action action = () => {
+                board.TransferFromHandToPlayArea(playerToPrompt);
+                playerToPrompt.RemoveCardsResponse();
+                board.nextTurn();
+            };
+            sponsor.giveAction(action);
+            board.dealCardsToPlayer(sponsor, totalCardsCounter);
+        } else {
+            board.dealCardsToPlayer(sponsor, totalCardsCounter);
+            board.nextTurn();
+        }
 	}
 
 	private bool isValidSponsor () {

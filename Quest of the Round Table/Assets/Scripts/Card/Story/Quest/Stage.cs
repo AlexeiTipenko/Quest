@@ -63,7 +63,10 @@ public class Stage {
 			Logger.getInstance ().trace ("Stage card is subclass type of foe");
 			Debug.Log ("Is foe, going to player");
             Debug.Log("quest sponsor is: " + quest.getSponsor().getName());
-			playerToPrompt = board.getNextPlayer (quest.getSponsor());
+            playerToPrompt = board.getNextPlayer(quest.getSponsor());
+            while (!quest.getPlayers().Contains(playerToPrompt)) {
+                playerToPrompt = board.getNextPlayer(playerToPrompt);
+            }
             originalPlayer = playerToPrompt;
             Debug.Log("Current player is: " + playerToPrompt.getName());
             board.PromptFoe (playerToPrompt, stageNum);
@@ -176,12 +179,14 @@ public class Stage {
 			}
             player.getPlayArea().discardWeapons();
 		}
+        Debug.Log("Player to prompt: " + playerToPrompt.getName());
         foreach (Player player in playersToRemove) {
-            Debug.Log("Removing player: " + player.getName());
-            quest.removeParticipatingPlayer(player);
             if (player == playerToPrompt) {
                 playerToPrompt = quest.getNextPlayer(playerToPrompt);
+                Debug.Log("Replaced player to prompt with " + playerToPrompt.getName());
             }
+            Debug.Log("Removing player: " + player.getName());
+            quest.removeParticipatingPlayer(player);
         }
         originalPlayer = playerToPrompt;
         if (quest.getPlayers().Count > 0) {
