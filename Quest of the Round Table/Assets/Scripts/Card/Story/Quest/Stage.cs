@@ -103,7 +103,6 @@ public class Stage {
 
 
     public void ContinueQuest(Player currPlayer){
-        //Debug.Log("Current amount of players is: " + quest.getPlayers().Count);
         if (quest.getPlayers().Count < 1)
         {
             Debug.Log("No quest participants left");
