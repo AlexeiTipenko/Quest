@@ -393,7 +393,15 @@ public class BoardManager : MonoBehaviour
                 Type cardType = card.GetType();
                 if(child.name == card.getCardName()) {
                     Debug.Log("Found a match: " + card.getCardName());
-                    if (cardType != typeof(Amour) || (cardType == typeof(Amour) && !player.getPlayArea().getCards().Contains(card))) {
+                    bool amourExistsInPlayArea = false;
+                    foreach (Card playAreaCard in player.getPlayArea().getCards()) {
+                        Debug.Log("Play area card: " + playAreaCard.getCardName());
+                        if (playAreaCard.GetType() == typeof(Amour)) {
+                            amourExistsInPlayArea = true;
+                            break;
+                        }
+                    }
+                    if (!amourExistsInPlayArea) {
                         Debug.Log("Moving card");
                         player.getPlayArea().addCard(card);
                         player.RemoveCard(card);
@@ -424,13 +432,10 @@ public class BoardManager : MonoBehaviour
         Debug.Log("In setupdiscardpanel");
         DestroyDiscardArea();
         GameObject discardArea = GameObject.Find("Canvas/TabletopImage/DiscardArea");
-        //if (discardArea == null) {
-            //Debug.Log("discardArea is null");
-            GameObject board = GameObject.Find("Canvas/TabletopImage");
-            discardArea = Instantiate(Resources.Load("DiscardArea", typeof(GameObject))) as GameObject;
-            discardArea.name = "DiscardArea";
-            discardArea.transform.SetParent(board.transform, false);
-        //}
+        GameObject board = GameObject.Find("Canvas/TabletopImage");
+        discardArea = Instantiate(Resources.Load("DiscardArea", typeof(GameObject))) as GameObject;
+        discardArea.name = "DiscardArea";
+        discardArea.transform.SetParent(board.transform, false);
     }
 
     public static void DisplayPlayers(){
