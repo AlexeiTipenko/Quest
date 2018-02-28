@@ -388,12 +388,25 @@ public class BoardManager : MonoBehaviour
 	public static void GetPlayArea(Player player) {
 		GameObject PlayArea = GameObject.Find ("Canvas/TabletopImage/PlayerPlayArea");
 		foreach (Transform child in PlayArea.transform) {
+            Debug.Log("VisualCardName: " + child.name);
             foreach(Card card in player.getHand()) {
                 Type cardType = card.GetType();
                 if(child.name == card.getCardName()) {
-                    player.getPlayArea().addCard(card);
-                    player.RemoveCard(card);
-                    break;
+                    Debug.Log("Found a match: " + card.getCardName());
+                    bool amourExistsInPlayArea = false;
+                    foreach (Card playAreaCard in player.getPlayArea().getCards()) {
+                        Debug.Log("Play area card: " + playAreaCard.getCardName());
+                        if (playAreaCard.GetType() == typeof(Amour)) {
+                            amourExistsInPlayArea = true;
+                            break;
+                        }
+                    }
+                    if (!amourExistsInPlayArea) {
+                        Debug.Log("Moving card");
+                        player.getPlayArea().addCard(card);
+                        player.RemoveCard(card);
+                        break;
+                    }
                 }
             }
 		}
@@ -416,10 +429,13 @@ public class BoardManager : MonoBehaviour
 
     public static void SetupDiscardPanel()
     {
+        Debug.Log("In setupdiscardpanel");
+        DestroyDiscardArea();
+        GameObject discardArea = GameObject.Find("Canvas/TabletopImage/DiscardArea");
         GameObject board = GameObject.Find("Canvas/TabletopImage");
-        GameObject DiscardArea = Instantiate(Resources.Load("DiscardArea", typeof(GameObject))) as GameObject;
-        DiscardArea.name = "DiscardArea";
-        DiscardArea.transform.SetParent(board.transform, false);
+        discardArea = Instantiate(Resources.Load("DiscardArea", typeof(GameObject))) as GameObject;
+        discardArea.name = "DiscardArea";
+        discardArea.transform.SetParent(board.transform, false);
     }
 
     public static void DisplayPlayers(){
@@ -431,11 +447,21 @@ public class BoardManager : MonoBehaviour
             CurrentPlayerInfo.name = "PlayerInfo" + currPlayer.getName();
             CurrentPlayerInfo.tag = "PlayerInfo";
             CurrentPlayerInfo.transform.position = new Vector3(position, CurrentPlayerInfo.transform.position.y, CurrentPlayerInfo.transform.position.z);
+
+            //Handle texts
             Text[] texts = CurrentPlayerInfo.transform.GetComponentsInChildren<Text>();
-            texts[0].text = "Player Name: " + currPlayer.getName();
-            texts[1].text = "Player Rank: " + currPlayer.getRank().ToString();
-            texts[2].text = "Player: " + currPlayer.getName() + " has " + currPlayer.getHand().Count.ToString() + " cards";
+            texts[0].text = "Player: " + currPlayer.getName();
+            texts[1].text = currPlayer.getHand().Count.ToString();
+            texts[2].text = currPlayer.getNumShields().ToString();
+
+            //Handle rank images
+            Image[] images = CurrentPlayerInfo.transform.GetComponentsInChildren<Image>();
+            images[3].sprite = Resources.Load<Sprite>("cards/ranks/" + currPlayer.getRank().getCardName());
+
             CurrentPlayerInfo.transform.SetParent(PlayersInfo.transform, false);
+
+
+
             position += 150;
         }
 

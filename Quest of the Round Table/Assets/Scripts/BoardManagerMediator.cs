@@ -134,6 +134,9 @@ public class BoardManagerMediator
         if (!gameOver())
         {
             Logger.getInstance().info(players[playerTurn].getName().ToUpper() + "'S TURN");
+            if(storyDeck.getSize() <= 0) {
+                storyDeck = new StoryDeck();
+            }
             cardInPlay = (Story)storyDeck.drawCard();
             //BoardManager.DrawCards(players[playerTurn]);
             cardInPlay.startBehaviour();
@@ -242,7 +245,7 @@ public class BoardManagerMediator
 	public void SetupQuest(Player player, String text) {
         BoardManager.SetInteractionText(text);
 
-        Action action = () => {
+        Action action1 = () => {
             if (((Quest)cardInPlay).isValidQuest()) {
                 List<Stage> stages = BoardManager.CollectStageCards();
                 ((Quest)cardInPlay).SetupQuestComplete(stages);
@@ -252,12 +255,16 @@ public class BoardManagerMediator
             }
         };
 
+        Action action2 = () => {
+            ((Quest)cardInPlay).IncrementSponsor();
+        };
+
         if (!BoardManager.QuestPanelsExist()) {
             //Generate panels
             BoardManager.SetupQuestPanels(((Quest)cardInPlay).getNumStages());
         }
 
-        BoardManager.SetInteractionButtons("Complete", "", action, null);
+        BoardManager.SetInteractionButtons("Complete", "Withdraw Sponsorship", action1, action2);
         Debug.Log("Prompting " + player.getName() + " to setup quest.");
         Logger.getInstance().info("Prompted " + player.getName() + " to setup quest.");
 	}

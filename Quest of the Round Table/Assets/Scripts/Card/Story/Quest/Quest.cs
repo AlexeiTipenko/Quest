@@ -45,12 +45,12 @@ public abstract class Quest : Story {
 	}
 
 	private void PromptSponsorQuest() {
-		if (isValidSponsor ()) {
+		//if (isValidSponsor ()) {
 			board.PromptSponsorQuest (sponsor);
-		} else {
-			Logger.getInstance().warn("Invalid sponsor: " + sponsor.getName());
-			IncrementSponsor ();
-		}
+		//} else {
+		//	Logger.getInstance().warn("Invalid sponsor: " + sponsor.getName());
+		//	IncrementSponsor ();
+		//}
 	}
 
 	public void PromptSponsorQuestResponse (bool sponsorAccepted) {
@@ -137,7 +137,7 @@ public abstract class Quest : Story {
         return true;
     }
 
-	private void IncrementSponsor() {
+	public void IncrementSponsor() {
 		sponsor = board.getNextPlayer (sponsor);
 		if (sponsor == owner) {
 			board.nextTurn ();
@@ -226,22 +226,22 @@ public abstract class Quest : Story {
         }
 	}
 
-	private bool isValidSponsor () {
-		List<Card> hand = sponsor.getHand();
-		int validCardCount = 0;
-		bool hasTest = false;
-		foreach (Card card in hand) {
-			if (card.GetType ().IsSubclassOf (typeof(Foe))) {
-				validCardCount++;
-			} else if (card.GetType ().IsSubclassOf (typeof(Test))) {
-				hasTest = true;
-			}
-		}
-		if (hasTest) {
-			validCardCount++;
-		}
-		return (validCardCount >= numStages);
-	}
+	//private bool isValidSponsor () {
+	//	List<Card> hand = sponsor.getHand();
+	//	int validCardCount = 0;
+	//	bool hasTest = false;
+	//	foreach (Card card in hand) {
+	//		if (card.GetType ().IsSubclassOf (typeof(Foe))) {
+	//			validCardCount++;
+	//		} else if (card.GetType ().IsSubclassOf (typeof(Test))) {
+	//			hasTest = true;
+	//		}
+	//	}
+	//	if (hasTest) {
+	//		validCardCount++;
+	//	}
+	//	return (validCardCount >= numStages);
+	//}
 
 	public void removeParticipatingPlayer(Player player) {
 		if (participatingPlayers.Contains(player)) {
