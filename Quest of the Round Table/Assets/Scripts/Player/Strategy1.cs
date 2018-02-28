@@ -37,6 +37,11 @@
         throw new System.NotImplementedException();
     }
 
+    public override void ParticipateInQuest()
+    {
+        throw new System.NotImplementedException();
+    }
+
     public override void SponsorQuest()
     {
         throw new System.NotImplementedException();

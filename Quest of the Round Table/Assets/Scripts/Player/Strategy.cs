@@ -25,6 +25,8 @@ public abstract class Strategy {
 
     public abstract void SponsorQuest();
 
+    public abstract void ParticipateInQuest();
+
     //--------------------------------------------//
     //---------- Non-Abstract Functions ----------//
     //--------------------------------------------//
@@ -152,6 +154,16 @@ public abstract class Strategy {
     }
 
     protected bool SufficientDiscardableCards() {
-        return false;
+        List<Card> cards = strategyOwner.getHand();
+        int discardableCards = 0;
+        foreach (Card card in cards) {
+            if (card.GetType().IsSubclassOf(typeof(Foe))) {
+                if (((Foe)card).getBattlePoints() < discardableCardsThreshold) {
+                    discardableCards++;
+                }
+            }
+        }
+        Debug.Log(strategyOwner.getName() + " has " + discardableCards + " discardable cards.");
+        return (discardableCards > 1);
     }
 }

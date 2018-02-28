@@ -15,10 +15,7 @@ public class Strategy2 : Strategy
 
     public override bool DoIParticipateInQuest()
     {
-        if (IncrementableCardsOverEachStage() && SufficientDiscardableCards()) {
-            return true;
-        }
-        return false;
+        return (IncrementableCardsOverEachStage() && SufficientDiscardableCards());
     }
 
     public override void DoIParticipateInTournament()
@@ -28,15 +25,18 @@ public class Strategy2 : Strategy
 
     public override bool DoISponsorAQuest()
     {
-        if (!SomeoneElseCanWinOrEvolveWithQuest() && SufficientCardsToSponsorQuest()) {
-            return true;
-        }
-        return false;
+        return (!SomeoneElseCanWinOrEvolveWithQuest() && SufficientCardsToSponsorQuest());
     }
 
     public override void NextBid()
     {
         throw new System.NotImplementedException();
+    }
+
+    public override void ParticipateInQuest()
+    {
+        //throw new NotImplementedException();
+        Debug.Log(strategyOwner.getName() + " is participating in quest.");
     }
 
     public override void SponsorQuest()
@@ -126,14 +126,17 @@ public class Strategy2 : Strategy
         List<Card> sortedList = SortCardsForQuestParticipation(cards);
         List<Card> participationList = new List<Card>();
 
-        int previousBattlePoints = 10;
+        int previousBattlePoints = 0;
         int permanentBattlePoints = 0;
         int currentBattlePoints = 0;
         for (int i = 0; i < quest.getNumStages(); i++) {
+            Debug.Log("Calculating " + strategyOwner.getName() + "'s validity for stage " + i);
+            Debug.Log("Required battle points: " + (previousBattlePoints + 10));
             List<Card> tempList = new List<Card>(sortedList);
             currentBattlePoints = permanentBattlePoints;
 
             foreach (Card card in sortedList) {
+                Debug.Log("Adding " + card.getCardName() + " to " + strategyOwner.getName() + "'s hypothetical play area");
                 if (card.GetType() == typeof(Amour)) {
                     permanentBattlePoints += ((Amour)card).getBattlePoints();
                     currentBattlePoints += ((Amour)card).getBattlePoints();
@@ -145,6 +148,7 @@ public class Strategy2 : Strategy
                 }
                 participationList.Add(card);
                 tempList.Remove(card);
+                Debug.Log(strategyOwner.getName() + "'s battle points for stage " + i + ": " + currentBattlePoints);
                 if (currentBattlePoints >= previousBattlePoints + 10) {
                     break;
                 }
@@ -152,9 +156,11 @@ public class Strategy2 : Strategy
             sortedList = new List<Card>(tempList);
 
             if (currentBattlePoints < previousBattlePoints + 10) {
+                Debug.Log("Insufficient incrementable cards for " + strategyOwner.getName());
                 return false;
             }
         }
+        Debug.Log("Sufficient incrementable cards for " + strategyOwner.getName());
         return true;
     }
 
@@ -163,43 +169,51 @@ public class Strategy2 : Strategy
         List<Ally> allies = new List<Ally>();
         List<Weapon> weapons = new List<Weapon>();
         List<Card> sortedList = new List<Card>();
+        Debug.Log("Available cards:");
+        foreach (Card card in cards) {
+            Debug.Log(card.getCardName());
+        }
+        Debug.Log("Looping through cards");
         foreach (Card card in cards)
         {
             bool inserted = false;
             if (card.GetType() == typeof(Amour))
             {
-                if (amour != null)
-                {
-                    amour = (Amour)card;
-                }
+                amour = (Amour)card;
             }
             else if (card.GetType().IsSubclassOf(typeof(Ally)))
             {
+                List<Ally> tempAllies = new List<Ally>(allies);
                 foreach (Ally ally in allies)
                 {
                     if (((Ally)card).getBattlePoints() <= ally.getBattlePoints())
                     {
-                        allies.Insert(allies.IndexOf(ally), (Ally)card);
+                        tempAllies.Insert(tempAllies.IndexOf(ally), (Ally)card);
                         inserted = true;
+                        break;
                     }
                 }
                 if (!inserted) {
-                    allies.Add((Ally)card);
+                    tempAllies.Add((Ally)card);
                 }
+                allies = new List<Ally>(tempAllies);
             }
             else if (card.GetType().IsSubclassOf(typeof(Weapon)))
             {
+                List<Weapon> tempWeapons = new List<Weapon>(weapons);
                 foreach (Weapon weapon in weapons)
                 {
                     if (((Weapon)card).getBattlePoints() <= weapon.getBattlePoints())
                     {
-                        weapons.Insert(weapons.IndexOf(weapon), (Weapon)card);
+                        tempWeapons.Insert(tempWeapons.IndexOf(weapon), (Weapon)card);
                         inserted = true;
+                        break;
                     }
                 }
                 if (!inserted) {
-                    weapons.Add((Weapon)card);
+                    tempWeapons.Add((Weapon)card);
                 }
+                weapons = new List<Weapon>(tempWeapons);
             }
         }
         if (amour != null) {
@@ -212,6 +226,10 @@ public class Strategy2 : Strategy
         foreach (Weapon weapon in weapons)
         {
             sortedList.Add(weapon);
+        }
+        Debug.Log("Sorted valid cards in hand for use in quest:");
+        foreach (Card card in sortedList) {
+            Debug.Log(card.getCardName());
         }
         return sortedList;
     }

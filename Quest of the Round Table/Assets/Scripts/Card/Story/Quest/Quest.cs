@@ -161,9 +161,27 @@ public abstract class Quest : Story {
             }
         }
         Logger.getInstance().info("Quest setup complete");
-		playerToPrompt = board.getNextPlayer (sponsor);
-		board.PromptAcceptQuest (playerToPrompt);
+        playerToPrompt = board.getNextPlayer(sponsor);
+        PromptAcceptQuest();
 	}
+
+    private void PromptAcceptQuest() {
+        if (playerToPrompt != sponsor) {
+            if (playerToPrompt.GetType() == typeof(AIPlayer)) {
+                Debug.Log("Prompting accept quest for AI");
+                if (((AIPlayer)playerToPrompt).GetStrategy().DoIParticipateInQuest()) {
+                    ((AIPlayer)playerToPrompt).GetStrategy().ParticipateInQuest();
+                } else {
+                    PromptAcceptQuest();
+                }
+            } else {
+                board.PromptAcceptQuest(playerToPrompt);
+            }
+        }
+        else {
+            FinishedAcceptingQuestResponses();
+        }
+    }
 
     public Stage getStage(int stageNum) {
         if (stages.Count == 0) {
@@ -181,20 +199,21 @@ public abstract class Quest : Story {
 			Logger.getInstance().debug(playerToPrompt.getName() + " has accepted to participate in the quest");
 			participatingPlayers.Add (playerToPrompt);
 		}
-		playerToPrompt = board.getNextPlayer (playerToPrompt);
-		if (playerToPrompt != sponsor) {
-			board.PromptAcceptQuest (playerToPrompt);
-		} else {
-			currentStage = -1;
-            numStages = stages.Count;
-            foreach (Stage stage in stages) {
-                totalCardsCounter += stage.getTotalCards();
-            }
-			Logger.getInstance().debug("Starting quest.");
-            Debug.Log("Starting quest");
-			PlayStage ();
-		}
+        playerToPrompt = board.getNextPlayer(playerToPrompt);
+        PromptAcceptQuest();
 	}
+
+    private void FinishedAcceptingQuestResponses() {
+        currentStage = -1;
+        numStages = stages.Count;
+        foreach (Stage stage in stages)
+        {
+            totalCardsCounter += stage.getTotalCards();
+        }
+        Logger.getInstance().debug("Starting quest.");
+        Debug.Log("Starting quest");
+        PlayStage();
+    }
 
 	public void PlayStage() {
 		currentStage++;
