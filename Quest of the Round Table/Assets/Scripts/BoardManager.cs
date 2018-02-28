@@ -447,11 +447,21 @@ public class BoardManager : MonoBehaviour
             CurrentPlayerInfo.name = "PlayerInfo" + currPlayer.getName();
             CurrentPlayerInfo.tag = "PlayerInfo";
             CurrentPlayerInfo.transform.position = new Vector3(position, CurrentPlayerInfo.transform.position.y, CurrentPlayerInfo.transform.position.z);
+
+            //Handle texts
             Text[] texts = CurrentPlayerInfo.transform.GetComponentsInChildren<Text>();
-            texts[0].text = "Player Name: " + currPlayer.getName();
-            texts[1].text = "Player Rank: " + currPlayer.getRank().ToString();
-            texts[2].text = "Player: " + currPlayer.getName() + " has " + currPlayer.getHand().Count.ToString() + " cards";
+            texts[0].text = "Player: " + currPlayer.getName();
+            texts[1].text = currPlayer.getHand().Count.ToString();
+            texts[2].text = currPlayer.getNumShields().ToString();
+
+            //Handle rank images
+            Image[] images = CurrentPlayerInfo.transform.GetComponentsInChildren<Image>();
+            images[3].sprite = Resources.Load<Sprite>("cards/ranks/" + currPlayer.getRank().getCardName());
+
             CurrentPlayerInfo.transform.SetParent(PlayersInfo.transform, false);
+
+
+
             position += 150;
         }
 

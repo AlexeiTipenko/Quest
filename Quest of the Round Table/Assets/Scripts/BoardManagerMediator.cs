@@ -134,6 +134,9 @@ public class BoardManagerMediator
         if (!gameOver())
         {
             Logger.getInstance().info(players[playerTurn].getName().ToUpper() + "'S TURN");
+            if(storyDeck.getSize() <= 0) {
+                storyDeck = new StoryDeck();
+            }
             cardInPlay = (Story)storyDeck.drawCard();
             //BoardManager.DrawCards(players[playerTurn]);
             cardInPlay.startBehaviour();
