@@ -219,6 +219,7 @@ public abstract class Quest : Story {
 		currentStage++;
         if (currentStage < numStages && participatingPlayers.Count > 0) {
             getStage(currentStage).prepare();
+
 		} else {
 			CompleteQuest ();
 		}

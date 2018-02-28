@@ -287,6 +287,7 @@ public class BoardManagerMediator
 
 	public void PromptFoe(Player player, int stageNum) {
         BoardManager.DrawCards(player);
+        BoardManager.DisplayStageButton(players);
         BoardManager.SetInteractionText("QUEST STAGE " + (stageNum + 1) + "\nYou are facing a foe. You may place any number of cards, or drop out.");
 		Action action1 = () => {
             Debug.Log("Did not dropout");

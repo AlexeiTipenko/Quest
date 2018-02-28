@@ -10,6 +10,7 @@ public class BoardManager : MonoBehaviour
     private static GameObject coverInteractionText = null;
     private static GameObject coverInteractionButton = null;
     private static GameObject coverInteractionButtonText = null;
+    private static GameObject playAreaCanvas = null;
     private static Player previousPlayer = null;
     private static bool isFreshTurn = true;
 
@@ -17,6 +18,7 @@ public class BoardManager : MonoBehaviour
     {
 		Logger.getInstance().info("Board manager started");
         print("Board manager started");
+
     }
 
     // Update is called once per frame
@@ -320,6 +322,14 @@ public class BoardManager : MonoBehaviour
         }
     }
 
+    public static void DestroyPlayAreaCanvasCards() {
+        GameObject[] cardObjs = GameObject.FindGameObjectsWithTag("CurrentPlayAreaCards");
+        foreach (GameObject gameObj in cardObjs)
+        {
+            Destroy(gameObj);
+        }
+    }
+
     public static void DrawCardInPlay()
     {
         DestroyCardInPlay();
@@ -465,5 +475,56 @@ public class BoardManager : MonoBehaviour
             position += 150;
         }
 
+    }
+
+    public static void DisplayStageButton(List<Player> players) {
+        GameObject CanvasArea = GameObject.Find("Canvas/TabletopImage");
+        GameObject ViewButton = Instantiate(Resources.Load("Reveal", typeof(GameObject))) as GameObject;
+        ViewButton.name = "Reveal";
+
+        ViewButton.transform.SetParent(CanvasArea.transform, false);
+
+        ViewButton.GetComponent<Button>().onClick.AddListener(delegate {
+            DisplayStageCards(players);
+        });
+    }
+
+    public static void DisplayStageCards(List<Player> players) {
+
+        Debug.Log("Trying to display new");
+        HideStageCards();
+
+        playAreaCanvas.SetActive(true);
+
+        for (int i = 0; i < 4; i++) {
+            GameObject playArea = GameObject.Find("playAreaCanvas/Player" + i + "Area/CardInPlayArea");
+            GameObject playAreaNames = GameObject.Find("playAreaCanvas/Player" + i + "Area");
+            Text[] texts = playAreaNames.transform.GetComponentsInChildren<Text>();
+            texts[0].text = "Player: " + players[i].getName();
+
+
+            foreach (Card card in players[i].getPlayArea().getCards())
+            {
+                GameObject instance = Instantiate(Resources.Load("NoDragPlayArea", typeof(GameObject))) as GameObject;
+                instance.name = card.getCardName();
+                Image cardImg = instance.GetComponent<Image>();
+                cardImg.sprite = Resources.Load<Sprite>("cards/" + card.cardImageName);
+                instance.tag = "CurrentPlayAreaCards";
+                instance.transform.SetParent(playArea.transform, false);
+            }
+        }
+
+        GameObject ExitButton = GameObject.Find("playAreaCanvas/Hide");
+        ExitButton.GetComponent<Button>().onClick.AddListener(new UnityAction(HideStageCards));
+    }
+
+    public static void HideStageCards() {
+        Debug.Log("Hiding");
+        DestroyPlayAreaCanvasCards();
+        if (playAreaCanvas == null)
+        {
+            playAreaCanvas = GameObject.Find("playAreaCanvas");
+        }
+        playAreaCanvas.SetActive(false);
     }
 }
