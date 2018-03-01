@@ -146,7 +146,7 @@ public class Strategy2 : Strategy
         Debug.Log("Stage card type is Foe");
         Quest quest = (Quest)board.getCardInPlay();
         List<Card> cards = strategyOwner.getHand();
-        List<Card> sortedList = SortCardsForQuestParticipation(cards);
+        List<Card> sortedList = SortBattlePointsCards(cards);
         List<Card> participationList = new List<Card>();
 
         if (stage.getStageNum() == quest.getNumStages() - 1) {
@@ -218,7 +218,7 @@ public class Strategy2 : Strategy
     bool IncrementableCardsOverEachStage() {
         Quest quest = (Quest)board.getCardInPlay();
         List<Card> cards = strategyOwner.getHand();
-        List<Card> sortedList = SortCardsForQuestParticipation(cards);
+        List<Card> sortedList = SortBattlePointsCards(cards);
         List<Card> participationList = new List<Card>();
 
         int previousBattlePoints = 0;
@@ -259,7 +259,7 @@ public class Strategy2 : Strategy
         return true;
     }
 
-    List<Card> SortCardsForQuestParticipation(List<Card> cards) {
+    List<Card> SortBattlePointsCards(List<Card> cards) {
         Amour amour = null;
         List<Ally> allies = new List<Ally>();
         List<Weapon> weapons = new List<Weapon>();
