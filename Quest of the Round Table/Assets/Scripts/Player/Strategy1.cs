@@ -16,9 +16,9 @@ public class Strategy1 : Strategy
         throw new System.NotImplementedException();
     }
 
-    public override void DoIParticipateInTournament()
+    public override bool DoIParticipateInTournament()
     {
-        throw new System.NotImplementedException();
+        return false;
     }
 
     public override bool DoISponsorAQuest()
@@ -61,6 +61,10 @@ public class Strategy1 : Strategy
 
     protected override void PlayTestStage(Stage stage)
     {
+        throw new System.NotImplementedException();
+    }
+
+    public override List<Card> ParticipateTournament() {
         throw new System.NotImplementedException();
     }
 }

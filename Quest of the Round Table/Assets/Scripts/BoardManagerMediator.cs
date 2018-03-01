@@ -330,7 +330,7 @@ public class BoardManagerMediator
         };
         BoardManager.SetInteractionButtons("Accept", "Decline", action1, action2);
         Debug.Log("Prompting " + player.getName() + " to enter tournament.");
-        Logger.getInstance().info("Prompted " + player.getName() + " to enter tournament.");
+        Logger.getInstance().info("Prompted " + player.getName() + " to enter tournament.");  
     }
 
 

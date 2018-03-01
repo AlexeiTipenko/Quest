@@ -25,9 +25,9 @@ public class Strategy2 : Strategy
         return false;
     }
 
-    public override void DoIParticipateInTournament()
+    public override bool DoIParticipateInTournament()
     {
-        throw new System.NotImplementedException();
+        return true;
     }
 
     public override bool DoISponsorAQuest()
@@ -322,10 +322,82 @@ public class Strategy2 : Strategy
         {
             sortedList.Add(weapon);
         }
-        Debug.Log("Sorted valid cards in hand for use in quest:");
+        Debug.Log("Sorted valid cards in hand:");
         foreach (Card card in sortedList) {
             Debug.Log(card.getCardName());
         }
         return sortedList;
     }
+
+    public override List<Card> ParticipateTournament() {
+        Debug.Log("AI is preparing for tournament");
+        List<Card> Hand = strategyOwner.getHand();
+        List<Card> PlayedList = new List<Card>();
+        List<Card> Sorted = new List<Card>();
+        Sorted = SortBattlePointsCards(Hand);
+        int TotalBattlePoints = 0;
+
+        while(Sorted.Count > 0) {
+            Card tempCard = GetHighestCard(Sorted);
+            if (tempCard == null)
+            {
+                break;
+            }
+            else if (TotalBattlePoints >= 50) {
+                break;
+            }
+            if (!PlayedList.Contains(tempCard))
+            {
+                Debug.Log("Adding " + tempCard.getCardName() + " to AI");
+                PlayedList.Add(tempCard);
+                if(tempCard.GetType() == typeof(Amour) ){
+                    TotalBattlePoints += ((Amour)tempCard).getBattlePoints();
+                }
+                else if (tempCard.GetType().IsSubclassOf(typeof(Ally)))
+                {
+                    TotalBattlePoints += ((Ally)tempCard).getBattlePoints();
+                }
+                else {
+                    TotalBattlePoints += ((Weapon)tempCard).getBattlePoints();
+                }
+            }
+            Sorted.Remove(tempCard);
+        }
+
+        foreach(Card card in PlayedList) {
+            Debug.Log("Cards AI will play is: " + card.getCardName());
+        }
+        return PlayedList;
+    }
+
+    Card GetHighestCard(List<Card> Sorted) {
+        int HighestBattlePoint = 0;
+        Card currentCard = null;
+
+        foreach(Card card in Sorted) {
+            if(card.GetType() == typeof(Amour)) {
+                if(currentCard == null || HighestBattlePoint < ((Amour)card).getBattlePoints() ){
+                    currentCard = card;
+                    HighestBattlePoint = ((Amour)card).getBattlePoints();
+                }
+            }
+            else if (card.GetType().IsSubclassOf(typeof(Ally))) {
+                if (currentCard == null || HighestBattlePoint < ((Ally)card).getBattlePoints())
+                {
+                    currentCard = card;
+                    HighestBattlePoint = ((Ally)card).getBattlePoints();
+                }
+            }
+            else {
+                if (currentCard == null || HighestBattlePoint < ((Weapon)card).getBattlePoints())
+                {
+                    currentCard = card;
+                    HighestBattlePoint = ((Weapon)card).getBattlePoints();
+                }
+            }
+        }
+        return currentCard;
+    }
+
+
 }
