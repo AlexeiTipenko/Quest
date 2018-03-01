@@ -71,9 +71,8 @@ public class Stage {
             }
             originalPlayer = playerToPrompt;
             Debug.Log("Current player is: " + playerToPrompt.getName());
-            board.PromptFoe (playerToPrompt, stageNum);
+            PromptFoe();
 		} else {
-			//TODO: reveal visually;
 			Logger.getInstance ().trace ("Stage card is NOT subclass type of foe");
 			currentBid = ((Test)stageCard).getMinBidValue();
 			Debug.Log ("Current bid is: " + currentBid);
@@ -82,11 +81,20 @@ public class Stage {
 		}
 	}
 
+    public void PromptFoe() {
+        if (playerToPrompt.GetType() == typeof(AIPlayer)) {
+            ((AIPlayer)playerToPrompt).GetStrategy().PlayQuestStage(this);
+        }
+        else {
+            board.PromptFoe(playerToPrompt, stageNum);
+        }
+    }
 
-    public void promptFoeResponse(bool dropOut) {
+
+    public void PromptFoeResponse(bool dropOut) {
         if (!dropOut) {
             playerToPrompt = quest.getNextPlayer(playerToPrompt);
-            ContinueQuest(playerToPrompt);
+            ContinueQuest();
         }
         else {
             Debug.Log("Dropped out");
@@ -99,23 +107,20 @@ public class Stage {
             quest.removeParticipatingPlayer(temp);
             Debug.Log("New total participant: " + quest.getPlayers().Count);
             Debug.Log("Next player: " + playerToPrompt.getName());
-            ContinueQuest(playerToPrompt);
+            ContinueQuest();
         }
 	}
 
 
-    public void ContinueQuest(Player currPlayer){
+    public void ContinueQuest(){
         if (quest.getPlayers().Count < 1)
         {
             Debug.Log("No quest participants left");
             quest.PlayStage();
         }
         else{
-            Debug.Log("Original player: " + originalPlayer.getName());
-            Debug.Log("Next player: " + currPlayer.getName());
-            if (currPlayer != originalPlayer) {
-                Debug.Log("Prompting player");
-                board.PromptFoe(currPlayer, stageNum);
+            if (playerToPrompt != originalPlayer) {
+                PromptFoe();
             }
             else {
                 Debug.Log("All players have been prompted");

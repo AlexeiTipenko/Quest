@@ -4,6 +4,8 @@ using System.Collections.Generic;
 
 public class Strategy2 : Strategy
 {
+    int previousStageBattlePoints = 0;
+
     public Strategy2() : base (40, 25) {
         
     }
@@ -15,7 +17,12 @@ public class Strategy2 : Strategy
 
     public override bool DoIParticipateInQuest()
     {
-        return (IncrementableCardsOverEachStage() && SufficientDiscardableCards());
+        if (IncrementableCardsOverEachStage() && SufficientDiscardableCards()) {
+            Debug.Log(strategyOwner.getName() + " has opted to participate in this quest.");
+            return true;
+        }
+        Debug.Log(strategyOwner.getName() + " has opted to not participate in this quest.");
+        return false;
     }
 
     public override bool DoIParticipateInTournament()
@@ -33,10 +40,14 @@ public class Strategy2 : Strategy
         throw new System.NotImplementedException();
     }
 
-    public override void ParticipateInQuest()
+    public override void PlayQuestStage(Stage stage)
     {
-        //throw new NotImplementedException();
-        Debug.Log(strategyOwner.getName() + " is participating in quest.");
+        Debug.Log(strategyOwner.getName() + " is playing quest stage " + stage.getStageNum());
+        if (stage.getStageCard().GetType().IsSubclassOf(typeof(Test))) {
+            PlayQuestStage(stage);
+        } else {
+            PlayFoeStage(stage);
+        }
     }
 
     public override void SponsorQuest()
@@ -106,6 +117,90 @@ public class Strategy2 : Strategy
         quest.SetupQuestComplete(stages);
     }
 
+    protected override bool CanPlayCardForStage(Card card, List<Card> participationList)
+    {
+        if (card.GetType() == typeof(Amour)) {
+            foreach (Card participationCard in participationList) {
+                if (participationCard.GetType() == typeof(Amour)) {
+                    return false;
+                }
+            }
+            foreach (Card playAreaCard in strategyOwner.getPlayArea().getCards()) {
+                if (playAreaCard.GetType() == typeof(Amour)) {
+                    return false;
+                }
+            }
+        }
+        else if (card.GetType().IsSubclassOf(typeof(Weapon))) {
+            foreach (Card participationCard in participationList) {
+                if (participationCard.GetType() == card.GetType()) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
+    protected override void PlayFoeStage(Stage stage)
+    {
+        Debug.Log("Stage card type is Foe");
+        Quest quest = (Quest)board.getCardInPlay();
+        List<Card> cards = strategyOwner.getHand();
+        List<Card> sortedList = SortBattlePointsCards(cards);
+        List<Card> participationList = new List<Card>();
+
+        if (stage.getStageNum() == quest.getNumStages() - 1) {
+            Debug.Log("Final stage! UNLIMITED POWAAAAAAAAAAAAAAAAR");
+            foreach (Card card in sortedList) {
+                Debug.Log("Checking " + strategyOwner.getName() + "'s card for eligibility: " + card.getCardName());
+                if (CanPlayCardForStage(card, participationList)) {
+                    Debug.Log(strategyOwner.getName() + " can play card, adding to participation list for stage");
+                    participationList.Add(card);
+                }
+            }
+        } else {
+            Debug.Log("Not the final stage. Play in increments of 10");
+            int currentBattlePoints = strategyOwner.getPlayArea().getBattlePoints();
+            Debug.Log("Minimum battle points to pass: " + (previousStageBattlePoints + 10));
+            foreach (Card card in sortedList) {
+                Debug.Log("Checking " + strategyOwner.getName() + "'s card for eligibility: " + card.getCardName());
+                if (CanPlayCardForStage(card, participationList)) {
+                    Debug.Log(strategyOwner.getName() + " can play card, adding to participation list for stage");
+                    participationList.Add(card);
+                    if (card.GetType() == typeof(Amour)) {
+                        currentBattlePoints += ((Amour)card).getBattlePoints();
+                    } else if (card.GetType().IsSubclassOf(typeof(Ally))) {
+                        currentBattlePoints += ((Ally)card).getBattlePoints();
+                    } else {
+                        currentBattlePoints += ((Weapon)card).getBattlePoints();
+                    }
+                    Debug.Log(strategyOwner.getName() + "'s current battle points: " + currentBattlePoints);
+                    if (currentBattlePoints >= previousStageBattlePoints + 10) {
+                        Debug.Log("Sufficient battle points acquired, moving on with stage");
+                        break;
+                    }
+                }
+            }
+            if (currentBattlePoints < previousStageBattlePoints + 10) {
+                Debug.Log("Whoopsies, somehow the participation condition was violated. Dropping out of quest.");
+                stage.PromptFoeResponse(true);
+            }
+            previousStageBattlePoints = currentBattlePoints;
+        }
+        foreach (Card card in participationList) {
+            Debug.Log("Moving card from " + strategyOwner.getName() + "'s hand to play area: " + card.getCardName());
+            strategyOwner.getPlayArea().addCard(card);
+            strategyOwner.RemoveCard(card);
+        }
+        stage.PromptFoeResponse(false);
+    }
+
+    protected override void PlayTestStage(Stage stage)
+    {
+        Debug.Log("Stage card type is Test");
+        throw new NotImplementedException();
+    }
+
     Foe GetWeakestFoe(List<Card> cards, Card previousStageCard) {
         Foe weakestFoe = null;
         foreach (Card card in cards) {
@@ -123,7 +218,7 @@ public class Strategy2 : Strategy
     bool IncrementableCardsOverEachStage() {
         Quest quest = (Quest)board.getCardInPlay();
         List<Card> cards = strategyOwner.getHand();
-        List<Card> sortedList = SortCardsForQuestParticipation(cards);
+        List<Card> sortedList = SortBattlePointsCards(cards);
         List<Card> participationList = new List<Card>();
 
         int previousBattlePoints = 0;
@@ -164,7 +259,7 @@ public class Strategy2 : Strategy
         return true;
     }
 
-    List<Card> SortCardsForQuestParticipation(List<Card> cards) {
+    List<Card> SortBattlePointsCards(List<Card> cards) {
         Amour amour = null;
         List<Ally> allies = new List<Ally>();
         List<Weapon> weapons = new List<Weapon>();
