@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
+using System;
 
 public abstract class Strategy {
     
@@ -172,4 +173,61 @@ public abstract class Strategy {
         Debug.Log(strategyOwner.getName() + " has " + discardableCards + " discardable cards.");
         return (discardableCards > 1);
     }
+		
+	public void discardLowestWeaponCard() {
+		List<Card> cardsInHand = strategyOwner.getHand ();
+
+		List<Weapon> weapons = new List<Weapon> ();
+
+		foreach (Card card in cardsInHand) {
+			if (card.GetType().IsSubclassOf(typeof(Weapon))) {
+				weapons.Add ((Weapon)card);
+			}
+		}
+
+		if (weapons.Count == 0) {
+			Debug.LogError ("There are 0 of the type of the weapons that was passed in");
+			Logger.getInstance ().error ("There are 0 of the type of the weapons that was passed in");
+			return;
+		}
+
+		Weapon lowestPointWeapon = weapons [0];
+
+		for (int i = 1; i < weapons.Count; i++) {
+			if (weapons[i].getBattlePoints() < lowestPointWeapon.getBattlePoints()) {
+				lowestPointWeapon = weapons [i];
+			}
+		}
+
+		strategyOwner.RemoveCard (lowestPointWeapon);
+	}
+
+	public void discardLowestFoeCard() {
+		List<Card> cardsInHand = strategyOwner.getHand ();
+
+		List<Foe> foes = new List<Foe> ();
+
+		foreach (Card card in cardsInHand) {
+			if (card.GetType().IsSubclassOf(typeof(Foe))) {
+				foes.Add ((Foe)card);
+			}
+		}
+
+		if (foes.Count == 0) {
+			Debug.LogError ("There are 0 of the type of the foes that were passed in");
+			Logger.getInstance ().error ("There are 0 of the type of the foes that were passed in");
+			return;
+		}
+
+		Foe lowestPointFoe = foes [0];
+
+		for (int i = 1; i < foes.Count; i++) {
+			if (foes[i].getBattlePoints() < lowestPointFoe.getBattlePoints()) {
+				lowestPointFoe = foes [i];
+			}
+		}
+
+		strategyOwner.RemoveCard (lowestPointFoe);
+	}
+
 }

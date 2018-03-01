@@ -329,3 +329,5 @@ public class Strategy2 : Strategy
         return sortedList;
     }
 }
+
+//Don't prompt events for AI players

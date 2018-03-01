@@ -50,6 +50,11 @@ public class ChivalrousDeed : Event {
 		Logger.getInstance ().info ("Awarded 3 shields to lowest ranked + lowest shields players, finishing behaviour");
 
         Player currentPlayer = BoardManagerMediator.getInstance().getCurrentPlayer();
-        BoardManagerMediator.getInstance().NextPlayerTurn(currentPlayer);
+
+		if (currentPlayer.GetType () == typeof(AIPlayer)) {
+			BoardManagerMediator.getInstance ().nextTurn ();
+		} else {
+			BoardManagerMediator.getInstance ().NextPlayerTurn (currentPlayer);
+		}
 	}
 }

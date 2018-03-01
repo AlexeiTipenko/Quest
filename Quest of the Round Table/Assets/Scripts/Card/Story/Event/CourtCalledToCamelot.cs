@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class CourtCalledToCamelot : Event {
-	
+
 	public static int frequency = 2;
 
 	public CourtCalledToCamelot () : base ("Court Called to Camelot") { }
@@ -21,7 +21,13 @@ public class CourtCalledToCamelot : Event {
 		}
 		Logger.getInstance ().info ("Finishing behaviour");
 
-        Player currentPlayer = BoardManagerMediator.getInstance().getCurrentPlayer();
-        BoardManagerMediator.getInstance().NextPlayerTurn(currentPlayer);
+		Player currentPlayer = BoardManagerMediator.getInstance().getCurrentPlayer();
+		//             if (playerToPrompt.GetType() == typeof(AIPlayer)) {
+
+		if (currentPlayer.GetType () == typeof(AIPlayer)) {
+			BoardManagerMediator.getInstance ().nextTurn ();
+		} else {
+			BoardManagerMediator.getInstance ().NextPlayerTurn (currentPlayer);
+		}
 	}
 }

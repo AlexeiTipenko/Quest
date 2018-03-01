@@ -46,11 +46,18 @@ public class KingsCallToArms : Event {
 
 		if (hasWeapons ()) {
 			Logger.getInstance ().debug ("Player to discard weapon");
-			BoardManagerMediator.getInstance().PromptToDiscardWeapon (currentPlayer);
+			if (currentPlayer.GetType () == typeof(AIPlayer)) {
+				((AIPlayer)currentPlayer).GetStrategy ().discardLowestWeaponCard ();
+			} else {
+				BoardManagerMediator.getInstance ().PromptToDiscardWeapon (currentPlayer);
+			}
 		} 
 		else if (numFoeCards > 0) {
 			Logger.getInstance ().debug ("Player to discard foes.");
-			BoardManagerMediator.getInstance().PromptToDiscardFoes (currentPlayer, numFoeCards);
+			if (currentPlayer.GetType () == typeof(AIPlayer)) {
+				BoardManagerMediator.getInstance ().PromptToDiscardFoes (currentPlayer, numFoeCards);
+			}
+
 		}
 		else {
 			//call same function on next player
