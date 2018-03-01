@@ -17,21 +17,26 @@ public class Strategy2 : AbstractAI
 
     public override bool DoIParticipateInQuest()
     {
+        Logger.getInstance().info(strategyOwner.getName() + " is deciding to enter the quest.");
         if (IncrementableCardsOverEachStage() && SufficientDiscardableCards()) {
+            Logger.getInstance().info(strategyOwner.getName() + " has opted to participate in this quest.");
             Debug.Log(strategyOwner.getName() + " has opted to participate in this quest.");
             return true;
         }
         Debug.Log(strategyOwner.getName() + " has opted to not participate in this quest.");
+        Logger.getInstance().info(strategyOwner.getName() + " has opted to not participate in this quest.");
         return false;
     }
 
     public override bool DoIParticipateInTournament()
     {
+        Logger.getInstance().info(strategyOwner.getName() + " has decided to enter the tournament.");
         return true;
     }
 
     public override bool DoISponsorAQuest()
     {
+        Logger.getInstance().info(strategyOwner.getName() + " deciding to sponsor quest");
         return (!SomeoneElseCanWinOrEvolveWithQuest() && SufficientCardsToSponsorQuest());
     }
 
@@ -42,6 +47,7 @@ public class Strategy2 : AbstractAI
 
     public override void PlayQuestStage(Stage stage)
     {
+        Logger.getInstance().info(strategyOwner.getName() + " is playing quest stage " + stage.getStageNum());
         Debug.Log(strategyOwner.getName() + " is playing quest stage " + stage.getStageNum());
         if (stage.getStageCard().GetType().IsSubclassOf(typeof(Test))) {
             PlayQuestStage(stage);
@@ -52,6 +58,7 @@ public class Strategy2 : AbstractAI
 
     public override void SponsorQuest()
     {
+        Logger.getInstance().info(strategyOwner.getName() + " is preparing the quest");
         Debug.Log(strategyOwner.getName() + " is preparing to sponsor the quest.");
         List<Stage> stages = new List<Stage>();
         Quest quest = (Quest)board.getCardInPlay();
@@ -71,16 +78,21 @@ public class Strategy2 : AbstractAI
                 }
             }
         }
+        Logger.getInstance().info("Final stage foe: " + stageCard.getCardName());
         Debug.Log("Final stage foe: " + stageCard.getCardName());
         while (((Foe)stageCard).getBattlePoints() + GetTotalBattlePoints(weapons) < minimumFinalStageBattlePoints) {
             weapons.Add(GetBestUniqueWeapon(cards, weapons));
         }
+
+        Logger.getInstance().info("Final stage weapons: " + stageCard.getCardName());
         Debug.Log("Final stage weapons:");
         foreach (Weapon weapon in weapons) {
+            Logger.getInstance().info(weapon.getCardName());
             Debug.Log(weapon.getCardName());
         }
         finalStage = InitializeStage(stageCard, weapons, quest.getNumStages() - 1);
         initializedStages++;
+        Logger.getInstance().info("Initialized stages " + initializedStages);
         Debug.Log("Initialized stages: " + initializedStages);
 
         if (ContainsTest(cards)) {
@@ -101,6 +113,7 @@ public class Strategy2 : AbstractAI
         while (initializedStages < quest.getNumStages()) {
             stageCard = GetWeakestFoe(cards, previousStageCard);
             int stageNum = initializedStages - (numTestStages + 1);
+            Logger.getInstance().info("Stage " + stageNum + ": stage card is " + stageCard.getCardName());
             Debug.Log("Stage " + stageNum + ": stage card is " + stageCard.getCardName());
             otherStages.Add(InitializeStage(stageCard, null, stageNum));
             initializedStages++;
@@ -330,6 +343,7 @@ public class Strategy2 : AbstractAI
     }
 
     public override List<Card> ParticipateTournament() {
+        Logger.getInstance().info(strategyOwner.getName() + " is preparing for tournament");
         Debug.Log("AI is preparing for tournament");
         List<Card> Hand = strategyOwner.getHand();
         List<Card> PlayedList = new List<Card>();

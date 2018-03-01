@@ -12,6 +12,8 @@ public class ButtonManager : MonoBehaviour
 
 	public static List<Player> playerList = new List<Player> ();
 
+    public static string scenario = null;
+
 	public void SwitchScene(string playerSelection){
 		SceneManager.LoadScene(playerSelection);
 	}
@@ -47,6 +49,79 @@ public class ButtonManager : MonoBehaviour
             SceneManager.LoadScene(playerSelection);
         }
 	}
+
+    public void RiggedScenario1(string scene) {
+        scenario = "scenario1";
+        bool validSetup = false;
+        playerList = new List<Player>();
+        for (int i = 0; i < 4; i++)
+        {
+            GameObject inputFieldGo = GameObject.Find("Scene Elements/Canvas/Player" + i);
+            InputField inputFieldCo = inputFieldGo.GetComponent<InputField>();
+            names[i] = inputFieldCo.text;
+            if (names[i] != "")
+            {
+                GameObject dropDownGo = GameObject.Find("Scene Elements/Canvas/Dropdown" + i);
+                Dropdown dropDownCo = dropDownGo.GetComponent<Dropdown>();
+                Player player;
+                if (dropDownCo.options[dropDownCo.value].text == "AI 1")
+                {
+                    player = new AIPlayer(names[i], new Strategy1());
+                }
+                else if (dropDownCo.options[dropDownCo.value].text == "AI 2")
+                {
+                    player = new AIPlayer(names[i], new Strategy2());
+                }
+                else
+                {
+                    player = new HumanPlayer(names[i]);
+                    validSetup = true;
+                }
+                playerList.Add(player);
+            }
+        }
+        if (validSetup && playerList.Count > 1)
+        {
+            SceneManager.LoadScene(scene);
+        }
+    }
+
+    public void RiggedScenario2(string scene)
+    {
+        scenario = "scenario2";
+        bool validSetup = false;
+        playerList = new List<Player>();
+        for (int i = 0; i < 4; i++)
+        {
+            GameObject inputFieldGo = GameObject.Find("Scene Elements/Canvas/Player" + i);
+            InputField inputFieldCo = inputFieldGo.GetComponent<InputField>();
+            names[i] = inputFieldCo.text;
+            if (names[i] != "")
+            {
+                GameObject dropDownGo = GameObject.Find("Scene Elements/Canvas/Dropdown" + i);
+                Dropdown dropDownCo = dropDownGo.GetComponent<Dropdown>();
+                Player player;
+                if (dropDownCo.options[dropDownCo.value].text == "AI 1")
+                {
+                    player = new AIPlayer(names[i], new Strategy1());
+                }
+                else if (dropDownCo.options[dropDownCo.value].text == "AI 2")
+                {
+                    player = new AIPlayer(names[i], new Strategy2());
+                }
+                else
+                {
+                    player = new HumanPlayer(names[i]);
+                    validSetup = true;
+                }
+                playerList.Add(player);
+            }
+        }
+        if (validSetup && playerList.Count > 1)
+        {
+            SceneManager.LoadScene(scene);
+        }
+    }
 
 	public void ExitGame(){
 		Application.Quit();
