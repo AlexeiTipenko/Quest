@@ -103,6 +103,7 @@ public class BoardManager : MonoBehaviour
         DrawPlayArea(player);
         DestroyPlayerInfo();
         DisplayPlayers();
+        DisplayStageButton(BoardManagerMediator.getInstance().getPlayers());
         previousPlayer = player;
         Debug.Log(player.getName() + "'s cards drawn to GUI");
         Logger.getInstance().info(player.getName() + "'s cards drawn to GUI");
