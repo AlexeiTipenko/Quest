@@ -2,7 +2,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-public class Strategy2 : Strategy
+public class Strategy2 : AbstractAI
 {
     int previousStageBattlePoints = 0;
 

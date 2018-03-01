@@ -1,13 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 
-public abstract class Strategy {
+public abstract class AbstractAI {
     
     protected readonly BoardManagerMediator board;
     protected AIPlayer strategyOwner;
     protected int minimumFinalStageBattlePoints, discardableCardsThreshold;
 
-    protected Strategy(int minimumFinalStageBattlePoints, int discardableCardsThreshold) {
+    protected AbstractAI(int minimumFinalStageBattlePoints, int discardableCardsThreshold) {
         board = BoardManagerMediator.getInstance();
         this.minimumFinalStageBattlePoints = minimumFinalStageBattlePoints;
         this.discardableCardsThreshold = discardableCardsThreshold;

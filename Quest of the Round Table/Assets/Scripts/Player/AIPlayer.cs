@@ -1,17 +1,13 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class AIPlayer : Player {
+﻿public class AIPlayer : Player {
     
-    readonly Strategy strategy;
+    readonly AbstractAI strategy;
 
-    public AIPlayer(string name, Strategy strategy) : base(name) {
+    public AIPlayer(string name, AbstractAI strategy) : base(name) {
         this.strategy = strategy;
         strategy.SetStrategyOwner(this);
     }
 
-    public Strategy GetStrategy() {
+    public AbstractAI GetStrategy() {
         return strategy;
     }
 
