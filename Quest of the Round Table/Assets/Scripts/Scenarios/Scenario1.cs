@@ -52,13 +52,19 @@ public class Scenario1 {
 				players[playerNum] = adventureDeck.drawCardByName (cardStr, players [playerNum]);
 			}
 		}
-
+			
 		BoardManagerMediator.getInstance ().setPlayers (players);
 		BoardManagerMediator.getInstance ().setAdventureDeck (adventureDeck);
 
 		//deal the rest of the cards so each player has 12 cards
-		foreach (Player player in players) {
-			BoardManagerMediator.getInstance().dealCardsToPlayer(player, (12 - player.getHand().Count));
+		for (int i = 0; i < players.Count; i++) {
+			BoardManagerMediator.getInstance().dealCardsToPlayer(players[i], (12 - players[i].getHand().Count));
+			Logger.getInstance ().debug (players[i].getName() + " has the following cards: " );
+			//Logger.getInstance ().debug (players[i].getName() + " has cards " + BoardManagerMediator.getInstance ().getPlayers () [i].getHand ().ToString());
+			foreach (Card card in BoardManagerMediator.getInstance ().getPlayers () [i].getHand ()) {
+				Logger.getInstance ().trace (card.getCardName ());
+			}
+//			}
 		}
 
 		//reinitialize story deck
@@ -76,6 +82,7 @@ public class Scenario1 {
 		storyDeck.moveCardToIndex ("ChivalrousDeed", 1);
 
 		BoardManagerMediator.getInstance ().setStoryDeck (storyDeck);
+		Logger.getInstance ().debug ("Moved ProsperityThroughoutTheRealm and ChivalrousDeed to the top of the Story Deck");
 
 		BoardManager.DrawCards (players[0]);
 //		BoardManager.DestroyPlayerInfo();

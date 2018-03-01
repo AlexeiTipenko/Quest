@@ -215,7 +215,7 @@ public class BoardManagerMediator
 			Debug.Log ("Scenario 1 is setting up: Players' cards and deck are updating to meet scenario.");
 			Scenario1.getInstance ().setupScenario (adventureDeck, storyDeck);
 			Logger.getInstance ().debug ("Done setting up.");
-			Debug.Log ("Done setting up.");
+			Debug.Log ("Done setting up scenario 1.");
 			break;
 		case "scenario2":
 			if (players.Count != 4) {
@@ -227,7 +227,7 @@ public class BoardManagerMediator
 			Debug.Log ("Scenario 2 is setting up: Players' cards and deck are updating to meet scenario.");
 			Scenario1.getInstance ().setupScenario (adventureDeck, storyDeck);
 			Logger.getInstance ().debug ("Done setting up.");
-			Debug.Log ("Done setting up.");
+			Debug.Log ("Done setting up scenario 1.");
 			break;
 
                 //TODO: Fix this! Event cards should not be able to be dealt to the player's hand

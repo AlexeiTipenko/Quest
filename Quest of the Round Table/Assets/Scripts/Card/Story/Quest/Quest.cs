@@ -37,7 +37,7 @@ public abstract class Quest : Story {
     }
 
 	public override void startBehaviour () {
-        Logger.getInstance().info ("Started Quest behaviour");
+        Logger.getInstance().info ("Started Quest");
 
 		sponsor = owner;
 		totalCardsCounter = 0;
