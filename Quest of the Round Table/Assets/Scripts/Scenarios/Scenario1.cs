@@ -81,10 +81,17 @@ public class Scenario1 {
 		storyDeck.moveCardToIndex ("ProsperityThroughoutTheRealm", 0);
 		storyDeck.moveCardToIndex ("ChivalrousDeed", 1);
 
+		BoardManager.DestroyStages ();
+
+		if (!BoardManager.QuestPanelsExist()) {
+			BoardManager.SetupQuestPanels(((Quest) BoardManagerMediator.getInstance ().getCardInPlay()).getNumStages());
+		}
+
 		BoardManagerMediator.getInstance ().setStoryDeck (storyDeck);
 		Logger.getInstance ().debug ("Moved ProsperityThroughoutTheRealm and ChivalrousDeed to the top of the Story Deck");
 
 		BoardManager.DrawCards (players[0]);
+
 //		BoardManager.DestroyPlayerInfo();
 //		BoardManager.DisplayPlayers(players);
 		BoardManagerMediator.getInstance ().getCardInPlay().startBehaviour();
