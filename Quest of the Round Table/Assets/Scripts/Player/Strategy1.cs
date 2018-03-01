@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-public class Strategy1 : Strategy
+public class Strategy1 : AbstractAI
 {
     public Strategy1() : base (50, 20) {
         
