@@ -14,17 +14,10 @@ public abstract class Foe : Adventure {
 
 	public override int getBattlePoints() {
 		List<Type> dominantFoes = ((Quest)BoardManagerMediator.getInstance ().getCardInPlay ()).getDominantFoes ();
-        Debug.Log("Empowered types for current quest: ");
-        foreach (Type foe in dominantFoes) {
-            Debug.Log(foe);
-        }
-        Debug.Log("This foe: " + this.GetType());
         if (dominantFoes.Contains (Type.GetType(cardImageName, true))) {
-            Debug.Log(cardName + " battle points returned: " + empoweredBattlePoints);
 			return empoweredBattlePoints;
 
 		}
-    Debug.Log(cardName + " battle points returned: " + battlePoints);
 		return battlePoints;
 	}
 
