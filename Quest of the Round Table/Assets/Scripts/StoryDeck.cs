@@ -8,7 +8,7 @@ public class StoryDeck : Deck {
 		initStoryDeck ();
 	}
 
-	private void initStoryDeck() {
+	public void initStoryDeck() {
 		List<string> newCards = new List<string> ();
 
 		//tournaments
@@ -42,6 +42,28 @@ public class StoryDeck : Deck {
 		instantiateCards (newCards);
 
 		shuffle ();
+	}
+
+	public void moveCardToIndex(string cardName, int index) {
+		int oldIndex = getCardIndexByName (cardName);
+		if (oldIndex == -1) {
+			Debug.LogError ("In moveCardPosition: Card by the name " + cardName + " does not exist in the Story Deck.");
+			Logger.getInstance().error ("In moveCardPosition: Card by the name " + cardName + " does not exist in the Story Deck.");
+		}
+		Card oldCard = cards [oldIndex];
+		Card newCard = oldCard;
+
+		cards.RemoveAt (oldIndex);
+		cards.Insert (index, newCard);
+	}
+
+	public Card getCardByName(string cardName) {
+		for (int i = 0; i < cards.Count; i++) {
+			if (cards [i].cardImageName.Equals (cardName)) {
+				return cards[i];
+			}
+		} 
+		return null;
 	}
 
 	public override string toString() {

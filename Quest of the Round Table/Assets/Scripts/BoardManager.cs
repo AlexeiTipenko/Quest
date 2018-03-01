@@ -45,6 +45,12 @@ public class BoardManager : MonoBehaviour
         {
             BoardManagerMediator.getInstance().cheat("nextPlayer");
         }
+		else if (Input.GetKeyUp("1")) {
+			BoardManagerMediator.getInstance ().cheat ("scenario1");
+		}
+		else if (Input.GetKeyUp("2")) {
+			BoardManagerMediator.getInstance ().cheat ("scenario2");
+		}
     }
 
     public static void SetInteractionText(String text)

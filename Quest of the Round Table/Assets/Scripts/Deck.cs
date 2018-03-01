@@ -8,13 +8,15 @@ public abstract class Deck {
 	private static System.Random rand;
 
 	protected List<Card> cards;
-	protected int size;
+
+    protected List<int> reservedIndices;
 
 	public Deck() {
 		if (rand == null) {
 			rand = new System.Random ();
 		}
 		cards = new List<Card> ();
+        reservedIndices = new List<int>();
 	}
 
 	public Deck(Deck oldDeck) : this () {
@@ -60,15 +62,46 @@ public abstract class Deck {
 		}
 	}
 
+	protected int getCardIndexByName(string cardName) {
+		for (int i = 0; i < cards.Count; i++) {
+			if (cards [i].cardImageName.Equals (cardName)) {
+                if (!reservedIndices.Contains(i)) {
+                    return i;
+                }
+			}
+		}
+		return -1;
+	}
+
+    public void moveCardToIndex(string cardName, int newIndex)
+    {
+        int oldIndex = getCardIndexByName(cardName);
+        if (oldIndex == -1)
+        {
+            Debug.LogError("Card by the name " + cardName + " does not exist in deck.");
+            Logger.getInstance().error("Card by the name " + cardName + " does not exist in deck.");
+        }
+        Card oldCard = cards[newIndex];
+        Card newCard = cards[oldIndex];
+
+        cards[newIndex] = newCard;
+        cards[oldIndex] = oldCard;
+
+        Debug.Log(newCard.getCardName() + " now at position " + newIndex);
+        Debug.Log(oldCard.getCardName() + " now at position " + oldIndex);
+
+        reservedIndices.Add(newIndex);
+    }
+
 	public virtual string toString() {
-		string toString = "Deck: ";
+		string text = "Deck: ";
 		foreach (Card card in cards) {
-			toString += (card.toString () + ", ");
+			text += (card.toString () + ", ");
 		}
 		if (cards.Count > 0) {
-			toString = toString.Substring (0, toString.Length - 2);
+			text = text.Substring (0, text.Length - 2);
 		}
-		return toString;
+		return text;
 	}
 
 }
