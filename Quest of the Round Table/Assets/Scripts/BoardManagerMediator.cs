@@ -30,9 +30,9 @@ public class BoardManagerMediator
         if (ButtonManager.scenario == "scenario1") {
             adventureDeck = (AdventureDeck)Scenario1.getInstance().AdventureDeck();
             storyDeck = (StoryDeck)Scenario1.getInstance().StoryDeck();
-        //} else if (ButtonManager.scenario == "scenario2") {
-            //adventureDeck = (AdventureDeck)Scenario2.getInstance().AdventureDeck();
-            //storyDeck = (StoryDeck)Scenario2.getInstance().StoryDeck();
+        } else if (ButtonManager.scenario == "scenario2") {
+            adventureDeck = (AdventureDeck)Scenario2.getInstance().AdventureDeck();
+            storyDeck = (StoryDeck)Scenario2.getInstance().StoryDeck();
         } else if (ButtonManager.scenario == "scenario3") {
             //TODO: scenario 3 here
         } else {
@@ -217,31 +217,6 @@ public class BoardManagerMediator
 			nextTurn ();
 			Debug.Log ("New player is: " + players [playerTurn].getName ());
 			break;
-		case "scenario1":
-			if (players.Count != 4) {
-				Debug.Log ("There are only " + players.Count + " players in the game; need 4 to start scenario.");
-				Logger.getInstance ().debug ("There are only " + players.Count + " players in the game; need 4 to start scenario.");
-				break;
-			}
-			Logger.getInstance ().debug ("Scenario 1 is setting up: Players' cards and deck are updating to meet scenario.");
-			Debug.Log ("Scenario 1 is setting up: Players' cards and deck are updating to meet scenario.");
-			Scenario1.getInstance ().setupScenario (adventureDeck, storyDeck);
-			Logger.getInstance ().debug ("Done setting up.");
-			Debug.Log ("Done setting up scenario 1.");
-			break;
-		case "scenario2":
-			if (players.Count != 4) {
-				Debug.Log ("There are only " + players.Count + " players in the game; need 4 to start scenario.");
-				Logger.getInstance ().debug ("There are only " + players.Count + " players in the game; need 4 to start scenario.");
-				break;
-			}
-			Logger.getInstance ().debug ("Scenario 2 is setting up: Players' cards and deck are updating to meet scenario.");
-			Debug.Log ("Scenario 2 is setting up: Players' cards and deck are updating to meet scenario.");
-			Scenario1.getInstance ().setupScenario (adventureDeck, storyDeck);
-			Logger.getInstance ().debug ("Done setting up.");
-			Debug.Log ("Done setting up scenario 1.");
-			break;
-
                 //TODO: Fix this! Event cards should not be able to be dealt to the player's hand
                 //case "prosperity":
                 //  Debug.Log ("Drawing Prosperity throughout the kingdom into current players hand");
