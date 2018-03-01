@@ -33,7 +33,7 @@ public abstract class Strategy {
 
     protected abstract bool CanPlayCardForStage(Card card, List<Card> participationList);
 
-    public abstract void ParticipateTournament();
+    public abstract List<Card> ParticipateTournament();
 
     //--------------------------------------------//
     //---------- Non-Abstract Functions ----------//
