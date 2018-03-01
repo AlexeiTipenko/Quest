@@ -25,7 +25,13 @@ public abstract class Strategy {
 
     public abstract void SponsorQuest();
 
-    public abstract void ParticipateInQuest();
+    public abstract void PlayQuestStage(Stage stage);
+
+    protected abstract void PlayTestStage(Stage stage);
+
+    protected abstract void PlayFoeStage(Stage stage);
+
+    protected abstract bool CanPlayCardForStage(Card card, List<Card> participationList);
 
     //--------------------------------------------//
     //---------- Non-Abstract Functions ----------//

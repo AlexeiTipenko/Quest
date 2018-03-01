@@ -1,4 +1,6 @@
-﻿public class Strategy1 : Strategy
+﻿using System.Collections.Generic;
+
+public class Strategy1 : Strategy
 {
     public Strategy1() : base (50, 20) {
         
@@ -37,12 +39,27 @@
         throw new System.NotImplementedException();
     }
 
-    public override void ParticipateInQuest()
+    public override void PlayQuestStage(Stage stage)
     {
         throw new System.NotImplementedException();
     }
 
     public override void SponsorQuest()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    protected override bool CanPlayCardForStage(Card card, List<Card> participationList)
+    {
+        throw new System.NotImplementedException();
+    }
+
+    protected override void PlayFoeStage(Stage stage)
+    {
+        throw new System.NotImplementedException();
+    }
+
+    protected override void PlayTestStage(Stage stage)
     {
         throw new System.NotImplementedException();
     }
