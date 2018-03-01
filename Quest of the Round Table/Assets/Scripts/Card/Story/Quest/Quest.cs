@@ -213,6 +213,9 @@ public abstract class Quest : Story {
 
 	public void PlayStage() {
 		currentStage++;
+        foreach (Player player in board.getPlayers()) {
+            player.getPlayArea().discardWeapons();
+        }
         if (currentStage < numStages && participatingPlayers.Count > 0) {
             getStage(currentStage).prepare();
 		} else {

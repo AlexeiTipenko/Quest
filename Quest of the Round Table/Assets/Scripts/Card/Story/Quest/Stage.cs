@@ -197,7 +197,6 @@ public class Stage {
     public void EvaluateNextPlayerForFoe(bool previousPlayerEliminated)
     {
         Player previousPlayer = playerToPrompt;
-        previousPlayer.getPlayArea().discardWeapons();
         playerToPrompt = quest.getNextPlayer(playerToPrompt);
         if (previousPlayerEliminated)
         {
