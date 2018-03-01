@@ -27,8 +27,18 @@ public class BoardManagerMediator
 
 	public void initGame (List<Player> players) {
 		this.players = players;
-		adventureDeck = new AdventureDeck ();
-		storyDeck = new StoryDeck ();
+        if (ButtonManager.scenario == "scenario1") {
+            adventureDeck = (AdventureDeck)Scenario1.getInstance().AdventureDeck();
+            storyDeck = (StoryDeck)Scenario1.getInstance().StoryDeck();
+        } else if (ButtonManager.scenario == "scenario2") {
+            adventureDeck = (AdventureDeck)Scenario2.getInstance().AdventureDeck();
+            storyDeck = (StoryDeck)Scenario2.getInstance().StoryDeck();
+        } else if (ButtonManager.scenario == "scenario3") {
+            //TODO: scenario 3 here
+        } else {
+            adventureDeck = new AdventureDeck();
+            storyDeck = new StoryDeck();
+        }
 		adventureDiscard = new DiscardDeck ();
 		storyDiscard = new DiscardDeck ();
         Logger.getInstance().info("Card decks created");
