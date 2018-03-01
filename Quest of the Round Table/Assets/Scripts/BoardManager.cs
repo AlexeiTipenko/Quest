@@ -93,6 +93,7 @@ public class BoardManager : MonoBehaviour
     }
 
     public static void DrawCards(Player player) {
+        HideStageCards();
         DestroyCards();
         DrawCover(player);
         DrawHand(player);
@@ -506,6 +507,7 @@ public class BoardManager : MonoBehaviour
 
         playAreaCanvas.SetActive(true);
 
+
         for (int i = 0; i < 4; i++) {
             GameObject playArea = GameObject.Find("playAreaCanvas/Player" + i + "Area/CardInPlayArea");
             GameObject playAreaNames = GameObject.Find("playAreaCanvas/Player" + i + "Area");
@@ -522,6 +524,7 @@ public class BoardManager : MonoBehaviour
                 instance.tag = "CurrentPlayAreaCards";
                 instance.transform.SetParent(playArea.transform, false);
             }
+
         }
 
         GameObject ExitButton = GameObject.Find("playAreaCanvas/Hide");
