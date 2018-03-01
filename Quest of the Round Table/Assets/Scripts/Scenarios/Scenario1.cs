@@ -51,9 +51,9 @@ public class Scenario1 {
     public Deck StoryDeck() {
         storyDeck = new StoryDeck();
 
-        storyDeck.moveCardToIndex("Boar Hunt", 0);
-        storyDeck.moveCardToIndex("Prosperity Throughout The Realm", 1);
-        storyDeck.moveCardToIndex("Chivalrous Deed", 2);
+        storyDeck.moveCardToIndex("BoarHunt", 0);
+        storyDeck.moveCardToIndex("ProsperityThroughoutTheRealm", 1);
+        storyDeck.moveCardToIndex("ChivalrousDeed", 2);
 
         return storyDeck;
     }

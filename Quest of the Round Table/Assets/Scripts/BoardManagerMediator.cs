@@ -30,9 +30,9 @@ public class BoardManagerMediator
         if (ButtonManager.scenario == "scenario1") {
             adventureDeck = (AdventureDeck)Scenario1.getInstance().AdventureDeck();
             storyDeck = (StoryDeck)Scenario1.getInstance().StoryDeck();
-        } else if (ButtonManager.scenario == "scenario2") {
-            adventureDeck = (AdventureDeck)Scenario2.getInstance().AdventureDeck();
-            storyDeck = (StoryDeck)Scenario2.getInstance().StoryDeck();
+        //} else if (ButtonManager.scenario == "scenario2") {
+            //adventureDeck = (AdventureDeck)Scenario2.getInstance().AdventureDeck();
+            //storyDeck = (StoryDeck)Scenario2.getInstance().StoryDeck();
         } else if (ButtonManager.scenario == "scenario3") {
             //TODO: scenario 3 here
         } else {

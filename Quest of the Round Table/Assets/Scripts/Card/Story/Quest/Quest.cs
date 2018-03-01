@@ -199,6 +199,9 @@ public abstract class Quest : Story {
     }
 
     public Stage getCurrentStage() {
+        if (currentStage >= numStages) {
+            return stages[numStages - 1];
+        }
         return stages[currentStage];
     }
 
@@ -206,10 +209,24 @@ public abstract class Quest : Story {
 		if (questAccepted) {
 			Logger.getInstance().debug(playerToPrompt.getName() + " has accepted to participate in the quest");
 			participatingPlayers.Add (playerToPrompt);
-			board.dealCardsToPlayer (playerToPrompt, 1);
-		}
-        playerToPrompt = board.getNextPlayer(playerToPrompt);
-        PromptAcceptQuest();
+            if (playerToPrompt.getHand().Count + 1 > 12) {
+                Action action = () => {
+                    board.TransferFromHandToPlayArea(playerToPrompt);
+                    playerToPrompt.RemoveCardsResponse();
+                    playerToPrompt = board.getNextPlayer(playerToPrompt);
+                    PromptAcceptQuest();
+                };
+                playerToPrompt.giveAction(action);
+                board.dealCardsToPlayer(playerToPrompt, 1);
+            } else {
+                board.dealCardsToPlayer(playerToPrompt, 1);
+                playerToPrompt = board.getNextPlayer(playerToPrompt);
+                PromptAcceptQuest();
+            }
+        } else {
+            playerToPrompt = board.getNextPlayer(playerToPrompt);
+            PromptAcceptQuest();
+        }
 	}
 
 	public void PlayStage() {
@@ -237,16 +254,16 @@ public abstract class Quest : Story {
 			player.incrementShields (numShieldsAwarded);
 		}
         Debug.Log("Quest complete");
-        if (sponsor.getHand().Count + totalCardsCounter > 12) {
+        if (sponsor.getHand().Count + totalCardsCounter + numStages > 12) {
             Action action = () => {
                 board.TransferFromHandToPlayArea(playerToPrompt);
                 playerToPrompt.RemoveCardsResponse();
                 board.nextTurn();
             };
             sponsor.giveAction(action);
-            board.dealCardsToPlayer(sponsor, totalCardsCounter);
+            board.dealCardsToPlayer(sponsor, totalCardsCounter + numStages);
         } else {
-            board.dealCardsToPlayer(sponsor, totalCardsCounter);
+            board.dealCardsToPlayer(sponsor, totalCardsCounter + numStages);
             board.nextTurn();
         }
 	}
