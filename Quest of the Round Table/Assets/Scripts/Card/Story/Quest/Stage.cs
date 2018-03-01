@@ -1,5 +1,4 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -210,40 +209,13 @@ public class Stage {
         }
         else
         {
-            foreach (Player player in playersToRemove) {
+            foreach (Player player in playersToRemove)
+            {
                 quest.removeParticipatingPlayer(player);
             }
             quest.PlayStage();
         }
     }
-
-    //void CompleteStage() {
-    //    if (quest.getPlayers().Count > 0) {
-    //        DisplayStageWinner();
-    //    } else {
-    //        quest.PlayStage();
-    //    }
-    //}
-
-    //void DisplayStageWinner() {
-    //    if (playerToPrompt.GetType() != typeof(AIPlayer)) {
-    //        Action action = () => {
-    //            ((Quest)board.getCardInPlay()).getCurrentStage().DisplayStageWinnerResponse();
-    //        };
-    //        board.DisplayStageWinners(playerToPrompt, winnerList, action);
-    //    } else {
-    //        DisplayStageWinnerResponse();
-    //    }
-    //}
-
-    //public void DisplayStageWinnerResponse() {
-    //    playerToPrompt = board.getNextPlayer(playerToPrompt);
-    //    if (playerToPrompt != originalPlayer) {
-    //        DisplayStageWinner();
-    //    } else {
-    //        DealCards();
-    //    }
-    //}
 
     private void DealCards() {
         if (playerToPrompt.getHand().Count + 1 > 12)

@@ -247,23 +247,6 @@ public abstract class Quest : Story {
         }
 	}
 
-	//private bool isValidSponsor () {
-	//	List<Card> hand = sponsor.getHand();
-	//	int validCardCount = 0;
-	//	bool hasTest = false;
-	//	foreach (Card card in hand) {
-	//		if (card.GetType ().IsSubclassOf (typeof(Foe))) {
-	//			validCardCount++;
-	//		} else if (card.GetType ().IsSubclassOf (typeof(Test))) {
-	//			hasTest = true;
-	//		}
-	//	}
-	//	if (hasTest) {
-	//		validCardCount++;
-	//	}
-	//	return (validCardCount >= numStages);
-	//}
-
 	public void removeParticipatingPlayer(Player player) {
 		if (participatingPlayers.Contains(player)) {
 			participatingPlayers.Remove (player);
