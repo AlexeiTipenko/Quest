@@ -157,7 +157,7 @@ public class BoardManagerMediator
         BoardManager.DestroyCards();
         BoardManager.DestroyDiscardArea();
         BoardManager.ClearInteractions();
-        BoardManager.setIsFreshTurn(true);
+        BoardManager.SetIsFreshTurn(true);
         cardInPlay = null;
         playerTurn = (playerTurn + 1) % players.Count;
         playTurn();
@@ -293,11 +293,11 @@ public class BoardManagerMediator
             Debug.Log("Did not dropout");
             TransferFromHandToPlayArea(player);
             Debug.Log("Total battle points in play area is: " + player.getPlayArea().getBattlePoints());
-            ((Quest)cardInPlay).getStage(stageNum).promptFoeResponse(false);
+            ((Quest)cardInPlay).getStage(stageNum).PromptFoeResponse(false);
 		};
         Action action2 = () => {
             Debug.Log("Dropped out");
-            ((Quest)cardInPlay).getStage(stageNum).promptFoeResponse(true);
+            ((Quest)cardInPlay).getStage(stageNum).PromptFoeResponse(true);
         };
 
 		BoardManager.SetInteractionButtons ("Continue", "Drop Out", action1, action2);
@@ -330,7 +330,7 @@ public class BoardManagerMediator
         };
         BoardManager.SetInteractionButtons("Accept", "Decline", action1, action2);
         Debug.Log("Prompting " + player.getName() + " to enter tournament.");
-        Logger.getInstance().info("Prompted " + player.getName() + " to enter tournament.");
+        Logger.getInstance().info("Prompted " + player.getName() + " to enter tournament.");  
     }
 
 
@@ -398,6 +398,22 @@ public class BoardManagerMediator
             nextTurn();
         };
         BoardManager.SetInteractionButtons("Next player", "", action, null);
+    }
+
+    public void DisplayStageResults(Player player, bool playerEliminated) {
+        string passedText = "You passed!";
+        if (playerEliminated) {
+            passedText = "You were eliminated...";
+        }
+        Action action = () => {
+            ((Quest)cardInPlay).getCurrentStage().EvaluateNextPlayerForFoe(playerEliminated);
+        };
+        BoardManager.SetIsResolutionOfStage(true);
+        BoardManager.DrawCards(player);
+        BoardManager.SetInteractionText("STAGE COMPLETE\n" + passedText);
+        BoardManager.SetInteractionButtons("Continue", "", action, null);
+        Debug.Log("Displaying results of stage to " + player.getName());
+        Logger.getInstance().info("Displaying results of stage to " + player.getName());
     }
 }
 

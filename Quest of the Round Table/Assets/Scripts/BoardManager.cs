@@ -13,6 +13,7 @@ public class BoardManager : MonoBehaviour
     private static GameObject playAreaCanvas = null;
     private static Player previousPlayer = null;
     private static bool isFreshTurn = true;
+    private static bool isResolutionOfStage = false;
 
     void Start()
     {
@@ -106,8 +107,12 @@ public class BoardManager : MonoBehaviour
         Logger.getInstance().info(player.getName() + "'s cards drawn to GUI");
     }
 
-    public static void setIsFreshTurn(bool isFreshTurn) {
+    public static void SetIsFreshTurn(bool isFreshTurn) {
         BoardManager.isFreshTurn = isFreshTurn;
+    }
+
+    public static void SetIsResolutionOfStage(bool isResolutionOfStage) {
+        BoardManager.isResolutionOfStage = isResolutionOfStage;
     }
 
     public static List<string> GetSelectedCardNames()
@@ -227,11 +232,17 @@ public class BoardManager : MonoBehaviour
             for (int i = 0; i < questInPlay.getNumStages(); i++)
             {
                 GameObject boardAreaFoe = GameObject.Find("Canvas/TabletopImage/StageAreaFoe" + i);
+                if (boardAreaFoe == null) {
+                    SetupQuestPanels(questInPlay.getNumStages());
+                    boardAreaFoe = GameObject.Find("Canvas/TabletopImage/StageAreaFoe" + i);
+                }
                 Stage currentStage = questInPlay.getStage(i);
                 if (currentStage != null) {
                     if (questInPlay.getSponsor() == player 
                         || i < questInPlay.getCurrentStage().getStageNum() 
-                        || (i == questInPlay.getCurrentStage().getStageNum()
+                        || (i == questInPlay.getCurrentStage().getStageNum() 
+                            && isResolutionOfStage)
+                        || (i == questInPlay.getCurrentStage().getStageNum() 
                             && questInPlay.getStage(i).getStageCard().GetType().IsSubclassOf(typeof(Test)))) {
                         foreach (Card card in currentStage.getCards()) {
                             GameObject noDragInstance = Instantiate(Resources.Load("NoDragCardPrefab", typeof(GameObject))) as GameObject;
@@ -240,6 +251,9 @@ public class BoardManager : MonoBehaviour
                             cardImg.sprite = Resources.Load<Sprite>("cards/" + card.cardImageName);
                             noDragInstance.tag = "StageCard";
                             noDragInstance.transform.SetParent(boardAreaFoe.transform, false);
+                        }
+                        if (i == questInPlay.getCurrentStage().getStageNum()) {
+                            isResolutionOfStage = false;
                         }
                     } else {
                         GameObject noDragInstance = Instantiate(Resources.Load("NoDragCardPrefab", typeof(GameObject))) as GameObject;
@@ -378,7 +392,7 @@ public class BoardManager : MonoBehaviour
             {
                 GameObject boardAreaFoe = GameObject.Find("Canvas/TabletopImage/StageAreaFoe" + i);
                 Adventure stageCard = null;
-                List<Weapon> weapons = new List<Weapon>();
+                List<Card> weapons = new List<Card>();
                 foreach (Transform child in boardAreaFoe.transform) {
                     Type genericType = Type.GetType(child.name.Replace(" ", ""), true);
                     Card card = (Card)Activator.CreateInstance(genericType);
@@ -398,21 +412,17 @@ public class BoardManager : MonoBehaviour
 	public static void GetPlayArea(Player player) {
 		GameObject PlayArea = GameObject.Find ("Canvas/TabletopImage/PlayerPlayArea");
 		foreach (Transform child in PlayArea.transform) {
-            Debug.Log("VisualCardName: " + child.name);
             foreach(Card card in player.getHand()) {
-                Type cardType = card.GetType();
                 if(child.name == card.getCardName()) {
-                    Debug.Log("Found a match: " + card.getCardName());
                     bool amourExistsInPlayArea = false;
                     foreach (Card playAreaCard in player.getPlayArea().getCards()) {
-                        Debug.Log("Play area card: " + playAreaCard.getCardName());
                         if (playAreaCard.GetType() == typeof(Amour)) {
                             amourExistsInPlayArea = true;
                             break;
                         }
                     }
                     if (!amourExistsInPlayArea) {
-                        Debug.Log("Moving card");
+                        Debug.Log("Moving card from hand to play area: " + card.getCardName());
                         player.getPlayArea().addCard(card);
                         player.RemoveCard(card);
                         break;

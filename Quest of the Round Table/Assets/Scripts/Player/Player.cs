@@ -1,25 +1,21 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 using System;
 
-public class Player
-{
+public abstract class Player {
 
-	private string name;
-	private int numShields;
-	private Rank rank;
-	private List<Card> hand;
-	private PlayerPlayArea playArea;
-    private BoardManagerMediator board;
-	private bool isAI;
-    public Action func;
+	protected string name;
+	protected int numShields;
+	protected Rank rank;
+	protected List<Card> hand;
+	protected PlayerPlayArea playArea;
+    protected BoardManagerMediator board;
+    protected Action func;
 
 
-	public Player(string name, bool isAI) {
+	public Player(string name) {
 		this.name = name;
-		this.isAI = isAI;
 		rank = new Squire ();
 		numShields = 0;
 		hand = new List<Card> ();
@@ -167,23 +163,29 @@ public class Player
 		return this;
 	}
 
-
-	public bool acceptQuest(){
-		//prompt user if they want to sponsor quest
-		//UI has to be implemented here to actually 
-		//cycle through players and prompt them
-		return true;
-	}
-
-
-	public string toString() {
-		string output = this.name + " (" + (isAI ? "AI" : "human") + "): ";
-		foreach (Card card in hand) {
-			output += card.toString() + ", ";
-		}
-		output = output.Substring (0, output.Length - 2);
-		return output;
-	}
+    public string toString()
+    {
+        string output = name;
+        if (GetType() == typeof(AIPlayer)) {
+            if (((AIPlayer)this).GetStrategy().GetType() == typeof(Strategy1))
+            {
+                output += " (AI - Strategy 1): ";
+            }
+            else if (((AIPlayer)this).GetStrategy().GetType() == typeof(Strategy2))
+            {
+                output += " (AI - Strategy 2): ";
+            }
+        }
+        else {
+            output += " (Human): ";
+        }
+        foreach (Card card in hand)
+        {
+            output += card.toString() + ", ";
+        }
+        output = output.Substring(0, output.Length - 2);
+        return output;
+    }
 }
 
 
