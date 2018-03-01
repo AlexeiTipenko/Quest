@@ -206,6 +206,7 @@ public abstract class Quest : Story {
 		if (questAccepted) {
 			Logger.getInstance().debug(playerToPrompt.getName() + " has accepted to participate in the quest");
 			participatingPlayers.Add (playerToPrompt);
+			board.dealCardsToPlayer (playerToPrompt, 1);
 		}
         playerToPrompt = board.getNextPlayer(playerToPrompt);
         PromptAcceptQuest();

@@ -76,12 +76,12 @@ public class Scenario1 {
 			return;
 		}
 	
+		BoardManager.DestroyStages ();
+
 		boarHunt.setOwner (players [0]);
 		BoardManagerMediator.getInstance ().setCardInPlay (boarHunt);
 		storyDeck.moveCardToIndex ("ProsperityThroughoutTheRealm", 0);
 		storyDeck.moveCardToIndex ("ChivalrousDeed", 1);
-
-		BoardManager.DestroyStages ();
 
 		if (!BoardManager.QuestPanelsExist()) {
 			BoardManager.SetupQuestPanels(((Quest) BoardManagerMediator.getInstance ().getCardInPlay()).getNumStages());

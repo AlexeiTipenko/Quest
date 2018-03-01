@@ -216,7 +216,7 @@ public class Stage {
         }
     }
 
-    private void DealCards() {
+    public void DealCards() {
         if (playerToPrompt.getHand().Count + 1 > 12)
         {
             Action action = () => {

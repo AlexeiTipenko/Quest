@@ -57,8 +57,14 @@ public class Scenario2 {
 		BoardManagerMediator.getInstance ().setAdventureDeck (adventureDeck);
 
 		//deal the rest of the cards so each player has 12 cards
-		foreach (Player player in players) {
-			BoardManagerMediator.getInstance().dealCardsToPlayer(player, (12 - player.getHand().Count));
+		for (int i = 0; i < players.Count; i++) {
+			BoardManagerMediator.getInstance().dealCardsToPlayer(players[i], (12 - players[i].getHand().Count));
+			Logger.getInstance ().debug (players[i].getName() + " has the following cards: " );
+			//Logger.getInstance ().debug (players[i].getName() + " has cards " + BoardManagerMediator.getInstance ().getPlayers () [i].getHand ().ToString());
+			foreach (Card card in BoardManagerMediator.getInstance ().getPlayers () [i].getHand ()) {
+				Logger.getInstance ().trace (card.getCardName ());
+			}
+			//			}
 		}
 
 		//reinitialize story deck
@@ -66,17 +72,26 @@ public class Scenario2 {
 
 		Card boarHunt = storyDeck.getCardByName ("BoarHunt");
 		if (boarHunt == null) {
+			//Debug.Log("Boar Hunt is null")
 			return;
 		}
 
+		BoardManager.DestroyStages ();
+
 		boarHunt.setOwner (players [0]);
 		BoardManagerMediator.getInstance ().setCardInPlay (boarHunt);
-		storyDeck.moveCardToIndex ("DefendTheQueensHonor", 0);
+		storyDeck.moveCardToIndex ("ProsperityThroughoutTheRealm", 0);
 		storyDeck.moveCardToIndex ("ChivalrousDeed", 1);
 
+		if (!BoardManager.QuestPanelsExist()) {
+			BoardManager.SetupQuestPanels(((Quest) BoardManagerMediator.getInstance ().getCardInPlay()).getNumStages());
+		}
+
 		BoardManagerMediator.getInstance ().setStoryDeck (storyDeck);
+		Logger.getInstance ().debug ("Moved ProsperityThroughoutTheRealm and ChivalrousDeed to the top of the Story Deck");
 
 		BoardManager.DrawCards (players[0]);
+
 		//		BoardManager.DestroyPlayerInfo();
 		//		BoardManager.DisplayPlayers(players);
 		BoardManagerMediator.getInstance ().getCardInPlay().startBehaviour();
