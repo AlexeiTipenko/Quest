@@ -170,16 +170,24 @@ public abstract class Quest : Story {
             if (playerToPrompt.GetType() == typeof(AIPlayer)) {
                 Debug.Log("Prompting accept quest for AI");
                 if (((AIPlayer)playerToPrompt).GetStrategy().DoIParticipateInQuest()) {
-                    ((AIPlayer)playerToPrompt).GetStrategy().ParticipateInQuest();
+                    PromptAcceptQuestResponse(true);
                 } else {
-                    PromptAcceptQuest();
+                    PromptAcceptQuestResponse(false);
                 }
             } else {
                 board.PromptAcceptQuest(playerToPrompt);
             }
         }
         else {
-            FinishedAcceptingQuestResponses();
+            currentStage = -1;
+            numStages = stages.Count;
+            foreach (Stage stage in stages)
+            {
+                totalCardsCounter += stage.getTotalCards();
+            }
+            Logger.getInstance().debug("Starting quest.");
+            Debug.Log("Starting quest");
+            PlayStage();
         }
     }
 
@@ -203,23 +211,10 @@ public abstract class Quest : Story {
         PromptAcceptQuest();
 	}
 
-    private void FinishedAcceptingQuestResponses() {
-        currentStage = -1;
-        numStages = stages.Count;
-        foreach (Stage stage in stages)
-        {
-            totalCardsCounter += stage.getTotalCards();
-        }
-        Logger.getInstance().debug("Starting quest.");
-        Debug.Log("Starting quest");
-        PlayStage();
-    }
-
 	public void PlayStage() {
 		currentStage++;
         if (currentStage < numStages && participatingPlayers.Count > 0) {
             getStage(currentStage).prepare();
-
 		} else {
 			CompleteQuest ();
 		}
