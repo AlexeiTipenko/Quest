@@ -18,9 +18,9 @@ public class Strategy2 : Strategy
         return (IncrementableCardsOverEachStage() && SufficientDiscardableCards());
     }
 
-    public override void DoIParticipateInTournament()
+    public override bool DoIParticipateInTournament()
     {
-        throw new System.NotImplementedException();
+        return true;
     }
 
     public override bool DoISponsorAQuest()
@@ -233,4 +233,20 @@ public class Strategy2 : Strategy
         }
         return sortedList;
     }
+
+    public override void ParticipateTournament() {
+        List<Card> Hand = strategyOwner.getHand();
+        List<Card> PlayedList = new List<Card>();
+
+        foreach(Card card in Hand) {
+        }
+
+        // Get 50 with least amount of cards, or play everything possible
+    }
+
+    Card GetHighestCard(List<Card> Hand) {
+
+    }
+
+
 }

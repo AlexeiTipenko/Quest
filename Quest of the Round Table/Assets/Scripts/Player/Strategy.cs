@@ -13,7 +13,7 @@ public abstract class Strategy {
         this.discardableCardsThreshold = discardableCardsThreshold;
     }
     
-    public abstract void DoIParticipateInTournament();
+    public abstract bool DoIParticipateInTournament();
 
     public abstract bool DoISponsorAQuest();
 
@@ -26,6 +26,8 @@ public abstract class Strategy {
     public abstract void SponsorQuest();
 
     public abstract void ParticipateInQuest();
+
+    public abstract void ParticipateTournament();
 
     //--------------------------------------------//
     //---------- Non-Abstract Functions ----------//
