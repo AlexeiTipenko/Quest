@@ -157,7 +157,7 @@ public class BoardManagerMediator
         BoardManager.DestroyCards();
         BoardManager.DestroyDiscardArea();
         BoardManager.ClearInteractions();
-        BoardManager.setIsFreshTurn(true);
+        BoardManager.SetIsFreshTurn(true);
         cardInPlay = null;
         playerTurn = (playerTurn + 1) % players.Count;
         playTurn();
@@ -398,6 +398,22 @@ public class BoardManagerMediator
             nextTurn();
         };
         BoardManager.SetInteractionButtons("Next player", "", action, null);
+    }
+
+    public void DisplayStageResults(Player player, bool playerEliminated) {
+        string passedText = "You passed!";
+        if (playerEliminated) {
+            passedText = "You were eliminated...";
+        }
+        Action action = () => {
+            ((Quest)cardInPlay).getCurrentStage().EvaluateNextPlayerForFoe(playerEliminated);
+        };
+        BoardManager.SetIsResolutionOfStage(true);
+        BoardManager.DrawCards(player);
+        BoardManager.SetInteractionText("STAGE COMPLETE\n" + passedText);
+        BoardManager.SetInteractionButtons("Continue", "", action, null);
+        Debug.Log("Displaying results of stage to " + player.getName());
+        Logger.getInstance().info("Displaying results of stage to " + player.getName());
     }
 }
 

@@ -13,6 +13,7 @@ public class BoardManager : MonoBehaviour
     private static GameObject playAreaCanvas = null;
     private static Player previousPlayer = null;
     private static bool isFreshTurn = true;
+    private static bool isResolutionOfStage = false;
 
     void Start()
     {
@@ -106,8 +107,12 @@ public class BoardManager : MonoBehaviour
         Logger.getInstance().info(player.getName() + "'s cards drawn to GUI");
     }
 
-    public static void setIsFreshTurn(bool isFreshTurn) {
+    public static void SetIsFreshTurn(bool isFreshTurn) {
         BoardManager.isFreshTurn = isFreshTurn;
+    }
+
+    public static void SetIsResolutionOfStage(bool isResolutionOfStage) {
+        BoardManager.isResolutionOfStage = isResolutionOfStage;
     }
 
     public static List<string> GetSelectedCardNames()
@@ -235,7 +240,9 @@ public class BoardManager : MonoBehaviour
                 if (currentStage != null) {
                     if (questInPlay.getSponsor() == player 
                         || i < questInPlay.getCurrentStage().getStageNum() 
-                        || (i == questInPlay.getCurrentStage().getStageNum()
+                        || (i == questInPlay.getCurrentStage().getStageNum() 
+                            && isResolutionOfStage)
+                        || (i == questInPlay.getCurrentStage().getStageNum() 
                             && questInPlay.getStage(i).getStageCard().GetType().IsSubclassOf(typeof(Test)))) {
                         foreach (Card card in currentStage.getCards()) {
                             GameObject noDragInstance = Instantiate(Resources.Load("NoDragCardPrefab", typeof(GameObject))) as GameObject;
@@ -244,6 +251,9 @@ public class BoardManager : MonoBehaviour
                             cardImg.sprite = Resources.Load<Sprite>("cards/" + card.cardImageName);
                             noDragInstance.tag = "StageCard";
                             noDragInstance.transform.SetParent(boardAreaFoe.transform, false);
+                        }
+                        if (i == questInPlay.getCurrentStage().getStageNum()) {
+                            isResolutionOfStage = false;
                         }
                     } else {
                         GameObject noDragInstance = Instantiate(Resources.Load("NoDragCardPrefab", typeof(GameObject))) as GameObject;

@@ -9,6 +9,7 @@ public class Stage {
 	private int stageNum, currentBid;
 	private Adventure stageCard;
 	private List<Card> weapons;
+    private List<Player> playersToRemove;
 
 	private Quest quest;
     Player playerToPrompt, originalPlayer;
@@ -166,41 +167,83 @@ public class Stage {
 		}
 	}
 
-	private void PlayFoe() {
-        Debug.Log("Playing foe");
-        Debug.Log("Num participating players: " + quest.getPlayers().Count);
-        List<Player> playersToRemove = new List<Player>();
-		foreach (Player player in quest.getPlayers()) {
-			int playerBattlePoints = player.getRank ().getBattlePoints ();
-			List<Card> stageCards = player.getPlayArea ().getCards ();
-			foreach (Card card in stageCards) {
-				playerBattlePoints += ((Adventure) card).getBattlePoints ();
-			}
-			if (playerBattlePoints >= getTotalBattlePoints ()) {
-				Logger.getInstance ().trace ("playerBattlePoints >= getTotalbattlePoints");
-                Debug.Log("Player " + player.getName() + " passed stage.");
-			} else {
-                Logger.getInstance ().trace ("Did not pass. Player will be removed: " + player.getName());
-                playersToRemove.Add(player);
-			}
-            player.getPlayArea().discardWeapons();
-		}
-        Debug.Log("Player to prompt: " + playerToPrompt.getName());
-        foreach (Player player in playersToRemove) {
-            if (player == playerToPrompt) {
-                playerToPrompt = quest.getNextPlayer(playerToPrompt);
-                Debug.Log("Replaced player to prompt with " + playerToPrompt.getName());
-            }
-            Debug.Log("Removing player: " + player.getName());
-            quest.removeParticipatingPlayer(player);
-        }
+    void PlayFoe() {
+        playersToRemove = new List<Player>();
         originalPlayer = playerToPrompt;
-        if (quest.getPlayers().Count > 0) {
-            DealCards();
+        EvaluatePlayerForFoe();
+    }
+
+	void EvaluatePlayerForFoe() {
+        int playerBattlePoints = playerToPrompt.getRank().getBattlePoints();
+        bool playerEliminated = false;
+        List<Card> stageCards = playerToPrompt.getPlayArea ().getCards ();
+        foreach (Card card in stageCards) {
+            playerBattlePoints += ((Adventure) card).getBattlePoints ();
+        }
+        if (playerBattlePoints >= getTotalBattlePoints ()) {
+            Logger.getInstance ().trace ("playerBattlePoints >= getTotalbattlePoints");
+            Debug.Log("Player " + playerToPrompt.getName() + " passed stage.");
         } else {
-            quest.PlayStage();
+            Logger.getInstance ().trace ("Did not pass. Player will be removed: " + playerToPrompt.getName());
+            playerEliminated = true;
+        }
+
+        if (playerToPrompt.GetType() != typeof(AIPlayer)) {
+            board.DisplayStageResults(playerToPrompt, playerEliminated);
+        } else {
+            EvaluateNextPlayerForFoe(playerEliminated);
         }
 	}
+
+    public void EvaluateNextPlayerForFoe(bool previousPlayerEliminated)
+    {
+        Player previousPlayer = playerToPrompt;
+        previousPlayer.getPlayArea().discardWeapons();
+        playerToPrompt = quest.getNextPlayer(playerToPrompt);
+        if (previousPlayerEliminated)
+        {
+            playersToRemove.Add(previousPlayer);
+        }
+        if (playerToPrompt != originalPlayer)
+        {
+            EvaluatePlayerForFoe();
+        }
+        else
+        {
+            foreach (Player player in playersToRemove) {
+                quest.removeParticipatingPlayer(player);
+            }
+            quest.PlayStage();
+        }
+    }
+
+    //void CompleteStage() {
+    //    if (quest.getPlayers().Count > 0) {
+    //        DisplayStageWinner();
+    //    } else {
+    //        quest.PlayStage();
+    //    }
+    //}
+
+    //void DisplayStageWinner() {
+    //    if (playerToPrompt.GetType() != typeof(AIPlayer)) {
+    //        Action action = () => {
+    //            ((Quest)board.getCardInPlay()).getCurrentStage().DisplayStageWinnerResponse();
+    //        };
+    //        board.DisplayStageWinners(playerToPrompt, winnerList, action);
+    //    } else {
+    //        DisplayStageWinnerResponse();
+    //    }
+    //}
+
+    //public void DisplayStageWinnerResponse() {
+    //    playerToPrompt = board.getNextPlayer(playerToPrompt);
+    //    if (playerToPrompt != originalPlayer) {
+    //        DisplayStageWinner();
+    //    } else {
+    //        DealCards();
+    //    }
+    //}
 
     private void DealCards() {
         if (playerToPrompt.getHand().Count + 1 > 12)
