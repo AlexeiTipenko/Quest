@@ -77,7 +77,7 @@ public class Stage {
             PromptFoe();
 		} else {
 			Logger.getInstance ().trace ("Stage card is NOT subclass type of foe");
-			currentBid = ((Test)stageCard).getMinBidValue() - 1;
+			currentBid = ((Test)stageCard).getMinBidValue();
 			Debug.Log ("Current bid is: " + currentBid);
             playerToPrompt = board.getNextPlayer(quest.getSponsor());
             while (!quest.getPlayers().Contains(playerToPrompt))
@@ -146,26 +146,11 @@ public class Stage {
             Logger.getInstance().debug("Player is AI");
         }
         else {
-            if (currentBid >= playerToPrompt.getTotalAvailableBids() && playerToPrompt != highestBiddingPlayer){ // take in amount of bid points , check that before this statement
-                Debug.Log("Should not allow to do Test since more bids than amount of cards in hand");
-                Debug.Log("Dropped out of Test");
-                Player temp = playerToPrompt;
-                playerToPrompt = quest.getNextPlayer(playerToPrompt);
-                if (originalPlayer == temp)
-                {
-                    originalPlayer = quest.getNextPlayer(originalPlayer);
-                }
-                Debug.Log("Removing player: " + temp.getName());
-                quest.removeParticipatingPlayer(temp);
-                promptTest();
+            if (currentBid > ((Test)stageCard).getMinBidValue() && quest.getPlayers().Count == 1) {
+                board.PromptDiscardTest(playerToPrompt, stageNum, currentBid);
             }
             else {
-                if (currentBid > ((Test)stageCard).getMinBidValue() && quest.getPlayers().Count == 1) {
-                    board.PromptDiscardTest(playerToPrompt, stageNum, currentBid);
-                }
-                else {
-                    board.PromptEnterTest(playerToPrompt, stageNum, currentBid);
-                }
+                board.PromptEnterTest(playerToPrompt, stageNum, currentBid);
             }
         }
 	}

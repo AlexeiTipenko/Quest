@@ -25,6 +25,7 @@
         adventureDeck.moveCardToIndex("Dagger", 13);
         adventureDeck.moveCardToIndex("QueenGuinevere", 14);
         adventureDeck.moveCardToIndex("Amour", 15);
+        adventureDeck.moveCardToIndex("KingArthur", 16);
         //Player 3
         adventureDeck.moveCardToIndex("Horse", 24);
         adventureDeck.moveCardToIndex("Excalibur", 25);

@@ -156,7 +156,6 @@ public abstract class Player {
         int availableBids = 0;
         foreach (Card card in playArea.getCards())
         {
-            Debug.Log("Current player: " + getName() + " and card name in play area is: " + card.getCardName());
             if (card.GetType().IsSubclassOf(typeof(Ally))) {
                 availableBids += ((Ally)card).getBidPoints();
             }

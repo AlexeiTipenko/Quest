@@ -349,16 +349,19 @@ public class BoardManagerMediator
 
 	public void PromptEnterTest(Player player, int stageNum, int currentBid) {
         BoardManager.DrawCards(player);
-        BoardManager.SetInteractionText("Current stage is a test, with a current bid of: " + currentBid + ". Do you wish to up the bid?");
+        BoardManager.SetInteractionText("Current stage is a test, with a minimum bid of: " + currentBid + ". Do you wish to up the bid?");
         BoardManager.SetInteractionBid(currentBid.ToString());
         Action action1 = () => {
             int InteractionBid = 0;
             Int32.TryParse(BoardManager.GetInteractionBid(), out InteractionBid);
-
             if ( InteractionBid > player.getTotalAvailableBids()) {
                 Debug.Log("Trying to bid more than they have");
                 PromptEnterTest(player, stageNum, currentBid);
             }
+            else if (InteractionBid <= 2) {
+                PromptEnterTest(player, stageNum, currentBid);
+            }
+
             else {
                 ((Quest)cardInPlay).getStage(stageNum).promptTestResponse(true, InteractionBid);
             }
@@ -373,26 +376,18 @@ public class BoardManagerMediator
 
     public void PromptDiscardTest(Player player, int stageNum, int currentBid) {
         BoardManager.DrawCards(player);
-        currentBid -= player.getPlayAreaBid();
-        BoardManager.SetInteractionText("You are the winner of the Test, and you must discard : " + currentBid + " cards");
+        //currentBid -= player.getPlayAreaBid();
+        BoardManager.SetInteractionText("You are the winner of the Test, and you must discard/play a total of " + currentBid + " bid points.");
         BoardManager.SetupDiscardPanel();
 
         Action action = () => {
-            if (BoardManager.GetSelectedDiscardNames().Count == currentBid) {
-                foreach(Card card in player.getHand()) {
-                    foreach(String name in BoardManager.GetSelectedCardNames()) {
-                        if (card.getCardName() == name ) {
-                            Debug.Log("Removing card");
-                            player.RemoveCard(card);
-                        }
-                    }
+            TransferFromHandToPlayArea(player);
+            if (BoardManager.GetSelectedDiscardNames().Count + player.getPlayAreaBid() == currentBid) {
+                List<Card> cardsToDiscard = GetDiscardedCards(player);
+                foreach (Card card in cardsToDiscard) {
+                    player.RemoveCard(card);
                 }
-                if(stageNum == ((Quest)cardInPlay).getNumStages()) {
-                    ((Quest)cardInPlay).CompleteQuest();
-                }
-                else {
-                    ((Quest)cardInPlay).PlayStage();
-                }
+                ((Quest)cardInPlay).PlayStage();
             }
             else {
                 PromptDiscardTest(player, stageNum, currentBid);
