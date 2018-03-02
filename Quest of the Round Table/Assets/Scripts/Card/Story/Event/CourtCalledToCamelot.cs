@@ -1,12 +1,14 @@
-using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 
 public class CourtCalledToCamelot : Event {
-	
+
+    BoardManagerMediator board;
+    string description = "All Allies in play must be discarded.";
 	public static int frequency = 2;
 
-	public CourtCalledToCamelot () : base ("Court Called to Camelot") { }
+	public CourtCalledToCamelot () : base ("Court Called to Camelot") {
+        board = BoardManagerMediator.getInstance();
+    }
 
 	//Event description: All Allies in play must be discarded.
 	//TODO; Waiting to get reference to the play section for the player
@@ -21,7 +23,11 @@ public class CourtCalledToCamelot : Event {
 		}
 		Logger.getInstance ().info ("Finishing behaviour");
 
-        Player currentPlayer = BoardManagerMediator.getInstance().getCurrentPlayer();
-        BoardManagerMediator.getInstance().NextPlayerTurn(currentPlayer);
+        Player currentPlayer = board.getCurrentPlayer();
+        if (currentPlayer.GetType() != typeof(AIPlayer)) {
+            board.SimpleAlert(currentPlayer, description);
+        } else {
+            board.nextTurn();
+        }
 	}
 }

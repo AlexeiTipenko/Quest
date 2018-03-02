@@ -4,8 +4,8 @@ using UnityEngine;
 public class ProsperityThroughoutTheRealm : Event {
 
 	public static int frequency = 1;
-    private BoardManagerMediator board;
-    private Player playerToPrompt, originalPlayer;
+    BoardManagerMediator board;
+    Player playerToPrompt, originalPlayer;
     Action action;
 
 	public ProsperityThroughoutTheRealm () : base ("Prosperity Throughout the Realm") {
@@ -23,18 +23,15 @@ public class ProsperityThroughoutTheRealm : Event {
 
     private void DealCards()
     {
-        action = () => {
-            Debug.Log("Action entered");
-            board.TransferFromHandToPlayArea(playerToPrompt);
-            playerToPrompt.RemoveCardsResponse();
-            DealCardsNextPlayer();
-        };
-        playerToPrompt.giveAction(action);
-        if (playerToPrompt.getHand().Count + 2 > 12 && playerToPrompt.GetType() != typeof(AIPlayer)) {
-            Debug.Log("Debug1");
+        if (playerToPrompt.getHand().Count + 2 > 12) {
+            action = () => {
+                board.TransferFromHandToPlayArea(playerToPrompt);
+                playerToPrompt.RemoveCardsResponse();
+                DealCardsNextPlayer();
+            };
+            playerToPrompt.giveAction(action);
             BoardManagerMediator.getInstance().dealCardsToPlayer(playerToPrompt, 2);
         } else {
-            Debug.Log("Debug2");
             BoardManagerMediator.getInstance().dealCardsToPlayer(playerToPrompt, 2);
             DealCardsNextPlayer();
         }

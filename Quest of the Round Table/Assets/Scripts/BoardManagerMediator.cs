@@ -136,6 +136,7 @@ public class BoardManagerMediator
             Action action = player.getAction();
             if (action != null) {
                 action.Invoke();
+                player.giveAction(null);
             }
         }
 	}
@@ -417,14 +418,14 @@ public class BoardManagerMediator
     }
   
 
-    public void NextPlayerTurn(Player player) {
+    public void SimpleAlert(Player player, String text) {
         BoardManager.DrawCards(player);
-        BoardManager.SetInteractionText("Event action complete.");
+        BoardManager.SetInteractionText(text);
 
         Action action = () => {
             nextTurn();
         };
-        BoardManager.SetInteractionButtons("Next player", "", action, null);
+        BoardManager.SetInteractionButtons("Continue", "", action, null);
     }
 
     public void DisplayStageResults(Player player, bool playerEliminated) {

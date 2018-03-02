@@ -39,7 +39,7 @@ public abstract class Player {
     public void checkNumCards() {
         if (hand.Count > 12)
         {
-            Debug.Log("MORE THAN 12 CARDS IN HAND");
+            Debug.Log("More than 12 cards in " + name + "'s hand");
             if (this.GetType() == typeof(AIPlayer)) {
                 RemoveRandomCards(hand.Count - 12);
             } else {
@@ -77,10 +77,14 @@ public abstract class Player {
 
 	public void RemoveRandomCards(int numCards) {
 		if (numCards <= hand.Count) {
-			for (int i = 0; i < numCards; i++) {
-                hand.RemoveAt (random.Next(hand.Count- 1));
-			}
-            Debug.Log("Removed " + numCards + " random cards");
+            if (numCards == 1) {
+                hand.RemoveAt(hand.Count - 1);
+            } else {
+                for (int i = 0; i < numCards; i++) {
+                    hand.RemoveAt(random.Next(hand.Count - 1));
+                }
+            }
+            Debug.Log("Removed " + numCards + " cards from " + name + "'s hand");
 		}
 	}
 
@@ -142,9 +146,11 @@ public abstract class Player {
     public void RemoveCardsResponse()
     {
         List<Card> chosenCards = board.GetDiscardedCards(this);
-        foreach (Card card in chosenCards)
-        {
-            RemoveCard(card);
+        if (chosenCards.Count > 0) {
+            foreach (Card card in chosenCards) {
+                RemoveCard(card);
+            }
+            Debug.Log("Removed " + chosenCards.Count + " cards from " + name + "'s hand");
         }
     }
 

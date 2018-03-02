@@ -87,7 +87,7 @@ public abstract class Tournament : Story
                         board.PromptCardRemoveSelection(playerToPrompt, action);
                     }
 
-                    else{
+                    else {
                         PromptNextPlayer();
                     }
                 };

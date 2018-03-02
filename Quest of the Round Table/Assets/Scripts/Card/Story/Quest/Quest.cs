@@ -46,9 +46,11 @@ public abstract class Quest : Story {
 	private void PromptSponsorQuest() {
         if (sponsor.GetType() == typeof(AIPlayer)) {
             if (((AIPlayer)sponsor).GetStrategy().DoISponsorAQuest()) {
-                ((AIPlayer)sponsor).GetStrategy().SponsorQuest();
+                //((AIPlayer)sponsor).GetStrategy().SponsorQuest();
+                PromptSponsorQuestResponse(true);
             } else {
-                IncrementSponsor();
+                PromptSponsorQuestResponse(false);
+                //IncrementSponsor();
             }
         } else {
             board.PromptSponsorQuest(sponsor);
@@ -59,7 +61,11 @@ public abstract class Quest : Story {
 		if (sponsorAccepted) {
 			Logger.getInstance().info("Sponsor accepted: " + sponsor.getName());
             Debug.Log("Sponsor accepted: " + sponsor.getName());
-            board.SetupQuest (sponsor, "PREPARE YOUR QUEST\n- Each stage contains a foe or a test\n- Maximum one test per quest\n- Foe stages may contain (unique) weapons\n- Battle points must increase between stages");
+            if (sponsor.GetType() == typeof(AIPlayer)) {
+                ((AIPlayer)sponsor).GetStrategy().SponsorQuest();
+            } else {
+                board.SetupQuest(sponsor, "PREPARE YOUR QUEST\n- Each stage contains a foe or a test\n- Maximum one test per quest\n- Foe stages may contain (unique) weapons\n- Battle points must increase between stages");
+            }
 		} else {
 			Logger.getInstance().trace("Sponsor declined: " + sponsor.getName());
 			IncrementSponsor ();
@@ -210,7 +216,6 @@ public abstract class Quest : Story {
 			Logger.getInstance().debug(playerToPrompt.getName() + " has accepted to participate in the quest");
 			participatingPlayers.Add (playerToPrompt);
             Action action = () => {
-                Debug.Log("Quest accept action running");
                 board.TransferFromHandToPlayArea(playerToPrompt);
                 playerToPrompt.RemoveCardsResponse();
                 playerToPrompt = board.getNextPlayer(playerToPrompt);

@@ -544,7 +544,6 @@ public class BoardManager : MonoBehaviour
     }
 
     public static void HideStageCards() {
-        Debug.Log("Hiding");
         DestroyPlayAreaCanvasCards();
         if (playAreaCanvas == null)
         {
