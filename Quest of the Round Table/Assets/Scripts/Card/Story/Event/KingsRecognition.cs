@@ -1,12 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
 public class KingsRecognition : Event {
 
+    BoardManagerMediator board;
+    string description = "The next player(s) to complete a Quest will receive 2 extra shields.";
 	public static int frequency = 2;
 
-	public KingsRecognition () : base ("King's Recognition") { }
+	public KingsRecognition () : base ("King's Recognition") {
+        board = BoardManagerMediator.getInstance();
+    }
 		
 	//Event description: The next player(s) to complete a Quest will receive 2 extra shields.
 	public override void startBehaviour() {
@@ -15,6 +15,10 @@ public class KingsRecognition : Event {
 		Logger.getInstance ().info ("Finished King's Recognition behaviour");
 
         Player currentPlayer = BoardManagerMediator.getInstance().getCurrentPlayer();
-        BoardManagerMediator.getInstance().NextPlayerTurn(currentPlayer);
+        if (currentPlayer.GetType() != typeof(AIPlayer)) {
+            board.SimpleAlert(currentPlayer, description);
+        } else {
+            board.nextTurn();
+        }
 	}
 }

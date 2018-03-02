@@ -37,7 +37,16 @@ public class Strategy2 : AbstractAI
     public override bool DoISponsorAQuest()
     {
         Logger.getInstance().info(strategyOwner.getName() + " deciding to sponsor quest");
-        return (!SomeoneElseCanWinOrEvolveWithQuest() && SufficientCardsToSponsorQuest());
+        Debug.Log("Prompting " + strategyOwner.getName() + " to sponsor quest");
+        if (!SomeoneElseCanWinOrEvolveWithQuest()) {
+            Debug.Log("One of two conditions satisfied for AI participation");
+            if (SufficientCardsToSponsorQuest()) {
+                Debug.Log("Two of two conditions satisfied for AI participation");
+                return true;
+            }
+            return false;
+        }
+        return false;
     }
 
     public override void NextBid()
@@ -180,13 +189,14 @@ public class Strategy2 : AbstractAI
                 if (CanPlayCardForStage(card, participationList)) {
                     Debug.Log(strategyOwner.getName() + " can play card, adding to participation list for stage");
                     participationList.Add(card);
-                    if (card.GetType() == typeof(Amour)) {
-                        currentBattlePoints += ((Amour)card).getBattlePoints();
-                    } else if (card.GetType().IsSubclassOf(typeof(Ally))) {
-                        currentBattlePoints += ((Ally)card).getBattlePoints();
-                    } else {
-                        currentBattlePoints += ((Weapon)card).getBattlePoints();
-                    }
+                    currentBattlePoints += ((Adventure)card).getBattlePoints();
+                    //if (card.GetType() == typeof(Amour)) {
+                    //    currentBattlePoints += ((Amour)card).getBattlePoints();
+                    //} else if (card.GetType().IsSubclassOf(typeof(Ally))) {
+                    //    currentBattlePoints += ((Ally)card).getBattlePoints();
+                    //} else {
+                    //    currentBattlePoints += ((Weapon)card).getBattlePoints();
+                    //}
                     Debug.Log(strategyOwner.getName() + "'s current battle points: " + currentBattlePoints);
                     if (currentBattlePoints >= previousStageBattlePoints + 10) {
                         Debug.Log("Sufficient battle points acquired, moving on with stage");
@@ -239,21 +249,24 @@ public class Strategy2 : AbstractAI
         int currentBattlePoints = 0;
         for (int i = 0; i < quest.getNumStages(); i++) {
             Debug.Log("Calculating " + strategyOwner.getName() + "'s validity for stage " + i);
-            Debug.Log("Required battle points: " + (previousBattlePoints + 10));
             List<Card> tempList = new List<Card>(sortedList);
+            previousBattlePoints = currentBattlePoints;
             currentBattlePoints = permanentBattlePoints;
+            Debug.Log("Required battle points: " + (previousBattlePoints + 10));
 
             foreach (Card card in sortedList) {
                 Debug.Log("Adding " + card.getCardName() + " to " + strategyOwner.getName() + "'s hypothetical play area");
+                currentBattlePoints += ((Adventure)card).getBattlePoints();
                 if (card.GetType() == typeof(Amour)) {
                     permanentBattlePoints += ((Amour)card).getBattlePoints();
-                    currentBattlePoints += ((Amour)card).getBattlePoints();
+                    //currentBattlePoints += ((Amour)card).getBattlePoints();
                 } else if (card.GetType().IsSubclassOf(typeof(Ally))) {
                     permanentBattlePoints += ((Ally)card).getBattlePoints();
-                    currentBattlePoints += ((Ally)card).getBattlePoints();
-                } else {
-                    currentBattlePoints += ((Weapon)card).getBattlePoints();
+                    //currentBattlePoints += ((Ally)card).getBattlePoints();
                 }
+                //} else {
+                //    currentBattlePoints += ((Weapon)card).getBattlePoints();
+                //}
                 participationList.Add(card);
                 tempList.Remove(card);
                 Debug.Log(strategyOwner.getName() + "'s battle points for stage " + i + ": " + currentBattlePoints);
@@ -349,7 +362,7 @@ public class Strategy2 : AbstractAI
         List<Card> PlayedList = new List<Card>();
         List<Card> Sorted = new List<Card>();
         Sorted = SortBattlePointsCards(Hand);
-        int TotalBattlePoints = 0;
+        int totalBattlePoints = 0;
 
         while(Sorted.Count > 0) {
             Card tempCard = GetHighestCard(Sorted);
@@ -357,23 +370,24 @@ public class Strategy2 : AbstractAI
             {
                 break;
             }
-            else if (TotalBattlePoints >= 50) {
+            else if (totalBattlePoints >= 50) {
                 break;
             }
             if (!PlayedList.Contains(tempCard))
             {
                 Debug.Log("Adding " + tempCard.getCardName() + " to AI");
                 PlayedList.Add(tempCard);
-                if(tempCard.GetType() == typeof(Amour) ){
-                    TotalBattlePoints += ((Amour)tempCard).getBattlePoints();
-                }
-                else if (tempCard.GetType().IsSubclassOf(typeof(Ally)))
-                {
-                    TotalBattlePoints += ((Ally)tempCard).getBattlePoints();
-                }
-                else {
-                    TotalBattlePoints += ((Weapon)tempCard).getBattlePoints();
-                }
+                totalBattlePoints += ((Adventure)tempCard).getBattlePoints();
+                //if(tempCard.GetType() == typeof(Amour) ){
+                //    TotalBattlePoints += ((Amour)tempCard).getBattlePoints();
+                //}
+                //else if (tempCard.GetType().IsSubclassOf(typeof(Ally)))
+                //{
+                //    TotalBattlePoints += ((Ally)tempCard).getBattlePoints();
+                //}
+                //else {
+                //    TotalBattlePoints += ((Weapon)tempCard).getBattlePoints();
+                //}
             }
             Sorted.Remove(tempCard);
         }
@@ -389,26 +403,30 @@ public class Strategy2 : AbstractAI
         Card currentCard = null;
 
         foreach(Card card in Sorted) {
-            if(card.GetType() == typeof(Amour)) {
-                if(currentCard == null || HighestBattlePoint < ((Amour)card).getBattlePoints() ){
-                    currentCard = card;
-                    HighestBattlePoint = ((Amour)card).getBattlePoints();
-                }
+            if (currentCard == null || HighestBattlePoint < ((Adventure)card).getBattlePoints()) {
+                currentCard = card;
+                HighestBattlePoint = ((Adventure)card).getBattlePoints();
             }
-            else if (card.GetType().IsSubclassOf(typeof(Ally))) {
-                if (currentCard == null || HighestBattlePoint < ((Ally)card).getBattlePoints())
-                {
-                    currentCard = card;
-                    HighestBattlePoint = ((Ally)card).getBattlePoints();
-                }
-            }
-            else {
-                if (currentCard == null || HighestBattlePoint < ((Weapon)card).getBattlePoints())
-                {
-                    currentCard = card;
-                    HighestBattlePoint = ((Weapon)card).getBattlePoints();
-                }
-            }
+            //if(card.GetType() == typeof(Amour)) {
+            //    if(currentCard == null || HighestBattlePoint < ((Amour)card).getBattlePoints() ){
+            //        currentCard = card;
+            //        HighestBattlePoint = ((Amour)card).getBattlePoints();
+            //    }
+            //}
+            //else if (card.GetType().IsSubclassOf(typeof(Ally))) {
+            //    if (currentCard == null || HighestBattlePoint < ((Ally)card).getBattlePoints())
+            //    {
+            //        currentCard = card;
+            //        HighestBattlePoint = ((Ally)card).getBattlePoints();
+            //    }
+            //}
+            //else {
+            //    if (currentCard == null || HighestBattlePoint < ((Weapon)card).getBattlePoints())
+            //    {
+            //        currentCard = card;
+            //        HighestBattlePoint = ((Weapon)card).getBattlePoints();
+            //    }
+            //}
         }
         return currentCard;
     }

@@ -133,6 +133,13 @@ public class BoardManagerMediator
 		}
 		player.dealCards (cardsToDeal);
         Logger.getInstance().info("Dealt " + numCardsToDeal + " cards to " + player.getName());
+        if (player.GetType() == typeof(AIPlayer)) {
+            Action action = player.getAction();
+            if (action != null) {
+                action.Invoke();
+                player.giveAction(null);
+            }
+        }
 	}
 
     public void setCardInPlay(Card card) {
@@ -157,11 +164,12 @@ public class BoardManagerMediator
         if (!gameOver())
         {
             Logger.getInstance().info(players[playerTurn].getName().ToUpper() + "'S TURN");
+            Debug.Log(players[playerTurn].getName().ToUpper() + "'S TURN");
             if(storyDeck.getSize() <= 0) {
                 storyDeck = new StoryDeck();
             }
             cardInPlay = (Story)storyDeck.drawCard();
-            //BoardManager.DrawCards(players[playerTurn]);
+            Debug.Log("Drew card: " + cardInPlay.getCardName());
             cardInPlay.startBehaviour();
         }
         else
@@ -410,14 +418,14 @@ public class BoardManagerMediator
     }
   
 
-    public void NextPlayerTurn(Player player) {
+    public void SimpleAlert(Player player, String text) {
         BoardManager.DrawCards(player);
-        BoardManager.SetInteractionText("Event action complete.");
+        BoardManager.SetInteractionText(text);
 
         Action action = () => {
             nextTurn();
         };
-        BoardManager.SetInteractionButtons("Next player", "", action, null);
+        BoardManager.SetInteractionButtons("Continue", "", action, null);
     }
 
     public void DisplayStageResults(Player player, bool playerEliminated) {
