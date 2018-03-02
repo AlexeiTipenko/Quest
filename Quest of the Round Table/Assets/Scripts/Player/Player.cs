@@ -138,6 +138,8 @@ public abstract class Player {
         {
             RemoveCard(card);
         }
+
+        BoardManagerMediator.getInstance().DestroyDiscardArea();
     }
 
 

@@ -157,7 +157,7 @@ public abstract class Tournament : Story
         if (!cardsValid)
         {
             Logger.getInstance().warn(playerToPrompt.getName() + "'s card selection INVALID");
-            board.ReturnCardsToPlayer();
+            //board.ReturnCardsToPlayer();
             PromptCardSelection(playerToPrompt);
         }
 
