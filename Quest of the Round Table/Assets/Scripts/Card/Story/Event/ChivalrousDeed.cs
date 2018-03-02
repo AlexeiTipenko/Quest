@@ -1,12 +1,14 @@
-using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 
 public class ChivalrousDeed : Event {
 
+    BoardManagerMediator board;
+    string description = "Player with both lowest rank and least amount of shields, receives 3 shields.";
 	public static int frequency = 1;
 
-	public ChivalrousDeed() : base ("Chivalrous Deed") { }
+	public ChivalrousDeed() : base ("Chivalrous Deed") {
+        board = BoardManagerMediator.getInstance();
+    }
 
 	//Event description: Player with both lowest rank and least amount of shields, receives 3 shields.
 	public override void startBehaviour() { 
@@ -49,7 +51,11 @@ public class ChivalrousDeed : Event {
 		}
 		Logger.getInstance ().info ("Awarded 3 shields to lowest ranked + lowest shields players, finishing behaviour");
 
-        Player currentPlayer = BoardManagerMediator.getInstance().getCurrentPlayer();
-        BoardManagerMediator.getInstance().NextPlayerTurn(currentPlayer);
+        Player currentPlayer = board.getCurrentPlayer();
+        if (currentPlayer.GetType() != typeof(AIPlayer)) {
+            board.SimpleAlert(currentPlayer, description);
+        } else {
+            board.nextTurn();
+        }
 	}
 }

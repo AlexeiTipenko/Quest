@@ -123,15 +123,16 @@ public abstract class AbstractAI {
     protected int GetTotalBattlePoints(List<Card> cards) {
         int totalBattlePoints = 0;
         foreach (Card card in cards) {
-            if (card.GetType().IsSubclassOf(typeof(Foe))) {
-                totalBattlePoints += ((Foe)card).getBattlePoints();
-            } else if (card.GetType().IsSubclassOf(typeof(Weapon))) {
-                totalBattlePoints += ((Weapon)card).getBattlePoints();
-            } else if (card.GetType() == typeof(Amour)) {
-                totalBattlePoints += ((Amour)card).getBattlePoints();
-            } else if (card.GetType().IsSubclassOf(typeof(Ally))) {
-                totalBattlePoints += ((Ally)card).getBattlePoints();
-            }
+            totalBattlePoints += ((Adventure)card).getBattlePoints();
+            //if (card.GetType().IsSubclassOf(typeof(Foe))) {
+            //    totalBattlePoints += ((Foe)card).getBattlePoints();
+            //} else if (card.GetType().IsSubclassOf(typeof(Weapon))) {
+            //    totalBattlePoints += ((Weapon)card).getBattlePoints();
+            //} else if (card.GetType() == typeof(Amour)) {
+            //    totalBattlePoints += ((Amour)card).getBattlePoints();
+            //} else if (card.GetType().IsSubclassOf(typeof(Ally))) {
+            //    totalBattlePoints += ((Ally)card).getBattlePoints();
+            //}
         }
         return totalBattlePoints;
     }
