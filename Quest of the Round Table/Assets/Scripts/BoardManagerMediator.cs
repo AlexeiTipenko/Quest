@@ -150,6 +150,14 @@ public class BoardManagerMediator
 		this.players = players;
 	}
 
+    public void AddToDiscardDeck(Card card) {
+        if (card.GetType().IsSubclassOf(typeof(Story))) {
+            storyDiscard.addCard(card);
+        } else {
+            adventureDiscard.addCard(card);
+        }
+    }
+
     public void startGame()
     {
         Logger.getInstance().info("Game started...");
@@ -183,11 +191,11 @@ public class BoardManagerMediator
         if (cardInPlay.GetType().IsSubclassOf(typeof(Quest))) {
             BoardManager.DestroyStages();
         }
-        storyDiscard.addCard(cardInPlay);
         BoardManager.DestroyCards();
         BoardManager.DestroyDiscardArea();
         BoardManager.ClearInteractions();
         BoardManager.SetIsFreshTurn(true);
+        AddToDiscardDeck(cardInPlay);
         cardInPlay = null;
         playerTurn = (playerTurn + 1) % players.Count;
         playTurn();
