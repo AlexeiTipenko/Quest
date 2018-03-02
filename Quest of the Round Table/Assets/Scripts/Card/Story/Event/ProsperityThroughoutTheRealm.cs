@@ -27,7 +27,15 @@ public class ProsperityThroughoutTheRealm : Event {
             action = () => {
                 board.TransferFromHandToPlayArea(playerToPrompt);
                 playerToPrompt.RemoveCardsResponse();
-                DealCardsNextPlayer();
+                if (playerToPrompt.getHand().Count > 12)
+                {
+                    board.PromptCardRemoveSelection(playerToPrompt, action);
+                }
+
+                else
+                {
+                    DealCardsNextPlayer();
+                }
             };
             playerToPrompt.giveAction(action);
             BoardManagerMediator.getInstance().dealCardsToPlayer(playerToPrompt, 2);
