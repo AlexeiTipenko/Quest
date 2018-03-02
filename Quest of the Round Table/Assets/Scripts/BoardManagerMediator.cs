@@ -330,8 +330,18 @@ public class BoardManagerMediator
     }
 
 
-	public void PromptTest(Player player, int currentBid) {
-		//TODO: prompt test
+	public void PromptEnterTest(Player player, int stageNum, int currentBid) {
+        BoardManager.DrawCards(player);
+        BoardManager.SetInteractionText("Current stage is a test, with a currentBid of: " + currentBid + ". Do you wish to up the bid by one?");
+        Action action1 = () => {
+            ((Quest)cardInPlay).getStage(stageNum).promptTestResponse(true);
+        };
+        Action action2 = () => {
+            ((Quest)cardInPlay).getStage(stageNum).promptTestResponse(false);
+        };
+        BoardManager.SetInteractionButtons("Yes", "Drop out", action1, action2);
+        Debug.Log("Prompting " + player.getName() + " to enter TEST inside stage: " + stageNum);
+        Logger.getInstance().info("Prompting " + player.getName() + " to enter TEST inside stage: " + stageNum);  
 	}
 
     public void SetInteractionText(String text) {

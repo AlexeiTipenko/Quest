@@ -241,6 +241,11 @@ public abstract class Quest : Story {
 		}
 	}
 
+    public void PlayTest() {
+        currentStage++;
+
+    }
+
 	private void CompleteQuest() {
 		foreach (Player player in board.getPlayers()) {
 			player.getPlayArea ().discardAmours ();
