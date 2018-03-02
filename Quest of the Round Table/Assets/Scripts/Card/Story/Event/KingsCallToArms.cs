@@ -7,6 +7,7 @@ public class KingsCallToArms : Event {
 	public static int frequency = 1;
 	private List<Player> highestRankPlayers; 
 	public Player currentPlayer;
+    public Player firstPlayer;
 
 	public KingsCallToArms () : base ("King's Call to Arms") { }
 
@@ -31,10 +32,11 @@ public class KingsCallToArms : Event {
 			}
 		}
 
-		Logger.getInstance ().debug ("Populated a list of players with the lowest rank");
+		Logger.getInstance ().debug ("Populated a list of players with the highest rank");
 
 		if (highestRankPlayers.Count != 0) { // For safety
 			currentPlayer = highestRankPlayers [0];
+            firstPlayer = currentPlayer;
 			Logger.getInstance ().debug ("Prompting event action for player " + currentPlayer.getName());
 			PromptEventAction ();
 		}
@@ -72,13 +74,91 @@ public class KingsCallToArms : Event {
 		Logger.getInstance ().trace ("Next player in getNextPlayer is null, previous player is " + previousPlayer.getName());
 		return null;
 	}
+
 		
-	public void PlayerFinishedResponse() {
-		Logger.getInstance ().debug ("Got finished response from last player, moving onto next player...");
-		//call action on next player
-		currentPlayer = getNextPlayer (currentPlayer);
-		PromptEventAction ();
-	}
+
+    public void PlayerDiscardedWeapon()
+    {
+        Debug.Log("Entered 'PlayerDiscardedWeapon");
+        List<Card> dicardedCards = BoardManagerMediator.getInstance().GetDiscardedCards(currentPlayer);
+        Debug.Log("Number of cards discarded: " + dicardedCards.Count);
+
+        if (dicardedCards.Count == 1){
+            if (dicardedCards[0].GetType().IsSubclassOf(typeof(Weapon))){
+                currentPlayer.RemoveCardsResponse();
+                currentPlayer = getNextPlayer(currentPlayer);
+
+                if (currentPlayer != firstPlayer){
+                    Debug.Log("Got finished response from last player, moving onto next player...");
+                    Logger.getInstance().debug("Got finished response from last player, moving onto next player...");
+                    PromptEventAction();
+                }
+
+                else{
+                    BoardManagerMediator.getInstance().nextTurn();
+                }
+                
+            }
+            else{
+                Debug.Log("Player played incorrect card...");
+                Logger.getInstance().debug("Player played incorrect card...");
+                BoardManagerMediator.getInstance().PromptToDiscardWeapon(currentPlayer);
+            }
+        }
+
+        else{
+            Debug.Log("Player discarded incorrect number of cards...");
+            Logger.getInstance().debug("Player discarded incorrect number of cards...");
+            BoardManagerMediator.getInstance().PromptToDiscardWeapon(currentPlayer);
+        }
+    }
+
+
+    public void PlayerDiscardedFoes()
+    {
+        bool valid = true;
+        Debug.Log("Entered 'PLayerDiscardedFoes");
+        List<Card> dicardedCards = BoardManagerMediator.getInstance().GetDiscardedCards(currentPlayer);
+        Debug.Log("Number of cards discarded: " + dicardedCards.Count);
+
+        if (dicardedCards.Count == getNumFoeCards()) {
+            foreach (Card card in dicardedCards) {
+                if (!card.GetType().IsSubclassOf(typeof(Foe))) {
+                    valid = false;
+                }
+            }
+
+            if (valid) {
+                currentPlayer.RemoveCardsResponse();
+                currentPlayer = getNextPlayer(currentPlayer);
+
+                if (currentPlayer != firstPlayer) {
+                    Debug.Log("Got finished response from last player, moving onto next player...");
+                    Logger.getInstance().debug("Got finished response from last player, moving onto next player...");
+                    PromptEventAction();
+                }
+
+                else {
+                    BoardManagerMediator.getInstance().nextTurn();
+                }
+            }
+
+            else {
+                Debug.Log("Player played incorrect card...");
+                Logger.getInstance().debug("Player played incorrect card...");
+                //board.ReturnCardsToPlayer();
+                //PromptCardSelection(playerToPrompt);
+                BoardManagerMediator.getInstance().PromptToDiscardFoes(currentPlayer, getNumFoeCards());
+            }
+        }
+
+        else{
+            Debug.Log("Player discarded incorrect number of cards...");
+            Logger.getInstance().debug("Player discarded incorrect number of cards...");
+            BoardManagerMediator.getInstance().PromptToDiscardFoes(currentPlayer, getNumFoeCards());
+        }
+    }
+
 
 	private int getNumFoeCards() {
 		int numFoeCards = 0;

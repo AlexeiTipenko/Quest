@@ -92,6 +92,10 @@ public class BoardManagerMediator
         return cardList;
     }
 
+    public void DestroyDiscardArea(){
+        BoardManager.DestroyDiscardArea();
+    }
+
     public List<Card> GetDiscardedCards(Player player)
     {
 
@@ -116,9 +120,6 @@ public class BoardManagerMediator
         return BoardManager.GetCardsNumHandArea(player);
     }
 
-    public void ReturnCardsToPlayer(){
-        BoardManager.ReturnCardsToPlayer();
-    }
 
 	public void dealCardsToPlayer(Player player, int numCardsToDeal) {
         Debug.Log("Dealing " + numCardsToDeal + " cards to player: " + player.getName());
@@ -388,10 +389,9 @@ public class BoardManagerMediator
 	{
 		BoardManager.DrawCards(player);
 		BoardManager.SetInteractionText("Please discard 1 weapon.");
-		//Assume player choice is valid for now
+        BoardManager.SetupDiscardPanel();
 		Action action = () => {
-			player.RemoveCardsResponse();
-			((KingsCallToArms)cardInPlay).PlayerFinishedResponse();
+            ((KingsCallToArms)cardInPlay).PlayerDiscardedWeapon();
 		};
 		BoardManager.SetInteractionButtons("Complete", "", action, null);
 		Debug.Log("Prompting " + player.getName() + " to prepare cards.");
@@ -404,10 +404,9 @@ public class BoardManagerMediator
 	{
 		BoardManager.DrawCards(player);
 		BoardManager.SetInteractionText("Please discard " + numFoes +  " Foes.");
-		//Assume player choice is valid for now
-		Action action = () => {
-			player.RemoveCardsResponse();
-			((KingsCallToArms)cardInPlay).PlayerFinishedResponse();
+        BoardManager.SetupDiscardPanel();
+		Action action = () => {		
+			((KingsCallToArms)cardInPlay).PlayerDiscardedFoes();
 		};
 		BoardManager.SetInteractionButtons("Complete", "", action, null);
 		Debug.Log("Prompting " + player.getName() + " to prepare cards.");

@@ -156,6 +156,8 @@ public abstract class Player {
             }
             Debug.Log("Removed " + chosenCards.Count + " cards from " + name + "'s hand");
         }
+
+        BoardManagerMediator.getInstance().DestroyDiscardArea();
     }
 
 
