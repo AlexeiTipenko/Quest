@@ -50,12 +50,14 @@ public class AdventureDeck : Deck {
 		newCards.Add ("Amour");
 
 		//weapons
+
 		newCards.Add ("Excalibur");
 		newCards.Add ("Lance");
 		newCards.Add ("BattleAx");
 		newCards.Add ("Sword");
 		newCards.Add ("Horse");
 		newCards.Add ("Dagger");
+		
 
 		instantiateCards (newCards);
 

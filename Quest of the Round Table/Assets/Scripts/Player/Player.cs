@@ -78,10 +78,13 @@ public abstract class Player {
 	public void RemoveRandomCards(int numCards) {
 		if (numCards <= hand.Count) {
             if (numCards == 1) {
+                board.AddToDiscardDeck(hand.ElementAt(hand.Count - 1));
                 hand.RemoveAt(hand.Count - 1);
             } else {
                 for (int i = 0; i < numCards; i++) {
-                    hand.RemoveAt(random.Next(hand.Count - 1));
+                    int index = random.Next(hand.Count - 1);
+                    board.AddToDiscardDeck(hand.ElementAt(index));
+                    hand.RemoveAt(index);
                 }
             }
             Debug.Log("Removed " + numCards + " cards from " + name + "'s hand");
@@ -171,6 +174,7 @@ public abstract class Player {
         {
             if (card.getCardName() == hand[i].getCardName())
             {
+                board.AddToDiscardDeck(hand.ElementAt(i));
                 hand.RemoveAt(i);
                 break;
             }
@@ -187,6 +191,8 @@ public abstract class Player {
             }
             Debug.Log("Removed " + chosenCards.Count + " cards from " + name + "'s hand");
         }
+
+        BoardManagerMediator.getInstance().DestroyDiscardArea();
     }
 
 

@@ -173,17 +173,6 @@ public class BoardManager : MonoBehaviour
         return cardNames;
     }
 
-    public static void ReturnCardsToPlayer()
-    {
-        GameObject playArea = GameObject.Find("Canvas/TabletopImage/PlayerPlayArea");
-        GameObject handArea = GameObject.Find("Canvas/TabletopImage/HandArea");
-
-        foreach (Transform child in playArea.transform)
-        {
-            child.gameObject.transform.SetParent(handArea.transform, false);
-        }
-    }
-
     public static void DrawCover(Player player) {
         HideCover();
         if (player != previousPlayer || isFreshTurn) {
@@ -352,6 +341,18 @@ public class BoardManager : MonoBehaviour
         GameObject discardArea = GameObject.Find("Canvas/TabletopImage/DiscardArea");
         Destroy(discardArea);
 
+    }
+
+    public static void returnDicardedCardsToHand(){
+        
+        GameObject[] cardObjs = GameObject.FindGameObjectsWithTag("DiscardedCard");
+        GameObject handArea = GameObject.Find("Canvas/TabletopImage/HandArea");
+
+        foreach (GameObject gameObj in cardObjs)
+        {
+            gameObj.transform.SetParent(handArea.transform, false);
+            gameObj.tag = "Untagged";
+        }
     }
 
     public static void DestroyPlayerInfo() {
