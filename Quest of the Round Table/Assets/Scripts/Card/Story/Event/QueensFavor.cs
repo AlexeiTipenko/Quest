@@ -7,6 +7,7 @@ public class QueensFavor : Event {
     private BoardManagerMediator board;
     private Player playerToPrompt, originalPlayer;
     List<Player> lowestRankPlayers;
+    Action action;
 
 	public QueensFavor () : base ("Queen's Favor") {
         board = BoardManagerMediator.getInstance();
@@ -45,21 +46,23 @@ public class QueensFavor : Event {
 
     private void DealCards()
     {
-        Action action = () => {
-            board.TransferFromHandToPlayArea(playerToPrompt);
-            List<Card> chosenCards = board.GetDiscardedCards(playerToPrompt);
-            foreach (Card card in chosenCards)
-            {
-                playerToPrompt.RemoveCard(card);
-            }
-            playerToPrompt = GetNextPlayer(playerToPrompt);
-            if (playerToPrompt != originalPlayer)
-            {
-                DealCards();
-            }
-            else
-            {
-                board.nextTurn();
+        action = () => {
+
+            if (BoardManagerMediator.getInstance().GetCardsNumHandArea(playerToPrompt) > 12)
+                board.PromptCardRemoveSelection(playerToPrompt, action);
+
+            else{
+                
+                board.TransferFromHandToPlayArea(playerToPrompt);
+                playerToPrompt.RemoveCardsResponse();
+
+                playerToPrompt = GetNextPlayer(playerToPrompt);
+
+                if (playerToPrompt != originalPlayer)
+                    DealCards();
+
+                else
+                    board.nextTurn();
             }
         };
 

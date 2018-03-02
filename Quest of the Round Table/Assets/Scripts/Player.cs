@@ -124,9 +124,6 @@ public class Player
 
     public void RemoveCard(Card card)
     {
-        //var value = MyList.First(item => item.name == "foo").value;
-        //Card cardToRemove = hand.Find(c => c.getCardName() == card.getCardName());
-        //Card cardToRemove = hand.First(c => c.getCardName() == card.getCardName());
         for (int i = 0; i < hand.Count(); i++)
         {
             if (card.getCardName() == hand[i].getCardName())
@@ -140,8 +137,11 @@ public class Player
 
     public void RemoveCardsResponse()
     {
-        
-
+        List<Card> chosenCards = board.GetDiscardedCards(this);
+        foreach (Card card in chosenCards)
+        {
+            RemoveCard(card);
+        }
     }
 
 

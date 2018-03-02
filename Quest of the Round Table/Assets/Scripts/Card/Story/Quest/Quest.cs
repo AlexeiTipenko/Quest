@@ -57,7 +57,7 @@ public abstract class Quest : Story {
 		if (sponsorAccepted) {
 			Logger.getInstance().info("Sponsor accepted: " + sponsor.getName());
             Debug.Log("Sponsor accepted: " + sponsor.getName());
-            board.SetupQuest (sponsor, "Prepare your quest using a combination of foes(and weapons) and a test.");
+            board.SetupQuest (sponsor, "PREPARE YOUR QUEST\n- Each stage contains a foe or a test\n- Maximum one test per quest\n- Foe stages may contain (unique) weapons\n- Battle points must increase between stages");
 		} else {
 			Logger.getInstance().trace("Sponsor declined: " + sponsor.getName());
 			IncrementSponsor ();
@@ -78,7 +78,6 @@ public abstract class Quest : Story {
                 foreach (Card card in sponsor.getHand()) {
                     Type cardType = card.GetType();
                     if (child.name == card.getCardName() && cardType.IsSubclassOf(typeof(Test))) {
-                        Debug.Log("This is Test");
                         if (!hasTest) {
                             hasTest = true;
                             currentStageHasTest = true;
@@ -90,7 +89,6 @@ public abstract class Quest : Story {
                         }
                     }
                     else if (child.name == card.getCardName() && cardType.IsSubclassOf(typeof(Foe))) {
-                        Debug.Log("This is Foe");
                         if (currentStageHasTest) {
                             Debug.Log("Quest setup failed due to test existing in stage with foe/weapon.");
                             Logger.getInstance().warn("Quest setup failed due to test existing in stage with foe/weapon");
@@ -166,6 +164,10 @@ public abstract class Quest : Story {
             return null;
         }
         return stages[stageNum];
+    }
+
+    public Stage getCurrentStage() {
+        return stages[currentStage];
     }
 
 	public void PromptAcceptQuestResponse(bool questAccepted) {

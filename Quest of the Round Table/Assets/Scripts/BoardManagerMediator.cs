@@ -6,7 +6,6 @@ public class BoardManagerMediator
 {
     
 	static BoardManagerMediator instance;
-	//GameObject boardManager;
 	List<Player> players;
 	AdventureDeck adventureDeck;
 	StoryDeck storyDeck;
@@ -27,7 +26,6 @@ public class BoardManagerMediator
 	}
 
 	public void initGame (List<Player> players) {
-        
 		this.players = players;
 		adventureDeck = new AdventureDeck ();
 		storyDeck = new StoryDeck ();
@@ -72,7 +70,6 @@ public class BoardManagerMediator
                     break;
                 }
             }
-            //cardList.Add(player.getHand().Find(c => c.getCardName() == name));
         }
         return cardList;
     }
@@ -93,9 +90,12 @@ public class BoardManagerMediator
                     break;
                 }
             }
-            //cardList.Add(player.getHand().Find(c => c.getCardName() == name));
         }
         return cardList;
+    }
+
+    public int GetCardsNumHandArea(Player player){
+        return BoardManager.GetCardsNumHandArea(player);
     }
 
     public void ReturnCardsToPlayer(){
@@ -115,7 +115,6 @@ public class BoardManagerMediator
 		player.dealCards (cardsToDeal);
         Logger.getInstance().info("Dealt " + numCardsToDeal + " cards to " + player.getName());
 	}
-
 
     public void setCardInPlay(Card card) {
         cardInPlay = (Story) card;
@@ -229,7 +228,7 @@ public class BoardManagerMediator
 
 	public void PromptSponsorQuest(Player player) {
         BoardManager.DrawCards(player);
-        BoardManager.SetInteractionText("Would you like to sponsor this quest?");
+        BoardManager.SetInteractionText("NEW QUEST DRAWN\nWould you like to sponsor this quest?");
         Action action1 = () => {
             ((Quest)cardInPlay).PromptSponsorQuestResponse(true);
         };
@@ -251,7 +250,7 @@ public class BoardManagerMediator
                 ((Quest)cardInPlay).SetupQuestComplete(stages);
             }
             else {
-                SetupQuest(player, "Invalid selections.");
+                SetupQuest(player, "INVALID QUEST SELECTIONS.\n- Each stage contains a foe or a test\n- Maximum one test per quest\n- Foe stages may contain (unique) weapons\n- Battle points must increase between stages");
             }
         };
 
@@ -268,7 +267,7 @@ public class BoardManagerMediator
 
 	public void PromptAcceptQuest(Player player) {
         BoardManager.DrawCards(player);
-        BoardManager.SetInteractionText("Would you like to participate in this quest?");
+        BoardManager.SetInteractionText("NEW QUEST DRAWN\nWould you like to participate in this quest?");
         Action action1 = () => {
             ((Quest)cardInPlay).PromptAcceptQuestResponse(true);
         };
@@ -282,9 +281,8 @@ public class BoardManagerMediator
 
 
 	public void PromptFoe(Player player, int stageNum) {
-		//TODO: prompt foe
         BoardManager.DrawCards(player);
-		BoardManager.SetInteractionText("Card is a foe. Place cards to continue, or drop out.");
+        BoardManager.SetInteractionText("QUEST STAGE " + (stageNum + 1) + "\nYou are facing a foe. You may place any number of cards, or drop out.");
 		Action action1 = () => {
             Debug.Log("Did not dropout");
             TransferFromHandToPlayArea(player);
@@ -317,7 +315,7 @@ public class BoardManagerMediator
     public void PromptEnterTournament(Player player)
     {
         BoardManager.DrawCards(player);
-        BoardManager.SetInteractionText("Would you like to enter this tournament?");
+        BoardManager.SetInteractionText("NEW TOURNAMENT DRAWN\nWould you like to enter this tournament?");
         Action action1 = () => {
             ((Tournament)cardInPlay).PromptEnterTournamentResponse(true);
         };
@@ -333,7 +331,7 @@ public class BoardManagerMediator
     public void PromptCardSelection(Player player)
     {
         BoardManager.DrawCards(player);
-        BoardManager.SetInteractionText("Prepare for the tournament using a combination of weapon, ally and amour cards.");
+        BoardManager.SetInteractionText("PREPARE FOR BATTLE\nPrepare for the tournament using a combination of weapon, ally and amour cards.");
         Action action = () => {
             ((Tournament)cardInPlay).CardsSelectionResponse();
         };
@@ -376,25 +374,15 @@ public class BoardManagerMediator
 
 
     public void PromptCardRemoveSelection(Player player, Action action)
-
     {
         BoardManager.DrawCards(player);
-        BoardManager.SetInteractionText("Please remove cards until you have at most 12.");
-
-        //Action action = () => {
-        //    buttonClicked = true;
-        //    BoardManager.DestroyDiscardArea();
-        //    player.RemoveCardsResponse();
-        //    player.PromptNextPlayer();
-        //};
-
-
+        BoardManager.SetInteractionText("TOO MANY CARDS\nPlease discard (or play) cards until you have at most 12.");
         BoardManager.SetInteractionButtons("Complete", "", action, null);
         BoardManager.SetupDiscardPanel();
         Debug.Log("Prompting " + player.getName() + " to prepare cards.");
         Logger.getInstance().info("Prompted " + player.getName() + " to prepare cards to discard.");
     }
-
+  
 
     public void NextPlayerTurn(Player player) {
         BoardManager.DrawCards(player);
