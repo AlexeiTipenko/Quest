@@ -10,6 +10,7 @@ public class Stage {
 	private Adventure stageCard;
 	private List<Card> weapons;
     private List<Player> playersToRemove;
+    Action action;
 
 	private Quest quest;
     Player playerToPrompt, originalPlayer;
@@ -73,7 +74,6 @@ public class Stage {
                 playerToPrompt = board.getNextPlayer(playerToPrompt);
             }
             originalPlayer = playerToPrompt;
-            Debug.Log("Current player is: " + playerToPrompt.getName());
             PromptFoe();
 		} else {
 			Logger.getInstance ().trace ("Stage card is NOT subclass type of foe");
@@ -184,9 +184,10 @@ public class Stage {
         }
         if (playerBattlePoints >= getTotalBattlePoints ()) {
             Logger.getInstance ().trace ("playerBattlePoints >= getTotalbattlePoints");
-            Debug.Log("Player " + playerToPrompt.getName() + " passed stage.");
+            Debug.Log("Player " + playerToPrompt.getName() + " passed the stage.");
         } else {
             Logger.getInstance ().trace ("Did not pass. Player will be removed: " + playerToPrompt.getName());
+            Debug.Log("Player " + playerToPrompt.getName() + " did not pass the stage.");
             playerEliminated = true;
         }
 
@@ -215,17 +216,32 @@ public class Stage {
             {
                 quest.removeParticipatingPlayer(player);
             }
-            quest.PlayStage();
+            if (quest.getPlayers().Count > 0) {
+                while (!quest.getPlayers().Contains(playerToPrompt)) {
+                    playerToPrompt = board.getNextPlayer(playerToPrompt);
+                }
+                DealCards();
+            } else {
+                quest.PlayStage();
+            }
         }
     }
 
     public void DealCards() {
         if (playerToPrompt.getHand().Count + 1 > 12)
         {
-            Action action = () => {
+            action = () => {
                 board.TransferFromHandToPlayArea(playerToPrompt);
                 playerToPrompt.RemoveCardsResponse();
-                DealCardsNextPlayer();
+                if (playerToPrompt.getHand().Count > 12)
+                {
+                    board.PromptCardRemoveSelection(playerToPrompt, action);
+                }
+
+                else
+                {
+                    DealCardsNextPlayer();
+                }
             };
             playerToPrompt.giveAction(action);
             board.dealCardsToPlayer(playerToPrompt, 1);
@@ -239,12 +255,6 @@ public class Stage {
 
     public void DealCardsNextPlayer() {
         playerToPrompt = quest.getNextPlayer(playerToPrompt);
-        Debug.Log("Original player: " + originalPlayer.getName());
-        if (playerToPrompt == null) {
-            Debug.Log("No players remaining");
-        } else {
-            Debug.Log("New player: " + playerToPrompt.getName());   
-        }
         if (playerToPrompt != originalPlayer) {
             DealCards();
         } else {

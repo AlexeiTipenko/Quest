@@ -167,8 +167,6 @@ public class BoardManager : MonoBehaviour
 
     public static void DrawCover(Player player) {
         HideCover();
-        Debug.Log("Current player: " + player.getName());
-        Debug.Log("Previous player: " + player.getName());
         if (player != previousPlayer || isFreshTurn) {
             isFreshTurn = false;
             coverInteractionText.GetComponent<Text>().text = "NEXT PLAYER: " + player.getName().ToUpper() + "\nPress continue when you are ready.";

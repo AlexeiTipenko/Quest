@@ -12,6 +12,7 @@ public abstract class Quest : Story {
 	Player sponsor, playerToPrompt;
 	List<Player> participatingPlayers;
 	public static bool KingsRecognitionActive = false;
+    Action action;
 
 	public Quest (string cardName, int numStages) : base (cardName) {
 
@@ -173,8 +174,8 @@ public abstract class Quest : Story {
 
     private void PromptAcceptQuest() {
         if (playerToPrompt != sponsor) {
+            Debug.Log("Prompting " + playerToPrompt.getName() + " to accept quest");
             if (playerToPrompt.GetType() == typeof(AIPlayer)) {
-                Debug.Log("Prompting accept quest for AI");
                 if (((AIPlayer)playerToPrompt).GetStrategy().DoIParticipateInQuest()) {
                     PromptAcceptQuestResponse(true);
                 } else {
@@ -215,11 +216,19 @@ public abstract class Quest : Story {
 		if (questAccepted) {
 			Logger.getInstance().debug(playerToPrompt.getName() + " has accepted to participate in the quest");
 			participatingPlayers.Add (playerToPrompt);
-            Action action = () => {
+            action = () => {
                 board.TransferFromHandToPlayArea(playerToPrompt);
                 playerToPrompt.RemoveCardsResponse();
-                playerToPrompt = board.getNextPlayer(playerToPrompt);
-                PromptAcceptQuest();
+                if (playerToPrompt.getHand().Count > 12)
+                {
+                    board.PromptCardRemoveSelection(playerToPrompt, action);
+                }
+
+                else
+                {
+                    playerToPrompt = board.getNextPlayer(playerToPrompt);
+                    PromptAcceptQuest();
+                }
             };
             if (playerToPrompt.getHand().Count + 1 > 12) {
                 playerToPrompt.giveAction(action);
@@ -261,10 +270,18 @@ public abstract class Quest : Story {
 		}
         Debug.Log("Quest complete");
         if (sponsor.getHand().Count + totalCardsCounter + numStages > 12) {
-            Action action = () => {
+            action = () => {
                 board.TransferFromHandToPlayArea(playerToPrompt);
                 playerToPrompt.RemoveCardsResponse();
-                board.nextTurn();
+                if (playerToPrompt.getHand().Count > 12)
+                {
+                    board.PromptCardRemoveSelection(playerToPrompt, action);
+                }
+
+                else
+                {
+                    board.nextTurn();
+                }
             };
             sponsor.giveAction(action);
             board.dealCardsToPlayer(sponsor, totalCardsCounter + numStages);

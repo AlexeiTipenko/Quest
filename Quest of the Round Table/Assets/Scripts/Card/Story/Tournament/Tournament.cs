@@ -73,17 +73,17 @@ public abstract class Tournament : Story
         if (tournamentAccepted)
         {
             playersEntered++;
+            Debug.Log(playerToPrompt.getName() + " has opted to participate in the tournament");
             participatingPlayers.Add(playerToPrompt);
 
             if ((playerToPrompt.getHand().Count() + 1) > 12)
             {
-                Logger.getInstance().trace("Dealing One Card to " + playerToPrompt.getName());
 
                 action = () => {
                     board.TransferFromHandToPlayArea(playerToPrompt);
                     playerToPrompt.RemoveCardsResponse();
 
-                    if (playerToPrompt.getHand().Count() > 12){
+                    if (playerToPrompt.getHand().Count() > 12) {
                         board.PromptCardRemoveSelection(playerToPrompt, action);
                     }
 

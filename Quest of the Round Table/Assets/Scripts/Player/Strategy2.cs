@@ -37,7 +37,16 @@ public class Strategy2 : AbstractAI
     public override bool DoISponsorAQuest()
     {
         Logger.getInstance().info(strategyOwner.getName() + " deciding to sponsor quest");
-        return (!SomeoneElseCanWinOrEvolveWithQuest() && SufficientCardsToSponsorQuest());
+        Debug.Log("Prompting " + strategyOwner.getName() + " to sponsor quest");
+        if (!SomeoneElseCanWinOrEvolveWithQuest()) {
+            Debug.Log("One of two conditions satisfied for AI participation");
+            if (SufficientCardsToSponsorQuest()) {
+                Debug.Log("Two of two conditions satisfied for AI participation");
+                return true;
+            }
+            return false;
+        }
+        return false;
     }
 
     public override void NextBid()
