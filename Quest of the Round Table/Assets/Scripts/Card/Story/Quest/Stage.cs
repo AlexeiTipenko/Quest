@@ -255,6 +255,7 @@ public class Stage {
                 while (!quest.getPlayers().Contains(playerToPrompt)) {
                     playerToPrompt = board.getNextPlayer(playerToPrompt);
                 }
+                originalPlayer = playerToPrompt;
                 DealCards();
             } else {
                 quest.PlayStage();

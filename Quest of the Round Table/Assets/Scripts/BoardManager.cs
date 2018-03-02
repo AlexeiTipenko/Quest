@@ -493,7 +493,7 @@ public class BoardManager : MonoBehaviour
         List<Player> players = BoardManagerMediator.getInstance().getPlayers();
         GameObject PlayersInfo = GameObject.Find("Canvas/TabletopImage/PlayersInfo");
         float position = -320;
-        foreach(Player currPlayer in players){
+        foreach(Player currPlayer in players) {
             GameObject CurrentPlayerInfo = Instantiate(Resources.Load("PlayerInfo", typeof(GameObject))) as GameObject;
             CurrentPlayerInfo.name = "PlayerInfo" + currPlayer.getName();
             CurrentPlayerInfo.tag = "PlayerInfo";
@@ -541,7 +541,7 @@ public class BoardManager : MonoBehaviour
         playAreaCanvas.SetActive(true);
 
 
-        for (int i = 0; i < 4; i++) {
+        for (int i = 0; i < players.Count; i++) {
             GameObject playArea = GameObject.Find("playAreaCanvas/Player" + i + "Area/CardInPlayArea");
             GameObject playAreaNames = GameObject.Find("playAreaCanvas/Player" + i + "Area");
             Text[] texts = playAreaNames.transform.GetComponentsInChildren<Text>();
