@@ -132,6 +132,12 @@ public class BoardManagerMediator
 		}
 		player.dealCards (cardsToDeal);
         Logger.getInstance().info("Dealt " + numCardsToDeal + " cards to " + player.getName());
+        if (player.GetType() == typeof(AIPlayer)) {
+            Action action = player.getAction();
+            if (action != null) {
+                action.Invoke();
+            }
+        }
 	}
 
     public void setCardInPlay(Card card) {
@@ -160,7 +166,7 @@ public class BoardManagerMediator
                 storyDeck = new StoryDeck();
             }
             cardInPlay = (Story)storyDeck.drawCard();
-            //BoardManager.DrawCards(players[playerTurn]);
+            Debug.Log("Drew card: " + cardInPlay.getCardName());
             cardInPlay.startBehaviour();
         }
         else

@@ -6,6 +6,7 @@ public class Stage {
 	private BoardManagerMediator board;
 
 	private int stageNum, currentBid;
+    private bool isInProgress;
 	private Adventure stageCard;
 	private List<Card> weapons;
     private List<Player> playersToRemove;
@@ -17,6 +18,7 @@ public class Stage {
 		Logger.getInstance ().info ("Starting the Stage class");
 		board = BoardManagerMediator.getInstance ();
 
+        isInProgress = false;
 		this.stageCard = stageCard;
 		this.weapons = weapons;
         this.stageNum = stageNum;
@@ -60,6 +62,7 @@ public class Stage {
 		Logger.getInstance ().debug ("Prepare function has started");
 
 		quest = (Quest)BoardManagerMediator.getInstance ().getCardInPlay ();
+        isInProgress = true;
 
 		if (stageCard.GetType ().IsSubclassOf (typeof(Foe))) {
 			Logger.getInstance ().trace ("Stage card is subclass type of foe");
@@ -255,5 +258,9 @@ public class Stage {
 
     public Card getStageCard() {
         return stageCard;
+    }
+
+    public bool IsInProgress() {
+        return isInProgress;
     }
 }

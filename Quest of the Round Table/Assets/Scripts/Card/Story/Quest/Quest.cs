@@ -28,7 +28,7 @@ public abstract class Quest : Story {
 	}
 
 	public List<Type> getDominantFoes() {
-		Logger.getInstance ().trace ("dominantFoes are " + dominantFoes.ToString());
+		Logger.getInstance ().trace ("dominantFoes are " + dominantFoes);
 		return dominantFoes;
 	}
 
@@ -209,13 +209,14 @@ public abstract class Quest : Story {
 		if (questAccepted) {
 			Logger.getInstance().debug(playerToPrompt.getName() + " has accepted to participate in the quest");
 			participatingPlayers.Add (playerToPrompt);
+            Action action = () => {
+                Debug.Log("Quest accept action running");
+                board.TransferFromHandToPlayArea(playerToPrompt);
+                playerToPrompt.RemoveCardsResponse();
+                playerToPrompt = board.getNextPlayer(playerToPrompt);
+                PromptAcceptQuest();
+            };
             if (playerToPrompt.getHand().Count + 1 > 12) {
-                Action action = () => {
-                    board.TransferFromHandToPlayArea(playerToPrompt);
-                    playerToPrompt.RemoveCardsResponse();
-                    playerToPrompt = board.getNextPlayer(playerToPrompt);
-                    PromptAcceptQuest();
-                };
                 playerToPrompt.giveAction(action);
                 board.dealCardsToPlayer(playerToPrompt, 1);
             } else {

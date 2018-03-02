@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using System;
 using UnityEngine;
 
@@ -13,7 +12,7 @@ public class ProsperityThroughoutTheRealm : Event {
         board = BoardManagerMediator.getInstance();
 	}
 
-	//Event description: All players may immediately draw 2 Adventure Cards. 
+	//Event description: All players may immediately draw 2 Adventure Cards.
 	public override void startBehaviour() {
 		Logger.getInstance ().info ("Started Prosperity Throughout the Realm behaviour");	
         playerToPrompt = board.getCurrentPlayer();
@@ -24,16 +23,18 @@ public class ProsperityThroughoutTheRealm : Event {
 
     private void DealCards()
     {
-        if (playerToPrompt.getHand().Count + 2 > 12) {
-            action = () => {
-                Debug.Log("Action entered");
-                board.TransferFromHandToPlayArea(playerToPrompt);
-                playerToPrompt.RemoveCardsResponse();
-                DealCardsNextPlayer();
-            };
-            playerToPrompt.giveAction(action);
+        action = () => {
+            Debug.Log("Action entered");
+            board.TransferFromHandToPlayArea(playerToPrompt);
+            playerToPrompt.RemoveCardsResponse();
+            DealCardsNextPlayer();
+        };
+        playerToPrompt.giveAction(action);
+        if (playerToPrompt.getHand().Count + 2 > 12 && playerToPrompt.GetType() != typeof(AIPlayer)) {
+            Debug.Log("Debug1");
             BoardManagerMediator.getInstance().dealCardsToPlayer(playerToPrompt, 2);
         } else {
+            Debug.Log("Debug2");
             BoardManagerMediator.getInstance().dealCardsToPlayer(playerToPrompt, 2);
             DealCardsNextPlayer();
         }
@@ -47,30 +48,4 @@ public class ProsperityThroughoutTheRealm : Event {
             board.nextTurn();
         }
     }
-
-    //private void DealCards() {
-        
-    //    action = () => {
-
-    //        if (BoardManagerMediator.getInstance().GetCardsNumHandArea(playerToPrompt) > 12)
-    //            board.PromptCardRemoveSelection(playerToPrompt, action);
-
-    //        else
-    //        {
-    //            board.TransferFromHandToPlayArea(playerToPrompt);
-    //            playerToPrompt.RemoveCardsResponse();
-
-    //            playerToPrompt = board.getNextPlayer(playerToPrompt);
-
-    //            if (playerToPrompt != board.getCurrentPlayer())
-    //                DealCards();
-                
-    //            else
-    //                board.nextTurn();
-    //        }       
-    //    };
-
-    //    playerToPrompt.giveAction(action);
-    //    BoardManagerMediator.getInstance().dealCardsToPlayer(playerToPrompt, 2);
-    //}
 }
