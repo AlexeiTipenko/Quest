@@ -8,7 +8,7 @@ public class PlayerTest {
 
 	[Test]
 	public void testDealCards() {
-		Player player = new Player ("Joey", false);
+		Player player = new HumanPlayer ("Joey");
 
 		List<Card> cards = new List<Card> ();
 		cards.Add (new AtCamelot ());

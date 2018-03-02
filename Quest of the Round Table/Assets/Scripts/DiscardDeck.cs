@@ -1,14 +1,10 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class DiscardDeck : Deck {
 
-	public DiscardDeck () {
-
-	}
-
 	public void addCard (Card card) {
+        Debug.Log("Discarded card: " + card.getCardName());
 		cards.Add (card);
 	}
 
@@ -17,13 +13,13 @@ public class DiscardDeck : Deck {
 	}
 
 	public override string toString() {
-		string toString = "Discard Deck: ";
+		string output = "Discard Deck: ";
 		foreach (Card card in cards) {
-			toString += (card.toString () + ", ");
+			output += (card.toString () + ", ");
 		}
 		if (cards.Count > 0) {
-			toString = toString.Substring (0, toString.Length - 2);
+			output = output.Substring (0, output.Length - 2);
 		}
-		return toString;
+		return output;
 	}
 }

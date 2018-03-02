@@ -9,7 +9,7 @@ public abstract class Tournament : Story
     Action action = null;
     private BoardManagerMediator board;
     protected int bonusShields, playersEntered;
-    public Player sponsor, playerToPrompt;
+    public Player playerToPrompt;
     public List<Player> participatingPlayers;
     public Dictionary<Player, int> pointsDict;
     bool rematch;
@@ -36,9 +36,35 @@ public abstract class Tournament : Story
     public override void startBehaviour()
     {
 		Logger.getInstance().info("Started Tournament behaviour");
-        sponsor = owner;
-        playerToPrompt = sponsor;
-        board.PromptEnterTournament(sponsor);
+        playerToPrompt = owner;
+        PromptEnterTournament(owner);
+    }
+
+    private void PromptEnterTournament(Player player) {
+        if (player.GetType() == typeof(AIPlayer))
+        {
+            if (((AIPlayer)player).GetStrategy().DoIParticipateInTournament())
+            {
+                PromptEnterTournamentResponse(true);
+            }
+            else
+            {
+                PromptEnterTournamentResponse(false);
+            }
+        }
+        else {
+            board.PromptEnterTournament(player);
+        }
+    }
+
+    private void PromptCardSelection(Player player) {
+        if (player.GetType() == typeof(AIPlayer)) {
+            CardsSelectionResponse();
+        }
+        else {
+            board.PromptCardSelection(player);
+        }
+
     }
 
 
@@ -47,20 +73,21 @@ public abstract class Tournament : Story
         if (tournamentAccepted)
         {
             playersEntered++;
+            Debug.Log(playerToPrompt.getName() + " has opted to participate in the tournament");
             participatingPlayers.Add(playerToPrompt);
 
             if ((playerToPrompt.getHand().Count() + 1) > 12)
             {
-                Logger.getInstance().trace("Dealing One Card to " + playerToPrompt.getName());
+
                 action = () => {
                     board.TransferFromHandToPlayArea(playerToPrompt);
                     playerToPrompt.RemoveCardsResponse();
 
-                    if (playerToPrompt.getHand().Count() > 12){
+                    if (playerToPrompt.getHand().Count() > 12) {
                         board.PromptCardRemoveSelection(playerToPrompt, action);
                     }
 
-                    else{
+                    else {
                         PromptNextPlayer();
                     }
                 };
@@ -76,7 +103,6 @@ public abstract class Tournament : Story
         }
 
         else {
-
             PromptNextPlayer();
         }
     }
@@ -86,8 +112,8 @@ public abstract class Tournament : Story
 
         playerToPrompt = board.getNextPlayer(playerToPrompt);
 
-        if (playerToPrompt != sponsor)
-            board.PromptEnterTournament(playerToPrompt);
+        if (playerToPrompt != owner)
+            PromptEnterTournament(playerToPrompt);
 
         else
             NumParticipantsAction();
@@ -98,6 +124,7 @@ public abstract class Tournament : Story
     {
         if (participatingPlayers.Count() == 0)
         {
+            Debug.Log("No participants in tournament");
 			Logger.getInstance().info("No participants in tournament");
             board.nextTurn();
         }
@@ -111,25 +138,32 @@ public abstract class Tournament : Story
         }
 
         else
-            board.PromptCardSelection(playerToPrompt);
+            PromptCardSelection(playerToPrompt);
     }
 
 
     public void CardsSelectionResponse() {
-
-        List<Card> chosenCards = board.GetSelectedCards(playerToPrompt);
-        bool cardsValid = ValidateChosenCards(chosenCards);
+        List<Card> chosenCards;
+        bool cardsValid; 
+        if (playerToPrompt.GetType() == typeof(AIPlayer)) {
+            chosenCards = ((AIPlayer)playerToPrompt).GetStrategy().ParticipateTournament();
+            cardsValid = true;
+        }
+        else {
+            chosenCards = board.GetSelectedCards(playerToPrompt);
+            cardsValid = ValidateChosenCards(chosenCards);  
+        }
 
         if (!cardsValid)
         {
             Logger.getInstance().warn(playerToPrompt.getName() + "'s card selection INVALID");
-            board.ReturnCardsToPlayer();
-            board.PromptCardSelection(playerToPrompt);
+            //board.ReturnCardsToPlayer();
+            PromptCardSelection(playerToPrompt);
         }
 
         else
         {
-            foreach(Card card in chosenCards)
+            foreach (Card card in chosenCards)
             {
                 playerToPrompt.RemoveCard(card);
                 playerToPrompt.getPlayArea().addCard(card);
@@ -140,12 +174,13 @@ public abstract class Tournament : Story
 
             playerToPrompt = GetNextPlayer(playerToPrompt);
 
-            if (playerToPrompt == sponsor)
+            if (playerToPrompt == owner)
                 TournamentRoundComplete();
 
             else
-                board.PromptCardSelection(playerToPrompt);
+                PromptCardSelection(playerToPrompt);
         }
+
     }
 
 
@@ -208,10 +243,9 @@ public abstract class Tournament : Story
                 participatingPlayers = winnerList;
                 rematch = true;
                 pointsDict.Clear();
-                sponsor = participatingPlayers[0];
-                playerToPrompt = sponsor;
-                //board.PromptEnterTournament(playerToPrompt);
-                board.PromptCardSelection(playerToPrompt);
+                owner = participatingPlayers[0];
+                playerToPrompt = owner;
+                PromptCardSelection(playerToPrompt);
             }
 
             else{

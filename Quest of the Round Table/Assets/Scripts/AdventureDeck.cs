@@ -12,7 +12,7 @@ public class AdventureDeck : Deck {
 			
 	}
 
-	private void initAdventureDeck() {
+	public void initAdventureDeck() {
 		List<string> newCards = new List<string> ();
 
 		//foes
@@ -50,16 +50,32 @@ public class AdventureDeck : Deck {
 		newCards.Add ("Amour");
 
 		//weapons
+
 		newCards.Add ("Excalibur");
 		newCards.Add ("Lance");
 		newCards.Add ("BattleAx");
 		newCards.Add ("Sword");
 		newCards.Add ("Horse");
 		newCards.Add ("Dagger");
+		
 
 		instantiateCards (newCards);
 
 		shuffle ();
+	}
+
+	public Player drawCardByName(string cardName, Player player) {
+		int cardIndex = getCardIndexByName (cardName);
+		if (cardIndex == -1) {
+			Debug.LogError ("In drawCardByName: Card by the name " + cardName + " does not exist in the Adventure Deck.");
+			Logger.getInstance().error ("In drawCardByName: Card by the name " + cardName + " does not exist in the Adventure Deck.");
+			return player;
+		}
+		Card card = cards [cardIndex];
+		cards.RemoveAt (cardIndex);
+		player.dealCards (new List<Card>{card});
+		card.setOwner (player);
+		return player;
 	}
 
 	public override string toString() {

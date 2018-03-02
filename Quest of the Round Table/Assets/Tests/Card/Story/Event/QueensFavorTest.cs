@@ -20,10 +20,10 @@ public class QueensFavorTest {
 
 		List<Player> players = new List<Player>();
 
-		Player joey = new Player ("Joey", false);
-		Player julie = new Player("Julie", false);
-		Player jimmy = new Player ("Jimmy", false);
-		Player jesse = new Player ("Jesse", false);
+		Player joey = new HumanPlayer ("Joey");
+		Player julie = new HumanPlayer("Julie");
+		Player jimmy = new HumanPlayer ("Jimmy");
+		Player jesse = new HumanPlayer ("Jesse");
 
 		players.Add (joey);
 		players.Add (julie);
@@ -40,10 +40,10 @@ public class QueensFavorTest {
 
 		BoardManagerMediator.getInstance().initGame (players);
 
-		joey.removeCards (7);
-		julie.removeCards (2);
-		jimmy.removeCards (11);
-		jesse.removeCards (8);
+        joey.RemoveRandomCards (7);
+        julie.RemoveRandomCards (2);
+        jimmy.RemoveRandomCards (11);
+        jesse.RemoveRandomCards (8);
 
 		Debug.Log ("Players are: " + BoardManagerMediator.getInstance().getPlayers ());
 

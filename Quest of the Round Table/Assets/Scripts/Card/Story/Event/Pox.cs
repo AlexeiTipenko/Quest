@@ -1,12 +1,14 @@
-using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 
 public class Pox : Event {
 
+    BoardManagerMediator board;
+    string description = "All players except the player drawing this card lose 1 shield.";
 	public static int frequency = 1;
 
-	public Pox () : base ("Pox") { }
+	public Pox () : base ("Pox") {
+        board = BoardManagerMediator.getInstance();
+    }
 		
 	//Event description: All players except the player drawing this card lose 1 shield.
 	public override void startBehaviour() {
@@ -22,6 +24,11 @@ public class Pox : Event {
 			Logger.getInstance ().trace ("Finished decrementing shields for player " + player.getName());
 		}
 		Logger.getInstance ().info ("Finished Pox behaviour");
-        BoardManagerMediator.getInstance().NextPlayerTurn(currentPlayer);
+
+        if (currentPlayer.GetType() != typeof(AIPlayer)) {
+            board.SimpleAlert(currentPlayer, description);
+        } else {
+            board.nextTurn();
+        }
 	}
 }

@@ -27,8 +27,18 @@ public class BoardManagerMediator
 
 	public void initGame (List<Player> players) {
 		this.players = players;
-		adventureDeck = new AdventureDeck ();
-		storyDeck = new StoryDeck ();
+        if (ButtonManager.scenario == "scenario1") {
+            adventureDeck = (AdventureDeck)Scenario1.getInstance().AdventureDeck();
+            storyDeck = (StoryDeck)Scenario1.getInstance().StoryDeck();
+        } else if (ButtonManager.scenario == "scenario2") {
+            adventureDeck = (AdventureDeck)Scenario2.getInstance().AdventureDeck();
+            storyDeck = (StoryDeck)Scenario2.getInstance().StoryDeck();
+        } else if (ButtonManager.scenario == "scenario3") {
+            //TODO: scenario 3 here
+        } else {
+            adventureDeck = new AdventureDeck();
+            storyDeck = new StoryDeck();
+        }
 		adventureDiscard = new DiscardDeck ();
 		storyDiscard = new DiscardDeck ();
         Logger.getInstance().info("Card decks created");
@@ -40,6 +50,14 @@ public class BoardManagerMediator
 
 	public List<Player> getPlayers() {
 		return players;
+	}
+
+	public void setAdventureDeck(AdventureDeck adventureDeck) {
+		this.adventureDeck = adventureDeck;
+	}
+
+	public void setStoryDeck(StoryDeck storyDeck) {
+		this.storyDeck = storyDeck;
 	}
 
 	public Player getCurrentPlayer() {
@@ -74,6 +92,10 @@ public class BoardManagerMediator
         return cardList;
     }
 
+    public void DestroyDiscardArea(){
+        BoardManager.DestroyDiscardArea();
+    }
+
     public List<Card> GetDiscardedCards(Player player)
     {
 
@@ -98,12 +120,9 @@ public class BoardManagerMediator
         return BoardManager.GetCardsNumHandArea(player);
     }
 
-    public void ReturnCardsToPlayer(){
-        BoardManager.ReturnCardsToPlayer();
-    }
 
 	public void dealCardsToPlayer(Player player, int numCardsToDeal) {
-        Debug.Log("Dealing " + numCardsToDeal + " cards");
+        Debug.Log("Dealing " + numCardsToDeal + " cards to player: " + player.getName());
 		List<Card> cardsToDeal = new List<Card> ();
 		for (int i = 0; i < numCardsToDeal; i++) {
 			cardsToDeal.Add (adventureDeck.drawCard ());
@@ -114,12 +133,31 @@ public class BoardManagerMediator
 		}
 		player.dealCards (cardsToDeal);
         Logger.getInstance().info("Dealt " + numCardsToDeal + " cards to " + player.getName());
+        if (player.GetType() == typeof(AIPlayer)) {
+            Action action = player.getAction();
+            if (action != null) {
+                action.Invoke();
+                player.giveAction(null);
+            }
+        }
 	}
 
     public void setCardInPlay(Card card) {
         cardInPlay = (Story) card;
     }
 
+	//used for scenarios, nowhere anywhere else
+	public void setPlayers(List<Player> players) {
+		this.players = players;
+	}
+
+    public void AddToDiscardDeck(Card card) {
+        if (card.GetType().IsSubclassOf(typeof(Story))) {
+            storyDiscard.addCard(card);
+        } else {
+            adventureDiscard.addCard(card);
+        }
+    }
 
     public void startGame()
     {
@@ -134,10 +172,12 @@ public class BoardManagerMediator
         if (!gameOver())
         {
             Logger.getInstance().info(players[playerTurn].getName().ToUpper() + "'S TURN");
+            Debug.Log(players[playerTurn].getName().ToUpper() + "'S TURN");
+            if(storyDeck.getSize() <= 0) {
+                storyDeck = new StoryDeck();
+            }
             cardInPlay = (Story)storyDeck.drawCard();
-            BoardManager.DrawCards(players[playerTurn]);
-            BoardManager.DestroyPlayerInfo();
-            BoardManager.DisplayPlayers(players);
+            Debug.Log("Drew card: " + cardInPlay.getCardName());
             cardInPlay.startBehaviour();
         }
         else
@@ -150,12 +190,13 @@ public class BoardManagerMediator
     public void nextTurn()
     {
         if (cardInPlay.GetType().IsSubclassOf(typeof(Quest))) {
-            BoardManager.DestroyStage(((Quest)cardInPlay).getNumStages());   
+            BoardManager.DestroyStages();
         }
-        storyDiscard.addCard(cardInPlay);
         BoardManager.DestroyCards();
         BoardManager.DestroyDiscardArea();
         BoardManager.ClearInteractions();
+        BoardManager.SetIsFreshTurn(true);
+        AddToDiscardDeck(cardInPlay);
         cardInPlay = null;
         playerTurn = (playerTurn + 1) % players.Count;
         playTurn();
@@ -177,24 +218,22 @@ public class BoardManagerMediator
 
     public void cheat(string cheatCode)
     {
-        switch (cheatCode)
-        {
-            case "rankUp":
-                Debug.Log("Current player is: " + players[playerTurn].getName());
-                players[playerTurn].upgradeRank();
-                Debug.Log("After upgrading rank: " + players[playerTurn].getRank());
-                break;
-            case "shieldsUp":
-                Debug.Log("Player now has : " + players[playerTurn].getNumShields() + " shields");
-                players[playerTurn].incrementShields(3);
-                Debug.Log("Player now has : " + players[playerTurn].getNumShields() + " after incremented shields");
-                break;
-            case "nextPlayer":
-                Debug.Log("Current player is: " + players[playerTurn].getName());
-                nextTurn();
-                Debug.Log("New player is: " + players[playerTurn].getName());
-                break;
-
+		switch (cheatCode) {
+		case "rankUp":
+			Debug.Log ("Current player is: " + players [playerTurn].getName ());
+			players [playerTurn].upgradeRank ();
+			Debug.Log ("After upgrading rank: " + players [playerTurn].getRank ());
+			break;
+		case "shieldsUp":
+			Debug.Log ("Player now has : " + players [playerTurn].getNumShields () + " shields");
+			players [playerTurn].incrementShields (3);
+			Debug.Log ("Player now has : " + players [playerTurn].getNumShields () + " after incremented shields");
+			break;
+		case "nextPlayer":
+			Debug.Log ("Current player is: " + players [playerTurn].getName ());
+			nextTurn ();
+			Debug.Log ("New player is: " + players [playerTurn].getName ());
+			break;
                 //TODO: Fix this! Event cards should not be able to be dealt to the player's hand
                 //case "prosperity":
                 //  Debug.Log ("Drawing Prosperity throughout the kingdom into current players hand");
@@ -229,6 +268,7 @@ public class BoardManagerMediator
 	public void PromptSponsorQuest(Player player) {
         BoardManager.DrawCards(player);
         BoardManager.SetInteractionText("NEW QUEST DRAWN\nWould you like to sponsor this quest?");
+		Debug.Log ("The card in play is " + cardInPlay.cardImageName);
         Action action1 = () => {
             ((Quest)cardInPlay).PromptSponsorQuestResponse(true);
         };
@@ -242,9 +282,8 @@ public class BoardManagerMediator
 
 	public void SetupQuest(Player player, String text) {
         BoardManager.SetInteractionText(text);
-        Debug.Log(((Quest)cardInPlay).numStages);
 
-        Action action = () => {
+        Action action1 = () => {
             if (((Quest)cardInPlay).isValidQuest()) {
                 List<Stage> stages = BoardManager.CollectStageCards();
                 ((Quest)cardInPlay).SetupQuestComplete(stages);
@@ -254,12 +293,16 @@ public class BoardManagerMediator
             }
         };
 
+        Action action2 = () => {
+            ((Quest)cardInPlay).IncrementSponsor();
+        };
+
         if (!BoardManager.QuestPanelsExist()) {
             //Generate panels
-            BoardManager.SetupQuestPanels(((Quest)cardInPlay).numStages);
+            BoardManager.SetupQuestPanels(((Quest)cardInPlay).getNumStages());
         }
 
-        BoardManager.SetInteractionButtons("Complete", "", action, null);
+        BoardManager.SetInteractionButtons("Complete", "Withdraw Sponsorship", action1, action2);
         Debug.Log("Prompting " + player.getName() + " to setup quest.");
         Logger.getInstance().info("Prompted " + player.getName() + " to setup quest.");
 	}
@@ -282,16 +325,17 @@ public class BoardManagerMediator
 
 	public void PromptFoe(Player player, int stageNum) {
         BoardManager.DrawCards(player);
+        BoardManager.DisplayStageButton(players);
         BoardManager.SetInteractionText("QUEST STAGE " + (stageNum + 1) + "\nYou are facing a foe. You may place any number of cards, or drop out.");
 		Action action1 = () => {
             Debug.Log("Did not dropout");
             TransferFromHandToPlayArea(player);
             Debug.Log("Total battle points in play area is: " + player.getPlayArea().getBattlePoints());
-            ((Quest)cardInPlay).getStage(stageNum).promptFoeResponse(false);
+            ((Quest)cardInPlay).getStage(stageNum).PromptFoeResponse(false);
 		};
         Action action2 = () => {
             Debug.Log("Dropped out");
-            ((Quest)cardInPlay).getStage(stageNum).promptFoeResponse(true);
+            ((Quest)cardInPlay).getStage(stageNum).PromptFoeResponse(true);
         };
 
 		BoardManager.SetInteractionButtons ("Continue", "Drop Out", action1, action2);
@@ -303,9 +347,59 @@ public class BoardManagerMediator
     }
 
 
-	public void PromptTest(Player player, int currentBid) {
-		//TODO: prompt test
+	public void PromptEnterTest(Player player, int stageNum, int currentBid) {
+        BoardManager.DrawCards(player);
+        BoardManager.SetInteractionText("Current stage is a test, with a minimum bid of: " + currentBid + ". Do you wish to up the bid?");
+        BoardManager.SetInteractionBid(currentBid.ToString());
+        Action action1 = () => {
+            int InteractionBid = 0;
+            Int32.TryParse(BoardManager.GetInteractionBid(), out InteractionBid);
+            if ( InteractionBid > player.getTotalAvailableBids()) {
+                Debug.Log("Trying to bid more than they have");
+                PromptEnterTest(player, stageNum, currentBid);
+            }
+            else if (InteractionBid <= 2) {
+                PromptEnterTest(player, stageNum, currentBid);
+            }
+
+            else {
+                ((Quest)cardInPlay).getStage(stageNum).promptTestResponse(true, InteractionBid);
+            }
+        };
+        Action action2 = () => {
+            ((Quest)cardInPlay).getStage(stageNum).promptTestResponse(false, 0);
+        };
+        BoardManager.SetInteractionButtons("Continue", "Drop out", action1, action2);
+        Debug.Log("Prompting " + player.getName() + " to enter TEST inside stage: " + stageNum);
+        Logger.getInstance().info("Prompting " + player.getName() + " to enter TEST inside stage: " + stageNum);
 	}
+
+    public void PromptDiscardTest(Player player, int stageNum, int currentBid) {
+        BoardManager.DrawCards(player);
+        //currentBid -= player.getPlayAreaBid();
+        BoardManager.SetInteractionText("You are the winner of the Test, and you must discard/play a total of " + currentBid + " bid points.");
+        BoardManager.SetupDiscardPanel();
+
+        Action action = () => {
+            TransferFromHandToPlayArea(player);
+            if (BoardManager.GetSelectedDiscardNames().Count + player.getPlayAreaBid() == currentBid) {
+                List<Card> cardsToDiscard = GetDiscardedCards(player);
+                foreach (Card card in cardsToDiscard) {
+                    player.RemoveCard(card);
+                }
+                ((Quest)cardInPlay).PlayStage();
+            }
+            else {
+                PromptDiscardTest(player, stageNum, currentBid);
+            }
+
+        };
+        BoardManager.SetInteractionButtons("Complete", "", action, null);
+
+        Debug.Log("Prompting " + player.getName() + " to discard TEST inside stage: " + stageNum);
+
+
+    }
 
     public void SetInteractionText(String text) {
         BoardManager.SetInteractionText(text);
@@ -324,7 +418,7 @@ public class BoardManagerMediator
         };
         BoardManager.SetInteractionButtons("Accept", "Decline", action1, action2);
         Debug.Log("Prompting " + player.getName() + " to enter tournament.");
-        Logger.getInstance().info("Prompted " + player.getName() + " to enter tournament.");
+        Logger.getInstance().info("Prompted " + player.getName() + " to enter tournament.");  
     }
 
 
@@ -345,10 +439,9 @@ public class BoardManagerMediator
 	{
 		BoardManager.DrawCards(player);
 		BoardManager.SetInteractionText("Please discard 1 weapon.");
-		//Assume player choice is valid for now
+        BoardManager.SetupDiscardPanel();
 		Action action = () => {
-			player.RemoveCardsResponse();
-			((KingsCallToArms)cardInPlay).PlayerFinishedResponse();
+            ((KingsCallToArms)cardInPlay).PlayerDiscardedWeapon();
 		};
 		BoardManager.SetInteractionButtons("Complete", "", action, null);
 		Debug.Log("Prompting " + player.getName() + " to prepare cards.");
@@ -361,10 +454,9 @@ public class BoardManagerMediator
 	{
 		BoardManager.DrawCards(player);
 		BoardManager.SetInteractionText("Please discard " + numFoes +  " Foes.");
-		//Assume player choice is valid for now
-		Action action = () => {
-			player.RemoveCardsResponse();
-			((KingsCallToArms)cardInPlay).PlayerFinishedResponse();
+        BoardManager.SetupDiscardPanel();
+		Action action = () => {		
+			((KingsCallToArms)cardInPlay).PlayerDiscardedFoes();
 		};
 		BoardManager.SetInteractionButtons("Complete", "", action, null);
 		Debug.Log("Prompting " + player.getName() + " to prepare cards.");
@@ -384,14 +476,30 @@ public class BoardManagerMediator
     }
   
 
-    public void NextPlayerTurn(Player player) {
+    public void SimpleAlert(Player player, String text) {
         BoardManager.DrawCards(player);
-        BoardManager.SetInteractionText("Event action complete.");
+        BoardManager.SetInteractionText(text);
 
         Action action = () => {
             nextTurn();
         };
-        BoardManager.SetInteractionButtons("Next player", "", action, null);
+        BoardManager.SetInteractionButtons("Continue", "", action, null);
+    }
+
+    public void DisplayStageResults(Player player, bool playerEliminated) {
+        string passedText = "You passed!";
+        if (playerEliminated) {
+            passedText = "You were eliminated...";
+        }
+        Action action = () => {
+            ((Quest)cardInPlay).getCurrentStage().EvaluateNextPlayerForFoe(playerEliminated);
+        };
+        BoardManager.SetIsResolutionOfStage(true);
+        BoardManager.DrawCards(player);
+        BoardManager.SetInteractionText("STAGE COMPLETE\n" + passedText);
+        BoardManager.SetInteractionButtons("Continue", "", action, null);
+        Debug.Log("Displaying results of stage to " + player.getName());
+        Logger.getInstance().info("Displaying results of stage to " + player.getName());
     }
 }
 

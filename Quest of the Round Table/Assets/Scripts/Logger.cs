@@ -5,7 +5,8 @@ using UnityEngine;
 public class Logger {
 
 	public static Logger logger;
-	private static string logFilePath = Directory.GetCurrentDirectory() + "/Logs/BuildLog.txt"; 
+    private static string logFolderPath = Directory.GetCurrentDirectory() + "/Logs";
+	private static string logFilePath = logFolderPath + "/BuildLog.txt"; 
 
 	//This constructor will call the init function
 	//Should only be called once in your code
@@ -16,7 +17,14 @@ public class Logger {
 	public static Logger getInstance() {
 		if (logger == null) {
 			logger = new Logger();
-			File.Delete (logFilePath); //delete previous log file
+            if (Debug.isDebugBuild) {
+                try {
+                    File.Delete(logFilePath); //delete previous log file
+                } catch (Exception) {
+                    Directory.CreateDirectory(logFolderPath);
+                    File.Delete(logFilePath); //delete previous log file
+                }
+            }
             logger.init();
 		}
 		return logger;
@@ -65,7 +73,12 @@ public class Logger {
 	}
 
 	private void printToFile(string n) {
-		System.IO.File.AppendAllText(logFilePath, n);
+        try {
+            File.AppendAllText(logFilePath, n);
+        } catch (Exception) {
+            Directory.CreateDirectory(logFolderPath);
+            File.AppendAllText(logFilePath, n);
+        }
 	}
 
 	private string generateTimestamp() {

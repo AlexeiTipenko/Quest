@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using System.Collections.Generic;
 
 public class StoryDeck : Deck {
 
@@ -8,7 +6,7 @@ public class StoryDeck : Deck {
 		initStoryDeck ();
 	}
 
-	private void initStoryDeck() {
+	public void initStoryDeck() {
 		List<string> newCards = new List<string> ();
 
 		//tournaments
@@ -44,14 +42,23 @@ public class StoryDeck : Deck {
 		shuffle ();
 	}
 
+	public Card getCardByName(string cardName) {
+		for (int i = 0; i < cards.Count; i++) {
+			if (cards [i].cardImageName.Equals (cardName)) {
+				return cards[i];
+			}
+		} 
+		return null;
+	}
+
 	public override string toString() {
-		string toString = "Story Deck: ";
+		string output = "Story Deck: ";
 		foreach (Card card in cards) {
-			toString += (card.toString () + ", ");
+			output += (card.toString () + ", ");
 		}
 		if (cards.Count > 0) {
-			toString = toString.Substring (0, toString.Length - 2);
+			output = output.Substring (0, output.Length - 2);
 		}
-		return toString;
+		return output;
 	}
 }
