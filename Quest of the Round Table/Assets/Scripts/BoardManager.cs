@@ -59,6 +59,23 @@ public class BoardManager : MonoBehaviour
         interactionText.GetComponent<Text>().text = text;
     }
 
+    public static void SetInteractionBid(String text) {
+        GameObject interactionBid = GameObject.Find("Canvas/TabletopImage/InteractionPanel/InteractionBid");
+        GameObject interactionText = GameObject.Find("Canvas/TabletopImage/InteractionPanel/InteractionBid/Text");
+        interactionBid.SetActive(true);
+        interactionText.GetComponent<Text>().text = text;
+    }
+
+    public static void ClearInteractionBid() {
+        GameObject interactionBid = GameObject.Find("Canvas/TabletopImage/InteractionPanel/InteractionBid");
+        interactionBid.SetActive(false);
+    }
+
+    public static String GetInteractionBid() {
+        GameObject interactionText = GameObject.Find("Canvas/TabletopImage/InteractionPanel/InteractionBid/Text");
+        return interactionText.GetComponent<Text>().text;
+    }
+
     public static void SetInteractionButtons(String text1, String text2, Action func1, Action func2)
     {
         GameObject button1 = GameObject.Find("Canvas/TabletopImage/InteractionPanel/InteractionButton1");
@@ -89,6 +106,7 @@ public class BoardManager : MonoBehaviour
         GameObject interactionText = GameObject.Find("Canvas/TabletopImage/InteractionPanel/InteractionText");
         GameObject button1 = GameObject.Find("Canvas/TabletopImage/InteractionPanel/InteractionButton1");
         GameObject button2 = GameObject.Find("Canvas/TabletopImage/InteractionPanel/InteractionButton2");
+        GameObject interactionBid = GameObject.Find("Canvas/TabletopImage/InteractionPanel/InteractionBid");
 
         button1.GetComponent<Button>().onClick.RemoveAllListeners();
         button2.GetComponent<Button>().onClick.RemoveAllListeners();
@@ -96,6 +114,7 @@ public class BoardManager : MonoBehaviour
         interactionText.GetComponent<Text>().text = "";
         button1.SetActive(false);
         button2.SetActive(false);
+        interactionBid.SetActive(false);
     }
 
     public static void DrawCards(Player player) {
@@ -425,7 +444,7 @@ public class BoardManager : MonoBehaviour
 		GameObject PlayArea = GameObject.Find ("Canvas/TabletopImage/PlayerPlayArea");
 		foreach (Transform child in PlayArea.transform) {
             foreach(Card card in player.getHand()) {
-                if(child.name == card.getCardName()) {
+                if(child.name.Trim() == card.getCardName().Trim()) {
                     bool amourExistsInPlayArea = false;
                     foreach (Card playAreaCard in player.getPlayArea().getCards()) {
                         if (playAreaCard.GetType() == typeof(Amour)) {
@@ -433,7 +452,7 @@ public class BoardManager : MonoBehaviour
                             break;
                         }
                     }
-                    if (!amourExistsInPlayArea) {
+                    if (!amourExistsInPlayArea || (amourExistsInPlayArea && card.GetType() != typeof(Amour))) {
                         Debug.Log("Moving card from hand to play area: " + card.getCardName());
                         player.getPlayArea().addCard(card);
                         player.RemoveCard(card);
@@ -500,15 +519,18 @@ public class BoardManager : MonoBehaviour
     }
 
     public static void DisplayStageButton(List<Player> players) {
-        GameObject CanvasArea = GameObject.Find("Canvas/TabletopImage");
-        GameObject ViewButton = Instantiate(Resources.Load("Reveal", typeof(GameObject))) as GameObject;
-        ViewButton.name = "Reveal";
+        GameObject CanvasViewButton = GameObject.Find("Canvas/TabletopImage/Reveal");
+        if (CanvasViewButton == null) {
+            GameObject CanvasArea = GameObject.Find("Canvas/TabletopImage");
+            GameObject ViewButton = Instantiate(Resources.Load("Reveal", typeof(GameObject))) as GameObject;
+            ViewButton.name = "Reveal";
 
-        ViewButton.transform.SetParent(CanvasArea.transform, false);
+            ViewButton.transform.SetParent(CanvasArea.transform, false);
 
-        ViewButton.GetComponent<Button>().onClick.AddListener(delegate {
-            DisplayStageCards(players);
-        });
+            ViewButton.GetComponent<Button>().onClick.AddListener(delegate {
+                DisplayStageCards(players);
+            });
+        }
     }
 
     public static void DisplayStageCards(List<Player> players) {

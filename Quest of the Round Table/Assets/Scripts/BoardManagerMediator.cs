@@ -347,9 +347,59 @@ public class BoardManagerMediator
     }
 
 
-	public void PromptTest(Player player, int currentBid) {
-		//TODO: prompt test
+	public void PromptEnterTest(Player player, int stageNum, int currentBid) {
+        BoardManager.DrawCards(player);
+        BoardManager.SetInteractionText("Current stage is a test, with a minimum bid of: " + currentBid + ". Do you wish to up the bid?");
+        BoardManager.SetInteractionBid(currentBid.ToString());
+        Action action1 = () => {
+            int InteractionBid = 0;
+            Int32.TryParse(BoardManager.GetInteractionBid(), out InteractionBid);
+            if ( InteractionBid > player.getTotalAvailableBids()) {
+                Debug.Log("Trying to bid more than they have");
+                PromptEnterTest(player, stageNum, currentBid);
+            }
+            else if (InteractionBid <= 2) {
+                PromptEnterTest(player, stageNum, currentBid);
+            }
+
+            else {
+                ((Quest)cardInPlay).getStage(stageNum).promptTestResponse(true, InteractionBid);
+            }
+        };
+        Action action2 = () => {
+            ((Quest)cardInPlay).getStage(stageNum).promptTestResponse(false, 0);
+        };
+        BoardManager.SetInteractionButtons("Continue", "Drop out", action1, action2);
+        Debug.Log("Prompting " + player.getName() + " to enter TEST inside stage: " + stageNum);
+        Logger.getInstance().info("Prompting " + player.getName() + " to enter TEST inside stage: " + stageNum);
 	}
+
+    public void PromptDiscardTest(Player player, int stageNum, int currentBid) {
+        BoardManager.DrawCards(player);
+        //currentBid -= player.getPlayAreaBid();
+        BoardManager.SetInteractionText("You are the winner of the Test, and you must discard/play a total of " + currentBid + " bid points.");
+        BoardManager.SetupDiscardPanel();
+
+        Action action = () => {
+            TransferFromHandToPlayArea(player);
+            if (BoardManager.GetSelectedDiscardNames().Count + player.getPlayAreaBid() == currentBid) {
+                List<Card> cardsToDiscard = GetDiscardedCards(player);
+                foreach (Card card in cardsToDiscard) {
+                    player.RemoveCard(card);
+                }
+                ((Quest)cardInPlay).PlayStage();
+            }
+            else {
+                PromptDiscardTest(player, stageNum, currentBid);
+            }
+
+        };
+        BoardManager.SetInteractionButtons("Complete", "", action, null);
+
+        Debug.Log("Prompting " + player.getName() + " to discard TEST inside stage: " + stageNum);
+
+
+    }
 
     public void SetInteractionText(String text) {
         BoardManager.SetInteractionText(text);

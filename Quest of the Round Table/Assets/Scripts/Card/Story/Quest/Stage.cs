@@ -13,7 +13,7 @@ public class Stage {
     Action action;
 
 	private Quest quest;
-    Player playerToPrompt, originalPlayer;
+    Player playerToPrompt, originalPlayer, highestBiddingPlayer;
 
 	public Stage(Adventure stageCard, List<Card> weapons, int stageNum) {
 		Logger.getInstance ().info ("Starting the Stage class");
@@ -79,8 +79,12 @@ public class Stage {
 			Logger.getInstance ().trace ("Stage card is NOT subclass type of foe");
 			currentBid = ((Test)stageCard).getMinBidValue();
 			Debug.Log ("Current bid is: " + currentBid);
-			playerToPrompt = quest.getNextPlayer (quest.getSponsor ());
-			promptTest ();
+            playerToPrompt = board.getNextPlayer(quest.getSponsor());
+            while (!quest.getPlayers().Contains(playerToPrompt))
+            {
+                playerToPrompt = board.getNextPlayer(playerToPrompt);
+            }
+            promptTest ();
 		}
 	}
 
@@ -135,14 +139,20 @@ public class Stage {
 
 	private void promptTest() {
 		Logger.getInstance ().debug ("prompting Test...");
-		if (isValidBidder ()) {
-			Logger.getInstance ().trace ("Bidder is valid; about to prompt test to " + playerToPrompt.getName());
-			board.PromptTest (playerToPrompt, currentBid);
-		} else {
-			Logger.getInstance ().debug ("Removing Participating player...");
-			quest.removeParticipatingPlayer (playerToPrompt);
-			incrementBidder ();
-		}
+        Debug.Log("Prompting test");
+        Debug.Log("The player to prompt is: " + playerToPrompt.getName());
+        if ( playerToPrompt.GetType() == typeof(AIPlayer) ) {
+            //((AIPlayer)playerToPrompt).GetStrategy().PlayQuestStage(this);
+            Logger.getInstance().debug("Player is AI");
+        }
+        else {
+            if (currentBid > ((Test)stageCard).getMinBidValue() && quest.getPlayers().Count == 1) {
+                board.PromptDiscardTest(playerToPrompt, stageNum, currentBid);
+            }
+            else {
+                board.PromptEnterTest(playerToPrompt, stageNum, currentBid);
+            }
+        }
 	}
 
 	private bool isValidBidder() {
@@ -151,23 +161,48 @@ public class Stage {
 
 	private void incrementBidder() {
 		playerToPrompt = quest.getNextPlayer (playerToPrompt);
-		promptTest ();
+        promptTest ();
 	}
 
-	public void promptTestResponse(int bid) { //TODO: maybe return should be the cards to be discarded? as well as bid number (to account for ally bids)
+	public void promptTestResponse(bool dropOut, int interactionBid) { //TODO: maybe return should be the cards to be discarded? as well as bid number (to account for ally bids)
 		Logger.getInstance ().debug ("prompting Test Response...");
-		if (bid == 0) {
-			quest.removeParticipatingPlayer (playerToPrompt);
-			if (quest.getPlayers ().Count == 1) {
-				board.dealCardsToPlayer (quest.getPlayers()[0], 1);
-				//TODO: discard specifically selected cards
-				quest.PlayStage ();
-			}
-		} else {
-			Logger.getInstance ().trace ("Bid != 0");
-			currentBid = bid;
-		}
+        Debug.Log("Prompting test response");
+
+        if(dropOut) {
+            currentBid = interactionBid;
+            highestBiddingPlayer = playerToPrompt;
+            Debug.Log("Continue test");
+            Debug.Log("Current bid before incrementing is: " + currentBid);
+            playerToPrompt = board.getNextPlayer(playerToPrompt);
+            while (!quest.getPlayers().Contains(playerToPrompt)) {
+                playerToPrompt = board.getNextPlayer(playerToPrompt);
+            }
+            Debug.Log("Current bid after incrementing is: " + currentBid);
+            promptTest();
+        }
+        else {
+            Debug.Log("Dropped out of Test");
+            Player temp = playerToPrompt;
+            playerToPrompt = quest.getNextPlayer(playerToPrompt);
+            if (originalPlayer == temp)
+            {
+                originalPlayer = quest.getNextPlayer(originalPlayer);
+            }
+            Debug.Log("Removing player: " + temp.getName());
+            quest.removeParticipatingPlayer(temp);
+            Debug.Log("New total participant: " + quest.getPlayers().Count);
+            Debug.Log("Next player: " + playerToPrompt.getName());
+            promptTest();
+        }
 	}
+
+    public void removeBidsFromHand() {
+        Debug.Log("Removing number of bids " + currentBid + " from " + playerToPrompt.getName());
+        Action action = () => {
+            
+        };
+        BoardManagerMediator.getInstance().PromptCardRemoveSelection(playerToPrompt, action);
+    }
 
     void PlayFoe() {
         playersToRemove = new List<Player>();
