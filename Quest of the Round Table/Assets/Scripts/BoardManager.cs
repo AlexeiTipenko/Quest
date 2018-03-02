@@ -139,13 +139,17 @@ public class BoardManager : MonoBehaviour
     {
         GameObject boardArea = GameObject.Find("Canvas/TabletopImage/DiscardArea");
         List<string> cardNames = new List<string>();
-
-        foreach (Transform child in boardArea.transform)
-        {
-            child.tag = "DiscardedCard";
-            cardNames.Add(child.gameObject.name);
+        if (boardArea != null) {
+            if (boardArea.transform.childCount != 0)
+            {
+                foreach (Transform child in boardArea.transform)
+                {
+                    child.tag = "DiscardedCard";
+                    cardNames.Add(child.gameObject.name);
+                }
+                DestroyDiscardArea();
+            }
         }
-        DestroyDiscardArea();
 
         return cardNames;
     }
@@ -163,8 +167,6 @@ public class BoardManager : MonoBehaviour
 
     public static void DrawCover(Player player) {
         HideCover();
-        Debug.Log("Current player: " + player.getName());
-        Debug.Log("Previous player: " + player.getName());
         if (player != previousPlayer || isFreshTurn) {
             isFreshTurn = false;
             coverInteractionText.GetComponent<Text>().text = "NEXT PLAYER: " + player.getName().ToUpper() + "\nPress continue when you are ready.";
@@ -251,7 +253,8 @@ public class BoardManager : MonoBehaviour
                         || (i == questInPlay.getCurrentStage().getStageNum() 
                             && isResolutionOfStage)
                         || (i == questInPlay.getCurrentStage().getStageNum() 
-                            && questInPlay.getStage(i).getStageCard().GetType().IsSubclassOf(typeof(Test)))) {
+                            && questInPlay.getStage(i).getStageCard().GetType().IsSubclassOf(typeof(Test)) 
+                            && questInPlay.getStage(i).IsInProgress())) {
                         foreach (Card card in currentStage.getCards()) {
                             GameObject noDragInstance = Instantiate(Resources.Load("NoDragCardPrefab", typeof(GameObject))) as GameObject;
                             Image cardImg = noDragInstance.GetComponent<Image>();
@@ -539,7 +542,6 @@ public class BoardManager : MonoBehaviour
     }
 
     public static void HideStageCards() {
-        Debug.Log("Hiding");
         DestroyPlayAreaCanvasCards();
         if (playAreaCanvas == null)
         {

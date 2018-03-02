@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using System.Collections.Generic;
 
 public class StoryDeck : Deck {
 
@@ -44,19 +42,6 @@ public class StoryDeck : Deck {
 		shuffle ();
 	}
 
-	public void moveCardToIndex(string cardName, int index) {
-		int oldIndex = getCardIndexByName (cardName);
-		if (oldIndex == -1) {
-			Debug.LogError ("In moveCardPosition: Card by the name " + cardName + " does not exist in the Story Deck.");
-			Logger.getInstance().error ("In moveCardPosition: Card by the name " + cardName + " does not exist in the Story Deck.");
-		}
-		Card oldCard = cards [oldIndex];
-		Card newCard = oldCard;
-
-		cards.RemoveAt (oldIndex);
-		cards.Insert (index, newCard);
-	}
-
 	public Card getCardByName(string cardName) {
 		for (int i = 0; i < cards.Count; i++) {
 			if (cards [i].cardImageName.Equals (cardName)) {
@@ -67,13 +52,13 @@ public class StoryDeck : Deck {
 	}
 
 	public override string toString() {
-		string toString = "Story Deck: ";
+		string output = "Story Deck: ";
 		foreach (Card card in cards) {
-			toString += (card.toString () + ", ");
+			output += (card.toString () + ", ");
 		}
 		if (cards.Count > 0) {
-			toString = toString.Substring (0, toString.Length - 2);
+			output = output.Substring (0, output.Length - 2);
 		}
-		return toString;
+		return output;
 	}
 }

@@ -32,10 +32,10 @@ public class ProsperityThroughoutTheRealmTest {
 
 		BoardManagerMediator.getInstance().initGame (players);
 
-		joey.removeCards (7);
-		julie.removeCards (2);
-		jimmy.removeCards (11);
-		jesse.removeCards (8);
+        joey.RemoveRandomCards (7);
+        julie.RemoveRandomCards (2);
+        jimmy.RemoveRandomCards (11);
+        jesse.RemoveRandomCards (8);
 
 		Debug.Log ("Players are: " + BoardManagerMediator.getInstance().getPlayers ());
 

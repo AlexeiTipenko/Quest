@@ -46,13 +46,12 @@ public class QueensFavor : Event {
 
     private void DealCards()
     {
-        action = () => {
+        action = () =>
+        {
 
-            if (BoardManagerMediator.getInstance().GetCardsNumHandArea(playerToPrompt) > 12)
+            if (BoardManagerMediator.getInstance().GetCardsNumHandArea(playerToPrompt) > 12) {
                 board.PromptCardRemoveSelection(playerToPrompt, action);
-
-            else{
-                
+            } else {
                 board.TransferFromHandToPlayArea(playerToPrompt);
                 playerToPrompt.RemoveCardsResponse();
 

@@ -1,12 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
 public class Plague : Event {
 
+    BoardManagerMediator board;
+    string description = "Drawer loses 2 shields if possible.";
 	public static int frequency = 1;
 
-	public Plague () : base ("Plague") { }
+	public Plague () : base ("Plague") {
+        board = BoardManagerMediator.getInstance();
+    }
 
 	//Event description: Drawer loses 2 shields if possible.
 	public override void startBehaviour() {
@@ -16,6 +16,10 @@ public class Plague : Event {
 		currentPlayer.decrementShields (2);
 		Logger.getInstance().info("Finished Plague behaviour");
 
-        BoardManagerMediator.getInstance().NextPlayerTurn(currentPlayer);
+        if (currentPlayer.GetType() != typeof(AIPlayer)) {
+            board.SimpleAlert(currentPlayer, description);
+        } else {
+            board.nextTurn();
+        }
 	}
 }
