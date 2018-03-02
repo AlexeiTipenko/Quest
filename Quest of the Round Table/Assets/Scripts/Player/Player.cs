@@ -107,15 +107,50 @@ public abstract class Player {
 	}
 
 
-	public int getTotalAvailableBids() {
-		int availableBids = hand.Count;
-		List<Card> playAreaCards = playArea.getCards ();
-		foreach (Card card in playAreaCards) {
-			availableBids += ((Adventure)card).getBidPoints (); 
-            //TODO: Make sure empowered bid points work (and battle points while you're at it!)
-		}
+    public int getTotalAvailableBids() { //TODO: loop hand as well
+        int availableBids = 0;
+        availableBids += getHandBid();
+        Debug.Log("Hand bid is: " + getHandBid());
+        availableBids += getPlayAreaBid();
+        Debug.Log("Player area bid: " + getPlayAreaBid());
+        Debug.Log("Total available bids are: " + availableBids);
 		return availableBids;
 	}
+
+    public int getHandBid() {
+        int availableBids = 0;
+        foreach (Card card in hand) {
+            if (card.GetType().IsSubclassOf(typeof(Ally)))
+            {
+                if ( ((Ally)card).getBidPoints() == 0) {
+                    availableBids += 1;
+                }
+                else {
+                    availableBids += ((Ally)card).getBidPoints();
+                }
+            }
+            else
+            {
+                availableBids += 1;
+            }
+        }
+        return availableBids;
+    }
+
+    public int getPlayAreaBid() {
+        int availableBids = 0;
+        foreach (Card card in playArea.getCards())
+        {
+            Debug.Log("Current player: " + getName() + " and card name in play area is: " + card.getCardName());
+            if (card.GetType().IsSubclassOf(typeof(Ally))) {
+                availableBids += ((Ally)card).getBidPoints();
+            }
+            else {
+                availableBids += 1;
+            }
+        }
+        return availableBids;
+    }
 
 
     public void RemoveCard(Card card)

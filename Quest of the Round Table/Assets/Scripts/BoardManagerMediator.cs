@@ -332,17 +332,62 @@ public class BoardManagerMediator
 
 	public void PromptEnterTest(Player player, int stageNum, int currentBid) {
         BoardManager.DrawCards(player);
-        BoardManager.SetInteractionText("Current stage is a test, with a currentBid of: " + currentBid + ". Do you wish to up the bid by one?");
+        BoardManager.SetInteractionText("Current stage is a test, with a current bid of: " + currentBid + ". Do you wish to up the bid?");
+        BoardManager.SetInteractionBid(currentBid.ToString());
         Action action1 = () => {
-            ((Quest)cardInPlay).getStage(stageNum).promptTestResponse(true);
+            int InteractionBid = 0;
+            Int32.TryParse(BoardManager.GetInteractionBid(), out InteractionBid);
+
+            if ( InteractionBid > player.getTotalAvailableBids()) {
+                Debug.Log("Trying to bid more than they have");
+                PromptEnterTest(player, stageNum, currentBid);
+            }
+            else {
+                ((Quest)cardInPlay).getStage(stageNum).promptTestResponse(true, InteractionBid);
+            }
         };
         Action action2 = () => {
-            ((Quest)cardInPlay).getStage(stageNum).promptTestResponse(false);
+            ((Quest)cardInPlay).getStage(stageNum).promptTestResponse(false, 0);
         };
-        BoardManager.SetInteractionButtons("Yes", "Drop out", action1, action2);
+        BoardManager.SetInteractionButtons("Continue", "Drop out", action1, action2);
         Debug.Log("Prompting " + player.getName() + " to enter TEST inside stage: " + stageNum);
-        Logger.getInstance().info("Prompting " + player.getName() + " to enter TEST inside stage: " + stageNum);  
+        Logger.getInstance().info("Prompting " + player.getName() + " to enter TEST inside stage: " + stageNum);
 	}
+
+    public void PromptDiscardTest(Player player, int stageNum, int currentBid) {
+        BoardManager.DrawCards(player);
+        currentBid -= player.getPlayAreaBid();
+        BoardManager.SetInteractionText("You are the winner of the Test, and you must discard : " + currentBid + " cards");
+        BoardManager.SetupDiscardPanel();
+
+        Action action = () => {
+            if (BoardManager.GetSelectedDiscardNames().Count == currentBid) {
+                foreach(Card card in player.getHand()) {
+                    foreach(String name in BoardManager.GetSelectedCardNames()) {
+                        if (card.getCardName() == name ) {
+                            Debug.Log("Removing card");
+                            player.RemoveCard(card);
+                        }
+                    }
+                }
+                if(stageNum == ((Quest)cardInPlay).getNumStages()) {
+                    ((Quest)cardInPlay).CompleteQuest();
+                }
+                else {
+                    ((Quest)cardInPlay).PlayStage();
+                }
+            }
+            else {
+                PromptDiscardTest(player, stageNum, currentBid);
+            }
+
+        };
+        BoardManager.SetInteractionButtons("Complete", "", action, null);
+
+        Debug.Log("Prompting " + player.getName() + " to discard TEST inside stage: " + stageNum);
+
+
+    }
 
     public void SetInteractionText(String text) {
         BoardManager.SetInteractionText(text);

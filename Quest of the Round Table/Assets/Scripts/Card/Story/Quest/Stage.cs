@@ -11,7 +11,7 @@ public class Stage {
     private List<Player> playersToRemove;
 
 	private Quest quest;
-    Player playerToPrompt, originalPlayer;
+    Player playerToPrompt, originalPlayer, highestBiddingPlayer;
 
 	public Stage(Adventure stageCard, List<Card> weapons, int stageNum) {
 		Logger.getInstance ().info ("Starting the Stage class");
@@ -137,28 +137,32 @@ public class Stage {
 	private void promptTest() {
 		Logger.getInstance ().debug ("prompting Test...");
         Debug.Log("Prompting test");
-        /*if (isValidBidder ()) {
-			Logger.getInstance ().trace ("Bidder is valid; about to prompt test to " + playerToPrompt.getName());
-			board.PromptTest (playerToPrompt, currentBid);
-		} else {
-			Logger.getInstance ().debug ("Removing Participating player...");
-			quest.removeParticipatingPlayer (playerToPrompt);
-			incrementBidder ();
-		}*/
         Debug.Log("The player to prompt is: " + playerToPrompt.getName());
-
-
         if ( playerToPrompt.GetType() == typeof(AIPlayer) ) {
             //((AIPlayer)playerToPrompt).GetStrategy().PlayQuestStage(this);
             Logger.getInstance().debug("Player is AI");
         }
         else {
-            if (currentBid > playerToPrompt.getHand().Count){ // take in amount of bid points , check that before this statement
-                //TODO: Handle kicking player out of test
+            if (currentBid >= playerToPrompt.getTotalAvailableBids() && playerToPrompt != highestBiddingPlayer){ // take in amount of bid points , check that before this statement
                 Debug.Log("Should not allow to do Test since more bids than amount of cards in hand");
+                Debug.Log("Dropped out of Test");
+                Player temp = playerToPrompt;
+                playerToPrompt = quest.getNextPlayer(playerToPrompt);
+                if (originalPlayer == temp)
+                {
+                    originalPlayer = quest.getNextPlayer(originalPlayer);
+                }
+                Debug.Log("Removing player: " + temp.getName());
+                quest.removeParticipatingPlayer(temp);
+                promptTest();
             }
             else {
-                board.PromptEnterTest(playerToPrompt, stageNum, currentBid);
+                if (currentBid > ((Test)stageCard).getMinBidValue() && quest.getPlayers().Count == 1) {
+                    board.PromptDiscardTest(playerToPrompt, stageNum, currentBid);
+                }
+                else {
+                    board.PromptEnterTest(playerToPrompt, stageNum, currentBid);
+                }
             }
         }
 	}
@@ -172,25 +176,21 @@ public class Stage {
         promptTest ();
 	}
 
-	public void promptTestResponse(bool dropOut) { //TODO: maybe return should be the cards to be discarded? as well as bid number (to account for ally bids)
+	public void promptTestResponse(bool dropOut, int interactionBid) { //TODO: maybe return should be the cards to be discarded? as well as bid number (to account for ally bids)
 		Logger.getInstance ().debug ("prompting Test Response...");
         Debug.Log("Prompting test response");
 
         if(dropOut) {
-            if (quest.getPlayers().Count == 1) {
-                Debug.Log("Finished Test");
-            }
-            else {
-                Debug.Log("Continue test");
-                Debug.Log("Current bid before incrementing is: " + currentBid);
-                currentBid++;
+            currentBid = interactionBid;
+            highestBiddingPlayer = playerToPrompt;
+            Debug.Log("Continue test");
+            Debug.Log("Current bid before incrementing is: " + currentBid);
+            playerToPrompt = board.getNextPlayer(playerToPrompt);
+            while (!quest.getPlayers().Contains(playerToPrompt)) {
                 playerToPrompt = board.getNextPlayer(playerToPrompt);
-                while (!quest.getPlayers().Contains(playerToPrompt)) {
-                    playerToPrompt = board.getNextPlayer(playerToPrompt);
-                }
-                Debug.Log("Current bid after incrementing is: " + currentBid);
-                promptTest();
             }
+            Debug.Log("Current bid after incrementing is: " + currentBid);
+            promptTest();
         }
         else {
             Debug.Log("Dropped out of Test");
@@ -204,19 +204,8 @@ public class Stage {
             quest.removeParticipatingPlayer(temp);
             Debug.Log("New total participant: " + quest.getPlayers().Count);
             Debug.Log("Next player: " + playerToPrompt.getName());
+            promptTest();
         }
-
-		/*if (bid == 0) {
-			quest.removeParticipatingPlayer (playerToPrompt);
-			if (quest.getPlayers ().Count == 1) {
-				board.dealCardsToPlayer (quest.getPlayers()[0], 1);
-				//TODO: discard specifically selected cards
-				quest.PlayStage ();
-			}
-		} else {
-			Logger.getInstance ().trace ("Bid != 0");
-			currentBid = bid;
-		}*/
 	}
 
     public void removeBidsFromHand() {

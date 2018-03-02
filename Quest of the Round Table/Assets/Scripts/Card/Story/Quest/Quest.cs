@@ -246,7 +246,7 @@ public abstract class Quest : Story {
 
     }
 
-	private void CompleteQuest() {
+	public void CompleteQuest() {
 		foreach (Player player in board.getPlayers()) {
 			player.getPlayArea ().discardAmours ();
 		}
