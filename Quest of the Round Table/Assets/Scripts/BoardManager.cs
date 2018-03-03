@@ -443,6 +443,7 @@ public class BoardManager : MonoBehaviour
 	public static void GetPlayArea(Player player) {
 		GameObject PlayArea = GameObject.Find ("Canvas/TabletopImage/PlayerPlayArea");
 		foreach (Transform child in PlayArea.transform) {
+			Logger.getInstance ().info ("Cards in play area: " + child.name);
             foreach(Card card in player.getHand()) {
                 if(child.name.Trim() == card.getCardName().Trim()) {
                     bool amourExistsInPlayArea = false;

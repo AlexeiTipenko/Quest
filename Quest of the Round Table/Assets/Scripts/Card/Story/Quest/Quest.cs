@@ -270,6 +270,7 @@ public abstract class Quest : Story {
 			numShieldsAwarded += 2;
 			KingsRecognitionActive = false;
 		}
+		Logger.getInstance ().trace ("numShieldsAwarded is " + numShieldsAwarded);
 		foreach (Player player in participatingPlayers) {
 			player.incrementShields (numShieldsAwarded);
 		}
