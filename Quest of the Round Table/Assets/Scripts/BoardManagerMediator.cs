@@ -358,7 +358,7 @@ public class BoardManagerMediator
                 Debug.Log("Trying to bid more than they have");
                 PromptEnterTest(player, stageNum, currentBid);
             }
-            else if (InteractionBid <= 2) {
+            else if (InteractionBid <= currentBid) {
                 PromptEnterTest(player, stageNum, currentBid);
             }
 

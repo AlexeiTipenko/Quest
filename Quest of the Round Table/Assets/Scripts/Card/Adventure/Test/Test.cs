@@ -10,7 +10,7 @@ public abstract class Test : Adventure {
 		this.minBidValue = minBidValue;
 	}
 
-	public int getMinBidValue() {
+	public virtual int getMinBidValue() {
 		return minBidValue;
 	}
 }

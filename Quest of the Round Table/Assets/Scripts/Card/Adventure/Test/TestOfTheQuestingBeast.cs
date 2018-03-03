@@ -1,8 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class TestOfTheQuestingBeast : Test {
+﻿public class TestOfTheQuestingBeast : Test {
 
 	public static int frequency = 2;
 	private int empoweredMinBidValue;
@@ -11,12 +7,10 @@ public class TestOfTheQuestingBeast : Test {
 		empoweredMinBidValue = 4;
 	}
 
-	public new int getBidPoints() {
-		/*
-		 * if (condition) {
-		 *     return empoweredMinBidPoints;
-		 * }
-		*/
+	public override int getMinBidValue() {
+        if (BoardManagerMediator.getInstance().getCardInPlay().getCardName() == "Search for the Questing Beast") {
+            return empoweredMinBidValue;
+        }
 		return minBidValue;
 	}
 
