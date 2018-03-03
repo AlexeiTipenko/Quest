@@ -6,11 +6,6 @@ using System.Collections;
 public class DeckTest {
 
 	[Test]
-	public void testDealCards() {
-		
-	}
-
-	[Test]
 	public void testShuffle() {
 		Deck deck = new AdventureDeck ();
 		Deck shuffledDeck = new AdventureDeck (deck);
