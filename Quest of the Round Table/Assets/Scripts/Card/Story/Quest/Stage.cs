@@ -77,7 +77,7 @@ public class Stage {
             PromptFoe();
 		} else {
 			Logger.getInstance ().trace ("Stage card is NOT subclass type of foe");
-			currentBid = ((Test)stageCard).getMinBidValue();
+			currentBid = ((Test)stageCard).getMinBidValue() - 1;
 			Debug.Log ("Current bid is: " + currentBid);
             playerToPrompt = board.getNextPlayer(quest.getSponsor());
             while (!quest.getPlayers().Contains(playerToPrompt))
@@ -146,7 +146,7 @@ public class Stage {
             Logger.getInstance().debug("Player is AI");
         }
         else {
-            if (currentBid > ((Test)stageCard).getMinBidValue() && quest.getPlayers().Count == 1) {
+            if (currentBid > (((Test)stageCard).getMinBidValue() - 1) && quest.getPlayers().Count == 1) {
                 board.PromptDiscardTest(playerToPrompt, stageNum, currentBid);
             }
             else {
@@ -168,7 +168,7 @@ public class Stage {
 		Logger.getInstance ().debug ("prompting Test Response...");
         Debug.Log("Prompting test response");
 
-        if(dropOut) {
+        if(!dropOut) {
             currentBid = interactionBid;
             highestBiddingPlayer = playerToPrompt;
             Debug.Log("Continue test");
@@ -198,9 +198,9 @@ public class Stage {
 
     public void removeBidsFromHand() {
         Debug.Log("Removing number of bids " + currentBid + " from " + playerToPrompt.getName());
-        Action action = () => {
+        //Action action = () => {
             
-        };
+        //};
         BoardManagerMediator.getInstance().PromptCardRemoveSelection(playerToPrompt, action);
     }
 

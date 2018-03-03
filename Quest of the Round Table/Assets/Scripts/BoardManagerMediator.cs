@@ -349,7 +349,7 @@ public class BoardManagerMediator
 
 	public void PromptEnterTest(Player player, int stageNum, int currentBid) {
         BoardManager.DrawCards(player);
-        BoardManager.SetInteractionText("Current stage is a test, with a minimum bid of: " + currentBid + ". Do you wish to up the bid?");
+        BoardManager.SetInteractionText("Current stage is a test, with a minimum bid of: " + (currentBid + 1) + ". Do you wish to up the bid?");
         BoardManager.SetInteractionBid(currentBid.ToString());
         Action action1 = () => {
             int InteractionBid = 0;
@@ -363,11 +363,11 @@ public class BoardManagerMediator
             }
 
             else {
-                ((Quest)cardInPlay).getStage(stageNum).promptTestResponse(true, InteractionBid);
+                ((Quest)cardInPlay).getStage(stageNum).promptTestResponse(false, InteractionBid);
             }
         };
         Action action2 = () => {
-            ((Quest)cardInPlay).getStage(stageNum).promptTestResponse(false, 0);
+            ((Quest)cardInPlay).getStage(stageNum).promptTestResponse(true, 0);
         };
         BoardManager.SetInteractionButtons("Continue", "Drop out", action1, action2);
         Debug.Log("Prompting " + player.getName() + " to enter TEST inside stage: " + stageNum);
