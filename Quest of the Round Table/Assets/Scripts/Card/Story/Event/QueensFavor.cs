@@ -46,27 +46,24 @@ public class QueensFavor : Event {
 
     private void DealCards()
     {
-        action = () =>
-        {
-
-            if (BoardManagerMediator.getInstance().GetCardsNumHandArea(playerToPrompt) > 12) {
-                board.PromptCardRemoveSelection(playerToPrompt, action);
-            } else {
-                board.TransferFromHandToPlayArea(playerToPrompt);
-                playerToPrompt.RemoveCardsResponse();
-
-                playerToPrompt = GetNextPlayer(playerToPrompt);
-
-                if (playerToPrompt != originalPlayer)
-                    DealCards();
-
-                else
-                    board.nextTurn();
-            }
+        action = () => {
+            Action completeAction = DealCardsNextPlayer;
+            playerToPrompt.DiscardCards(action, completeAction);
         };
 
-        playerToPrompt.giveAction(action);
-        BoardManagerMediator.getInstance().dealCardsToPlayer(playerToPrompt, 2);
+        playerToPrompt.DrawCards(2, action);
+    }
+
+    private void DealCardsNextPlayer() {
+        playerToPrompt = GetNextPlayer(playerToPrompt);
+        if (playerToPrompt != originalPlayer)
+        {
+            DealCards();
+        }
+        else
+        {
+            board.nextTurn();
+        }
     }
 
     public Player GetNextPlayer(Player previousPlayer)

@@ -3,19 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public abstract class Quest : Story {
-	private BoardManagerMediator board;
+	BoardManagerMediator board;
 
-	protected int currentStage, totalCardsCounter, numShieldsAwarded;
-	private int numStages;
-	protected List<Type> dominantFoes;
-	private List<Stage> stages;
-	Player sponsor, playerToPrompt;
-	List<Player> participatingPlayers;
-	public static bool KingsRecognitionActive = false;
+	protected int currentStage, totalCardsCounter, numShieldsAwarded, numStages;
+    protected List<Type> dominantFoes;
+	protected List<Player> participatingPlayers;
+	public static bool KingsRecognitionActive;
+    List<Stage> stages;
+    Player sponsor, playerToPrompt;
     Action action;
 
-	public Quest (string cardName, int numStages) : base (cardName) {
-
+	protected Quest (string cardName, int numStages) : base (cardName) {
 		board = BoardManagerMediator.getInstance ();
 		this.numStages = numStages;
         participatingPlayers = new List<Player>();
@@ -41,32 +39,14 @@ public abstract class Quest : Story {
         Logger.getInstance().info ("Started Quest behaviour");
 		sponsor = owner;
 		totalCardsCounter = 0;
-		PromptSponsorQuest ();
-	}
-
-	private void PromptSponsorQuest() {
-        if (sponsor.GetType() == typeof(AIPlayer)) {
-            if (((AIPlayer)sponsor).GetStrategy().DoISponsorAQuest()) {
-                //((AIPlayer)sponsor).GetStrategy().SponsorQuest();
-                PromptSponsorQuestResponse(true);
-            } else {
-                PromptSponsorQuestResponse(false);
-                //IncrementSponsor();
-            }
-        } else {
-            board.PromptSponsorQuest(sponsor);
-        }
+		sponsor.PromptSponsorQuest (this);
 	}
 
 	public void PromptSponsorQuestResponse (bool sponsorAccepted) {
 		if (sponsorAccepted) {
 			Logger.getInstance().info("Sponsor accepted: " + sponsor.getName());
             Debug.Log("Sponsor accepted: " + sponsor.getName());
-            if (sponsor.GetType() == typeof(AIPlayer)) {
-                ((AIPlayer)sponsor).GetStrategy().SponsorQuest();
-            } else {
-                board.SetupQuest(sponsor, "PREPARE YOUR QUEST\n- Each stage contains a foe or a test\n- Maximum one test per quest\n- Foe stages may contain (unique) weapons\n- Battle points must increase between stages");
-            }
+            sponsor.SponsorQuest(this, true);
 		} else {
 			Logger.getInstance().trace("Sponsor declined: " + sponsor.getName());
 			IncrementSponsor ();
@@ -151,15 +131,16 @@ public abstract class Quest : Story {
 		if (sponsor == owner) {
 			board.nextTurn ();
 		} else {
-			PromptSponsorQuest ();
+			sponsor.PromptSponsorQuest (this);
 		}
 	}
 
-	public void SetupQuestComplete(List<Stage> stages) {
+	public void SponsorQuestComplete(List<Stage> stages) {
         Debug.Log("Finished quest setup.");
         this.stages = stages;
         foreach (Stage stage in stages) {
             Debug.Log("Stage " + stage.getStageNum());
+            stage.SetParentQuest(this);
             foreach (Card card in stage.getCards()) {
                 Debug.Log(card.getCardName());
                 if (sponsor.GetType() != typeof(AIPlayer)) {
@@ -175,15 +156,7 @@ public abstract class Quest : Story {
     private void PromptAcceptQuest() {
         if (playerToPrompt != sponsor) {
             Debug.Log("Prompting " + playerToPrompt.getName() + " to accept quest");
-            if (playerToPrompt.GetType() == typeof(AIPlayer)) {
-                if (((AIPlayer)playerToPrompt).GetStrategy().DoIParticipateInQuest()) {
-                    PromptAcceptQuestResponse(true);
-                } else {
-                    PromptAcceptQuestResponse(false);
-                }
-            } else {
-                board.PromptAcceptQuest(playerToPrompt);
-            }
+            playerToPrompt.PromptAcceptQuest(this);
         }
         else {
             currentStage = -1;
@@ -216,28 +189,17 @@ public abstract class Quest : Story {
 		if (questAccepted) {
 			Logger.getInstance().debug(playerToPrompt.getName() + " has accepted to participate in the quest");
 			participatingPlayers.Add (playerToPrompt);
-            action = () => {
-                board.TransferFromHandToPlayArea(playerToPrompt);
-                playerToPrompt.RemoveCardsResponse();
-                if (playerToPrompt.getHand().Count > 12)
-                {
-                    board.PromptCardRemoveSelection(playerToPrompt, action);
-                }
 
-                else
+            action = () => {
+                Action completeAction = () =>
                 {
                     playerToPrompt = board.getNextPlayer(playerToPrompt);
                     PromptAcceptQuest();
-                }
+                };
+                playerToPrompt.DiscardCards(action, completeAction);
             };
-            if (playerToPrompt.getHand().Count + 1 > 12) {
-                playerToPrompt.giveAction(action);
-                board.dealCardsToPlayer(playerToPrompt, 1);
-            } else {
-                board.dealCardsToPlayer(playerToPrompt, 1);
-                playerToPrompt = board.getNextPlayer(playerToPrompt);
-                PromptAcceptQuest();
-            }
+
+            playerToPrompt.DrawCards(1, action);
         } else {
             playerToPrompt = board.getNextPlayer(playerToPrompt);
             PromptAcceptQuest();
@@ -250,16 +212,11 @@ public abstract class Quest : Story {
             player.getPlayArea().discardWeapons();
         }
         if (currentStage < numStages && participatingPlayers.Count > 0) {
-            getStage(currentStage).prepare();
+            getStage(currentStage).Prepare();
 		} else {
 			CompleteQuest ();
 		}
 	}
-
-    public void PlayTest() {
-        currentStage++;
-
-    }
 
 	public void CompleteQuest() {
 		foreach (Player player in board.getPlayers()) {
@@ -289,10 +246,9 @@ public abstract class Quest : Story {
                     board.nextTurn();
                 }
             };
-            sponsor.giveAction(action);
-            board.dealCardsToPlayer(sponsor, totalCardsCounter + numStages);
+            sponsor.DrawCards(totalCardsCounter + numStages, action);
         } else {
-            board.dealCardsToPlayer(sponsor, totalCardsCounter + numStages);
+            sponsor.DrawCards(totalCardsCounter + numStages, null);
             board.nextTurn();
         }
 	}

@@ -11,12 +11,9 @@ public abstract class Player {
 	protected List<Card> hand;
 	protected PlayerPlayArea playArea;
     protected BoardManagerMediator board;
-    protected Action func;
+    System.Random random;
 
-    private System.Random random;
-
-
-	public Player(string name) {
+	protected Player(string name) {
 		this.name = name;
 		rank = new Squire ();
 		numShields = 0;
@@ -27,39 +24,72 @@ public abstract class Player {
 	}
 
 
-	public void dealCards(List<Card> cards) {
-		foreach (Card card in cards) {
-			card.setOwner (this);
-			hand.Add (card);
-		}
-        checkNumCards();
-	}
+    //--------------------------------------------//
+    //------------ Abstract Functions ------------//
+    //--------------------------------------------//
 
 
-    public void checkNumCards() {
+    public abstract void PromptDiscardCards(Action action);
+
+    public abstract void DiscardCards(Action invalidAction, Action continueAction);
+
+    public abstract void PromptSponsorQuest(Quest quest);
+
+    public abstract void SponsorQuest(Quest quest, bool firstPrompt);
+
+    public abstract void PromptAcceptQuest(Quest quest);
+
+    public abstract void PromptFoe(Quest quest);
+
+    public abstract void DisplayStageResults(Stage stage, bool playerEliminated);
+
+    public abstract void PromptTest(Quest quest, int currentBid);
+
+    public abstract void PromptDiscardTest(Quest quest, int currentBid);
+
+    public abstract void PromptEnterTournament(Tournament tournament);
+
+    public abstract void PromptTournament(Tournament tournament);
+
+
+    //--------------------------------------------//
+    //---------- Non-Abstract Functions ----------//
+    //--------------------------------------------//
+
+
+    public void DrawCards(int numCards, Action action) {
+        List<Card> cards = new List<Card>();
+        for (int i = 0; i < numCards; i++) {
+            cards.Add(board.drawAdventureCard());
+        }
+        DealCards(cards, action);
+    }
+
+    public void DealCards(List<Card> cards, Action action)
+    {
+        foreach (Card card in cards)
+        {
+            card.setOwner(this);
+            hand.Add(card);
+        }
         if (hand.Count > 12)
         {
             Debug.Log("More than 12 cards in " + name + "'s hand");
-            if (this.GetType() == typeof(AIPlayer)) {
-                RemoveRandomCards(hand.Count - 12);
-            } else {
-                board.PromptCardRemoveSelection(this, func);
+            PromptDiscardCards(action);
+        } else {
+            if (action != null) {
+                action.Invoke();
             }
         }
     }
 
 
-    public void giveAction(Action action) {
-        func = action;
-    }
-
-
-    public void PromptNextPlayer(){
-        if (func != null){
-            func();
-            func = null;
-        }
-    }
+    //public void PromptNextPlayer() {
+    //    if (func != null) {
+    //        func();
+    //        func = null;
+    //    }
+    //}
 
 
 	private void checkForRankUp() {
@@ -241,9 +271,9 @@ public abstract class Player {
         return output;
     }
 
-    public Action getAction() {
-        return func;
-    }
+    //public Action getAction() {
+    //    return func;
+    //}
 }
 
 

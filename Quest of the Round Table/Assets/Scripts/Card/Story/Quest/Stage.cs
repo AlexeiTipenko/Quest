@@ -3,16 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Stage {
-	private BoardManagerMediator board;
+	BoardManagerMediator board;
 
-	private int stageNum, currentBid;
-    private bool isInProgress;
-	private Adventure stageCard;
-	private List<Card> weapons;
-    private List<Player> playersToRemove;
+	int stageNum, currentBid;
+    bool isInProgress;
+	Adventure stageCard;
+	List<Card> weapons;
+    List<Player> playersToRemove;
     Action action;
-
-	private Quest quest;
+	Quest quest;
     Player playerToPrompt, originalPlayer, highestBiddingPlayer;
 
 	public Stage(Adventure stageCard, List<Card> weapons, int stageNum) {
@@ -59,10 +58,13 @@ public class Stage {
         return totalCards;
 	}
 
-	public void prepare() {
+    public void SetParentQuest(Quest quest) {
+        this.quest = quest;
+    }
+
+	public void Prepare() {
 		Logger.getInstance ().debug ("Prepare function has started");
 
-		quest = (Quest)BoardManagerMediator.getInstance ().getCardInPlay ();
         isInProgress = true;
 
 		if (stageCard.GetType ().IsSubclassOf (typeof(Foe))) {
@@ -74,7 +76,7 @@ public class Stage {
                 playerToPrompt = board.getNextPlayer(playerToPrompt);
             }
             originalPlayer = playerToPrompt;
-            PromptFoe();
+            playerToPrompt.PromptFoe(quest);
 		} else {
 			Logger.getInstance ().trace ("Stage card is NOT subclass type of foe");
 			currentBid = ((Test)stageCard).getMinBidValue() - 1;
@@ -84,18 +86,9 @@ public class Stage {
             {
                 playerToPrompt = board.getNextPlayer(playerToPrompt);
             }
-            promptTest ();
+            PromptTest ();
 		}
 	}
-
-    public void PromptFoe() {
-        if (playerToPrompt.GetType() == typeof(AIPlayer)) {
-            ((AIPlayer)playerToPrompt).GetStrategy().PlayQuestStage(this);
-        }
-        else {
-            board.PromptFoe(playerToPrompt, stageNum);
-        }
-    }
 
 
     public void PromptFoeResponse(bool dropOut) {
@@ -127,7 +120,7 @@ public class Stage {
         }
         else{
             if (playerToPrompt != originalPlayer) {
-                PromptFoe();
+                playerToPrompt.PromptFoe(quest);
             }
             else {
                 Debug.Log("All players have been prompted");
@@ -137,35 +130,31 @@ public class Stage {
 
     }
 
-	private void promptTest() {
+	void PromptTest() {
 		Logger.getInstance ().debug ("prompting Test...");
         Debug.Log("Prompting test");
         Debug.Log("The player to prompt is: " + playerToPrompt.getName());
-        if ( playerToPrompt.GetType() == typeof(AIPlayer) ) {
-            //((AIPlayer)playerToPrompt).GetStrategy().PlayQuestStage(this);
-            Logger.getInstance().debug("Player is AI");
+        if (currentBid > (((Test)quest.getCurrentStage().getStageCard()).getMinBidValue() - 1) && quest.getPlayers().Count == 1)
+        {
+            playerToPrompt.PromptDiscardTest(quest, currentBid);
         }
-        else {
-            if (currentBid > (((Test)stageCard).getMinBidValue() - 1) && quest.getPlayers().Count == 1) {
-                board.PromptDiscardTest(playerToPrompt, stageNum, currentBid);
-            }
-            else {
-                board.PromptEnterTest(playerToPrompt, stageNum, currentBid);
-            }
+        else
+        {
+            playerToPrompt.PromptTest(quest, currentBid);
         }
 	}
 
-	private bool isValidBidder() {
+	bool isValidBidder() {
 		return (playerToPrompt.getTotalAvailableBids () > currentBid);
 	}
 
-	private void incrementBidder() {
+	void incrementBidder() {
 		playerToPrompt = quest.getNextPlayer (playerToPrompt);
-        promptTest ();
+        PromptTest ();
 	}
 
-	public void promptTestResponse(bool dropOut, int interactionBid) { //TODO: maybe return should be the cards to be discarded? as well as bid number (to account for ally bids)
-		Logger.getInstance ().debug ("prompting Test Response...");
+	public void PromptTestResponse(bool dropOut, int interactionBid) {
+		Logger.getInstance ().debug ("Prompting Test Response...");
         Debug.Log("Prompting test response");
 
         if(!dropOut) {
@@ -178,7 +167,7 @@ public class Stage {
                 playerToPrompt = board.getNextPlayer(playerToPrompt);
             }
             Debug.Log("Current bid after incrementing is: " + currentBid);
-            promptTest();
+            PromptTest();
         }
         else {
             Debug.Log("Dropped out of Test");
@@ -192,16 +181,13 @@ public class Stage {
             quest.removeParticipatingPlayer(temp);
             Debug.Log("New total participant: " + quest.getPlayers().Count);
             Debug.Log("Next player: " + playerToPrompt.getName());
-            promptTest();
+            PromptTest();
         }
 	}
 
     public void removeBidsFromHand() {
         Debug.Log("Removing number of bids " + currentBid + " from " + playerToPrompt.getName());
-        //Action action = () => {
-            
-        //};
-        BoardManagerMediator.getInstance().PromptCardRemoveSelection(playerToPrompt, action);
+        board.PromptCardRemoveSelection(playerToPrompt, action);
     }
 
     void PlayFoe() {
@@ -225,12 +211,7 @@ public class Stage {
             Debug.Log("Player " + playerToPrompt.getName() + " did not pass the stage.");
             playerEliminated = true;
         }
-
-        if (playerToPrompt.GetType() != typeof(AIPlayer)) {
-            board.DisplayStageResults(playerToPrompt, playerEliminated);
-        } else {
-            EvaluateNextPlayerForFoe(playerEliminated);
-        }
+        playerToPrompt.DisplayStageResults(this, playerEliminated);
 	}
 
     public void EvaluateNextPlayerForFoe(bool previousPlayerEliminated)
@@ -264,28 +245,11 @@ public class Stage {
     }
 
     public void DealCards() {
-        if (playerToPrompt.getHand().Count + 1 > 12)
-        {
-            action = () => {
-                board.TransferFromHandToPlayArea(playerToPrompt);
-                playerToPrompt.RemoveCardsResponse();
-                if (playerToPrompt.getHand().Count > 12)
-                {
-                    board.PromptCardRemoveSelection(playerToPrompt, action);
-                }
-
-                else
-                {
-                    DealCardsNextPlayer();
-                }
-            };
-            playerToPrompt.giveAction(action);
-            board.dealCardsToPlayer(playerToPrompt, 1);
-        } else 
-        {
-            board.dealCardsToPlayer(playerToPrompt, 1);
-            DealCardsNextPlayer();
-        }
+        action = () => {
+            Action completeAction = DealCardsNextPlayer;
+            playerToPrompt.DiscardCards(action, completeAction);
+        };
+        playerToPrompt.DrawCards(1, action);
     }
 
 
