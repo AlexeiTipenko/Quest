@@ -58,14 +58,14 @@ public class Strategy2 : AbstractAI
         if (strategyOwner.getTotalAvailableFoeBids() > currentBid && strategyOwner.getTotalAvailableFoeBids() < 25) {
             Logger.getInstance().info(strategyOwner.getName() + " AI is preparing to bid: " + strategyOwner.getTotalAvailableFoeBids());
             Debug.Log(strategyOwner.getName() + " AI is preparing to bid: " + strategyOwner.getTotalAvailableFoeBids());
-            stage.promptTestResponse(false, strategyOwner.getTotalAvailableFoeBids());
+            stage.PromptTestResponse(false, strategyOwner.getTotalAvailableFoeBids());
         }
         else {
             Logger.getInstance().info(strategyOwner.getName() + " AI doesn't have enough to bid: " + strategyOwner.getTotalAvailableFoeBids() 
                                       + " while currentbid is: " + currentBid + " AI dropping out.");
             Debug.Log(strategyOwner.getName() + " AI doesn't have enough to bid: " + strategyOwner.getTotalAvailableFoeBids()
                                       + " while currentbid is: " + currentBid + " AI dropping out.");
-            stage.promptTestResponse(true, 0);
+            stage.PromptTestResponse(true, 0);
         }
     }
 
@@ -151,7 +151,7 @@ public class Strategy2 : AbstractAI
             stages.Add(testStage);
         }
         stages.Add(finalStage);
-        quest.SetupQuestComplete(stages);
+        quest.SponsorQuestComplete(stages);
     }
 
     protected override bool CanPlayCardForStage(Card card, List<Card> participationList)

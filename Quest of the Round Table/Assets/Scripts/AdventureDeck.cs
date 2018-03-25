@@ -73,19 +73,19 @@ public class AdventureDeck : Deck {
 		}
 		Card card = cards [cardIndex];
 		cards.RemoveAt (cardIndex);
-		player.dealCards (new List<Card>{card});
+		player.DealCards (new List<Card>{card}, null);
 		card.setOwner (player);
 		return player;
 	}
 
 	public override string toString() {
-		string toString = "Adventure Deck: ";
+		string output = "Adventure Deck: ";
 		foreach (Card card in cards) {
-			toString += (card.toString () + ", ");
+			output += (card.toString () + ", ");
 		}
 		if (cards.Count > 0) {
-			toString = toString.Substring (0, toString.Length - 2);
+			output = output.Substring (0, output.Length - 2);
 		}
-		return toString;
+		return output;
 	}
 }
