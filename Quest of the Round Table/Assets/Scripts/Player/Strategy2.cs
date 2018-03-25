@@ -10,9 +10,11 @@ public class Strategy2 : AbstractAI
         
     }
 
-    public override void DiscardAfterWinningTest()
+    public override void DiscardAfterWinningTest(int currentBid)
     {
-        throw new System.NotImplementedException();
+        Logger.getInstance().info("Discarding cards from AI after winning test");
+        Debug.Log("Removing cards from AI after they won test");
+        strategyOwner.RemoveFoeCards();
     }
 
     public override bool DoIParticipateInQuest()
@@ -49,9 +51,22 @@ public class Strategy2 : AbstractAI
         return false;
     }
 
-    public override void NextBid()
+    public override void NextBid(int currentBid, Stage stage)
     {
-        throw new System.NotImplementedException();
+        Logger.getInstance().info(strategyOwner.getName() + " participating in Test and preparing");
+        Debug.Log(strategyOwner.getName() + " participating in Test and preparing");
+        if (strategyOwner.getTotalAvailableFoeBids() > currentBid && strategyOwner.getTotalAvailableFoeBids() < 25) {
+            Logger.getInstance().info(strategyOwner.getName() + " AI is preparing to bid: " + strategyOwner.getTotalAvailableFoeBids());
+            Debug.Log(strategyOwner.getName() + " AI is preparing to bid: " + strategyOwner.getTotalAvailableFoeBids());
+            stage.promptTestResponse(false, strategyOwner.getTotalAvailableFoeBids());
+        }
+        else {
+            Logger.getInstance().info(strategyOwner.getName() + " AI doesn't have enough to bid: " + strategyOwner.getTotalAvailableFoeBids() 
+                                      + " while currentbid is: " + currentBid + " AI dropping out.");
+            Debug.Log(strategyOwner.getName() + " AI doesn't have enough to bid: " + strategyOwner.getTotalAvailableFoeBids()
+                                      + " while currentbid is: " + currentBid + " AI dropping out.");
+            stage.promptTestResponse(true, 0);
+        }
     }
 
     public override void PlayQuestStage(Stage stage)

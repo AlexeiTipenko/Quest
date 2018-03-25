@@ -132,6 +132,16 @@ public abstract class Player {
 		return availableBids;
 	}
 
+    public int getTotalAvailableFoeBids() {
+        int availableBids = 0;
+        foreach (Card card in hand) {
+            if(card.GetType().IsSubclassOf(typeof(Foe))) {
+                availableBids += 1;
+            }
+        }
+        return availableBids;
+    }
+
     public int getHandBid() {
         int availableBids = 0;
         foreach (Card card in hand) {
@@ -176,6 +186,16 @@ public abstract class Player {
                 board.AddToDiscardDeck(hand.ElementAt(i));
                 hand.RemoveAt(i);
                 break;
+            }
+        }
+    }
+
+    public void RemoveFoeCards() {
+        for (int i = 0; i < hand.Count(); i++)
+        {
+            if (hand[i].GetType().IsSubclassOf(typeof(Foe)))
+            {
+                hand.RemoveAt(i);
             }
         }
     }

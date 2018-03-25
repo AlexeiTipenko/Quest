@@ -122,6 +122,7 @@ public class Stage {
     public void ContinueQuest(){
         if (quest.getPlayers().Count < 1)
         {
+            Logger.getInstance().info("Moving to next stage");
             Debug.Log("No quest participants left");
             quest.PlayStage();
         }
@@ -142,8 +143,13 @@ public class Stage {
         Debug.Log("Prompting test");
         Debug.Log("The player to prompt is: " + playerToPrompt.getName());
         if ( playerToPrompt.GetType() == typeof(AIPlayer) ) {
-            //((AIPlayer)playerToPrompt).GetStrategy().PlayQuestStage(this);
+            if (currentBid > (((Test)stageCard).getMinBidValue() - 1) && quest.getPlayers().Count == 1) {
+                Logger.getInstance().debug("Player is AI, AI has won test, discarding cards");
+                Debug.Log(" AI has won the test, discarding cards");
+                board.PromptDiscardTest(playerToPrompt, stageNum, currentBid);
+            }
             Logger.getInstance().debug("Player is AI");
+            ((AIPlayer)playerToPrompt).GetStrategy().NextBid(this.currentBid, this);
         }
         else {
             if (currentBid > (((Test)stageCard).getMinBidValue() - 1) && quest.getPlayers().Count == 1) {

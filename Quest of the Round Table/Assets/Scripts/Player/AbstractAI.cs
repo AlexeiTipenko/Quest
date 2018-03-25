@@ -19,9 +19,9 @@ public abstract class AbstractAI {
 
     public abstract bool DoIParticipateInQuest();
 
-    public abstract void NextBid();
+    public abstract void NextBid(int currentBid, Stage stage);
 
-    public abstract void DiscardAfterWinningTest();
+    public abstract void DiscardAfterWinningTest(int currentBid);
 
     public abstract void SponsorQuest();
 

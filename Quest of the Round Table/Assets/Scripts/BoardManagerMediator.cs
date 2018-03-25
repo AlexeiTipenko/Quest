@@ -380,24 +380,32 @@ public class BoardManagerMediator
         BoardManager.SetInteractionText("You are the winner of the Test, and you must discard/play a total of " + currentBid + " bid points.");
         BoardManager.SetupDiscardPanel();
 
-        Action action = () => {
-            TransferFromHandToPlayArea(player);
-            if (BoardManager.GetSelectedDiscardNames().Count + player.getPlayAreaBid() == currentBid) {
-                List<Card> cardsToDiscard = GetDiscardedCards(player);
-                foreach (Card card in cardsToDiscard) {
-                    player.RemoveCard(card);
+        if(player.GetType() == typeof(AIPlayer)) {
+            ((AIPlayer)player).GetStrategy().DiscardAfterWinningTest(currentBid);
+            ((Quest)cardInPlay).PlayStage();
+        }
+        else {
+            Action action = () => {
+                TransferFromHandToPlayArea(player);
+                if (BoardManager.GetSelectedDiscardNames().Count + player.getPlayAreaBid() == currentBid)
+                {
+                    List<Card> cardsToDiscard = GetDiscardedCards(player);
+                    foreach (Card card in cardsToDiscard)
+                    {
+                        player.RemoveCard(card);
+                    }
+                    ((Quest)cardInPlay).PlayStage();
                 }
-                ((Quest)cardInPlay).PlayStage();
-            }
-            else {
-                PromptDiscardTest(player, stageNum, currentBid);
-            }
+                else
+                {
+                    PromptDiscardTest(player, stageNum, currentBid);
+                }
 
-        };
-        BoardManager.SetInteractionButtons("Complete", "", action, null);
+            };
+            BoardManager.SetInteractionButtons("Complete", "", action, null);
 
-        Debug.Log("Prompting " + player.getName() + " to discard TEST inside stage: " + stageNum);
-
+            Debug.Log("Prompting " + player.getName() + " to discard TEST inside stage: " + stageNum);   
+        }
 
     }
 
