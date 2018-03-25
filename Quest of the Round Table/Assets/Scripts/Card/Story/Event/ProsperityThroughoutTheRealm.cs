@@ -23,26 +23,12 @@ public class ProsperityThroughoutTheRealm : Event {
 
     private void DealCards()
     {
-        if (playerToPrompt.getHand().Count + 2 > 12) {
-            action = () => {
-                board.TransferFromHandToPlayArea(playerToPrompt);
-                playerToPrompt.RemoveCardsResponse();
-                if (playerToPrompt.getHand().Count > 12)
-                {
-                    board.PromptCardRemoveSelection(playerToPrompt, action);
-                }
+        action = () => {
+            Action completeAction = DealCardsNextPlayer;
+            playerToPrompt.DiscardCards(action, completeAction);
+        };
 
-                else
-                {
-                    DealCardsNextPlayer();
-                }
-            };
-            playerToPrompt.giveAction(action);
-            BoardManagerMediator.getInstance().dealCardsToPlayer(playerToPrompt, 2);
-        } else {
-            BoardManagerMediator.getInstance().dealCardsToPlayer(playerToPrompt, 2);
-            DealCardsNextPlayer();
-        }
+        playerToPrompt.DrawCards(2, action);
     }
 
     private void DealCardsNextPlayer() {

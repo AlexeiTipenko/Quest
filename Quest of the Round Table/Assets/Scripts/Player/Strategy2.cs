@@ -136,7 +136,7 @@ public class Strategy2 : AbstractAI
             stages.Add(testStage);
         }
         stages.Add(finalStage);
-        quest.SetupQuestComplete(stages);
+        quest.SponsorQuestComplete(stages);
     }
 
     protected override bool CanPlayCardForStage(Card card, List<Card> participationList)

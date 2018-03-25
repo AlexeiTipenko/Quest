@@ -6,14 +6,14 @@ using UnityEngine.UI;
 
 public class BoardManager : MonoBehaviour
 {
-    private static GameObject coverCanvas = null;
-    private static GameObject coverInteractionText = null;
-    private static GameObject coverInteractionButton = null;
-    private static GameObject coverInteractionButtonText = null;
-    private static GameObject playAreaCanvas = null;
-    private static Player previousPlayer = null;
-    private static bool isFreshTurn = true;
-    private static bool isResolutionOfStage = false;
+    static GameObject coverCanvas;
+    static GameObject coverInteractionText;
+    static GameObject coverInteractionButton;
+    static GameObject coverInteractionButtonText;
+    static GameObject playAreaCanvas;
+    static Player previousPlayer;
+    static bool isFreshTurn = true;
+    static bool isResolutionOfStage;
 
     void Start()
     {

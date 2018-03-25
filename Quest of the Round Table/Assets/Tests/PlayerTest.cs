@@ -15,7 +15,7 @@ public class PlayerTest {
 		cards.Add (new Merlin ());
 		cards.Add (new BattleAx ());
 
-		player.dealCards (cards);
+		player.DealCards (cards, null);
 
 		Assert.IsTrue (player.getHand().Count == cards.Count);
 	}
