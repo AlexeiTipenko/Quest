@@ -148,8 +148,10 @@ public class Stage {
                 Debug.Log(" AI has won the test, discarding cards");
                 board.PromptDiscardTest(playerToPrompt, stageNum, currentBid);
             }
-            Logger.getInstance().debug("Player is AI");
-            ((AIPlayer)playerToPrompt).GetStrategy().NextBid(this.currentBid, this);
+            else {
+                Logger.getInstance().debug("Player is AI");
+                ((AIPlayer)playerToPrompt).GetStrategy().NextBid(this.currentBid, this);   
+            }
         }
         else {
             if (currentBid > (((Test)stageCard).getMinBidValue() - 1) && quest.getPlayers().Count == 1) {
