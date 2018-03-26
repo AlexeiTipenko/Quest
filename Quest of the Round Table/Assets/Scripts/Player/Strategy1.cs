@@ -86,7 +86,7 @@ public class Strategy1 : AbstractAI
 			}
 		} else {
 			//Else: I play only weapons I have two or more instances of
-			List<Weapon> weaponList = new List<Weapon>();
+			List<Card> weaponList = new List<Card>();
 			foreach (Card card in sortedList) {
 				if (card.GetType ().IsSubclassOf (typeof(Weapon))) {
 					weaponList.Add (card);
