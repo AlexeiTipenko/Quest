@@ -101,6 +101,21 @@ public abstract class AbstractAI {
         return false;
     }
 
+	protected bool SomeoneElseCanWinOrEvolveWithTournament(List<Player> players) {
+		Debug.Log("Checking if someone else can win or evolve through this tournament.");
+		Tournament tournament = (Tournament)board.getCardInPlay();
+		foreach (Player player in players) {
+			if (player != strategyOwner) {
+				if (player.getNumShields() + tournament.GetBonusShields() >= player.getRank().getShieldsToProgress()) {
+					Debug.Log("Player " + player.getName() + " can win off this tournament.");
+					return true;
+				}
+			}
+		}
+		Debug.Log("No player can win off this tournament.");
+		return false;
+	}
+
     protected bool ContainsTest(List<Card> cards) {
         foreach (Card card in cards) {
             if (card.GetType().IsSubclassOf(typeof(Test))) {
@@ -136,6 +151,76 @@ public abstract class AbstractAI {
         }
         return totalBattlePoints;
     }
+
+	protected List<Card> SortBattlePointsCards(List<Card> cards) {
+		Amour amour = null;
+		List<Ally> allies = new List<Ally>();
+		List<Weapon> weapons = new List<Weapon>();
+		List<Card> sortedList = new List<Card>();
+		Debug.Log("Available cards:");
+		foreach (Card card in cards) {
+			Debug.Log(card.getCardName());
+		}
+		Debug.Log("Looping through cards");
+		foreach (Card card in cards)
+		{
+			bool inserted = false;
+			if (card.GetType() == typeof(Amour))
+			{
+				amour = (Amour)card;
+			}
+			else if (card.GetType().IsSubclassOf(typeof(Ally)))
+			{
+				List<Ally> tempAllies = new List<Ally>(allies);
+				foreach (Ally ally in allies)
+				{
+					if (((Ally)card).getBattlePoints() <= ally.getBattlePoints())
+					{
+						tempAllies.Insert(tempAllies.IndexOf(ally), (Ally)card);
+						inserted = true;
+						break;
+					}
+				}
+				if (!inserted) {
+					tempAllies.Add((Ally)card);
+				}
+				allies = new List<Ally>(tempAllies);
+			}
+			else if (card.GetType().IsSubclassOf(typeof(Weapon)))
+			{
+				List<Weapon> tempWeapons = new List<Weapon>(weapons);
+				foreach (Weapon weapon in weapons)
+				{
+					if (((Weapon)card).getBattlePoints() <= weapon.getBattlePoints())
+					{
+						tempWeapons.Insert(tempWeapons.IndexOf(weapon), (Weapon)card);
+						inserted = true;
+						break;
+					}
+				}
+				if (!inserted) {
+					tempWeapons.Add((Weapon)card);
+				}
+				weapons = new List<Weapon>(tempWeapons);
+			}
+		}
+		if (amour != null) {
+			sortedList.Add(amour);
+		}
+		foreach (Ally ally in allies)
+		{
+			sortedList.Add(ally);
+		}
+		foreach (Weapon weapon in weapons)
+		{
+			sortedList.Add(weapon);
+		}
+		Debug.Log("Sorted valid cards in hand:");
+		foreach (Card card in sortedList) {
+			Debug.Log(card.getCardName());
+		}
+		return sortedList;
+	}
 
     protected Weapon GetBestUniqueWeapon(List<Card> cards, List<Card> currentWeapons) {
         Weapon bestWeapon = null;
