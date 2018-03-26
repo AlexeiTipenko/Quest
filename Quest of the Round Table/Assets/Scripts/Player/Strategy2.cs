@@ -55,18 +55,44 @@ public class Strategy2 : AbstractAI
     {
         Logger.getInstance().info(strategyOwner.getName() + " participating in Test and preparing");
         Debug.Log(strategyOwner.getName() + " participating in Test and preparing");
-        if (strategyOwner.getTotalAvailableFoeBids() > currentBid && strategyOwner.getTotalAvailableFoeBids() < 25) {
-            Logger.getInstance().info(strategyOwner.getName() + " AI is preparing to bid: " + strategyOwner.getTotalAvailableFoeBids());
-            Debug.Log(strategyOwner.getName() + " AI is preparing to bid: " + strategyOwner.getTotalAvailableFoeBids());
-            stage.PromptTestResponse(false, strategyOwner.getTotalAvailableFoeBids());
+        if(stage.getStageNum() == 0){
+            Logger.getInstance().info("First stage, only discarding foes in hand less than 25");
+            if (strategyOwner.getTotalAvailableFoeBids() > currentBid && strategyOwner.getTotalAvailableFoeBids() < 25)
+            {
+                Logger.getInstance().info(strategyOwner.getName() + " AI is preparing to bid: " + strategyOwner.getTotalAvailableFoeBids());
+                Debug.Log(strategyOwner.getName() + " AI is preparing to bid: " + strategyOwner.getTotalAvailableFoeBids());
+                stage.PromptTestResponse(false, strategyOwner.getTotalAvailableFoeBids());
+            }
+            else
+            {
+                Logger.getInstance().info(strategyOwner.getName() + " AI doesn't have enough to bid: " + strategyOwner.getTotalAvailableFoeBids()
+                                          + " while currentbid is: " + currentBid + " AI dropping out.");
+                Debug.Log(strategyOwner.getName() + " AI doesn't have enough to bid: " + strategyOwner.getTotalAvailableFoeBids()
+                                          + " while currentbid is: " + currentBid + " AI dropping out.");
+                stage.PromptTestResponse(true, 0);
+            }
         }
         else {
-            Logger.getInstance().info(strategyOwner.getName() + " AI doesn't have enough to bid: " + strategyOwner.getTotalAvailableFoeBids() 
-                                      + " while currentbid is: " + currentBid + " AI dropping out.");
-            Debug.Log(strategyOwner.getName() + " AI doesn't have enough to bid: " + strategyOwner.getTotalAvailableFoeBids()
-                                      + " while currentbid is: " + currentBid + " AI dropping out.");
-            stage.PromptTestResponse(true, 0);
+            Logger.getInstance().info("Second stage, discarding foes and duplicates");
+            Debug.Log("Inside second stage for AI");
+            Debug.Log(strategyOwner.getTotalAvailableFoeBids());
+            Debug.Log(strategyOwner.getTotalAvailableFoeandDuplicateBids());
+            /*if (strategyOwner.getTotalAvailableFoeBids() > currentBid && strategyOwner.getTotalAvailableFoeBids() < 25)
+            {
+                Logger.getInstance().info(strategyOwner.getName() + " AI is preparing to bid: " + strategyOwner.getTotalAvailableFoeBids());
+                Debug.Log(strategyOwner.getName() + " AI is preparing to bid: " + strategyOwner.getTotalAvailableFoeBids());
+                stage.PromptTestResponse(false, strategyOwner.getTotalAvailableFoeBids());
+            }
+            else
+            {
+                Logger.getInstance().info(strategyOwner.getName() + " AI doesn't have enough to bid: " + strategyOwner.getTotalAvailableFoeBids()
+                                          + " while currentbid is: " + currentBid + " AI dropping out.");
+                Debug.Log(strategyOwner.getName() + " AI doesn't have enough to bid: " + strategyOwner.getTotalAvailableFoeBids()
+                                          + " while currentbid is: " + currentBid + " AI dropping out.");
+                stage.PromptTestResponse(true, 0);
+            }*/
         }
+
     }
 
     public override void PlayQuestStage(Stage stage)

@@ -172,6 +172,31 @@ public abstract class Player {
         return availableBids;
     }
 
+    public int getTotalAvailableFoeandDuplicateBids() {
+        int availableBids = 0;
+        Dictionary<Card, int> cardDictionary = new Dictionary<Card, int>();
+        foreach (Card card in hand)
+        {
+            if (!cardDictionary.ContainsKey(card) && !card.GetType().IsSubclassOf(typeof(Foe)))
+            {
+                Debug.Log("Inserting into Dictionary: " + card.getCardName());
+                cardDictionary.Add(card, 1);
+            }
+            else if (!card.GetType().IsSubclassOf(typeof(Foe)))
+            {
+                cardDictionary[card]++;
+            }
+        }
+        foreach(KeyValuePair<Card, int> entry in cardDictionary) {
+            if(entry.Value > 1) {
+                Debug.Log("Found Duplicate!: " + entry.Value);
+                availableBids += entry.Value-1;
+            }
+        }
+        Debug.Log("Duplicates are: " + availableBids + " inside Foe and Dups");
+        return getTotalAvailableFoeBids() + availableBids;
+    }
+
     public int getHandBid() {
         int availableBids = 0;
         foreach (Card card in hand) {
