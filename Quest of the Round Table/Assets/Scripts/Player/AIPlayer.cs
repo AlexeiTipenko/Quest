@@ -130,11 +130,7 @@ public class AIPlayer : Player {
 
     public void RemoveFoeCards()
     {
-        List<Card> TempHand = new List<Card>();
-        foreach (Card card in hand)
-        {
-            TempHand.Add(card);
-        }
+        List<Card> TempHand = new List<Card>(hand);
 
         foreach (Card card in TempHand)
         {
@@ -148,11 +144,7 @@ public class AIPlayer : Player {
     public void RemoveFoeAndDuplicateCards()
     {
         List<String> Seen = new List<String>();
-        List<Card> TempHand = new List<Card>();
-        foreach (Card card in hand)
-        {
-            TempHand.Add(card);
-        }
+        List<Card> TempHand = new List<Card>(hand);
 
         RemoveFoeCards();
 
