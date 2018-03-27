@@ -162,41 +162,6 @@ public abstract class Player {
 		return availableBids;
 	}
 
-    public int getTotalAvailableFoeBids() {
-        int availableBids = 0;
-        foreach (Card card in hand) {
-            if(card.GetType().IsSubclassOf(typeof(Foe))) {
-                availableBids += 1;
-            }
-        }
-        return availableBids;
-    }
-
-    public int getTotalAvailableFoeandDuplicateBids() {
-        int availableBids = 0;
-        Dictionary<String, int> cardDictionary = new Dictionary<String, int>();
-        foreach (Card card in hand)
-        {
-            if (!cardDictionary.ContainsKey(card.getCardName()) && !card.GetType().IsSubclassOf(typeof(Foe)))
-            {
-                Debug.Log("Inserting into Dictionary: " + card.getCardName());
-                cardDictionary.Add(card.getCardName(), 1);
-            }
-            else if (!card.GetType().IsSubclassOf(typeof(Foe)))
-            {
-                cardDictionary[card.getCardName()]++;
-            }
-        }
-        foreach(KeyValuePair<String, int> entry in cardDictionary) {
-            if(entry.Value > 1) {
-                Debug.Log("Found Duplicate!: " + entry.Value + ", " + entry.Key);
-                availableBids += entry.Value-1;
-            }
-        }
-        Debug.Log("Duplicates are: " + availableBids + " inside Foe and Dups");
-        return getTotalAvailableFoeBids() + availableBids;
-    }
-
     public int getHandBid() {
         int availableBids = 0;
         foreach (Card card in hand) {
@@ -244,39 +209,6 @@ public abstract class Player {
             }
         }
     }
-
-    public void RemoveFoeCards() {
-        for (int i = 0; i < hand.Count(); i++)
-        {
-            if (hand[i].GetType().IsSubclassOf(typeof(Foe)))
-            {
-                hand.RemoveAt(i);
-            }
-        }
-    }
-
-    public void RemoveFoeAndDuplicateCards() {
-        List<String> Seen = new List<String>();
-        List<Card> TempHand = new List<Card>();
-        foreach(Card card in hand) {
-            TempHand.Add(card);
-        }
-        foreach (Card card in TempHand){
-            if(card.GetType().IsSubclassOf(typeof(Foe))){
-                RemoveCard(card);
-            }
-        }
-
-        foreach(Card card in TempHand) {
-            if(!Seen.Contains(card.getCardName())){
-                Seen.Add(card.getCardName());
-            }
-            else {
-                RemoveCard(card);
-            }
-        }
-    }
-
 
     public void RemoveCardsResponse()
     {
