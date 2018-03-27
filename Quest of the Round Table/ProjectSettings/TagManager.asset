@@ -12,6 +12,7 @@ TagManager:
   - PlayAreaCard
   - PlayerInfo
   - CurrentPlayAreaCards
+  - MordredAreaCards
   layers:
   - Default
   - TransparentFX
