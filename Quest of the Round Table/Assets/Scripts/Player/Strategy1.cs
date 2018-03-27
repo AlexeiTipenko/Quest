@@ -6,7 +6,7 @@ public class Strategy1 : AbstractAI
         
     }
 
-    public override void DiscardAfterWinningTest(int currentBid)
+    public override void DiscardAfterWinningTest(int currentBid, Quest quest)
     {
         throw new System.NotImplementedException();
     }

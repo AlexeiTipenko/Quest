@@ -62,7 +62,7 @@ public class AIPlayer : Player {
 	public override void PromptDiscardTest(Quest quest, int currentBid)
 	{
         Logger.getInstance().debug("Player is AI, AI has won test, discarding cards");
-        strategy.DiscardAfterWinningTest(currentBid);
+        strategy.DiscardAfterWinningTest(currentBid, quest);
         quest.PlayStage();
 	}
 

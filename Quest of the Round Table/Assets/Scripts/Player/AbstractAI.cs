@@ -21,7 +21,7 @@ public abstract class AbstractAI {
 
     public abstract void NextBid(int currentBid, Stage stage);
 
-    public abstract void DiscardAfterWinningTest(int currentBid);
+    public abstract void DiscardAfterWinningTest(int currentBid, Quest quest);
 
     public abstract void SponsorQuest();
 
