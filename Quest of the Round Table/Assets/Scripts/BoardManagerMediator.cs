@@ -205,6 +205,9 @@ public class BoardManagerMediator
         }
         BoardManager.DestroyCards();
         BoardManager.DestroyDiscardArea();
+        BoardManager.DestroyMordredDiscardArea();
+        //Debug.Log("ENDING TURN FOR PLAYER: " + players[playerTurn]);
+        //BoardManager.DestroyMordredButton();
         BoardManager.ClearInteractions();
         BoardManager.SetIsFreshTurn(true);
         AddToDiscardDeck(cardInPlay);
