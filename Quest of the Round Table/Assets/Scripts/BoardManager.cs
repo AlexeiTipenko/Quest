@@ -60,11 +60,13 @@ public class BoardManager : MonoBehaviour
         interactionText.GetComponent<Text>().text = text;
     }
 
+
     public static void SetNewInteractionText(String text)
     {
-        GameObject interactionText2= GameObject.Find("Canvas/TabletopImage/InteractionPanel/InteractionText2");
+        GameObject interactionText2 = GameObject.Find("Canvas/TabletopImage/TempInteractionPanel(Clone)/InteractionText");
         interactionText2.GetComponent<Text>().text = text;
     }
+
 
     public static void SetInteractionBid(String text) {
         GameObject interactionBid = GameObject.Find("Canvas/TabletopImage/InteractionPanel/InteractionBid");
@@ -116,7 +118,7 @@ public class BoardManager : MonoBehaviour
         //GameObject buttonText = GameObject.Find("Canvas/TabletopImage/InteractionPanel/okButton/Text");
 
         //buttonText.GetComponent<Text>().text = text;
-        GameObject okButton = GameObject.Find("Canvas/TabletopImage/TempInteractionPanel/okButton");
+        GameObject okButton = GameObject.Find("Canvas/TabletopImage/TempInteractionPanel(Clone)/okButton");
 
         okButton.SetActive(true);
         okButton.GetComponent<Button>().onClick.AddListener(ClearInteractions);
@@ -203,8 +205,8 @@ public class BoardManager : MonoBehaviour
     {
         bool success = false;
         string interactionText;
-        GameObject discardArea = GameObject.Find("mordredCanvas/DiscardArea");
-        //List<string> cardNames = new List<string>();
+        GameObject discardArea = GameObject.Find("mordredCanvas/MordredDiscardArea");
+
         if (discardArea != null)
         {
             if (discardArea.transform.childCount == 0)
@@ -230,6 +232,8 @@ public class BoardManager : MonoBehaviour
     public static void InstantiateNewInteraction(string text) {
         HideAllyCards();
         GameObject messagePanel = Instantiate(Resources.Load("TempInteractionPanel", typeof(GameObject))) as GameObject;
+        GameObject canvasArea = GameObject.Find("Canvas/TabletopImage");
+        messagePanel.transform.SetParent(canvasArea.transform, false);
         SetNewInteractionText(text);
         SetNewInteractionButton(text);
     }
@@ -304,7 +308,7 @@ public class BoardManager : MonoBehaviour
 
     public static void DestroyNewInteractionArea()
     {
-        GameObject tempPanel = GameObject.Find("Canvas/TabletopImage/TempInteractionPanel");
+        GameObject tempPanel = GameObject.Find("Canvas/TabletopImage/TempInteractionPanel(Clone)");
         Destroy(tempPanel);
     }
 
@@ -430,7 +434,7 @@ public class BoardManager : MonoBehaviour
         {
             Destroy(gameObj);
         }
-        GameObject discardArea = GameObject.Find("mordredCanvas/DiscardArea");
+        GameObject discardArea = GameObject.Find("mordredCanvas/MordredDiscardArea");
         Destroy(discardArea);
 
     }
@@ -731,7 +735,7 @@ public class BoardManager : MonoBehaviour
             {
                 if (card.GetType().IsSubclassOf(typeof(Ally)))
                 {
-                    GameObject instance = Instantiate(Resources.Load("NoDragPlayArea", typeof(GameObject))) as GameObject;
+                    GameObject instance = Instantiate(Resources.Load("DraggablePlayArea", typeof(GameObject))) as GameObject;
                     instance.name = card.getCardName();
                     Image cardImg = instance.GetComponent<Image>();
                     cardImg.sprite = Resources.Load<Sprite>("cards/" + card.cardImageName);
@@ -755,12 +759,14 @@ public class BoardManager : MonoBehaviour
     public static void RemoveAlly()
     {
         //Get card from discard area
-        GameObject DiscardArea = GameObject.Find("mordredCanvas/DiscardArea");
+        GameObject DiscardArea = GameObject.Find("mordredCanvas/MordredDiscardArea");
         bool success = ValidateSelectedAlly();
 
 
         if (success) {
             //remove ally card from chosen players hand
+            Debug.Log("Ally selection is valid.");
+
         }
     }
 
@@ -768,11 +774,11 @@ public class BoardManager : MonoBehaviour
     public static void SetupMordredDiscardPanel()
     {
         DestroyMordredDiscardArea();
-        GameObject mordredDiscardArea = GameObject.Find("mordredCanvas/DiscardArea");
-        GameObject newCanvas = GameObject.Find("mordredCanvas");
-        mordredDiscardArea = Instantiate(Resources.Load("DiscardArea", typeof(GameObject))) as GameObject;
-        mordredDiscardArea.name = "DiscardArea";
-        mordredDiscardArea.transform.SetParent(newCanvas.transform, false);
+        //GameObject mordredDiscardArea = GameObject.Find("mordredCanvas/MordredDiscardArea");
+        //GameObject newCanvas = GameObject.Find("mordredCanvas");
+        GameObject mordredDiscardArea = Instantiate(Resources.Load("MordredDiscardArea", typeof(GameObject))) as GameObject;
+        mordredDiscardArea.name = "MordredDiscardArea";
+        mordredDiscardArea.transform.SetParent(mordredCanvas.transform, false);
     }
 
     /*
