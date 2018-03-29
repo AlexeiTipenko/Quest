@@ -229,7 +229,8 @@ public class BoardManager : MonoBehaviour
                 RemoveAlly(discardArea);
                 BoardManagerMediator.getInstance().DiscardCard("Mordred");
                 DrawHand(BoardManagerMediator.getInstance().getCurrentPlayer());
-                //NEED TO DESTROY MORDRED BUTTON
+                DisplayMordredButton(BoardManagerMediator.getInstance().getCurrentPlayer(),
+                                     BoardManagerMediator.getInstance().getPlayers());
             }
 
             InstantiateNewInteraction(interactionText);
@@ -240,7 +241,6 @@ public class BoardManager : MonoBehaviour
     public static void RemoveAlly(GameObject discardArea) {
         string discardedAlly = discardArea.transform.GetChild(0).gameObject.name;
         Debug.Log("DISCARDED ALLY IS: " + discardedAlly);
-        //NEED TO GET CARD OBJECT, FIND OWNER AND DELETE IT FROM OWNERS HAND
         BoardManagerMediator.getInstance().DiscardChosenAlly(discardedAlly);
     }
 
