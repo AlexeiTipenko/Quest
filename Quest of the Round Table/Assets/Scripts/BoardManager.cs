@@ -239,7 +239,9 @@ public class BoardManager : MonoBehaviour
 
     public static void RemoveAlly(GameObject discardArea) {
         string discardedAlly = discardArea.transform.GetChild(0).gameObject.name;
+        Debug.Log("DISCARDED ALLY IS: " + discardedAlly);
         //NEED TO GET CARD OBJECT, FIND OWNER AND DELETE IT FROM OWNERS HAND
+        BoardManagerMediator.getInstance().DiscardChosenAlly(discardedAlly);
     }
 
 
