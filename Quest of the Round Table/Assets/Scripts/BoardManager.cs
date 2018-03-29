@@ -11,6 +11,7 @@ public class BoardManager : MonoBehaviour
     static GameObject coverInteractionButton;
     static GameObject coverInteractionButtonText;
     static GameObject playAreaCanvas;
+    static GameObject mordredCanvas;
     static Player previousPlayer;
     static bool isFreshTurn = true;
     static bool isResolutionOfStage;
@@ -59,6 +60,14 @@ public class BoardManager : MonoBehaviour
         interactionText.GetComponent<Text>().text = text;
     }
 
+
+    public static void SetNewInteractionText(String text)
+    {
+        GameObject interactionText2 = GameObject.Find("Canvas/TabletopImage/TempInteractionPanel(Clone)/InteractionText");
+        interactionText2.GetComponent<Text>().text = text;
+    }
+
+
     public static void SetInteractionBid(String text) {
         GameObject interactionBid = GameObject.Find("Canvas/TabletopImage/InteractionPanel/InteractionBid");
         GameObject interactionText = GameObject.Find("Canvas/TabletopImage/InteractionPanel/InteractionBid/Text");
@@ -102,6 +111,19 @@ public class BoardManager : MonoBehaviour
         }
     }
 
+
+    public static void SetNewInteractionButton(String text)
+    {
+        GameObject buttonText = GameObject.Find("Canvas/TabletopImage/TempInteractionPanel(Clone)/okButton/Text");
+        GameObject okButton = GameObject.Find("Canvas/TabletopImage/TempInteractionPanel(Clone)/okButton");
+        okButton.GetComponent<Button>().onClick.RemoveAllListeners();
+        buttonText.GetComponent<Text>().text = "Okay";
+
+        okButton.SetActive(true);
+        okButton.GetComponent<Button>().onClick.AddListener(new UnityAction(DestroyNewInteractionArea));
+    }
+
+
     public static void ClearInteractions() {
         GameObject interactionText = GameObject.Find("Canvas/TabletopImage/InteractionPanel/InteractionText");
         GameObject button1 = GameObject.Find("Canvas/TabletopImage/InteractionPanel/InteractionButton1");
@@ -129,10 +151,12 @@ public class BoardManager : MonoBehaviour
         DestroyPlayerInfo();
         DisplayPlayers();
         DisplayStageButton(BoardManagerMediator.getInstance().getPlayers());
+        DisplayMordredButton(player, BoardManagerMediator.getInstance().getPlayers());
         previousPlayer = player;
         Debug.Log(player.getName() + "'s cards drawn to GUI");
         Logger.getInstance().info(player.getName() + "'s cards drawn to GUI");
     }
+
 
     public static void SetIsFreshTurn(bool isFreshTurn) {
         BoardManager.isFreshTurn = isFreshTurn;
@@ -154,6 +178,7 @@ public class BoardManager : MonoBehaviour
         return cardNames;
     }
 
+
     public static List<string> GetSelectedDiscardNames()
     {
         GameObject boardArea = GameObject.Find("Canvas/TabletopImage/DiscardArea");
@@ -172,6 +197,68 @@ public class BoardManager : MonoBehaviour
 
         return cardNames;
     }
+
+
+
+    public static void ValidateSelectedAlly()
+    {
+        bool success = false;
+        string interactionText;
+        GameObject discardArea = GameObject.Find("mordredCanvas/MordredDiscardArea");
+
+        if (discardArea != null)
+        {
+            if (discardArea.transform.childCount == 0)
+            {
+                Debug.Log("No allies were selected.");
+                Logger.getInstance().warn("No allies were selected.");
+                interactionText = "No allies were selected.";
+            }
+
+            else if (discardArea.transform.childCount > 1){
+                Debug.Log("Too many allies were selected.");
+                Logger.getInstance().warn("Too many allies were selected.");
+                interactionText = "Too many allies were selected.";
+            }
+
+            else {
+                interactionText = "Ally removed!";
+                success = true;
+            }
+
+            if (success)
+            {
+                Debug.Log("Ally selection is valid.");
+                Logger.getInstance().info("Ally selection is valid.");
+                RemoveAlly(discardArea);
+                BoardManagerMediator.getInstance().DiscardCard("Mordred");
+                DrawHand(BoardManagerMediator.getInstance().getCurrentPlayer());
+                DisplayMordredButton(BoardManagerMediator.getInstance().getCurrentPlayer(),
+                                     BoardManagerMediator.getInstance().getPlayers());
+            }
+
+            InstantiateNewInteraction(interactionText);
+        }
+    }
+
+
+    public static void RemoveAlly(GameObject discardArea) {
+        string discardedAlly = discardArea.transform.GetChild(0).gameObject.name;
+        Debug.Log("Discarding ally: " + discardedAlly);
+        Logger.getInstance().info("Discardeding ally: " + discardedAlly);
+        BoardManagerMediator.getInstance().DiscardChosenAlly(discardedAlly);
+    }
+
+
+    public static void InstantiateNewInteraction(string text) {
+        HideAllyCards();
+        GameObject messagePanel = Instantiate(Resources.Load("TempInteractionPanel", typeof(GameObject))) as GameObject;
+        GameObject canvasArea = GameObject.Find("Canvas/TabletopImage");
+        messagePanel.transform.SetParent(canvasArea.transform, false);
+        SetNewInteractionText(text);
+        SetNewInteractionButton(text);
+    }
+
 
     public static void DrawCover(Player player) {
         HideCover();
@@ -230,6 +317,23 @@ public class BoardManager : MonoBehaviour
             Destroy(gameObj);
         }
     }
+
+
+    public static void DestroyMordredButton()
+    {
+        GameObject mordredButton = GameObject.Find("Canvas/TabletopImage/MordredButton");
+        Debug.Log(mordredButton);
+        Destroy(mordredButton);
+    }
+
+
+    public static void DestroyNewInteractionArea()
+    {
+        GameObject tempPanel = GameObject.Find("Canvas/TabletopImage/TempInteractionPanel(Clone)");
+        Destroy(tempPanel);
+    }
+
+
 
     public static void DrawRank(Player player)
     {
@@ -343,6 +447,20 @@ public class BoardManager : MonoBehaviour
 
     }
 
+
+    public static void DestroyMordredDiscardArea()
+    {
+        GameObject[] cardObjs = GameObject.FindGameObjectsWithTag("DiscardedCard");
+        foreach (GameObject gameObj in cardObjs)
+        {
+            Destroy(gameObj);
+        }
+        GameObject discardArea = GameObject.Find("mordredCanvas/MordredDiscardArea");
+        Destroy(discardArea);
+
+    }
+
+
     public static void returnDicardedCardsToHand(){
         
         GameObject[] cardObjs = GameObject.FindGameObjectsWithTag("DiscardedCard");
@@ -365,6 +483,15 @@ public class BoardManager : MonoBehaviour
 
     public static void DestroyPlayAreaCanvasCards() {
         GameObject[] cardObjs = GameObject.FindGameObjectsWithTag("CurrentPlayAreaCards");
+        foreach (GameObject gameObj in cardObjs)
+        {
+            Destroy(gameObj);
+        }
+    }
+
+    public static void DestroyMordredCanvasCards()
+    {
+        GameObject[] cardObjs = GameObject.FindGameObjectsWithTag("MordredAreaCards");
         foreach (GameObject gameObj in cardObjs)
         {
             Destroy(gameObj);
@@ -534,6 +661,7 @@ public class BoardManager : MonoBehaviour
         }
     }
 
+
     public static void DisplayStageCards(List<Player> players) {
 
         Debug.Log("Trying to display new");
@@ -565,6 +693,8 @@ public class BoardManager : MonoBehaviour
         ExitButton.GetComponent<Button>().onClick.AddListener(new UnityAction(HideStageCards));
     }
 
+
+
     public static void HideStageCards() {
         DestroyPlayAreaCanvasCards();
         if (playAreaCanvas == null)
@@ -572,5 +702,103 @@ public class BoardManager : MonoBehaviour
             playAreaCanvas = GameObject.Find("playAreaCanvas");
         }
         playAreaCanvas.SetActive(false);
+    }
+
+
+
+    public static void DisplayMordredButton(Player player, List<Player> players)
+    {
+        DestroyMordredButton();
+        bool displayButton = false;
+
+        foreach (Card card in player.getHand())
+        {
+            if (card.GetType() == typeof(Mordred)) {
+                displayButton = true;
+                Debug.Log("Mordred is in current player's hand!");
+            }
+        }
+
+        if (displayButton) {
+
+            Logger.getInstance().info("Adding button for Mordred's special ability.");
+            GameObject CanvasViewButton = GameObject.Find("Canvas/TabletopImage/MordredButton");
+            if (CanvasViewButton == null)
+            {
+                GameObject CanvasArea = GameObject.Find("Canvas/TabletopImage");
+                GameObject ViewButton = Instantiate(Resources.Load("MordredButton", typeof(GameObject))) as GameObject;
+                ViewButton.name = "MordredButton";
+
+                ViewButton.transform.SetParent(CanvasArea.transform, false);
+
+                ViewButton.GetComponent<Button>().onClick.AddListener(delegate {
+                    DisplayAllyCards(player, players);
+                });
+            }
+        }
+    }
+
+    public static void DisplayAllyCards(Player player, List<Player> players)
+    {
+        Debug.Log("Displaying ally card canvas area.");
+        Logger.getInstance().info("Displaying ally card canvas area.");
+        HideAllyCards();
+
+        mordredCanvas.SetActive(true);
+
+        for (int i = 0; i < players.Count; i++)
+        {
+            GameObject mordredArea = GameObject.Find("mordredCanvas/Player" + i + "Area/CardInPlayArea");
+            GameObject mordredAreaNames = GameObject.Find("mordredCanvas/Player" + i + "Area");
+            Text[] texts = mordredAreaNames.transform.GetComponentsInChildren<Text>();
+            texts[0].text = "Player: " + players[i].getName();
+
+
+            foreach (Card card in players[i].getPlayArea().getCards())
+            {
+                if (card.GetType().IsSubclassOf(typeof(Ally)))
+                {
+                    GameObject instance = Instantiate(Resources.Load("DraggablePlayArea", typeof(GameObject))) as GameObject;
+                    instance.name = card.getCardName();
+                    Image cardImg = instance.GetComponent<Image>();
+                    cardImg.sprite = Resources.Load<Sprite>("cards/" + card.cardImageName);
+                    instance.tag = "MordredAreaCards";
+                    instance.transform.SetParent(mordredArea.transform, false);
+                }
+            }
+
+        }
+
+        SetupMordredDiscardPanel();
+
+        GameObject SubmitButton = GameObject.Find("mordredCanvas/Submit");
+        SubmitButton.GetComponent<Button>().onClick.AddListener(new UnityAction(ValidateSelectedAlly));
+
+        GameObject ExitButton = GameObject.Find("mordredCanvas/Cancel");
+        ExitButton.GetComponent<Button>().onClick.AddListener(new UnityAction(HideAllyCards));
+    }
+
+
+
+    public static void SetupMordredDiscardPanel()
+    {
+        DestroyMordredDiscardArea();
+        GameObject mordredDiscardArea = Instantiate(Resources.Load("MordredDiscardArea", typeof(GameObject))) as GameObject;
+        mordredDiscardArea.name = "MordredDiscardArea";
+        mordredDiscardArea.transform.SetParent(mordredCanvas.transform, false);
+    }
+
+
+    public static void HideAllyCards()
+    {
+        Debug.Log("Destroying ally card canvas area.");
+        Logger.getInstance().info("Destroying ally card canvas area.");
+
+        DestroyMordredCanvasCards();
+        if (mordredCanvas == null)
+        {
+            mordredCanvas = GameObject.Find("mordredCanvas");
+        }
+        mordredCanvas.SetActive(false);
     }
 }
