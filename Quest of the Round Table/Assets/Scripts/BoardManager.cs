@@ -210,10 +210,14 @@ public class BoardManager : MonoBehaviour
         {
             if (discardArea.transform.childCount == 0)
             {
+                Debug.Log("No allies were selected.");
+                Logger.getInstance().warn("No allies were selected.");
                 interactionText = "No allies were selected.";
             }
 
             else if (discardArea.transform.childCount > 1){
+                Debug.Log("Too many allies were selected.");
+                Logger.getInstance().warn("Too many allies were selected.");
                 interactionText = "Too many allies were selected.";
             }
 
@@ -224,8 +228,8 @@ public class BoardManager : MonoBehaviour
 
             if (success)
             {
-                //remove ally here
                 Debug.Log("Ally selection is valid.");
+                Logger.getInstance().info("Ally selection is valid.");
                 RemoveAlly(discardArea);
                 BoardManagerMediator.getInstance().DiscardCard("Mordred");
                 DrawHand(BoardManagerMediator.getInstance().getCurrentPlayer());
@@ -240,7 +244,8 @@ public class BoardManager : MonoBehaviour
 
     public static void RemoveAlly(GameObject discardArea) {
         string discardedAlly = discardArea.transform.GetChild(0).gameObject.name;
-        Debug.Log("DISCARDED ALLY IS: " + discardedAlly);
+        Debug.Log("Discarding ally: " + discardedAlly);
+        Logger.getInstance().info("Discardeding ally: " + discardedAlly);
         BoardManagerMediator.getInstance().DiscardChosenAlly(discardedAlly);
     }
 
@@ -715,7 +720,8 @@ public class BoardManager : MonoBehaviour
         }
 
         if (displayButton) {
-            
+
+            Logger.getInstance().info("Adding button for Mordred's special ability.");
             GameObject CanvasViewButton = GameObject.Find("Canvas/TabletopImage/MordredButton");
             if (CanvasViewButton == null)
             {
@@ -734,7 +740,8 @@ public class BoardManager : MonoBehaviour
 
     public static void DisplayAllyCards(Player player, List<Player> players)
     {
-        Debug.Log("Trying to display ally cards only");
+        Debug.Log("Displaying ally card canvas area.");
+        Logger.getInstance().info("Displaying ally card canvas area.");
         HideAllyCards();
 
         mordredCanvas.SetActive(true);
@@ -776,29 +783,17 @@ public class BoardManager : MonoBehaviour
     public static void SetupMordredDiscardPanel()
     {
         DestroyMordredDiscardArea();
-        //GameObject mordredDiscardArea = GameObject.Find("mordredCanvas/MordredDiscardArea");
-        //GameObject newCanvas = GameObject.Find("mordredCanvas");
         GameObject mordredDiscardArea = Instantiate(Resources.Load("MordredDiscardArea", typeof(GameObject))) as GameObject;
         mordredDiscardArea.name = "MordredDiscardArea";
         mordredDiscardArea.transform.SetParent(mordredCanvas.transform, false);
     }
 
-    /*
-    public static void SetupDiscardPanel()
-    {
-        Debug.Log("In setupdiscardpanel");
-        DestroyDiscardArea();
-        GameObject discardArea = GameObject.Find("Canvas/TabletopImage/DiscardArea");
-        GameObject board = GameObject.Find("Canvas/TabletopImage");
-        discardArea = Instantiate(Resources.Load("DiscardArea", typeof(GameObject))) as GameObject;
-        discardArea.name = "DiscardArea";
-        discardArea.transform.SetParent(board.transform, false);
-    }
-    */
-
 
     public static void HideAllyCards()
     {
+        Debug.Log("Destroying ally card canvas area.");
+        Logger.getInstance().info("Destroying ally card canvas area.");
+
         DestroyMordredCanvasCards();
         if (mordredCanvas == null)
         {

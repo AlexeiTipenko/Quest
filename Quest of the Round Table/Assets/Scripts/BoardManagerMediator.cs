@@ -124,7 +124,10 @@ public class BoardManagerMediator
         
         foreach (Card card in players[playerTurn].getHand())
         {
-            if (card.getCardName() == cardName){
+            if (card.getCardName() == cardName)
+            {
+                Debug.Log(card.getCardName() + " removed from " + players[playerTurn].getName() + "'s hand.");
+                Logger.getInstance().info(card.getCardName() + " removed from " + players[playerTurn].getName() + "'s hand.");
                 players[playerTurn].RemoveCard(card);
                 break;
             }
@@ -133,15 +136,14 @@ public class BoardManagerMediator
 
     public void DiscardChosenAlly(string cardName)
     {
-        Debug.Log("REMOVING ALLY.....");
         foreach (Player player in players){
             foreach (Card card in player.getPlayArea().getCards())
             {
                 if (card.getCardName() == cardName)
                 {
-                    Debug.Log("ALLY REMOVED: " + card.getCardName());
+                    Debug.Log(card.getCardName() + " removed from " + player.getName() + "'s play area.");
+                    Logger.getInstance().info(card.getCardName() + " removed from " + player.getName() + "'s play area.");
                     player.getPlayArea().discardAlly(card.GetType());
-                    Debug.Log("IT WORKED!!!");
                     return;
                 }
             }
