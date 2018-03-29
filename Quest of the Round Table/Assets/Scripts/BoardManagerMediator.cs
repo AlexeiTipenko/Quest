@@ -407,12 +407,13 @@ public class BoardManagerMediator
         BoardManager.DrawCards(player);
         BoardManager.SetInteractionText("You are the winner of the Test, and you must discard/play a total of " + currentBid + " bid points.");
         BoardManager.SetupDiscardPanel();
-
         Action action = () => {
             TransferFromHandToPlayArea(player);
-            if (BoardManager.GetSelectedDiscardNames().Count + player.getPlayAreaBid() == currentBid) {
+            if (BoardManager.GetSelectedDiscardNames().Count + player.getPlayAreaBid() == currentBid)
+            {
                 List<Card> cardsToDiscard = GetDiscardedCards(player);
-                foreach (Card card in cardsToDiscard) {
+                foreach (Card card in cardsToDiscard)
+                {
                     player.RemoveCard(card);
                 }
                 quest.PlayStage();
@@ -425,8 +426,6 @@ public class BoardManagerMediator
         BoardManager.SetInteractionButtons("Complete", "", action, null);
 
         Debug.Log("Prompting " + player.getName() + " to discard TEST inside stage: " + quest.getCurrentStage().getStageNum());
-
-
     }
 
     public void SetInteractionText(String text) {

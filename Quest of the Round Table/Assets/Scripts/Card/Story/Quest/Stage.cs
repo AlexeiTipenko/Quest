@@ -115,6 +115,7 @@ public class Stage {
     public void ContinueQuest(){
         if (quest.getPlayers().Count < 1)
         {
+            Logger.getInstance().info("Moving to next stage");
             Debug.Log("No quest participants left");
             quest.PlayStage();
         }

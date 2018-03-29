@@ -19,6 +19,7 @@
         adventureDeck.moveCardToIndex("Boar", 1);
         adventureDeck.moveCardToIndex("Sword", 2);
         adventureDeck.moveCardToIndex("Dagger", 3);
+        adventureDeck.moveCardToIndex("TestOfTemptation", 4);
         //Player 2
         adventureDeck.moveCardToIndex("Horse", 12);
         adventureDeck.moveCardToIndex("Dagger", 13);

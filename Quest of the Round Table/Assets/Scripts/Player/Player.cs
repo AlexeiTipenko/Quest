@@ -210,7 +210,6 @@ public abstract class Player {
         }
     }
 
-
     public void RemoveCardsResponse()
     {
         List<Card> chosenCards = board.GetDiscardedCards(this);
