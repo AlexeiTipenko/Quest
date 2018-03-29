@@ -114,14 +114,12 @@ public class BoardManager : MonoBehaviour
 
     public static void SetNewInteractionButton(String text)
     {
-        //GameObject okButton = GameObject.Find("Canvas/TabletopImage/TempInteractionPanel/okButton");
-        //GameObject buttonText = GameObject.Find("Canvas/TabletopImage/InteractionPanel/okButton/Text");
-
-        //buttonText.GetComponent<Text>().text = text;
+        GameObject buttonText = GameObject.Find("Canvas/TabletopImage/TempInteractionPanel(Clone)/okButton/Text");
         GameObject okButton = GameObject.Find("Canvas/TabletopImage/TempInteractionPanel(Clone)/okButton");
+        okButton.GetComponent<Button>().onClick.RemoveAllListeners();
+        buttonText.GetComponent<Text>().text = "Okay";
 
         okButton.SetActive(true);
-        okButton.GetComponent<Button>().onClick.AddListener(ClearInteractions);
         okButton.GetComponent<Button>().onClick.AddListener(new UnityAction(DestroyNewInteractionArea));
     }
 
@@ -201,7 +199,8 @@ public class BoardManager : MonoBehaviour
     }
 
 
-    public static bool ValidateSelectedAlly()
+
+    public static void ValidateSelectedAlly()
     {
         bool success = false;
         string interactionText;
@@ -223,9 +222,24 @@ public class BoardManager : MonoBehaviour
                 success = true;
             }
 
+            if (success)
+            {
+                //remove ally here
+                Debug.Log("Ally selection is valid.");
+                RemoveAlly(discardArea);
+                BoardManagerMediator.getInstance().DiscardCard("Mordred");
+                DrawHand(BoardManagerMediator.getInstance().getCurrentPlayer());
+                //NEED TO DESTROY MORDRED BUTTON
+            }
+
             InstantiateNewInteraction(interactionText);
         }
-        return success;
+    }
+
+
+    public static void RemoveAlly(GameObject discardArea) {
+        string discardedAlly = discardArea.transform.GetChild(0).gameObject.name;
+        //NEED TO GET CARD OBJECT, FIND OWNER AND DELETE IT FROM OWNERS HAND
     }
 
 
@@ -749,26 +763,12 @@ public class BoardManager : MonoBehaviour
         SetupMordredDiscardPanel();
 
         GameObject SubmitButton = GameObject.Find("mordredCanvas/Submit");
-        SubmitButton.GetComponent<Button>().onClick.AddListener(new UnityAction(RemoveAlly));
+        SubmitButton.GetComponent<Button>().onClick.AddListener(new UnityAction(ValidateSelectedAlly));
 
         GameObject ExitButton = GameObject.Find("mordredCanvas/Cancel");
         ExitButton.GetComponent<Button>().onClick.AddListener(new UnityAction(HideAllyCards));
     }
 
-
-    public static void RemoveAlly()
-    {
-        //Get card from discard area
-        GameObject DiscardArea = GameObject.Find("mordredCanvas/MordredDiscardArea");
-        bool success = ValidateSelectedAlly();
-
-
-        if (success) {
-            //remove ally card from chosen players hand
-            Debug.Log("Ally selection is valid.");
-
-        }
-    }
 
 
     public static void SetupMordredDiscardPanel()

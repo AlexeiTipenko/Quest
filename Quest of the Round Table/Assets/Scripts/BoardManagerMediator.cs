@@ -119,6 +119,34 @@ public class BoardManagerMediator
         return cardList;
     }
 
+
+    public void DiscardCard(string cardName) {
+        
+        foreach (Card card in players[playerTurn].getHand())
+        {
+            if (card.getCardName() == cardName){
+                players[playerTurn].RemoveCard(card);
+                break;
+            }
+        }
+    }
+
+    public void DiscardChosenAlly(string cardName)
+    {
+        
+
+        foreach (Card card in players[playerTurn].getHand())
+        {
+            if (card.getCardName() == cardName)
+            {
+                players[playerTurn].RemoveCard(card);
+                break;
+            }
+        }
+    }
+
+
+
     public int GetCardsNumHandArea(Player player){
         return BoardManager.GetCardsNumHandArea(player);
     }
