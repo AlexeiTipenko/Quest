@@ -119,6 +119,39 @@ public class BoardManagerMediator
         return cardList;
     }
 
+
+    public void DiscardCard(string cardName) {
+        
+        foreach (Card card in players[playerTurn].getHand())
+        {
+            if (card.getCardName() == cardName)
+            {
+                Debug.Log(card.getCardName() + " removed from " + players[playerTurn].getName() + "'s hand.");
+                Logger.getInstance().info(card.getCardName() + " removed from " + players[playerTurn].getName() + "'s hand.");
+                players[playerTurn].RemoveCard(card);
+                break;
+            }
+        }
+    }
+
+    public void DiscardChosenAlly(string cardName)
+    {
+        foreach (Player player in players){
+            foreach (Card card in player.getPlayArea().getCards())
+            {
+                if (card.getCardName() == cardName)
+                {
+                    Debug.Log(card.getCardName() + " removed from " + player.getName() + "'s play area.");
+                    Logger.getInstance().info(card.getCardName() + " removed from " + player.getName() + "'s play area.");
+                    player.getPlayArea().discardAlly(card.GetType());
+                    return;
+                }
+            }
+        }
+    }
+
+
+
     public int GetCardsNumHandArea(Player player){
         return BoardManager.GetCardsNumHandArea(player);
     }
@@ -205,6 +238,9 @@ public class BoardManagerMediator
         }
         BoardManager.DestroyCards();
         BoardManager.DestroyDiscardArea();
+        BoardManager.DestroyMordredDiscardArea();
+        //Debug.Log("ENDING TURN FOR PLAYER: " + players[playerTurn]);
+        //BoardManager.DestroyMordredButton();
         BoardManager.ClearInteractions();
         BoardManager.SetIsFreshTurn(true);
         AddToDiscardDeck(cardInPlay);
