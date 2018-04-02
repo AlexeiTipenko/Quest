@@ -4,9 +4,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class GameManager : MonoBehaviour {
+public class NetworkGameManager : MonoBehaviour {
 
-	public static GameManager instance = null;
+	public static NetworkGameManager instance = null;
 	public BoardManager boardManager = null;
 
 	void Awake () {
@@ -22,13 +22,13 @@ public class GameManager : MonoBehaviour {
 		print ("Passing playerList to BoardManager");
         Logger.getInstance().info("Player list passed to BoardManager");
 
-		foreach (Player player in ButtonManager.playerList) {
-			print (player.toString ());
-            Logger.getInstance().info("Player entered: " + player.toString());
-		}
+  //      foreach (Player player in PlayerLayoutGroup.NetworkPlayers) {
+		//	print (player.toString ());
+  //          Logger.getInstance().info("Player entered: " + player.toString());
+		//}
 
-		BoardManagerMediator.getInstance().initGame (ButtonManager.playerList);
-		BoardManagerMediator.getInstance ().startGame ();
+		//BoardManagerMediator.getInstance().initGame (ButtonManager.playerList);
+		//BoardManagerMediator.getInstance ().startGame ();
 	}
 	
 }

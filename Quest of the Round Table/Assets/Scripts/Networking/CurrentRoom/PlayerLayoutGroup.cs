@@ -2,17 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PlayerLayoutGroup : MonoBehaviour {
 
 	[SerializeField]
-    private GameObject _playerListingPrefab;
+    public GameObject _playerListingPrefab;
     public GameObject PlayerListingPrefab{
         get { return _playerListingPrefab; }
     }
-
-    private List<PlayerListing> _playerListings = new List<PlayerListing>();
-    private List<PlayerListing> PlayerListings {
+    public static List<PlayerListing> _playerListings = new List<PlayerListing>();
+    public static List<PlayerListing> PlayerListings {
         get { return _playerListings; }
     }
 
@@ -29,7 +29,7 @@ public class PlayerLayoutGroup : MonoBehaviour {
     {
         GameObject playerListingObj = Instantiate(PlayerListingPrefab);
         Text[] texts = playerListingObj.transform.GetComponentsInChildren<Text>();
-        texts[0].text = "AI" + Random.Range(1, 4);
+        texts[0].text = "AI_One" + Random.Range(1, 50);
         playerListingObj.transform.SetParent(transform, false);
 
         PlayerListing playerListing = playerListingObj.GetComponent<PlayerListing>();
@@ -68,5 +68,12 @@ public class PlayerLayoutGroup : MonoBehaviour {
             Destroy(PlayerListings[index].gameObject);
             PlayerListings.RemoveAt(index);
         }
+    }
+
+    public void SwitchScene(string SceneName){
+        foreach(var player in PlayerListings){
+            Debug.Log("PName: " + player.name);
+        }
+        SceneManager.LoadScene(SceneName);
     }
 }
