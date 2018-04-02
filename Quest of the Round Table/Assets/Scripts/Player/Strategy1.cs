@@ -71,6 +71,7 @@ public class Strategy1 : AbstractAI
     }
 
     public override List<Card> ParticipateTournament() {
+		//throw new System.NotImplementedException();
 		Tournament tournament = (Tournament)board.getCardInPlay();
 		List<Card> hand = strategyOwner.getHand();
 		List<Card> sortedList = SortBattlePointsCards (hand);
