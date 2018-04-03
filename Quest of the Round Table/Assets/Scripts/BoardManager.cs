@@ -264,15 +264,37 @@ public class BoardManager : MonoBehaviour
         HideCover();
         if (player != previousPlayer || isFreshTurn) {
             isFreshTurn = false;
-            //coverInteractionText.GetComponent<Text>().text = "NEXT PLAYER: " + player.getName().ToUpper() + "\nPress continue when you are ready.";
-            //coverInteractionButton.GetComponent<Button>().onClick.AddListener(new UnityAction(HideCover));
-            //coverInteractionButtonText.GetComponent<Text>().text = "Continue";
-            coverCanvas.SetActive(true);
+
+            if (BoardManagerMediator.getInstance().IsOnlineGame()){
+                List<Player> players = BoardManagerMediator.getInstance().getPlayers();
+                Debug.Log("draw cover online");
+                if (player.getName() == players[BoardManagerMediator.getInstance().GetPlayerTurn()].getName())
+                {
+                    Debug.Log("draw cover online - current players turn");
+                    Debug.Log(player.getName());
+                    Debug.Log(players[BoardManagerMediator.getInstance().GetPlayerTurn()].getName());
+
+                    //coverInteractionText.GetComponent<Text>().text = "NEXT PLAYER: " + player.getName().ToUpper() + "\nPress continue when you are ready.";
+                    //coverInteractionButton.GetComponent<Button>().onClick.AddListener(new UnityAction(HideCover));
+                    //coverInteractionButtonText.GetComponent<Text>().text = "Continue";
+                    coverCanvas.SetActive(true);
+                }
+            }
+
+            else{
+                Debug.Log("draw cover noot online");
+                coverInteractionText.GetComponent<Text>().text = "NEXT PLAYER: " + player.getName().ToUpper() + "\nPress continue when you are ready.";
+                coverInteractionButton.GetComponent<Button>().onClick.AddListener(new UnityAction(HideCover));
+                coverInteractionButtonText.GetComponent<Text>().text = "Continue";
+                coverCanvas.SetActive(true);
+            }
+
         }
     }
 
     public static void HideCover() {
         if (coverCanvas == null) {
+            Debug.Log("Instantiating cover canvas...");
             coverCanvas = GameObject.Find("CoverCanvas");
             coverInteractionText = GameObject.Find("CoverCanvas/CoverInteractionPanel/CoverInteractionText");
             coverInteractionButton = GameObject.Find("CoverCanvas/CoverInteractionPanel/CoverInteractionButton");

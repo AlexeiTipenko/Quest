@@ -13,6 +13,7 @@ public class BoardManagerMediator
 	Story cardInPlay;
 	int playerTurn;
 
+
 	public GameObject cardPrefab;
 	public GameObject board;
 	public List<CardUI> cards = new List<CardUI>();
@@ -24,6 +25,10 @@ public class BoardManagerMediator
 		}
 		return instance;
 	}
+
+    public int GetPlayerTurn(){
+        return playerTurn;
+    }
 
 	public void initGame (List<Player> players) {
 		this.players = players;
@@ -203,15 +208,38 @@ public class BoardManagerMediator
         }
     }
 
+
+    public bool IsOnlineGame(){
+
+        if (GameObject.Find("DDOL/PunManager") == null)
+            return false;
+
+        else
+            return true;
+    }
+
+
     public void startGame()
     {
         Logger.getInstance().info("Game started...");
         playerTurn = 0;
-        playTurn();
+
+        if (!IsOnlineGame()){
+            Logger.getInstance().info("Starting local game");
+            Debug.Log("Starting local game");
+            playTurn();
+        }
+
+        else{
+            PhotonView view = PhotonView.Get(GameObject.Find("DDOL/PunManager"));
+            Logger.getInstance().info("Starting non-local game");
+            Debug.Log("Starting non-local game");
+            view.RPC("PlayTurn", PhotonTargets.All);
+        }
     }
 
 
-    private void playTurn()
+    public void playTurn()
     {
         if (!gameOver())
         {
