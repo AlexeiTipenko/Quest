@@ -6,8 +6,8 @@ using UnityEngine.SceneManagement;
 public class PunManager : Photon.MonoBehaviour {
 
     [PunRPC]
-    public void SwitchScene(string SceneName)
+    public void SwitchScene(string seed, string sceneName)
     {
-        SceneManager.LoadScene(SceneName);
+        PlayerLayoutGroup.SwitchScene(seed, sceneName);
     }
 }

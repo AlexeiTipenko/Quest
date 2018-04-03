@@ -5,7 +5,8 @@ using System;
 
 public abstract class Deck {
 
-	private static System.Random rand;
+	static System.Random rand;
+    public static int seed = 0;
 
 	protected List<Card> cards;
 
@@ -13,8 +14,15 @@ public abstract class Deck {
 
 	public Deck() {
 		if (rand == null) {
-			rand = new System.Random ();
+            if (seed == 0) {
+                rand = new System.Random();
+            } else {
+                rand = new System.Random(seed);   
+            }
 		}
+        for (int i = 0; i < 10; i++) {
+            Debug.Log(rand.Next(0, 10));
+        }
 		cards = new List<Card> ();
         reservedIndices = new List<int>();
 	}

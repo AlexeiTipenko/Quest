@@ -264,9 +264,9 @@ public class BoardManager : MonoBehaviour
         HideCover();
         if (player != previousPlayer || isFreshTurn) {
             isFreshTurn = false;
-            coverInteractionText.GetComponent<Text>().text = "NEXT PLAYER: " + player.getName().ToUpper() + "\nPress continue when you are ready.";
-            coverInteractionButton.GetComponent<Button>().onClick.AddListener(new UnityAction(HideCover));
-            coverInteractionButtonText.GetComponent<Text>().text = "Continue";
+            //coverInteractionText.GetComponent<Text>().text = "NEXT PLAYER: " + player.getName().ToUpper() + "\nPress continue when you are ready.";
+            //coverInteractionButton.GetComponent<Button>().onClick.AddListener(new UnityAction(HideCover));
+            //coverInteractionButtonText.GetComponent<Text>().text = "Continue";
             coverCanvas.SetActive(true);
         }
     }

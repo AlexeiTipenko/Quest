@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -12,6 +13,7 @@ public class PlayerLayoutGroup : Photon.MonoBehaviour {
         get { return _playerListingPrefab; }
     }
     public static List<PlayerListing> _playerListings = new List<PlayerListing>();
+    public static List<Player> playerList;
     public static List<PlayerListing> PlayerListings {
         get { return _playerListings; }
     }
@@ -29,7 +31,7 @@ public class PlayerLayoutGroup : Photon.MonoBehaviour {
     {
         GameObject playerListingObj = Instantiate(PlayerListingPrefab);
         Text[] texts = playerListingObj.transform.GetComponentsInChildren<Text>();
-        texts[0].text = "AI_One" + Random.Range(1, 50);
+        texts[0].text = "AI_One" + UnityEngine.Random.Range(1, 50);
         playerListingObj.transform.SetParent(transform, false);
 
         PlayerListing playerListing = playerListingObj.GetComponent<PlayerListing>();
@@ -71,8 +73,25 @@ public class PlayerLayoutGroup : Photon.MonoBehaviour {
     }
 
 
-    public void PunSwitchScene(string SceneName){
+    public void PunSwitchScene(string sceneName) {
+        System.Random rand = new System.Random();
+        string seed = "";
+        for (int i = 0; i < 5; i++) {
+            seed += rand.Next(0, 10);
+        }
         PhotonView view = PhotonView.Get(GameObject.Find("DDOL/PunManager"));
-        view.RPC("SwitchScene", PhotonTargets.All, SceneName);
+        view.RPC("SwitchScene", PhotonTargets.All, seed, sceneName);
+    }
+
+    public static void SwitchScene(string seed, string SceneName) {
+        playerList = new List<Player>();
+        Deck.seed = Int32.Parse(seed);
+        foreach (var player in PlayerListings)
+        {
+            Debug.Log("Instantiating player: " + player.name);
+            playerList.Add(new HumanPlayer(player.name));
+        }
+        ButtonManager.playerList = playerList;
+        SceneManager.LoadScene(SceneName);
     }
 }
