@@ -70,10 +70,14 @@ public class PlayerLayoutGroup : MonoBehaviour {
         }
     }
 
+    [PunRPC]
     public void SwitchScene(string SceneName){
         foreach(var player in PlayerListings){
             Debug.Log("PName: " + player.name);
         }
         SceneManager.LoadScene(SceneName);
+
+        PhotonView view = PhotonView.Get(this);
+        view.RPC("SwitchScene", PhotonTargets.All, "OnlineMain");
     }
 }

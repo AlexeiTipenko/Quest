@@ -19,6 +19,9 @@ public class NetworkGameManager : MonoBehaviour {
 
 		DontDestroyOnLoad (gameObject);
 
+
+
+
 		print ("Passing playerList to BoardManager");
         Logger.getInstance().info("Player list passed to BoardManager");
 
