@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class PunManager : Photon.MonoBehaviour {
 
-    BoardManagerMediator board;
+    BoardManagerMediator board = BoardManagerMediator.getInstance();
 
     [PunRPC]
     public void SwitchScene(string seed, string sceneName)
@@ -16,11 +16,21 @@ public class PunManager : Photon.MonoBehaviour {
 
     [PunRPC]
     public void PromptSponsorQuestResponse(bool sponsorAccepted) {
-        GetBoard();
-        ((Quest)(board.getCardInPlay())).PromptSponsorQuestResponse(sponsorAccepted);
+        ((Quest)board.getCardInPlay()).PromptSponsorQuestResponse(sponsorAccepted);
     }
 
-    void GetBoard() {
-        board = BoardManagerMediator.getInstance();
+    [PunRPC]
+    public void SponsorQuestComplete(List<Stage> stages) {
+        ((Quest)board.getCardInPlay()).SponsorQuestComplete(stages);
+    }
+
+    [PunRPC]
+    public void IncrementSponsor() {
+        ((Quest)board.getCardInPlay()).IncrementSponsor();
+    }
+
+    [PunRPC]
+    public void PromptAcceptQuestResponse() {
+        ((Quest)board.getCardInPlay()).IncrementSponsor();
     }
 }

@@ -349,6 +349,9 @@ public class BoardManagerMediator
         Action action1 = () => {
             if (quest.isValidQuest()) {
                 List<Stage> stages = BoardManager.CollectStageCards();
+                if (IsOnlineGame()) {
+                    view.RPC("SponsorQuestComplete", PhotonTargets.Others, stages);
+                }
                 quest.SponsorQuestComplete(stages);
             }
             else {
@@ -356,7 +359,12 @@ public class BoardManagerMediator
             }
         };
 
-        Action action2 = quest.IncrementSponsor;
+        Action action2 = () => {
+            if (IsOnlineGame()) {
+                view.RPC("IncrementSponsor", PhotonTargets.Others);
+            }
+            quest.IncrementSponsor();
+        };
 
         if (!BoardManager.QuestPanelsExist()) {
             BoardManager.SetupQuestPanels(quest.getNumStages());
@@ -372,9 +380,15 @@ public class BoardManagerMediator
         BoardManager.DrawCards(player);
         BoardManager.SetInteractionText("NEW QUEST DRAWN\nWould you like to participate in this quest?");
         Action action1 = () => {
+            if (IsOnlineGame()) {
+                view.RPC("PromptAcceptQuestResponse", PhotonTargets.Others, true);
+            }
             quest.PromptAcceptQuestResponse(true);
         };
         Action action2 = () => {
+            if (IsOnlineGame()) {
+                view.RPC("PromptAcceptQuestResponse", PhotonTargets.Others, false);
+            }
             quest.PromptAcceptQuestResponse(false);
         };
         BoardManager.SetInteractionButtons("Accept", "Decline", action1, action2);
