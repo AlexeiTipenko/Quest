@@ -11,10 +11,4 @@ public class PunManager : Photon.MonoBehaviour {
     {
         PlayerLayoutGroup.SwitchScene(seed, sceneName);
     }
-
-    [PunRPC]
-    public void PlayTurn()
-    {
-        BoardManagerMediator.getInstance().playTurn();
-    }
 }

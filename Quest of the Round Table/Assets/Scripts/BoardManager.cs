@@ -264,25 +264,31 @@ public class BoardManager : MonoBehaviour
         HideCover();
         if (player != previousPlayer || isFreshTurn) {
             isFreshTurn = false;
-
+            BoardManagerMediator board = BoardManagerMediator.getInstance();
             if (BoardManagerMediator.getInstance().IsOnlineGame()){
-                List<Player> players = BoardManagerMediator.getInstance().getPlayers();
+                List<Player> players = board.getPlayers();
                 Debug.Log("draw cover online");
-                if (player.getName() == players[BoardManagerMediator.getInstance().GetPlayerTurn()].getName())
-                {
-                    Debug.Log("draw cover online - current players turn");
-                    Debug.Log(player.getName());
-                    Debug.Log(players[BoardManagerMediator.getInstance().GetPlayerTurn()].getName());
+                //if (player.getName() == players[BoardManagerMediator.getInstance().GetPlayerTurn()].getName())
+                Logger.getInstance().info("Player id: " + PhotonNetwork.player.ID);
+                Debug.Log("Player id: " + PhotonNetwork.player.ID);
+                Debug.Log("player turn: " + board.GetPlayerTurn());
 
+                if (board.GetPlayerTurn() == PhotonNetwork.player.ID)
+                {
+                    Logger.getInstance().info("PLAYER PHOTON ID AND TURN IS MATCHING");
+                    Debug.Log("Player photon id and turn is matching");
                     //coverInteractionText.GetComponent<Text>().text = "NEXT PLAYER: " + player.getName().ToUpper() + "\nPress continue when you are ready.";
                     //coverInteractionButton.GetComponent<Button>().onClick.AddListener(new UnityAction(HideCover));
                     //coverInteractionButtonText.GetComponent<Text>().text = "Continue";
+                    coverCanvas.SetActive(false);
+                }
+                else {
+                    Logger.getInstance().info("Inside else statement");
                     coverCanvas.SetActive(true);
                 }
             }
-
             else{
-                Debug.Log("draw cover noot online");
+                Debug.Log("draw cover not online");
                 coverInteractionText.GetComponent<Text>().text = "NEXT PLAYER: " + player.getName().ToUpper() + "\nPress continue when you are ready.";
                 coverInteractionButton.GetComponent<Button>().onClick.AddListener(new UnityAction(HideCover));
                 coverInteractionButtonText.GetComponent<Text>().text = "Continue";
@@ -296,9 +302,9 @@ public class BoardManager : MonoBehaviour
         if (coverCanvas == null) {
             Debug.Log("Instantiating cover canvas...");
             coverCanvas = GameObject.Find("CoverCanvas");
-            coverInteractionText = GameObject.Find("CoverCanvas/CoverInteractionPanel/CoverInteractionText");
-            coverInteractionButton = GameObject.Find("CoverCanvas/CoverInteractionPanel/CoverInteractionButton");
-            coverInteractionButtonText = GameObject.Find("CoverCanvas/CoverInteractionPanel/CoverInteractionButton/Text");
+            //coverInteractionText = GameObject.Find("CoverCanvas/CoverInteractionPanel/CoverInteractionText");
+            //coverInteractionButton = GameObject.Find("CoverCanvas/CoverInteractionPanel/CoverInteractionButton");
+            //coverInteractionButtonText = GameObject.Find("CoverCanvas/CoverInteractionPanel/CoverInteractionButton/Text");
         }
         coverCanvas.SetActive(false);
     }

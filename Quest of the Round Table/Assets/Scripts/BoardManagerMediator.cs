@@ -27,7 +27,7 @@ public class BoardManagerMediator
 	}
 
     public int GetPlayerTurn(){
-        return playerTurn;
+        return ((playerTurn + players.Count) % players.Count) + 1;
     }
 
 	public void initGame (List<Player> players) {
@@ -224,18 +224,9 @@ public class BoardManagerMediator
         Logger.getInstance().info("Game started...");
         playerTurn = 0;
 
-        if (!IsOnlineGame()){
-            Logger.getInstance().info("Starting local game");
-            Debug.Log("Starting local game");
-            playTurn();
-        }
-
-        else{
-            PhotonView view = PhotonView.Get(GameObject.Find("DDOL/PunManager"));
-            Logger.getInstance().info("Starting non-local game");
-            Debug.Log("Starting non-local game");
-            view.RPC("PlayTurn", PhotonTargets.All);
-        }
+        Logger.getInstance().info("Starting local game");
+        Debug.Log("Starting local game");
+        playTurn();
     }
 
 
