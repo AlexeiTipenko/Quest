@@ -12,12 +12,18 @@ public class BoardManagerMediator
 	DiscardDeck adventureDiscard, storyDiscard;
 	Story cardInPlay;
 	int playerTurn;
+    PhotonView view;
 
 
 	public GameObject cardPrefab;
 	public GameObject board;
 	public List<CardUI> cards = new List<CardUI>();
 
+    public BoardManagerMediator() {
+        if (IsOnlineGame()) {
+            view = PhotonView.Get(GameObject.Find("DDOL/PunManager"));   
+        }
+    }
 
 	public static BoardManagerMediator getInstance() {
 		if (instance == null) {
@@ -317,9 +323,15 @@ public class BoardManagerMediator
         BoardManager.SetInteractionText("NEW QUEST DRAWN\nWould you like to sponsor this quest?");
 		Debug.Log ("The card in play is " + cardInPlay.cardImageName);
         Action action1 = () => {
+            if (IsOnlineGame()) {
+                view.RPC("PromptSponsorQuestResponse", PhotonTargets.Others, true);
+            }
             quest.PromptSponsorQuestResponse(true);
         };
         Action action2 = () => {
+            if (IsOnlineGame()) {
+                view.RPC("PromptSponsorQuestResponse", PhotonTargets.Others, false);
+            }
             quest.PromptSponsorQuestResponse(false);
         };
         BoardManager.SetInteractionButtons("Accept", "Decline", action1, action2);

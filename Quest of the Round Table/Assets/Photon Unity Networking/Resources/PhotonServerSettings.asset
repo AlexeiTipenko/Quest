@@ -38,4 +38,5 @@ MonoBehaviour:
   - RequestForPickupTimes
   - SwitchScene
   - PlayTurn
+  - PromptSponsorQuestResponse
   DisableAutoOpenWizard: 1
