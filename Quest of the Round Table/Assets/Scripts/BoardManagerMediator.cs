@@ -564,6 +564,9 @@ public class BoardManagerMediator
         BoardManager.SetInteractionText(text);
 
         Action action = () => {
+			if (IsOnlineGame()) {
+				view.RPC("nextTurn", PhotonTargets.Others);
+			}
             nextTurn();
         };
         BoardManager.SetInteractionButtons("Continue", "", action, null);
