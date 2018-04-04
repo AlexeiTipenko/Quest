@@ -353,7 +353,6 @@ public class BoardManager : MonoBehaviour
     public static void DestroyMordredButton()
     {
         GameObject mordredButton = GameObject.Find("Canvas/TabletopImage/MordredButton");
-        Debug.Log(mordredButton);
         Destroy(mordredButton);
     }
 
