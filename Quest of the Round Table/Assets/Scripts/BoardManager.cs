@@ -265,7 +265,7 @@ public class BoardManager : MonoBehaviour
         if (player != previousPlayer || isFreshTurn) {
             isFreshTurn = false;
             BoardManagerMediator board = BoardManagerMediator.getInstance();
-            if (BoardManagerMediator.getInstance().IsOnlineGame()){
+            if (board.IsOnlineGame()){
                 List<Player> players = board.getPlayers();
                 Debug.Log("draw cover online");
                 //if (player.getName() == players[BoardManagerMediator.getInstance().GetPlayerTurn()].getName())
@@ -302,9 +302,12 @@ public class BoardManager : MonoBehaviour
         if (coverCanvas == null) {
             Debug.Log("Instantiating cover canvas...");
             coverCanvas = GameObject.Find("CoverCanvas");
-            //coverInteractionText = GameObject.Find("CoverCanvas/CoverInteractionPanel/CoverInteractionText");
-            //coverInteractionButton = GameObject.Find("CoverCanvas/CoverInteractionPanel/CoverInteractionButton");
-            //coverInteractionButtonText = GameObject.Find("CoverCanvas/CoverInteractionPanel/CoverInteractionButton/Text");
+            BoardManagerMediator board = BoardManagerMediator.getInstance();
+            if (!board.IsOnlineGame()){
+                coverInteractionText = GameObject.Find("CoverCanvas/CoverInteractionPanel/CoverInteractionText");
+                coverInteractionButton = GameObject.Find("CoverCanvas/CoverInteractionPanel/CoverInteractionButton");
+                coverInteractionButtonText = GameObject.Find("CoverCanvas/CoverInteractionPanel/CoverInteractionButton/Text");
+            }
         }
         coverCanvas.SetActive(false);
     }
