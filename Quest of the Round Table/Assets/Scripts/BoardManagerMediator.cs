@@ -36,6 +36,10 @@ public class BoardManagerMediator
 		return instance;
 	}
 
+	public PhotonView getPhotonView() {
+		return view;
+	}
+
 	public void initGame (List<Player> players) {
 		this.players = players;
         switch (ButtonManager.scenario)
@@ -193,7 +197,6 @@ public class BoardManagerMediator
         }
     }
 
-
     public bool IsOnlineGame(){
 
         if (GameObject.Find("DDOL/PunManager") == null)
@@ -253,7 +256,6 @@ public class BoardManagerMediator
         playTurn();
     }
 
-
     private bool gameOver()
     {
         foreach (Player player in players)
@@ -285,16 +287,16 @@ public class BoardManagerMediator
 			nextTurn ();
 			Debug.Log ("New player is: " + players [playerTurn].getName ());
 			break;
-        }
-    }
-
-    public static byte[] Serialize(System.Object obj)
-    {
-        BinaryFormatter bf = new BinaryFormatter();
-        using (var ms = new MemoryStream())
-        {
-            bf.Serialize(ms, obj);
-            return ms.ToArray();
+		case "discardArea":
+			Debug.Log ("CHEAT: Setting up discard area");
+			GameObject discardArea = GameObject.Find ("Canvas/TabletopImage/DiscardArea");
+			if (discardArea == null) {
+				BoardManager.SetupDiscardPanel ();
+			} else {
+				BoardManager.DestroyDiscardArea ();
+				players [playerTurn].GetAndRemoveCards ();
+			}
+			break;
         }
     }
 
@@ -339,7 +341,7 @@ public class BoardManagerMediator
             if (quest.isValidQuest()) {
                 List<Stage> stages = BoardManager.CollectStageCards();
                 if (IsOnlineGame()) {
-                    view.RPC("SponsorQuestComplete", PhotonTargets.Others, Serialize(stages));
+                    view.RPC("SponsorQuestComplete", PhotonTargets.Others, PunManager.Serialize(stages));
                 }
                 quest.SponsorQuestComplete(stages);
             }
@@ -541,7 +543,7 @@ public class BoardManagerMediator
 		BoardManager.DrawCards(player);
 		BoardManager.SetInteractionText("Please discard " + numFoes +  " Foes.");
         BoardManager.SetupDiscardPanel();
-		Action action = () => {		
+		Action action = () => {
 			((KingsCallToArms)cardInPlay).PlayerDiscardedFoes();
 		};
 		BoardManager.SetInteractionButtons("Complete", "", action, null);

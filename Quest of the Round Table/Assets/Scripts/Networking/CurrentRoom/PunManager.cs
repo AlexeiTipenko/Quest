@@ -17,6 +17,33 @@ public class PunManager : Photon.MonoBehaviour {
     //--------------------------- Quest Functions ---------------------------//
     //-----------------------------------------------------------------------//
 
+	//purely for cheating; as next turn usually gets called through another method
+	[PunRPC]
+	public void nextTurn () {
+		GetBoard ();
+		board.nextTurn ();
+	}
+
+	[PunRPC]
+	public void RemoveCardsResponse (byte[] playerBytes, byte[] chosenCardsBytes) {
+		GetBoard ();
+        List<Card> chosenCards = (List<Card>)Deserialize(chosenCardsBytes);
+        Player player = (Player)Deserialize(playerBytes);
+		player.RemoveCardsResponse (chosenCards);
+	}
+
+	[PunRPC]
+	public void DealCardsNextPlayer() {
+		GetBoard ();
+		((Quest)board.getCardInPlay()).getCurrentStage().DealCardsNextPlayer();
+	}
+
+	[PunRPC]
+	public void PromptNextPlayer() {
+        GetBoard();
+		((Tournament)board.getCardInPlay()).PromptNextPlayer();
+	}
+
     [PunRPC]
     public void PromptSponsorQuestResponse(bool sponsorAccepted) {
         GetBoard();
@@ -42,16 +69,10 @@ public class PunManager : Photon.MonoBehaviour {
         ((Quest)board.getCardInPlay()).PromptAcceptQuestResponse(questAccepted);
     }
 
-    System.Object Deserialize(byte[] arrBytes)
-    {
-        using (var memStream = new MemoryStream())
-        {
-            var binForm = new BinaryFormatter();
-            memStream.Write(arrBytes, 0, arrBytes.Length);
-            memStream.Seek(0, SeekOrigin.Begin);
-            var obj = binForm.Deserialize(memStream);
-            return obj;
-        }
+    [PunRPC]
+    public void PromptNextAcceptQuest() {
+        GetBoard();
+        ((Quest)board.getCardInPlay()).PromptNextAcceptQuest();
     }
 
     //------------------------------------------------------------------------//
@@ -67,6 +88,28 @@ public class PunManager : Photon.MonoBehaviour {
 
     void GetBoard(){
         board = BoardManagerMediator.getInstance();
+    }
+
+    public static byte[] Serialize(System.Object obj)
+    {
+        BinaryFormatter bf = new BinaryFormatter();
+        using (var ms = new MemoryStream())
+        {
+            bf.Serialize(ms, obj);
+            return ms.ToArray();
+        }
+    }
+
+    public static System.Object Deserialize(byte[] arrBytes)
+    {
+        using (var memStream = new MemoryStream())
+        {
+            var binForm = new BinaryFormatter();
+            memStream.Write(arrBytes, 0, arrBytes.Length);
+            memStream.Seek(0, SeekOrigin.Begin);
+            var obj = binForm.Deserialize(memStream);
+            return obj;
+        }
     }
 
 }

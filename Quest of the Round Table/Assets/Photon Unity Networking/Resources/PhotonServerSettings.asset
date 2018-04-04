@@ -29,17 +29,22 @@ MonoBehaviour:
   RpcList:
   - CardsSelectionResponse
   - Chat
+  - DealCardsNextPlayer
   - DestroyRpc
   - IncrementSponsor
   - InstantiateRpc
+  - nextTurn
   - PickupItemInit
   - PromptAcceptQuestResponse
+  - PromptNextPlayer
   - PromptSponsorQuestResponse
   - PunPickup
   - PunPickupSimple
   - PunRespawn
+  - RemoveCardsResponse
   - RequestForPickupItems
   - RequestForPickupTimes
   - SponsorQuestComplete
   - SwitchScene
+  - PromptNextAcceptQuest
   DisableAutoOpenWizard: 1

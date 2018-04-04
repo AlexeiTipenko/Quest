@@ -86,7 +86,7 @@ public class KingsCallToArms : Events {
 
         if (dicardedCards.Count == 1){
             if (dicardedCards[0].GetType().IsSubclassOf(typeof(Weapon))){
-                currentPlayer.RemoveCardsResponse();
+				currentPlayer.GetAndRemoveCards ();
                 currentPlayer = getNextPlayer(currentPlayer);
 
                 if (currentPlayer != firstPlayer){
@@ -130,7 +130,7 @@ public class KingsCallToArms : Events {
             }
 
             if (valid) {
-                currentPlayer.RemoveCardsResponse();
+				currentPlayer.GetAndRemoveCards ();
                 currentPlayer = getNextPlayer(currentPlayer);
 
                 if (currentPlayer != firstPlayer) {

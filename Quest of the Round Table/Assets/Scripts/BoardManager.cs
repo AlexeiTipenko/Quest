@@ -26,31 +26,22 @@ public class BoardManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyUp("r"))
-        {
-            BoardManagerMediator.getInstance().cheat("rankUp");
-        }
-        else if (Input.GetKeyUp("s"))
-        {
-            BoardManagerMediator.getInstance().cheat("shieldsUp");
-        }
-        else if (Input.GetKeyUp("p"))
-        {
-            BoardManagerMediator.getInstance().cheat("prosperity");
-        }
-        else if (Input.GetKeyUp("c"))
-        {
-            BoardManagerMediator.getInstance().cheat("chivalrous");
-        }
-        else if (Input.GetKeyUp("n"))
-        {
-            BoardManagerMediator.getInstance().cheat("nextPlayer");
-        }
-		else if (Input.GetKeyUp("1")) {
+		if (Input.GetKeyUp ("r")) {
+			BoardManagerMediator.getInstance ().cheat ("rankUp");
+		} else if (Input.GetKeyUp ("s")) {
+			BoardManagerMediator.getInstance ().cheat ("shieldsUp");
+		} else if (Input.GetKeyUp ("p")) {
+			BoardManagerMediator.getInstance ().cheat ("prosperity");
+		} else if (Input.GetKeyUp ("c")) {
+			BoardManagerMediator.getInstance ().cheat ("chivalrous");
+		} else if (Input.GetKeyUp ("n")) {
+			BoardManagerMediator.getInstance ().cheat ("nextPlayer");
+		} else if (Input.GetKeyUp ("1")) {
 			BoardManagerMediator.getInstance ().cheat ("scenario1");
-		}
-		else if (Input.GetKeyUp("2")) {
+		} else if (Input.GetKeyUp ("2")) {
 			BoardManagerMediator.getInstance ().cheat ("scenario2");
+		} else if (Input.GetKeyUp ("d")) {
+			BoardManagerMediator.getInstance ().cheat ("discardArea");
 		}
     }
 
@@ -265,7 +256,7 @@ public class BoardManager : MonoBehaviour
         HideCover();
         if (player != previousPlayer || isFreshTurn || board.IsOnlineGame()) {
             isFreshTurn = false;
-            if (board.IsOnlineGame()){
+            if (board.IsOnlineGame()) {
                 List<Player> players = board.getPlayers();
                 int playerTurn = players.IndexOf(player) + 1;
                 Logger.getInstance().info("Local player id: " + PhotonNetwork.player.ID);

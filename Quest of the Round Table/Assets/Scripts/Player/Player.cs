@@ -211,10 +211,9 @@ public abstract class Player {
         }
     }
 
-    public void RemoveCardsResponse()
+	public void RemoveCardsResponse(List<Card> chosenCards)
     {
-        List<Card> chosenCards = board.GetDiscardedCards(this);
-        if (chosenCards.Count > 0) {
+		if (chosenCards.Count > 0) {
             foreach (Card card in chosenCards) {
                 RemoveCard(card);
             }
@@ -224,6 +223,13 @@ public abstract class Player {
         BoardManagerMediator.getInstance().DestroyDiscardArea();
     }
 
+	public void GetAndRemoveCards () {
+		List<Card> chosenCards = board.GetDiscardedCards (this);
+		if (board.IsOnlineGame ()) {
+            board.getPhotonView ().RPC ("RemoveCardsResponse", PhotonTargets.Others, PunManager.Serialize(this), PunManager.Serialize(chosenCards));
+		}
+		RemoveCardsResponse(chosenCards);
+	}
 
 	public void incrementShields(int numShields) {
 		this.numShields += numShields;

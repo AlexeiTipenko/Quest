@@ -1,4 +1,5 @@
 using System;
+using UnityEngine;
 
 [Serializable]
 public class ProsperityThroughoutTheRealm : Events {
@@ -24,7 +25,14 @@ public class ProsperityThroughoutTheRealm : Events {
     private void DealCards()
     {
         action = () => {
-            Action completeAction = DealCardsNextPlayer;
+			Action completeAction = () => {
+				Logger.getInstance ().debug ("In ProsperityThroughoutTheRealm in DealCards(), about to RPC DealCardsNextPlayer");
+				Debug.Log("In ProsperityThroughoutTheRealm in DealCards(), about to RPC DealCardsNextPlayer");
+				if (board.IsOnlineGame()) {
+					board.getPhotonView().RPC("DealCardsNextPlayer", PhotonTargets.Others);
+				}				
+				DealCardsNextPlayer();
+			};
             playerToPrompt.DiscardCards(action, completeAction);
         };
 

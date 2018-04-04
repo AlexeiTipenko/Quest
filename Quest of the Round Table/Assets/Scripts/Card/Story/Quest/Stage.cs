@@ -73,6 +73,7 @@ public class Stage {
 			Debug.Log ("Is foe, going to player");
             Debug.Log("quest sponsor is: " + quest.getSponsor().getName());
             playerToPrompt = board.getNextPlayer(quest.getSponsor());
+            //TODO: this is probably causing an infinite loop
             while (!quest.getPlayers().Contains(playerToPrompt)) {
                 playerToPrompt = board.getNextPlayer(playerToPrompt);
             }
@@ -83,6 +84,7 @@ public class Stage {
 			currentBid = ((Test)stageCard).getMinBidValue() - 1;
 			Debug.Log ("Current bid is: " + currentBid);
             playerToPrompt = board.getNextPlayer(quest.getSponsor());
+            //TODO: this is probably causing an infinite loop
             while (!quest.getPlayers().Contains(playerToPrompt))
             {
                 playerToPrompt = board.getNextPlayer(playerToPrompt);
@@ -248,7 +250,14 @@ public class Stage {
 
     public void DealCards() {
         action = () => {
-            Action completeAction = DealCardsNextPlayer;
+			Action completeAction = () => {
+				if (board.IsOnlineGame()) {
+					Logger.getInstance ().debug ("In Stage DealCards(), about to RPC DealCardsNextPlayer");
+					Debug.Log("In Stage DealCards(), about to RPC DealCardsNextPlayer");
+					board.getPhotonView().RPC("DealCardsNextPlayer", PhotonTargets.Others);
+				}				
+				DealCardsNextPlayer();
+			};
             playerToPrompt.DiscardCards(action, completeAction);
         };
         playerToPrompt.DrawCards(1, action);

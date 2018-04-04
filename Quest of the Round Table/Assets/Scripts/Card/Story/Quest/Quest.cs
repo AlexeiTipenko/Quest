@@ -194,8 +194,10 @@ public abstract class Quest : Story {
             action = () => {
                 Action completeAction = () =>
                 {
-                    playerToPrompt = board.getNextPlayer(playerToPrompt);
-                    PromptAcceptQuest();
+                    if (board.IsOnlineGame()) {
+                        board.getPhotonView().RPC("PromptNextAcceptQuest", PhotonTargets.Others);
+                    }
+                    PromptNextAcceptQuest();
                 };
                 playerToPrompt.DiscardCards(action, completeAction);
             };
@@ -206,6 +208,11 @@ public abstract class Quest : Story {
             PromptAcceptQuest();
         }
 	}
+
+    public void PromptNextAcceptQuest() {
+        playerToPrompt = board.getNextPlayer(playerToPrompt);
+        PromptAcceptQuest();
+    }
 
 	public void PlayStage() {
 		currentStage++;
@@ -236,7 +243,7 @@ public abstract class Quest : Story {
         if (sponsor.getHand().Count + totalCardsCounter + numStages > 12) {
             action = () => {
                 board.TransferFromHandToPlayArea(playerToPrompt);
-                playerToPrompt.RemoveCardsResponse();
+				playerToPrompt.GetAndRemoveCards ();
                 if (playerToPrompt.getHand().Count > 12)
                 {
                     board.PromptCardRemoveSelection(playerToPrompt, action);
@@ -244,6 +251,11 @@ public abstract class Quest : Story {
 
                 else
                 {
+					Logger.getInstance ().debug ("In Quest CompleteQuest(), about to RPC nextTurn");
+					Debug.Log("In Quest CompleteQuest(), about to RPC nextTurn");
+					if (board.IsOnlineGame()) {
+						board.getPhotonView().RPC("nextTurn", PhotonTargets.Others);
+					}
                     board.nextTurn();
                 }
             };
