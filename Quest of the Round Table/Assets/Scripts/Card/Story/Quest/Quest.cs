@@ -137,7 +137,7 @@ public abstract class Quest : Story {
 	}
 
 	public void SponsorQuestComplete(List<Stage> stages) {
-        Debug.Log("Finished quest setup.");
+        Debug.Log("Finished quest setup");
         this.stages = stages;
         foreach (Stage stage in stages) {
             Debug.Log("Stage " + stage.getStageNum());
@@ -192,8 +192,10 @@ public abstract class Quest : Story {
 			participatingPlayers.Add (playerToPrompt);
 
             action = () => {
+				Debug.Log("Entered action");
                 Action completeAction = () =>
                 {
+					Debug.Log("Entered completeAction");
                     if (board.IsOnlineGame()) {
                         board.getPhotonView().RPC("PromptNextAcceptQuest", PhotonTargets.Others);
                     }
