@@ -39,4 +39,7 @@ MonoBehaviour:
   - SwitchScene
   - PlayTurn
   - PromptSponsorQuestResponse
+  - IncrementSponsor
+  - PromptAcceptQuestResponse
+  - SponsorQuestComplete
   DisableAutoOpenWizard: 1
