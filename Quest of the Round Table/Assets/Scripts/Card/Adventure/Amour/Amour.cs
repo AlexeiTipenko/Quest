@@ -1,4 +1,7 @@
-﻿public class Amour : Adventure {
+﻿using System;
+
+[Serializable]
+public class Amour : Adventure {
 
 	public static int frequency = 8;
 	private int battlePoints, bidPoints;

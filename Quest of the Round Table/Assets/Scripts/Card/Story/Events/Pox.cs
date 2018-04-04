@@ -1,5 +1,7 @@
 using System.Collections.Generic;
+using System;
 
+[Serializable]
 public class Pox : Events {
 
     BoardManagerMediator board;

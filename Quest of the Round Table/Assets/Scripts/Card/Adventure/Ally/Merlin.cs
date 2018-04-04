@@ -1,4 +1,7 @@
-﻿public class Merlin : Ally {
+﻿using System;
+
+[Serializable]
+public class Merlin : Ally {
 
 	public static int frequency = 1;
 

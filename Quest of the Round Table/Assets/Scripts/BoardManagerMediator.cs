@@ -1,7 +1,10 @@
 ﻿using System;
+using System.IO;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Runtime.Serialization.Formatters.Binary;
 
+[Serializable]
 public class BoardManagerMediator
 {
     
@@ -12,11 +15,11 @@ public class BoardManagerMediator
 	DiscardDeck adventureDiscard, storyDiscard;
 	Story cardInPlay;
 	int playerTurn;
-    PhotonView view;
+    [NonSerialized] PhotonView view;
 
 
-	public GameObject cardPrefab;
-	public GameObject board;
+    [NonSerialized] public GameObject cardPrefab;
+    [NonSerialized] public GameObject board;
 	public List<CardUI> cards = new List<CardUI>();
 
     public BoardManagerMediator() {
@@ -325,6 +328,16 @@ public class BoardManagerMediator
         }
     }
 
+    public static byte[] Serialize(System.Object obj)
+    {
+        BinaryFormatter bf = new BinaryFormatter();
+        using (var ms = new MemoryStream())
+        {
+            bf.Serialize(ms, obj);
+            return ms.ToArray();
+        }
+    }
+
     //------------------------------------------------------------------------//
     //--------------------------- Visual Functions ---------------------------//
     //------------------------------------------------------------------------//
@@ -366,7 +379,7 @@ public class BoardManagerMediator
             if (quest.isValidQuest()) {
                 List<Stage> stages = BoardManager.CollectStageCards();
                 if (IsOnlineGame()) {
-                    view.RPC("SponsorQuestComplete", PhotonTargets.Others, stages);
+                    view.RPC("SponsorQuestComplete", PhotonTargets.Others, Serialize(stages));
                 }
                 quest.SponsorQuestComplete(stages);
             }

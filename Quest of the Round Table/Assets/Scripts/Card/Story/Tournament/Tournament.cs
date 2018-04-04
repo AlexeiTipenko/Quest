@@ -4,6 +4,7 @@ using UnityEngine;
 using System.Linq;
 using System;
 
+[Serializable]
 public abstract class Tournament : Story
 {
     Action action = null;

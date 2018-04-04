@@ -1,14 +1,16 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[Serializable]
 public abstract class Card {
 
 	protected Player owner;
 	protected string cardName;
 	public string cardImageName;
 
-	public Card(string cardName) {
+	protected Card(string cardName) {
         Logger.getInstance ().info("Creating card: " + cardName);
 		this.cardName = cardName;
 		this.owner = null;
