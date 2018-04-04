@@ -1,7 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
+using System;
 
+[Serializable]
 public class AIPlayer : Player {
     
     readonly AbstractAI strategy;

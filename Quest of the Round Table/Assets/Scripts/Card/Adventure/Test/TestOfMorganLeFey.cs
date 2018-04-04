@@ -1,7 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using System;
 
+[Serializable]
 public class TestOfMorganLeFey : Test {
 
 	public static int frequency = 2;

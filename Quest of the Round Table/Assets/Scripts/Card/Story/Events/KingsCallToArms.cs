@@ -1,7 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
+using System.Collections.Generic;
 
+[Serializable]
 public class KingsCallToArms : Events {
 
 	public static int frequency = 1;

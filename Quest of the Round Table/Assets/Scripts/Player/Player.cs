@@ -3,6 +3,7 @@ using UnityEngine;
 using System.Linq;
 using System;
 
+[Serializable]
 public abstract class Player {
 
 	protected string name;

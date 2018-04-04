@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
+[Serializable]
 public abstract class Quest : Story {
 	BoardManagerMediator board;
 

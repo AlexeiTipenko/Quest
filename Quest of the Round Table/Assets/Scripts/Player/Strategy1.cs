@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
+using System;
 
+[Serializable]
 public class Strategy1 : AbstractAI
 {
     public Strategy1() : base (50, 20) {

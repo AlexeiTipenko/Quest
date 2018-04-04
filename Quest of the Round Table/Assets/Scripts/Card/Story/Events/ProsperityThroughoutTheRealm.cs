@@ -1,6 +1,6 @@
 using System;
-using UnityEngine;
 
+[Serializable]
 public class ProsperityThroughoutTheRealm : Events {
 
 	public static int frequency = 1;

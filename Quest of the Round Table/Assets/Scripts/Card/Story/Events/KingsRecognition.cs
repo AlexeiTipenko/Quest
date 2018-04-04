@@ -1,3 +1,6 @@
+using System;
+
+[Serializable]
 public class KingsRecognition : Events {
 
     BoardManagerMediator board;

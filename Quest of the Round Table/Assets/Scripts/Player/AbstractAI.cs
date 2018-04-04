@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
+using System;
 
+[Serializable]
 public abstract class AbstractAI {
     
     protected readonly BoardManagerMediator board;

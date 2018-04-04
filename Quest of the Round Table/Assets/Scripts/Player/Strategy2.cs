@@ -1,7 +1,8 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections.Generic;
+using System;
 
+[Serializable]
 public class Strategy2 : AbstractAI
 {
     int previousStageBattlePoints = 0;

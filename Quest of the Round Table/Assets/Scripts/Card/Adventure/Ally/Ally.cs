@@ -1,3 +1,6 @@
+using System;
+
+[Serializable]
 public abstract class Ally : Adventure {
 
 	protected int battlePoints, bidPoints;
