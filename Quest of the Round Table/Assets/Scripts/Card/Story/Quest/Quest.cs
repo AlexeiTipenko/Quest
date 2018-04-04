@@ -236,7 +236,7 @@ public abstract class Quest : Story {
         if (sponsor.getHand().Count + totalCardsCounter + numStages > 12) {
             action = () => {
                 board.TransferFromHandToPlayArea(playerToPrompt);
-                playerToPrompt.RemoveCardsResponse();
+				playerToPrompt.GetAndRemoveCards ();
                 if (playerToPrompt.getHand().Count > 12)
                 {
                     board.PromptCardRemoveSelection(playerToPrompt, action);

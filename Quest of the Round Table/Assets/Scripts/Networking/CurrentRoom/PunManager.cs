@@ -21,6 +21,12 @@ public class PunManager : Photon.MonoBehaviour {
 	}
 
 	[PunRPC]
+	public void RemoveCardsResponse (List<Card> chosenCards) {
+		GetBoard ();
+		board.getCurrentPlayer ().RemoveCardsResponse (chosenCards);
+	}
+
+	[PunRPC]
 	public void DealCardsNextPlayer() {
 		GetBoard ();
 		((Quest)board.getCardInPlay()).getCurrentStage().DealCardsNextPlayer();
@@ -56,7 +62,17 @@ public class PunManager : Photon.MonoBehaviour {
         ((Quest)board.getCardInPlay()).IncrementSponsor();
     }
 
-    System.Object Deserialize(byte[] arrBytes)
+	public static byte[] Serialize(System.Object obj)
+	{
+		BinaryFormatter bf = new BinaryFormatter();
+		using (var ms = new MemoryStream())
+		{
+			bf.Serialize(ms, obj);
+			return ms.ToArray();
+		}
+	}
+
+    public static System.Object Deserialize(byte[] arrBytes)
     {
         using (var memStream = new MemoryStream())
         {

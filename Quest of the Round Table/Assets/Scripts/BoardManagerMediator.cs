@@ -280,7 +280,6 @@ public class BoardManagerMediator
         playTurn();
     }
 
-
     private bool gameOver()
     {
         foreach (Player player in players)
@@ -309,9 +308,6 @@ public class BoardManagerMediator
 			break;
 		case "nextPlayer":
 			Debug.Log ("Current player is: " + players [playerTurn].getName ());
-			if (IsOnlineGame()) {
-				view.RPC("nextTurn", PhotonTargets.Others);
-			}
 			nextTurn ();
 			Debug.Log ("New player is: " + players [playerTurn].getName ());
 			break;
@@ -322,19 +318,9 @@ public class BoardManagerMediator
 				BoardManager.SetupDiscardPanel ();
 			} else {
 				BoardManager.DestroyDiscardArea ();
-				players [playerTurn].RemoveCardsResponse ();
+				players [playerTurn].GetAndRemoveCards ();
 			}
 			break;
-        }
-    }
-
-    public static byte[] Serialize(System.Object obj)
-    {
-        BinaryFormatter bf = new BinaryFormatter();
-        using (var ms = new MemoryStream())
-        {
-            bf.Serialize(ms, obj);
-            return ms.ToArray();
         }
     }
 
@@ -379,7 +365,7 @@ public class BoardManagerMediator
             if (quest.isValidQuest()) {
                 List<Stage> stages = BoardManager.CollectStageCards();
                 if (IsOnlineGame()) {
-                    view.RPC("SponsorQuestComplete", PhotonTargets.Others, Serialize(stages));
+                    view.RPC("SponsorQuestComplete", PhotonTargets.Others, PunManager.Serialize(stages));
                 }
                 quest.SponsorQuestComplete(stages);
             }

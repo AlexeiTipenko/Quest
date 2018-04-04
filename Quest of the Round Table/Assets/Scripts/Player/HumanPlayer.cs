@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 [Serializable]
 public class HumanPlayer : Player {
@@ -15,7 +16,7 @@ public class HumanPlayer : Player {
     public override void DiscardCards(Action invalidAction, Action continueAction)
     {
         board.TransferFromHandToPlayArea(this);
-        RemoveCardsResponse();
+		GetAndRemoveCards ();
         if (hand.Count > 12)
         {
             PromptDiscardCards(invalidAction);
