@@ -7,10 +7,15 @@ public class PunManager : Photon.MonoBehaviour {
 
     BoardManagerMediator board;
 
+	[PunRPC]
+	public void UpdateSeed(int seed) {
+		Deck.seed = seed;
+	}
+
     [PunRPC]
-    public void SwitchScene(string seed, string sceneName)
+    public void SwitchScene(string sceneName)
     {
-        PlayerLayoutGroup.SwitchScene(seed, sceneName);
+        PlayerLayoutGroup.SwitchScene(sceneName);
     }
 
     //-----------------------------------------------------------------------//

@@ -48,4 +48,5 @@ MonoBehaviour:
   - SponsorQuestComplete
   - SwitchScene
   - PromptEnterTournamentResponse
+  - UpdateSeed
   DisableAutoOpenWizard: 1
