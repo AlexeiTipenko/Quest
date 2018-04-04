@@ -180,27 +180,6 @@ public class BoardManagerMediator
         return card;
     }
 
-	//public void dealCardsToPlayer(Player player, int numCardsToDeal) {
- //       Debug.Log("Dealing " + numCardsToDeal + " cards to player: " + player.getName());
-	//	List<Card> cardsToDeal = new List<Card> ();
-	//	for (int i = 0; i < numCardsToDeal; i++) {
-	//		cardsToDeal.Add (adventureDeck.drawCard ());
-	//		if (adventureDeck.getSize () <= 0) {
-	//			adventureDeck = new AdventureDeck (adventureDiscard);
-	//			adventureDiscard.empty ();
-	//		}
-	//	}
-	//	player.dealCards (cardsToDeal);
- //       Logger.getInstance().info("Dealt " + numCardsToDeal + " cards to " + player.getName());
- //       if (player.GetType() == typeof(AIPlayer)) {
- //           Action action = player.getAction();
- //           if (action != null) {
- //               action.Invoke();
- //               player.giveAction(null);
- //           }
- //       }
-	//}
-
     public void setCardInPlay(Card card) {
         cardInPlay = (Story) card;
     }
@@ -305,6 +284,9 @@ public class BoardManagerMediator
 			break;
 		case "nextPlayer":
 			Debug.Log ("Current player is: " + players [playerTurn].getName ());
+			if (IsOnlineGame ()) {
+				view.RPC ("nextTurn", PhotonTargets.Others);
+			}
 			nextTurn ();
 			Debug.Log ("New player is: " + players [playerTurn].getName ());
 			break;
@@ -499,23 +481,17 @@ public class BoardManagerMediator
         Action action1 = () => {
 
             if (IsOnlineGame()) {
-                view.RPC("PromptEnterTournament", PhotonTargets.All, tournament, player, true);
+				view.RPC("PromptEnterTournamentResponse", PhotonTargets.Others, PunManager.Serialize(tournament), true);
             }
-
-            else{
-                tournament.PromptEnterTournamentResponse(true);
-            }
+            tournament.PromptEnterTournamentResponse(true);
         };
 
         Action action2 = () => {
 
             if (IsOnlineGame()) {
-                view.RPC("PromptEnterTournament", PhotonTargets.All, tournament, player, false);
+				view.RPC("PromptEnterTournamentResponse", PhotonTargets.Others, PunManager.Serialize(tournament), false);
             }
-
-            else{
-                tournament.PromptEnterTournamentResponse(false);
-            }
+            tournament.PromptEnterTournamentResponse(false);
         };
 
         BoardManager.SetInteractionButtons("Accept", "Decline", action1, action2);
@@ -530,12 +506,10 @@ public class BoardManagerMediator
         BoardManager.SetInteractionText("PREPARE FOR BATTLE\nPrepare for the tournament using a combination of weapon, ally and amour cards.");
         Action action = () => {
 
-            if (IsOnlineGame())
-                view.RPC("CardsSelectionResponse", PhotonTargets.All, tournament, player);
-
-            else{
-                tournament.CardsSelectionResponse();
-            }
+			if (IsOnlineGame()) {
+				view.RPC("CardsSelectionResponse", PhotonTargets.Others, PunManager.Serialize(tournament));
+			}
+            tournament.CardsSelectionResponse();
         };
 
         BoardManager.SetInteractionButtons("Complete", "", action, null);
@@ -576,7 +550,6 @@ public class BoardManagerMediator
 
     public void PromptCardRemoveSelection(Player player, Action action)
     {
-        //BoardManager.DrawCover(player);////////////////
         BoardManager.DrawCards(player);
         BoardManager.SetInteractionText("TOO MANY CARDS\nPlease discard (or play) cards until you have at most 12.");
         BoardManager.SetInteractionButtons("Complete", "", action, null);

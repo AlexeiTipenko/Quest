@@ -36,6 +36,7 @@ MonoBehaviour:
   - nextTurn
   - PickupItemInit
   - PromptAcceptQuestResponse
+  - PromptNextAcceptQuest
   - PromptNextPlayer
   - PromptSponsorQuestResponse
   - PunPickup
@@ -46,4 +47,5 @@ MonoBehaviour:
   - RequestForPickupTimes
   - SponsorQuestComplete
   - SwitchScene
+  - PromptEnterTournamentResponse
   DisableAutoOpenWizard: 1

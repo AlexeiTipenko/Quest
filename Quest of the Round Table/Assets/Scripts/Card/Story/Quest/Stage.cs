@@ -73,6 +73,7 @@ public class Stage {
 			Debug.Log ("Is foe, going to player");
             Debug.Log("quest sponsor is: " + quest.getSponsor().getName());
             playerToPrompt = board.getNextPlayer(quest.getSponsor());
+            //TODO: this is probably causing an infinite loop
             while (!quest.getPlayers().Contains(playerToPrompt)) {
                 playerToPrompt = board.getNextPlayer(playerToPrompt);
             }
@@ -83,6 +84,7 @@ public class Stage {
 			currentBid = ((Test)stageCard).getMinBidValue() - 1;
 			Debug.Log ("Current bid is: " + currentBid);
             playerToPrompt = board.getNextPlayer(quest.getSponsor());
+            //TODO: this is probably causing an infinite loop
             while (!quest.getPlayers().Contains(playerToPrompt))
             {
                 playerToPrompt = board.getNextPlayer(playerToPrompt);

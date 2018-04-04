@@ -194,8 +194,10 @@ public abstract class Quest : Story {
             action = () => {
                 Action completeAction = () =>
                 {
-                    playerToPrompt = board.getNextPlayer(playerToPrompt);
-                    PromptAcceptQuest();
+                    if (board.IsOnlineGame()) {
+                        board.getPhotonView().RPC("PromptNextAcceptQuest", PhotonTargets.Others);
+                    }
+                    PromptNextAcceptQuest();
                 };
                 playerToPrompt.DiscardCards(action, completeAction);
             };
@@ -206,6 +208,11 @@ public abstract class Quest : Story {
             PromptAcceptQuest();
         }
 	}
+
+    public void PromptNextAcceptQuest() {
+        playerToPrompt = board.getNextPlayer(playerToPrompt);
+        PromptAcceptQuest();
+    }
 
 	public void PlayStage() {
 		currentStage++;

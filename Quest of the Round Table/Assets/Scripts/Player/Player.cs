@@ -226,7 +226,7 @@ public abstract class Player {
 	public void GetAndRemoveCards () {
 		List<Card> chosenCards = board.GetDiscardedCards (this);
 		if (board.IsOnlineGame ()) {
-			board.getPhotonView ().RPC ("RemoveCardsResponse", PhotonTargets.Others, PunManager.Serialize(chosenCards));
+            board.getPhotonView ().RPC ("RemoveCardsResponse", PhotonTargets.Others, PunManager.Serialize(this), PunManager.Serialize(chosenCards));
 		}
 		RemoveCardsResponse(chosenCards);
 	}

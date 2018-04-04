@@ -13,6 +13,10 @@ public class PunManager : Photon.MonoBehaviour {
         PlayerLayoutGroup.SwitchScene(seed, sceneName);
     }
 
+    //-----------------------------------------------------------------------//
+    //--------------------------- Quest Functions ---------------------------//
+    //-----------------------------------------------------------------------//
+
 	//purely for cheating; as next turn usually gets called through another method
 	[PunRPC]
 	public void nextTurn () {
@@ -21,9 +25,11 @@ public class PunManager : Photon.MonoBehaviour {
 	}
 
 	[PunRPC]
-	public void RemoveCardsResponse (List<Card> chosenCards) {
+	public void RemoveCardsResponse (byte[] playerBytes, byte[] chosenCardsBytes) {
 		GetBoard ();
-		board.getCurrentPlayer ().RemoveCardsResponse (chosenCards);
+        List<Card> chosenCards = (List<Card>)Deserialize(chosenCardsBytes);
+        Player player = (Player)Deserialize(playerBytes);
+		player.RemoveCardsResponse (chosenCards);
 	}
 
 	[PunRPC]
@@ -34,6 +40,7 @@ public class PunManager : Photon.MonoBehaviour {
 
 	[PunRPC]
 	public void PromptNextPlayer() {
+        GetBoard();
 		((Tournament)board.getCardInPlay()).PromptNextPlayer();
 	}
 
@@ -57,20 +64,48 @@ public class PunManager : Photon.MonoBehaviour {
     }
 
     [PunRPC]
-    public void PromptAcceptQuestResponse() {
+    public void PromptAcceptQuestResponse(bool questAccepted) {
         GetBoard();
-        ((Quest)board.getCardInPlay()).IncrementSponsor();
+        ((Quest)board.getCardInPlay()).PromptAcceptQuestResponse(questAccepted);
     }
 
-	public static byte[] Serialize(System.Object obj)
+    [PunRPC]
+    public void PromptNextAcceptQuest() {
+        GetBoard();
+        ((Quest)board.getCardInPlay()).PromptNextAcceptQuest();
+    }
+
+    //------------------------------------------------------------------------//
+    //------------------------- Tournament Functions -------------------------//
+    //------------------------------------------------------------------------//
+
+    [PunRPC]
+    public void CardsSelectionResponse(Tournament tournament)
+    {
+		GetBoard ();
+        tournament.CardsSelectionResponse();
+    }
+
+	[PunRPC]
+	public void PromptEnterTournamentResponse(Tournament tournament, bool entered)
 	{
-		BinaryFormatter bf = new BinaryFormatter();
-		using (var ms = new MemoryStream())
-		{
-			bf.Serialize(ms, obj);
-			return ms.ToArray();
-		}
+		GetBoard ();
+		tournament.PromptEnterTournamentResponse(entered);
 	}
+
+    void GetBoard(){
+        board = BoardManagerMediator.getInstance();
+    }
+
+    public static byte[] Serialize(System.Object obj)
+    {
+        BinaryFormatter bf = new BinaryFormatter();
+        using (var ms = new MemoryStream())
+        {
+            bf.Serialize(ms, obj);
+            return ms.ToArray();
+        }
+    }
 
     public static System.Object Deserialize(byte[] arrBytes)
     {
@@ -84,21 +119,4 @@ public class PunManager : Photon.MonoBehaviour {
         }
     }
 
-    [PunRPC]
-    public void CardsSelectionResponse(Tournament tournament, Player player)
-    {
-        BoardManager.DrawCover(player);
-        tournament.CardsSelectionResponse();
-    }
-
-    void GetBoard(){
-        board = BoardManagerMediator.getInstance();
-    }
-
 }
-
-//public void PromptEnterTournament(Tournament tournament, Player player, bool entered)
-//{
-//    BoardManager.DrawCover(player);
-//    tournament.PromptEnterTournamentResponse(entered);
-//}
