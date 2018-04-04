@@ -176,27 +176,6 @@ public class BoardManagerMediator
         return card;
     }
 
-	//public void dealCardsToPlayer(Player player, int numCardsToDeal) {
- //       Debug.Log("Dealing " + numCardsToDeal + " cards to player: " + player.getName());
-	//	List<Card> cardsToDeal = new List<Card> ();
-	//	for (int i = 0; i < numCardsToDeal; i++) {
-	//		cardsToDeal.Add (adventureDeck.drawCard ());
-	//		if (adventureDeck.getSize () <= 0) {
-	//			adventureDeck = new AdventureDeck (adventureDiscard);
-	//			adventureDiscard.empty ();
-	//		}
-	//	}
-	//	player.dealCards (cardsToDeal);
- //       Logger.getInstance().info("Dealt " + numCardsToDeal + " cards to " + player.getName());
- //       if (player.GetType() == typeof(AIPlayer)) {
- //           Action action = player.getAction();
- //           if (action != null) {
- //               action.Invoke();
- //               player.giveAction(null);
- //           }
- //       }
-	//}
-
     public void setCardInPlay(Card card) {
         cardInPlay = (Story) card;
     }
@@ -574,7 +553,6 @@ public class BoardManagerMediator
 
     public void PromptCardRemoveSelection(Player player, Action action)
     {
-        //BoardManager.DrawCover(player);////////////////
         BoardManager.DrawCards(player);
         BoardManager.SetInteractionText("TOO MANY CARDS\nPlease discard (or play) cards until you have at most 12.");
         BoardManager.SetInteractionButtons("Complete", "", action, null);

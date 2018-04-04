@@ -261,10 +261,10 @@ public class BoardManager : MonoBehaviour
 
 
     public static void DrawCover(Player player) {
+        BoardManagerMediator board = BoardManagerMediator.getInstance();
         HideCover();
-        if (player != previousPlayer || isFreshTurn || BoardManagerMediator.getInstance().IsOnlineGame()) {
+        if (player != previousPlayer || isFreshTurn || board.IsOnlineGame()) {
             isFreshTurn = false;
-            BoardManagerMediator board = BoardManagerMediator.getInstance();
             if (board.IsOnlineGame()){
                 List<Player> players = board.getPlayers();
                 int playerTurn = players.IndexOf(player) + 1;
@@ -276,9 +276,6 @@ public class BoardManager : MonoBehaviour
                 {
                     Logger.getInstance().info("PLAYER PHOTON ID AND TURN IS MATCHING");
                     Debug.Log("Player photon id and turn is matching");
-                    //coverInteractionText.GetComponent<Text>().text = "NEXT PLAYER: " + player.getName().ToUpper() + "\nPress continue when you are ready.";
-                    //coverInteractionButton.GetComponent<Button>().onClick.AddListener(new UnityAction(HideCover));
-                    //coverInteractionButtonText.GetComponent<Text>().text = "Continue";
                     coverCanvas.SetActive(false);
                 }
                 else {
@@ -286,7 +283,7 @@ public class BoardManager : MonoBehaviour
                     coverCanvas.SetActive(true);
                 }
             }
-            else{
+            else {
                 Debug.Log("draw cover not online");
                 coverInteractionText.GetComponent<Text>().text = "NEXT PLAYER: " + player.getName().ToUpper() + "\nPress continue when you are ready.";
                 coverInteractionButton.GetComponent<Button>().onClick.AddListener(new UnityAction(HideCover));

@@ -13,6 +13,10 @@ public class PunManager : Photon.MonoBehaviour {
         PlayerLayoutGroup.SwitchScene(seed, sceneName);
     }
 
+    //-----------------------------------------------------------------------//
+    //--------------------------- Quest Functions ---------------------------//
+    //-----------------------------------------------------------------------//
+
     [PunRPC]
     public void PromptSponsorQuestResponse(bool sponsorAccepted) {
         GetBoard();
@@ -33,9 +37,9 @@ public class PunManager : Photon.MonoBehaviour {
     }
 
     [PunRPC]
-    public void PromptAcceptQuestResponse() {
+    public void PromptAcceptQuestResponse(bool questAccepted) {
         GetBoard();
-        ((Quest)board.getCardInPlay()).IncrementSponsor();
+        ((Quest)board.getCardInPlay()).PromptAcceptQuestResponse(questAccepted);
     }
 
     System.Object Deserialize(byte[] arrBytes)
@@ -49,6 +53,10 @@ public class PunManager : Photon.MonoBehaviour {
             return obj;
         }
     }
+
+    //------------------------------------------------------------------------//
+    //------------------------- Tournament Functions -------------------------//
+    //------------------------------------------------------------------------//
 
     [PunRPC]
     public void CardsSelectionResponse(Tournament tournament, Player player)
