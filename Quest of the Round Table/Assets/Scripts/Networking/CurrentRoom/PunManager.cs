@@ -33,8 +33,14 @@ public class PunManager : Photon.MonoBehaviour {
 	public void RemoveCardsResponse (byte[] playerBytes, byte[] chosenCardsBytes) {
 		GetBoard ();
         List<Card> chosenCards = (List<Card>)Deserialize(chosenCardsBytes);
-        Player player = (Player)Deserialize(playerBytes);
-		player.RemoveCardsResponse (chosenCards);
+        Player tempPlayer = (Player)Deserialize(playerBytes);
+		List<Player> players = board.getPlayers ();
+		foreach (Player player in players) {
+			if (tempPlayer.getName () == player.getName ()) {
+				player.RemoveCardsResponse (chosenCards);
+				break;
+			}
+		}
 	}
 
 	[PunRPC]
