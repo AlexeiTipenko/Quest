@@ -27,19 +27,19 @@ MonoBehaviour:
   NetworkLogging: 1
   RunInBackground: 1
   RpcList:
+  - CardsSelectionResponse
   - Chat
   - DestroyRpc
+  - IncrementSponsor
   - InstantiateRpc
   - PickupItemInit
+  - PromptAcceptQuestResponse
+  - PromptSponsorQuestResponse
   - PunPickup
   - PunPickupSimple
   - PunRespawn
   - RequestForPickupItems
   - RequestForPickupTimes
-  - SwitchScene
-  - PlayTurn
-  - PromptSponsorQuestResponse
-  - IncrementSponsor
-  - PromptAcceptQuestResponse
   - SponsorQuestComplete
+  - SwitchScene
   DisableAutoOpenWizard: 1
