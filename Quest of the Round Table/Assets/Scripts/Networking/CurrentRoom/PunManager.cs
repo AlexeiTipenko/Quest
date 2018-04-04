@@ -34,13 +34,16 @@ public class PunManager : Photon.MonoBehaviour {
 		GetBoard ();
         List<Card> chosenCards = (List<Card>)Deserialize(chosenCardsBytes);
         Player tempPlayer = (Player)Deserialize(playerBytes);
+		Logger.getInstance ().info ("Received player: " + tempPlayer.getName());
 		List<Player> players = board.getPlayers ();
 		foreach (Player player in players) {
 			if (tempPlayer.getName () == player.getName ()) {
+				Logger.getInstance ().info ("Found matching name");
 				player.RemoveCardsResponse (chosenCards);
 				break;
 			}
 		}
+		Logger.getInstance ().info ("Completed RemoveCardsResponse");
 	}
 
 	[PunRPC]
