@@ -38,4 +38,5 @@ MonoBehaviour:
   - RequestForPickupTimes
   - SwitchScene
   - PlayTurn
+  - DiscardCard
   DisableAutoOpenWizard: 1

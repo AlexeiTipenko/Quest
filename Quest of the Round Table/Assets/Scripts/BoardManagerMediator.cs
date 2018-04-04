@@ -208,7 +208,6 @@ public class BoardManagerMediator
         }
     }
 
-
     public bool IsOnlineGame(){
 
         if (GameObject.Find("DDOL/PunManager") == null)
@@ -299,6 +298,15 @@ public class BoardManagerMediator
 			Debug.Log ("Current player is: " + players [playerTurn].getName ());
 			nextTurn ();
 			Debug.Log ("New player is: " + players [playerTurn].getName ());
+			break;
+		case "discardArea":
+			Debug.Log ("CHEAT: Setting up discard area");
+			GameObject discardArea = GameObject.Find ("Canvas/TabletopImage/DiscardArea");
+			if (discardArea == null) {
+				BoardManager.SetupDiscardPanel ();
+			} else {
+				BoardManager.DestroyDiscardArea ();
+			}
 			break;
         }
     }
