@@ -9,6 +9,7 @@ public class PunManager : Photon.MonoBehaviour {
 
 	[PunRPC]
 	public void UpdateSeed(int seed) {
+        Debug.Log("Updated seed is: " + seed);
 		Deck.seed = seed;
 	}
 
