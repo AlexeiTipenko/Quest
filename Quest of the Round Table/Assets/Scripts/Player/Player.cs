@@ -213,7 +213,7 @@ public abstract class Player {
     public void RemoveCardsResponse()
     {
         List<Card> chosenCards = board.GetDiscardedCards(this);
-        if (chosenCards.Count > 0) {
+		if (chosenCards.Count > 0) {
             foreach (Card card in chosenCards) {
                 RemoveCard(card);
             }

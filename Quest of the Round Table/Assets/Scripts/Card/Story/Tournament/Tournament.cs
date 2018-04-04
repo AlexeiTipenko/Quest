@@ -50,7 +50,14 @@ public abstract class Tournament : Story
             participatingPlayers.Add(playerToPrompt);
 
             action = () => {
-                Action completeAction = PromptNextPlayer;
+				Action completeAction = () => {
+					Logger.getInstance ().debug ("In Tournament PromptEnterTournamentResponse(), about to RPC promptNextPlayer");
+					Debug.Log("In Tournament PromptEnterTournamentResponse(), about to RPC promptNextPlayer");
+					if (board.IsOnlineGame()) {
+						board.getPhotonView().RPC("PromptNextPlayer", PhotonTargets.Others);
+					}
+					PromptNextPlayer();
+				};
                 playerToPrompt.DiscardCards(action, completeAction);
             };
             playerToPrompt.DrawCards(1, action);

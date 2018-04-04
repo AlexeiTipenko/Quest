@@ -1,3 +1,4 @@
+using UnityEngine;
 using System.Collections.Generic;
 using System;
 
@@ -47,7 +48,14 @@ public class QueensFavor : Events {
     private void DealCards()
     {
         action = () => {
-            Action completeAction = DealCardsNextPlayer;
+			Action completeAction = () => {
+				Logger.getInstance ().debug ("In QueensFavor DealCards(), about to RPC DealCardsNextPlayer");
+				Debug.Log("In QueensFavor DealCards(), about to RPC DealCardsNextPlayer");
+				if (board.IsOnlineGame()) {
+					board.getPhotonView().RPC("DealCardsNextPlayer", PhotonTargets.Others);
+				}
+				DealCardsNextPlayer();
+			};
             playerToPrompt.DiscardCards(action, completeAction);
         };
 

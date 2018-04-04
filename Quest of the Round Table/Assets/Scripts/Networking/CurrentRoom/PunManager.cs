@@ -14,8 +14,22 @@ public class PunManager : Photon.MonoBehaviour {
         PlayerLayoutGroup.SwitchScene(seed, sceneName);
     }
 
-	public void DiscardCard() {
+	//purely for cheating; as next turn usually gets called through another method
+	[PunRPC]
+	public void nextTurn () {
+		GetBoard ();
+		board.nextTurn ();
+	}
 
+	[PunRPC]
+	public void DealCardsNextPlayer() {
+		GetBoard ();
+		((Quest)board.getCardInPlay()).getCurrentStage().DealCardsNextPlayer();
+	}
+
+	[PunRPC]
+	public void PromptNextPlayer() {
+		((Tournament)board.getCardInPlay()).PromptNextPlayer();
 	}
 
     [PunRPC]

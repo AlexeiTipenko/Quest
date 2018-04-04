@@ -32,6 +32,10 @@ public class BoardManagerMediator
 		return instance;
 	}
 
+	public PhotonView getPhotonView() {
+		return view;
+	}
+
     public int GetPlayerTurn(){
         return ((playerTurn + players.Count) % players.Count) + 1;
     }
@@ -302,6 +306,9 @@ public class BoardManagerMediator
 			break;
 		case "nextPlayer":
 			Debug.Log ("Current player is: " + players [playerTurn].getName ());
+			if (IsOnlineGame()) {
+				view.RPC("nextTurn", PhotonTargets.Others);
+			}
 			nextTurn ();
 			Debug.Log ("New player is: " + players [playerTurn].getName ());
 			break;
@@ -312,6 +319,7 @@ public class BoardManagerMediator
 				BoardManager.SetupDiscardPanel ();
 			} else {
 				BoardManager.DestroyDiscardArea ();
+				players [playerTurn].RemoveCardsResponse ();
 			}
 			break;
         }
@@ -537,7 +545,7 @@ public class BoardManagerMediator
 		BoardManager.DrawCards(player);
 		BoardManager.SetInteractionText("Please discard " + numFoes +  " Foes.");
         BoardManager.SetupDiscardPanel();
-		Action action = () => {		
+		Action action = () => {
 			((KingsCallToArms)cardInPlay).PlayerDiscardedFoes();
 		};
 		BoardManager.SetInteractionButtons("Complete", "", action, null);

@@ -243,6 +243,11 @@ public abstract class Quest : Story {
 
                 else
                 {
+					Logger.getInstance ().debug ("In Quest CompleteQuest(), about to RPC nextTurn");
+					Debug.Log("In Quest CompleteQuest(), about to RPC nextTurn");
+					if (board.IsOnlineGame()) {
+						board.getPhotonView().RPC("nextTurn", PhotonTargets.Others);
+					}
                     board.nextTurn();
                 }
             };

@@ -248,7 +248,14 @@ public class Stage {
 
     public void DealCards() {
         action = () => {
-            Action completeAction = DealCardsNextPlayer;
+			Action completeAction = () => {
+				if (board.IsOnlineGame()) {
+					Logger.getInstance ().debug ("In Stage DealCards(), about to RPC DealCardsNextPlayer");
+					Debug.Log("In Stage DealCards(), about to RPC DealCardsNextPlayer");
+					board.getPhotonView().RPC("DealCardsNextPlayer", PhotonTargets.Others);
+				}				
+				DealCardsNextPlayer();
+			};
             playerToPrompt.DiscardCards(action, completeAction);
         };
         playerToPrompt.DrawCards(1, action);
