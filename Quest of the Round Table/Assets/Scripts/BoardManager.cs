@@ -262,7 +262,7 @@ public class BoardManager : MonoBehaviour
 
     public static void DrawCover(Player player) {
         HideCover();
-        if (player != previousPlayer || isFreshTurn) {
+        if (player != previousPlayer || isFreshTurn || BoardManagerMediator.getInstance().IsOnlineGame()) {
             isFreshTurn = false;
             BoardManagerMediator board = BoardManagerMediator.getInstance();
             if (BoardManagerMediator.getInstance().IsOnlineGame()){

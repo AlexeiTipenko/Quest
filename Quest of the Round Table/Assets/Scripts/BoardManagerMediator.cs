@@ -12,11 +12,20 @@ public class BoardManagerMediator
 	DiscardDeck adventureDiscard, storyDiscard;
 	Story cardInPlay;
 	int playerTurn;
+    public PhotonView view;
 
 
 	public GameObject cardPrefab;
 	public GameObject board;
 	public List<CardUI> cards = new List<CardUI>();
+
+
+    public BoardManagerMediator(){
+        
+        if (IsOnlineGame()){
+            view = PhotonView.Get(GameObject.Find("DDOL/PunManager"));
+        }
+    }
 
 
 	public static BoardManagerMediator getInstance() {
@@ -459,11 +468,27 @@ public class BoardManagerMediator
         BoardManager.DrawCards(player);
         BoardManager.SetInteractionText("NEW TOURNAMENT DRAWN\nWould you like to enter this tournament?");
         Action action1 = () => {
-            tournament.PromptEnterTournamentResponse(true);
+
+            if (IsOnlineGame()) {
+                view.RPC("PromptEnterTournament", PhotonTargets.All, tournament, player, true);
+            }
+
+            else{
+                tournament.PromptEnterTournamentResponse(true);
+            }
         };
+
         Action action2 = () => {
-            tournament.PromptEnterTournamentResponse(false);
+
+            if (IsOnlineGame()) {
+                view.RPC("PromptEnterTournament", PhotonTargets.All, tournament, player, false);
+            }
+
+            else{
+                tournament.PromptEnterTournamentResponse(false);
+            }
         };
+
         BoardManager.SetInteractionButtons("Accept", "Decline", action1, action2);
         Debug.Log("Prompting " + player.getName() + " to enter tournament.");
         Logger.getInstance().info("Prompted " + player.getName() + " to enter tournament.");  
@@ -475,8 +500,15 @@ public class BoardManagerMediator
         BoardManager.DrawCards(player);
         BoardManager.SetInteractionText("PREPARE FOR BATTLE\nPrepare for the tournament using a combination of weapon, ally and amour cards.");
         Action action = () => {
-            tournament.CardsSelectionResponse();
+
+            if (IsOnlineGame())
+                view.RPC("CardsSelectionResponse", PhotonTargets.All, tournament, player);
+
+            else{
+                tournament.CardsSelectionResponse();
+            }
         };
+
         BoardManager.SetInteractionButtons("Complete", "", action, null);
         Debug.Log("Prompting " + player.getName() + " to prepare cards.");
         Logger.getInstance().info("Prompted " + player.getName() + " to prepare cards.");
@@ -515,6 +547,7 @@ public class BoardManagerMediator
 
     public void PromptCardRemoveSelection(Player player, Action action)
     {
+        //BoardManager.DrawCover(player);////////////////
         BoardManager.DrawCards(player);
         BoardManager.SetInteractionText("TOO MANY CARDS\nPlease discard (or play) cards until you have at most 12.");
         BoardManager.SetInteractionButtons("Complete", "", action, null);

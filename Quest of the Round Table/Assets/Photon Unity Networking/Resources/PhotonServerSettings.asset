@@ -38,4 +38,6 @@ MonoBehaviour:
   - RequestForPickupTimes
   - SwitchScene
   - PlayTurn
+  - CardsSelectionResponse
+  - PromptEnterTournament
   DisableAutoOpenWizard: 1
