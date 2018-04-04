@@ -84,7 +84,21 @@ public class PunManager : Photon.MonoBehaviour {
         }
     }
 
-    void GetBoard() {
+    [PunRPC]
+    public void CardsSelectionResponse(Tournament tournament, Player player)
+    {
+        BoardManager.DrawCover(player);
+        tournament.CardsSelectionResponse();
+    }
+
+    void GetBoard(){
         board = BoardManagerMediator.getInstance();
     }
+
 }
+
+//public void PromptEnterTournament(Tournament tournament, Player player, bool entered)
+//{
+//    BoardManager.DrawCover(player);
+//    tournament.PromptEnterTournamentResponse(entered);
+//}

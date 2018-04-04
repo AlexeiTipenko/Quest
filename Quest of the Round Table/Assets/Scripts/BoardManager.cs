@@ -253,18 +253,17 @@ public class BoardManager : MonoBehaviour
 
     public static void DrawCover(Player player) {
         HideCover();
-        if (player != previousPlayer || isFreshTurn) {
+        if (player != previousPlayer || isFreshTurn || BoardManagerMediator.getInstance().IsOnlineGame()) {
             isFreshTurn = false;
             BoardManagerMediator board = BoardManagerMediator.getInstance();
             if (board.IsOnlineGame()){
                 List<Player> players = board.getPlayers();
-                Debug.Log("draw cover online");
-                //if (player.getName() == players[BoardManagerMediator.getInstance().GetPlayerTurn()].getName())
-                Logger.getInstance().info("Player id: " + PhotonNetwork.player.ID);
+                int playerTurn = players.IndexOf(player) + 1;
+                Logger.getInstance().info("Local player id: " + PhotonNetwork.player.ID);
+                Logger.getInstance().info("Drawing for player (+ 1): " + playerTurn);
                 Debug.Log("Player id: " + PhotonNetwork.player.ID);
-                Debug.Log("player turn: " + board.GetPlayerTurn());
-
-                if (board.GetPlayerTurn() == PhotonNetwork.player.ID)
+                Debug.Log("player turn: " + playerTurn);
+                if (playerTurn == PhotonNetwork.player.ID)
                 {
                     Logger.getInstance().info("PLAYER PHOTON ID AND TURN IS MATCHING");
                     Debug.Log("Player photon id and turn is matching");
@@ -344,7 +343,6 @@ public class BoardManager : MonoBehaviour
     public static void DestroyMordredButton()
     {
         GameObject mordredButton = GameObject.Find("Canvas/TabletopImage/MordredButton");
-        Debug.Log(mordredButton);
         Destroy(mordredButton);
     }
 

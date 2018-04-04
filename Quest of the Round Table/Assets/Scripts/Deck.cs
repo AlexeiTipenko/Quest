@@ -21,9 +21,6 @@ public abstract class Deck {
                 rand = new System.Random(seed);   
             }
 		}
-        for (int i = 0; i < 10; i++) {
-            Debug.Log(rand.Next(0, 10));
-        }
 		cards = new List<Card> ();
         reservedIndices = new List<int>();
 	}
