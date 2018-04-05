@@ -85,11 +85,16 @@ public class BoardManagerMediator
 	public Player getNextPlayer(Player previousPlayer) {
         Debug.Log("Previous player is: " + previousPlayer.getName());
         Logger.getInstance().info("Previous player is: " + previousPlayer.getName());
-		int index = players.IndexOf (previousPlayer);
+		int index = -1;
+		for (int i = 0; i < players.Count; i++) {
+			if (players [i].getName () == previousPlayer.getName ()) {
+				index = (i + 1) % players.Count;
+			}
+		}
 		if (index != -1) {
-            Debug.Log("returning player");
-            Logger.getInstance().info("Returning player in get next player");
-			return players [(index + 1) % players.Count];
+			Debug.Log("returning player");
+			Logger.getInstance().info("Returning player in get next player");
+			return players [index];
 		}
 		return null;
 	}
