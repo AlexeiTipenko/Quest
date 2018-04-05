@@ -326,12 +326,14 @@ public class BoardManagerMediator
         BoardManager.SetInteractionText("NEW QUEST DRAWN\nWould you like to sponsor this quest?");
 		Debug.Log ("The card in play is " + cardInPlay.cardImageName);
         Action action1 = () => {
+			Debug.Log("Action1 for player: " + player.getName());
             if (IsOnlineGame()) {
                 view.RPC("PromptSponsorQuestResponse", PhotonTargets.Others, true);
             }
             quest.PromptSponsorQuestResponse(true);
         };
         Action action2 = () => {
+			Debug.Log("Action2 for player: " + player.getName());
             if (IsOnlineGame()) {
                 view.RPC("PromptSponsorQuestResponse", PhotonTargets.Others, false);
             }
