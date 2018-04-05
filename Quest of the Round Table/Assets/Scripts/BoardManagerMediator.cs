@@ -262,6 +262,7 @@ public class BoardManagerMediator
         AddToDiscardDeck(cardInPlay);
         cardInPlay = null;
         playerTurn = (playerTurn + 1) % players.Count;
+		Debug.Log ("Going to next turn for player " + players[playerTurn] );
         playTurn();
     }
 
@@ -493,8 +494,12 @@ public class BoardManagerMediator
         Action action1 = () => {
 
             if (IsOnlineGame()) {
+<<<<<<< HEAD
 				//view.RPC("PromptEnterTournamentResponse", PhotonTargets.Others, PunManager.Serialize(tournament), true);
                 view.RPC("PromptEnterTournamentResponse", PhotonTargets.Others, true);
+=======
+				view.RPC("PromptEnterTournamentResponse", PhotonTargets.Others, true);
+>>>>>>> NetworkDiscardCards
             }
             tournament.PromptEnterTournamentResponse(true);
 
@@ -503,8 +508,12 @@ public class BoardManagerMediator
         Action action2 = () => {
 
             if (IsOnlineGame()) {
+<<<<<<< HEAD
 				//view.RPC("PromptEnterTournamentResponse", PhotonTargets.Others, PunManager.Serialize(tournament), false);
                 view.RPC("PromptEnterTournamentResponse", PhotonTargets.Others, false);
+=======
+				view.RPC("PromptEnterTournamentResponse", PhotonTargets.Others, false);
+>>>>>>> NetworkDiscardCards
             }
             tournament.PromptEnterTournamentResponse(false);
         };
@@ -522,8 +531,12 @@ public class BoardManagerMediator
         Action action = () => {
 
 			if (IsOnlineGame()) {
+<<<<<<< HEAD
 				//view.RPC("CardsSelectionResponse", PhotonTargets.Others, PunManager.Serialize(tournament));
                 view.RPC("CardsSelectionResponse", PhotonTargets.Others);
+=======
+				view.RPC("CardsSelectionResponse", PhotonTargets.Others);
+>>>>>>> NetworkDiscardCards
 			}
             tournament.CardsSelectionResponse();
         };

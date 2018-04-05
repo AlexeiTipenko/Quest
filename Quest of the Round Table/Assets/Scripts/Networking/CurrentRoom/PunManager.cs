@@ -110,13 +110,11 @@ public class PunManager : Photon.MonoBehaviour {
         //    }
         //}
         ((Quest)board.getCardInPlay()).PromptNextAcceptQuest();
-
     }
 
     //------------------------------------------------------------------------//
     //------------------------- Tournament Functions -------------------------//
     //------------------------------------------------------------------------//
-
 
     [PunRPC]
     public void CardsSelectionResponse()
@@ -127,9 +125,10 @@ public class PunManager : Photon.MonoBehaviour {
 
     /*
 	[PunRPC]
-	public void PromptEnterTournamentResponse(Tournament tournament, bool entered)
+	public void PromptEnterTournamentResponse(bool entered)
 	{
 		GetBoard ();
+<<<<<<< HEAD
 		tournament.PromptEnterTournamentResponse(entered);
 	}
 	*/
