@@ -49,4 +49,5 @@ MonoBehaviour:
   - SwitchScene
   - PromptEnterTournamentResponse
   - UpdateSeed
+  - SwitchScene1
   DisableAutoOpenWizard: 1

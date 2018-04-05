@@ -20,6 +20,11 @@ public class PunManager : Photon.MonoBehaviour {
         PlayerLayoutGroup.SwitchScene(sceneName);
     }
 
+    [PunRPC]
+    public void SwitchScene1(string sceneName){
+        PlayerLayoutGroup.SwitchScene1(sceneName);
+    }
+
     //-----------------------------------------------------------------------//
     //--------------------------- Quest Functions ---------------------------//
     //-----------------------------------------------------------------------//
