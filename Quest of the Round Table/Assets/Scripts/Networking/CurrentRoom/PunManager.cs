@@ -38,12 +38,6 @@ public class PunManager : Photon.MonoBehaviour {
 		((Quest)board.getCardInPlay()).getCurrentStage().DealCardsNextPlayer();
 	}
 
-	[PunRPC]
-	public void PromptNextPlayer() {
-        GetBoard();
-		((Tournament)board.getCardInPlay()).PromptNextPlayer();
-	}
-
     [PunRPC]
     public void PromptSponsorQuestResponse(bool sponsorAccepted) {
         GetBoard();
@@ -80,17 +74,24 @@ public class PunManager : Photon.MonoBehaviour {
     //------------------------------------------------------------------------//
 
     [PunRPC]
-    public void CardsSelectionResponse(Tournament tournament)
+    public void CardsSelectionResponse()
     {
 		GetBoard ();
-        tournament.CardsSelectionResponse();
+		((Tournament)board.getCardInPlay()).CardsSelectionResponse();
     }
 
 	[PunRPC]
-	public void PromptEnterTournamentResponse(Tournament tournament, bool entered)
+	public void PromptEnterTournamentResponse(bool entered)
 	{
 		GetBoard ();
-		tournament.PromptEnterTournamentResponse(entered);
+		Debug.Log ("board.getCardInPlay is " + board.getCardInPlay ().getCardName ());
+		((Tournament)board.getCardInPlay()).PromptEnterTournamentResponse(entered);
+	}
+
+	[PunRPC]
+	public void PromptNextPlayer() {
+		GetBoard();
+		((Tournament)board.getCardInPlay()).PromptNextPlayer();
 	}
 
     void GetBoard(){

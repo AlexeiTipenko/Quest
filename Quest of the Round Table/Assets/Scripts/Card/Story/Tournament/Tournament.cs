@@ -65,6 +65,7 @@ public abstract class Tournament : Story
             playerToPrompt.DrawCards(1, action);
         }
         else {
+			Debug.Log ("Prompting next player...");
             PromptNextPlayer();
         }
     }
@@ -74,11 +75,12 @@ public abstract class Tournament : Story
 
         playerToPrompt = board.getNextPlayer(playerToPrompt);
 
-        if (playerToPrompt != owner)
-            playerToPrompt.PromptEnterTournament(this);
-
-        else
-            NumParticipantsAction();
+		if (playerToPrompt != owner) {
+			playerToPrompt.PromptEnterTournament (this);
+		} else {
+			Debug.Log ("NumParticipantsAction...");
+			NumParticipantsAction ();
+		}
     }
 
 
