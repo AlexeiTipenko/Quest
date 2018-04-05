@@ -223,7 +223,6 @@ public abstract class Quest : Story {
             player.getPlayArea().discardWeapons();
         }
         if (currentStage < numStages && participatingPlayers.Count > 0) {
-			Debug.Log("Current sponsor is: " + sponsor.getName());
             getStage(currentStage).Prepare();
 		} else {
 			CompleteQuest ();
