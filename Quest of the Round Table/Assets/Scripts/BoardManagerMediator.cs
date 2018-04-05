@@ -420,10 +420,16 @@ public class BoardManagerMediator
             Debug.Log("Did not dropout");
             TransferFromHandToPlayArea(player);
             Debug.Log("Total battle points in play area is: " + player.getPlayArea().getBattlePoints());
+			if (IsOnlineGame()) {
+				board.GetPhotonView().RPC("PromptFoeResponse", PhotonTargets.Others, false);
+			}
             ((Quest)cardInPlay).getStage(stage.getStageNum()).PromptFoeResponse(false);
 		};
         Action action2 = () => {
             Debug.Log("Dropped out");
+			if (IsOnlineGame()) {
+				board.GetPhotonView().RPC("PromptFoeResponse", PhotonTargets.Others, true);
+			}
             ((Quest)cardInPlay).getStage(stage.getStageNum()).PromptFoeResponse(true);
         };
 
