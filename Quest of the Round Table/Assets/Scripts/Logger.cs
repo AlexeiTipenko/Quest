@@ -84,7 +84,6 @@ public class Logger {
 				logFolderPath = Directory.GetCurrentDirectory() + "/Logs";
 				logFilePath = logFolderPath + "/BuildLog.txt"; 
 			}
-			Debug.Log (logFolderPath);
 			try {
 				File.AppendAllText (logFilePath, n);
 			} catch (Exception) {
