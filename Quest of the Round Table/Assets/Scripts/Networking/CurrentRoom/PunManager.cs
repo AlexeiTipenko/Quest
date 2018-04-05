@@ -36,6 +36,7 @@ public class PunManager : Photon.MonoBehaviour {
 			foreach (Card localCard in localHand) {
 				if (localCard.getCardName () == card.getCardName ()) {
 					BoardManager.TransferCards (localPlayer, localCard);
+					break;
 				}
 			}
 		}
