@@ -116,6 +116,14 @@ public class PunManager : Photon.MonoBehaviour {
 		Quest quest = (Quest)board.getCardInPlay ();
 		quest.getCurrentStage ().PromptFoeResponse (dropOut);
 	}
+		
+	[PunRPC]
+	public void PromptEnterTest(byte[] playerBytes, int currentBid) {
+		PrepareRPC ();
+		Player tempPlayer = Deserialize (playerBytes);
+		Player localPlayer = FindLocalPlayer (tempPlayer);
+		board.PromptEnterTest ((Quest)board.getCardInPlay (), localPlayer, currentBid);
+	}
 
     [PunRPC]
     public void PromptTestResponse(bool dropOut, int interactionBid){

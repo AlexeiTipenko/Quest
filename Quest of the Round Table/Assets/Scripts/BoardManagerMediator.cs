@@ -421,7 +421,11 @@ public class BoardManagerMediator
             TransferFromHandToPlayArea(player);
             Debug.Log("Total battle points in play area is: " + player.getPlayArea().getBattlePoints());
 			if (IsOnlineGame()) {
+<<<<<<< HEAD
                 getPhotonView().RPC("PromptFoeResponse", PhotonTargets.Others, false);
+=======
+				getPhotonView().RPC("PromptFoeResponse", PhotonTargets.Others, false);
+>>>>>>> 5d0fd66c51cf5e14cbfbd03177a76eaca26af68b
 			}
             ((Quest)cardInPlay).getStage(stage.getStageNum()).PromptFoeResponse(false);
 		};
@@ -452,24 +456,21 @@ public class BoardManagerMediator
             Int32.TryParse(BoardManager.GetInteractionBid(), out InteractionBid);
             if (InteractionBid > player.getTotalAvailableBids()) {
                 Debug.Log("Trying to bid more than they have");
-                if(IsOnlineGame()){
-                    view.RPC("PromptEnterTest", PhotonTargets.Others, PunManager.Serialize(player), currentBid);
-                }
+				if (IsOnlineGame()) {
+					view.RPC("PromptEnterTest", PhotonTargets.Others, PunManager.Serialize(player), currentBid);
+				}
                 PromptEnterTest(quest, player, currentBid);
             }
             else if (InteractionBid <= currentBid) {
-                if (IsOnlineGame())
-                {
-                    view.RPC("PromptEnterTest", PhotonTargets.Others, PunManager.Serialize(player), currentBid);
-                }
+				if (IsOnlineGame()) {
+					view.RPC("PromptEnterTest", PhotonTargets.Others, PunManager.Serialize(player), currentBid);
+				}
                 PromptEnterTest(quest, player, currentBid);
             }
-
-            else{
-                if (IsOnlineGame())
-                {
-                    view.RPC("PromptTestResponse", PhotonTargets.Others, false, InteractionBid);
-                }
+            else {
+				if (IsOnlineGame()) {
+					view.RPC("PromptTestResponse", PhotonTargets.Others, false, InteractionBid);
+				}
                 stage.PromptTestResponse(false, InteractionBid);
             }
         };
