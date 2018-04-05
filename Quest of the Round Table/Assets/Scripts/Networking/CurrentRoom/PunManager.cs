@@ -69,7 +69,17 @@ public class PunManager : Photon.MonoBehaviour {
     public void SponsorQuestComplete(byte[] stagesBytes) {
         GetBoard();
         List<Stage> stages = (List<Stage>)Deserialize(stagesBytes);
-        ((Quest)board.getCardInPlay()).SponsorQuestComplete(stages);
+        List<Player> players = board.getPlayers();
+        Player sponsorPlayer = ((Quest)board.getCardInPlay()).getSponsor();
+        foreach(Player player in players){
+            if(player.getName() == sponsorPlayer.getName()){
+                Debug.Log("Found sponsor " + sponsorPlayer.getName());
+                Logger.getInstance().info("Found sponsor " + player.getName());
+                ((Quest)board.getCardInPlay()).SponsorQuestComplete(stages);
+                break;
+            }
+        }
+        //((Quest)board.getCardInPlay()).SponsorQuestComplete(stages);
     }
 
     [PunRPC]
@@ -87,7 +97,20 @@ public class PunManager : Photon.MonoBehaviour {
     [PunRPC]
     public void PromptNextAcceptQuest() {
         GetBoard();
+
+        //List<Player> players = board.getPlayers();
+        //foreach (Player player in players)
+        //{
+        //    if (player.getName() == sponsorPlayer.getName())
+        //    {
+        //        Debug.Log("Found sponsor " + sponsorPlayer.getName());
+        //        Logger.getInstance().info("Found sponsor " + player.getName());
+        //        ((Quest)board.getCardInPlay()).PromptNextAcceptQuest();
+        //        break;
+        //    }
+        //}
         ((Quest)board.getCardInPlay()).PromptNextAcceptQuest();
+
     }
 
     //------------------------------------------------------------------------//

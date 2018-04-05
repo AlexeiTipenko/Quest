@@ -192,11 +192,12 @@ public abstract class Quest : Story {
 			participatingPlayers.Add (playerToPrompt);
 
             action = () => {
-				Debug.Log("Entered action");
+				Debug.Log("Entered action in accepting quest");
                 Action completeAction = () =>
                 {
 					Debug.Log("Entered completeAction");
                     if (board.IsOnlineGame()) {
+                        Debug.Log("Sending to others");
                         board.getPhotonView().RPC("PromptNextAcceptQuest", PhotonTargets.Others);
                     }
                     PromptNextAcceptQuest();

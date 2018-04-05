@@ -71,8 +71,9 @@ public class Stage {
 		if (stageCard.GetType ().IsSubclassOf (typeof(Foe))) {
 			Logger.getInstance ().trace ("Stage card is subclass type of foe");
 			Debug.Log ("Is foe, going to player");
-            Debug.Log("quest sponsor is: " + quest.getSponsor().getName());
+            Debug.Log("quest player after sponsor is: " + board.getNextPlayer(quest.getSponsor()).getName());
             playerToPrompt = board.getNextPlayer(quest.getSponsor());
+            Debug.Log("Player to prompt is: " + playerToPrompt.getName());
 			Logger.getInstance().info("playerToPrompt is: " + playerToPrompt.getName());
             //TODO: this is probably causing an infinite loop
             Debug.Log("After moving to next player");

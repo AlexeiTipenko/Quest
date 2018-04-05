@@ -47,6 +47,7 @@ public class BoardManager : MonoBehaviour
 
     public static void SetInteractionText(String text)
     {
+        Debug.Log("Setting interaction text");
         GameObject interactionText = GameObject.Find("Canvas/TabletopImage/InteractionPanel/InteractionText");
         interactionText.GetComponent<Text>().text = text;
     }
@@ -257,6 +258,7 @@ public class BoardManager : MonoBehaviour
         if (player != previousPlayer || isFreshTurn || board.IsOnlineGame()) {
             isFreshTurn = false;
             if (board.IsOnlineGame()) {
+                Debug.Log("Coming inside is online game");
                 List<Player> players = board.getPlayers();
                 int playerTurn = players.IndexOf(player) + 1;
                 Logger.getInstance().info("Local player id: " + PhotonNetwork.player.ID);

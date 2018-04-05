@@ -83,8 +83,12 @@ public class BoardManagerMediator
 	}
 
 	public Player getNextPlayer(Player previousPlayer) {
+        Debug.Log("Previous player is: " + previousPlayer.getName());
+        Logger.getInstance().info("Previous player is: " + previousPlayer.getName());
 		int index = players.IndexOf (previousPlayer);
 		if (index != -1) {
+            Debug.Log("returning player");
+            Logger.getInstance().info("Returning player in get next player");
 			return players [(index + 1) % players.Count];
 		}
 		return null;
@@ -392,10 +396,13 @@ public class BoardManagerMediator
 
 
     public void PromptFoe(Quest quest, Player player) {
+        Debug.Log("Inside prompt foe mediator, player being prompted is: " + player.getName());
         Stage stage = quest.getCurrentStage();
         BoardManager.DrawCards(player);
+        Debug.Log("After drawing cards");
         BoardManager.DisplayStageButton(players);
         BoardManager.SetInteractionText("QUEST STAGE " + (stage.getStageNum() + 1) + "\nYou are facing a foe. You may place any number of cards, or drop out.");
+        Debug.Log("Setup interaction text");
 		Action action1 = () => {
             Debug.Log("Did not dropout");
             TransferFromHandToPlayArea(player);
