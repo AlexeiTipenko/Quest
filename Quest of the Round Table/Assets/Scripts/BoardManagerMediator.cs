@@ -249,6 +249,7 @@ public class BoardManagerMediator
 
     public void nextTurn()
     {
+		Debug.Log ("nextTurn 0");
         if (cardInPlay.GetType().IsSubclassOf(typeof(Quest))) {
             BoardManager.DestroyStages();
         }
@@ -258,9 +259,13 @@ public class BoardManagerMediator
         //Debug.Log("ENDING TURN FOR PLAYER: " + players[playerTurn]);
         //BoardManager.DestroyMordredButton();
         BoardManager.ClearInteractions();
+		Debug.Log ("nextTurn 1");
         BoardManager.SetIsFreshTurn(true);
+		Debug.Log ("nextTurn 2");
         AddToDiscardDeck(cardInPlay);
+		Debug.Log ("nextTurn 3");
         cardInPlay = null;
+		Debug.Log ("nextTurn 4");
         playerTurn = (playerTurn + 1) % players.Count;
 		Debug.Log ("Going to next turn for player " + players[playerTurn] );
         playTurn();
@@ -492,28 +497,18 @@ public class BoardManagerMediator
         BoardManager.DrawCards(player);
         BoardManager.SetInteractionText("NEW TOURNAMENT DRAWN\nWould you like to enter this tournament?");
         Action action1 = () => {
-
+			Debug.Log("Action1 (accept) for " + tournament.getCardName() + " for player " + player.getName());
             if (IsOnlineGame()) {
-<<<<<<< HEAD
-				//view.RPC("PromptEnterTournamentResponse", PhotonTargets.Others, PunManager.Serialize(tournament), true);
                 view.RPC("PromptEnterTournamentResponse", PhotonTargets.Others, true);
-=======
-				view.RPC("PromptEnterTournamentResponse", PhotonTargets.Others, true);
->>>>>>> NetworkDiscardCards
             }
             tournament.PromptEnterTournamentResponse(true);
 
         };
 
         Action action2 = () => {
-
+			Debug.Log("Action2 (decline) for " + tournament.getCardName() + " for player " + player.getName());
             if (IsOnlineGame()) {
-<<<<<<< HEAD
-				//view.RPC("PromptEnterTournamentResponse", PhotonTargets.Others, PunManager.Serialize(tournament), false);
-                view.RPC("PromptEnterTournamentResponse", PhotonTargets.Others, false);
-=======
 				view.RPC("PromptEnterTournamentResponse", PhotonTargets.Others, false);
->>>>>>> NetworkDiscardCards
             }
             tournament.PromptEnterTournamentResponse(false);
         };
@@ -531,12 +526,7 @@ public class BoardManagerMediator
         Action action = () => {
 
 			if (IsOnlineGame()) {
-<<<<<<< HEAD
-				//view.RPC("CardsSelectionResponse", PhotonTargets.Others, PunManager.Serialize(tournament));
                 view.RPC("CardsSelectionResponse", PhotonTargets.Others);
-=======
-				view.RPC("CardsSelectionResponse", PhotonTargets.Others);
->>>>>>> NetworkDiscardCards
 			}
             tournament.CardsSelectionResponse();
         };

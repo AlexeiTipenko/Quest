@@ -47,7 +47,7 @@ public class BoardManager : MonoBehaviour
 
     public static void SetInteractionText(String text)
     {
-        Debug.Log("Setting interaction text");
+        Debug.Log("Setting interaction text: " + text);
         GameObject interactionText = GameObject.Find("Canvas/TabletopImage/InteractionPanel/InteractionText");
         interactionText.GetComponent<Text>().text = text;
     }
@@ -117,6 +117,7 @@ public class BoardManager : MonoBehaviour
 
 
     public static void ClearInteractions() {
+		Debug.Log("Clearing interactions...");
         GameObject interactionText = GameObject.Find("Canvas/TabletopImage/InteractionPanel/InteractionText");
         GameObject button1 = GameObject.Find("Canvas/TabletopImage/InteractionPanel/InteractionButton1");
         GameObject button2 = GameObject.Find("Canvas/TabletopImage/InteractionPanel/InteractionButton2");
@@ -129,6 +130,7 @@ public class BoardManager : MonoBehaviour
         button1.SetActive(false);
         button2.SetActive(false);
         interactionBid.SetActive(false);
+		Debug.Log("Cleared interactions.");
     }
 
     public static void DrawCards(Player player) {
