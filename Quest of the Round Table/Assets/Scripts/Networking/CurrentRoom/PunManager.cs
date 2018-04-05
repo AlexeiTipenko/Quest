@@ -66,7 +66,14 @@ public class PunManager : Photon.MonoBehaviour {
 	[PunRPC]
 	public void DealCardsNextPlayer() {
         PrepareRPC ();
-		((Quest)board.getCardInPlay()).getCurrentStage().DealCardsNextPlayer();
+		if (board.getCardInPlay ().GetType ().IsSubclassOf (typeof(Quest))) {
+			((Quest)board.getCardInPlay ()).getCurrentStage ().DealCardsNextPlayer ();
+		} else if (board.getCardInPlay ().GetType () == typeof(QueensFavor)) {
+			((QueensFavor)board.getCardInPlay ()).DealCardsNextPlayer ();
+		}
+		else if (board.getCardInPlay ().GetType () == typeof(ProsperityThroughoutTheRealm)) {
+			((ProsperityThroughoutTheRealm)board.getCardInPlay ()).DealCardsNextPlayer ();
+		}
 	}
 
 	[PunRPC]
