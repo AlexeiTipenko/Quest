@@ -12,8 +12,10 @@ public class PlayerLayoutGroup : MonoBehaviour {
         get { return _playerListingPrefab; }
     }
 
-    private List<PlayerListing> _playerListings = new List<PlayerListing>();
-    private List<PlayerListing> PlayerListings {
+    public static List<Player> playerList;
+
+    public static List<PlayerListing> _playerListings = new List<PlayerListing>();
+    public static List<PlayerListing> PlayerListings {
         get { return _playerListings; }
     }
 
@@ -88,10 +90,10 @@ public class PlayerLayoutGroup : MonoBehaviour {
     }
 
     public static void SwitchScene(string SceneName) {
-        List<Player> playerList = new List<Player>();
-        foreach (var player in PhotonNetwork.playerList)
+        playerList = new List<Player>();
+        foreach (var player in PlayerListings)
         {
-            playerList.Add(new HumanPlayer(player.NickName));
+            playerList.Add(new HumanPlayer(player.name));
         }
         ButtonManager.playerList = playerList;
         UnityEngine.SceneManagement.SceneManager.LoadScene(SceneName);
