@@ -79,17 +79,9 @@ public class Stage {
             //TODO: this is probably causing an infinite loop
             Debug.Log("After moving to next player");
             Logger.getInstance().info("Checking amount of players: " + quest.getPlayers().Count);
-			foreach (Player player in quest.getPlayers()) {
-				Logger.getInstance ().info ("Board Player: " + player.getName ());
-			}
-			Logger.getInstance ().info ("If this gets printed then playertoprompt is gay");
             while (!quest.getPlayers().Contains(playerToPrompt)) {
-                Logger.getInstance().trace("Inside while loop, inside prepare function in stage class");
-                Debug.Log("Inside while loop, inside prepare function in stage class");
                 playerToPrompt = board.getNextPlayer(playerToPrompt);
             }
-            Logger.getInstance().trace("Left while loop, still inside prepare function in stage class");
-            Debug.Log("Exited while loop");
             originalPlayer = playerToPrompt;
             playerToPrompt.PromptFoe(quest);
 		} else {

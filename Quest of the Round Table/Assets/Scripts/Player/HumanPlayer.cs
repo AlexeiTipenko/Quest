@@ -6,7 +6,6 @@ using UnityEngine;
 public class HumanPlayer : Player {
 
     public HumanPlayer(string name) : base (name) {
-        Debug.Log("creating player human player: " + name);
     }
 
 	public override void PromptDiscardCards(Action action)
