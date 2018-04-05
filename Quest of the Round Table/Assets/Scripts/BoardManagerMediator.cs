@@ -333,7 +333,7 @@ public class BoardManagerMediator
             quest.PromptSponsorQuestResponse(true);
         };
         Action action2 = () => {
-			Debug.Log("Action2 for player: " + player.getName());
+            Debug.Log("Action2 for player: " + player.getName());
             if (IsOnlineGame()) {
                 view.RPC("PromptSponsorQuestResponse", PhotonTargets.Others, false);
             }

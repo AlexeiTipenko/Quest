@@ -27,13 +27,13 @@ public class PunManager : Photon.MonoBehaviour {
 	//purely for cheating; as next turn usually gets called through another method
 	[PunRPC]
 	public void nextTurn () {
-		GetBoard ();
+        PrepareRPC ();
 		board.nextTurn ();
 	}
 
 	[PunRPC]
 	public void RemoveCardsResponse (byte[] playerBytes, byte[] chosenCardsBytes) {
-		GetBoard ();
+        PrepareRPC ();
         List<Card> chosenCards = (List<Card>)Deserialize(chosenCardsBytes);
         Player tempPlayer = (Player)Deserialize(playerBytes);
 		Logger.getInstance ().info ("Received player: " + tempPlayer.getName());
@@ -50,25 +50,25 @@ public class PunManager : Photon.MonoBehaviour {
 
 	[PunRPC]
 	public void DealCardsNextPlayer() {
-		GetBoard ();
+        PrepareRPC ();
 		((Quest)board.getCardInPlay()).getCurrentStage().DealCardsNextPlayer();
 	}
 
 	[PunRPC]
 	public void PromptNextPlayer() {
-        GetBoard();
+        PrepareRPC();
 		((Tournament)board.getCardInPlay()).PromptNextPlayer();
 	}
 
     [PunRPC]
     public void PromptSponsorQuestResponse(bool sponsorAccepted) {
-        GetBoard();
+        PrepareRPC();
         ((Quest)board.getCardInPlay()).PromptSponsorQuestResponse(sponsorAccepted);
     }
 
     [PunRPC]
     public void SponsorQuestComplete(byte[] stagesBytes) {
-        GetBoard();
+        PrepareRPC();
         List<Stage> stages = (List<Stage>)Deserialize(stagesBytes);
         List<Player> players = board.getPlayers();
         Player sponsorPlayer = ((Quest)board.getCardInPlay()).getSponsor();
@@ -85,19 +85,19 @@ public class PunManager : Photon.MonoBehaviour {
 
     [PunRPC]
     public void IncrementSponsor() {
-        GetBoard();
+        PrepareRPC();
         ((Quest)board.getCardInPlay()).IncrementSponsor();
     }
 
     [PunRPC]
     public void PromptAcceptQuestResponse(bool questAccepted) {
-        GetBoard();
+        PrepareRPC();
         ((Quest)board.getCardInPlay()).PromptAcceptQuestResponse(questAccepted);
     }
 
     [PunRPC]
     public void PromptNextAcceptQuest() {
-        GetBoard();
+        PrepareRPC ();
 
         //List<Player> players = board.getPlayers();
         //foreach (Player player in players)
@@ -121,19 +121,20 @@ public class PunManager : Photon.MonoBehaviour {
     [PunRPC]
     public void CardsSelectionResponse(Tournament tournament)
     {
-		GetBoard ();
+        PrepareRPC ();
         tournament.CardsSelectionResponse();
     }
 
 	[PunRPC]
 	public void PromptEnterTournamentResponse(Tournament tournament, bool entered)
 	{
-		GetBoard ();
+		PrepareRPC ();
 		tournament.PromptEnterTournamentResponse(entered);
 	}
 
-    void GetBoard(){
+    void PrepareRPC(){
         board = BoardManagerMediator.getInstance();
+        BoardManager.ClearInteractions();
     }
 
     public static byte[] Serialize(System.Object obj)
