@@ -493,15 +493,18 @@ public class BoardManagerMediator
         Action action1 = () => {
 
             if (IsOnlineGame()) {
-				view.RPC("PromptEnterTournamentResponse", PhotonTargets.Others, PunManager.Serialize(tournament), true);
+				//view.RPC("PromptEnterTournamentResponse", PhotonTargets.Others, PunManager.Serialize(tournament), true);
+                view.RPC("PromptEnterTournamentResponse", PhotonTargets.Others, true);
             }
             tournament.PromptEnterTournamentResponse(true);
+
         };
 
         Action action2 = () => {
 
             if (IsOnlineGame()) {
-				view.RPC("PromptEnterTournamentResponse", PhotonTargets.Others, PunManager.Serialize(tournament), false);
+				//view.RPC("PromptEnterTournamentResponse", PhotonTargets.Others, PunManager.Serialize(tournament), false);
+                view.RPC("PromptEnterTournamentResponse", PhotonTargets.Others, false);
             }
             tournament.PromptEnterTournamentResponse(false);
         };
@@ -519,7 +522,8 @@ public class BoardManagerMediator
         Action action = () => {
 
 			if (IsOnlineGame()) {
-				view.RPC("CardsSelectionResponse", PhotonTargets.Others, PunManager.Serialize(tournament));
+				//view.RPC("CardsSelectionResponse", PhotonTargets.Others, PunManager.Serialize(tournament));
+                view.RPC("CardsSelectionResponse", PhotonTargets.Others);
 			}
             tournament.CardsSelectionResponse();
         };
