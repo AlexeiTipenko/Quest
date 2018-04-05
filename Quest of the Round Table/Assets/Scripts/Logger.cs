@@ -5,8 +5,8 @@ using UnityEngine;
 public class Logger {
 
 	public static Logger logger;
-	private static string logFolderPath;
-	private static string logFilePath = logFolderPath + "/BuildLog.txt"; 
+	private static string logFolderPath = null;
+	private static string logFilePath = null;
 
 	//This constructor will call the init function
 	//Should only be called once in your code
@@ -18,7 +18,10 @@ public class Logger {
 		if (logger == null) {
 			logger = new Logger();
 			if (Application.platform != RuntimePlatform.WebGLPlayer) {
-				logFolderPath = Directory.GetCurrentDirectory() + "/Logs";
+				if (logFolderPath == null) {
+					logFolderPath = Directory.GetCurrentDirectory() + "/Logs";
+					logFilePath = logFolderPath + "/BuildLog.txt"; 
+				}
 				if (Debug.isDebugBuild) {
 					try {
 						File.Delete(logFilePath); //delete previous log file
@@ -77,7 +80,10 @@ public class Logger {
 
 	private void printToFile(string n) {
 		if (Application.platform != RuntimePlatform.WebGLPlayer) {
-			logFolderPath = Directory.GetCurrentDirectory() + "/Logs";
+			if (logFolderPath == null) {
+				logFolderPath = Directory.GetCurrentDirectory() + "/Logs";
+				logFilePath = logFolderPath + "/BuildLog.txt"; 
+			}
 			try {
 				File.AppendAllText (logFilePath, n);
 			} catch (Exception) {

@@ -22,7 +22,6 @@ public class PlayerLayoutGroup : MonoBehaviour {
         lobby.SetActive(false);
         PhotonPlayer[] photonPlayers = PhotonNetwork.playerList;
         for (int i = 0; i < photonPlayers.Length; i++){
-            Debug.Log("Joined room " + photonPlayers[i].NickName);
             PlayerJoinedRoom(photonPlayers[i]);
         }
     }
@@ -50,7 +49,6 @@ public class PlayerLayoutGroup : MonoBehaviour {
 
     private void PlayerJoinedRoom(PhotonPlayer photonPlayer) {
         if (photonPlayer == null){
-            Debug.Log("Null, returning");
             return;   
         }
         PlayerLeftRoom(photonPlayer);
@@ -85,7 +83,6 @@ public class PlayerLayoutGroup : MonoBehaviour {
 
 
     public void PunSwitchScene(string sceneName) {
-        Debug.Log("Trying to switch scene");
         PhotonView view = PhotonView.Get(GameObject.Find("DDOL/PunManager"));
         view.RPC("SwitchScene", PhotonTargets.All, sceneName);
     }
@@ -94,15 +91,9 @@ public class PlayerLayoutGroup : MonoBehaviour {
         List<Player> playerList = new List<Player>();
         foreach (var player in PhotonNetwork.playerList)
         {
-            print("Instantiating player: " + player.NickName);
-            Player tempPlayer = new HumanPlayer(player.NickName);
-            print("Created player: " + tempPlayer.getName());
-            playerList.Add(tempPlayer);
-            print("Finished adding");
+            playerList.Add(new HumanPlayer(player.NickName));
         }
-        print("Exited.");
         ButtonManager.playerList = playerList;
         UnityEngine.SceneManagement.SceneManager.LoadScene(SceneName);
-        print("Finished Loading scene");
     }
 }

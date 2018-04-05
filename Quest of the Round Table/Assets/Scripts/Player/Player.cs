@@ -15,22 +15,13 @@ public abstract class Player {
     System.Random random;
 
 	protected Player(string name) {
-        Debug.Log("Creating name");
 		this.name = name;
-        Debug.Log("Name is: " + name);
-        Debug.Log("Creating Rank");
 		rank = new Squire ();
-        Debug.Log("Rank is: " + rank.getCardName());
 		numShields = 0;
-        Debug.Log("Creating empty hand");
 		hand = new List<Card> ();
-        Debug.Log("Creating play area");
 		playArea = new PlayerPlayArea ();
-        Debug.Log("Creating board");
         board = BoardManagerMediator.getInstance();
-        Debug.Log("Creating rand");
         random = new System.Random();
-        Debug.Log("Creating player complete");
 	}
 
 
