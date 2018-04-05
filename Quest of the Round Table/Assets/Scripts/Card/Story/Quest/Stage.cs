@@ -64,6 +64,7 @@ public class Stage {
     }
 
 	public void Prepare() {
+		board = BoardManagerMediator.getInstance ();
 		Logger.getInstance ().debug ("Prepare function has started");
 
         isInProgress = true;
