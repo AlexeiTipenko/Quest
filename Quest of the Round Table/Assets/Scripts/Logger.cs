@@ -5,8 +5,8 @@ using UnityEngine;
 public class Logger {
 
 	public static Logger logger;
-    private static string logFolderPath = Directory.GetCurrentDirectory() + "/Logs";
-	private static string logFilePath = logFolderPath + "/BuildLog.txt"; 
+	private static string logFolderPath = null;
+	private static string logFilePath = null;
 
 	//This constructor will call the init function
 	//Should only be called once in your code
@@ -17,15 +17,21 @@ public class Logger {
 	public static Logger getInstance() {
 		if (logger == null) {
 			logger = new Logger();
-            if (Debug.isDebugBuild) {
-                try {
-                    File.Delete(logFilePath); //delete previous log file
-                } catch (Exception) {
-                    Directory.CreateDirectory(logFolderPath);
-                    File.Delete(logFilePath); //delete previous log file
-                }
-            }
-            logger.init();
+			if (Application.platform != RuntimePlatform.WebGLPlayer) {
+				if (logFolderPath == null) {
+					logFolderPath = Directory.GetCurrentDirectory() + "/Logs";
+					logFilePath = logFolderPath + "/BuildLog.txt"; 
+				}
+				if (Debug.isDebugBuild) {
+					try {
+						File.Delete(logFilePath); //delete previous log file
+					} catch (Exception) {
+						Directory.CreateDirectory(logFolderPath);
+						File.Delete(logFilePath); //delete previous log file
+					}
+				}
+				logger.init();
+			}
 		}
 		return logger;
 	}
@@ -73,12 +79,18 @@ public class Logger {
 	}
 
 	private void printToFile(string n) {
-        try {
-            File.AppendAllText(logFilePath, n);
-        } catch (Exception) {
-            Directory.CreateDirectory(logFolderPath);
-            File.AppendAllText(logFilePath, n);
-        }
+		if (Application.platform != RuntimePlatform.WebGLPlayer) {
+			if (logFolderPath == null) {
+				logFolderPath = Directory.GetCurrentDirectory() + "/Logs";
+				logFilePath = logFolderPath + "/BuildLog.txt"; 
+			}
+			try {
+				File.AppendAllText (logFilePath, n);
+			} catch (Exception) {
+				Directory.CreateDirectory (logFolderPath);
+				File.AppendAllText (logFilePath, n);
+			}
+		}
 	}
 
 	private string generateTimestamp() {

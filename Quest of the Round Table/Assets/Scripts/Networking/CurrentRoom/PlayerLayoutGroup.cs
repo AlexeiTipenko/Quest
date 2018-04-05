@@ -3,22 +3,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 
-public class PlayerLayoutGroup : Photon.MonoBehaviour {
+public class PlayerLayoutGroup : MonoBehaviour {
 
 	[SerializeField]
     public GameObject _playerListingPrefab;
-    public GameObject PlayerListingPrefab{
+    public GameObject PlayerListingPrefab {
         get { return _playerListingPrefab; }
     }
-    public static List<PlayerListing> _playerListings = new List<PlayerListing>();
+
     public static List<Player> playerList;
+
+    public static List<PlayerListing> _playerListings = new List<PlayerListing>();
     public static List<PlayerListing> PlayerListings {
         get { return _playerListings; }
     }
 
-    private void OnJoinedRoom(){
+    private void OnJoinedRoom() {
         GameObject lobby = GameObject.Find("Canvas/Lobby");
         lobby.SetActive(false);
         PhotonPlayer[] photonPlayers = PhotonNetwork.playerList;
@@ -48,7 +49,7 @@ public class PlayerLayoutGroup : Photon.MonoBehaviour {
         PlayerLeftRoom(photonPlayer);
     }
 
-    private void PlayerJoinedRoom(PhotonPlayer photonPlayer){
+    private void PlayerJoinedRoom(PhotonPlayer photonPlayer) {
         if (photonPlayer == null){
             return;   
         }
@@ -61,6 +62,16 @@ public class PlayerLayoutGroup : Photon.MonoBehaviour {
         playerListing.ApplyPhotonPlayer(photonPlayer);
 
         PlayerListings.Add(playerListing);
+
+		if (photonPlayer.IsMasterClient) {
+			PhotonView view = PhotonView.Get (GameObject.Find ("DDOL/PunManager"));
+			System.Random rand = new System.Random();
+			string seedString = "";
+			for (int i = 0; i < 5; i++) {
+				seedString += rand.Next(0, 10);
+			}
+			view.RPC ("UpdateSeed", PhotonTargets.All, Int32.Parse(seedString));
+		}
     }
 
     private void PlayerLeftRoom(PhotonPlayer photonPlayer){
@@ -74,24 +85,17 @@ public class PlayerLayoutGroup : Photon.MonoBehaviour {
 
 
     public void PunSwitchScene(string sceneName) {
-        System.Random rand = new System.Random();
-        string seed = "";
-        for (int i = 0; i < 5; i++) {
-            seed += rand.Next(0, 10);
-        }
         PhotonView view = PhotonView.Get(GameObject.Find("DDOL/PunManager"));
-        view.RPC("SwitchScene", PhotonTargets.All, seed, sceneName);
+        view.RPC("SwitchScene", PhotonTargets.All, sceneName);
     }
 
-    public static void SwitchScene(string seed, string SceneName) {
+    public static void SwitchScene(string SceneName) {
         playerList = new List<Player>();
-        Deck.seed = Int32.Parse(seed);
         foreach (var player in PlayerListings)
         {
-            Debug.Log("Instantiating player: " + player.name);
             playerList.Add(new HumanPlayer(player.name));
         }
         ButtonManager.playerList = playerList;
-        SceneManager.LoadScene(SceneName);
+        UnityEngine.SceneManagement.SceneManager.LoadScene(SceneName);
     }
 }

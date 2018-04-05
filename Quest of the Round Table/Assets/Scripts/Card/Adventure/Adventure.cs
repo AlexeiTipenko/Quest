@@ -1,6 +1,9 @@
-﻿public abstract class Adventure : Card {
+﻿using System;
 
-	public Adventure(string cardName) : base (cardName) {
+[Serializable]
+public abstract class Adventure : Card {
+
+	protected Adventure(string cardName) : base (cardName) {
 	
 	}
 

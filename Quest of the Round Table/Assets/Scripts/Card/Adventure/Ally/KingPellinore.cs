@@ -1,4 +1,7 @@
-﻿public class KingPellinore : Ally {
+﻿using System;
+
+[Serializable]
+public class KingPellinore : Ally {
 
 	public static int frequency = 1;
 	private int empoweredBidPoints;

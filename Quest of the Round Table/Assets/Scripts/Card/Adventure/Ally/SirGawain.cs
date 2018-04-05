@@ -1,4 +1,7 @@
-﻿public class SirGawain : Ally {
+﻿using System;
+
+[Serializable]
+public class SirGawain : Ally {
 
 	public static int frequency = 1;
 	private int empoweredBattlePoints;

@@ -1,4 +1,7 @@
-﻿public class TestOfTheQuestingBeast : Test {
+﻿using System;
+
+[Serializable]
+public class TestOfTheQuestingBeast : Test {
 
 	public static int frequency = 2;
 	private int empoweredMinBidValue;

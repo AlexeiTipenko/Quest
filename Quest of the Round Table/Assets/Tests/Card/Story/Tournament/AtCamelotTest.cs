@@ -38,10 +38,10 @@ public class AtCamelotTest
 
         camelot.AddPlayerBattlePoints(cardList1);
 
-        camelot.pointsDict.TryGetValue(camelot.playerToPrompt, out points);
-        Assert.AreEqual(35, points);
+        //camelot.pointsDict.TryGetValue(camelot.playerToPrompt, out points);
+        //Assert.AreEqual(35, points);
 
-        camelot.pointsDict.Clear();
+        //camelot.pointsDict.Clear();
 
         /*
         List<Card> cardList2 = new List<Card>();

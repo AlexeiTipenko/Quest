@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
+[Serializable]
 public class Stage {
 	BoardManagerMediator board;
 
@@ -63,6 +64,7 @@ public class Stage {
     }
 
 	public void Prepare() {
+		board = BoardManagerMediator.getInstance();
 		Logger.getInstance ().debug ("Prepare function has started");
 
         isInProgress = true;
@@ -70,8 +72,13 @@ public class Stage {
 		if (stageCard.GetType ().IsSubclassOf (typeof(Foe))) {
 			Logger.getInstance ().trace ("Stage card is subclass type of foe");
 			Debug.Log ("Is foe, going to player");
-            Debug.Log("quest sponsor is: " + quest.getSponsor().getName());
+            Debug.Log("quest player after sponsor is: " + board.getNextPlayer(quest.getSponsor()).getName());
             playerToPrompt = board.getNextPlayer(quest.getSponsor());
+            Debug.Log("Player to prompt is: " + playerToPrompt.getName());
+			Logger.getInstance().info("playerToPrompt is: " + playerToPrompt.getName());
+            //TODO: this is probably causing an infinite loop
+            Debug.Log("After moving to next player");
+            Logger.getInstance().info("Checking amount of players: " + quest.getPlayers().Count);
             while (!quest.getPlayers().Contains(playerToPrompt)) {
                 playerToPrompt = board.getNextPlayer(playerToPrompt);
             }
@@ -82,6 +89,7 @@ public class Stage {
 			currentBid = ((Test)stageCard).getMinBidValue() - 1;
 			Debug.Log ("Current bid is: " + currentBid);
             playerToPrompt = board.getNextPlayer(quest.getSponsor());
+            //TODO: this is probably causing an infinite loop
             while (!quest.getPlayers().Contains(playerToPrompt))
             {
                 playerToPrompt = board.getNextPlayer(playerToPrompt);
@@ -247,7 +255,14 @@ public class Stage {
 
     public void DealCards() {
         action = () => {
-            Action completeAction = DealCardsNextPlayer;
+			Action completeAction = () => {
+				if (board.IsOnlineGame()) {
+					Logger.getInstance ().debug ("In Stage DealCards(), about to RPC DealCardsNextPlayer");
+					Debug.Log("In Stage DealCards(), about to RPC DealCardsNextPlayer");
+					board.getPhotonView().RPC("DealCardsNextPlayer", PhotonTargets.Others);
+				}				
+				DealCardsNextPlayer();
+			};
             playerToPrompt.DiscardCards(action, completeAction);
         };
         playerToPrompt.DrawCards(1, action);

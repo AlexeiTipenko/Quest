@@ -1,7 +1,10 @@
 ﻿using System;
+using System.IO;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Runtime.Serialization.Formatters.Binary;
 
+[Serializable]
 public class BoardManagerMediator
 {
     
@@ -12,11 +15,18 @@ public class BoardManagerMediator
 	DiscardDeck adventureDiscard, storyDiscard;
 	Story cardInPlay;
 	int playerTurn;
+    [NonSerialized] PhotonView view;
 
 
-	public GameObject cardPrefab;
-	public GameObject board;
+    [NonSerialized] public GameObject cardPrefab;
+    [NonSerialized] public GameObject board;
 	public List<CardUI> cards = new List<CardUI>();
+
+    public BoardManagerMediator() {
+        if (IsOnlineGame()) {
+            view = PhotonView.Get(GameObject.Find("DDOL/PunManager"));   
+        }
+    }
 
 
 	public static BoardManagerMediator getInstance() {
@@ -26,9 +36,9 @@ public class BoardManagerMediator
 		return instance;
 	}
 
-    public int GetPlayerTurn(){
-        return ((playerTurn + players.Count) % players.Count) + 1;
-    }
+	public PhotonView getPhotonView() {
+		return view;
+	}
 
 	public void initGame (List<Player> players) {
 		this.players = players;
@@ -73,9 +83,18 @@ public class BoardManagerMediator
 	}
 
 	public Player getNextPlayer(Player previousPlayer) {
-		int index = players.IndexOf (previousPlayer);
+        Debug.Log("Previous player is: " + previousPlayer.getName());
+        Logger.getInstance().info("Previous player is: " + previousPlayer.getName());
+		int index = -1;
+		for (int i = 0; i < players.Count; i++) {
+			if (players [i].getName () == previousPlayer.getName ()) {
+				index = (i + 1) % players.Count;
+			}
+		}
 		if (index != -1) {
-			return players [(index + 1) % players.Count];
+			Debug.Log("returning player");
+			Logger.getInstance().info("Returning player in get next player");
+			return players [index];
 		}
 		return null;
 	}
@@ -170,27 +189,6 @@ public class BoardManagerMediator
         return card;
     }
 
-	//public void dealCardsToPlayer(Player player, int numCardsToDeal) {
- //       Debug.Log("Dealing " + numCardsToDeal + " cards to player: " + player.getName());
-	//	List<Card> cardsToDeal = new List<Card> ();
-	//	for (int i = 0; i < numCardsToDeal; i++) {
-	//		cardsToDeal.Add (adventureDeck.drawCard ());
-	//		if (adventureDeck.getSize () <= 0) {
-	//			adventureDeck = new AdventureDeck (adventureDiscard);
-	//			adventureDiscard.empty ();
-	//		}
-	//	}
-	//	player.dealCards (cardsToDeal);
- //       Logger.getInstance().info("Dealt " + numCardsToDeal + " cards to " + player.getName());
- //       if (player.GetType() == typeof(AIPlayer)) {
- //           Action action = player.getAction();
- //           if (action != null) {
- //               action.Invoke();
- //               player.giveAction(null);
- //           }
- //       }
-	//}
-
     public void setCardInPlay(Card card) {
         cardInPlay = (Story) card;
     }
@@ -207,7 +205,6 @@ public class BoardManagerMediator
             adventureDiscard.addCard(card);
         }
     }
-
 
     public bool IsOnlineGame(){
 
@@ -252,6 +249,7 @@ public class BoardManagerMediator
 
     public void nextTurn()
     {
+		Debug.Log ("nextTurn 0");
         if (cardInPlay.GetType().IsSubclassOf(typeof(Quest))) {
             BoardManager.DestroyStages();
         }
@@ -261,13 +259,17 @@ public class BoardManagerMediator
         //Debug.Log("ENDING TURN FOR PLAYER: " + players[playerTurn]);
         //BoardManager.DestroyMordredButton();
         BoardManager.ClearInteractions();
+		Debug.Log ("nextTurn 1");
         BoardManager.SetIsFreshTurn(true);
+		Debug.Log ("nextTurn 2");
         AddToDiscardDeck(cardInPlay);
+		Debug.Log ("nextTurn 3");
         cardInPlay = null;
+		Debug.Log ("nextTurn 4");
         playerTurn = (playerTurn + 1) % players.Count;
+		Debug.Log ("Going to next turn for player " + players[playerTurn] );
         playTurn();
     }
-
 
     private bool gameOver()
     {
@@ -297,8 +299,21 @@ public class BoardManagerMediator
 			break;
 		case "nextPlayer":
 			Debug.Log ("Current player is: " + players [playerTurn].getName ());
+			if (IsOnlineGame ()) {
+				view.RPC ("nextTurn", PhotonTargets.Others);
+			}
 			nextTurn ();
 			Debug.Log ("New player is: " + players [playerTurn].getName ());
+			break;
+		case "discardArea":
+			Debug.Log ("CHEAT: Setting up discard area");
+			GameObject discardArea = GameObject.Find ("Canvas/TabletopImage/DiscardArea");
+			if (discardArea == null) {
+				BoardManager.SetupDiscardPanel ();
+			} else {
+				BoardManager.DestroyDiscardArea ();
+				players [playerTurn].GetAndRemoveCards ();
+			}
 			break;
         }
     }
@@ -317,9 +332,17 @@ public class BoardManagerMediator
         BoardManager.SetInteractionText("NEW QUEST DRAWN\nWould you like to sponsor this quest?");
 		Debug.Log ("The card in play is " + cardInPlay.cardImageName);
         Action action1 = () => {
+			Debug.Log("Action1 for player: " + player.getName());
+            if (IsOnlineGame()) {
+                view.RPC("PromptSponsorQuestResponse", PhotonTargets.Others, true);
+            }
             quest.PromptSponsorQuestResponse(true);
         };
         Action action2 = () => {
+            Debug.Log("Action2 for player: " + player.getName());
+            if (IsOnlineGame()) {
+                view.RPC("PromptSponsorQuestResponse", PhotonTargets.Others, false);
+            }
             quest.PromptSponsorQuestResponse(false);
         };
         BoardManager.SetInteractionButtons("Accept", "Decline", action1, action2);
@@ -337,6 +360,9 @@ public class BoardManagerMediator
         Action action1 = () => {
             if (quest.isValidQuest()) {
                 List<Stage> stages = BoardManager.CollectStageCards();
+                if (IsOnlineGame()) {
+                    view.RPC("SponsorQuestComplete", PhotonTargets.Others, PunManager.Serialize(stages));
+                }
                 quest.SponsorQuestComplete(stages);
             }
             else {
@@ -344,7 +370,12 @@ public class BoardManagerMediator
             }
         };
 
-        Action action2 = quest.IncrementSponsor;
+        Action action2 = () => {
+            if (IsOnlineGame()) {
+                view.RPC("IncrementSponsor", PhotonTargets.Others);
+            }
+            quest.IncrementSponsor();
+        };
 
         if (!BoardManager.QuestPanelsExist()) {
             BoardManager.SetupQuestPanels(quest.getNumStages());
@@ -360,9 +391,15 @@ public class BoardManagerMediator
         BoardManager.DrawCards(player);
         BoardManager.SetInteractionText("NEW QUEST DRAWN\nWould you like to participate in this quest?");
         Action action1 = () => {
+            if (IsOnlineGame()) {
+                view.RPC("PromptAcceptQuestResponse", PhotonTargets.Others, true);
+            }
             quest.PromptAcceptQuestResponse(true);
         };
         Action action2 = () => {
+            if (IsOnlineGame()) {
+                view.RPC("PromptAcceptQuestResponse", PhotonTargets.Others, false);
+            }
             quest.PromptAcceptQuestResponse(false);
         };
         BoardManager.SetInteractionButtons("Accept", "Decline", action1, action2);
@@ -372,10 +409,13 @@ public class BoardManagerMediator
 
 
     public void PromptFoe(Quest quest, Player player) {
+        Debug.Log("Inside prompt foe mediator, player being prompted is: " + player.getName());
         Stage stage = quest.getCurrentStage();
         BoardManager.DrawCards(player);
+        Debug.Log("After drawing cards");
         BoardManager.DisplayStageButton(players);
         BoardManager.SetInteractionText("QUEST STAGE " + (stage.getStageNum() + 1) + "\nYou are facing a foe. You may place any number of cards, or drop out.");
+        Debug.Log("Setup interaction text");
 		Action action1 = () => {
             Debug.Log("Did not dropout");
             TransferFromHandToPlayArea(player);
@@ -459,11 +499,22 @@ public class BoardManagerMediator
         BoardManager.DrawCards(player);
         BoardManager.SetInteractionText("NEW TOURNAMENT DRAWN\nWould you like to enter this tournament?");
         Action action1 = () => {
+			Debug.Log("Action1 (accept) for " + tournament.getCardName() + " for player " + player.getName());
+            if (IsOnlineGame()) {
+                view.RPC("PromptEnterTournamentResponse", PhotonTargets.Others, true);
+            }
             tournament.PromptEnterTournamentResponse(true);
+
         };
+
         Action action2 = () => {
+			Debug.Log("Action2 (decline) for " + tournament.getCardName() + " for player " + player.getName());
+            if (IsOnlineGame()) {
+				view.RPC("PromptEnterTournamentResponse", PhotonTargets.Others, false);
+            }
             tournament.PromptEnterTournamentResponse(false);
         };
+
         BoardManager.SetInteractionButtons("Accept", "Decline", action1, action2);
         Debug.Log("Prompting " + player.getName() + " to enter tournament.");
         Logger.getInstance().info("Prompted " + player.getName() + " to enter tournament.");  
@@ -475,8 +526,13 @@ public class BoardManagerMediator
         BoardManager.DrawCards(player);
         BoardManager.SetInteractionText("PREPARE FOR BATTLE\nPrepare for the tournament using a combination of weapon, ally and amour cards.");
         Action action = () => {
+
+			if (IsOnlineGame()) {
+                view.RPC("CardsSelectionResponse", PhotonTargets.Others);
+			}
             tournament.CardsSelectionResponse();
         };
+
         BoardManager.SetInteractionButtons("Complete", "", action, null);
         Debug.Log("Prompting " + player.getName() + " to prepare cards.");
         Logger.getInstance().info("Prompted " + player.getName() + " to prepare cards.");
@@ -503,7 +559,7 @@ public class BoardManagerMediator
 		BoardManager.DrawCards(player);
 		BoardManager.SetInteractionText("Please discard " + numFoes +  " Foes.");
         BoardManager.SetupDiscardPanel();
-		Action action = () => {		
+		Action action = () => {
 			((KingsCallToArms)cardInPlay).PlayerDiscardedFoes();
 		};
 		BoardManager.SetInteractionButtons("Complete", "", action, null);
@@ -529,6 +585,9 @@ public class BoardManagerMediator
         BoardManager.SetInteractionText(text);
 
         Action action = () => {
+			if (IsOnlineGame()) {
+				view.RPC("nextTurn", PhotonTargets.Others);
+			}
             nextTurn();
         };
         BoardManager.SetInteractionButtons("Continue", "", action, null);

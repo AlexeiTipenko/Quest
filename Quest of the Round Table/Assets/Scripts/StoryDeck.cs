@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
+using System;
 
+[Serializable]
 public class StoryDeck : Deck {
 
 	public StoryDeck () {

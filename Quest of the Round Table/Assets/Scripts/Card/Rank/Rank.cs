@@ -1,7 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
 
+[Serializable]
 public abstract class Rank : Card {
 
 	protected int battlePoints, shieldsToProgress;

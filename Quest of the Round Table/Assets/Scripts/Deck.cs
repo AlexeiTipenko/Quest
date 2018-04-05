@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
+[Serializable]
 public abstract class Deck {
 
 	static System.Random rand;
@@ -17,12 +18,9 @@ public abstract class Deck {
             if (seed == 0) {
                 rand = new System.Random();
             } else {
-                rand = new System.Random(seed);   
+                rand = new System.Random(seed);
             }
 		}
-        for (int i = 0; i < 10; i++) {
-            Debug.Log(rand.Next(0, 10));
-        }
 		cards = new List<Card> ();
         reservedIndices = new List<int>();
 	}
@@ -41,6 +39,7 @@ public abstract class Deck {
 			cards [i] = cards [j];
 			cards [j] = tempCard;
 		}
+		Debug.Log (cards [0]);
 	}
 
 	public List<Card> getCards() {

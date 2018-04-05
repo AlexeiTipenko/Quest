@@ -1,7 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
+using System.Collections.Generic;
 
+[Serializable]
 public class KingsCallToArms : Events {
 
 	public static int frequency = 1;
@@ -85,7 +86,7 @@ public class KingsCallToArms : Events {
 
         if (dicardedCards.Count == 1){
             if (dicardedCards[0].GetType().IsSubclassOf(typeof(Weapon))){
-                currentPlayer.RemoveCardsResponse();
+				currentPlayer.GetAndRemoveCards ();
                 currentPlayer = getNextPlayer(currentPlayer);
 
                 if (currentPlayer != firstPlayer){
@@ -129,7 +130,7 @@ public class KingsCallToArms : Events {
             }
 
             if (valid) {
-                currentPlayer.RemoveCardsResponse();
+				currentPlayer.GetAndRemoveCards ();
                 currentPlayer = getNextPlayer(currentPlayer);
 
                 if (currentPlayer != firstPlayer) {

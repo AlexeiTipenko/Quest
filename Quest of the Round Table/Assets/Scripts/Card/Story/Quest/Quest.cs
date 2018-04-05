@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
+[Serializable]
 public abstract class Quest : Story {
 	BoardManagerMediator board;
 
@@ -136,7 +137,7 @@ public abstract class Quest : Story {
 	}
 
 	public void SponsorQuestComplete(List<Stage> stages) {
-        Debug.Log("Finished quest setup.");
+        Debug.Log("Finished quest setup");
         this.stages = stages;
         foreach (Stage stage in stages) {
             Debug.Log("Stage " + stage.getStageNum());
@@ -191,10 +192,15 @@ public abstract class Quest : Story {
 			participatingPlayers.Add (playerToPrompt);
 
             action = () => {
+				Debug.Log("Entered action in accepting quest");
                 Action completeAction = () =>
                 {
-                    playerToPrompt = board.getNextPlayer(playerToPrompt);
-                    PromptAcceptQuest();
+					Debug.Log("Entered completeAction");
+                    if (board.IsOnlineGame()) {
+                        Debug.Log("Sending to others");
+                        board.getPhotonView().RPC("PromptNextAcceptQuest", PhotonTargets.Others);
+                    }
+                    PromptNextAcceptQuest();
                 };
                 playerToPrompt.DiscardCards(action, completeAction);
             };
@@ -205,6 +211,11 @@ public abstract class Quest : Story {
             PromptAcceptQuest();
         }
 	}
+
+    public void PromptNextAcceptQuest() {
+        playerToPrompt = board.getNextPlayer(playerToPrompt);
+        PromptAcceptQuest();
+    }
 
 	public void PlayStage() {
 		currentStage++;
@@ -235,7 +246,7 @@ public abstract class Quest : Story {
         if (sponsor.getHand().Count + totalCardsCounter + numStages > 12) {
             action = () => {
                 board.TransferFromHandToPlayArea(playerToPrompt);
-                playerToPrompt.RemoveCardsResponse();
+				playerToPrompt.GetAndRemoveCards ();
                 if (playerToPrompt.getHand().Count > 12)
                 {
                     board.PromptCardRemoveSelection(playerToPrompt, action);
@@ -243,6 +254,11 @@ public abstract class Quest : Story {
 
                 else
                 {
+					Logger.getInstance ().debug ("In Quest CompleteQuest(), about to RPC nextTurn");
+					Debug.Log("In Quest CompleteQuest(), about to RPC nextTurn");
+					if (board.IsOnlineGame()) {
+						board.getPhotonView().RPC("nextTurn", PhotonTargets.Others);
+					}
                     board.nextTurn();
                 }
             };

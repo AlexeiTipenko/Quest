@@ -26,36 +26,28 @@ public class BoardManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyUp("r"))
-        {
-            BoardManagerMediator.getInstance().cheat("rankUp");
-        }
-        else if (Input.GetKeyUp("s"))
-        {
-            BoardManagerMediator.getInstance().cheat("shieldsUp");
-        }
-        else if (Input.GetKeyUp("p"))
-        {
-            BoardManagerMediator.getInstance().cheat("prosperity");
-        }
-        else if (Input.GetKeyUp("c"))
-        {
-            BoardManagerMediator.getInstance().cheat("chivalrous");
-        }
-        else if (Input.GetKeyUp("n"))
-        {
-            BoardManagerMediator.getInstance().cheat("nextPlayer");
-        }
-		else if (Input.GetKeyUp("1")) {
+		if (Input.GetKeyUp ("r")) {
+			BoardManagerMediator.getInstance ().cheat ("rankUp");
+		} else if (Input.GetKeyUp ("s")) {
+			BoardManagerMediator.getInstance ().cheat ("shieldsUp");
+		} else if (Input.GetKeyUp ("p")) {
+			BoardManagerMediator.getInstance ().cheat ("prosperity");
+		} else if (Input.GetKeyUp ("c")) {
+			BoardManagerMediator.getInstance ().cheat ("chivalrous");
+		} else if (Input.GetKeyUp ("n")) {
+			BoardManagerMediator.getInstance ().cheat ("nextPlayer");
+		} else if (Input.GetKeyUp ("1")) {
 			BoardManagerMediator.getInstance ().cheat ("scenario1");
-		}
-		else if (Input.GetKeyUp("2")) {
+		} else if (Input.GetKeyUp ("2")) {
 			BoardManagerMediator.getInstance ().cheat ("scenario2");
+		} else if (Input.GetKeyUp ("d")) {
+			BoardManagerMediator.getInstance ().cheat ("discardArea");
 		}
     }
 
     public static void SetInteractionText(String text)
     {
+        Debug.Log("Setting interaction text: " + text);
         GameObject interactionText = GameObject.Find("Canvas/TabletopImage/InteractionPanel/InteractionText");
         interactionText.GetComponent<Text>().text = text;
     }
@@ -125,6 +117,7 @@ public class BoardManager : MonoBehaviour
 
 
     public static void ClearInteractions() {
+		Debug.Log("Clearing interactions...");
         GameObject interactionText = GameObject.Find("Canvas/TabletopImage/InteractionPanel/InteractionText");
         GameObject button1 = GameObject.Find("Canvas/TabletopImage/InteractionPanel/InteractionButton1");
         GameObject button2 = GameObject.Find("Canvas/TabletopImage/InteractionPanel/InteractionButton2");
@@ -137,6 +130,7 @@ public class BoardManager : MonoBehaviour
         button1.SetActive(false);
         button2.SetActive(false);
         interactionBid.SetActive(false);
+		Debug.Log("Cleared interactions.");
     }
 
     public static void DrawCards(Player player) {
@@ -261,25 +255,22 @@ public class BoardManager : MonoBehaviour
 
 
     public static void DrawCover(Player player) {
+        BoardManagerMediator board = BoardManagerMediator.getInstance();
         HideCover();
-        if (player != previousPlayer || isFreshTurn) {
+        if (player != previousPlayer || isFreshTurn || board.IsOnlineGame()) {
             isFreshTurn = false;
-            BoardManagerMediator board = BoardManagerMediator.getInstance();
-            if (BoardManagerMediator.getInstance().IsOnlineGame()){
+            if (board.IsOnlineGame()) {
+                Debug.Log("Coming inside is online game");
                 List<Player> players = board.getPlayers();
-                Debug.Log("draw cover online");
-                //if (player.getName() == players[BoardManagerMediator.getInstance().GetPlayerTurn()].getName())
-                Logger.getInstance().info("Player id: " + PhotonNetwork.player.ID);
+                int playerTurn = players.IndexOf(player) + 1;
+                Logger.getInstance().info("Local player id: " + PhotonNetwork.player.ID);
+                Logger.getInstance().info("Drawing for player (+ 1): " + playerTurn);
                 Debug.Log("Player id: " + PhotonNetwork.player.ID);
-                Debug.Log("player turn: " + board.GetPlayerTurn());
-
-                if (board.GetPlayerTurn() == PhotonNetwork.player.ID)
+                Debug.Log("player turn: " + playerTurn);
+                if (playerTurn == PhotonNetwork.player.ID)
                 {
                     Logger.getInstance().info("PLAYER PHOTON ID AND TURN IS MATCHING");
                     Debug.Log("Player photon id and turn is matching");
-                    //coverInteractionText.GetComponent<Text>().text = "NEXT PLAYER: " + player.getName().ToUpper() + "\nPress continue when you are ready.";
-                    //coverInteractionButton.GetComponent<Button>().onClick.AddListener(new UnityAction(HideCover));
-                    //coverInteractionButtonText.GetComponent<Text>().text = "Continue";
                     coverCanvas.SetActive(false);
                 }
                 else {
@@ -287,7 +278,7 @@ public class BoardManager : MonoBehaviour
                     coverCanvas.SetActive(true);
                 }
             }
-            else{
+            else {
                 Debug.Log("draw cover not online");
                 coverInteractionText.GetComponent<Text>().text = "NEXT PLAYER: " + player.getName().ToUpper() + "\nPress continue when you are ready.";
                 coverInteractionButton.GetComponent<Button>().onClick.AddListener(new UnityAction(HideCover));
@@ -302,9 +293,12 @@ public class BoardManager : MonoBehaviour
         if (coverCanvas == null) {
             Debug.Log("Instantiating cover canvas...");
             coverCanvas = GameObject.Find("CoverCanvas");
-            //coverInteractionText = GameObject.Find("CoverCanvas/CoverInteractionPanel/CoverInteractionText");
-            //coverInteractionButton = GameObject.Find("CoverCanvas/CoverInteractionPanel/CoverInteractionButton");
-            //coverInteractionButtonText = GameObject.Find("CoverCanvas/CoverInteractionPanel/CoverInteractionButton/Text");
+            BoardManagerMediator board = BoardManagerMediator.getInstance();
+            if (!board.IsOnlineGame()){
+                coverInteractionText = GameObject.Find("CoverCanvas/CoverInteractionPanel/CoverInteractionText");
+                coverInteractionButton = GameObject.Find("CoverCanvas/CoverInteractionPanel/CoverInteractionButton");
+                coverInteractionButtonText = GameObject.Find("CoverCanvas/CoverInteractionPanel/CoverInteractionButton/Text");
+            }
         }
         coverCanvas.SetActive(false);
     }
@@ -350,7 +344,6 @@ public class BoardManager : MonoBehaviour
     public static void DestroyMordredButton()
     {
         GameObject mordredButton = GameObject.Find("Canvas/TabletopImage/MordredButton");
-        Debug.Log(mordredButton);
         Destroy(mordredButton);
     }
 
