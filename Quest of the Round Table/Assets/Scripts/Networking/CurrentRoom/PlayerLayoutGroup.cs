@@ -3,18 +3,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 
-public class PlayerLayoutGroup : Photon.MonoBehaviour {
+public class PlayerLayoutGroup : MonoBehaviour {
 
 	[SerializeField]
     public GameObject _playerListingPrefab;
     public GameObject PlayerListingPrefab {
         get { return _playerListingPrefab; }
     }
-    public static List<PlayerListing> _playerListings = new List<PlayerListing>();
-    public static List<Player> playerList;
-    public static List<PlayerListing> PlayerListings {
+
+    private List<PlayerListing> _playerListings = new List<PlayerListing>();
+    private List<PlayerListing> PlayerListings {
         get { return _playerListings; }
     }
 
@@ -23,6 +22,7 @@ public class PlayerLayoutGroup : Photon.MonoBehaviour {
         lobby.SetActive(false);
         PhotonPlayer[] photonPlayers = PhotonNetwork.playerList;
         for (int i = 0; i < photonPlayers.Length; i++){
+            Debug.Log("Joined room " + photonPlayers[i].NickName);
             PlayerJoinedRoom(photonPlayers[i]);
         }
     }
@@ -50,6 +50,7 @@ public class PlayerLayoutGroup : Photon.MonoBehaviour {
 
     private void PlayerJoinedRoom(PhotonPlayer photonPlayer) {
         if (photonPlayer == null){
+            Debug.Log("Null, returning");
             return;   
         }
         PlayerLeftRoom(photonPlayer);
@@ -84,18 +85,24 @@ public class PlayerLayoutGroup : Photon.MonoBehaviour {
 
 
     public void PunSwitchScene(string sceneName) {
+        Debug.Log("Trying to switch scene");
         PhotonView view = PhotonView.Get(GameObject.Find("DDOL/PunManager"));
         view.RPC("SwitchScene", PhotonTargets.All, sceneName);
     }
 
     public static void SwitchScene(string SceneName) {
-        playerList = new List<Player>();
-        foreach (var player in PlayerListings)
+        List<Player> playerList = new List<Player>();
+        foreach (var player in PhotonNetwork.playerList)
         {
-            Debug.Log("Instantiating player: " + player.name);
-            playerList.Add(new HumanPlayer(player.name));
+            print("Instantiating player: " + player.NickName);
+            Player tempPlayer = new HumanPlayer(player.NickName);
+            print("Created player: " + tempPlayer.getName());
+            playerList.Add(tempPlayer);
+            print("Finished adding");
         }
+        print("Exited.");
         ButtonManager.playerList = playerList;
-        SceneManager.LoadScene(SceneName);
+        UnityEngine.SceneManagement.SceneManager.LoadScene(SceneName);
+        print("Finished Loading scene");
     }
 }

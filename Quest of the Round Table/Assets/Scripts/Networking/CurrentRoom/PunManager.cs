@@ -16,6 +16,7 @@ public class PunManager : Photon.MonoBehaviour {
     [PunRPC]
     public void SwitchScene(string sceneName)
     {
+        Debug.Log("Calling back to player layout group");
         PlayerLayoutGroup.SwitchScene(sceneName);
     }
 
