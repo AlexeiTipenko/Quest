@@ -63,14 +63,16 @@ public class QueensFavor : Events {
         playerToPrompt.DrawCards(2, action);
     }
 
-    private void DealCardsNextPlayer() {
+    public void DealCardsNextPlayer() {
         playerToPrompt = GetNextPlayer(playerToPrompt);
         if (playerToPrompt != originalPlayer)
         {
+			Debug.Log ("dealing cards in DealCardsNextPlayer");
             DealCards();
         }
         else
         {
+			Debug.Log ("next turn in DealCardsNextPlayer");
             board.nextTurn();
         }
     }
