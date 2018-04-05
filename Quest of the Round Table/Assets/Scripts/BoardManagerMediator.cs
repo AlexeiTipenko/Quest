@@ -421,14 +421,14 @@ public class BoardManagerMediator
             TransferFromHandToPlayArea(player);
             Debug.Log("Total battle points in play area is: " + player.getPlayArea().getBattlePoints());
 			if (IsOnlineGame()) {
-				board.GetPhotonView().RPC("PromptFoeResponse", PhotonTargets.Others, false);
+				getPhotonView().RPC("PromptFoeResponse", PhotonTargets.Others, false);
 			}
             ((Quest)cardInPlay).getStage(stage.getStageNum()).PromptFoeResponse(false);
 		};
         Action action2 = () => {
             Debug.Log("Dropped out");
 			if (IsOnlineGame()) {
-				board.GetPhotonView().RPC("PromptFoeResponse", PhotonTargets.Others, true);
+				getPhotonView().RPC("PromptFoeResponse", PhotonTargets.Others, true);
 			}
             ((Quest)cardInPlay).getStage(stage.getStageNum()).PromptFoeResponse(true);
         };
@@ -450,15 +450,23 @@ public class BoardManagerMediator
         Action action1 = () => {
             int InteractionBid = 0;
             Int32.TryParse(BoardManager.GetInteractionBid(), out InteractionBid);
-            if ( InteractionBid > player.getTotalAvailableBids()) {
+            if (InteractionBid > player.getTotalAvailableBids()) {
                 Debug.Log("Trying to bid more than they have");
+				if (IsOnlineGame()) {
+					view.RPC("PromptEnterTest", PhotonTargets.Others, PunManager.Serialize(player), currentBid);
+				}
                 PromptEnterTest(quest, player, currentBid);
             }
             else if (InteractionBid <= currentBid) {
+				if (IsOnlineGame()) {
+					view.RPC("PromptEnterTest", PhotonTargets.Others, PunManager.Serialize(player), currentBid);
+				}
                 PromptEnterTest(quest, player, currentBid);
             }
-
             else {
+				if (IsOnlineGame()) {
+					view.RPC("PromptTestResponse", PhotonTargets.Others, false, InteractionBid);
+				}
                 stage.PromptTestResponse(false, InteractionBid);
             }
         };
