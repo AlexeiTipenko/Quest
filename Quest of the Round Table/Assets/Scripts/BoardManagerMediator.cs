@@ -486,12 +486,11 @@ public class BoardManagerMediator
             TransferFromHandToPlayArea(player);
             if (BoardManager.GetSelectedDiscardNames().Count + player.getPlayAreaBid() == currentBid)
             {
-                List<Card> cardsToDiscard = GetDiscardedCards(player);
-                foreach (Card card in cardsToDiscard)
-                {
-                    player.RemoveCard(card);
-                }
-                quest.PlayStage();
+				player.GetAndRemoveCards();
+				if (IsOnlineGame()) {
+					view.RPC("PlayStage", PhotonTargets.Others);
+				}
+				quest.PlayStage();
             }
             else {
                 PromptDiscardTest(quest, player, currentBid);

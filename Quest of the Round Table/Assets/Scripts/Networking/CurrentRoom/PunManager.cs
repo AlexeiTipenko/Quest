@@ -120,7 +120,7 @@ public class PunManager : Photon.MonoBehaviour {
 	[PunRPC]
 	public void PromptEnterTest(byte[] playerBytes, int currentBid) {
 		PrepareRPC ();
-		Player tempPlayer = Deserialize (playerBytes);
+		Player tempPlayer = (Player)Deserialize (playerBytes);
 		Player localPlayer = FindLocalPlayer (tempPlayer);
 		board.PromptEnterTest ((Quest)board.getCardInPlay (), localPlayer, currentBid);
 	}
@@ -130,6 +130,12 @@ public class PunManager : Photon.MonoBehaviour {
         PrepareRPC();
         ((Quest)board.getCardInPlay()).getCurrentStage().PromptTestResponse(dropOut, interactionBid);
     }
+
+	[PunRPC]
+	public void PlayStage() {
+		PrepareRPC ();
+		((Quest)board.getCardInPlay ()).PlayStage ();
+	}
 
     //------------------------------------------------------------------------//
     //------------------------- Tournament Functions -------------------------//
