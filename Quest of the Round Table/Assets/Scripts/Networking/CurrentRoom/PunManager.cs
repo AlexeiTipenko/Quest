@@ -117,6 +117,12 @@ public class PunManager : Photon.MonoBehaviour {
 		quest.getCurrentStage ().PromptFoeResponse (dropOut);
 	}
 
+    [PunRPC]
+    public void PromptTestResponse(bool dropOut, int interactionBid){
+        PrepareRPC();
+        ((Quest)board.getCardInPlay()).getCurrentStage().PromptTestResponse(dropOut, interactionBid);
+    }
+
     //------------------------------------------------------------------------//
     //------------------------- Tournament Functions -------------------------//
     //------------------------------------------------------------------------//
