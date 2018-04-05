@@ -421,11 +421,7 @@ public class BoardManagerMediator
             TransferFromHandToPlayArea(player);
             Debug.Log("Total battle points in play area is: " + player.getPlayArea().getBattlePoints());
 			if (IsOnlineGame()) {
-<<<<<<< HEAD
-                getPhotonView().RPC("PromptFoeResponse", PhotonTargets.Others, false);
-=======
 				getPhotonView().RPC("PromptFoeResponse", PhotonTargets.Others, false);
->>>>>>> 5d0fd66c51cf5e14cbfbd03177a76eaca26af68b
 			}
             ((Quest)cardInPlay).getStage(stage.getStageNum()).PromptFoeResponse(false);
 		};
