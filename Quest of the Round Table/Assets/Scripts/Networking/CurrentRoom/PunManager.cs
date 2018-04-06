@@ -129,7 +129,7 @@ public class PunManager : Photon.MonoBehaviour {
 	[PunRPC]
 	public void EvaluateNextPlayerForFoe(bool playerEliminated) {
 		PrepareRPC ();
-		((Quest)board.getCardInPlay ()).getCurrentStage ().EvaluateNextPlayerForFoe ();
+		((Quest)board.getCardInPlay ()).getCurrentStage ().EvaluateNextPlayerForFoe (playerEliminated);
 	}
 		
 	[PunRPC]
