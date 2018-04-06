@@ -539,10 +539,6 @@ public class BoardManagerMediator
         BoardManager.DrawCards(player);
         BoardManager.SetInteractionText("PREPARE FOR BATTLE\nPrepare for the tournament using a combination of weapon, ally and amour cards.");
         Action action = () => {
-
-			if (IsOnlineGame()) {
-                view.RPC("CardsSelectionResponse", PhotonTargets.Others);
-			}
             tournament.CardsSelectionResponse();
         };
 

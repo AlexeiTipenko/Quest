@@ -128,6 +128,9 @@ public abstract class Tournament : Story
 
         else
         {
+			if (board.IsOnlineGame()) {
+				board.getPhotonView().RPC("CardsSelectionResponse", PhotonTargets.Others);
+			}
             foreach (Card card in chosenCards)
             {
                 playerToPrompt.RemoveCard(card);
