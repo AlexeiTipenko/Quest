@@ -624,6 +624,9 @@ public class BoardManagerMediator
             passedText = "You were eliminated...";
         }
         Action action = () => {
+			if (IsOnlineGame()) {
+				view.RPC("EvaluateNextPlayerForFoe", PhotonTargets.Others, playerEliminated);
+			}
             stage.EvaluateNextPlayerForFoe(playerEliminated);
         };
         BoardManager.SetIsResolutionOfStage(true);

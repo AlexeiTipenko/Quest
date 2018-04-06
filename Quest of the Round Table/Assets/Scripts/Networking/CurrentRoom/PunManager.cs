@@ -125,6 +125,12 @@ public class PunManager : Photon.MonoBehaviour {
 		Quest quest = (Quest)board.getCardInPlay ();
 		quest.getCurrentStage ().PromptFoeResponse (dropOut);
 	}
+
+	[PunRPC]
+	public void EvaluateNextPlayerForFoe(bool playerEliminated) {
+		PrepareRPC ();
+		((Quest)board.getCardInPlay ()).getCurrentStage ().EvaluateNextPlayerForFoe ();
+	}
 		
 	[PunRPC]
 	public void PromptEnterTest(byte[] playerBytes, int currentBid) {
