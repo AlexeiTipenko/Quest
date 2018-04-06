@@ -29,7 +29,7 @@ public class ProsperityThroughoutTheRealm : Events {
 				Logger.getInstance ().debug ("In ProsperityThroughoutTheRealm in DealCards(), about to RPC DealCardsNextPlayer");
 				Debug.Log("In ProsperityThroughoutTheRealm in DealCards(), about to RPC DealCardsNextPlayer");
 				if (board.IsOnlineGame() && playerToPrompt.discarded) {
-					playerToPrompt.discarded = false;
+					playerToPrompt.toggleDiscarded(false);
 					board.getPhotonView().RPC("DealCardsNextPlayer", PhotonTargets.Others);
 				}				
 				DealCardsNextPlayer();

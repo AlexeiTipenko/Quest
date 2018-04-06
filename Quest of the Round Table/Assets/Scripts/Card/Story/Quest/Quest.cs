@@ -197,7 +197,7 @@ public abstract class Quest : Story {
                 {
 					Debug.Log("Entered completeAction");
 					if (board.IsOnlineGame() && playerToPrompt.discarded) {
-						playerToPrompt.discarded = false;
+						playerToPrompt.toggleDiscarded(false);
                         Debug.Log("Sending to others");
                         board.getPhotonView().RPC("PromptNextAcceptQuest", PhotonTargets.Others);
                     }
@@ -247,7 +247,7 @@ public abstract class Quest : Story {
 		action = () => {
 			Action completeAction = () => {
 				if (board.IsOnlineGame() && playerToPrompt.discarded) {
-					playerToPrompt.discarded = false;
+					playerToPrompt.toggleDiscarded(false);
 					board.getPhotonView().RPC("nextTurn", PhotonTargets.Others);
 				}				
 				board.nextTurn();

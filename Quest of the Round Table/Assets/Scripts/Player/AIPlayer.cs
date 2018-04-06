@@ -14,7 +14,6 @@ public class AIPlayer : Player {
 
 	public override void PromptDiscardCards(Action action)
 	{
-		discarded = true;
         RemoveRandomCards(hand.Count - 12);
         action.Invoke();
 	}

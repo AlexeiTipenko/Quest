@@ -10,7 +10,6 @@ public class HumanPlayer : Player {
 
 	public override void PromptDiscardCards(Action action)
 	{
-		discarded = true;
         board.PromptCardRemoveSelection(this, action);
 	}
 

@@ -53,7 +53,7 @@ public class QueensFavor : Events {
 				Logger.getInstance ().debug ("In QueensFavor DealCards(), about to RPC DealCardsNextPlayer");
 				Debug.Log("In QueensFavor DealCards(), about to RPC DealCardsNextPlayer");
 				if (board.IsOnlineGame() && playerToPrompt.discarded) {
-					playerToPrompt.discarded = false;
+					playerToPrompt.toggleDiscarded(false);
 					board.getPhotonView().RPC("DealCardsNextPlayer", PhotonTargets.Others);
 				}
 				DealCardsNextPlayer();

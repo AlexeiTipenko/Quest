@@ -78,8 +78,10 @@ public abstract class Player {
         if (hand.Count > 12)
         {
             Debug.Log("More than 12 cards in " + name + "'s hand");
+			toggleDiscarded (true);
             PromptDiscardCards(action);
         } else {
+			toggleDiscarded (false);
             if (action != null) {
                 action.Invoke();
             }
@@ -279,9 +281,10 @@ public abstract class Player {
         return output;
     }
 
-    //public Action getAction() {
-    //    return func;
-    //}
+	public void toggleDiscarded(bool discarded) {
+		Debug.Log("Toggling discarded to " + discarded + " for player " + name);
+		this.discarded = discarded;
+	}
 }
 
 
