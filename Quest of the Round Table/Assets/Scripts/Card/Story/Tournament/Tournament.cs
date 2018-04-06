@@ -76,6 +76,7 @@ public abstract class Tournament : Story
         playerToPrompt = board.getNextPlayer(playerToPrompt);
 
 		if (playerToPrompt != owner) {
+            Debug.Log("Prompting next person to enter tournament");
 			playerToPrompt.PromptEnterTournament (this);
 		} else {
 			Debug.Log ("NumParticipantsAction...");
