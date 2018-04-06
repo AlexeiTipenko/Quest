@@ -10,6 +10,7 @@ public class HumanPlayer : Player {
 
 	public override void PromptDiscardCards(Action action)
 	{
+		discarded = true;
         board.PromptCardRemoveSelection(this, action);
 	}
 
@@ -21,7 +22,6 @@ public class HumanPlayer : Player {
         if (hand.Count > 12)
         {
             Debug.Log("INSIDE DISCARD CARDS, GREATER THAN 12");
-			discarded = true;
             PromptDiscardCards(invalidAction);
         }
         else
