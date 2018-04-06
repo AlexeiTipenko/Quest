@@ -55,7 +55,8 @@ public abstract class Tournament : Story
 				Action completeAction = () => {
 					Logger.getInstance ().debug ("In Tournament PromptEnterTournamentResponse(), about to RPC promptNextPlayer");
 					Debug.Log("In Tournament PromptEnterTournamentResponse(), about to RPC promptNextPlayer");
-					if (board.IsOnlineGame()) {
+					if (board.IsOnlineGame() && playerToPrompt.discarded) {
+						playerToPrompt.discarded = false;
 						board.getPhotonView().RPC("PromptNextPlayer", PhotonTargets.Others);
 					}
 					PromptNextPlayer();

@@ -256,7 +256,8 @@ public class Stage {
     public void DealCards() {
         action = () => {
 			Action completeAction = () => {
-				if (board.IsOnlineGame()) {
+				if (board.IsOnlineGame() && playerToPrompt.discarded) {
+					playerToPrompt.discarded = false;
 					Logger.getInstance ().debug ("In Stage DealCards(), about to RPC DealCardsNextPlayer");
 					Debug.Log("In Stage DealCards(), about to RPC DealCardsNextPlayer");
 					board.getPhotonView().RPC("DealCardsNextPlayer", PhotonTargets.Others);

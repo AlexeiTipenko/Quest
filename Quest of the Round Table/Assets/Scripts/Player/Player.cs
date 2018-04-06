@@ -12,6 +12,7 @@ public abstract class Player {
 	protected List<Card> hand;
 	protected PlayerPlayArea playArea;
     protected BoardManagerMediator board;
+	public bool discarded;
     System.Random random;
 
 	protected Player(string name) {
@@ -21,6 +22,7 @@ public abstract class Player {
 		hand = new List<Card> ();
 		playArea = new PlayerPlayArea ();
         board = BoardManagerMediator.getInstance();
+		discarded = false;
         random = new System.Random();
 	}
 

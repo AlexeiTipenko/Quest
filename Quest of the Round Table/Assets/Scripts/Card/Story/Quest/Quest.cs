@@ -196,7 +196,8 @@ public abstract class Quest : Story {
                 Action completeAction = () =>
                 {
 					Debug.Log("Entered completeAction");
-                    if (board.IsOnlineGame()) {
+					if (board.IsOnlineGame() && playerToPrompt.discarded) {
+						playerToPrompt.discarded = false;
                         Debug.Log("Sending to others");
                         board.getPhotonView().RPC("PromptNextAcceptQuest", PhotonTargets.Others);
                     }
@@ -243,30 +244,42 @@ public abstract class Quest : Story {
 			player.incrementShields (numShieldsAwarded);
 		}
         Debug.Log("Quest complete");
-        if (sponsor.getHand().Count + totalCardsCounter + numStages > 12) {
-            action = () => {
-                board.TransferFromHandToPlayArea(playerToPrompt);
-				playerToPrompt.GetAndRemoveCards ();
-                if (playerToPrompt.getHand().Count > 12)
-                {
-                    board.PromptCardRemoveSelection(playerToPrompt, action);
-                }
+		action = () => {
+			Action completeAction = () => {
+				if (board.IsOnlineGame() && playerToPrompt.discarded) {
+					playerToPrompt.discarded = false;
+					board.getPhotonView().RPC("nextTurn", PhotonTargets.Others);
+				}				
+				board.nextTurn();
+			};
+			playerToPrompt.DiscardCards(action, completeAction);
+		};
+		playerToPrompt.DrawCards(totalCardsCounter + numStages, action);
 
-                else
-                {
-					Logger.getInstance ().debug ("In Quest CompleteQuest(), about to RPC nextTurn");
-					Debug.Log("In Quest CompleteQuest(), about to RPC nextTurn");
-					if (board.IsOnlineGame()) {
-						board.getPhotonView().RPC("nextTurn", PhotonTargets.Others);
-					}
-                    board.nextTurn();
-                }
-            };
-            sponsor.DrawCards(totalCardsCounter + numStages, action);
-        } else {
-            sponsor.DrawCards(totalCardsCounter + numStages, null);
-            board.nextTurn();
-        }
+//        if (sponsor.getHand().Count + totalCardsCounter + numStages > 12) {
+//            action = () => {
+//                board.TransferFromHandToPlayArea(playerToPrompt);
+//				playerToPrompt.GetAndRemoveCards ();
+//                if (playerToPrompt.getHand().Count > 12)
+//                {
+//                    board.PromptCardRemoveSelection(playerToPrompt, action);
+//                }
+//
+//                else
+//                {
+//					Logger.getInstance ().debug ("In Quest CompleteQuest(), about to RPC nextTurn");
+//					Debug.Log("In Quest CompleteQuest(), about to RPC nextTurn");
+//					if (board.IsOnlineGame()) {
+//						board.getPhotonView().RPC("nextTurn", PhotonTargets.Others);
+//					}
+//                    board.nextTurn();
+//                }
+//            };
+//            sponsor.DrawCards(totalCardsCounter + numStages, action);
+//        } else {
+//            sponsor.DrawCards(totalCardsCounter + numStages, null);
+//            board.nextTurn();
+//        }
 	}
 
 	public void removeParticipatingPlayer(Player player) {
