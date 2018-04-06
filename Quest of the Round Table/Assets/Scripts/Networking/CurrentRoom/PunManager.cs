@@ -163,20 +163,6 @@ public class PunManager : Photon.MonoBehaviour {
         ((Tournament)board.getCardInPlay()).CardsSelectionResponse();
     }
 
-    /*
-	[PunRPC]
-	public void PromptEnterTournamentResponse(bool entered)
-	{
-<<<<<<< HEAD
-		GetBoard ();
-<<<<<<< HEAD
-=======
-		PrepareRPC ();
->>>>>>> networking/quests
-		tournament.PromptEnterTournamentResponse(entered);
-	}
-	*/
-
     [PunRPC]
     public void PromptEnterTournamentResponse(bool entered)
     {
