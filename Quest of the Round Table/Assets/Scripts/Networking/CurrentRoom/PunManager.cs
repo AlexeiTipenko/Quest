@@ -20,16 +20,37 @@ public class PunManager : Photon.MonoBehaviour {
         PlayerLayoutGroup.SwitchScene(sceneName);
     }
 
+    [PunRPC]
+    public void SwitchScene1(string sceneName){
+        PlayerLayoutGroup.SwitchScene1(sceneName);
+    }
+
+	[PunRPC]
+	public void TransferCards (byte[] playerBytes, byte[] cardBytes) {
+		PrepareRPC ();
+		Player tempPlayer = (Player)Deserialize (playerBytes);
+		Card card = (Card)Deserialize (cardBytes);
+		Player localPlayer = FindLocalPlayer (tempPlayer);
+		if (localPlayer != null) {
+			List<Card> localHand = localPlayer.getHand ();
+			foreach (Card localCard in localHand) {
+				if (localCard.getCardName () == card.getCardName ()) {
+					BoardManager.TransferCards (localPlayer, localCard);
+					break;
+				}
+			}
+		}
+	}
+
+	[PunRPC]
+	public void nextTurn () {
+		PrepareRPC ();
+		board.nextTurn ();
+	}
+
     //-----------------------------------------------------------------------//
     //--------------------------- Quest Functions ---------------------------//
     //-----------------------------------------------------------------------//
-
-	//purely for cheating; as next turn usually gets called through another method
-	[PunRPC]
-	public void nextTurn () {
-        PrepareRPC ();
-		board.nextTurn ();
-	}
 
 	[PunRPC]
 	public void RemoveCardsResponse (byte[] playerBytes, byte[] chosenCardsBytes) {
@@ -37,21 +58,23 @@ public class PunManager : Photon.MonoBehaviour {
         List<Card> chosenCards = (List<Card>)Deserialize(chosenCardsBytes);
         Player tempPlayer = (Player)Deserialize(playerBytes);
 		Logger.getInstance ().info ("Received player: " + tempPlayer.getName());
-		List<Player> players = board.getPlayers ();
-		foreach (Player player in players) {
-			if (tempPlayer.getName () == player.getName ()) {
-				Logger.getInstance ().info ("Found matching name");
-				player.RemoveCardsResponse (chosenCards);
-				break;
-			}
+		Player player = FindLocalPlayer (tempPlayer);
+		if (player != null) {
+			player.RemoveCardsResponse (chosenCards);
 		}
-		Logger.getInstance ().info ("Completed RemoveCardsResponse");
 	}
 
 	[PunRPC]
 	public void DealCardsNextPlayer() {
         PrepareRPC ();
-		((Quest)board.getCardInPlay()).getCurrentStage().DealCardsNextPlayer();
+		if (board.getCardInPlay ().GetType ().IsSubclassOf (typeof(Quest))) {
+			((Quest)board.getCardInPlay ()).getCurrentStage ().DealCardsNextPlayer ();
+		} else if (board.getCardInPlay ().GetType () == typeof(QueensFavor)) {
+			((QueensFavor)board.getCardInPlay ()).DealCardsNextPlayer ();
+		}
+		else if (board.getCardInPlay ().GetType () == typeof(ProsperityThroughoutTheRealm)) {
+			((ProsperityThroughoutTheRealm)board.getCardInPlay ()).DealCardsNextPlayer ();
+		}
 	}
 
 	[PunRPC]
@@ -70,17 +93,11 @@ public class PunManager : Photon.MonoBehaviour {
     public void SponsorQuestComplete(byte[] stagesBytes) {
         PrepareRPC();
         List<Stage> stages = (List<Stage>)Deserialize(stagesBytes);
-        List<Player> players = board.getPlayers();
         Player sponsorPlayer = ((Quest)board.getCardInPlay()).getSponsor();
-        foreach(Player player in players){
-            if(player.getName() == sponsorPlayer.getName()){
-                Debug.Log("Found sponsor " + sponsorPlayer.getName());
-                Logger.getInstance().info("Found sponsor " + player.getName());
-                ((Quest)board.getCardInPlay()).SponsorQuestComplete(stages);
-                break;
-            }
-        }
-        //((Quest)board.getCardInPlay()).SponsorQuestComplete(stages);
+		Player player = FindLocalPlayer (sponsorPlayer);
+		if (player != null) {
+			((Quest)board.getCardInPlay()).SponsorQuestComplete(stages);
+		}
     }
 
     [PunRPC]
@@ -98,20 +115,35 @@ public class PunManager : Photon.MonoBehaviour {
     [PunRPC]
     public void PromptNextAcceptQuest() {
         PrepareRPC ();
-
-        //List<Player> players = board.getPlayers();
-        //foreach (Player player in players)
-        //{
-        //    if (player.getName() == sponsorPlayer.getName())
-        //    {
-        //        Debug.Log("Found sponsor " + sponsorPlayer.getName());
-        //        Logger.getInstance().info("Found sponsor " + player.getName());
-        //        ((Quest)board.getCardInPlay()).PromptNextAcceptQuest();
-        //        break;
-        //    }
-        //}
         ((Quest)board.getCardInPlay()).PromptNextAcceptQuest();
     }
+
+	[PunRPC]
+	public void PromptFoeResponse(bool dropOut) {
+		PrepareRPC ();
+		Quest quest = (Quest)board.getCardInPlay ();
+		quest.getCurrentStage ().PromptFoeResponse (dropOut);
+	}
+		
+	[PunRPC]
+	public void PromptEnterTest(byte[] playerBytes, int currentBid) {
+		PrepareRPC ();
+		Player tempPlayer = (Player)Deserialize (playerBytes);
+		Player localPlayer = FindLocalPlayer (tempPlayer);
+		board.PromptEnterTest ((Quest)board.getCardInPlay (), localPlayer, currentBid);
+	}
+
+    [PunRPC]
+    public void PromptTestResponse(bool dropOut, int interactionBid){
+        PrepareRPC();
+        ((Quest)board.getCardInPlay()).getCurrentStage().PromptTestResponse(dropOut, interactionBid);
+    }
+
+	[PunRPC]
+	public void PlayStage() {
+		PrepareRPC ();
+		((Quest)board.getCardInPlay ()).PlayStage ();
+	}
 
     //------------------------------------------------------------------------//
     //------------------------- Tournament Functions -------------------------//
@@ -146,10 +178,25 @@ public class PunManager : Photon.MonoBehaviour {
         ((Tournament)board.getCardInPlay()).PromptEnterTournamentResponse(entered);
     }
 
+	//---------------------------------------------------------------------//
+	//------------------------- Utility Functions -------------------------//
+	//---------------------------------------------------------------------//
+
     void PrepareRPC(){
         board = BoardManagerMediator.getInstance();
         BoardManager.ClearInteractions();
     }
+
+	Player FindLocalPlayer(Player player) {
+		List<Player> players = board.getPlayers ();
+		foreach (Player localPlayer in players) {
+			if (localPlayer.getName () == player.getName ()) {
+				Logger.getInstance ().info ("Found matching name");
+				return localPlayer;
+			}
+		}
+		return null;
+	}
 
     public static byte[] Serialize(System.Object obj)
     {

@@ -39,7 +39,7 @@ public class ProsperityThroughoutTheRealm : Events {
         playerToPrompt.DrawCards(2, action);
     }
 
-    private void DealCardsNextPlayer() {
+    public void DealCardsNextPlayer() {
         playerToPrompt = board.getNextPlayer(playerToPrompt);
         if (playerToPrompt != originalPlayer) {
             DealCards();

@@ -83,14 +83,29 @@ public class PlayerLayoutGroup : MonoBehaviour {
         }
     }
 
-
     public void PunSwitchScene(string sceneName) {
         PhotonView view = PhotonView.Get(GameObject.Find("DDOL/PunManager"));
         view.RPC("SwitchScene", PhotonTargets.All, sceneName);
     }
 
+    public void PunSwitchScene1(string sceneName){
+        PhotonView view = PhotonView.Get(GameObject.Find("DDOL/PunManager"));
+        view.RPC("SwitchScene1", PhotonTargets.All, sceneName);
+    }
+
     public static void SwitchScene(string SceneName) {
         playerList = new List<Player>();
+        foreach (var player in PlayerListings)
+        {
+            playerList.Add(new HumanPlayer(player.name));
+        }
+        ButtonManager.playerList = playerList;
+        UnityEngine.SceneManagement.SceneManager.LoadScene(SceneName);
+    }
+
+    public static void SwitchScene1(string SceneName){
+        playerList = new List<Player>();
+        ButtonManager.scenario = "scenario1";
         foreach (var player in PlayerListings)
         {
             playerList.Add(new HumanPlayer(player.name));

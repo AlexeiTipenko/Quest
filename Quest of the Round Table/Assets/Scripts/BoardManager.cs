@@ -603,13 +603,21 @@ public class BoardManager : MonoBehaviour
                     }
                     if (!amourExistsInPlayArea || (amourExistsInPlayArea && card.GetType() != typeof(Amour))) {
                         Debug.Log("Moving card from hand to play area: " + card.getCardName());
-                        player.getPlayArea().addCard(card);
-                        player.RemoveCard(card);
+						BoardManagerMediator board = BoardManagerMediator.getInstance ();
+						if (board.IsOnlineGame ()) {
+							board.getPhotonView ().RPC ("TransferCards", PhotonTargets.Others, PunManager.Serialize (player), PunManager.Serialize (card));
+						}
+						TransferCards (player, card);
                         break;
                     }
                 }
             }
 		}
+	}
+		
+	public static void TransferCards(Player player, Card card) {
+		player.getPlayArea().addCard(card);
+		player.RemoveCard(card);
 	}
 
     public static int GetCardsNumHandArea(Player player)
