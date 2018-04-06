@@ -196,8 +196,7 @@ public abstract class Quest : Story {
                 Action completeAction = () =>
                 {
 					Debug.Log("Entered completeAction");
-					if (board.IsOnlineGame() && playerToPrompt.discarded) {
-						playerToPrompt.toggleDiscarded(false);
+					if (board.IsOnlineGame()) {
                         Debug.Log("Sending to others");
                         board.getPhotonView().RPC("PromptNextAcceptQuest", PhotonTargets.Others);
                     }
