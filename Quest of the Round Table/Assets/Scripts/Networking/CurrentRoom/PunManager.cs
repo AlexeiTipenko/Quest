@@ -83,6 +83,7 @@ public class PunManager : Photon.MonoBehaviour {
 		((Tournament)board.getCardInPlay()).PromptNextPlayer();
 	}
 
+
     [PunRPC]
     public void PromptSponsorQuestResponse(bool sponsorAccepted) {
         PrepareRPC();
@@ -177,6 +178,35 @@ public class PunManager : Photon.MonoBehaviour {
 		Debug.Log ("board.cardinplay in RPC promptentertournamentresponse is " + board.getCardInPlay().getCardName());
         ((Tournament)board.getCardInPlay()).PromptEnterTournamentResponse(entered);
     }
+
+
+    //------------------------------------------------------------------------//
+    //------------------------- Event Functions ------------------------------//
+    //------------------------------------------------------------------------//
+
+    [PunRPC]
+    public void PlayerDiscardedWeapon()
+    {
+        PrepareRPC();
+        ((KingsCallToArms)board.getCardInPlay()).PlayerDiscardedWeapon();
+    }
+
+    [PunRPC]
+    public void PlayerDiscardedFoes()
+    {
+        PrepareRPC();
+        ((KingsCallToArms)board.getCardInPlay()).PlayerDiscardedFoes();
+    }
+
+    [PunRPC]
+    public void CallToArmsPromptNextPlayer()
+    {
+        PrepareRPC();
+        ((KingsCallToArms)board.getCardInPlay()).PromptNextPlayer();
+    }
+
+   
+
 
 	//---------------------------------------------------------------------//
 	//------------------------- Utility Functions -------------------------//

@@ -557,9 +557,16 @@ public class BoardManagerMediator
 		BoardManager.DrawCards(player);
 		BoardManager.SetInteractionText("Please discard 1 weapon.");
         BoardManager.SetupDiscardPanel();
+
 		Action action = () => {
+            if (IsOnlineGame())
+            {
+                view.RPC("PlayerDiscardedWeapon", PhotonTargets.Others);
+            }
             ((KingsCallToArms)cardInPlay).PlayerDiscardedWeapon();
 		};
+		
+
 		BoardManager.SetInteractionButtons("Complete", "", action, null);
 		Debug.Log("Prompting " + player.getName() + " to prepare cards.");
         Logger.getInstance().info("Prompted " + player.getName() + " to prepare weapon cards to discard.");
@@ -573,6 +580,11 @@ public class BoardManagerMediator
 		BoardManager.SetInteractionText("Please discard " + numFoes +  " Foes.");
         BoardManager.SetupDiscardPanel();
 		Action action = () => {
+            
+            if (IsOnlineGame())
+            {
+                view.RPC("PlayerDiscardedFoes", PhotonTargets.Others);
+            }
 			((KingsCallToArms)cardInPlay).PlayerDiscardedFoes();
 		};
 		BoardManager.SetInteractionButtons("Complete", "", action, null);
