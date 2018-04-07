@@ -588,34 +588,59 @@ public class BoardManager : MonoBehaviour
         return stages;
     }
 
-	public static void GetPlayArea(Player player) {
+	public static List<Card> GetPlayArea(Player player) {
+		List<Card> cards = new List<Card> ();
 		GameObject PlayArea = GameObject.Find ("Canvas/TabletopImage/PlayerPlayArea");
 		foreach (Transform child in PlayArea.transform) {
 			Logger.getInstance ().info ("Cards in play area: " + child.name);
             foreach(Card card in player.getHand()) {
-                if(child.name.Trim() == card.getCardName().Trim()) {
-                    bool amourExistsInPlayArea = false;
-                    foreach (Card playAreaCard in player.getPlayArea().getCards()) {
-                        if (playAreaCard.GetType() == typeof(Amour)) {
-                            amourExistsInPlayArea = true;
-                            break;
-                        }
-                    }
-                    if (!amourExistsInPlayArea || (amourExistsInPlayArea && card.GetType() != typeof(Amour))) {
-                        Debug.Log("Moving card from hand to play area: " + card.getCardName());
-						BoardManagerMediator board = BoardManagerMediator.getInstance ();
-						if (board.IsOnlineGame ()) {
-							board.getPhotonView ().RPC ("TransferCards", PhotonTargets.Others, PunManager.Serialize (player), PunManager.Serialize (card));
-						}
-						TransferCards (player, card);
-                        break;
-                    }
-                }
+				if (child.name.Trim () == card.getCardName ().Trim ()) {
+					cards.Add (card);
+				}
+//                    bool amourExistsInPlayArea = false;
+//                    foreach (Card playAreaCard in player.getPlayArea().getCards()) {
+//                        if (playAreaCard.GetType() == typeof(Amour)) {
+//                            amourExistsInPlayArea = true;
+//                            break;
+//                        }
+//                    }
+//                    if (!amourExistsInPlayArea || (amourExistsInPlayArea && card.GetType() != typeof(Amour))) {
+//                        Debug.Log("Moving card from hand to play area: " + card.getCardName());
+//						BoardManagerMediator board = BoardManagerMediator.getInstance ();
+//						if (board.IsOnlineGame ()) {
+//							board.getPhotonView ().RPC ("TransferCards", PhotonTargets.Others, PunManager.Serialize (player), PunManager.Serialize (card));
+//						}
+//						TransferCards (player, card);
+//                        break;
+//                    }
+//                }
             }
+		}
+		return cards;
+	}
+
+	public static void TransferCards(Player player, List<Card> cards) {
+		foreach (Card card in cards) {
+			bool amourExistsInPlayArea = false;
+			foreach (Card playAreaCard in player.getPlayArea().getCards()) {
+				if (playAreaCard.GetType() == typeof(Amour)) {
+					amourExistsInPlayArea = true;
+					break;
+				}
+			}
+			if (!amourExistsInPlayArea || (amourExistsInPlayArea && card.GetType() != typeof(Amour))) {
+				Debug.Log("Moving card from hand to play area: " + card.getCardName());
+				BoardManagerMediator board = BoardManagerMediator.getInstance ();
+				if (board.IsOnlineGame ()) {
+					board.getPhotonView ().RPC ("TransferCard", PhotonTargets.Others, PunManager.Serialize (player), PunManager.Serialize (card));
+				}
+				TransferCard (player, card);
+				break;
+			}
 		}
 	}
 		
-	public static void TransferCards(Player player, Card card) {
+	public static void TransferCard(Player player, Card card) {
 		player.getPlayArea().addCard(card);
 		player.RemoveCard(card);
 	}

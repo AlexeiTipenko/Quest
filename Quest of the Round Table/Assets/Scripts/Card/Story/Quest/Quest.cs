@@ -283,6 +283,18 @@ public abstract class Quest : Story {
 //        }
 	}
 
+	public bool ContainsOnlyValidCards(Player player) {
+		List<Card> cards = BoardManager.GetPlayArea (player);
+		foreach (Card card in cards) {
+			if (!card.GetType ().IsSubclassOf (typeof(Weapon))
+			    && !card.GetType ().IsSubclassOf (typeof(Ally))
+			    && card.GetType () != typeof(Amour)) {
+				return false;
+			}
+		}
+		return true;
+	}
+
 	public void removeParticipatingPlayer(Player player) {
 		if (participatingPlayers.Contains(player)) {
 			participatingPlayers.Remove (player);

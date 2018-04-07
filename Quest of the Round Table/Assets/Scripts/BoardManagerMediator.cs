@@ -410,27 +410,30 @@ public class BoardManagerMediator
 
     public void PromptFoe(Quest quest, Player player) {
         Debug.Log("Inside prompt foe mediator, player being prompted is: " + player.getName());
-        Stage stage = quest.getCurrentStage();
         BoardManager.DrawCards(player);
         Debug.Log("After drawing cards");
         BoardManager.DisplayStageButton(players);
-        BoardManager.SetInteractionText("QUEST STAGE " + (stage.getStageNum() + 1) + "\nYou are facing a foe. You may place any number of cards, or drop out.");
+		BoardManager.SetInteractionText("QUEST STAGE " + (quest.getCurrentStage().getStageNum() + 1) + "\nYou are facing a foe. You may place any number of cards, or drop out.");
         Debug.Log("Setup interaction text");
 		Action action1 = () => {
-            Debug.Log("Did not dropout");
-            TransferFromHandToPlayArea(player);
-            Debug.Log("Total battle points in play area is: " + player.getPlayArea().getBattlePoints());
-			if (IsOnlineGame()) {
-				getPhotonView().RPC("PromptFoeResponse", PhotonTargets.Others, false);
+			if (quest.ContainsOnlyValidCards(player)) {
+				Debug.Log("Did not dropout");
+				TransferFromHandToPlayArea(player);
+				Debug.Log("Total battle points in play area is: " + player.getPlayArea().getBattlePoints());
+				if (IsOnlineGame()) {
+					getPhotonView().RPC("PromptFoeResponse", PhotonTargets.Others, false);
+				}
+				quest.getCurrentStage().PromptFoeResponse(false);
+			} else {
+				PromptFoe(quest, player);
 			}
-            ((Quest)cardInPlay).getStage(stage.getStageNum()).PromptFoeResponse(false);
 		};
         Action action2 = () => {
             Debug.Log("Dropped out");
 			if (IsOnlineGame()) {
 				getPhotonView().RPC("PromptFoeResponse", PhotonTargets.Others, true);
 			}
-            ((Quest)cardInPlay).getStage(stage.getStageNum()).PromptFoeResponse(true);
+			quest.getCurrentStage().PromptFoeResponse(true);
         };
 
 		BoardManager.SetInteractionButtons ("Continue", "Drop Out", action1, action2);
@@ -438,7 +441,8 @@ public class BoardManagerMediator
 
 
     public void TransferFromHandToPlayArea(Player player) {
-        BoardManager.GetPlayArea(player);
+        List<Card> playAreaCards = BoardManager.GetPlayArea(player);
+		BoardManager.TransferCards (player, playAreaCards);
     }
 
 
