@@ -596,24 +596,8 @@ public class BoardManager : MonoBehaviour
             foreach(Card card in player.getHand()) {
 				if (child.name.Trim () == card.getCardName ().Trim ()) {
 					cards.Add (card);
+					break;
 				}
-//                    bool amourExistsInPlayArea = false;
-//                    foreach (Card playAreaCard in player.getPlayArea().getCards()) {
-//                        if (playAreaCard.GetType() == typeof(Amour)) {
-//                            amourExistsInPlayArea = true;
-//                            break;
-//                        }
-//                    }
-//                    if (!amourExistsInPlayArea || (amourExistsInPlayArea && card.GetType() != typeof(Amour))) {
-//                        Debug.Log("Moving card from hand to play area: " + card.getCardName());
-//						BoardManagerMediator board = BoardManagerMediator.getInstance ();
-//						if (board.IsOnlineGame ()) {
-//							board.getPhotonView ().RPC ("TransferCards", PhotonTargets.Others, PunManager.Serialize (player), PunManager.Serialize (card));
-//						}
-//						TransferCards (player, card);
-//                        break;
-//                    }
-//                }
             }
 		}
 		return cards;
@@ -635,7 +619,6 @@ public class BoardManager : MonoBehaviour
 					board.getPhotonView ().RPC ("TransferCard", PhotonTargets.Others, PunManager.Serialize (player), PunManager.Serialize (card));
 				}
 				TransferCard (player, card);
-				break;
 			}
 		}
 	}
