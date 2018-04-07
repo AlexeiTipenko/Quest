@@ -60,7 +60,12 @@ public abstract class Tournament : Story
 					}
 					PromptNextPlayer();
 				};
-                playerToPrompt.DiscardCards(action, completeAction);
+                if (playerToPrompt.getHand().Count > 12) {
+                    playerToPrompt.DiscardCards(action, completeAction);
+                }
+                else {
+                    PromptNextPlayer();
+                }
             };
             playerToPrompt.DrawCards(1, action);
         }

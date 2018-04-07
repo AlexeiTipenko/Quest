@@ -271,7 +271,12 @@ public class Stage {
 				}				
 				DealCardsNextPlayer();
 			};
-            playerToPrompt.DiscardCards(action, completeAction);
+            if (playerToPrompt.getHand().Count > 12) {
+                playerToPrompt.DiscardCards(action, completeAction);
+            }
+            else {
+                DealCardsNextPlayer();
+            }
         };
         playerToPrompt.DrawCards(1, action);
     }

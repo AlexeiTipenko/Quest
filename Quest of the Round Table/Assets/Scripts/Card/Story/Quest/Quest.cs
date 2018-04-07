@@ -257,7 +257,12 @@ public abstract class Quest : Story {
 				}				
 				board.nextTurn();
 			};
-			playerToPrompt.DiscardCards(action, completeAction);
+            if (playerToPrompt.getHand().Count > 12) {
+                playerToPrompt.DiscardCards(action, completeAction);
+            }
+            else {
+                board.nextTurn();
+            }
 		};
 		playerToPrompt.DrawCards(totalCardsCounter + numStages, action);
 
