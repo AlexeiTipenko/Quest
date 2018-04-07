@@ -200,7 +200,10 @@ public class Stage {
 
     void PlayFoe() {
         playersToRemove = new List<Player>();
-        originalPlayer = playerToPrompt;
+		while (!quest.getPlayers ().Contains (playerToPrompt)) {
+			playerToPrompt = board.getNextPlayer (playerToPrompt);
+		}
+		originalPlayer = playerToPrompt;
         EvaluatePlayerForFoe();
     }
 
