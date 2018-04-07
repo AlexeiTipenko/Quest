@@ -219,7 +219,9 @@ public abstract class Quest : Story {
 
 	public void PlayStage() {
 		currentStage++;
+		Debug.Log ("Playing stage: " + currentStage);
         foreach (Player player in board.getPlayers()) {
+			Debug.Log ("Discarding weapons for player: " + player.getName());
             player.getPlayArea().discardWeapons();
         }
         if (currentStage < numStages && participatingPlayers.Count > 0) {
