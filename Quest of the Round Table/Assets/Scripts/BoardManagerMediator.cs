@@ -392,6 +392,7 @@ public class BoardManagerMediator
         BoardManager.SetInteractionText("NEW QUEST DRAWN\nWould you like to participate in this quest?");
         Action action1 = () => {
             if (IsOnlineGame()) {
+				Debug.Log("SENDING PROMPT ACCEPT QUEST RPC");
                 view.RPC("PromptAcceptQuestResponse", PhotonTargets.Others, true);
             }
             quest.PromptAcceptQuestResponse(true);

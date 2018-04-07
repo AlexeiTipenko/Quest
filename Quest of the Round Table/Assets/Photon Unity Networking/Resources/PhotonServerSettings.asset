@@ -59,4 +59,7 @@ MonoBehaviour:
   - PlayerDiscardedWeapon
   - PromptEventAction
   - CallToArmsPromptNextPlayer
+  - EvaluateNextPlayerForFoe
+  - TransferCard
+  - PromptAcceptQuest
   DisableAutoOpenWizard: 1
