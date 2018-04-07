@@ -299,10 +299,13 @@ public abstract class Quest : Story {
 		return true;
 	}
 
-	public void removeParticipatingPlayer(Player player) {
-		if (participatingPlayers.Contains(player)) {
-			participatingPlayers.Remove (player);
-            Logger.getInstance ().trace (player.getName() + " removed from quest");
+	public void removeParticipatingPlayer(Player playerToRemove) {
+		foreach (Player player in participatingPlayers) {
+			if (player.getName () == playerToRemove.getName ()) {
+				participatingPlayers.Remove (player);
+				Logger.getInstance ().trace (player.getName() + " removed from quest");
+				break;
+			}
 		}
 	}
 
