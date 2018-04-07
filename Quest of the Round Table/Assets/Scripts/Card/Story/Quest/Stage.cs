@@ -68,6 +68,7 @@ public class Stage {
 		Logger.getInstance ().debug ("Prepare function has started");
 
         isInProgress = true;
+		playersToRemove = new List<Player> ();
 
 		if (stageCard.GetType ().IsSubclassOf (typeof(Foe))) {
 			Logger.getInstance ().trace ("Stage card is subclass type of foe");
@@ -106,14 +107,8 @@ public class Stage {
         }
         else {
             Debug.Log("Dropped out");
-            Player temp = playerToPrompt;
+			playersToRemove.Add (playerToPrompt);
             playerToPrompt = quest.getNextPlayer(playerToPrompt);
-            if (originalPlayer == temp) {
-                originalPlayer = quest.getNextPlayer(originalPlayer);
-            }
-            Debug.Log("Removing player: " + temp.getName());
-            quest.removeParticipatingPlayer(temp);
-            Debug.Log("New total participant: " + quest.getPlayers().Count);
             Debug.Log("Next player: " + playerToPrompt.getName());
             ContinueQuest();
         }
@@ -128,11 +123,15 @@ public class Stage {
             quest.PlayStage();
         }
         else{
-            if (playerToPrompt != originalPlayer) {
+			if (playerToPrompt.getName() != originalPlayer.getName()) {
                 playerToPrompt.PromptFoe(quest);
             }
             else {
                 Debug.Log("All players have been prompted");
+				foreach (Player player in playersToRemove) {
+					Debug.Log ("Removing player: " + player.getName ());
+					quest.removeParticipatingPlayer (player);
+				}
                 PlayFoe();
             }
         }

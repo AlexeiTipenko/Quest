@@ -62,7 +62,7 @@ public class BoardManagerMediator
         Logger.getInstance().info("Card decks created");
 
 		foreach (Player player in players) {
-            player.DrawCards(12, null);
+            player.DrawCards(10, null);
 		}
 	}
 
