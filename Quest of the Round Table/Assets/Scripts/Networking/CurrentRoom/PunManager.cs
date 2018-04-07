@@ -27,7 +27,7 @@ public class PunManager : Photon.MonoBehaviour {
 
 	[PunRPC]
 	public void TransferCards (byte[] playerBytes, byte[] cardBytes) {
-		PrepareRPC ();
+		board = BoardManagerMediator.getInstance ();
 		Player tempPlayer = (Player)Deserialize (playerBytes);
 		Card card = (Card)Deserialize (cardBytes);
 		Player localPlayer = FindLocalPlayer (tempPlayer);
