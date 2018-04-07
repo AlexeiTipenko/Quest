@@ -116,10 +116,14 @@ public class Stage {
 
 
     public void ContinueQuest(){
-        if (quest.getPlayers().Count < 1)
+		if (quest.getPlayers().Count - playersToRemove.Count < 1)
         {
             Logger.getInstance().info("Moving to next stage");
             Debug.Log("No quest participants left");
+			foreach (Player player in playersToRemove) {
+				Debug.Log ("Removing player: " + player.getName ());
+				quest.removeParticipatingPlayer (player);
+			}
             quest.PlayStage();
         }
         else{
