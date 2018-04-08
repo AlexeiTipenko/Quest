@@ -38,7 +38,7 @@ public class ProsperityThroughoutTheRealm : Events {
                 playerToPrompt.DiscardCards(action, completeAction);
             }
             else {
-                DealCardsNextPlayer()
+                DealCardsNextPlayer();
             }
         };
 
