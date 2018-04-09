@@ -49,4 +49,17 @@ MonoBehaviour:
   - SwitchScene
   - PromptEnterTournamentResponse
   - UpdateSeed
+  - SwitchScene1
+  - PlayStage
+  - PromptEnterTest
+  - PromptFoeResponse
+  - PromptTestResponse
+  - TransferCards
+  - PlayerDiscardedFoes
+  - PlayerDiscardedWeapon
+  - PromptEventAction
+  - CallToArmsPromptNextPlayer
+  - EvaluateNextPlayerForFoe
+  - TransferCard
+  - PromptAcceptQuest
   DisableAutoOpenWizard: 1

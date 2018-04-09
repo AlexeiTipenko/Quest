@@ -28,18 +28,24 @@ public class ProsperityThroughoutTheRealm : Events {
 			Action completeAction = () => {
 				Logger.getInstance ().debug ("In ProsperityThroughoutTheRealm in DealCards(), about to RPC DealCardsNextPlayer");
 				Debug.Log("In ProsperityThroughoutTheRealm in DealCards(), about to RPC DealCardsNextPlayer");
-				if (board.IsOnlineGame()) {
+				if (board.IsOnlineGame() && playerToPrompt.discarded) {
+					playerToPrompt.toggleDiscarded(false);
 					board.getPhotonView().RPC("DealCardsNextPlayer", PhotonTargets.Others);
 				}				
 				DealCardsNextPlayer();
 			};
-            playerToPrompt.DiscardCards(action, completeAction);
+            if (playerToPrompt.getHand().Count > 12) {
+                playerToPrompt.DiscardCards(action, completeAction);
+            }
+            else {
+				DealCardsNextPlayer();
+            }
         };
 
         playerToPrompt.DrawCards(2, action);
     }
 
-    private void DealCardsNextPlayer() {
+    public void DealCardsNextPlayer() {
         playerToPrompt = board.getNextPlayer(playerToPrompt);
         if (playerToPrompt != originalPlayer) {
             DealCards();

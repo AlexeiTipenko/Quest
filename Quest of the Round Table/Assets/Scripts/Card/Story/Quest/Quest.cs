@@ -196,13 +196,17 @@ public abstract class Quest : Story {
                 Action completeAction = () =>
                 {
 					Debug.Log("Entered completeAction");
-                    if (board.IsOnlineGame()) {
+					if (board.IsOnlineGame()) {
                         Debug.Log("Sending to others");
                         board.getPhotonView().RPC("PromptNextAcceptQuest", PhotonTargets.Others);
                     }
                     PromptNextAcceptQuest();
                 };
-                playerToPrompt.DiscardCards(action, completeAction);
+				if (playerToPrompt.getHand().Count > 12) {
+					playerToPrompt.DiscardCards(action, completeAction);
+				} else {
+					PromptNextAcceptQuest();
+				}
             };
 
             playerToPrompt.DrawCards(1, action);
@@ -219,7 +223,9 @@ public abstract class Quest : Story {
 
 	public void PlayStage() {
 		currentStage++;
+		Debug.Log ("Playing stage: " + currentStage);
         foreach (Player player in board.getPlayers()) {
+			Debug.Log ("Discarding weapons for player: " + player.getName());
             player.getPlayArea().discardWeapons();
         }
         if (currentStage < numStages && participatingPlayers.Count > 0) {
@@ -243,36 +249,68 @@ public abstract class Quest : Story {
 			player.incrementShields (numShieldsAwarded);
 		}
         Debug.Log("Quest complete");
-        if (sponsor.getHand().Count + totalCardsCounter + numStages > 12) {
-            action = () => {
-                board.TransferFromHandToPlayArea(playerToPrompt);
-				playerToPrompt.GetAndRemoveCards ();
-                if (playerToPrompt.getHand().Count > 12)
-                {
-                    board.PromptCardRemoveSelection(playerToPrompt, action);
-                }
+		action = () => {
+			Action completeAction = () => {
+				if (board.IsOnlineGame() && playerToPrompt.discarded) {
+					playerToPrompt.toggleDiscarded(false);
+					board.getPhotonView().RPC("nextTurn", PhotonTargets.Others);
+				}				
+				board.nextTurn();
+			};
+            if (playerToPrompt.getHand().Count > 12) {
+                playerToPrompt.DiscardCards(action, completeAction);
+            }
+            else {
+                board.nextTurn();
+            }
+		};
+		playerToPrompt.DrawCards(totalCardsCounter + numStages, action);
 
-                else
-                {
-					Logger.getInstance ().debug ("In Quest CompleteQuest(), about to RPC nextTurn");
-					Debug.Log("In Quest CompleteQuest(), about to RPC nextTurn");
-					if (board.IsOnlineGame()) {
-						board.getPhotonView().RPC("nextTurn", PhotonTargets.Others);
-					}
-                    board.nextTurn();
-                }
-            };
-            sponsor.DrawCards(totalCardsCounter + numStages, action);
-        } else {
-            sponsor.DrawCards(totalCardsCounter + numStages, null);
-            board.nextTurn();
-        }
+//        if (sponsor.getHand().Count + totalCardsCounter + numStages > 12) {
+//            action = () => {
+//                board.TransferFromHandToPlayArea(playerToPrompt);
+//				playerToPrompt.GetAndRemoveCards ();
+//                if (playerToPrompt.getHand().Count > 12)
+//                {
+//                    board.PromptCardRemoveSelection(playerToPrompt, action);
+//                }
+//
+//                else
+//                {
+//					Logger.getInstance ().debug ("In Quest CompleteQuest(), about to RPC nextTurn");
+//					Debug.Log("In Quest CompleteQuest(), about to RPC nextTurn");
+//					if (board.IsOnlineGame()) {
+//						board.getPhotonView().RPC("nextTurn", PhotonTargets.Others);
+//					}
+//                    board.nextTurn();
+//                }
+//            };
+//            sponsor.DrawCards(totalCardsCounter + numStages, action);
+//        } else {
+//            sponsor.DrawCards(totalCardsCounter + numStages, null);
+//            board.nextTurn();
+//        }
 	}
 
-	public void removeParticipatingPlayer(Player player) {
-		if (participatingPlayers.Contains(player)) {
-			participatingPlayers.Remove (player);
-            Logger.getInstance ().trace (player.getName() + " removed from quest");
+	public bool ContainsOnlyValidCards(Player player) {
+		List<Card> cards = BoardManager.GetPlayArea (player);
+		foreach (Card card in cards) {
+			if (!card.GetType ().IsSubclassOf (typeof(Weapon))
+			    && !card.GetType ().IsSubclassOf (typeof(Ally))
+			    && card.GetType () != typeof(Amour)) {
+				return false;
+			}
+		}
+		return true;
+	}
+
+	public void removeParticipatingPlayer(Player playerToRemove) {
+		foreach (Player player in participatingPlayers) {
+			if (player.getName () == playerToRemove.getName ()) {
+				participatingPlayers.Remove (player);
+				Logger.getInstance ().trace (player.getName() + " removed from quest");
+				break;
+			}
 		}
 	}
 

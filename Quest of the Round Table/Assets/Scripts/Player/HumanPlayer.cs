@@ -15,10 +15,12 @@ public class HumanPlayer : Player {
 
     public override void DiscardCards(Action invalidAction, Action continueAction)
     {
+        Debug.Log("INSIDE DISCARD CARDS");
         board.TransferFromHandToPlayArea(this);
 		GetAndRemoveCards ();
         if (hand.Count > 12)
         {
+            Debug.Log("INSIDE DISCARD CARDS, GREATER THAN 12");
             PromptDiscardCards(invalidAction);
         }
         else

@@ -60,7 +60,12 @@ public abstract class Tournament : Story
 					}
 					PromptNextPlayer();
 				};
-                playerToPrompt.DiscardCards(action, completeAction);
+                if (playerToPrompt.getHand().Count > 12) {
+                    playerToPrompt.DiscardCards(action, completeAction);
+                }
+                else {
+                    PromptNextPlayer();
+                }
             };
             playerToPrompt.DrawCards(1, action);
         }
@@ -76,6 +81,7 @@ public abstract class Tournament : Story
         playerToPrompt = board.getNextPlayer(playerToPrompt);
 
 		if (playerToPrompt != owner) {
+            Debug.Log("Prompting next person to enter tournament");
 			playerToPrompt.PromptEnterTournament (this);
 		} else {
 			Debug.Log ("NumParticipantsAction...");
@@ -127,6 +133,10 @@ public abstract class Tournament : Story
 
         else
         {
+			//TODO: Figure out a way to not loop by calling CardsSelectionResponse
+			if (board.IsOnlineGame()) {
+				board.getPhotonView().RPC("CardsSelectionResponse", PhotonTargets.Others);
+			}
             foreach (Card card in chosenCards)
             {
                 playerToPrompt.RemoveCard(card);

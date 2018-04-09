@@ -329,7 +329,7 @@ public class BoardManagerMediator
 
     public void PromptSponsorQuest(Quest quest, Player player) {
         BoardManager.DrawCards(player);
-        BoardManager.SetInteractionText("NEW QUEST DRAWN\nWould you like to sponsor this quest?");
+		BoardManager.SetInteractionText(Localization.PromptSponsorQuest(player));
 		Debug.Log ("The card in play is " + cardInPlay.cardImageName);
         Action action1 = () => {
 			Debug.Log("Action1 for player: " + player.getName());
@@ -352,9 +352,9 @@ public class BoardManagerMediator
 
 	public void SponsorQuest(Quest quest, Player player, bool firstPrompt) {
         if (firstPrompt) {
-            BoardManager.SetInteractionText("PREPARE YOUR QUEST\n- Each stage contains a foe or a test\n- Maximum one test per quest\n- Foe stages may contain(unique) weapons\n- Battle points must increase between stages");
+			BoardManager.SetInteractionText(Localization.SponsorQuest(player, true));
         } else {
-            BoardManager.SetInteractionText("INVALID QUEST SELECTIONS.\n- Each stage contains a foe or a test\n- Maximum one test per quest\n- Foe stages may contain (unique) weapons\n- Battle points must increase between stages");
+			BoardManager.SetInteractionText(Localization.SponsorQuest(player, false));
         }
 
         Action action1 = () => {
@@ -389,7 +389,7 @@ public class BoardManagerMediator
 
 	public void PromptAcceptQuest(Quest quest, Player player) {
         BoardManager.DrawCards(player);
-        BoardManager.SetInteractionText("NEW QUEST DRAWN\nWould you like to participate in this quest?");
+		BoardManager.SetInteractionText(Localization.PromptAcceptQuest(player));
         Action action1 = () => {
             if (IsOnlineGame()) {
                 view.RPC("PromptAcceptQuestResponse", PhotonTargets.Others, true);
@@ -410,21 +410,29 @@ public class BoardManagerMediator
 
     public void PromptFoe(Quest quest, Player player) {
         Debug.Log("Inside prompt foe mediator, player being prompted is: " + player.getName());
-        Stage stage = quest.getCurrentStage();
         BoardManager.DrawCards(player);
-        Debug.Log("After drawing cards");
         BoardManager.DisplayStageButton(players);
-        BoardManager.SetInteractionText("QUEST STAGE " + (stage.getStageNum() + 1) + "\nYou are facing a foe. You may place any number of cards, or drop out.");
+		BoardManager.SetInteractionText (Localization.PromptFoe (player, quest.getCurrentStage ().getStageNum () + 1));
         Debug.Log("Setup interaction text");
 		Action action1 = () => {
-            Debug.Log("Did not dropout");
-            TransferFromHandToPlayArea(player);
-            Debug.Log("Total battle points in play area is: " + player.getPlayArea().getBattlePoints());
-            ((Quest)cardInPlay).getStage(stage.getStageNum()).PromptFoeResponse(false);
+			if (quest.ContainsOnlyValidCards(player)) {
+				Debug.Log("Did not dropout");
+				TransferFromHandToPlayArea(player);
+				Debug.Log("Total battle points in play area is: " + player.getPlayArea().getBattlePoints());
+				if (IsOnlineGame()) {
+					getPhotonView().RPC("PromptFoeResponse", PhotonTargets.Others, false);
+				}
+				quest.getCurrentStage().PromptFoeResponse(false);
+			} else {
+				PromptFoe(quest, player);
+			}
 		};
         Action action2 = () => {
             Debug.Log("Dropped out");
-            ((Quest)cardInPlay).getStage(stage.getStageNum()).PromptFoeResponse(true);
+			if (IsOnlineGame()) {
+				getPhotonView().RPC("PromptFoeResponse", PhotonTargets.Others, true);
+			}
+			quest.getCurrentStage().PromptFoeResponse(true);
         };
 
 		BoardManager.SetInteractionButtons ("Continue", "Drop Out", action1, action2);
@@ -432,27 +440,36 @@ public class BoardManagerMediator
 
 
     public void TransferFromHandToPlayArea(Player player) {
-        BoardManager.GetPlayArea(player);
+        List<Card> playAreaCards = BoardManager.GetPlayArea(player);
+		BoardManager.TransferCards (player, playAreaCards);
     }
 
 
 	public void PromptEnterTest(Quest quest, Player player, int currentBid) {
         Stage stage = quest.getCurrentStage();
         BoardManager.DrawCards(player);
-        BoardManager.SetInteractionText("Current stage is a test, with a minimum bid of: " + (currentBid + 1) + ". Do you wish to up the bid?");
+		BoardManager.SetInteractionText (Localization.PromptTest (player, stage.getStageNum (), currentBid + 1));
         BoardManager.SetInteractionBid(currentBid.ToString());
         Action action1 = () => {
             int InteractionBid = 0;
             Int32.TryParse(BoardManager.GetInteractionBid(), out InteractionBid);
-            if ( InteractionBid > player.getTotalAvailableBids()) {
+            if (InteractionBid > player.getTotalAvailableBids()) {
                 Debug.Log("Trying to bid more than they have");
+				if (IsOnlineGame()) {
+					view.RPC("PromptEnterTest", PhotonTargets.Others, PunManager.Serialize(player), currentBid);
+				}
                 PromptEnterTest(quest, player, currentBid);
             }
             else if (InteractionBid <= currentBid) {
+				if (IsOnlineGame()) {
+					view.RPC("PromptEnterTest", PhotonTargets.Others, PunManager.Serialize(player), currentBid);
+				}
                 PromptEnterTest(quest, player, currentBid);
             }
-
             else {
+				if (IsOnlineGame()) {
+					view.RPC("PromptTestResponse", PhotonTargets.Others, false, InteractionBid);
+				}
                 stage.PromptTestResponse(false, InteractionBid);
             }
         };
@@ -466,18 +483,17 @@ public class BoardManagerMediator
 
     public void PromptDiscardTest(Quest quest, Player player, int currentBid) {
         BoardManager.DrawCards(player);
-        BoardManager.SetInteractionText("You are the winner of the Test, and you must discard/play a total of " + currentBid + " bid points.");
+		BoardManager.SetInteractionText (Localization.PromptDiscardTest (player, quest.getCurrentStage ().getStageNum (), currentBid));
         BoardManager.SetupDiscardPanel();
         Action action = () => {
             TransferFromHandToPlayArea(player);
             if (BoardManager.GetSelectedDiscardNames().Count + player.getPlayAreaBid() == currentBid)
             {
-                List<Card> cardsToDiscard = GetDiscardedCards(player);
-                foreach (Card card in cardsToDiscard)
-                {
-                    player.RemoveCard(card);
-                }
-                quest.PlayStage();
+				player.GetAndRemoveCards();
+				if (IsOnlineGame()) {
+					view.RPC("PlayStage", PhotonTargets.Others);
+				}
+				quest.PlayStage();
             }
             else {
                 PromptDiscardTest(quest, player, currentBid);
@@ -495,9 +511,9 @@ public class BoardManagerMediator
 
 
     public void PromptEnterTournament(Tournament tournament, Player player)
-    {
+	{	
         BoardManager.DrawCards(player);
-        BoardManager.SetInteractionText("NEW TOURNAMENT DRAWN\nWould you like to enter this tournament?");
+		BoardManager.SetInteractionText(Localization.PromptEnterTournament(player));
         Action action1 = () => {
 			Debug.Log("Action1 (accept) for " + tournament.getCardName() + " for player " + player.getName());
             if (IsOnlineGame()) {
@@ -524,12 +540,8 @@ public class BoardManagerMediator
     public void PromptCardSelection(Tournament tournament, Player player)
     {
         BoardManager.DrawCards(player);
-        BoardManager.SetInteractionText("PREPARE FOR BATTLE\nPrepare for the tournament using a combination of weapon, ally and amour cards.");
+		BoardManager.SetInteractionText(Localization.PrepareTournament(player));
         Action action = () => {
-
-			if (IsOnlineGame()) {
-                view.RPC("CardsSelectionResponse", PhotonTargets.Others);
-			}
             tournament.CardsSelectionResponse();
         };
 
@@ -542,24 +554,36 @@ public class BoardManagerMediator
 	public void PromptToDiscardWeapon(Player player) 
 	{
 		BoardManager.DrawCards(player);
-		BoardManager.SetInteractionText("Please discard 1 weapon.");
+		BoardManager.SetInteractionText(Localization.PromptToDiscardWeapon(player));
         BoardManager.SetupDiscardPanel();
+
 		Action action = () => {
+            if (IsOnlineGame())
+            {
+                view.RPC("PlayerDiscardedWeapon", PhotonTargets.Others);
+            }
             ((KingsCallToArms)cardInPlay).PlayerDiscardedWeapon();
 		};
+		
+
 		BoardManager.SetInteractionButtons("Complete", "", action, null);
 		Debug.Log("Prompting " + player.getName() + " to prepare cards.");
         Logger.getInstance().info("Prompted " + player.getName() + " to prepare weapon cards to discard.");
 
 	}
 
-		
+
 	public void PromptToDiscardFoes(Player player, int numFoes) 
 	{
 		BoardManager.DrawCards(player);
-		BoardManager.SetInteractionText("Please discard " + numFoes +  " Foes.");
+		BoardManager.SetInteractionText (Localization.PromptToDiscardFoes(player, numFoes));
         BoardManager.SetupDiscardPanel();
 		Action action = () => {
+            
+            if (IsOnlineGame())
+            {
+                view.RPC("PlayerDiscardedFoes", PhotonTargets.Others);
+            }
 			((KingsCallToArms)cardInPlay).PlayerDiscardedFoes();
 		};
 		BoardManager.SetInteractionButtons("Complete", "", action, null);
@@ -572,7 +596,7 @@ public class BoardManagerMediator
     public void PromptCardRemoveSelection(Player player, Action action)
     {
         BoardManager.DrawCards(player);
-        BoardManager.SetInteractionText("TOO MANY CARDS\nPlease discard (or play) cards until you have at most 12.");
+		BoardManager.SetInteractionText(Localization.PromptCardRemoveSelection(player));
         BoardManager.SetInteractionButtons("Complete", "", action, null);
         BoardManager.SetupDiscardPanel();
         Debug.Log("Prompting " + player.getName() + " to prepare cards.");
@@ -594,16 +618,15 @@ public class BoardManagerMediator
     }
 
     public void DisplayStageResults(Stage stage, Player player, bool playerEliminated) {
-        string passedText = "You passed!";
-        if (playerEliminated) {
-            passedText = "You were eliminated...";
-        }
         Action action = () => {
+			if (IsOnlineGame()) {
+				view.RPC("EvaluateNextPlayerForFoe", PhotonTargets.Others, playerEliminated);
+			}
             stage.EvaluateNextPlayerForFoe(playerEliminated);
         };
         BoardManager.SetIsResolutionOfStage(true);
         BoardManager.DrawCards(player);
-        BoardManager.SetInteractionText("STAGE COMPLETE\n" + passedText);
+		BoardManager.SetInteractionText("STAGE COMPLETE\n" + Localization.DisplayStageResults(player, playerEliminated));
         BoardManager.SetInteractionButtons("Continue", "", action, null);
         Debug.Log("Displaying results of stage to " + player.getName());
         Logger.getInstance().info("Displaying results of stage to " + player.getName());
