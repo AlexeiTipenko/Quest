@@ -578,7 +578,7 @@ public class BoardManagerMediator
 	public void PromptToDiscardFoes(Player player, int numFoes) 
 	{
 		BoardManager.DrawCards(player);
-		BoardManager.SetInteractionText (Localization.PromptToDiscardFoes(player, numFoes));//"Please discard " + numFoes +  " Foes.");
+		BoardManager.SetInteractionText (Localization.PromptToDiscardFoes(player, numFoes));
         BoardManager.SetupDiscardPanel();
 		Action action = () => {
             
