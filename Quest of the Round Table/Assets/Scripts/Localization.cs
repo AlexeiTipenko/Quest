@@ -84,17 +84,14 @@ public class Localization {
 	}
 
 	public static string PromptToDiscardFoes(Player player, int numFoes) {
-		if (CurrentPlayerIsLocal (player)) {
-			return InsertNumber(promptToDiscardFoesSelf, numFoes);
-		}
-		return InsertPlayer(InsertNumber(promptToDiscardFoesOther, numFoes), player);
+		return PreparePrompt (player, InsertNumber (promptToDiscardFoesSelf, numFoes), InsertNumber (promptToDiscardFoesOther, numFoes));
 	}
 
 	public static string DisplayStageResults(Player player, bool playerEliminated) {
-		if (CurrentPlayerIsLocal (player)) {
-			return playerEliminated ? playerEliminatedSelf : playerPassedSelf;
+		if (playerEliminated) {
+			return PreparePrompt (player, playerEliminatedSelf, playerEliminatedOther);
 		}
-		return playerEliminated ? playerEliminatedOther : playerPassedOther;
+		return PreparePrompt (player, playerPassedSelf, playerPassedOther);
 	}
 
 	private static string PreparePrompt(Player player, string selfText, string otherText) {
