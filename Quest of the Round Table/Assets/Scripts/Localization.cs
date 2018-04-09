@@ -44,6 +44,9 @@ public class Localization {
 	private static string playerEliminatedSelf = "You were eliminated...";
 	private static string playerEliminatedOther = "{player} was eliminated.";
 
+	private static string promptCardRemoveSelectionSelf = "TOO MANY CARDS\nPlease discard (or play) cards until you have at most 12.";
+	private static string promptCardRemoveSelectionOther = "TOO MANY CARDS\nPrompting {player} to discard (or play) cards until they have at most 12.";
+
 	public static string PromptSponsorQuest(Player player) {
 		return PreparePrompt (player, promptSponsorQuestSelf, promptSponsorQuestOther);
 	}
@@ -92,6 +95,10 @@ public class Localization {
 			return PreparePrompt (player, playerEliminatedSelf, playerEliminatedOther);
 		}
 		return PreparePrompt (player, playerPassedSelf, playerPassedOther);
+	}
+
+	public static string PromptCardRemoveSelection(Player player) {
+		return PreparePrompt (player, promptCardRemoveSelectionSelf, promptCardRemoveSelectionOther);
 	}
 
 	private static string PreparePrompt(Player player, string selfText, string otherText) {

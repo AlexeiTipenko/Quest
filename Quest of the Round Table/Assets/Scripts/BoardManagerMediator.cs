@@ -596,7 +596,7 @@ public class BoardManagerMediator
     public void PromptCardRemoveSelection(Player player, Action action)
     {
         BoardManager.DrawCards(player);
-        BoardManager.SetInteractionText("TOO MANY CARDS\nPlease discard (or play) cards until you have at most 12.");
+		BoardManager.SetInteractionText(Localization.PromptCardRemoveSelection(player));
         BoardManager.SetInteractionButtons("Complete", "", action, null);
         BoardManager.SetupDiscardPanel();
         Debug.Log("Prompting " + player.getName() + " to prepare cards.");
