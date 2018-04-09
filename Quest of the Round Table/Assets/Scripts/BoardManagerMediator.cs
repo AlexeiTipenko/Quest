@@ -329,7 +329,7 @@ public class BoardManagerMediator
 
     public void PromptSponsorQuest(Quest quest, Player player) {
         BoardManager.DrawCards(player);
-		BoardManager.SetInteractionText(Localization.sponsorQuest(player));
+		BoardManager.SetInteractionText(Localization.PromptSponsorQuest(player));
 		Debug.Log ("The card in play is " + cardInPlay.cardImageName);
         Action action1 = () => {
 			Debug.Log("Action1 for player: " + player.getName());
@@ -352,9 +352,9 @@ public class BoardManagerMediator
 
 	public void SponsorQuest(Quest quest, Player player, bool firstPrompt) {
         if (firstPrompt) {
-            BoardManager.SetInteractionText("PREPARE YOUR QUEST\n- Each stage contains a foe or a test\n- Maximum one test per quest\n- Foe stages may contain(unique) weapons\n- Battle points must increase between stages");
+			BoardManager.SetInteractionText(Localization.SponsorQuest(player, true));
         } else {
-            BoardManager.SetInteractionText("INVALID QUEST SELECTIONS.\n- Each stage contains a foe or a test\n- Maximum one test per quest\n- Foe stages may contain (unique) weapons\n- Battle points must increase between stages");
+			BoardManager.SetInteractionText(Localization.SponsorQuest(player, false));
         }
 
         Action action1 = () => {
@@ -515,7 +515,7 @@ public class BoardManagerMediator
     public void PromptEnterTournament(Tournament tournament, Player player)
 	{	
         BoardManager.DrawCards(player);
-		BoardManager.SetInteractionText(Localization.sponsorTournament(player));
+		BoardManager.SetInteractionText(Localization.PromptEnterTournament(player));
         Action action1 = () => {
 			Debug.Log("Action1 (accept) for " + tournament.getCardName() + " for player " + player.getName());
             if (IsOnlineGame()) {
@@ -542,7 +542,7 @@ public class BoardManagerMediator
     public void PromptCardSelection(Tournament tournament, Player player)
     {
         BoardManager.DrawCards(player);
-		BoardManager.SetInteractionText(Localization.prepareTournament(player));
+		BoardManager.SetInteractionText(Localization.PrepareTournament(player));
         Action action = () => {
             tournament.CardsSelectionResponse();
         };
