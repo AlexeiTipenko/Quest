@@ -389,10 +389,9 @@ public class BoardManagerMediator
 
 	public void PromptAcceptQuest(Quest quest, Player player) {
         BoardManager.DrawCards(player);
-        BoardManager.SetInteractionText("NEW QUEST DRAWN\nWould you like to participate in this quest?");
+		BoardManager.SetInteractionText(Localization.PromptAcceptQuest(player));
         Action action1 = () => {
             if (IsOnlineGame()) {
-				Debug.Log("SENDING PROMPT ACCEPT QUEST RPC");
                 view.RPC("PromptAcceptQuestResponse", PhotonTargets.Others, true);
             }
             quest.PromptAcceptQuestResponse(true);
@@ -412,9 +411,8 @@ public class BoardManagerMediator
     public void PromptFoe(Quest quest, Player player) {
         Debug.Log("Inside prompt foe mediator, player being prompted is: " + player.getName());
         BoardManager.DrawCards(player);
-        Debug.Log("After drawing cards");
         BoardManager.DisplayStageButton(players);
-		BoardManager.SetInteractionText("QUEST STAGE " + (quest.getCurrentStage().getStageNum() + 1) + "\nYou are facing a foe. You may place any number of cards, or drop out.");
+		BoardManager.SetInteractionText (Localization.PromptFoe (player, quest.getCurrentStage ().getStageNum () + 1));
         Debug.Log("Setup interaction text");
 		Action action1 = () => {
 			if (quest.ContainsOnlyValidCards(player)) {
@@ -450,7 +448,7 @@ public class BoardManagerMediator
 	public void PromptEnterTest(Quest quest, Player player, int currentBid) {
         Stage stage = quest.getCurrentStage();
         BoardManager.DrawCards(player);
-        BoardManager.SetInteractionText("Current stage is a test, with a minimum bid of: " + (currentBid + 1) + ". Do you wish to up the bid?");
+		BoardManager.SetInteractionText (Localization.PromptTest (player, stage.getStageNum (), currentBid + 1));
         BoardManager.SetInteractionBid(currentBid.ToString());
         Action action1 = () => {
             int InteractionBid = 0;
@@ -485,7 +483,7 @@ public class BoardManagerMediator
 
     public void PromptDiscardTest(Quest quest, Player player, int currentBid) {
         BoardManager.DrawCards(player);
-        BoardManager.SetInteractionText("You are the winner of the Test, and you must discard/play a total of " + currentBid + " bid points.");
+		BoardManager.SetInteractionText (Localization.PromptDiscardTest (player, quest.getCurrentStage ().getStageNum (), currentBid));
         BoardManager.SetupDiscardPanel();
         Action action = () => {
             TransferFromHandToPlayArea(player);
