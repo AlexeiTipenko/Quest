@@ -556,7 +556,7 @@ public class BoardManagerMediator
 	public void PromptToDiscardWeapon(Player player) 
 	{
 		BoardManager.DrawCards(player);
-		BoardManager.SetInteractionText("Please discard 1 weapon.");
+		BoardManager.SetInteractionText(Localization.PromptToDiscardWeapon(player));
         BoardManager.SetupDiscardPanel();
 
 		Action action = () => {
@@ -574,11 +574,11 @@ public class BoardManagerMediator
 
 	}
 
-		
+
 	public void PromptToDiscardFoes(Player player, int numFoes) 
 	{
 		BoardManager.DrawCards(player);
-		BoardManager.SetInteractionText("Please discard " + numFoes +  " Foes.");
+		BoardManager.SetInteractionText (Localization.PromptToDiscardFoes(player, numFoes));//"Please discard " + numFoes +  " Foes.");
         BoardManager.SetupDiscardPanel();
 		Action action = () => {
             
@@ -620,10 +620,6 @@ public class BoardManagerMediator
     }
 
     public void DisplayStageResults(Stage stage, Player player, bool playerEliminated) {
-        string passedText = "You passed!";
-        if (playerEliminated) {
-            passedText = "You were eliminated...";
-        }
         Action action = () => {
 			if (IsOnlineGame()) {
 				view.RPC("EvaluateNextPlayerForFoe", PhotonTargets.Others, playerEliminated);
@@ -632,7 +628,7 @@ public class BoardManagerMediator
         };
         BoardManager.SetIsResolutionOfStage(true);
         BoardManager.DrawCards(player);
-        BoardManager.SetInteractionText("STAGE COMPLETE\n" + passedText);
+		BoardManager.SetInteractionText("STAGE COMPLETE\n" + Localization.DisplayStageResults(player, playerEliminated));
         BoardManager.SetInteractionButtons("Continue", "", action, null);
         Debug.Log("Displaying results of stage to " + player.getName());
         Logger.getInstance().info("Displaying results of stage to " + player.getName());

@@ -19,6 +19,17 @@ public class Localization {
 	private static string prepareTournamentSelf = "PREPARE FOR BATTLE\nPrepare for the tournament using a combination of weapon, ally and amour cards.";
 	private static string prepareTournamentOther = "PREPARING FOR BATTLE\n{player} is preparing for the tournament using a combination of weapon, ally and amour cards.";
 
+	private static string promptToDiscardWeaponSelf = "Please discard 1 weapon.";
+	private static string promptToDiscardWeaponOther = "Prompting {player} to discard 1 weapon.";
+
+	private static string promptToDiscardFoesSelf = "Please discard {numFoes} foes.";
+	private static string promptToDiscardFoesOther = "Prompting {player} to discard {numFoes} foes.";
+		
+	private static string playerPassedSelf = "You passed!";
+	private static string playerPassedOther = "{player} passed.";
+	private static string playerEliminatedSelf = "You were eliminated...";
+	private static string playerEliminatedOther = "{player} was eliminated.";
+
 	public static string PromptSponsorQuest(Player player) {
 		return PreparePrompt (player, promptSponsorQuestSelf, promptSponsorQuestOther);
 	}
@@ -38,6 +49,24 @@ public class Localization {
 		return PreparePrompt (player, prepareTournamentSelf, prepareTournamentOther);
 	}
 
+	public static string PromptToDiscardWeapon(Player player) {
+		return PreparePrompt (player, promptToDiscardWeaponSelf, promptToDiscardWeaponOther);
+	}
+
+	public static string PromptToDiscardFoes(Player player, int numFoes) {
+		if (CurrentPlayerIsLocal (player)) {
+			return InsertFoes(promptToDiscardFoesSelf, numFoes);
+		}
+		return InsertPlayer(InsertFoes(promptToDiscardFoesOther, numFoes), player);
+	}
+
+	public static string DisplayStageResults(Player player, bool playerEliminated) {
+		if (CurrentPlayerIsLocal (player)) {
+			return playerEliminated ? playerEliminatedSelf : playerPassedSelf;
+		}
+		return playerEliminated ? playerEliminatedOther : playerPassedOther;
+	}
+
 	private static string PreparePrompt(Player player, string selfText, string otherText) {
 		if (CurrentPlayerIsLocal (player)) {
 			return selfText;
@@ -54,5 +83,9 @@ public class Localization {
 
 	private static string InsertPlayer(string text, Player player) {
 		return text.Replace ("{player}", player.getName ());
+	}
+
+	private static string InsertFoes(string text, int numFoes) {
+		return text.Replace ("{numFoes}", numFoes.ToString());
 	}
 }
