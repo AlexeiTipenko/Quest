@@ -192,8 +192,12 @@ public class Stage {
             Debug.Log("Removing player: " + temp.getName());
             quest.removeParticipatingPlayer(temp);
             Debug.Log("New total participant: " + quest.getPlayers().Count);
-            Debug.Log("Next player: " + playerToPrompt.getName());
-            PromptTest();
+            if(quest.getPlayers().Count == 0){
+                ContinueQuest();
+            }
+            else {
+                PromptTest();
+            }
         }
 	}
 
