@@ -329,7 +329,7 @@ public class BoardManagerMediator
 
     public void PromptSponsorQuest(Quest quest, Player player) {
         BoardManager.DrawCards(player);
-        BoardManager.SetInteractionText("NEW QUEST DRAWN\nWould you like to sponsor this quest?");
+		BoardManager.SetInteractionText(Localization.sponsorQuest(player));
 		Debug.Log ("The card in play is " + cardInPlay.cardImageName);
         Action action1 = () => {
 			Debug.Log("Action1 for player: " + player.getName());
