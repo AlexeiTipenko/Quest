@@ -133,6 +133,7 @@ public abstract class Tournament : Story
 
         else
         {
+			//TODO: Figure out a way to not loop by calling CardsSelectionResponse
 			if (board.IsOnlineGame()) {
 				board.getPhotonView().RPC("CardsSelectionResponse", PhotonTargets.Others);
 			}
