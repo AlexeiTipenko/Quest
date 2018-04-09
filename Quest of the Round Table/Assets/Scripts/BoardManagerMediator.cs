@@ -513,9 +513,9 @@ public class BoardManagerMediator
 
 
     public void PromptEnterTournament(Tournament tournament, Player player)
-    {
+	{	
         BoardManager.DrawCards(player);
-        BoardManager.SetInteractionText("NEW TOURNAMENT DRAWN\nWould you like to enter this tournament?");
+		BoardManager.SetInteractionText(Localization.sponsorTournament(player));
         Action action1 = () => {
 			Debug.Log("Action1 (accept) for " + tournament.getCardName() + " for player " + player.getName());
             if (IsOnlineGame()) {
@@ -542,7 +542,7 @@ public class BoardManagerMediator
     public void PromptCardSelection(Tournament tournament, Player player)
     {
         BoardManager.DrawCards(player);
-        BoardManager.SetInteractionText("PREPARE FOR BATTLE\nPrepare for the tournament using a combination of weapon, ally and amour cards.");
+		BoardManager.SetInteractionText(Localization.prepareTournament(player));
         Action action = () => {
             tournament.CardsSelectionResponse();
         };
