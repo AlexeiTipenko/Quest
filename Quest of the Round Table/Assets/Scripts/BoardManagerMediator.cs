@@ -329,7 +329,7 @@ public class BoardManagerMediator
 
     public void PromptSponsorQuest(Quest quest, Player player) {
         BoardManager.DrawCards(player);
-		BoardManager.SetInteractionText(Localization.sponsorQuest(player));
+		BoardManager.SetInteractionText(Localization.promptSponsorQuest(player));
 		Debug.Log ("The card in play is " + cardInPlay.cardImageName);
         Action action1 = () => {
 			Debug.Log("Action1 for player: " + player.getName());
@@ -352,9 +352,9 @@ public class BoardManagerMediator
 
 	public void SponsorQuest(Quest quest, Player player, bool firstPrompt) {
         if (firstPrompt) {
-            BoardManager.SetInteractionText("PREPARE YOUR QUEST\n- Each stage contains a foe or a test\n- Maximum one test per quest\n- Foe stages may contain(unique) weapons\n- Battle points must increase between stages");
+			BoardManager.SetInteractionText(Localization.sponsorQuest(player, true));
         } else {
-            BoardManager.SetInteractionText("INVALID QUEST SELECTIONS.\n- Each stage contains a foe or a test\n- Maximum one test per quest\n- Foe stages may contain (unique) weapons\n- Battle points must increase between stages");
+			BoardManager.SetInteractionText(Localization.sponsorQuest(player, false));
         }
 
         Action action1 = () => {
