@@ -32,20 +32,22 @@ public class PlayerLayoutGroup : MonoBehaviour {
 
     public void SetupAI2()
     {
-        Logger.getInstance().info("Inside setupAI2");
-        view = PhotonView.Get(GameObject.Find("DDOL/PunManager"));   
-        GameObject playerListingObj = Instantiate(PlayerListingPrefab);
-        Text[] texts = playerListingObj.transform.GetComponentsInChildren<Text>();
-        texts[0].text = "AI_Two";
-        playerListingObj.name = "AI_Two";
-        playerListingObj.transform.SetParent(transform, false);
-
-        print("Inside setupAI");
-
-        PlayerListing playerListing = playerListingObj.GetComponent<PlayerListing>();
-        PlayerListings.Add(playerListing);
-        view.RPC("AddAI2", PhotonTargets.Others);
+		view = PhotonView.Get (GameObject.Find ("DDOL/PunManager"));
+		view.RPC("AddAI2", PhotonTargets.All);
     }
+
+	public void AddAI2() {
+		GameObject playerListingObj = Instantiate(PlayerListingPrefab);
+		Text[] texts = playerListingObj.transform.GetComponentsInChildren<Text>();
+		texts[0].text = "AI_Two";
+		playerListingObj.name = "AI_Two";
+		playerListingObj.transform.SetParent(transform, false);
+
+		print("Inside setupAI");
+
+		PlayerListing playerListing = playerListingObj.GetComponent<PlayerListing>();
+		PlayerListings.Add(playerListing);
+	}
 
     private void OnPhotonPlayerConnected(PhotonPlayer photonPlayer){
         PlayerJoinedRoom(photonPlayer);

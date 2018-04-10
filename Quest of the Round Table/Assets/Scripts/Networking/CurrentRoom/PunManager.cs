@@ -11,7 +11,7 @@ public class PunManager : Photon.MonoBehaviour {
     [PunRPC]
     public void AddAI2(){
         Logger.getInstance().info("Updating AI for other players");
-        layout.SetupAI2();
+        layout.AddAI2();
     }
 
 	[PunRPC]
