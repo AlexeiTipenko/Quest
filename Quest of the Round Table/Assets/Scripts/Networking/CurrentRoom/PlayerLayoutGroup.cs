@@ -14,8 +14,6 @@ public class PlayerLayoutGroup : MonoBehaviour {
 
     [NonSerialized]PhotonView view;
 
-	public static PlayerLayoutGroup instance;
-
     public static List<Player> playerList;
 
     public static List<PlayerListing> _playerListings = new List<PlayerListing>();
@@ -132,11 +130,4 @@ public class PlayerLayoutGroup : MonoBehaviour {
         ButtonManager.playerList = playerList;
         UnityEngine.SceneManagement.SceneManager.LoadScene(SceneName);
     }
-
-	public static PlayerLayoutGroup GetInstance() {
-		if (instance == null) {
-			instance = new PlayerLayoutGroup ();
-		}
-		return instance;
-	}
 }
