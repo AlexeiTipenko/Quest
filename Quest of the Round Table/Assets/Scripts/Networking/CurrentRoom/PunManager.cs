@@ -12,7 +12,7 @@ public class PunManager : Photon.MonoBehaviour {
         Logger.getInstance().info("Updating AI for other players");
 		GameObject obj = GameObject.Find ("Canvas/CurrentRoom/PlayerList/Viewport/PlayerLayoutGroup");
 		PlayerLayoutGroup playerLayoutGroup = obj.GetComponent<PlayerLayoutGroup> ();
-		playerLayoutGroup.AddAI2(aiId);
+		playerLayoutGroup.AddAI2(aiID);
     }
 
 	[PunRPC]

@@ -106,7 +106,7 @@ public class PlayerLayoutGroup : MonoBehaviour {
         foreach (var player in PlayerListings)
         {
             print("player name is: " + player.name);
-			if (player.name.Contains == "AI_Two_")
+			if (player.name.Contains("AI_Two_"))
             {
                 print("CREATING AI");
                 playerList.Add(new AIPlayer(player.name, new Strategy2()));
