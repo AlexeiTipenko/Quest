@@ -14,7 +14,7 @@ public abstract class Tournament : Story
     public List<Player> participatingPlayers;
 	List<Player> winnerList;
 	int maxPoints;
-    bool rematch;
+    bool isLastRound;
 
 
     protected Tournament(string cardName, int bonusShields) : base(cardName)
@@ -24,7 +24,7 @@ public abstract class Tournament : Story
         board = BoardManagerMediator.getInstance();
         participatingPlayers = new List<Player>();
 		winnerList = new List<Player>();
-        rematch = false;
+        isLastRound = false;
     }
 
 
@@ -174,35 +174,15 @@ public abstract class Tournament : Story
     public void TournamentRoundComplete() {
 		Logger.getInstance ().info ("Tournament round complete");
 
-        if (winnerList.Count() == 1) 
-        {
-			CompleteTournament ();
+        if (winnerList.Count() == 1) {
+			isLastRound = true;
         }
-
-        else
-        {
-			Logger.getInstance ().trace("More than one player has won");
-
-            if (rematch == false)
-            {
-				Logger.getInstance ().info("Round 2 of tournament started");
-				participatingPlayers = new List<Player>(winnerList);
-                rematch = true;
-				winnerList.Clear();
-                owner = participatingPlayers[0];
-                playerToPrompt = owner;
-                playerToPrompt.PromptTournament(this);
-            }
-
-            else {
-				CompleteTournament ();
-            }
-        }
+		CompleteTournament ();
     }
 
 	private void CompleteTournament() {
 		Logger.getInstance ().info("Tournament complete, awarding shields");
-		foreach(Player player in winnerList){
+		foreach(Player player in winnerList) {
 			player.incrementShields(playersEntered);
 		}
 		DisplayTournamentResults ();
@@ -221,6 +201,14 @@ public abstract class Tournament : Story
 		playerToPrompt = GetNextPlayer (playerToPrompt);
 		if (playerToPrompt != owner) {
 			DisplayTournamentResults ();
+		} else if (!isLastRound) {
+			Logger.getInstance ().info("Round 2 of tournament started");
+			participatingPlayers = new List<Player>(winnerList);
+			isLastRound = true;
+			winnerList.Clear();
+			owner = participatingPlayers[0];
+			playerToPrompt = owner;
+			playerToPrompt.PromptTournament(this);
 		} else {
 			DiscardCards ();
 			board.nextTurn ();
