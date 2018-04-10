@@ -129,7 +129,7 @@ public abstract class Tournament : Story
 
 
     public void AddPlayerBattlePoints(List<Card> chosenCards) {
-        int pointsTotal = 0;
+		int pointsTotal = playerToPrompt.getRank().getBattlePoints();
         foreach (Card card in chosenCards)
         {
             if (card.GetType().IsSubclassOf(typeof(Adventure)))
@@ -186,7 +186,7 @@ public abstract class Tournament : Story
 		Logger.getInstance ().info("Tournament complete, awarding shields");
 		if (isLastRound) {
 			foreach(Player player in winnerList) {
-				player.incrementShields(playersEntered);
+				player.incrementShields(playersEntered + bonusShields);
 			}
 		}
 		DisplayTournamentResults ();
