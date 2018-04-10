@@ -128,12 +128,13 @@ public abstract class Tournament : Story
     }
 
 
-    public void AddPlayerBattlePoints(List<Card> chosenCards){
+    public void AddPlayerBattlePoints(List<Card> chosenCards) {
         int pointsTotal = 0;
         foreach (Card card in chosenCards)
         {
             if (card.GetType().IsSubclassOf(typeof(Adventure)))
             {
+				Debug.Log ("Adding to battle point total");
                 pointsTotal += ((Adventure)card).getBattlePoints();
             }
         }
@@ -147,6 +148,7 @@ public abstract class Tournament : Story
 		} else if (pointsTotal == maxPoints){
 			winnerList.Add (playerToPrompt);
 		}
+		Debug.Log ("Total battle points for player " + playerToPrompt.getName() + ": " + pointsTotal);
         Logger.getInstance().info(playerToPrompt.getName() + " has " + pointsTotal + " battle points");
     }
 
@@ -182,8 +184,10 @@ public abstract class Tournament : Story
 
 	private void CompleteTournament() {
 		Logger.getInstance ().info("Tournament complete, awarding shields");
-		foreach(Player player in winnerList) {
-			player.incrementShields(playersEntered);
+		if (isLastRound) {
+			foreach(Player player in winnerList) {
+				player.incrementShields(playersEntered);
+			}
 		}
 		DisplayTournamentResults ();
 	}
