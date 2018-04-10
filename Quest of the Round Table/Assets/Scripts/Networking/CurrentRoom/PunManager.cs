@@ -6,6 +6,13 @@ using System.IO;
 public class PunManager : Photon.MonoBehaviour {
 
     BoardManagerMediator board;
+    PlayerLayoutGroup layout;
+
+    [PunRPC]
+    public void AddAI2(){
+        Logger.getInstance().info("Updating AI for other players");
+        layout.SetupAI2();
+    }
 
 	[PunRPC]
 	public void UpdateSeed(int seed) {

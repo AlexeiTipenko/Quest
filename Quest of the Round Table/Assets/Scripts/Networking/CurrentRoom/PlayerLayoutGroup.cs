@@ -12,6 +12,8 @@ public class PlayerLayoutGroup : MonoBehaviour {
         get { return _playerListingPrefab; }
     }
 
+    [NonSerialized]PhotonView view;
+
     public static List<Player> playerList;
 
     public static List<PlayerListing> _playerListings = new List<PlayerListing>();
@@ -30,15 +32,19 @@ public class PlayerLayoutGroup : MonoBehaviour {
 
     public void SetupAI2()
     {
+        Logger.getInstance().info("Inside setupAI2");
+        view = PhotonView.Get(GameObject.Find("DDOL/PunManager"));   
         GameObject playerListingObj = Instantiate(PlayerListingPrefab);
         Text[] texts = playerListingObj.transform.GetComponentsInChildren<Text>();
         texts[0].text = "AI_Two";
         playerListingObj.name = "AI_Two";
         playerListingObj.transform.SetParent(transform, false);
 
-        PlayerListing playerListing = playerListingObj.GetComponent<PlayerListing>();
+        print("Inside setupAI");
 
+        PlayerListing playerListing = playerListingObj.GetComponent<PlayerListing>();
         PlayerListings.Add(playerListing);
+        view.RPC("AddAI2", PhotonTargets.Others);
     }
 
     private void OnPhotonPlayerConnected(PhotonPlayer photonPlayer){
