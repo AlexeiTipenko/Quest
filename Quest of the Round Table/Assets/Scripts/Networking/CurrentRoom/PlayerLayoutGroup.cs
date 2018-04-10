@@ -30,18 +30,31 @@ public class PlayerLayoutGroup : MonoBehaviour {
         }
     }
 
+	public void SetupAI1()
+	{
+		int aiID = UnityEngine.Random.Range (1, 50);
+		view = PhotonView.Get (GameObject.Find ("DDOL/PunManager"));
+		view.RPC("AddAI", PhotonTargets.All, 1, aiID);
+	}
+
     public void SetupAI2()
     {
 		int aiID = UnityEngine.Random.Range (1, 50);
 		view = PhotonView.Get (GameObject.Find ("DDOL/PunManager"));
-		view.RPC("AddAI2", PhotonTargets.All, aiID);
+		view.RPC("AddAI", PhotonTargets.All, 2, aiID);
     }
 
-	public void AddAI2(int aiID) {
+	public void AddAI(int aiNum, int aiID) {
 		GameObject playerListingObj = Instantiate(PlayerListingPrefab);
 		Text[] texts = playerListingObj.transform.GetComponentsInChildren<Text>();
-		texts[0].text = "AI_Two_" + aiID;
-		playerListingObj.name = "AI_Two_" + aiID;
+		string aiName = "AI_";
+		if (aiNum == 1) {
+			aiName += "ONE_";
+		} else if (aiNum == 2) {
+			aiName += "TWO_";
+		}
+		texts[0].text = aiName + aiID;
+		playerListingObj.name = aiName + aiID;
 		playerListingObj.transform.SetParent(transform, false);
 
 		PlayerListing playerListing = playerListingObj.GetComponent<PlayerListing>();
@@ -105,12 +118,12 @@ public class PlayerLayoutGroup : MonoBehaviour {
         playerList = new List<Player>();
         foreach (var player in PlayerListings)
         {
-            print("player name is: " + player.name);
-			if (player.name.Contains("AI_Two_"))
-            {
-                print("CREATING AI");
-                playerList.Add(new AIPlayer(player.name, new Strategy2()));
-            }
+            print("Player name is: " + player.name);
+			if (player.name.Contains ("AI_ONE_")) {
+				playerList.Add (new AIPlayer (player.name, new Strategy1 ()));
+			} else if (player.name.Contains ("AI_TWO_")) {
+				playerList.Add (new AIPlayer (player.name, new Strategy2 ()));
+			}
             else {
                 playerList.Add(new HumanPlayer(player.name));
             }
