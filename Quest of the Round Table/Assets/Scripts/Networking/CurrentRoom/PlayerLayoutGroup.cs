@@ -28,11 +28,12 @@ public class PlayerLayoutGroup : MonoBehaviour {
         }
     }
 
-    public void SetupAI1()
+    public void SetupAI2()
     {
         GameObject playerListingObj = Instantiate(PlayerListingPrefab);
         Text[] texts = playerListingObj.transform.GetComponentsInChildren<Text>();
-        texts[0].text = "AI_One" + UnityEngine.Random.Range(1, 50);
+        texts[0].text = "AI_Two";
+        playerListingObj.name = "AI_Two";
         playerListingObj.transform.SetParent(transform, false);
 
         PlayerListing playerListing = playerListingObj.GetComponent<PlayerListing>();
@@ -97,7 +98,15 @@ public class PlayerLayoutGroup : MonoBehaviour {
         playerList = new List<Player>();
         foreach (var player in PlayerListings)
         {
-            playerList.Add(new HumanPlayer(player.name));
+            print("player name is: " + player.name);
+            if (player.name == "AI_Two")
+            {
+                print("CREATING AI");
+                playerList.Add(new AIPlayer(player.name + UnityEngine.Random.Range(1, 50), new Strategy2()));
+            }
+            else {
+                playerList.Add(new HumanPlayer(player.name));
+            }
         }
         ButtonManager.playerList = playerList;
         UnityEngine.SceneManagement.SceneManager.LoadScene(SceneName);
