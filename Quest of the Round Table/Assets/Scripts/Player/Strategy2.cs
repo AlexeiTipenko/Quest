@@ -410,6 +410,7 @@ public class Strategy2 : AbstractAI
         Debug.Log("AI is preparing for tournament");
         List<Card> Hand = strategyOwner.getHand();
         List<Card> PlayedList = new List<Card>();
+        List<String> PlayedListName = new List<string>();
         List<Card> Sorted = new List<Card>();
         Sorted = SortBattlePointsCards(Hand);
         int totalBattlePoints = 0;
@@ -423,21 +424,12 @@ public class Strategy2 : AbstractAI
             else if (totalBattlePoints >= 50) {
                 break;
             }
-            if (!PlayedList.Contains(tempCard))
+            if (!PlayedListName.Contains(tempCard.getCardName()))
             {
                 Debug.Log("Adding " + tempCard.getCardName() + " to AI");
                 PlayedList.Add(tempCard);
+                PlayedListName.Add(tempCard.getCardName());
                 totalBattlePoints += ((Adventure)tempCard).getBattlePoints();
-                //if(tempCard.GetType() == typeof(Amour) ){
-                //    TotalBattlePoints += ((Amour)tempCard).getBattlePoints();
-                //}
-                //else if (tempCard.GetType().IsSubclassOf(typeof(Ally)))
-                //{
-                //    TotalBattlePoints += ((Ally)tempCard).getBattlePoints();
-                //}
-                //else {
-                //    TotalBattlePoints += ((Weapon)tempCard).getBattlePoints();
-                //}
             }
             Sorted.Remove(tempCard);
         }
