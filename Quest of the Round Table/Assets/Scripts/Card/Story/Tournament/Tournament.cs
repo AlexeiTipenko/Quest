@@ -151,7 +151,7 @@ public abstract class Tournament : Story
     }
 
 
-    public bool ValidateChosenCards(List<Card> chosenCards){
+    public bool ValidateChosenCards(List<Card> chosenCards) {
         bool cardsValid = true;
         
         if (chosenCards.GroupBy(c => c.getCardName()).Any(g => g.Count() > 1))
@@ -189,7 +189,7 @@ public abstract class Tournament : Story
             if (rematch == false)
             {
 				Logger.getInstance ().info("Round 2 of tournament started");
-                participatingPlayers = winnerList;
+				participatingPlayers = new List<Player>(winnerList);
                 rematch = true;
 				winnerList.Clear();
                 owner = participatingPlayers[0];
