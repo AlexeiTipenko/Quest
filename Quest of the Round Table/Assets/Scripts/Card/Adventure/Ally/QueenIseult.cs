@@ -1,4 +1,7 @@
-﻿public class QueenIseult : Ally {
+﻿using System;
+
+[Serializable]
+public class QueenIseult : Ally {
 
 	public static int frequency = 1;
 	private int empoweredBidPoints;

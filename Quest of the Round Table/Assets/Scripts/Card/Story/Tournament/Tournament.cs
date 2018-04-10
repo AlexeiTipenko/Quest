@@ -4,6 +4,7 @@ using UnityEngine;
 using System.Linq;
 using System;
 
+[Serializable]
 public abstract class Tournament : Story
 {
     Action action = null;
@@ -11,7 +12,8 @@ public abstract class Tournament : Story
     protected int bonusShields, playersEntered;
     public Player playerToPrompt;
     public List<Player> participatingPlayers;
-    public Dictionary<Player, int> pointsDict;
+	List<Player> winnerList;
+	int maxPoints;
     bool rematch;
 
 
@@ -21,7 +23,7 @@ public abstract class Tournament : Story
         this.bonusShields = bonusShields;
         board = BoardManagerMediator.getInstance();
         participatingPlayers = new List<Player>();
-        pointsDict = new Dictionary<Player, int>();
+		winnerList = new List<Player>();
         rematch = false;
     }
 
@@ -50,12 +52,25 @@ public abstract class Tournament : Story
             participatingPlayers.Add(playerToPrompt);
 
             action = () => {
-                Action completeAction = PromptNextPlayer;
-                playerToPrompt.DiscardCards(action, completeAction);
+				Action completeAction = () => {
+					Logger.getInstance ().debug ("In Tournament PromptEnterTournamentResponse(), about to RPC promptNextPlayer");
+					Debug.Log("In Tournament PromptEnterTournamentResponse(), about to RPC promptNextPlayer");
+					if (board.IsOnlineGame()) {
+						board.getPhotonView().RPC("PromptNextPlayer", PhotonTargets.Others);
+					}
+					PromptNextPlayer();
+				};
+                if (playerToPrompt.getHand().Count > 12) {
+                    playerToPrompt.DiscardCards(action, completeAction);
+                }
+                else {
+                    PromptNextPlayer();
+                }
             };
             playerToPrompt.DrawCards(1, action);
         }
         else {
+			Debug.Log ("Prompting next player...");
             PromptNextPlayer();
         }
     }
@@ -65,11 +80,13 @@ public abstract class Tournament : Story
 
         playerToPrompt = board.getNextPlayer(playerToPrompt);
 
-        if (playerToPrompt != owner)
-            playerToPrompt.PromptEnterTournament(this);
-
-        else
-            NumParticipantsAction();
+		if (playerToPrompt != owner) {
+            Debug.Log("Prompting next person to enter tournament");
+			playerToPrompt.PromptEnterTournament (this);
+		} else {
+			Debug.Log ("NumParticipantsAction...");
+			NumParticipantsAction ();
+		}
     }
 
 
@@ -116,6 +133,10 @@ public abstract class Tournament : Story
 
         else
         {
+			//TODO: Figure out a way to not loop by calling CardsSelectionResponse
+			if (board.IsOnlineGame()) {
+				board.getPhotonView().RPC("CardsSelectionResponse", PhotonTargets.Others);
+			}
             foreach (Card card in chosenCards)
             {
                 playerToPrompt.RemoveCard(card);
@@ -146,7 +167,16 @@ public abstract class Tournament : Story
                 pointsTotal += ((Adventure)card).getBattlePoints();
             }
         }
-        pointsDict.Add(playerToPrompt, pointsTotal);
+		if (winnerList.Count == 0) {
+			winnerList.Add (playerToPrompt);
+			maxPoints = pointsTotal;
+		} else if (pointsTotal > maxPoints) {
+			winnerList.Clear ();
+			winnerList.Add (playerToPrompt);
+			maxPoints = pointsTotal;
+		} else if (pointsTotal == maxPoints){
+			winnerList.Add (playerToPrompt);
+		}
         Logger.getInstance().info(playerToPrompt.getName() + " has " + pointsTotal + " battle points");
     }
 
@@ -173,10 +203,6 @@ public abstract class Tournament : Story
 
     public void TournamentRoundComplete() {
 		Logger.getInstance ().info ("Tournament round complete");
-        IEnumerable<Player> tempCollection = from p in pointsDict 
-                where p.Value == pointsDict.Max(v => v.Value) select p.Key;
-        
-        List<Player> winnerList = tempCollection.ToList();
 
         if (winnerList.Count() == 1) 
         {
@@ -195,7 +221,7 @@ public abstract class Tournament : Story
 				Logger.getInstance ().info("Round 2 of tournament started");
                 participatingPlayers = winnerList;
                 rematch = true;
-                pointsDict.Clear();
+				winnerList.Clear();
                 owner = participatingPlayers[0];
                 playerToPrompt = owner;
                 playerToPrompt.PromptTournament(this);

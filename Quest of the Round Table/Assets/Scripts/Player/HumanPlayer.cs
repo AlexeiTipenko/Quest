@@ -1,9 +1,11 @@
 ﻿using System;
+using System.Collections.Generic;
+using UnityEngine;
 
+[Serializable]
 public class HumanPlayer : Player {
 
     public HumanPlayer(string name) : base (name) {
-        
     }
 
 	public override void PromptDiscardCards(Action action)
@@ -13,10 +15,12 @@ public class HumanPlayer : Player {
 
     public override void DiscardCards(Action invalidAction, Action continueAction)
     {
+        Debug.Log("INSIDE DISCARD CARDS");
         board.TransferFromHandToPlayArea(this);
-        RemoveCardsResponse();
+		GetAndRemoveCards ();
         if (hand.Count > 12)
         {
+            Debug.Log("INSIDE DISCARD CARDS, GREATER THAN 12");
             PromptDiscardCards(invalidAction);
         }
         else

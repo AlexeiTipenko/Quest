@@ -1,14 +1,17 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 using System.Linq;
+using System;
 
+
+[Serializable]
 public class Strategy1 : AbstractAI
 {
     public Strategy1() : base (50, 20) {
         
     }
 
-    public override void DiscardAfterWinningTest()
+    public override void DiscardAfterWinningTest(int currentBid, Quest quest)
     {
         throw new System.NotImplementedException();
     }
@@ -40,7 +43,7 @@ public class Strategy1 : AbstractAI
         return false;
     }
 
-    public override void NextBid()
+    public override void NextBid(int currentBid, Stage stage)
     {
         throw new System.NotImplementedException();
     }

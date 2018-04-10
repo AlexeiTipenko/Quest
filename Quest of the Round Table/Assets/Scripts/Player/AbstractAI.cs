@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
+using System;
 
+[Serializable]
 public abstract class AbstractAI {
     
     protected readonly BoardManagerMediator board;
@@ -19,9 +21,9 @@ public abstract class AbstractAI {
 
     public abstract bool DoIParticipateInQuest();
 
-    public abstract void NextBid();
+    public abstract void NextBid(int currentBid, Stage stage);
 
-    public abstract void DiscardAfterWinningTest();
+    public abstract void DiscardAfterWinningTest(int currentBid, Quest quest);
 
     public abstract void SponsorQuest();
 

@@ -3,6 +3,7 @@ using UnityEngine;
 using System.Linq;
 using System;
 
+[Serializable]
 public abstract class Player {
 
 	protected string name;
@@ -11,6 +12,7 @@ public abstract class Player {
 	protected List<Card> hand;
 	protected PlayerPlayArea playArea;
     protected BoardManagerMediator board;
+	public bool discarded;
     System.Random random;
 
 	protected Player(string name) {
@@ -20,6 +22,7 @@ public abstract class Player {
 		hand = new List<Card> ();
 		playArea = new PlayerPlayArea ();
         board = BoardManagerMediator.getInstance();
+		discarded = false;
         random = new System.Random();
 	}
 
@@ -75,8 +78,10 @@ public abstract class Player {
         if (hand.Count > 12)
         {
             Debug.Log("More than 12 cards in " + name + "'s hand");
+			toggleDiscarded (true);
             PromptDiscardCards(action);
         } else {
+			toggleDiscarded (false);
             if (action != null) {
                 action.Invoke();
             }
@@ -210,11 +215,9 @@ public abstract class Player {
         }
     }
 
-
-    public void RemoveCardsResponse()
+	public void RemoveCardsResponse(List<Card> chosenCards)
     {
-        List<Card> chosenCards = board.GetDiscardedCards(this);
-        if (chosenCards.Count > 0) {
+		if (chosenCards.Count > 0) {
             foreach (Card card in chosenCards) {
                 RemoveCard(card);
             }
@@ -224,6 +227,13 @@ public abstract class Player {
         BoardManagerMediator.getInstance().DestroyDiscardArea();
     }
 
+	public void GetAndRemoveCards () {
+		List<Card> chosenCards = board.GetDiscardedCards (this);
+		if (board.IsOnlineGame () && chosenCards.Count > 0) {
+            board.getPhotonView ().RPC ("RemoveCardsResponse", PhotonTargets.Others, PunManager.Serialize(this), PunManager.Serialize(chosenCards));
+		}
+		RemoveCardsResponse(chosenCards);
+	}
 
 	public void incrementShields(int numShields) {
 		this.numShields += numShields;
@@ -271,9 +281,10 @@ public abstract class Player {
         return output;
     }
 
-    //public Action getAction() {
-    //    return func;
-    //}
+	public void toggleDiscarded(bool discarded) {
+		Debug.Log("Toggling discarded to " + discarded + " for player " + name);
+		this.discarded = discarded;
+	}
 }
 
 

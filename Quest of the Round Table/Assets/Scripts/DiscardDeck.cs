@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using System;
 
+[Serializable]
 public class DiscardDeck : Deck {
 
 	public void addCard (Card card) {

@@ -1,7 +1,6 @@
-﻿using UnityEngine;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System;
 
+[Serializable]
 public class AtOrkney : Tournament {
 
 	public static int frequency = 1;

@@ -31,10 +31,4 @@ public class GameManager : MonoBehaviour {
 		BoardManagerMediator.getInstance ().startGame ();
 	}
 	
-	// Update is called once per frame
-	void Update () {
-		
-	}
-
-
 }

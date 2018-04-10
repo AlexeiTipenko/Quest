@@ -1,7 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+using System;
 
+[Serializable]
 public class SearchForTheQuestingBeast : Quest {
 
 	public static int frequency = 1;

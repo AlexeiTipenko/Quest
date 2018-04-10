@@ -1,7 +1,8 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections.Generic;
+using System;
 
+[Serializable]
 public class Strategy2 : AbstractAI
 {
     int previousStageBattlePoints = 0;
@@ -10,9 +11,17 @@ public class Strategy2 : AbstractAI
         
     }
 
-    public override void DiscardAfterWinningTest()
+    public override void DiscardAfterWinningTest(int currentBid, Quest quest)
     {
-        throw new System.NotImplementedException();
+        Logger.getInstance().info("Discarding cards from AI after winning test");
+        if(quest.getCurrentStage().getStageNum() == 0) { // If you get here, the currentBid will equal to number of foes they have in their hand, so just remove
+            Logger.getInstance().info("if the stage number is 0, only remove the foe cards.");
+            strategyOwner.RemoveFoeCards();
+        }
+        else {
+            Logger.getInstance().info("if the stage number is not 0, remove the foe and duplicates.");
+            strategyOwner.RemoveFoeAndDuplicateCards();
+        }
     }
 
     public override bool DoIParticipateInQuest()
@@ -49,9 +58,50 @@ public class Strategy2 : AbstractAI
         return false;
     }
 
-    public override void NextBid()
+    public override void NextBid(int currentBid, Stage stage)
     {
-        throw new System.NotImplementedException();
+        Logger.getInstance().info(strategyOwner.getName() + " participating in Test and preparing");
+        Debug.Log(strategyOwner.getName() + " participating in Test and preparing");
+        if(stage.getStageNum() == 0){
+            Logger.getInstance().info("First stage, only discarding foes in hand less than 25");
+            Logger.getInstance().info("Foe bid is on first stage: " + strategyOwner.GetTotalAvailableFoeBids());
+            if (strategyOwner.GetTotalAvailableFoeBids() > currentBid && strategyOwner.GetTotalAvailableFoeBids() < 25)
+            {
+                Logger.getInstance().info(strategyOwner.getName() + " AI is preparing to bid: " + strategyOwner.GetTotalAvailableFoeBids());
+                Debug.Log(strategyOwner.getName() + " AI is preparing to bid: " + strategyOwner.GetTotalAvailableFoeBids());
+                stage.PromptTestResponse(false, strategyOwner.GetTotalAvailableFoeBids());
+            }
+            else
+            {
+                Logger.getInstance().info(strategyOwner.getName() + " AI doesn't have enough to bid: " + strategyOwner.GetTotalAvailableFoeBids()
+                                          + " while currentbid is: " + currentBid + " AI dropping out.");
+                Debug.Log(strategyOwner.getName() + " AI doesn't have enough to bid: " + strategyOwner.GetTotalAvailableFoeBids()
+                                          + " while currentbid is: " + currentBid + " AI dropping out.");
+                stage.PromptTestResponse(true, 0);
+            }
+        }
+        else {
+            Logger.getInstance().info("Second stage, discarding foes and duplicates");
+            Logger.getInstance().info("Inside second stage for AI");
+            Debug.Log("Inside second stage for AI");
+            Logger.getInstance().info("Foe bid is on not the first stage: " + strategyOwner.GetTotalAvailableFoeBids());
+            Logger.getInstance().info("Foe and Dup bid is: " + strategyOwner.getTotalAvailableFoeandDuplicateBids());
+            if (strategyOwner.getTotalAvailableFoeandDuplicateBids() > currentBid && strategyOwner.GetTotalAvailableFoeBids() < 25)
+            {
+                Logger.getInstance().info(strategyOwner.getName() + " AI is preparing to bid: " + strategyOwner.GetTotalAvailableFoeBids());
+                Debug.Log(strategyOwner.getName() + " AI is preparing to bid: " + strategyOwner.GetTotalAvailableFoeBids());
+                stage.PromptTestResponse(false, strategyOwner.getTotalAvailableFoeandDuplicateBids());
+            }
+            else
+            {
+                Logger.getInstance().info(strategyOwner.getName() + " AI doesn't have enough to bid: " + strategyOwner.GetTotalAvailableFoeBids()
+                                          + " while currentbid is: " + currentBid + " AI dropping out.");
+                Debug.Log(strategyOwner.getName() + " AI doesn't have enough to bid: " + strategyOwner.GetTotalAvailableFoeBids()
+                                          + " while currentbid is: " + currentBid + " AI dropping out.");
+                stage.PromptTestResponse(true, 0);
+            }
+        }
+
     }
 
     public override void PlayQuestStage(Stage stage)
@@ -290,6 +340,7 @@ public class Strategy2 : AbstractAI
         Debug.Log("AI is preparing for tournament");
         List<Card> Hand = strategyOwner.getHand();
         List<Card> PlayedList = new List<Card>();
+        List<String> PlayedListName = new List<string>();
         List<Card> Sorted = new List<Card>();
         Sorted = SortBattlePointsCards(Hand);
         int totalBattlePoints = 0;
@@ -303,21 +354,12 @@ public class Strategy2 : AbstractAI
             else if (totalBattlePoints >= 50) {
                 break;
             }
-            if (!PlayedList.Contains(tempCard))
+            if (!PlayedListName.Contains(tempCard.getCardName()))
             {
                 Debug.Log("Adding " + tempCard.getCardName() + " to AI");
                 PlayedList.Add(tempCard);
+                PlayedListName.Add(tempCard.getCardName());
                 totalBattlePoints += ((Adventure)tempCard).getBattlePoints();
-                //if(tempCard.GetType() == typeof(Amour) ){
-                //    TotalBattlePoints += ((Amour)tempCard).getBattlePoints();
-                //}
-                //else if (tempCard.GetType().IsSubclassOf(typeof(Ally)))
-                //{
-                //    TotalBattlePoints += ((Ally)tempCard).getBattlePoints();
-                //}
-                //else {
-                //    TotalBattlePoints += ((Weapon)tempCard).getBattlePoints();
-                //}
             }
             Sorted.Remove(tempCard);
         }

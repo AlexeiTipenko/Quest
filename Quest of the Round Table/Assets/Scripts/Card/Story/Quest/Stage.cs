@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
+[Serializable]
 public class Stage {
 	BoardManagerMediator board;
 
@@ -63,15 +64,22 @@ public class Stage {
     }
 
 	public void Prepare() {
+		board = BoardManagerMediator.getInstance();
 		Logger.getInstance ().debug ("Prepare function has started");
 
         isInProgress = true;
+		playersToRemove = new List<Player> ();
 
 		if (stageCard.GetType ().IsSubclassOf (typeof(Foe))) {
 			Logger.getInstance ().trace ("Stage card is subclass type of foe");
 			Debug.Log ("Is foe, going to player");
-            Debug.Log("quest sponsor is: " + quest.getSponsor().getName());
+            Debug.Log("quest player after sponsor is: " + board.getNextPlayer(quest.getSponsor()).getName());
             playerToPrompt = board.getNextPlayer(quest.getSponsor());
+            Debug.Log("Player to prompt is: " + playerToPrompt.getName());
+			Logger.getInstance().info("playerToPrompt is: " + playerToPrompt.getName());
+            //TODO: this is probably causing an infinite loop
+            Debug.Log("After moving to next player");
+            Logger.getInstance().info("Checking amount of players: " + quest.getPlayers().Count);
             while (!quest.getPlayers().Contains(playerToPrompt)) {
                 playerToPrompt = board.getNextPlayer(playerToPrompt);
             }
@@ -82,6 +90,7 @@ public class Stage {
 			currentBid = ((Test)stageCard).getMinBidValue() - 1;
 			Debug.Log ("Current bid is: " + currentBid);
             playerToPrompt = board.getNextPlayer(quest.getSponsor());
+            //TODO: this is probably causing an infinite loop
             while (!quest.getPlayers().Contains(playerToPrompt))
             {
                 playerToPrompt = board.getNextPlayer(playerToPrompt);
@@ -98,14 +107,8 @@ public class Stage {
         }
         else {
             Debug.Log("Dropped out");
-            Player temp = playerToPrompt;
+			playersToRemove.Add (playerToPrompt);
             playerToPrompt = quest.getNextPlayer(playerToPrompt);
-            if (originalPlayer == temp) {
-                originalPlayer = quest.getNextPlayer(originalPlayer);
-            }
-            Debug.Log("Removing player: " + temp.getName());
-            quest.removeParticipatingPlayer(temp);
-            Debug.Log("New total participant: " + quest.getPlayers().Count);
             Debug.Log("Next player: " + playerToPrompt.getName());
             ContinueQuest();
         }
@@ -113,17 +116,26 @@ public class Stage {
 
 
     public void ContinueQuest(){
-        if (quest.getPlayers().Count < 1)
+		if (quest.getPlayers().Count - playersToRemove.Count < 1)
         {
+            Logger.getInstance().info("Moving to next stage");
             Debug.Log("No quest participants left");
+			foreach (Player player in playersToRemove) {
+				Debug.Log ("Removing player: " + player.getName ());
+				quest.removeParticipatingPlayer (player);
+			}
             quest.PlayStage();
         }
         else{
-            if (playerToPrompt != originalPlayer) {
+			if (playerToPrompt.getName() != originalPlayer.getName()) {
                 playerToPrompt.PromptFoe(quest);
             }
             else {
                 Debug.Log("All players have been prompted");
+				foreach (Player player in playersToRemove) {
+					Debug.Log ("Removing player: " + player.getName ());
+					quest.removeParticipatingPlayer (player);
+				}
                 PlayFoe();
             }
         }
@@ -180,8 +192,12 @@ public class Stage {
             Debug.Log("Removing player: " + temp.getName());
             quest.removeParticipatingPlayer(temp);
             Debug.Log("New total participant: " + quest.getPlayers().Count);
-            Debug.Log("Next player: " + playerToPrompt.getName());
-            PromptTest();
+            if(quest.getPlayers().Count == 0){
+                ContinueQuest();
+            }
+            else {
+                PromptTest();
+            }
         }
 	}
 
@@ -192,7 +208,10 @@ public class Stage {
 
     void PlayFoe() {
         playersToRemove = new List<Player>();
-        originalPlayer = playerToPrompt;
+		while (!quest.getPlayers ().Contains (playerToPrompt)) {
+			playerToPrompt = board.getNextPlayer (playerToPrompt);
+		}
+		originalPlayer = playerToPrompt;
         EvaluatePlayerForFoe();
     }
 
@@ -246,8 +265,22 @@ public class Stage {
 
     public void DealCards() {
         action = () => {
-            Action completeAction = DealCardsNextPlayer;
-            playerToPrompt.DiscardCards(action, completeAction);
+			Action completeAction = () => {
+				Debug.Log("Player discarded: " + playerToPrompt.discarded);
+				if (board.IsOnlineGame() && playerToPrompt.discarded) {
+					playerToPrompt.toggleDiscarded(false);
+					Logger.getInstance ().debug ("In Stage DealCards(), about to RPC DealCardsNextPlayer");
+					Debug.Log("In Stage DealCards(), about to RPC DealCardsNextPlayer");
+					board.getPhotonView().RPC("DealCardsNextPlayer", PhotonTargets.Others);
+				}				
+				DealCardsNextPlayer();
+			};
+            if (playerToPrompt.getHand().Count > 12) {
+                playerToPrompt.DiscardCards(action, completeAction);
+            }
+            else {
+                DealCardsNextPlayer();
+            }
         };
         playerToPrompt.DrawCards(1, action);
     }
