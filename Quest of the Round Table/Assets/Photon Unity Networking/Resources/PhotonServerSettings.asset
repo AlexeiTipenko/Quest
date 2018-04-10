@@ -64,4 +64,5 @@ MonoBehaviour:
   - PromptAcceptQuest
   - PlayerListingsAdd
   - AddAI2
+  - AddAI
   DisableAutoOpenWizard: 1
