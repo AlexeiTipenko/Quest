@@ -562,6 +562,9 @@ public class BoardManagerMediator
 		BoardManager.DrawCards (player);
 		BoardManager.SetInteractionText (Localization.DisplayTournamentResults(player, playerEliminated));
 		Action action = () => {
+			if (IsOnlineGame()) {
+				view.RPC("DisplayTournamentResults", PhotonTargets.Others);
+			}
 			tournament.DisplayTournamentResultsResponse ();
 		};
 		BoardManager.SetInteractionButtons ("Continue", "", action, null);

@@ -168,9 +168,14 @@ public class PunManager : Photon.MonoBehaviour {
     public void PromptEnterTournamentResponse(bool entered)
     {
 		PrepareRPC ();
-		Debug.Log ("board.cardinplay in RPC promptentertournamentresponse is " + board.getCardInPlay().getCardName());
         ((Tournament)board.getCardInPlay()).PromptEnterTournamentResponse(entered);
     }
+
+	[PunRPC]
+	public void DisplayTournamentResults() {
+		PrepareRPC ();
+		((Tournament)board.getCardInPlay ()).DisplayTournamentResultsResponse ();
+	}
 
 
     //------------------------------------------------------------------------//
