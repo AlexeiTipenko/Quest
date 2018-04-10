@@ -32,18 +32,17 @@ public class PlayerLayoutGroup : MonoBehaviour {
 
     public void SetupAI2()
     {
+		int aiID = UnityEngine.Random.Range (1, 50);
 		view = PhotonView.Get (GameObject.Find ("DDOL/PunManager"));
-		view.RPC("AddAI2", PhotonTargets.All);
+		view.RPC("AddAI2", PhotonTargets.All, aiID);
     }
 
-	public void AddAI2() {
+	public void AddAI2(int aiID) {
 		GameObject playerListingObj = Instantiate(PlayerListingPrefab);
 		Text[] texts = playerListingObj.transform.GetComponentsInChildren<Text>();
-		texts[0].text = "AI_Two";
-		playerListingObj.name = "AI_Two";
+		texts[0].text = "AI_Two_" + aiID;
+		playerListingObj.name = "AI_Two_" + aiID;
 		playerListingObj.transform.SetParent(transform, false);
-
-		print("Inside setupAI");
 
 		PlayerListing playerListing = playerListingObj.GetComponent<PlayerListing>();
 		PlayerListings.Add(playerListing);
@@ -107,10 +106,10 @@ public class PlayerLayoutGroup : MonoBehaviour {
         foreach (var player in PlayerListings)
         {
             print("player name is: " + player.name);
-            if (player.name == "AI_Two")
+			if (player.name.Contains == "AI_Two_")
             {
                 print("CREATING AI");
-                playerList.Add(new AIPlayer(player.name + UnityEngine.Random.Range(1, 50), new Strategy2()));
+                playerList.Add(new AIPlayer(player.name, new Strategy2()));
             }
             else {
                 playerList.Add(new HumanPlayer(player.name));
