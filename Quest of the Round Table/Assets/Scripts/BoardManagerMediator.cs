@@ -558,6 +558,17 @@ public class BoardManagerMediator
         Logger.getInstance().info("Prompted " + player.getName() + " to prepare cards.");
     }
 
+	public void DisplayTournamentResults (Tournament tournament, Player player, bool playerEliminated) {
+		BoardManager.DrawCards (player);
+		BoardManager.SetInteractionText (Localization.DisplayTournamentResults(player, playerEliminated));
+		Action action = () => {
+			tournament.DisplayTournamentResultsResponse ();
+		};
+		BoardManager.SetInteractionButtons ("Continue", "", action, null);
+		Debug.Log("Displaying tournament results to " + player.getName());
+		Logger.getInstance().info("Displaying tournament results to " + player.getName());
+	}
+
 
 	public void PromptToDiscardWeapon(Player player) 
 	{

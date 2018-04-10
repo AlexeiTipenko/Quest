@@ -73,4 +73,8 @@ public class HumanPlayer : Player {
 	{
         board.PromptCardSelection(tournament, this);
 	}
+
+	public override void DisplayTournamentResults(Tournament tournament, bool playerEliminated) {
+		board.DisplayTournamentResults (tournament, this, playerEliminated);
+	}
 }

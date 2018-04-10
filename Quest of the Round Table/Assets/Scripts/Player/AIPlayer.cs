@@ -84,6 +84,10 @@ public class AIPlayer : Player {
         tournament.CardsSelectionResponse(chosenCards);
 	}
 
+	public override void DisplayTournamentResults(Tournament tournament, bool playerEliminated) {
+		tournament.DisplayTournamentResultsResponse ();
+	}
+
 	public AbstractAI GetStrategy()
     {
         return strategy;

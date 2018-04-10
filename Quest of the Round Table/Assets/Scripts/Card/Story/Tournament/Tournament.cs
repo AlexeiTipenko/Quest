@@ -176,13 +176,10 @@ public abstract class Tournament : Story
 
         if (winnerList.Count() == 1) 
         {
-			Logger.getInstance ().info("Tournament winner: " + winnerList[0].getName());
-            winnerList[0].incrementShields(playersEntered);
-            DiscardCards();
-            board.nextTurn();
+			CompleteTournament ();
         }
 
-        else if (winnerList.Count() > 1) 
+        else
         {
 			Logger.getInstance ().trace("More than one player has won");
 
@@ -197,20 +194,41 @@ public abstract class Tournament : Story
                 playerToPrompt.PromptTournament(this);
             }
 
-            else{
-                Logger.getInstance ().info("Round 3 (final) of tournament started");
-                foreach(Player player in winnerList){
-                    player.incrementShields(playersEntered);
-                }
-                DiscardCards();
-                board.nextTurn();
+            else {
+				CompleteTournament ();
             }
         }
     }
 
+	private void CompleteTournament() {
+		Logger.getInstance ().info("Tournament complete, awarding shields");
+		foreach(Player player in winnerList){
+			player.incrementShields(playersEntered);
+		}
+		DisplayTournamentResults ();
+	}
+
+
+	private void DisplayTournamentResults() {
+		bool playerEliminated = true;
+		if (winnerList.Contains(playerToPrompt)) {
+			playerEliminated = false;
+		}
+		playerToPrompt.DisplayTournamentResults (this, playerEliminated);
+	}
+
+	public void DisplayTournamentResultsResponse() {
+		playerToPrompt = GetNextPlayer (playerToPrompt);
+		if (playerToPrompt != owner) {
+			DisplayTournamentResults ();
+		} else {
+			DiscardCards ();
+			board.nextTurn ();
+		}
+	}
 
     private void DiscardCards() {
-        foreach(Player player in board.getPlayers()){
+        foreach(Player player in board.getPlayers()) {
             player.getPlayArea().discardWeapons();
             player.getPlayArea().discardAmours();
         }
