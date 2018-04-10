@@ -110,51 +110,21 @@ public abstract class Tournament : Story
     }
 
 
-    public void CardsSelectionResponse() {
-        List<Card> chosenCards;
-        bool cardsValid;
-
-        //TODO: because of the way this was implemented, it is VERY hard to refactor without rewriting. Maybe do later?
-        //Ideally, each player's cards should have gone to their player area, instead of returning through the participation function
-        if (playerToPrompt.GetType() == typeof(AIPlayer)) {
-            chosenCards = ((AIPlayer)playerToPrompt).GetStrategy().ParticipateTournament();
-            cardsValid = true;
-        }
-        else {
-            chosenCards = board.GetSelectedCards(playerToPrompt);
-            cardsValid = ValidateChosenCards(chosenCards);  
+	public void CardsSelectionResponse(List<Card> chosenCards) {
+        foreach (Card card in chosenCards) {
+            playerToPrompt.RemoveCard(card);
+            playerToPrompt.getPlayArea().addCard(card);
         }
 
-        if (!cardsValid)
-        {
-            Logger.getInstance().warn(playerToPrompt.getName() + "'s card selection INVALID");
-            playerToPrompt.PromptTournament(this);
-        }
+        AddPlayerBattlePoints(chosenCards);
 
-        else
-        {
-			//TODO: Figure out a way to not loop by calling CardsSelectionResponse
-			if (board.IsOnlineGame()) {
-				board.getPhotonView().RPC("CardsSelectionResponse", PhotonTargets.Others);
-			}
-            foreach (Card card in chosenCards)
-            {
-                playerToPrompt.RemoveCard(card);
-                playerToPrompt.getPlayArea().addCard(card);
-            }
+        playerToPrompt = GetNextPlayer(playerToPrompt);
 
-            Logger.getInstance().info(playerToPrompt.getName() + "'s card selection VALID");
-            AddPlayerBattlePoints(chosenCards);
-
-            playerToPrompt = GetNextPlayer(playerToPrompt);
-
-            if (playerToPrompt == owner)
-                TournamentRoundComplete();
-
-            else
-                playerToPrompt.PromptTournament(this);
-        }
-
+		if (playerToPrompt == owner) {
+			TournamentRoundComplete ();
+		} else {
+			playerToPrompt.PromptTournament (this);
+		}
     }
 
 

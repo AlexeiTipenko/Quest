@@ -157,10 +157,11 @@ public class PunManager : Photon.MonoBehaviour {
     //------------------------------------------------------------------------//
 
     [PunRPC]
-    public void CardsSelectionResponse()
+	public void CardsSelectionResponse(byte[] cardBytes)
     {
 		PrepareRPC ();
-        ((Tournament)board.getCardInPlay()).CardsSelectionResponse();
+		List<Card> cards = (List<Card>) Deserialize (cardBytes);
+        ((Tournament)board.getCardInPlay()).CardsSelectionResponse(cards);
     }
 
     [PunRPC]

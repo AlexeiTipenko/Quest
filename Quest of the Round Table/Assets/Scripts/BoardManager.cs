@@ -260,7 +260,6 @@ public class BoardManager : MonoBehaviour
         if (player != previousPlayer || isFreshTurn || board.IsOnlineGame()) {
             isFreshTurn = false;
             if (board.IsOnlineGame()) {
-                Debug.Log("Coming inside is online game");
                 List<Player> players = board.getPlayers();
                 int playerTurn = players.IndexOf(player) + 1;
                 Logger.getInstance().info("Local player id: " + PhotonNetwork.player.ID);
