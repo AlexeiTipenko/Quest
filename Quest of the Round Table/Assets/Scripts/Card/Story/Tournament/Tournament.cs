@@ -206,6 +206,9 @@ public abstract class Tournament : Story
 		if (playerToPrompt != owner) {
 			DisplayTournamentResults ();
 		} else if (!isLastRound) {
+			foreach (Player player in board.getPlayers()) {
+				player.getPlayArea ().discardWeapons ();
+			}
 			Logger.getInstance ().info("Round 2 of tournament started");
 			participatingPlayers = new List<Player>(winnerList);
 			isLastRound = true;
@@ -214,17 +217,13 @@ public abstract class Tournament : Story
 			playerToPrompt = owner;
 			playerToPrompt.PromptTournament(this);
 		} else {
-			DiscardCards ();
+			foreach (Player player in board.getPlayers()) {
+				player.getPlayArea ().discardWeapons ();
+				player.getPlayArea ().discardAmours ();
+			}
 			board.nextTurn ();
 		}
 	}
-
-    private void DiscardCards() {
-        foreach(Player player in board.getPlayers()) {
-            player.getPlayArea().discardWeapons();
-            player.getPlayArea().discardAmours();
-        }
-    }
 
 
     public Player GetNextPlayer(Player previousPlayer)
