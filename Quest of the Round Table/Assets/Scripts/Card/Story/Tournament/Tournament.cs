@@ -14,7 +14,7 @@ public abstract class Tournament : Story
     public List<Player> participatingPlayers;
 	List<Player> winnerList;
 	int maxPoints;
-    bool rematch;
+    bool isLastRound;
 
 
     protected Tournament(string cardName, int bonusShields) : base(cardName)
@@ -24,7 +24,7 @@ public abstract class Tournament : Story
         board = BoardManagerMediator.getInstance();
         participatingPlayers = new List<Player>();
 		winnerList = new List<Player>();
-        rematch = false;
+        isLastRound = false;
     }
 
 
@@ -110,60 +110,31 @@ public abstract class Tournament : Story
     }
 
 
-    public void CardsSelectionResponse() {
-        List<Card> chosenCards;
-        bool cardsValid;
-
-        //TODO: because of the way this was implemented, it is VERY hard to refactor without rewriting. Maybe do later?
-        //Ideally, each player's cards should have gone to their player area, instead of returning through the participation function
-        if (playerToPrompt.GetType() == typeof(AIPlayer)) {
-            chosenCards = ((AIPlayer)playerToPrompt).GetStrategy().ParticipateTournament();
-            cardsValid = true;
-        }
-        else {
-            chosenCards = board.GetSelectedCards(playerToPrompt);
-            cardsValid = ValidateChosenCards(chosenCards);  
+	public void CardsSelectionResponse(List<Card> chosenCards) {
+        foreach (Card card in chosenCards) {
+            playerToPrompt.RemoveCard(card);
+            playerToPrompt.getPlayArea().addCard(card);
         }
 
-        if (!cardsValid)
-        {
-            Logger.getInstance().warn(playerToPrompt.getName() + "'s card selection INVALID");
-            playerToPrompt.PromptTournament(this);
-        }
+        AddPlayerBattlePoints(chosenCards);
 
-        else
-        {
-			//TODO: Figure out a way to not loop by calling CardsSelectionResponse
-			if (board.IsOnlineGame()) {
-				board.getPhotonView().RPC("CardsSelectionResponse", PhotonTargets.Others);
-			}
-            foreach (Card card in chosenCards)
-            {
-                playerToPrompt.RemoveCard(card);
-                playerToPrompt.getPlayArea().addCard(card);
-            }
+        playerToPrompt = GetNextPlayer(playerToPrompt);
 
-            Logger.getInstance().info(playerToPrompt.getName() + "'s card selection VALID");
-            AddPlayerBattlePoints(chosenCards);
-
-            playerToPrompt = GetNextPlayer(playerToPrompt);
-
-            if (playerToPrompt == owner)
-                TournamentRoundComplete();
-
-            else
-                playerToPrompt.PromptTournament(this);
-        }
-
+		if (playerToPrompt == owner) {
+			TournamentRoundComplete ();
+		} else {
+			playerToPrompt.PromptTournament (this);
+		}
     }
 
 
-    public void AddPlayerBattlePoints(List<Card> chosenCards){
-        int pointsTotal = 0;
+    public void AddPlayerBattlePoints(List<Card> chosenCards) {
+		int pointsTotal = playerToPrompt.getRank().getBattlePoints();
         foreach (Card card in chosenCards)
         {
             if (card.GetType().IsSubclassOf(typeof(Adventure)))
             {
+				Debug.Log ("Adding to battle point total");
                 pointsTotal += ((Adventure)card).getBattlePoints();
             }
         }
@@ -177,11 +148,12 @@ public abstract class Tournament : Story
 		} else if (pointsTotal == maxPoints){
 			winnerList.Add (playerToPrompt);
 		}
+		Debug.Log ("Total battle points for player " + playerToPrompt.getName() + ": " + pointsTotal);
         Logger.getInstance().info(playerToPrompt.getName() + " has " + pointsTotal + " battle points");
     }
 
 
-    public bool ValidateChosenCards(List<Card> chosenCards){
+    public bool ValidateChosenCards(List<Card> chosenCards) {
         bool cardsValid = true;
         
         if (chosenCards.GroupBy(c => c.getCardName()).Any(g => g.Count() > 1))
@@ -204,47 +176,54 @@ public abstract class Tournament : Story
     public void TournamentRoundComplete() {
 		Logger.getInstance ().info ("Tournament round complete");
 
-        if (winnerList.Count() == 1) 
-        {
-			Logger.getInstance ().info("Tournament winner: " + winnerList[0].getName());
-            winnerList[0].incrementShields(playersEntered);
-            DiscardCards();
-            board.nextTurn();
+        if (winnerList.Count() == 1) {
+			isLastRound = true;
         }
-
-        else if (winnerList.Count() > 1) 
-        {
-			Logger.getInstance ().trace("More than one player has won");
-
-            if (rematch == false)
-            {
-				Logger.getInstance ().info("Round 2 of tournament started");
-                participatingPlayers = winnerList;
-                rematch = true;
-				winnerList.Clear();
-                owner = participatingPlayers[0];
-                playerToPrompt = owner;
-                playerToPrompt.PromptTournament(this);
-            }
-
-            else{
-                Logger.getInstance ().info("Round 3 (final) of tournament started");
-                foreach(Player player in winnerList){
-                    player.incrementShields(playersEntered);
-                }
-                DiscardCards();
-                board.nextTurn();
-            }
-        }
+		CompleteTournament ();
     }
 
+	private void CompleteTournament() {
+		Logger.getInstance ().info("Tournament complete, awarding shields");
+		if (isLastRound) {
+			foreach(Player player in winnerList) {
+				player.incrementShields(playersEntered + bonusShields);
+			}
+		}
+		DisplayTournamentResults ();
+	}
 
-    private void DiscardCards() {
-        foreach(Player player in board.getPlayers()){
-            player.getPlayArea().discardWeapons();
-            player.getPlayArea().discardAmours();
-        }
-    }
+
+	private void DisplayTournamentResults() {
+		bool playerEliminated = true;
+		if (winnerList.Contains(playerToPrompt)) {
+			playerEliminated = false;
+		}
+		playerToPrompt.DisplayTournamentResults (this, playerEliminated);
+	}
+
+	public void DisplayTournamentResultsResponse() {
+		playerToPrompt = GetNextPlayer (playerToPrompt);
+		if (playerToPrompt != owner) {
+			DisplayTournamentResults ();
+		} else if (!isLastRound) {
+			foreach (Player player in board.getPlayers()) {
+				player.getPlayArea ().discardWeapons ();
+			}
+			Logger.getInstance ().info("Round 2 of tournament started");
+			participatingPlayers = new List<Player>(winnerList);
+			isLastRound = true;
+			winnerList.Clear();
+			owner = participatingPlayers[0];
+			playerToPrompt = owner;
+			playerToPrompt.PromptTournament(this);
+		} else {
+			foreach (Player player in board.getPlayers()) {
+				player.getPlayArea ().discardWeapons ();
+				player.getPlayArea ().discardAmours ();
+			}
+			board.nextTurn ();
+		}
+	}
 
 
     public Player GetNextPlayer(Player previousPlayer)

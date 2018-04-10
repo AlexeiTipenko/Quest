@@ -428,16 +428,6 @@ public class Strategy2 : AbstractAI
                 Debug.Log("Adding " + tempCard.getCardName() + " to AI");
                 PlayedList.Add(tempCard);
                 totalBattlePoints += ((Adventure)tempCard).getBattlePoints();
-                //if(tempCard.GetType() == typeof(Amour) ){
-                //    TotalBattlePoints += ((Amour)tempCard).getBattlePoints();
-                //}
-                //else if (tempCard.GetType().IsSubclassOf(typeof(Ally)))
-                //{
-                //    TotalBattlePoints += ((Ally)tempCard).getBattlePoints();
-                //}
-                //else {
-                //    TotalBattlePoints += ((Weapon)tempCard).getBattlePoints();
-                //}
             }
             Sorted.Remove(tempCard);
         }

@@ -54,6 +54,8 @@ public abstract class Player {
 
     public abstract void PromptTournament(Tournament tournament);
 
+	public abstract void DisplayTournamentResults (Tournament tournament, bool playerEliminated);
+
 
     //--------------------------------------------//
     //---------- Non-Abstract Functions ----------//
