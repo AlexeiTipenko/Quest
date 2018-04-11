@@ -29,8 +29,6 @@ public abstract class AbstractAI {
 
     public abstract void PlayQuestStage(Stage stage);
 
-    protected abstract void PlayTestStage(Stage stage);
-
     protected abstract void PlayFoeStage(Stage stage);
 
     protected abstract bool CanPlayCardForStage(Card card, List<Card> participationList);
@@ -377,4 +375,22 @@ public abstract class AbstractAI {
 		}
 		return strongestFoe;
 	}
+
+    public int GetWeaponandAlliesCount() {
+        List<String> UniqueWeapons = new List<string>();
+        int totalWepsandAllies = 0;
+        foreach (Card card in strategyOwner.getHand()){
+            if (!UniqueWeapons.Contains(card.getCardName()))
+            {
+                UniqueWeapons.Add(card.getCardName());
+            }
+        }
+        return 0;
+    }
+
+    public bool TwoWeaponsorAlliesPerStage() {
+        Quest quest = (Quest)board.getCardInPlay();
+        return true;
+         
+    }
 }

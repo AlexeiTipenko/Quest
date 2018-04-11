@@ -268,12 +268,6 @@ public class Strategy2 : AbstractAI
         stage.PromptFoeResponse(false);
     }
 
-    protected override void PlayTestStage(Stage stage)
-    {
-        Debug.Log("Stage card type is Test");
-        throw new NotImplementedException();
-    }
-
     bool IncrementableCardsOverEachStage() {
         Quest quest = (Quest)board.getCardInPlay();
         List<Card> cards = strategyOwner.getHand();
