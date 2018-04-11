@@ -23,7 +23,10 @@ public abstract class Player {
 		playArea = new PlayerPlayArea ();
         board = BoardManagerMediator.getInstance();
 		discarded = false;
-        random = new System.Random();
+		random = new System.Random();
+		if (BoardManagerMediator.getInstance ().IsOnlineGame ()) {
+			random = new System.Random (Deck.seed);
+		}
 	}
 
 
@@ -117,7 +120,7 @@ public abstract class Player {
                 hand.RemoveAt(hand.Count - 1);
             } else {
                 for (int i = 0; i < numCards; i++) {
-                    int index = random.Next(hand.Count - 1);
+					int index = random.Next(hand.Count - 1);
                     board.AddToDiscardDeck(hand.ElementAt(index));
                     hand.RemoveAt(index);
                 }
