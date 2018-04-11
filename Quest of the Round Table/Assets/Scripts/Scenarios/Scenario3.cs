@@ -16,7 +16,8 @@
 
 		//Player 2
 		adventureDeck.moveCardToIndex("TestOfTemptation", 12);
-		adventureDeck.moveCardToIndex("Dragon", 13);
+		adventureDeck.moveCardToIndex ("Giant", 13);
+		adventureDeck.moveCardToIndex("Dragon", 14);
 
 		return adventureDeck;
 	}
