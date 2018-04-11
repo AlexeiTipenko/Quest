@@ -18,13 +18,18 @@ public class Strategy1 : AbstractAI
 
     public override bool DoIParticipateInQuest()
     {
-        //if(TwoWeaponsorAlliesPerStage()){
-        //    return true;
-        //}
-        //else {
-        //    return false;
-        //}
-        return true;
+        Logger.getInstance().info("AI Strategy 1 deciding if participating in quest");
+        Debug.Log("AI Strategy 1 deciding if participating in quest");
+        if(TwoWeaponsorAlliesPerStage()){
+            Logger.getInstance().info("AI Strategy 1 decided to participate in quest");
+            Debug.Log("AI 1 playing in quest");
+            return true;
+        }
+        else {
+            Logger.getInstance().info("AI Strategy 1 did not participate in quest");
+            Debug.Log("AI 1 not playing in quest");
+            return false;
+        }
     }
 
     public override bool DoIParticipateInTournament()

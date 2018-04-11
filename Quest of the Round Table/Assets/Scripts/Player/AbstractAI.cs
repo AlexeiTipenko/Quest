@@ -423,21 +423,65 @@ public abstract class AbstractAI {
 		return strongestFoe;
 	}
 
-    public int GetWeaponandAlliesCount() {
-        List<String> UniqueWeapons = new List<string>();
-        int totalWepsandAllies = 0;
+    public bool GetWeaponsCount() {
+        Dictionary<String, int> WeaponsCount = new Dictionary<string, int>();
+        Quest quest = (Quest)board.getCardInPlay();
+
         foreach (Card card in strategyOwner.getHand()){
-            if (!UniqueWeapons.Contains(card.getCardName()))
+            if (!WeaponsCount.ContainsKey(card.getCardName()) && card.GetType().IsSubclassOf(typeof(Weapon)))
             {
-                UniqueWeapons.Add(card.getCardName());
+                WeaponsCount.Add(card.getCardName(), 1);
+            }
+            else if (card.GetType().IsSubclassOf(typeof(Weapon))){
+                WeaponsCount[card.getCardName()]++;
             }
         }
-        return 0;
+
+        for (int i = 0; i < quest.getNumStages(); i++){
+            if(WeaponsCount.Count == 0) {
+                return false;
+            }
+            else {
+                foreach (KeyValuePair<String, int> entry in WeaponsCount) {
+                    if (entry.Value == 0) {
+                        WeaponsCount.Remove(entry.Key);
+                    }
+                    else {
+                        WeaponsCount[entry.Key]--;
+                    }
+                }      
+            }
+        }
+
+        return true;
+    }
+
+    public bool ContainsAllies() {
+        foreach(Card card in strategyOwner.getHand()){
+            if(card.GetType().IsSubclassOf(typeof(Ally))){
+                Ally currentCard = (Ally)card;
+                if (currentCard.getBattlePoints() > 0){
+                    return true;
+                }
+            }
+            else if(card.GetType().IsSubclassOf(typeof(Amour))){
+                return true;
+            }
+        }
+        return false;
     }
 
     public bool TwoWeaponsorAlliesPerStage() {
-        Quest quest = (Quest)board.getCardInPlay();
-        return true;
-         
+        if(ContainsAllies()){
+            Debug.Log("AI strategy 1 has allies, returning true");
+            return true;
+        }
+        else if(GetWeaponsCount()){
+            Debug.Log("AI strategy 1 has 2 weapons per stage");
+            return true;
+        }
+        else {
+            return false;
+        }
     }
 }
