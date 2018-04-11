@@ -90,15 +90,26 @@ public class Strategy1 : AbstractAI
 		foreach (Card card in cards) {
 			cardDictionary.Add (card, false);
 		}
+		Debug.Log ("Card dictionary contains:");
+		foreach (Card card in cardDictionary.Keys) {
+			Debug.Log ("Card: " + card);
+		}
 
         Stage finalStage = null;
         Stage testStage = null;
         List<Stage> otherStages = new List<Stage>();
         int initializedStages = 0, numTestStages = 0;
 
+		int previousStageBattlePoints = 0;
+
         Card stageCard = null;
         List<Card> weapons = new List<Card>();
 		stageCard = GetStrongestFoe (cardDictionary);
+		if (stageCard == null) {
+			Debug.Log ("Failed to initialize all stages, withdrawing sponsorship");
+			quest.IncrementSponsor ();
+			return;
+		}
 		cardDictionary [stageCard] = true;
         Logger.getInstance().info("Final stage foe: " + stageCard.getCardName());
         Debug.Log("Final stage foe: " + stageCard.getCardName());
@@ -106,13 +117,14 @@ public class Strategy1 : AbstractAI
         {
 			Weapon bestUniqueWeapon = GetBestUniqueWeapon (new List<Card>(cardDictionary.Keys), weapons);
 			if (bestUniqueWeapon == null) {
+				Debug.Log ("No more weapons found");
 				break;
 			}
 			cardDictionary [bestUniqueWeapon] = true;
             weapons.Add(bestUniqueWeapon);
         }
 
-        Logger.getInstance().info("Final stage weapons: " + stageCard.getCardName());
+		Logger.getInstance().info("Final stage weapons:");
         Debug.Log("Final stage weapons:");
         foreach (Weapon weapon in weapons)
         {
@@ -123,6 +135,7 @@ public class Strategy1 : AbstractAI
         initializedStages++;
         Logger.getInstance().info("Initialized stages " + initializedStages);
         Debug.Log("Initialized stages: " + initializedStages);
+		previousStageBattlePoints = finalStage.getTotalBattlePoints ();
 
 		if (ContainsTest(new List<Card>(cardDictionary.Keys)))
         {
@@ -142,38 +155,69 @@ public class Strategy1 : AbstractAI
             Debug.Log("Initialized stages: " + initializedStages);
         }
 
-        Card previousStageCard = null;
-		Card previousWeaponCard = null;
         while (initializedStages < quest.getNumStages())
         {
+			Debug.Log ("Initializing a new stage");
 			stageCard = GetStrongestFoe (cardDictionary);
+			if (stageCard == null) {
+				break;
+			}
 			List<Card> weaponList = null;
-			Card weaponCard = GetBestDuplicateWeapon (cardDictionary);
+			Weapon weaponCard = GetBestDuplicateWeapon (cardDictionary);
 			cardDictionary [stageCard] = true;
 			if (weaponCard != null) {
 				cardDictionary [weaponCard] = true;
 				weaponList = new List<Card> ();
 				weaponList.Add (weaponCard);
 			}
-			int stageNum = quest.getNumStages () - initializedStages - 1;
-            Logger.getInstance().info("Stage " + stageNum + ": stage card is " + stageCard.getCardName());
-            Debug.Log("Stage " + stageNum + ": stage card is " + stageCard.getCardName());
-			otherStages.Add(InitializeStage(stageCard, weaponList, stageNum));
-            initializedStages++;
-            previousStageCard = stageCard;
+			if (IsValidBattlePoints ((Foe)stageCard, weaponCard, previousStageBattlePoints)) {
+				Debug.Log ("Created a valid quest");
+				int stageNum = quest.getNumStages () - initializedStages - 1;
+				Logger.getInstance().info("Stage " + stageNum + ": stage card is " + stageCard.getCardName());
+				Debug.Log("Stage " + stageNum + ": stage card is " + stageCard.getCardName());
+				Stage newStage = InitializeStage (stageCard, weaponList, stageNum);
+				otherStages.Insert(0, newStage);
+				initializedStages++;
+				previousStageBattlePoints = newStage.getTotalBattlePoints ();
+			} else {
+				Debug.Log ("Invalid battle point combo");
+				if (weaponCard != null) {
+					Debug.Log ("Removing weapon");
+					cardDictionary.Remove (weaponCard);
+				} else {
+					Debug.Log ("Removing stage card");
+					cardDictionary.Remove (stageCard);
+				}
+			}
         }
-
-        foreach (Stage stage in otherStages)
-        {
-            stages.Add(stage);
-        }
-        if (testStage != null)
-        {
-            stages.Add(testStage);
-        }
-        stages.Add(finalStage);
-        quest.SponsorQuestComplete(stages);
+		if (initializedStages == quest.getNumStages ()) {
+			Debug.Log ("All stages have been initialized");
+			foreach (Stage stage in otherStages) {
+				stages.Add (stage);
+			}
+			if (testStage != null)
+			{
+				stages.Add(testStage);
+			}
+			stages.Add(finalStage);
+			quest.SponsorQuestComplete(stages);
+		} else {
+			Debug.Log ("Failed to initialize all stages, withdrawing sponsorship");
+			quest.IncrementSponsor ();
+		}
     }
+
+	private bool IsValidBattlePoints(Foe stageCard, Weapon weaponCard, int previousStageBattlePoints) {
+		int stageCardBattlePoints = 0, weaponCardBattlePoints = 0;
+		stageCardBattlePoints = stageCard.getBattlePoints ();
+		if (weaponCard != null) {
+			weaponCardBattlePoints = weaponCard.getBattlePoints ();
+		}
+		if (stageCardBattlePoints + weaponCardBattlePoints >= previousStageBattlePoints) {
+			return false;
+		}
+		return true;
+	}
 
     protected override bool CanPlayCardForStage(Card card, List<Card> participationList)
     {

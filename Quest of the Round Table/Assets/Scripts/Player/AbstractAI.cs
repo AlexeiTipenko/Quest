@@ -78,9 +78,21 @@ public abstract class AbstractAI {
                 }
                 validCards.Add(card);
             } else if (card.GetType().IsSubclassOf(typeof(Weapon))) {
-                uniqueWeapons.Add((Weapon)card);
+				bool unique = true;
+				foreach (Weapon weapon in uniqueWeapons) {
+					if (weapon.getCardName () == card.getCardName ()) {
+						unique = false;
+						break;
+					}
+				}
+				if (unique) {
+					uniqueWeapons.Add((Weapon)card);
+				}
             }
         }
+		foreach (Card card in uniqueWeapons) {
+			Debug.Log("Unique weapons: " + card.getCardName());
+		}
         if (validCardCount >= quest.getNumStages()) {
             Debug.Log(strategyOwner.getName() + " has enough valid cards.");
             int totalWeaponsBattlePoints = 0;
@@ -90,14 +102,19 @@ public abstract class AbstractAI {
             if (totalWeaponsBattlePoints + HighestBattlePoints(uniqueBattlePoints) >= minimumFinalStageBattlePoints) {
                 Debug.Log(strategyOwner.getName() + " has sufficient cards to meet minimumFinalStageBattlePoints requirement.");
                 if (!ContainsTest(validCards)) {
-                    Debug.Log(strategyOwner.getName() + " has sufficient cards (without using a test) to sponsor this quest.");
-                    return (uniqueBattlePoints.Count >= quest.getNumStages());
+					if (uniqueBattlePoints.Count >= quest.getNumStages ()) {
+						Debug.Log(strategyOwner.getName() + " has sufficient cards (without using a test) to sponsor this quest.");
+						return true;
+					}
                 } else {
-                    Debug.Log(strategyOwner.getName() + " has sufficient cards (using a test) to sponsor this quest.");
-                    return (uniqueBattlePoints.Count >= (quest.getNumStages() - 1));
+					if (uniqueBattlePoints.Count >= (quest.getNumStages () - 1)) {
+						Debug.Log(strategyOwner.getName() + " has sufficient cards (using a test) to sponsor this quest.");
+						return true;
+					}
                 }
             }
         }
+		Debug.Log ("Didn't meet battlepoint requirements");
         return false;
     }
 
@@ -225,18 +242,23 @@ public abstract class AbstractAI {
 	}
 
     protected Weapon GetBestUniqueWeapon(List<Card> cards, List<Card> currentWeapons) {
+		Debug.Log ("Getting best unique weapon");
         Weapon bestWeapon = null;
         foreach (Card card in cards) {
             if (card.GetType().IsSubclassOf(typeof(Weapon))) {
+				Debug.Log ("Found a weapon: " + card.getCardName ());
 				bool exists = false;
 				foreach (Card weapon in currentWeapons) {
 					if (weapon.getCardName () == card.getCardName ()) {
+						Debug.Log ("Weapon has already been selected");
 						exists = true;
 						break;
 					}
 				}
                 if (!exists) {
+					Debug.Log ("Weapon has not been selected");
                     if (bestWeapon == null || ((Weapon)card).getBattlePoints() > bestWeapon.getBattlePoints()) {
+						Debug.Log ("Updating best weapon to: " + card.getCardName ());
                         bestWeapon = (Weapon)card;
                     }
                 }
@@ -246,47 +268,43 @@ public abstract class AbstractAI {
     }
 
 	protected Weapon GetBestDuplicateWeapon(Dictionary<Card, bool> cards) {
+		Debug.Log ("Getting best duplicate weapon");
 		Dictionary<string, List<Card>> cardLists = new Dictionary<string, List<Card>> ();
 		foreach (Card card in cards.Keys) {
-			string cardName = card.getCardName ();
-			List<Card> cardList = new List<Card> ();
-			if (cardLists.ContainsKey (cardName)) {
-				cardList = cardLists [cardName];
+			if (card.GetType().IsSubclassOf(typeof(Weapon)) && !cards [card]) {
+				Debug.Log ("Found an unused weapon: " + card.getCardName ());
+				string cardName = card.getCardName ();
+				List<Card> cardList = new List<Card> ();
+				if (cardLists.ContainsKey (cardName)) {
+					cardList = cardLists [cardName];
+					cardLists.Remove (cardName);
+				}
+				cardList.Add (card);
+				cardLists.Add (cardName, cardList);
 			}
-			cardList.Add (card);
-			cardLists.Add (cardName, cardList);
+		}
+
+		string bestWeaponName = null;
+		foreach (string card in cardLists.Keys) {
+			if (cardLists [card].Count > 1) {
+				Debug.Log ("Duplicate weapon found: " + card);
+				int newWeaponBattlePoints = ((Weapon)cardLists [card] [0]).getBattlePoints ();
+				if (bestWeaponName == null || newWeaponBattlePoints > ((Weapon)cardLists [bestWeaponName] [0]).getBattlePoints ()) {
+					Debug.Log ("Updated best duplicate weapon: " + card);
+					bestWeaponName = card;
+				}
+			}
 		}
 
 		Weapon bestWeapon = null;
-		while (bestWeapon == null) {
-			if (cardLists.Count == 0) {
-				break;
-			}
-			string bestWeaponName = null;
-			int duplicateWeaponCount = 0;
-			foreach (string card in cardLists.Keys) {
-				if (cardLists [card].Count > 1) {
-					duplicateWeaponCount++;
-					if (bestWeaponName == null
-						|| ((Weapon)cardLists [card] [0]).getBattlePoints () > ((Weapon)cardLists [bestWeaponName] [0]).getBattlePoints ()) {
-						bestWeaponName = card;
-					}
+		if (bestWeaponName != null) {
+			List<Card> cardList = cardLists [bestWeaponName];
+			foreach (Card card in cardList) {
+				if (!cards [card]) {
+					Debug.Log ("Retrieved best duplicate weapon");
+					bestWeapon = (Weapon)card;
+					break;
 				}
-			}
-			if (duplicateWeaponCount == 0) {
-				break;
-			}
-			if (bestWeaponName != null) {
-				List<Card> cardList = cardLists [bestWeaponName];
-				foreach (Card card in cardList) {
-					if (!cards [card]) {
-						bestWeapon = (Weapon)card;
-						break;
-					}
-				}
-			}
-			if (bestWeapon == null) {
-				cardLists.Remove (bestWeaponName);
 			}
 		}
 		return bestWeapon;
@@ -410,11 +428,14 @@ public abstract class AbstractAI {
 	}
 
 	public Foe GetStrongestFoe(Dictionary<Card, bool> cards) {
+		Debug.Log ("Getting strongest foe");
 		Foe strongestFoe = null;
 		foreach (Card card in cards.Keys) {
 			if (card.GetType ().IsSubclassOf (typeof(Foe))) {
+				Debug.Log ("Found a foe");
 				if (strongestFoe == null || ((Foe)card).getBattlePoints () > strongestFoe.getBattlePoints ()) {
 					if (!cards [card]) {
+						Debug.Log ("Replaced strongest foe with: " + card.getCardName ());
 						strongestFoe = (Foe)card;
 					}
 				}
