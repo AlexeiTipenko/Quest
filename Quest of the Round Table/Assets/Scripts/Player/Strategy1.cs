@@ -21,13 +21,20 @@ public class Strategy1 : AbstractAI
         Logger.getInstance().info("AI Strategy 1 deciding if participating in quest");
         Debug.Log("AI Strategy 1 deciding if participating in quest");
         if(TwoWeaponsorAlliesPerStage() && FoesUnder20()){
-            Logger.getInstance().info("AI Strategy 1 decided to participate in quest");
-            Debug.Log("AI 1 playing in quest");
+            Logger.getInstance().info("AI Strategy1" + strategyOwner.getName() + " playing in quest");
+            Debug.Log("AI Strategy1" + strategyOwner.getName() + " playing in quest");
+            foreach(Card card in strategyOwner.getHand()){
+                Debug.Log(strategyOwner.getName() + "Cards are: " + card.getCardName());
+            }
             return true;
         }
         else {
-            Logger.getInstance().info("AI Strategy 1 did not participate in quest");
-            Debug.Log("AI 1 not playing in quest");
+            Logger.getInstance().info("AI Strategy1" + strategyOwner.getName() + " not playing in quest");
+            Debug.Log("AI Strategy1" + strategyOwner.getName() + " not playing in quest");
+            foreach (Card card in strategyOwner.getHand())
+            {
+                Debug.Log(strategyOwner.getName() + " not participating in quest Cards are: " + card.getCardName());
+            }
             return false;
         }
     }
@@ -70,11 +77,11 @@ public class Strategy1 : AbstractAI
         }
         else
         {
-            Logger.getInstance().info(strategyOwner.getName() + " AI doesn't have enough to bid: " + GetTotalAvailableFoeBids()
+            Logger.getInstance().info(strategyOwner.getName() + " AI Strat 1 doesn't have enough to bid: " + GetTotalAvailableFoeBids()
                                       + " while currentbid is: " + currentBid + " AI dropping out.");
-            Debug.Log(strategyOwner.getName() + " AI doesn't have enough to bid: " + GetTotalAvailableFoeBids()
+            Debug.Log(strategyOwner.getName() + " AI Strat 1 doesn't have enough to bid: " + GetTotalAvailableFoeBids()
                                       + " while currentbid is: " + currentBid + " AI dropping out.");
-            stage.PromptTestResponse(true, 0);
+            DropoutTest(currentBid, stage);
         }
     }
 

@@ -6,7 +6,7 @@ using UnityEngine;
 public class Stage {
 	BoardManagerMediator board;
 
-	int stageNum, currentBid;
+	public int stageNum, currentBid;
     bool isInProgress;
 	Adventure stageCard;
 	List<Card> weapons;

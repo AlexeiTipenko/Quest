@@ -6,6 +6,7 @@ using System;
 public class Strategy2 : AbstractAI
 {
     int previousStageBattlePoints = 0;
+    int round = 1;
 
     public Strategy2() : base (40, 25) {
         
@@ -14,7 +15,7 @@ public class Strategy2 : AbstractAI
     public override void DiscardAfterWinningTest(int currentBid, Quest quest)
     {
         Logger.getInstance().info("Discarding cards from AI after winning test");
-        if(quest.getCurrentStage().getStageNum() == 0) { // If you get here, the currentBid will equal to number of foes they have in their hand, so just remove
+        if(round == 1) { // If you get here, the currentBid will equal to number of foes they have in their hand, so just remove
             Logger.getInstance().info("if the stage number is 0, only remove the foe cards.");
             RemoveFoeCards();
         }
@@ -62,7 +63,7 @@ public class Strategy2 : AbstractAI
     {
         Logger.getInstance().info(strategyOwner.getName() + " participating in Test and preparing");
         Debug.Log(strategyOwner.getName() + " participating in Test and preparing");
-        if(stage.getStageNum() == 0){
+        if(round == 1){
             Logger.getInstance().info("First stage, only discarding foes in hand less than 25");
             Logger.getInstance().info("Foe bid is on first stage: " + GetTotalAvailableFoeBids());
             if (GetTotalAvailableFoeBids() > currentBid && GetTotalAvailableFoeBids() < discardableCardsThreshold)
@@ -70,17 +71,18 @@ public class Strategy2 : AbstractAI
                 Logger.getInstance().info(strategyOwner.getName() + " AI is preparing to bid: " + GetTotalAvailableFoeBids());
                 Debug.Log(strategyOwner.getName() + " AI is preparing to bid: " + GetTotalAvailableFoeBids());
                 stage.PromptTestResponse(false, GetTotalAvailableFoeBids());
+                round++;
             }
             else
             {
                 Logger.getInstance().info(strategyOwner.getName() + " AI doesn't have enough to bid: " + GetTotalAvailableFoeBids()
-                                          + " while currentbid is: " + currentBid + " AI dropping out.");
+                                  + " while currentbid is: " + currentBid + " AI dropping out.");
                 Debug.Log(strategyOwner.getName() + " AI doesn't have enough to bid: " + GetTotalAvailableFoeBids()
                                           + " while currentbid is: " + currentBid + " AI dropping out.");
-                stage.PromptTestResponse(true, 0);
+                DropoutTest(currentBid, stage);
             }
         }
-        else {
+        else if (round == 2) {
             Logger.getInstance().info("Second stage, discarding foes and duplicates");
             Logger.getInstance().info("Inside second stage for AI");
             Debug.Log("Inside second stage for AI");
@@ -95,11 +97,18 @@ public class Strategy2 : AbstractAI
             else
             {
                 Logger.getInstance().info(strategyOwner.getName() + " AI doesn't have enough to bid: " + GetTotalAvailableFoeBids()
-                                          + " while currentbid is: " + currentBid + " AI dropping out.");
+                                  + " while currentbid is: " + currentBid + " AI dropping out.");
                 Debug.Log(strategyOwner.getName() + " AI doesn't have enough to bid: " + GetTotalAvailableFoeBids()
                                           + " while currentbid is: " + currentBid + " AI dropping out.");
-                stage.PromptTestResponse(true, 0);
+                DropoutTest(currentBid, stage);
             }
+        }
+        else {
+            Logger.getInstance().info(strategyOwner.getName() + " AI Strategy 2 past round 2, won't bid: " + GetTotalAvailableFoeBids()
+                           + " while currentbid is: " + currentBid + " AI dropping out.");
+            Debug.Log(strategyOwner.getName() + " AI Strategy 2 past round 2, won't to bid: " + GetTotalAvailableFoeBids()
+                                      + " while currentbid is: " + currentBid + " AI dropping out.");
+            DropoutTest(currentBid, stage);
         }
 
     }

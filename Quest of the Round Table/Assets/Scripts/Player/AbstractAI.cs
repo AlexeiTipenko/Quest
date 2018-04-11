@@ -335,6 +335,10 @@ public abstract class AbstractAI {
         return (discardableCards > 1);
     }
 
+    public void DropoutTest(int currentBid, Stage stage) {
+        stage.PromptTestResponse(true, 0);
+    }
+
     public int GetTotalAvailableFoeBids()
     {
         int availableBids = 0;
@@ -379,13 +383,13 @@ public abstract class AbstractAI {
     public void RemoveFoeCards()
     {
         List<Card> TempHand = new List<Card>(strategyOwner.getHand());
-
+        int discarded = 0;
         foreach (Card card in TempHand)
         {
-            if (card.GetType().IsSubclassOf(typeof(Foe)))
-            {
+            if (card.GetType().IsSubclassOf(typeof(Foe))) {
                 strategyOwner.RemoveCard(card);
-            }
+                discarded++;
+            }   
         }
     }
 
@@ -408,6 +412,7 @@ public abstract class AbstractAI {
             }
         }
     }
+
 	public Foe GetWeakestFoe(List<Card> cards, Card previousStageCard)
 	{
 		Foe weakestFoe = null;
