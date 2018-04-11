@@ -162,7 +162,7 @@ public abstract class Tournament : Story
         int pointsTotal = 0;
         foreach (Card card in chosenCards)
         {
-            if (card.GetType().IsSubclassOf(typeof(Adventure)))
+            if (card.IsAdventure())
             {
                 pointsTotal += ((Adventure)card).getBattlePoints();
             }

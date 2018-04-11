@@ -24,7 +24,7 @@ public class Strategy1 : AbstractAI
             Logger.getInstance().info("AI Strategy1" + strategyOwner.getName() + " playing in quest");
             Debug.Log("AI Strategy1" + strategyOwner.getName() + " playing in quest");
             foreach(Card card in strategyOwner.getHand()){
-                Debug.Log(strategyOwner.getName() + "Cards are: " + card.getCardName());
+                Debug.Log(strategyOwner.getName() + "Cards are: " + card.GetCardName());
             }
             return true;
         }
@@ -33,7 +33,7 @@ public class Strategy1 : AbstractAI
             Debug.Log("AI Strategy1" + strategyOwner.getName() + " not playing in quest");
             foreach (Card card in strategyOwner.getHand())
             {
-                Debug.Log(strategyOwner.getName() + " not participating in quest Cards are: " + card.getCardName());
+                Debug.Log(strategyOwner.getName() + " not participating in quest Cards are: " + card.GetCardName());
             }
             return false;
         }
@@ -41,11 +41,7 @@ public class Strategy1 : AbstractAI
 
     public override bool DoIParticipateInTournament()
     {
-		if (SomeoneElseCanWinOrEvolveWithTournament(board.getPlayers())) 
-		{
-			return true;
-		}
-        return false;
+		return PlayersCanEvolveOrWinWithTournament (board.getPlayers ());
     }
 
     public override bool DoISponsorAQuest()
@@ -294,7 +290,7 @@ public class Strategy1 : AbstractAI
 		List<Card> hand = strategyOwner.getHand();
 		List<Adventure> sortedList = SortCardsByType (hand);
 		List<Card> participationList = new List<Card> ();
-		if (SomeoneElseCanWinOrEvolveWithTournament (tournament.participatingPlayers)) {
+		if (PlayersCanEvolveOrWinWithTournament (tournament.participatingPlayers)) {
 			//play strongest possible hand (includes allies, amours and weapons)
 			foreach (Card card in sortedList) {
 				if (((card.GetType () == typeof(Amour) || card.IsWeapon()) && !participationList.Contains (card)) 
@@ -321,4 +317,19 @@ public class Strategy1 : AbstractAI
 		}
 		return participationList;
     }
+
+	private bool PlayersCanEvolveOrWinWithTournament(List<Player> players) {
+		Debug.Log("Checking if someone else can win or evolve through this tournament.");
+		Logger.getInstance().info("AI Strategy 1 checking if someone else can win/evolve through tournament");
+		Tournament tournament = (Tournament)board.getCardInPlay();
+		foreach (Player player in players) {
+			if (player.getNumShields() + tournament.GetBonusShields() >= player.getRank().getShieldsToProgress()) {
+				Debug.Log("Player " + player.getName() + " can win off this tournament.");
+				Logger.getInstance().info("AI Strategy 1 found that Player: " + player.getName() + " can win off this tournament.");
+				return true;
+			}
+		}
+		Debug.Log("No player can win off this tournament.");
+		return false;
+	}
 }
