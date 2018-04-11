@@ -18,7 +18,13 @@ public class Strategy1 : AbstractAI
 
     public override bool DoIParticipateInQuest()
     {
-        throw new System.NotImplementedException();
+        //if(TwoWeaponsorAlliesPerStage()){
+        //    return true;
+        //}
+        //else {
+        //    return false;
+        //}
+        return true;
     }
 
     public override bool DoIParticipateInTournament()
@@ -48,7 +54,23 @@ public class Strategy1 : AbstractAI
 
     public override void NextBid(int currentBid, Stage stage)
     {
-        throw new System.NotImplementedException();
+        Logger.getInstance().info(strategyOwner.getName() + " AI Strat 1 is peparing bids");
+        Debug.Log("AI Strat 1 is preparing bids");
+
+        if (GetTotalAvailableFoeBids() > currentBid && GetTotalAvailableFoeBids() < discardableCardsThreshold)
+        {
+            Logger.getInstance().info(strategyOwner.getName() + " AI is preparing to bid: " + GetTotalAvailableFoeBids());
+            Debug.Log(strategyOwner.getName() + " AI is preparing to bid: " + GetTotalAvailableFoeBids());
+            stage.PromptTestResponse(false, GetTotalAvailableFoeBids());
+        }
+        else
+        {
+            Logger.getInstance().info(strategyOwner.getName() + " AI doesn't have enough to bid: " + GetTotalAvailableFoeBids()
+                                      + " while currentbid is: " + currentBid + " AI dropping out.");
+            Debug.Log(strategyOwner.getName() + " AI doesn't have enough to bid: " + GetTotalAvailableFoeBids()
+                                      + " while currentbid is: " + currentBid + " AI dropping out.");
+            stage.PromptTestResponse(true, 0);
+        }
     }
 
     public override void PlayQuestStage(Stage stage)
@@ -159,11 +181,6 @@ public class Strategy1 : AbstractAI
     }
 
     protected override void PlayFoeStage(Stage stage)
-    {
-        throw new System.NotImplementedException();
-    }
-
-    protected override void PlayTestStage(Stage stage)
     {
         throw new System.NotImplementedException();
     }
