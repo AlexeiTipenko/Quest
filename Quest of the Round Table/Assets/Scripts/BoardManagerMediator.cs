@@ -478,6 +478,9 @@ public class BoardManagerMediator
             }
         };
         Action action2 = () => {
+			if (IsOnlineGame()) {
+				view.RPC("PromptTestResponse", PhotonTargets.Others, true, 0);
+			}
             stage.PromptTestResponse(true, 0);
         };
         BoardManager.SetInteractionButtons("Continue", "Drop out", action1, action2);
