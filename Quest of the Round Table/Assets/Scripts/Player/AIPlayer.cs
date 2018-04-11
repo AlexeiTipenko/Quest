@@ -90,8 +90,8 @@ public class AIPlayer : Player {
 
 	public override void PromptDiscardWeaponKingsCallToArms (KingsCallToArms card) {
         List<Adventure> tempHand = new List<Adventure>(GetHand());
-        foreach(Adventure adventureCard in tempHand){
-            if (adventureCard.IsWeapon()){
+        foreach(Adventure adventureCard in tempHand) {
+            if (adventureCard.IsWeapon()) {
                 GetHand().Remove(adventureCard);
 				break;
             }
@@ -101,8 +101,8 @@ public class AIPlayer : Player {
 
 	public override void PromptDiscardFoesKingsCallToArms (KingsCallToArms card, int numFoeCards) {
         List<Adventure> tempHand = new List<Adventure>(GetHand());
-        foreach(Adventure adventureCard in tempHand){
-            if(numFoeCards != 0 && adventureCard.IsFoe()){
+        foreach(Adventure adventureCard in tempHand) {
+            if(numFoeCards != 0 && adventureCard.IsFoe()) {
                 GetHand().Remove(adventureCard);
                 numFoeCards--;
             }
