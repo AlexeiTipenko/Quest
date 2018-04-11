@@ -9,6 +9,6 @@ public class MerlinTest {
 	public void MerlinTestSimplePasses() {
 		Assert.IsTrue (Merlin.frequency == 1);
 		Ally merlin = new Merlin();
-		Assert.AreEqual ("Merlin", merlin.getCardName());
+		Assert.AreEqual ("Merlin", merlin.GetCardName());
 	}
 }

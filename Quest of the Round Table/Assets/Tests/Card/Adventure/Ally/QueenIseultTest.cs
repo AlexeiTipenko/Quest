@@ -9,7 +9,7 @@ public class QueenIseultTest {
 	public void QueenIseultTestSimplePasses() {
 		Assert.IsTrue (QueenIseult.frequency == 1);
 		Ally queenIseult = new QueenIseult();
-		Assert.AreEqual ("Queen Iseult", queenIseult.getCardName());
+		Assert.AreEqual ("Queen Iseult", queenIseult.GetCardName());
 		Assert.IsTrue (queenIseult.getBattlePoints() == 0);
 
 		//unempowered bid points

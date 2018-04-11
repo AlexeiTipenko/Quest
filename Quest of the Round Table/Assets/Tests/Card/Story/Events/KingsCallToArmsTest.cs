@@ -11,7 +11,7 @@ public class KingsCallToArmsTest {
 	public void KingsCallToArmsTestSimplePasses() {
 		Assert.IsTrue (KingsCallToArms.frequency == 1);
 		KingsCallToArms kingsCallToArms = new KingsCallToArms ();
-		Assert.AreEqual ("King's Call to Arms", kingsCallToArms.getCardName ());
+		Assert.AreEqual ("King's Call to Arms", kingsCallToArms.GetCardName ());
 	}
 
 	//No behaviour test due to the event being entirely UI based

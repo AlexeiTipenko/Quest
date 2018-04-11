@@ -53,7 +53,7 @@ public abstract class Deck {
 	public Card drawCard () {
 		Card card = cards [0];
 		cards.RemoveAt (0);
-		card.setOwner (BoardManagerMediator.getInstance ().getCurrentPlayer ());
+		card.SetOwner (BoardManagerMediator.getInstance ().getCurrentPlayer ());
 		return card;
 	}
 
@@ -63,7 +63,7 @@ public abstract class Deck {
 			int frequency = (int) genericType.GetField ("frequency").GetValue(null);
 			for (int j = 0; j < frequency; j++) {
 				Card card = (Card)Activator.CreateInstance (genericType);
-				card.setCardImageName(newCards[i]);
+				card.SetCardImageName(newCards[i]);
 				cards.Add(card);
 			}
 		}
@@ -94,8 +94,8 @@ public abstract class Deck {
         cards[newIndex] = newCard;
         cards[oldIndex] = oldCard;
 
-        Debug.Log(newCard.getCardName() + " now at position " + newIndex);
-        Debug.Log(oldCard.getCardName() + " now at position " + oldIndex);
+        Debug.Log(newCard.GetCardName() + " now at position " + newIndex);
+        Debug.Log(oldCard.GetCardName() + " now at position " + oldIndex);
 
         reservedIndices.Add(newIndex);
     }
@@ -103,7 +103,7 @@ public abstract class Deck {
 	public virtual string toString() {
 		string text = "Deck: ";
 		foreach (Card card in cards) {
-			text += (card.toString () + ", ");
+			text += (card.ToString () + ", ");
 		}
 		if (cards.Count > 0) {
 			text = text.Substring (0, text.Length - 2);

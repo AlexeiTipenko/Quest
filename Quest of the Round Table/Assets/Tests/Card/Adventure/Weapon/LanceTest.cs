@@ -9,7 +9,7 @@ public class LanceTest {
 	public void LanceTestSimplePasses() {
 		Assert.IsTrue (Lance.frequency == 6);
 		Weapon lance = new Lance ();
-		Assert.AreEqual ("Lance", lance.getCardName ());
+		Assert.AreEqual ("Lance", lance.GetCardName ());
 		Assert.IsTrue (lance.getBattlePoints() == 20);
 	}
 }

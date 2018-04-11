@@ -27,7 +27,7 @@ public class Stage {
 
 	public int getTotalBattlePoints() {
 		int battlePoints = 0;
-		if (stageCard.GetType ().IsSubclassOf (typeof(Foe))) {
+		if (stageCard.IsFoe()) {
 			battlePoints += ((Foe)stageCard).getBattlePoints (); // here is breaking for some reason.
             if (weapons != null) {
                 foreach (Weapon weapon in weapons) {
@@ -70,7 +70,7 @@ public class Stage {
         isInProgress = true;
 		playersToRemove = new List<Player> ();
 
-		if (stageCard.GetType ().IsSubclassOf (typeof(Foe))) {
+		if (stageCard.IsFoe()) {
 			Logger.getInstance ().trace ("Stage card is subclass type of foe");
 			Debug.Log ("Is foe, going to player");
             Debug.Log("quest player after sponsor is: " + board.getNextPlayer(quest.getSponsor()).getName());

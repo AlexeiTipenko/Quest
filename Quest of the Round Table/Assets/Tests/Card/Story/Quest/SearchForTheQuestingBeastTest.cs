@@ -10,7 +10,7 @@ public class SearchForTheQuestingBeastTest {
 		Assert.IsTrue (SearchForTheQuestingBeast.frequency == 1);
 
 		Quest searchForTheQuestingBeast = new SearchForTheQuestingBeast ();
-		Assert.AreEqual ("Search for the Questing Beast", searchForTheQuestingBeast.getCardName());
+		Assert.AreEqual ("Search for the Questing Beast", searchForTheQuestingBeast.GetCardName());
 		Assert.IsTrue (searchForTheQuestingBeast.getShieldsWon() == 4);
 
 		//need to figure out the dominantFoe business before passing the test case as complete

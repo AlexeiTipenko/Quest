@@ -11,7 +11,7 @@ public class CourtCalledToCamelotTest {
 	public void CourtCalledToCamelotTestSimplePasses() {
 		Assert.IsTrue (CourtCalledToCamelot.frequency == 2);
         CourtCalledToCamelot courtCalledToCamelot = new CourtCalledToCamelot ();
-		Assert.AreEqual ("Court Called to Camelot", courtCalledToCamelot.getCardName ());
+		Assert.AreEqual ("Court Called to Camelot", courtCalledToCamelot.GetCardName ());
 	}
 
 	[Test]
@@ -42,7 +42,7 @@ public class CourtCalledToCamelotTest {
 			playArea = player.getPlayArea ();
 
 			foreach (Card card in player.getHand()) {
-				if (card.GetType ().IsSubclassOf (typeof(Ally))) {
+				if (card.IsAlly()) {
 					playArea.addCard (card);
 				}
 			}

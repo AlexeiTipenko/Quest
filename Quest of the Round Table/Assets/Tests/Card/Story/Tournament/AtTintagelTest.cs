@@ -9,6 +9,6 @@ public class AtTintagelTest {
 	public void AtTintagelTestSimplePasses() {
 		Assert.IsTrue (AtTintagel.frequency == 1);
 		Tournament tintagel = new AtTintagel ();
-		Assert.AreEqual("At Tintagel", tintagel.getCardName());
+		Assert.AreEqual("At Tintagel", tintagel.GetCardName());
 	}
 }

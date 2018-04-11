@@ -11,7 +11,7 @@ public class PlagueTest {
 	public void PlagueTestSimplePasses() {
 		Assert.IsTrue (Plague.frequency == 1);
         Plague plague = new Plague ();
-		Assert.AreEqual ("Plague", plague.getCardName ());
+		Assert.AreEqual ("Plague", plague.GetCardName ());
 	}
 
 	[Test]

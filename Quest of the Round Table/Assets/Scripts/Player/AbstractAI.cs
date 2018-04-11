@@ -27,11 +27,7 @@ public abstract class AbstractAI {
 
     public abstract void SponsorQuest();
 
-    public abstract void PlayQuestStage(Stage stage);
-
-    protected abstract void PlayFoeStage(Stage stage);
-
-    protected abstract bool CanPlayCardForStage(Card card, List<Card> participationList);
+    public abstract void PlayFoeStage(Stage stage);
 
     public abstract List<Card> ParticipateTournament();
 
@@ -67,20 +63,20 @@ public abstract class AbstractAI {
         HashSet<Weapon> uniqueWeapons = new HashSet<Weapon>();
         int validCardCount = 0;
         foreach (Card card in cards) {
-            if (card.GetType().IsSubclassOf(typeof(Foe))) {
+			if (card.IsFoe()) {
                 validCards.Add(card);
                 validCardCount++;
                 uniqueBattlePoints.Add(((Foe)card).getBattlePoints());
             }
-            else if (card.GetType().IsSubclassOf(typeof(Test))) {
+			else if (card.IsTest()) {
                 if (!ContainsTest(validCards)) {
                     validCardCount++;
                 }
                 validCards.Add(card);
-            } else if (card.GetType().IsSubclassOf(typeof(Weapon))) {
+			} else if (card.IsWeapon()) {
 				bool unique = true;
 				foreach (Weapon weapon in uniqueWeapons) {
-					if (weapon.getCardName () == card.getCardName ()) {
+					if (weapon.GetCardName () == card.GetCardName ()) {
 						unique = false;
 						break;
 					}
@@ -91,7 +87,7 @@ public abstract class AbstractAI {
             }
         }
 		foreach (Card card in uniqueWeapons) {
-			Debug.Log("Unique weapons: " + card.getCardName());
+			Debug.Log("Unique weapons: " + card.GetCardName());
 		}
         if (validCardCount >= quest.getNumStages()) {
             Debug.Log(strategyOwner.getName() + " has enough valid cards.");
@@ -137,7 +133,7 @@ public abstract class AbstractAI {
 
     protected bool ContainsTest(List<Card> cards) {
         foreach (Card card in cards) {
-            if (card.GetType().IsSubclassOf(typeof(Test))) {
+			if (card.IsTest()) {
                 return true;
             }
         }
@@ -158,27 +154,18 @@ public abstract class AbstractAI {
         int totalBattlePoints = 0;
         foreach (Card card in cards) {
             totalBattlePoints += ((Adventure)card).getBattlePoints();
-            //if (card.GetType().IsSubclassOf(typeof(Foe))) {
-            //    totalBattlePoints += ((Foe)card).getBattlePoints();
-            //} else if (card.GetType().IsSubclassOf(typeof(Weapon))) {
-            //    totalBattlePoints += ((Weapon)card).getBattlePoints();
-            //} else if (card.GetType() == typeof(Amour)) {
-            //    totalBattlePoints += ((Amour)card).getBattlePoints();
-            //} else if (card.GetType().IsSubclassOf(typeof(Ally))) {
-            //    totalBattlePoints += ((Ally)card).getBattlePoints();
-            //}
         }
         return totalBattlePoints;
     }
 
-	protected List<Card> SortBattlePointsCards(List<Card> cards) {
+	protected List<Adventure> SortCardsByType(List<Card> cards) {
 		Amour amour = null;
 		List<Ally> allies = new List<Ally>();
 		List<Weapon> weapons = new List<Weapon>();
-		List<Card> sortedList = new List<Card>();
+		List<Adventure> sortedList = new List<Adventure>();
 		Debug.Log("Available cards:");
 		foreach (Card card in cards) {
-			Debug.Log(card.getCardName());
+			Debug.Log(card.GetCardName());
 		}
 		Debug.Log("Looping through cards");
 		foreach (Card card in cards)
@@ -188,7 +175,7 @@ public abstract class AbstractAI {
 			{
 				amour = (Amour)card;
 			}
-			else if (card.GetType().IsSubclassOf(typeof(Ally)))
+			else if (card.IsAlly())
 			{
 				List<Ally> tempAllies = new List<Ally>(allies);
 				foreach (Ally ally in allies)
@@ -205,7 +192,7 @@ public abstract class AbstractAI {
 				}
 				allies = new List<Ally>(tempAllies);
 			}
-			else if (card.GetType().IsSubclassOf(typeof(Weapon)))
+			else if (card.IsWeapon())
 			{
 				List<Weapon> tempWeapons = new List<Weapon>(weapons);
 				foreach (Weapon weapon in weapons)
@@ -235,21 +222,77 @@ public abstract class AbstractAI {
 			sortedList.Add(weapon);
 		}
 		Debug.Log("Sorted valid cards in hand:");
-		foreach (Card card in sortedList) {
-			Debug.Log(card.getCardName());
+		foreach (Adventure card in sortedList) {
+			Debug.Log(card.GetCardName());
 		}
 		return sortedList;
+	}
+
+	protected List<Adventure> SortCardsByBattlePoints(List<Card> cards) {
+		List<Adventure> sortedCards = new List<Adventure> ();
+		bool containsAmour = false;
+		foreach (Card card in cards) {
+			if (card.IsAlly() || card.IsWeapon() || card.GetType() == typeof(Amour)) {
+				int index = -1;
+				foreach (Adventure sortedCard in sortedCards) {
+					if (((Adventure)card).getBattlePoints () > sortedCard.getBattlePoints ()) {
+						index = sortedCards.IndexOf (sortedCard);
+					}
+				}
+				InsertIntoListAtIndex ((Adventure)card, sortedCards, index, containsAmour);
+				if (card.GetType () == typeof(Amour)) {
+					containsAmour = true;
+				}
+			}
+		}
+		return sortedCards;
+	}
+
+	private List<Adventure> InsertIntoListAtIndex(Adventure card, List<Adventure> sortedCards, int index, bool containsAmour) {
+		if (card.GetType() == typeof(Amour) && containsAmour) {
+			return sortedCards;
+		}
+		if (index == -1) {
+			sortedCards.Add (card);
+		} else {
+			sortedCards.Insert (index, card);
+		}
+		return sortedCards;
+	}
+
+	protected bool CanPlayCardForStage(Adventure card, List<Adventure> participationList)
+	{
+		if (card.GetType() == typeof(Amour)) {
+			foreach (Card participationCard in participationList) {
+				if (participationCard.GetType() == typeof(Amour)) {
+					return false;
+				}
+			}
+			foreach (Card playAreaCard in strategyOwner.getPlayArea().getCards()) {
+				if (playAreaCard.GetType() == typeof(Amour)) {
+					return false;
+				}
+			}
+		}
+		else if (card.IsWeapon()) {
+			foreach (Card participationCard in participationList) {
+				if (participationCard.GetType() == card.GetType()) {
+					return false;
+				}
+			}
+		}
+		return true;
 	}
 
     protected Weapon GetBestUniqueWeapon(List<Card> cards, List<Card> currentWeapons) {
 		Debug.Log ("Getting best unique weapon");
         Weapon bestWeapon = null;
         foreach (Card card in cards) {
-            if (card.GetType().IsSubclassOf(typeof(Weapon))) {
-				Debug.Log ("Found a weapon: " + card.getCardName ());
+			if (card.IsWeapon()) {
+				Debug.Log ("Found a weapon: " + card.GetCardName ());
 				bool exists = false;
 				foreach (Card weapon in currentWeapons) {
-					if (weapon.getCardName () == card.getCardName ()) {
+					if (weapon.GetCardName () == card.GetCardName ()) {
 						Debug.Log ("Weapon has already been selected");
 						exists = true;
 						break;
@@ -258,7 +301,7 @@ public abstract class AbstractAI {
                 if (!exists) {
 					Debug.Log ("Weapon has not been selected");
                     if (bestWeapon == null || ((Weapon)card).getBattlePoints() > bestWeapon.getBattlePoints()) {
-						Debug.Log ("Updating best weapon to: " + card.getCardName ());
+						Debug.Log ("Updating best weapon to: " + card.GetCardName ());
                         bestWeapon = (Weapon)card;
                     }
                 }
@@ -271,9 +314,9 @@ public abstract class AbstractAI {
 		Debug.Log ("Getting best duplicate weapon");
 		Dictionary<string, List<Card>> cardLists = new Dictionary<string, List<Card>> ();
 		foreach (Card card in cards.Keys) {
-			if (card.GetType().IsSubclassOf(typeof(Weapon)) && !cards [card]) {
-				Debug.Log ("Found an unused weapon: " + card.getCardName ());
-				string cardName = card.getCardName ();
+			if (card.IsWeapon() && !cards [card]) {
+				Debug.Log ("Found an unused weapon: " + card.GetCardName ());
+				string cardName = card.GetCardName ();
 				List<Card> cardList = new List<Card> ();
 				if (cardLists.ContainsKey (cardName)) {
 					cardList = cardLists [cardName];
@@ -325,7 +368,7 @@ public abstract class AbstractAI {
         List<Card> cards = strategyOwner.getHand();
         int discardableCards = 0;
         foreach (Card card in cards) {
-            if (card.GetType().IsSubclassOf(typeof(Foe))) {
+			if (card.IsFoe()) {
                 if (((Foe)card).getBattlePoints() < discardableCardsThreshold) {
                     discardableCards++;
                 }
@@ -344,7 +387,7 @@ public abstract class AbstractAI {
         int availableBids = 0;
         foreach (Card card in strategyOwner.getHand())
         {
-            if (card.GetType().IsSubclassOf(typeof(Foe)))
+			if (card.IsFoe())
             {
                 availableBids += 1;
             }
@@ -358,14 +401,14 @@ public abstract class AbstractAI {
         Dictionary<String, int> cardDictionary = new Dictionary<String, int>();
         foreach (Card card in strategyOwner.getHand())
         {
-            if (!cardDictionary.ContainsKey(card.getCardName()) && !card.GetType().IsSubclassOf(typeof(Foe)))
+			if (!cardDictionary.ContainsKey(card.GetCardName()) && !card.IsFoe())
             {
-                Debug.Log("Inserting into Dictionary: " + card.getCardName());
-                cardDictionary.Add(card.getCardName(), 1);
+                Debug.Log("Inserting into Dictionary: " + card.GetCardName());
+                cardDictionary.Add(card.GetCardName(), 1);
             }
-            else if (!card.GetType().IsSubclassOf(typeof(Foe)))
+			else if (!card.IsFoe())
             {
-                cardDictionary[card.getCardName()]++;
+                cardDictionary[card.GetCardName()]++;
             }
         }
         foreach (KeyValuePair<String, int> entry in cardDictionary)
@@ -386,7 +429,8 @@ public abstract class AbstractAI {
         int discarded = 0;
         foreach (Card card in TempHand)
         {
-            if (card.GetType().IsSubclassOf(typeof(Foe))) {
+            if (card.IsFoe())
+            {
                 strategyOwner.RemoveCard(card);
                 discarded++;
             }   
@@ -402,9 +446,9 @@ public abstract class AbstractAI {
 
         foreach (Card card in TempHand)
         {
-            if (!Seen.Contains(card.getCardName()))
+            if (!Seen.Contains(card.GetCardName()))
             {
-                Seen.Add(card.getCardName());
+                Seen.Add(card.GetCardName());
             }
             else
             {
@@ -418,7 +462,7 @@ public abstract class AbstractAI {
 		Foe weakestFoe = null;
 		foreach (Card card in cards)
 		{
-			if (card.GetType().IsSubclassOf(typeof(Foe)))
+			if (card.IsFoe())
 			{
 				if (weakestFoe == null || ((Foe)card).getBattlePoints() < weakestFoe.getBattlePoints())
 				{
@@ -436,11 +480,11 @@ public abstract class AbstractAI {
 		Debug.Log ("Getting strongest foe");
 		Foe strongestFoe = null;
 		foreach (Card card in cards.Keys) {
-			if (card.GetType ().IsSubclassOf (typeof(Foe))) {
+			if (card.IsFoe()) {
 				Debug.Log ("Found a foe");
 				if (strongestFoe == null || ((Foe)card).getBattlePoints () > strongestFoe.getBattlePoints ()) {
 					if (!cards [card]) {
-						Debug.Log ("Replaced strongest foe with: " + card.getCardName ());
+						Debug.Log ("Replaced strongest foe with: " + card.GetCardName ());
                         Card tempcard = card;
                         strongestFoe = (Foe)tempcard;
 					}
@@ -454,7 +498,7 @@ public abstract class AbstractAI {
         Quest quest = (Quest)board.getCardInPlay();
         int numWeaponsAndAllies = 0;
         foreach(Card card in strategyOwner.getHand()) {
-            if(card.GetType().IsSubclassOf(typeof(Weapon)) || card.GetType().IsSubclassOf(typeof(Ally)) || card.GetType().IsSubclassOf(typeof(Amour))){
+            if(card.IsWeapon() || card.IsAlly() || card.IsAmour()){
                 numWeaponsAndAllies++;
             }
         }
@@ -469,7 +513,7 @@ public abstract class AbstractAI {
     public bool FoesUnder20() {
         int foes = 0;
         foreach(Card card in strategyOwner.getHand()){
-            if(card.GetType().IsSubclassOf(typeof(Foe))){
+            if(card.IsFoe()){
                 Foe tempcard = (Foe)card;
                 if(tempcard.getBattlePoints() < 20){
                     foes++;

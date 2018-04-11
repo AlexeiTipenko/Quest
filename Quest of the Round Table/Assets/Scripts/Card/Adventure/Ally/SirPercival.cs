@@ -11,7 +11,7 @@ public class SirPercival : Ally {
 	}
 
 	public new int getBattlePoints() {
-        if (BoardManagerMediator.getInstance().getCardInPlay().getCardName() == "Search for the Holy Grail") {
+        if (BoardManagerMediator.getInstance().getCardInPlay().GetCardName() == "Search for the Holy Grail") {
             return empoweredBattlePoints;
         }
 		return battlePoints;

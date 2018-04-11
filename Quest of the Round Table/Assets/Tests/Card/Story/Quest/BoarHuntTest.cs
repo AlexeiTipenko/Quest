@@ -10,7 +10,7 @@ public class BoarHuntTest {
 		Assert.IsTrue (BoarHunt.frequency == 2);
 
 		Quest boarHunt = new BoarHunt ();
-		Assert.AreEqual ("Boar Hunt", boarHunt.getCardName());
+		Assert.AreEqual ("Boar Hunt", boarHunt.GetCardName());
 		Assert.IsTrue (boarHunt.getShieldsWon() == 2);
 
 		//need to figure out the dominantFoe business before passing the test case as complete

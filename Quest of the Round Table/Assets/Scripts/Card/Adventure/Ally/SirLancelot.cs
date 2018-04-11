@@ -11,7 +11,7 @@ public class SirLancelot : Ally {
 	}
 
 	public new int getBattlePoints() {
-        if (BoardManagerMediator.getInstance().getCardInPlay().getCardName() == "Defend the Queen's Honor") {
+        if (BoardManagerMediator.getInstance().getCardInPlay().GetCardName() == "Defend the Queen's Honor") {
             return empoweredBattlePoints;
         }
 		return battlePoints;

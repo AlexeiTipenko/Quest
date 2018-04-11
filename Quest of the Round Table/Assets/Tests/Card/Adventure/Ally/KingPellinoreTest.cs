@@ -9,7 +9,7 @@ public class KingPellinoreTest {
 	public void KingPellinoreTestSimplePasses() {
 		Assert.IsTrue (KingPellinore.frequency == 1);
 		Ally kingPellinore = new KingPellinore();
-		Assert.AreEqual ("King Pellinore", kingPellinore.getCardName());
+		Assert.AreEqual ("King Pellinore", kingPellinore.GetCardName());
 		Assert.IsTrue (kingPellinore.getBattlePoints() == 10);
 		Assert.IsTrue (kingPellinore.getBidPoints() == 0);
 	}

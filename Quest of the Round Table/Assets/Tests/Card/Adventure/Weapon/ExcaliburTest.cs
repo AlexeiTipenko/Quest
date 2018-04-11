@@ -9,7 +9,7 @@ public class ExcaliburTest {
 	public void ExcaliburTestSimplePasses() {
 		Assert.IsTrue (Excalibur.frequency == 2);
 		Weapon excalibur = new Excalibur ();
-		Assert.AreEqual ("Excalibur", excalibur.getCardName ());
+		Assert.AreEqual ("Excalibur", excalibur.GetCardName ());
 		Assert.IsTrue (excalibur.getBattlePoints() == 30);
 	}
 }

@@ -9,7 +9,7 @@ public class SirGalahadTest {
 	public void SirGalahadTestSimplePasses() {
 		Assert.IsTrue (SirGalahad.frequency == 1);
 		Ally sirGalahad = new SirGalahad();
-		Assert.AreEqual ("Sir Galahad", sirGalahad.getCardName());
+		Assert.AreEqual ("Sir Galahad", sirGalahad.GetCardName());
 		Assert.IsTrue (sirGalahad.getBattlePoints() == 15);
 		Assert.IsTrue (sirGalahad.getBidPoints() == 0);
 	}

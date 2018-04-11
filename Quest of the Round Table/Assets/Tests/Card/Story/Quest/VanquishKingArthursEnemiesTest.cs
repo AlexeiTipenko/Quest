@@ -10,7 +10,7 @@ public class VanquishKingArthursEnemiesTest {
 		Assert.IsTrue (VanquishKingArthursEnemies.frequency == 2);
 
 		Quest vanquishKingArthursEnemies = new VanquishKingArthursEnemies ();
-		Assert.AreEqual ("Vanquish King Arthur's Enemies", vanquishKingArthursEnemies.getCardName());
+		Assert.AreEqual ("Vanquish King Arthur's Enemies", vanquishKingArthursEnemies.GetCardName());
 		Assert.IsTrue (vanquishKingArthursEnemies.getShieldsWon() == 3);
 
 		//need to figure out the dominantFoe business before passing the test case as complete

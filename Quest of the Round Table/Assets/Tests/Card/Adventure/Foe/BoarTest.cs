@@ -9,7 +9,7 @@ public class BoarTest {
 	public void BoarTestSimplePasses() {
 		Assert.IsTrue (Boar.frequency == 4);
 		Foe boar = new Boar();
-		Assert.AreEqual ("Boar", boar.getCardName());
+		Assert.AreEqual ("Boar", boar.GetCardName());
 
 		//Not empowered
 		Assert.IsTrue (boar.getBattlePoints() == 5);

@@ -85,11 +85,6 @@ public class Strategy1 : AbstractAI
         }
     }
 
-    public override void PlayQuestStage(Stage stage)
-    {
-        throw new System.NotImplementedException();
-    }
-
     public override void SponsorQuest()
     {
         Logger.getInstance().info(strategyOwner.getName() + " AI 1 is preparing the quest");
@@ -123,8 +118,8 @@ public class Strategy1 : AbstractAI
 			return;
 		}
 		cardDictionary [stageCard] = true;
-        Logger.getInstance().info("Final stage foe: " + stageCard.getCardName());
-        Debug.Log("Final stage foe: " + stageCard.getCardName());
+        Logger.getInstance().info("Final stage foe: " + stageCard.GetCardName());
+        Debug.Log("Final stage foe: " + stageCard.GetCardName());
         while (((Foe)stageCard).getBattlePoints() + GetTotalBattlePoints(weapons) < minimumFinalStageBattlePoints)
         {
 			Weapon bestUniqueWeapon = GetBestUniqueWeapon (new List<Card>(cardDictionary.Keys), weapons);
@@ -140,8 +135,8 @@ public class Strategy1 : AbstractAI
         Debug.Log("Final stage weapons:");
         foreach (Weapon weapon in weapons)
         {
-            Logger.getInstance().info(weapon.getCardName());
-            Debug.Log(weapon.getCardName());
+            Logger.getInstance().info(weapon.GetCardName());
+            Debug.Log(weapon.GetCardName());
         }
         finalStage = InitializeStage(stageCard, weapons, quest.getNumStages() - 1);
         initializedStages++;
@@ -154,7 +149,7 @@ public class Strategy1 : AbstractAI
             Debug.Log(strategyOwner.getName() + " has a test in their hand.");
 			foreach (Card card in cardDictionary.Keys)
             {
-                if (card.GetType().IsSubclassOf(typeof(Test)))
+				if (card.IsTest())
                 {
                     stageCard = card;
                     break;
@@ -185,8 +180,8 @@ public class Strategy1 : AbstractAI
 			if (IsValidBattlePoints ((Foe)stageCard, weaponCard, previousStageBattlePoints)) {
 				Debug.Log ("Created a valid quest");
 				int stageNum = quest.getNumStages () - initializedStages - 1;
-				Logger.getInstance().info("Stage " + stageNum + ": stage card is " + stageCard.getCardName());
-				Debug.Log("Stage " + stageNum + ": stage card is " + stageCard.getCardName());
+				Logger.getInstance().info("Stage " + stageNum + ": stage card is " + stageCard.GetCardName());
+				Debug.Log("Stage " + stageNum + ": stage card is " + stageCard.GetCardName());
 				Stage newStage = InitializeStage (stageCard, weaponList, stageNum);
 				otherStages.Insert(0, newStage);
 				initializedStages++;
@@ -231,27 +226,79 @@ public class Strategy1 : AbstractAI
 		return true;
 	}
 
-    protected override bool CanPlayCardForStage(Card card, List<Card> participationList)
+    public override void PlayFoeStage(Stage stage)
     {
-        throw new System.NotImplementedException();
-    }
+		Debug.Log ("Playing out foe for AI strategy 2");
+		List<Card> hand = strategyOwner.getHand ();
+		List<Adventure> sortedList = SortCardsByBattlePoints (hand);
+		List<Adventure> participationList = new List<Adventure> ();
+		Quest quest = (Quest)board.getCardInPlay ();
 
-    protected override void PlayFoeStage(Stage stage)
-    {
-        throw new System.NotImplementedException();
+		if (stage.getStageNum () == quest.getNumStages () - 1) {
+			Debug.Log ("Final stage! UNLIMITED POWAAAAAAAAAAAAAAAAR");
+			foreach (Adventure card in sortedList) {
+				Debug.Log ("Checking " + strategyOwner.getName () + "'s card for eligibility: " + card.GetCardName ());
+				if (CanPlayCardForStage (card, participationList)) {
+					Debug.Log (strategyOwner.getName () + " can play card, adding to participation list for stage");
+					participationList.Add (card);
+				}
+			}
+		} else {
+			int numAvailableAllyAndAmourCards = 0;
+			foreach (Adventure card in sortedList) {
+				if (card.IsAlly() || card.GetType () == typeof(Amour)) {
+					numAvailableAllyAndAmourCards++;
+				}
+			}
+			if (numAvailableAllyAndAmourCards > 0) {
+				foreach (Adventure card in sortedList) {
+					if (card.IsAlly() || card.GetType () == typeof(Amour)) {
+						if (CanPlayCardForStage (card, participationList)) {
+							Debug.Log (strategyOwner.getName () + " can play card, adding to participation list for stage");
+							participationList.Add (card);
+							if (participationList.Count > 1) {
+								break;
+							}
+						}
+					}
+				}
+			}
+			while (participationList.Count < 2) {
+				Adventure weaponToPlay = null;
+				for (int i = sortedList.Count - 1; i >= 0; i--) {
+					Adventure card = sortedList.ElementAt (i);
+					if (card.IsWeapon()) {
+						if (weaponToPlay == null || card.getBattlePoints () < weaponToPlay.getBattlePoints ()) {
+							if (CanPlayCardForStage(card, participationList)) {
+								weaponToPlay = card;
+							}
+						}
+					}
+				}
+				if (weaponToPlay == null) {
+					break;
+				}
+				participationList.Add (weaponToPlay);
+			}
+		}
+		foreach (Adventure card in participationList) {
+			Debug.Log("Moving card from " + strategyOwner.getName() + "'s hand to play area: " + card.GetCardName());
+			strategyOwner.getPlayArea().addCard(card);
+			strategyOwner.RemoveCard(card);
+		}
+		stage.PromptFoeResponse(false);
     }
 
     public override List<Card> ParticipateTournament() {
-		//throw new System.NotImplementedException();
 		Tournament tournament = (Tournament)board.getCardInPlay();
 		List<Card> hand = strategyOwner.getHand();
-		List<Card> sortedList = SortBattlePointsCards (hand);
+		List<Adventure> sortedList = SortCardsByType (hand);
 		List<Card> participationList = new List<Card> ();
 		if (SomeoneElseCanWinOrEvolveWithTournament (tournament.participatingPlayers)) {
 			//play strongest possible hand (includes allies, amours and weapons)
 			foreach (Card card in sortedList) {
-				if (((card.GetType () == typeof(Amour) || card.GetType().IsSubclassOf(typeof(Weapon))) && !participationList.Contains (card)) 
-					|| card.GetType().IsSubclassOf(typeof(Ally)))
+				if (((card.GetType () == typeof(Amour) || card.IsWeapon()) && !participationList.Contains (card)) 
+					|| card.IsAlly())
 				{
 					participationList.Add (card);
 				} 
@@ -260,7 +307,7 @@ public class Strategy1 : AbstractAI
 			//Else: I play only weapons I have two or more instances of
 			List<Card> weaponList = new List<Card>();
 			foreach (Card card in sortedList) {
-				if (card.GetType ().IsSubclassOf (typeof(Weapon))) {
+				if (card.IsWeapon()) {
 					weaponList.Add (card);
 				}
 			}
