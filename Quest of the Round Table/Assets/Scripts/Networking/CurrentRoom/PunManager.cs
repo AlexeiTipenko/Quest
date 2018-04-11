@@ -42,7 +42,7 @@ public class PunManager : Photon.MonoBehaviour {
 		if (localPlayer != null) {
 			List<Card> localHand = localPlayer.getHand ();
 			foreach (Card localCard in localHand) {
-				if (localCard.getCardName () == card.getCardName ()) {
+				if (localCard.GetCardName () == card.GetCardName ()) {
 					BoardManager.TransferCard (localPlayer, localCard);
 					break;
 				}
@@ -75,7 +75,7 @@ public class PunManager : Photon.MonoBehaviour {
 	[PunRPC]
 	public void DealCardsNextPlayer() {
         PrepareRPC ();
-		if (board.getCardInPlay ().GetType ().IsSubclassOf (typeof(Quest))) {
+		if (board.getCardInPlay().IsQuest()) {
 			((Quest)board.getCardInPlay ()).getCurrentStage ().DealCardsNextPlayer ();
 		} else if (board.getCardInPlay ().GetType () == typeof(QueensFavor)) {
 			((QueensFavor)board.getCardInPlay ()).DealCardsNextPlayer ();
@@ -175,7 +175,7 @@ public class PunManager : Photon.MonoBehaviour {
     public void PromptEnterTournamentResponse(bool entered)
     {
 		PrepareRPC ();
-		Debug.Log ("board.cardinplay in RPC promptentertournamentresponse is " + board.getCardInPlay().getCardName());
+		Debug.Log ("board.cardinplay in RPC promptentertournamentresponse is " + board.getCardInPlay().GetCardName());
         ((Tournament)board.getCardInPlay()).PromptEnterTournamentResponse(entered);
     }
 

@@ -9,7 +9,7 @@ public class RobberKnightTest {
 	public void RobberKnightTestSimplePasses() {
 		Assert.IsTrue (RobberKnight.frequency == 7);
 		Foe robberKnight = new RobberKnight();
-		Assert.AreEqual ("Robber Knight", robberKnight.getCardName());
+		Assert.AreEqual ("Robber Knight", robberKnight.GetCardName());
 
 		//Not empowered
 		Assert.IsTrue (robberKnight.getBattlePoints() == 15);

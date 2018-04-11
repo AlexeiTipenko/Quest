@@ -41,7 +41,7 @@ public class PlayerPlayArea {
 	public void discardWeapons() {
         List<Card> tempCards = new List<Card>();
 		foreach (Card card in cards) {
-            if (!card.GetType().IsSubclassOf(typeof(Weapon))) {
+            if (!card.IsWeapon()) {
                 tempCards.Add(card);
             }
 		}
@@ -64,7 +64,7 @@ public class PlayerPlayArea {
         List<Card> tempCards = new List<Card>();
         foreach (Card card in cards)
         {
-            if (!card.GetType().IsSubclassOf(typeof(Ally)))
+            if (!card.IsAlly())
             {
                 tempCards.Add(card);
             }
@@ -84,7 +84,7 @@ public class PlayerPlayArea {
 
     public bool containsCard(String cardName) {
         foreach (Card card in cards) {
-            if (card.getCardName() == cardName) {
+            if (card.GetCardName() == cardName) {
                 return true;
             }
         }

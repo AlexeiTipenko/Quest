@@ -12,7 +12,7 @@ public class AtCamelotTest
     {
         Assert.IsTrue(AtCamelot.frequency == 1);
         Tournament camelot = new AtCamelot();
-        Assert.AreEqual("At Camelot", camelot.getCardName());
+        Assert.AreEqual("At Camelot", camelot.GetCardName());
     }
 
 

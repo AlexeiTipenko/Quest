@@ -10,7 +10,7 @@ public class TestOfTemptationTest {
 		Assert.IsTrue (TestOfTemptation.frequency == 2);
 
 		Test testOfTemptation = new TestOfTemptation();
-		Assert.AreEqual ("Test of Temptation", testOfTemptation.getCardName ());
+		Assert.AreEqual ("Test of Temptation", testOfTemptation.GetCardName ());
 		Assert.IsTrue (testOfTemptation.getMinBidValue () == 3);
 	}
 }

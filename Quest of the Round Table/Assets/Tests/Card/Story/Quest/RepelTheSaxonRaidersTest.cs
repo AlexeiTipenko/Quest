@@ -10,7 +10,7 @@ public class RepelTheSaxonRaidersTest {
 		Assert.IsTrue (RepelTheSaxonRaiders.frequency == 2);
 
 		Quest repelTheSaxonRaiders = new RepelTheSaxonRaiders ();
-		Assert.AreEqual ("Repel the Saxon Raiders", repelTheSaxonRaiders.getCardName());
+		Assert.AreEqual ("Repel the Saxon Raiders", repelTheSaxonRaiders.GetCardName());
 		Assert.IsTrue (repelTheSaxonRaiders.getShieldsWon() == 2);
 
 		//need to figure out the dominantFoe business before passing the test case as complete

@@ -48,7 +48,7 @@ public class AIPlayer : Player {
 
 	public override void PromptFoe(Quest quest)
 	{
-        strategy.PlayQuestStage(quest.getCurrentStage());
+        strategy.PlayFoeStage(quest.getCurrentStage());
 	}
 
 	public override void DisplayStageResults(Stage stage, bool playerEliminated)

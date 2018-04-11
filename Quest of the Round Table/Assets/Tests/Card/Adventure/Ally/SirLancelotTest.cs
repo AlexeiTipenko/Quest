@@ -9,7 +9,7 @@ public class SirLancelotTest {
 	public void SirLancelotTestSimplePasses() {
 		Assert.IsTrue (SirLancelot.frequency == 1);
 		Ally sirLancelot = new SirLancelot();
-		Assert.AreEqual ("Sir Lancelot", sirLancelot.getCardName());
+		Assert.AreEqual ("Sir Lancelot", sirLancelot.GetCardName());
 
 		//unempowered battle points
 		Assert.IsTrue (sirLancelot.getBattlePoints() == 15);

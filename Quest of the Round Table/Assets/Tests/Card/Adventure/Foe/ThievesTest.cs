@@ -9,7 +9,7 @@ public class ThievesTest {
 	public void ThievesTestSimplePasses() {
 		Assert.IsTrue (Thieves.frequency == 8);
 		Foe thieves = new Thieves();
-		Assert.AreEqual ("Thieves", thieves.getCardName());
+		Assert.AreEqual ("Thieves", thieves.GetCardName());
 		Assert.IsTrue (thieves.getBattlePoints() == 5);
 	}
 }

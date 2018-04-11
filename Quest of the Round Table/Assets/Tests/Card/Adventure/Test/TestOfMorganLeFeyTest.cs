@@ -10,7 +10,7 @@ public class TestOfMorganLeFeyTest {
 		Assert.IsTrue (TestOfMorganLeFey.frequency == 2);
 
 		Test testOfMorganLeFey = new TestOfMorganLeFey();
-		Assert.AreEqual ("Test of Morgan LeFey", testOfMorganLeFey.getCardName ());
+		Assert.AreEqual ("Test of Morgan LeFey", testOfMorganLeFey.GetCardName ());
 		Assert.IsTrue (testOfMorganLeFey.getMinBidValue () == 3);
 	}
 }

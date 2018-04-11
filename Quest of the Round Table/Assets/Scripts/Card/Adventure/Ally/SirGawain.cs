@@ -11,7 +11,7 @@ public class SirGawain : Ally {
 	}
 
 	public override int getBattlePoints() {
-        if (BoardManagerMediator.getInstance().getCardInPlay().getCardName() == "Test of the Green Knight") {
+        if (BoardManagerMediator.getInstance().getCardInPlay().GetCardName() == "Test of the Green Knight") {
             return empoweredBattlePoints;
         }
 		return battlePoints;

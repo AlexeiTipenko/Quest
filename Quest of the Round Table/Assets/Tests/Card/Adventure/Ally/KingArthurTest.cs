@@ -9,7 +9,7 @@ public class KingArthurTest {
 	public void KingArthurTestSimplePasses() {
 		Assert.IsTrue (KingArthur.frequency == 1);
 		Ally kingArthur = new KingArthur();
-		Assert.AreEqual ("King Arthur", kingArthur.getCardName());
+		Assert.AreEqual ("King Arthur", kingArthur.GetCardName());
 		Assert.IsTrue (kingArthur.getBattlePoints() == 10);
 		Assert.IsTrue (kingArthur.getBidPoints() == 4);
 	}

@@ -75,7 +75,7 @@ public abstract class Player {
     {
         foreach (Card card in cards)
         {
-            card.setOwner(this);
+            card.SetOwner(this);
             hand.Add(card);
         }
         if (hand.Count > 12)
@@ -173,7 +173,7 @@ public abstract class Player {
     public int getHandBid() {
         int availableBids = 0;
         foreach (Card card in hand) {
-            if (card.GetType().IsSubclassOf(typeof(Ally)))
+            if (card.IsAlly())
             {
                 if ( ((Ally)card).getBidPoints() == 0) {
                     availableBids += 1;
@@ -194,7 +194,7 @@ public abstract class Player {
         int availableBids = 0;
         foreach (Card card in playArea.getCards())
         {
-            if (card.GetType().IsSubclassOf(typeof(Ally))) {
+            if (card.IsAlly()) {
                 availableBids += ((Ally)card).getBidPoints();
             }
             else {
@@ -209,7 +209,7 @@ public abstract class Player {
     {
         for (int i = 0; i < hand.Count(); i++)
         {
-            if (card.getCardName() == hand[i].getCardName())
+            if (card.GetCardName() == hand[i].GetCardName())
             {
                 board.AddToDiscardDeck(hand.ElementAt(i));
                 hand.RemoveAt(i);
@@ -256,7 +256,7 @@ public abstract class Player {
 
 	public Player upgradeRank() {
 		rank = rank.upgrade ();
-        Debug.Log("Upgraded " + name + "'s rank to " + rank.getCardName());
+        Debug.Log("Upgraded " + name + "'s rank to " + rank.GetCardName());
 		return this;
 	}
 
@@ -278,7 +278,7 @@ public abstract class Player {
         }
         foreach (Card card in hand)
         {
-            output += card.toString() + ", ";
+            output += card.ToString() + ", ";
         }
         output = output.Substring(0, output.Length - 2);
         return output;

@@ -9,7 +9,7 @@ public class MordredTest {
 	public void MordredTestSimplePasses() {
 		Assert.IsTrue (Mordred.frequency == 4);
 		Foe mordred = new Mordred();
-		Assert.AreEqual ("Mordred", mordred.getCardName());
+		Assert.AreEqual ("Mordred", mordred.GetCardName());
 
 		//Not empowered
 		Assert.IsTrue (mordred.getBattlePoints() == 30);

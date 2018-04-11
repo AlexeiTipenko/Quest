@@ -9,7 +9,7 @@ public class DragonTest {
 	public void DragonTestSimplePasses() {
 		Assert.IsTrue (Dragon.frequency == 1);
 		Foe dragon = new Dragon();
-		Assert.AreEqual ("Dragon", dragon.getCardName());
+		Assert.AreEqual ("Dragon", dragon.GetCardName());
 
 		//Not empowered
 		Assert.IsTrue (dragon.getBattlePoints() == 50);

@@ -9,7 +9,7 @@ public class HorseTest {
 	public void HorseTestSimplePasses() {
 		Assert.IsTrue (Horse.frequency == 11);
 		Weapon horse = new Horse ();
-		Assert.AreEqual ("Horse", horse.getCardName ());
+		Assert.AreEqual ("Horse", horse.GetCardName ());
 		Assert.IsTrue (horse.getBattlePoints() == 10);
 	}
 }

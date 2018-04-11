@@ -11,7 +11,7 @@ public class ProsperityThroughoutTheRealmTest {
 	public void ProsperityThroughoutTheRealmTestSimplePasses() {
 		Assert.IsTrue (ProsperityThroughoutTheRealm.frequency == 1);
         ProsperityThroughoutTheRealm prosperityThroughoutTheRealm = new ProsperityThroughoutTheRealm ();
-		Assert.AreEqual ("Prosperity Throughout the Realm", prosperityThroughoutTheRealm.getCardName ());
+		Assert.AreEqual ("Prosperity Throughout the Realm", prosperityThroughoutTheRealm.GetCardName ());
 	}
 
 	[Test]

@@ -10,7 +10,7 @@ public class SlayTheDragonTest {
 		Assert.IsTrue (SlayTheDragon.frequency == 1);
 
 		Quest slayTheDragon = new SlayTheDragon ();
-		Assert.AreEqual ("Slay the Dragon", slayTheDragon.getCardName());
+		Assert.AreEqual ("Slay the Dragon", slayTheDragon.GetCardName());
 		Assert.IsTrue (slayTheDragon.getShieldsWon() == 3);
 
 		//need to figure out the dominantFoe business before passing the test case as complete

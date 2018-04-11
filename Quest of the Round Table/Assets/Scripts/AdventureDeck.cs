@@ -76,14 +76,14 @@ public class AdventureDeck : Deck {
 		Card card = cards [cardIndex];
 		cards.RemoveAt (cardIndex);
 		player.DealCards (new List<Card>{card}, null);
-		card.setOwner (player);
+		card.SetOwner (player);
 		return player;
 	}
 
 	public override string toString() {
 		string output = "Adventure Deck: ";
 		foreach (Card card in cards) {
-			output += (card.toString () + ", ");
+			output += (card.ToString () + ", ");
 		}
 		if (cards.Count > 0) {
 			output = output.Substring (0, output.Length - 2);

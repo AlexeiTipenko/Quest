@@ -11,7 +11,7 @@ public class PoxTest {
 	public void PoxTestSimplePasses() {
 		Assert.IsTrue (Pox.frequency == 1);
 		Pox pox = new Pox ();
-		Assert.AreEqual ("Pox", pox.getCardName ());
+		Assert.AreEqual ("Pox", pox.GetCardName ());
 	}
 
 	[Test]
