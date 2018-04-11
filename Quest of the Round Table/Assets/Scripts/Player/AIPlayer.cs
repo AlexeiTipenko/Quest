@@ -93,6 +93,7 @@ public class AIPlayer : Player {
         foreach(Adventure adventureCard in tempHand){
             if (adventureCard.IsWeapon()){
                 GetHand().Remove(adventureCard);
+				break;
             }
         }
         card.PromptNextPlayer();

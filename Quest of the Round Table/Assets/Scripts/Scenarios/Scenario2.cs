@@ -28,7 +28,7 @@
     {
         storyDeck = new StoryDeck();
 
-        storyDeck.moveCardToIndex("BoarHunt", 0);
+        storyDeck.moveCardToIndex("KingsCallToArms", 0);
         storyDeck.moveCardToIndex("RepelTheSaxonRaiders", 1);
 
         return storyDeck;
