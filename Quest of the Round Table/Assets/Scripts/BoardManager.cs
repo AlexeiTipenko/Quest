@@ -573,12 +573,12 @@ public class BoardManager : MonoBehaviour
                 List<Adventure> weapons = new List<Adventure>();
                 foreach (Transform child in boardAreaFoe.transform) {
                     Type genericType = Type.GetType(child.name.Replace(" ", ""), true);
-                    Card card = (Card)Activator.CreateInstance(genericType);
+                    Adventure card = (Adventure)Activator.CreateInstance(genericType);
                     card.cardImageName = child.name.Replace(" ", "");
 					if (card.IsWeapon()) {
-                        weapons.Add((Weapon)card);
+                        weapons.Add(card);
                     } else {
-                        stageCard = (Adventure)card;
+                        stageCard = card;
                     }
                 }
                 stages.Add(new Stage(stageCard, weapons, i));

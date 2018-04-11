@@ -254,13 +254,13 @@ public class Strategy1 : AbstractAI
 		} else {
 			int numAvailableAllyAndAmourCards = 0;
 			foreach (Adventure card in sortedList) {
-				if (card.IsAlly() || card.GetType () == typeof(Amour)) {
+				if (card.IsAlly() || card.IsAmour()) {
 					numAvailableAllyAndAmourCards++;
 				}
 			}
 			if (numAvailableAllyAndAmourCards > 0) {
 				foreach (Adventure card in sortedList) {
-					if (card.IsAlly() || card.GetType () == typeof(Amour)) {
+					if (card.IsAlly() || card.IsAmour()) {
 						if (CanPlayCardForStage (card, participationList)) {
 							Debug.Log (strategyOwner.getName () + " can play card, adding to participation list for stage");
 							participationList.Add (card);
@@ -353,25 +353,14 @@ public class Strategy1 : AbstractAI
     public bool FoesUnder20()
     {
         int foes = 0;
-        foreach (Card card in strategyOwner.GetHand())
+        foreach (Adventure card in strategyOwner.GetHand())
         {
-            if (card.IsFoe())
+			if (card.IsFoe() && card.getBattlePoints() < 20)
             {
-                Foe tempcard = (Foe)card;
-                if (tempcard.getBattlePoints() < 20)
-                {
-                    foes++;
-                }
+				foes++;
             }
         }
-        if (foes >= 2)
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
+		return (foes >= 2);
     }
 
 	private bool PlayersCanEvolveOrWinWithTournament(List<Player> players) {

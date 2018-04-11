@@ -142,55 +142,55 @@ public abstract class AbstractAI {
     }
 
 	protected List<Adventure> SortCardsByType(List<Adventure> cards) {
-		Amour amour = null;
-		List<Ally> allies = new List<Ally>();
-		List<Weapon> weapons = new List<Weapon>();
+		Adventure amour = null;
+		List<Adventure> allies = new List<Adventure>();
+		List<Adventure> weapons = new List<Adventure>();
 		List<Adventure> sortedList = new List<Adventure>();
 		Debug.Log("Available cards:");
-		foreach (Card card in cards) {
+		foreach (Adventure card in cards) {
 			Debug.Log(card.GetCardName());
 		}
 		Debug.Log("Looping through cards");
 		foreach (Adventure card in cards)
 		{
 			bool inserted = false;
-			if (card.GetType() == typeof(Amour))
+			if (card.IsAmour())
 			{
-				amour = (Amour)card;
+				amour = card;
 			}
 			else if (card.IsAlly())
 			{
-				List<Ally> tempAllies = new List<Ally>(allies);
+				List<Adventure> tempAllies = new List<Adventure>(allies);
 				foreach (Ally ally in allies)
 				{
-					if (((Ally)card).getBattlePoints() <= ally.getBattlePoints())
+					if (card.getBattlePoints() <= ally.getBattlePoints())
 					{
-						tempAllies.Insert(tempAllies.IndexOf(ally), (Ally)card);
+						tempAllies.Insert(tempAllies.IndexOf(ally), card);
 						inserted = true;
 						break;
 					}
 				}
 				if (!inserted) {
-					tempAllies.Add((Ally)card);
+					tempAllies.Add(card);
 				}
-				allies = new List<Ally>(tempAllies);
+				allies = new List<Adventure>(tempAllies);
 			}
 			else if (card.IsWeapon())
 			{
-				List<Weapon> tempWeapons = new List<Weapon>(weapons);
+				List<Adventure> tempWeapons = new List<Adventure>(weapons);
 				foreach (Weapon weapon in weapons)
 				{
-					if (((Weapon)card).getBattlePoints() <= weapon.getBattlePoints())
+					if (card.getBattlePoints() <= weapon.getBattlePoints())
 					{
-						tempWeapons.Insert(tempWeapons.IndexOf(weapon), (Weapon)card);
+						tempWeapons.Insert(tempWeapons.IndexOf(weapon), card);
 						inserted = true;
 						break;
 					}
 				}
 				if (!inserted) {
-					tempWeapons.Add((Weapon)card);
+					tempWeapons.Add(card);
 				}
-				weapons = new List<Weapon>(tempWeapons);
+				weapons = new List<Adventure>(tempWeapons);
 			}
 		}
 		if (amour != null) {
@@ -215,7 +215,7 @@ public abstract class AbstractAI {
 		List<Adventure> sortedCards = new List<Adventure> ();
 		bool containsAmour = false;
 		foreach (Card card in cards) {
-			if (card.IsAlly() || card.IsWeapon() || card.GetType() == typeof(Amour)) {
+			if (card.IsAlly() || card.IsWeapon() || card.IsAmour()) {
 				int index = -1;
 				foreach (Adventure sortedCard in sortedCards) {
 					if (((Adventure)card).getBattlePoints () > sortedCard.getBattlePoints ()) {
@@ -223,7 +223,7 @@ public abstract class AbstractAI {
 					}
 				}
 				InsertIntoListAtIndex ((Adventure)card, sortedCards, index, containsAmour);
-				if (card.GetType () == typeof(Amour)) {
+				if (card.IsAmour()) {
 					containsAmour = true;
 				}
 			}
@@ -232,7 +232,7 @@ public abstract class AbstractAI {
 	}
 
 	private List<Adventure> InsertIntoListAtIndex(Adventure card, List<Adventure> sortedCards, int index, bool containsAmour) {
-		if (card.GetType() == typeof(Amour) && containsAmour) {
+		if (card.IsAmour() && containsAmour) {
 			return sortedCards;
 		}
 		if (index == -1) {
@@ -245,14 +245,14 @@ public abstract class AbstractAI {
 
 	protected bool CanPlayCardForStage(Adventure card, List<Adventure> participationList)
 	{
-		if (card.GetType() == typeof(Amour)) {
+		if (card.IsAmour()) {
 			foreach (Card participationCard in participationList) {
-				if (participationCard.GetType() == typeof(Amour)) {
+				if (participationCard.IsAmour()) {
 					return false;
 				}
 			}
 			foreach (Card playAreaCard in strategyOwner.getPlayArea().getCards()) {
-				if (playAreaCard.GetType() == typeof(Amour)) {
+				if (playAreaCard.IsAmour()) {
 					return false;
 				}
 			}
@@ -369,9 +369,9 @@ public abstract class AbstractAI {
     {
         if(strategy == 2){
             int availableBids = 0;
-            foreach (Card card in strategyOwner.GetHand())
+            foreach (Adventure card in strategyOwner.GetHand())
             {
-                if (card.IsFoe() && ((Foe)card).getBattlePoints() < discardableCardsThreshold)
+                if (card.IsFoe() && card.getBattlePoints() < discardableCardsThreshold)
                 {
                     availableBids += 1;
                 }
@@ -380,7 +380,7 @@ public abstract class AbstractAI {
         }
         else {
             int availableBids = 0;
-            foreach (Card card in strategyOwner.GetHand())
+            foreach (Adventure card in strategyOwner.GetHand())
             {
                 if (card.IsFoe() && ((Foe)card).GetMinBattlePoints() < discardableCardsThreshold)
                 {

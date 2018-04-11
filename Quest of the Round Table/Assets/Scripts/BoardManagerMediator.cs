@@ -355,7 +355,7 @@ public class BoardManagerMediator
         }
 
         Action action1 = () => {
-            if (quest.isValidQuest()) {
+            if (quest.IsValidQuest()) {
                 List<Stage> stages = BoardManager.CollectStageCards();
                 if (IsOnlineGame()) {
                     view.RPC("SponsorQuestComplete", PhotonTargets.Others, PunManager.Serialize(stages));

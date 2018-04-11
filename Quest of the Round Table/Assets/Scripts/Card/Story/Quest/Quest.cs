@@ -54,7 +54,7 @@ public abstract class Quest : Story {
 		}
 	}
 
-    public Boolean isValidQuest() {
+    public Boolean IsValidQuest() {
         int minBattlePoints = 0;
         bool hasTest = false;
         for (int i = 0; i < numStages; i++) {
@@ -65,7 +65,7 @@ public abstract class Quest : Story {
             int currentBattlePoints = 0;
             foreach (Transform child in boardAreaFoe.transform) {
                 Debug.Log("card name is: " + child.name);
-                foreach (Card card in sponsor.GetHand()) {
+                foreach (Adventure card in sponsor.GetHand()) {
 					if (child.name == card.GetCardName() && card.IsTest()) {
                         if (!hasTest) {
                             hasTest = true;
@@ -85,7 +85,7 @@ public abstract class Quest : Story {
                         }
                         if (!hasFoe) {
                             hasFoe = true;
-                            currentBattlePoints += ((Foe)card).getBattlePoints();
+                            currentBattlePoints += card.getBattlePoints();
                             break;
                         }
                         else {
@@ -102,7 +102,7 @@ public abstract class Quest : Story {
                         }
 						if (!weaponsInStage.Contains(card.GetType())) {
 							weaponsInStage.Add(card.GetType());
-                            currentBattlePoints += ((Weapon)card).getBattlePoints();
+                            currentBattlePoints += card.getBattlePoints();
                             break;
                         } else {
                             Debug.Log("Quest setup failed due to multiple weapons of the same type in a stage.");
