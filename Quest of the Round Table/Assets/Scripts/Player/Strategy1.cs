@@ -64,6 +64,10 @@ public class Strategy1 : AbstractAI
         List<Stage> stages = new List<Stage>();
         Quest quest = (Quest)board.getCardInPlay();
         List<Card> cards = strategyOwner.getHand();
+		Dictionary<Card, bool> cardDictionary = new Dictionary<Card, bool> ();
+		foreach (Card card in cards) {
+			cardDictionary.Add (card, false);
+		}
 
         Stage finalStage = null;
         Stage testStage = null;
@@ -72,21 +76,18 @@ public class Strategy1 : AbstractAI
 
         Card stageCard = null;
         List<Card> weapons = new List<Card>();
-        foreach (Card card in cards)
-        {
-            if (card.GetType().IsSubclassOf(typeof(Foe)))
-            {
-                if (stageCard == null || ((Foe)card).getBattlePoints() > ((Foe)stageCard).getBattlePoints())
-                {
-                    stageCard = card;
-                }
-            }
-        }
+		stageCard = GetStrongestFoe (cardDictionary);
+		cardDictionary [stageCard] = true;
         Logger.getInstance().info("Final stage foe: " + stageCard.getCardName());
         Debug.Log("Final stage foe: " + stageCard.getCardName());
         while (((Foe)stageCard).getBattlePoints() + GetTotalBattlePoints(weapons) < minimumFinalStageBattlePoints)
         {
-            weapons.Add(GetBestUniqueWeapon(cards, weapons));
+			Weapon bestUniqueWeapon = GetBestUniqueWeapon (new List<Card>(cardDictionary.Keys), weapons);
+			if (bestUniqueWeapon == null) {
+				break;
+			}
+			cardDictionary [bestUniqueWeapon] = true;
+            weapons.Add(bestUniqueWeapon);
         }
 
         Logger.getInstance().info("Final stage weapons: " + stageCard.getCardName());
@@ -101,10 +102,10 @@ public class Strategy1 : AbstractAI
         Logger.getInstance().info("Initialized stages " + initializedStages);
         Debug.Log("Initialized stages: " + initializedStages);
 
-        if (ContainsTest(cards))
+		if (ContainsTest(new List<Card>(cardDictionary.Keys)))
         {
             Debug.Log(strategyOwner.getName() + " has a test in their hand.");
-            foreach (Card card in cards)
+			foreach (Card card in cardDictionary.Keys)
             {
                 if (card.GetType().IsSubclassOf(typeof(Test)))
                 {
@@ -112,6 +113,7 @@ public class Strategy1 : AbstractAI
                     break;
                 }
             }
+			cardDictionary [stageCard] = true;
             testStage = InitializeStage(stageCard, null, quest.getNumStages() - 2);
             initializedStages++;
             numTestStages++;
@@ -121,8 +123,8 @@ public class Strategy1 : AbstractAI
         Card previousStageCard = null;
         while (initializedStages < quest.getNumStages())
         {
-            stageCard = strategyOwner.GetWeakestFoe(cards, previousStageCard);
-            int stageNum = initializedStages - (numTestStages + 1);
+			stageCard = GetStrongestFoe (cardDictionary);
+			int stageNum = quest.getNumStages () - initializedStages - 1;
             Logger.getInstance().info("Stage " + stageNum + ": stage card is " + stageCard.getCardName());
             Debug.Log("Stage " + stageNum + ": stage card is " + stageCard.getCardName());
             otherStages.Add(InitializeStage(stageCard, null, stageNum));

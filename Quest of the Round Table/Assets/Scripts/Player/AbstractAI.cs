@@ -230,7 +230,14 @@ public abstract class AbstractAI {
         Weapon bestWeapon = null;
         foreach (Card card in cards) {
             if (card.GetType().IsSubclassOf(typeof(Weapon))) {
-                if (!currentWeapons.Contains(card)) {
+				bool exists = false;
+				foreach (Card weapon in currentWeapons) {
+					if (weapon.getCardName () == card.getCardName ()) {
+						exists = true;
+						break;
+					}
+				}
+                if (!exists) {
                     if (bestWeapon == null || ((Weapon)card).getBattlePoints() > bestWeapon.getBattlePoints()) {
                         bestWeapon = (Weapon)card;
                     }
@@ -338,4 +345,36 @@ public abstract class AbstractAI {
             }
         }
     }
+	public Foe GetWeakestFoe(List<Card> cards, Card previousStageCard)
+	{
+		Foe weakestFoe = null;
+		foreach (Card card in cards)
+		{
+			if (card.GetType().IsSubclassOf(typeof(Foe)))
+			{
+				if (weakestFoe == null || ((Foe)card).getBattlePoints() < weakestFoe.getBattlePoints())
+				{
+					if (previousStageCard == null || ((Foe)previousStageCard).getBattlePoints() < ((Foe)card).getBattlePoints())
+					{
+						weakestFoe = (Foe)card;
+					}
+				}
+			}
+		}
+		return weakestFoe;
+	}
+
+	public Foe GetStrongestFoe(Dictionary<Card, bool> cards) {
+		Foe strongestFoe = null;
+		foreach (Card card in cards.Keys) {
+			if (card.GetType ().IsSubclassOf (typeof(Foe))) {
+				if (strongestFoe == null || ((Foe)card).getBattlePoints () > strongestFoe.getBattlePoints ()) {
+					if (!cards [card]) {
+						strongestFoe = (Foe)card;
+					}
+				}
+			}
+		}
+		return strongestFoe;
+	}
 }
