@@ -80,7 +80,12 @@ public class AIPlayer : Player {
 
 	public override void PromptTournament(Tournament tournament)
 	{
-        tournament.CardsSelectionResponse();
+		List<Card> chosenCards = strategy.ParticipateTournament ();
+        tournament.CardsSelectionResponse(chosenCards);
+	}
+
+	public override void DisplayTournamentResults(Tournament tournament, bool playerEliminated) {
+		tournament.DisplayTournamentResultsResponse ();
 	}
 
 	public AbstractAI GetStrategy()

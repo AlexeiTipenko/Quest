@@ -542,13 +542,35 @@ public class BoardManagerMediator
         BoardManager.DrawCards(player);
 		BoardManager.SetInteractionText(Localization.PrepareTournament(player));
         Action action = () => {
-            tournament.CardsSelectionResponse();
+			List<Card> chosenCards = GetSelectedCards(player);
+			if (tournament.ValidateChosenCards(chosenCards)) {
+				if (IsOnlineGame()) {
+					view.RPC("CardsSelectionResponse", PhotonTargets.Others, PunManager.Serialize(chosenCards));
+				}
+				tournament.CardsSelectionResponse(chosenCards);
+			} else {
+				PromptCardSelection(tournament, player);
+			}
         };
 
         BoardManager.SetInteractionButtons("Complete", "", action, null);
         Debug.Log("Prompting " + player.getName() + " to prepare cards.");
         Logger.getInstance().info("Prompted " + player.getName() + " to prepare cards.");
     }
+
+	public void DisplayTournamentResults (Tournament tournament, Player player, bool playerEliminated) {
+		BoardManager.DrawCards (player);
+		BoardManager.SetInteractionText (Localization.DisplayTournamentResults(player, playerEliminated));
+		Action action = () => {
+			if (IsOnlineGame()) {
+				view.RPC("DisplayTournamentResults", PhotonTargets.Others);
+			}
+			tournament.DisplayTournamentResultsResponse ();
+		};
+		BoardManager.SetInteractionButtons ("Continue", "", action, null);
+		Debug.Log("Displaying tournament results to " + player.getName());
+		Logger.getInstance().info("Displaying tournament results to " + player.getName());
+	}
 
 
 	public void PromptToDiscardWeapon(Player player) 

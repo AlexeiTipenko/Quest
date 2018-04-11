@@ -165,19 +165,25 @@ public class PunManager : Photon.MonoBehaviour {
     //------------------------------------------------------------------------//
 
     [PunRPC]
-    public void CardsSelectionResponse()
+	public void CardsSelectionResponse(byte[] cardBytes)
     {
 		PrepareRPC ();
-        ((Tournament)board.getCardInPlay()).CardsSelectionResponse();
+		List<Card> cards = (List<Card>) Deserialize (cardBytes);
+        ((Tournament)board.getCardInPlay()).CardsSelectionResponse(cards);
     }
 
     [PunRPC]
     public void PromptEnterTournamentResponse(bool entered)
     {
 		PrepareRPC ();
-		Debug.Log ("board.cardinplay in RPC promptentertournamentresponse is " + board.getCardInPlay().GetCardName());
         ((Tournament)board.getCardInPlay()).PromptEnterTournamentResponse(entered);
     }
+
+	[PunRPC]
+	public void DisplayTournamentResults() {
+		PrepareRPC ();
+		((Tournament)board.getCardInPlay ()).DisplayTournamentResultsResponse ();
+	}
 
 
     //------------------------------------------------------------------------//
