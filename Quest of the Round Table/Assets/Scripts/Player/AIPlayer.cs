@@ -88,6 +88,10 @@ public class AIPlayer : Player {
 		tournament.DisplayTournamentResultsResponse ();
 	}
 
+	public override void PromptDiscardWeaponKingsCallToArms (KingsCallToArms card) {
+		//TODO: AI implementation of kings call to arms
+	}
+
 	public AbstractAI GetStrategy()
     {
         return strategy;

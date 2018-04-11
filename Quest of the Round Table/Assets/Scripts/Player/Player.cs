@@ -59,6 +59,8 @@ public abstract class Player {
 
 	public abstract void DisplayTournamentResults (Tournament tournament, bool playerEliminated);
 
+	public abstract void PromptDiscardWeaponKingsCallToArms (KingsCallToArms card);
+
 
     //--------------------------------------------//
     //---------- Non-Abstract Functions ----------//

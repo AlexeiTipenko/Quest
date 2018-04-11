@@ -573,7 +573,7 @@ public class BoardManagerMediator
 	}
 
 
-	public void PromptToDiscardWeapon(Player player) 
+	public void PromptToDiscardWeapon(KingsCallToArms card, Player player) 
 	{
 		BoardManager.DrawCards(player);
 		BoardManager.SetInteractionText(Localization.PromptToDiscardWeapon(player));
@@ -584,7 +584,7 @@ public class BoardManagerMediator
             {
                 view.RPC("PlayerDiscardedWeapon", PhotonTargets.Others);
             }
-            ((KingsCallToArms)cardInPlay).PlayerDiscardedWeapon();
+            card.PlayerDiscardedWeapon();
 		};
 		
 

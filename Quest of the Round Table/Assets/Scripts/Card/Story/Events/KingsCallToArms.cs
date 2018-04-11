@@ -57,7 +57,7 @@ public class KingsCallToArms : Events {
 		if (hasWeapons ()) {
 			Logger.getInstance ().debug ("Player to discard weapon");
             Debug.Log("Player to discard weapon");
-			board.PromptToDiscardWeapon (currentPlayer);
+			currentPlayer.PromptDiscardWeaponKingsCallToArms (this);
 		} 
 		else if (numFoeCards > 1) {
 			Logger.getInstance ().debug ("Player to discard foes.");
@@ -78,18 +78,6 @@ public class KingsCallToArms : Events {
 		Debug.Log ("Finished King's Call To Arms.");
 	}
 
-    /*
-	public Player getNextPlayer(Player previousPlayer) {
-		int index = highestRankPlayers.IndexOf (previousPlayer);
-		if (index != -1) {
-			return highestRankPlayers [(index + 1) % highestRankPlayers.Count];
-		}
-		Logger.getInstance ().trace ("Next player in getNextPlayer is null, previous player is " + previousPlayer.getName());
-        Debug.Log("Next player in getNextPlayer is null, previous player is " + previousPlayer.getName());
-		return null;
-	}
-	*/
-
     public void PromptNextPlayer()
     {
         currentPlayer = board.getNextPlayer(currentPlayer);
@@ -98,13 +86,6 @@ public class KingsCallToArms : Events {
         {
             Debug.Log("Got finished response from last player, moving onto next player...");
             Logger.getInstance().debug("Got finished response from last player, moving onto next player...");
-
-            /*
-            if (board.IsOnlineGame())
-            {
-                board.getPhotonView().RPC("PromptEventAction", PhotonTargets.Others);
-            }
-            */
             PromptEventAction();
         }
         else
@@ -112,7 +93,6 @@ public class KingsCallToArms : Events {
             board.nextTurn();
         }
     }
-		
 
     public void PlayerDiscardedWeapon()
     {
@@ -135,14 +115,14 @@ public class KingsCallToArms : Events {
                 
                 Debug.Log("Player played incorrect card...");
                 Logger.getInstance().debug("Player played incorrect card...");
-                board.PromptToDiscardWeapon(currentPlayer);
+				currentPlayer.PromptDiscardWeaponKingsCallToArms (this);
             }
         }
 
         else{
             Debug.Log("Player discarded incorrect number of cards...");
             Logger.getInstance().debug("Player discarded incorrect number of cards...");
-            board.PromptToDiscardWeapon(currentPlayer);
+			currentPlayer.PromptDiscardWeaponKingsCallToArms (this);
         }
     }
 
