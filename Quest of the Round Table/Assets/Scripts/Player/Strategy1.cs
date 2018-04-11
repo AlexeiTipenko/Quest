@@ -7,13 +7,15 @@ using System;
 [Serializable]
 public class Strategy1 : AbstractAI
 {
+    int round = 1;
+
     public Strategy1() : base (50, 20) {
         
     }
 
     public override void DiscardAfterWinningTest(int currentBid, Quest quest)
     {
-        throw new System.NotImplementedException();
+        RemoveFoeCards(1);
     }
 
     public override bool DoIParticipateInQuest()
@@ -24,7 +26,7 @@ public class Strategy1 : AbstractAI
             Logger.getInstance().info("AI Strategy1" + strategyOwner.getName() + " playing in quest");
             Debug.Log("AI Strategy1" + strategyOwner.getName() + " playing in quest");
             foreach(Card card in strategyOwner.getHand()){
-                Debug.Log(strategyOwner.getName() + "Cards are: " + card.getCardName());
+                Debug.Log(strategyOwner.getName() + "Cards are: " + card.GetCardName());
             }
             return true;
         }
@@ -33,7 +35,7 @@ public class Strategy1 : AbstractAI
             Debug.Log("AI Strategy1" + strategyOwner.getName() + " not playing in quest");
             foreach (Card card in strategyOwner.getHand())
             {
-                Debug.Log(strategyOwner.getName() + " not participating in quest Cards are: " + card.getCardName());
+                Debug.Log(strategyOwner.getName() + " not participating in quest Cards are: " + card.GetCardName());
             }
             return false;
         }
@@ -68,18 +70,23 @@ public class Strategy1 : AbstractAI
     {
         Logger.getInstance().info(strategyOwner.getName() + " AI Strat 1 is peparing bids");
         Debug.Log("AI Strat 1 is preparing bids");
-
-        if (GetTotalAvailableFoeBids() > currentBid && GetTotalAvailableFoeBids() < discardableCardsThreshold)
-        {
-            Logger.getInstance().info(strategyOwner.getName() + " AI is preparing to bid: " + GetTotalAvailableFoeBids());
-            Debug.Log(strategyOwner.getName() + " AI is preparing to bid: " + GetTotalAvailableFoeBids());
-            stage.PromptTestResponse(false, GetTotalAvailableFoeBids());
+        if(round == 1) {
+            if (GetTotalAvailableFoeBids(1) > currentBid && GetTotalAvailableFoeBids(1) < discardableCardsThreshold)
+            {
+                Logger.getInstance().info(strategyOwner.getName() + " AI is preparing to bid: " + GetTotalAvailableFoeBids(1));
+                Debug.Log(strategyOwner.getName() + " AI is preparing to bid: " + GetTotalAvailableFoeBids(1));
+                stage.PromptTestResponse(false, GetTotalAvailableFoeBids(1));
+            }
+            else {
+                DropoutTest(currentBid, stage);
+            }
+            round++;
         }
         else
         {
-            Logger.getInstance().info(strategyOwner.getName() + " AI Strat 1 doesn't have enough to bid: " + GetTotalAvailableFoeBids()
+            Logger.getInstance().info(strategyOwner.getName() + " AI Strat 1 doesn't have enough to bid: " + GetTotalAvailableFoeBids(1)
                                       + " while currentbid is: " + currentBid + " AI dropping out.");
-            Debug.Log(strategyOwner.getName() + " AI Strat 1 doesn't have enough to bid: " + GetTotalAvailableFoeBids()
+            Debug.Log(strategyOwner.getName() + " AI Strat 1 doesn't have enough to bid: " + GetTotalAvailableFoeBids(1)
                                       + " while currentbid is: " + currentBid + " AI dropping out.");
             DropoutTest(currentBid, stage);
         }
@@ -320,5 +327,50 @@ public class Strategy1 : AbstractAI
 			}
 		}
 		return participationList;
+    }
+
+    public bool TwoWeaponsorAlliesPerStage()
+    {
+        Quest quest = (Quest)board.getCardInPlay();
+        int numWeaponsAndAllies = 0;
+        foreach (Card card in strategyOwner.getHand())
+        {
+            if (card.IsWeapon() || card.IsAlly() || card.IsAmour())
+            {
+                numWeaponsAndAllies++;
+            }
+        }
+        if (numWeaponsAndAllies >= (quest.getNumStages() * 2))
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    public bool FoesUnder20()
+    {
+        int foes = 0;
+        foreach (Card card in strategyOwner.getHand())
+        {
+            if (card.IsFoe())
+            {
+                Foe tempcard = (Foe)card;
+                if (tempcard.getBattlePoints() < 20)
+                {
+                    foes++;
+                }
+            }
+        }
+        if (foes >= 2)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 }

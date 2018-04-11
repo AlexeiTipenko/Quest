@@ -382,20 +382,33 @@ public abstract class AbstractAI {
         stage.PromptTestResponse(true, 0);
     }
 
-    public int GetTotalAvailableFoeBids()
+    public int GetTotalAvailableFoeBids(int strategy)
     {
-        int availableBids = 0;
-        foreach (Card card in strategyOwner.getHand())
-        {
-			if (card.IsFoe())
+        if(strategy == 2){
+            int availableBids = 0;
+            foreach (Card card in strategyOwner.getHand())
             {
-                availableBids += 1;
+                if (card.IsFoe() && ((Foe)card).getBattlePoints() < discardableCardsThreshold)
+                {
+                    availableBids += 1;
+                }
             }
+            return availableBids;
         }
-        return availableBids;
+        else {
+            int availableBids = 0;
+            foreach (Card card in strategyOwner.getHand())
+            {
+                if (card.IsFoe() && ((Foe)card).GetMinBattlePoints() < discardableCardsThreshold)
+                {
+                    availableBids += 1;
+                }
+            }
+            return availableBids;
+        }
     }
 
-    public int getTotalAvailableFoeandDuplicateBids()
+    public int getTotalAvailableFoeandDuplicateBids(int strategy)
     {
         int availableBids = 0;
         Dictionary<String, int> cardDictionary = new Dictionary<String, int>();
@@ -420,29 +433,49 @@ public abstract class AbstractAI {
             }
         }
         Debug.Log("Duplicates are: " + availableBids + " inside Foe and Dups");
-        return GetTotalAvailableFoeBids() + availableBids;
+        if (strategy == 1) {
+            return GetTotalAvailableFoeBids(1) + availableBids;
+        }
+        else {
+            return GetTotalAvailableFoeBids(2) + availableBids;
+        }
     }
 
-    public void RemoveFoeCards()
+    public void RemoveFoeCards(int strategy)
     {
-        List<Card> TempHand = new List<Card>(strategyOwner.getHand());
-        int discarded = 0;
-        foreach (Card card in TempHand)
-        {
-            if (card.IsFoe())
+        if (strategy == 1){
+            List<Card> TempHand = new List<Card>(strategyOwner.getHand());
+            foreach (Card card in TempHand)
             {
-                strategyOwner.RemoveCard(card);
-                discarded++;
+                if (card.IsFoe() && ((Foe)card).GetMinBattlePoints() < discardableCardsThreshold)
+                {
+                    strategyOwner.RemoveCard(card);
+                }
+            }  
+        }
+        else {
+            List<Card> TempHand = new List<Card>(strategyOwner.getHand());
+            foreach (Card card in TempHand)
+            {
+                if (card.IsFoe() && ((Foe)card).getBattlePoints() < discardableCardsThreshold)
+                {
+                    strategyOwner.RemoveCard(card);
+                }
             }   
         }
     }
 
-    public void RemoveFoeAndDuplicateCards()
+    public void RemoveFoeAndDuplicateCards(int strategy)
     {
         List<String> Seen = new List<String>();
         List<Card> TempHand = new List<Card>(strategyOwner.getHand());
 
-        RemoveFoeCards();
+        if (strategy == 1){
+			RemoveFoeCards(1);
+        }
+        else {
+            RemoveFoeCards(2);
+        }
 
         foreach (Card card in TempHand)
         {
@@ -493,38 +526,4 @@ public abstract class AbstractAI {
 		}
 		return strongestFoe;
 	}
-
-    public bool TwoWeaponsorAlliesPerStage() {
-        Quest quest = (Quest)board.getCardInPlay();
-        int numWeaponsAndAllies = 0;
-        foreach(Card card in strategyOwner.getHand()) {
-            if(card.IsWeapon() || card.IsAlly() || card.IsAmour()){
-                numWeaponsAndAllies++;
-            }
-        }
-        if (numWeaponsAndAllies >= (quest.getNumStages() * 2)) {
-            return true;
-        }
-        else {
-            return false;
-        }
-    }
-
-    public bool FoesUnder20() {
-        int foes = 0;
-        foreach(Card card in strategyOwner.getHand()){
-            if(card.IsFoe()){
-                Foe tempcard = (Foe)card;
-                if(tempcard.getBattlePoints() < 20){
-                    foes++;
-                }
-            }
-        }
-        if(foes >= 2) {
-            return true;
-        }
-        else {
-            return false;
-        }
-    }
 }

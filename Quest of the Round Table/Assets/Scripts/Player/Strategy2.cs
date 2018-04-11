@@ -17,11 +17,11 @@ public class Strategy2 : AbstractAI
         Logger.getInstance().info("Discarding cards from AI after winning test");
         if(round == 1) { // If you get here, the currentBid will equal to number of foes they have in their hand, so just remove
             Logger.getInstance().info("if the stage number is 0, only remove the foe cards.");
-            RemoveFoeCards();
+            RemoveFoeCards(2);
         }
         else {
             Logger.getInstance().info("if the stage number is not 0, remove the foe and duplicates.");
-            RemoveFoeAndDuplicateCards();
+            RemoveFoeAndDuplicateCards(2);
         }
     }
 
@@ -65,19 +65,22 @@ public class Strategy2 : AbstractAI
         Debug.Log(strategyOwner.getName() + " participating in Test and preparing");
         if(round == 1){
             Logger.getInstance().info("First stage, only discarding foes in hand less than 25");
-            Logger.getInstance().info("Foe bid is on first stage: " + GetTotalAvailableFoeBids());
-            if (GetTotalAvailableFoeBids() > currentBid && GetTotalAvailableFoeBids() < discardableCardsThreshold)
+            Logger.getInstance().info("Foe bid is on first stage: " + GetTotalAvailableFoeBids(2));
+            if (GetTotalAvailableFoeBids(2) > currentBid && GetTotalAvailableFoeBids(2) < discardableCardsThreshold)
             {
-                Logger.getInstance().info(strategyOwner.getName() + " AI is preparing to bid: " + GetTotalAvailableFoeBids());
-                Debug.Log(strategyOwner.getName() + " AI is preparing to bid: " + GetTotalAvailableFoeBids());
-                stage.PromptTestResponse(false, GetTotalAvailableFoeBids());
+                foreach(Card card in strategyOwner.getHand()){
+                    Debug.Log("CARDS ARE: " + card.GetCardName());
+                }
+                Logger.getInstance().info(strategyOwner.getName() + " AI is preparing to bid: " + GetTotalAvailableFoeBids(2));
+                Debug.Log(strategyOwner.getName() + " AI is preparing to bid: " + GetTotalAvailableFoeBids(2));
+                stage.PromptTestResponse(false, GetTotalAvailableFoeBids(2));
                 round++;
             }
             else
             {
-                Logger.getInstance().info(strategyOwner.getName() + " AI doesn't have enough to bid: " + GetTotalAvailableFoeBids()
+                Logger.getInstance().info(strategyOwner.getName() + " AI doesn't have enough to bid: " + GetTotalAvailableFoeBids(2)
                                   + " while currentbid is: " + currentBid + " AI dropping out.");
-                Debug.Log(strategyOwner.getName() + " AI doesn't have enough to bid: " + GetTotalAvailableFoeBids()
+                Debug.Log(strategyOwner.getName() + " AI doesn't have enough to bid: " + GetTotalAvailableFoeBids(2)
                                           + " while currentbid is: " + currentBid + " AI dropping out.");
                 DropoutTest(currentBid, stage);
             }
@@ -86,27 +89,27 @@ public class Strategy2 : AbstractAI
             Logger.getInstance().info("Second stage, discarding foes and duplicates");
             Logger.getInstance().info("Inside second stage for AI");
             Debug.Log("Inside second stage for AI");
-            Logger.getInstance().info("Foe bid is on not the first stage: " + GetTotalAvailableFoeBids());
-            Logger.getInstance().info("Foe and Dup bid is: " + getTotalAvailableFoeandDuplicateBids());
-            if (getTotalAvailableFoeandDuplicateBids() > currentBid && GetTotalAvailableFoeBids() < discardableCardsThreshold)
+            Logger.getInstance().info("Foe bid is on not the first stage: " + GetTotalAvailableFoeBids(2));
+            Logger.getInstance().info("Foe and Dup bid is: " + getTotalAvailableFoeandDuplicateBids(2));
+            if (getTotalAvailableFoeandDuplicateBids(2) > currentBid && GetTotalAvailableFoeBids(2) < discardableCardsThreshold)
             {
-                Logger.getInstance().info(strategyOwner.getName() + " AI is preparing to bid: " + GetTotalAvailableFoeBids());
-                Debug.Log(strategyOwner.getName() + " AI is preparing to bid: " + GetTotalAvailableFoeBids());
-                stage.PromptTestResponse(false, getTotalAvailableFoeandDuplicateBids());
+                Logger.getInstance().info(strategyOwner.getName() + " AI is preparing to bid: " + GetTotalAvailableFoeBids(2));
+                Debug.Log(strategyOwner.getName() + " AI is preparing to bid: " + GetTotalAvailableFoeBids(2));
+                stage.PromptTestResponse(false, getTotalAvailableFoeandDuplicateBids(2));
             }
             else
             {
-                Logger.getInstance().info(strategyOwner.getName() + " AI doesn't have enough to bid: " + GetTotalAvailableFoeBids()
+                Logger.getInstance().info(strategyOwner.getName() + " AI doesn't have enough to bid: " + GetTotalAvailableFoeBids(2)
                                   + " while currentbid is: " + currentBid + " AI dropping out.");
-                Debug.Log(strategyOwner.getName() + " AI doesn't have enough to bid: " + GetTotalAvailableFoeBids()
+                Debug.Log(strategyOwner.getName() + " AI doesn't have enough to bid: " + GetTotalAvailableFoeBids(2)
                                           + " while currentbid is: " + currentBid + " AI dropping out.");
                 DropoutTest(currentBid, stage);
             }
         }
         else {
-            Logger.getInstance().info(strategyOwner.getName() + " AI Strategy 2 past round 2, won't bid: " + GetTotalAvailableFoeBids()
+            Logger.getInstance().info(strategyOwner.getName() + " AI Strategy 2 past round 2, won't bid: " + GetTotalAvailableFoeBids(2)
                            + " while currentbid is: " + currentBid + " AI dropping out.");
-            Debug.Log(strategyOwner.getName() + " AI Strategy 2 past round 2, won't to bid: " + GetTotalAvailableFoeBids()
+            Debug.Log(strategyOwner.getName() + " AI Strategy 2 past round 2, won't to bid: " + GetTotalAvailableFoeBids(2)
                                       + " while currentbid is: " + currentBid + " AI dropping out.");
             DropoutTest(currentBid, stage);
         }
