@@ -162,23 +162,4 @@ public class AIPlayer : Player {
         }
     }
 
-    public Foe GetWeakestFoe(List<Card> cards, Card previousStageCard)
-    {
-        Foe weakestFoe = null;
-        foreach (Card card in cards)
-        {
-            if (card.GetType().IsSubclassOf(typeof(Foe)))
-            {
-                if (weakestFoe == null || ((Foe)card).getBattlePoints() < weakestFoe.getBattlePoints())
-                {
-                    if (previousStageCard == null || ((Foe)previousStageCard).getBattlePoints() < ((Foe)card).getBattlePoints())
-                    {
-                        weakestFoe = (Foe)card;
-                    }
-                }
-            }
-        }
-        return weakestFoe;
-    }
-
 }

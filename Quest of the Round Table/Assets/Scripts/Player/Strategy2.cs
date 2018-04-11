@@ -170,7 +170,7 @@ public class Strategy2 : AbstractAI
 
         Card previousStageCard = null;
         while (initializedStages < quest.getNumStages()) {
-            stageCard = strategyOwner.GetWeakestFoe(cards, previousStageCard);
+            stageCard = GetWeakestFoe(cards, previousStageCard);
             int stageNum = initializedStages - (numTestStages + 1);
             Logger.getInstance().info("Stage " + stageNum + ": stage card is " + stageCard.getCardName());
             Debug.Log("Stage " + stageNum + ": stage card is " + stageCard.getCardName());
