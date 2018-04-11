@@ -43,7 +43,12 @@ public class Strategy1 : AbstractAI
 
     public override bool DoIParticipateInTournament()
     {
-		return PlayersCanEvolveOrWinWithTournament (board.getPlayers ());
+		if (!PlayersCanEvolveOrWinWithTournament(board.getPlayers())) {
+			Debug.Log("AI has opted to participate in tournament.");
+			return true;
+		}
+		Debug.Log("AI has opted NOT to participate in tournament.");
+		return false;
     }
 
     public override bool DoISponsorAQuest()
