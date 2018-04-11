@@ -436,7 +436,8 @@ public abstract class AbstractAI {
 				if (strongestFoe == null || ((Foe)card).getBattlePoints () > strongestFoe.getBattlePoints ()) {
 					if (!cards [card]) {
 						Debug.Log ("Replaced strongest foe with: " + card.getCardName ());
-						strongestFoe = (Foe)card;
+                        Card tempcard = card;
+                        strongestFoe = (Foe)tempcard;
 					}
 				}
 			}
@@ -444,61 +445,33 @@ public abstract class AbstractAI {
 		return strongestFoe;
 	}
 
-    public bool GetWeaponsCount() {
-        Dictionary<String, int> WeaponsCount = new Dictionary<string, int>();
-        Quest quest = (Quest)board.getCardInPlay();
-
-        foreach (Card card in strategyOwner.getHand()){
-            if (!WeaponsCount.ContainsKey(card.getCardName()) && card.GetType().IsSubclassOf(typeof(Weapon)))
-            {
-                WeaponsCount.Add(card.getCardName(), 1);
-            }
-            else if (card.GetType().IsSubclassOf(typeof(Weapon))){
-                WeaponsCount[card.getCardName()]++;
-            }
-        }
-
-        for (int i = 0; i < quest.getNumStages(); i++){
-            if(WeaponsCount.Count == 0) {
-                return false;
-            }
-            else {
-                foreach (KeyValuePair<String, int> entry in WeaponsCount) {
-                    if (entry.Value == 0) {
-                        WeaponsCount.Remove(entry.Key);
-                    }
-                    else {
-                        WeaponsCount[entry.Key]--;
-                    }
-                }      
-            }
-        }
-
-        return true;
-    }
-
-    public bool ContainsAllies() {
-        foreach(Card card in strategyOwner.getHand()){
-            if(card.GetType().IsSubclassOf(typeof(Ally))){
-                Ally currentCard = (Ally)card;
-                if (currentCard.getBattlePoints() > 0){
-                    return true;
-                }
-            }
-            else if(card.GetType().IsSubclassOf(typeof(Amour))){
-                return true;
-            }
-        }
-        return false;
-    }
-
     public bool TwoWeaponsorAlliesPerStage() {
-        if(ContainsAllies()){
-            Debug.Log("AI strategy 1 has allies, returning true");
+        Quest quest = (Quest)board.getCardInPlay();
+        int numWeaponsAndAllies = 0;
+        foreach(Card card in strategyOwner.getHand()) {
+            if(card.GetType().IsSubclassOf(typeof(Weapon)) || card.GetType().IsSubclassOf(typeof(Ally)) || card.GetType().IsSubclassOf(typeof(Amour))){
+                numWeaponsAndAllies++;
+            }
+        }
+        if (numWeaponsAndAllies >= (quest.getNumStages() * 2)) {
             return true;
         }
-        else if(GetWeaponsCount()){
-            Debug.Log("AI strategy 1 has 2 weapons per stage");
+        else {
+            return false;
+        }
+    }
+
+    public bool FoesUnder20() {
+        int foes = 0;
+        foreach(Card card in strategyOwner.getHand()){
+            if(card.GetType().IsSubclassOf(typeof(Foe))){
+                Foe tempcard = (Foe)card;
+                if(tempcard.getBattlePoints() < 20){
+                    foes++;
+                }
+            }
+        }
+        if(foes >= 2) {
             return true;
         }
         else {

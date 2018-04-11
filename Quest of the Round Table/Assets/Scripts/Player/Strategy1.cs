@@ -20,7 +20,7 @@ public class Strategy1 : AbstractAI
     {
         Logger.getInstance().info("AI Strategy 1 deciding if participating in quest");
         Debug.Log("AI Strategy 1 deciding if participating in quest");
-        if(TwoWeaponsorAlliesPerStage()){
+        if(TwoWeaponsorAlliesPerStage() && FoesUnder20()){
             Logger.getInstance().info("AI Strategy 1 decided to participate in quest");
             Debug.Log("AI 1 playing in quest");
             return true;
