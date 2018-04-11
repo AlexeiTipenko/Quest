@@ -124,32 +124,26 @@ public class PlayerLayoutGroup : MonoBehaviour {
 		view.RPC("SwitchSceneScenario", PhotonTargets.All, sceneName, 3);
 	}
 
-    public static void SwitchScene(string SceneName) {
-        playerList = new List<Player>();
-        foreach (var player in PlayerListings)
-        {
-            print("Player name is: " + player.name);
+    public static void SwitchScene(string sceneName) {
+		playerList = new List<Player>();
+		foreach (var player in PlayerListings)
+		{
+			print("Player name is: " + player.name);
 			if (player.name.Contains ("AI_ONE_")) {
 				playerList.Add (new AIPlayer (player.name, new Strategy1 ()));
 			} else if (player.name.Contains ("AI_TWO_")) {
 				playerList.Add (new AIPlayer (player.name, new Strategy2 ()));
 			}
-            else {
-                playerList.Add(new HumanPlayer(player.name));
-            }
-        }
-        ButtonManager.playerList = playerList;
-        UnityEngine.SceneManagement.SceneManager.LoadScene(SceneName);
+			else {
+				playerList.Add(new HumanPlayer(player.name));
+			}
+		}
+		ButtonManager.playerList = playerList;
+        UnityEngine.SceneManagement.SceneManager.LoadScene(sceneName);
     }
 
-	public static void SwitchSceneScenario(string SceneName, int scenarioNum){
-        playerList = new List<Player>();
+	public static void SwitchSceneScenario(string sceneName, int scenarioNum) {
         ButtonManager.scenario = "scenario" + scenarioNum;
-        foreach (var player in PlayerListings)
-        {
-            playerList.Add(new HumanPlayer(player.name));
-        }
-        ButtonManager.playerList = playerList;
-        UnityEngine.SceneManagement.SceneManager.LoadScene(SceneName);
+		SwitchScene (sceneName);
     }
 }
