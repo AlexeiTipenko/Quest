@@ -20,6 +20,8 @@
         //Player 2
         adventureDeck.moveCardToIndex("Saxons", 12);
         adventureDeck.moveCardToIndex("Dragon", 13);
+        adventureDeck.moveCardToIndex("Excalibur", 14);
+        adventureDeck.moveCardToIndex("SirGalahad", 15);
 
         return adventureDeck;
     }
@@ -28,7 +30,7 @@
     {
         storyDeck = new StoryDeck();
 
-        storyDeck.moveCardToIndex("BoarHunt", 0);
+        storyDeck.moveCardToIndex("AtYork", 0);
         storyDeck.moveCardToIndex("RepelTheSaxonRaiders", 1);
 
         return storyDeck;
