@@ -89,7 +89,13 @@ public class AIPlayer : Player {
 	}
 
 	public override void PromptDiscardWeaponKingsCallToArms (KingsCallToArms card) {
-		//TODO: AI implementation of kings call to arms
+        List<Adventure> tempHand = new List<Adventure>(GetHand());
+        foreach(Adventure adventureCard in tempHand){
+            if (adventureCard.IsWeapon()){
+                GetHand().Remove(adventureCard);
+            }
+        }
+        card.PromptNextPlayer();
 	}
 
 	public AbstractAI GetStrategy()
