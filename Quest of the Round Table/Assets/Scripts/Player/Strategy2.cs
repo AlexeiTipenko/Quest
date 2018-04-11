@@ -209,7 +209,7 @@ public class Strategy2 : AbstractAI
             }
         } else {
             Debug.Log("Not the final stage. Play in increments of 10");
-            int currentBattlePoints = strategyOwner.getPlayArea().getBattlePoints();
+            int currentBattlePoints = strategyOwner.getPlayArea().GetBattlePoints();
             Debug.Log("Minimum battle points to pass: " + (previousStageBattlePoints + 10));
             foreach (Adventure card in sortedList) {
                 Debug.Log("Checking " + strategyOwner.getName() + "'s card for eligibility: " + card.GetCardName());
@@ -232,7 +232,7 @@ public class Strategy2 : AbstractAI
         }
         foreach (Adventure card in participationList) {
             Debug.Log("Moving card from " + strategyOwner.getName() + "'s hand to play area: " + card.GetCardName());
-            strategyOwner.getPlayArea().addCard(card);
+            strategyOwner.getPlayArea().AddCard(card);
             strategyOwner.RemoveCard(card);
         }
         stage.PromptFoeResponse(false);

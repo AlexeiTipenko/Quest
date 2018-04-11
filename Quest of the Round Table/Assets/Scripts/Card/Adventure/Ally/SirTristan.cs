@@ -12,7 +12,7 @@ public class SirTristan : Ally {
 
 	public override int getBattlePoints() {
         foreach (Player player in BoardManagerMediator.getInstance().getPlayers()) {
-            if (player.getPlayArea().containsCard("Queen Iseult")) {
+            if (player.getPlayArea().Contains("Queen Iseult")) {
                 return empoweredBattlePoints;
             }
         }

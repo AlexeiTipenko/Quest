@@ -43,7 +43,7 @@ public class CourtCalledToCamelotTest {
 
 			foreach (Adventure card in player.GetHand()) {
 				if (card.IsAlly()) {
-					playArea.addCard (card);
+					playArea.AddCard (card);
 				}
 			}
 			Debug.Log ("# card in the area for " + player.getName() +  " is " + player.getPlayArea ().getCards ().Count);

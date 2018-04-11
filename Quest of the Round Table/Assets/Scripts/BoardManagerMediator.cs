@@ -171,7 +171,7 @@ public class BoardManagerMediator
                 {
                     Debug.Log(card.GetCardName() + " removed from " + player.getName() + "'s play area.");
                     Logger.getInstance().info(card.GetCardName() + " removed from " + player.getName() + "'s play area.");
-                    player.getPlayArea().discardAlly(card.GetType());
+                    player.getPlayArea().DiscardChosenAlly(card.GetType());
                     return;
                 }
             }
@@ -415,7 +415,7 @@ public class BoardManagerMediator
 			if (quest.ContainsOnlyValidCards(player)) {
 				Debug.Log("Did not dropout");
 				TransferFromHandToPlayArea(player);
-				Debug.Log("Total battle points in play area is: " + player.getPlayArea().getBattlePoints());
+				Debug.Log("Total battle points in play area is: " + player.getPlayArea().GetBattlePoints());
 				if (IsOnlineGame()) {
 					getPhotonView().RPC("PromptFoeResponse", PhotonTargets.Others, false);
 				}

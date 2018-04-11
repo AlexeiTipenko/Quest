@@ -620,7 +620,7 @@ public class BoardManager : MonoBehaviour
 	}
 		
 	public static void TransferCard(Player player, Adventure card) {
-		player.getPlayArea().addCard(card);
+		player.getPlayArea().AddCard(card);
 		player.RemoveCard(card);
 	}
 

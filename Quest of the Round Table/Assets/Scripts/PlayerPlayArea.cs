@@ -15,7 +15,7 @@ public class PlayerPlayArea {
 	}
 
 
-    public int getBattlePoints() {
+    public int GetBattlePoints() {
         int totalPoints = 0;
         foreach(Adventure card in cards){
             totalPoints += card.getBattlePoints();
@@ -24,45 +24,21 @@ public class PlayerPlayArea {
     }
 
 
-	public void addCard(Adventure card) {
+	public void AddCard(Adventure card) {
 		cards.Add (card);
 	}
 
-	public void discardWeapons() {
-        List<Adventure> tempCards = new List<Adventure>();
+	public void DiscardClass(Type type) {
+		List<Adventure> tempCards = new List<Adventure> ();
 		foreach (Adventure card in cards) {
-            if (!card.IsWeapon()) {
-                tempCards.Add(card);
-            }
+			if (!card.MatchesType(type)) {
+				tempCards.Add (card);
+			}
 		}
-        cards = tempCards;
+		cards = tempCards;
 	}
 
-	public void discardAmours() {
-        List<Adventure> tempCards = new List<Adventure>();
-        foreach (Adventure card in cards)
-        {
-			if (!card.IsAmour())
-            {
-                tempCards.Add(card);
-            }
-        }
-        cards = tempCards;
-	}
-
-	public void discardAllies() {
-        List<Adventure> tempCards = new List<Adventure>();
-        foreach (Adventure card in cards)
-        {
-            if (!card.IsAlly())
-            {
-                tempCards.Add(card);
-            }
-        }
-        cards = tempCards;
-	}
-
-	public void discardAlly(Type type) {
+	public void DiscardChosenAlly(Type type) {
 		foreach (Adventure card in cards) {
 			if (card.GetType () == type) {
 				cards.Remove (card);
@@ -71,7 +47,7 @@ public class PlayerPlayArea {
 		}
 	}
 
-    public bool containsCard(String cardName) {
+    public bool Contains(String cardName) {
         foreach (Adventure card in cards) {
             if (card.GetCardName() == cardName) {
                 return true;

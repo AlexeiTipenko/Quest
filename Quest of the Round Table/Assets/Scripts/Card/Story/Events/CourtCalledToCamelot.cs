@@ -20,7 +20,7 @@ public class CourtCalledToCamelot : Events {
 		List<Player> allPlayers = BoardManagerMediator.getInstance().getPlayers();
 
 		foreach (Player player in allPlayers) {
-			player.getPlayArea ().discardAllies ();
+			player.getPlayArea ().DiscardClass (typeof(Ally));
 			Logger.getInstance ().debug ("Discarded all allies for " + player.getName());
 		}
 		Logger.getInstance ().info ("Finishing behaviour");

@@ -12,7 +12,7 @@ public class QueenIseult : Ally {
 
 	public new int getBidPoints() {
         foreach (Player player in BoardManagerMediator.getInstance().getPlayers()) {
-            if (player.getPlayArea().containsCard("Sir Tristan")) {
+            if (player.getPlayArea().Contains("Sir Tristan")) {
                 return empoweredBidPoints;
             }
         }

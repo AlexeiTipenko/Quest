@@ -210,7 +210,7 @@ public abstract class Quest : Story {
 		Debug.Log ("Playing stage: " + currentStage);
         foreach (Player player in board.getPlayers()) {
 			Debug.Log ("Discarding weapons for player: " + player.getName());
-            player.getPlayArea().discardWeapons();
+			player.getPlayArea ().DiscardClass (typeof(Weapon));
         }
         if (currentStage < numStages && participatingPlayers.Count > 0) {
             getStage(currentStage).Prepare();
@@ -221,7 +221,7 @@ public abstract class Quest : Story {
 
 	public void CompleteQuest() {
 		foreach (Player player in board.getPlayers()) {
-			player.getPlayArea ().discardAmours ();
+			player.getPlayArea ().DiscardClass (typeof(Amour));
 		}
 		numShieldsAwarded = numStages;
 		if (KingsRecognitionActive) {

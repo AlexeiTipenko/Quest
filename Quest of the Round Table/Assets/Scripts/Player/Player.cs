@@ -137,7 +137,7 @@ public abstract class Player {
 
 
     public int getBattlePoints() {
-        return rank.getBattlePoints() + playArea.getBattlePoints();
+        return rank.getBattlePoints() + playArea.GetBattlePoints();
     }
 
 		

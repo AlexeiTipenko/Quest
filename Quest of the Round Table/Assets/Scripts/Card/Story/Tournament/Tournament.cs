@@ -113,7 +113,7 @@ public abstract class Tournament : Story
 	public void CardsSelectionResponse(List<Adventure> chosenCards) {
         foreach (Adventure card in chosenCards) {
             playerToPrompt.RemoveCard(card);
-            playerToPrompt.getPlayArea().addCard(card);
+            playerToPrompt.getPlayArea().AddCard(card);
         }
 
         AddPlayerBattlePoints(chosenCards);
@@ -201,7 +201,7 @@ public abstract class Tournament : Story
 			DisplayTournamentResults ();
 		} else if (!isLastRound) {
 			foreach (Player player in board.getPlayers()) {
-				player.getPlayArea ().discardWeapons ();
+				player.getPlayArea ().DiscardClass (typeof(Weapon));
 			}
 			Logger.getInstance ().info("Round 2 of tournament started");
 			participatingPlayers = new List<Player>(winnerList);
@@ -212,8 +212,8 @@ public abstract class Tournament : Story
 			playerToPrompt.PromptTournament(this);
 		} else {
 			foreach (Player player in board.getPlayers()) {
-				player.getPlayArea ().discardWeapons ();
-				player.getPlayArea ().discardAmours ();
+				player.getPlayArea ().DiscardClass (typeof(Weapon));
+				player.getPlayArea ().DiscardClass (typeof(Amour));
 			}
 			board.nextTurn ();
 		}

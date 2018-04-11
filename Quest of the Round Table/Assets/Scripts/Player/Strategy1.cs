@@ -291,7 +291,7 @@ public class Strategy1 : AbstractAI
 		}
 		foreach (Adventure card in participationList) {
 			Debug.Log("Moving card from " + strategyOwner.getName() + "'s hand to play area: " + card.GetCardName());
-			strategyOwner.getPlayArea().addCard(card);
+			strategyOwner.getPlayArea().AddCard(card);
 			strategyOwner.RemoveCard(card);
 		}
 		stage.PromptFoeResponse(false);
