@@ -99,7 +99,14 @@ public class AIPlayer : Player {
 	}
 
 	public override void PromptDiscardFoesKingsCallToArms (KingsCallToArms card, int numFoeCards) {
-		//TODO: AI implementation of kings call to arms
+        List<Adventure> tempHand = new List<Adventure>(GetHand());
+        foreach(Adventure adventureCard in tempHand){
+            if(numFoeCards != 0 && adventureCard.IsFoe()){
+                GetHand().Remove(adventureCard);
+                numFoeCards--;
+            }
+        }
+        card.PromptNextPlayer();
 	}
 
 	public AbstractAI GetStrategy()
