@@ -595,7 +595,7 @@ public class BoardManagerMediator
 	}
 
 
-	public void PromptToDiscardFoes(Player player, int numFoes) 
+	public void PromptToDiscardFoes(KingsCallToArms card, Player player, int numFoes) 
 	{
 		BoardManager.DrawCards(player);
 		BoardManager.SetInteractionText (Localization.PromptToDiscardFoes(player, numFoes));
@@ -606,7 +606,7 @@ public class BoardManagerMediator
             {
                 view.RPC("PlayerDiscardedFoes", PhotonTargets.Others);
             }
-			((KingsCallToArms)cardInPlay).PlayerDiscardedFoes();
+			card.PlayerDiscardedFoes();
 		};
 		BoardManager.SetInteractionButtons("Complete", "", action, null);
 		Debug.Log("Prompting " + player.getName() + " to prepare cards.");

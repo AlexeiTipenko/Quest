@@ -92,6 +92,10 @@ public class AIPlayer : Player {
 		//TODO: AI implementation of kings call to arms
 	}
 
+	public override void PromptDiscardFoesKingsCallToArms (KingsCallToArms card, int numFoeCards) {
+		//TODO: AI implementation of kings call to arms
+	}
+
 	public AbstractAI GetStrategy()
     {
         return strategy;
