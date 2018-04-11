@@ -62,4 +62,8 @@ MonoBehaviour:
   - EvaluateNextPlayerForFoe
   - TransferCard
   - PromptAcceptQuest
+  - PlayerListingsAdd
+  - AddAI2
+  - AddAI
+  - SwitchSceneScenario
   DisableAutoOpenWizard: 1

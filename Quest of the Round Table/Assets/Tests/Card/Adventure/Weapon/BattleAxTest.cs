@@ -9,7 +9,7 @@ public class BattleAxeTest {
 	public void BattleAxeTestSimplePasses() {
 		Assert.IsTrue (BattleAx.frequency == 8);
 		Weapon battleAx = new BattleAx ();
-		Assert.AreEqual ("Battle Ax", battleAx.getCardName ());
+		Assert.AreEqual ("Battle Ax", battleAx.GetCardName ());
 		Assert.IsTrue (battleAx.getBattlePoints() == 15);
 	}
 }

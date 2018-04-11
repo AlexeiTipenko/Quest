@@ -9,7 +9,7 @@ public class SirGawainTest {
 	public void SirGawainTestSimplePasses() {
 		Assert.IsTrue (SirGawain.frequency == 1);
 		Ally sirGawain = new SirGawain();
-		Assert.AreEqual ("Sir Gawain", sirGawain.getCardName());
+		Assert.AreEqual ("Sir Gawain", sirGawain.GetCardName());
 
 		//unempowered battle points
 		Assert.IsTrue (sirGawain.getBattlePoints() == 10);

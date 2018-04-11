@@ -9,7 +9,7 @@ public class QueenGuinevereTest {
 	public void QueenGuinevereTestSimplePasses() {
 		Assert.IsTrue (QueenGuinevere.frequency == 1);
 		Ally queenguinevere = new QueenGuinevere();
-		Assert.AreEqual ("Queen Guinevere", queenguinevere.getCardName());
+		Assert.AreEqual ("Queen Guinevere", queenguinevere.GetCardName());
 		Assert.IsTrue (queenguinevere.getBattlePoints() == 0);
 		Assert.IsTrue (queenguinevere.getBidPoints() == 3);
 	}

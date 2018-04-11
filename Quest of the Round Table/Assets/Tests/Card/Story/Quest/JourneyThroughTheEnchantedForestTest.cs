@@ -10,7 +10,7 @@ public class JourneyThroughTheEnchantedForestTest {
 		Assert.IsTrue (JourneyThroughTheEnchantedForest.frequency == 1);
 
 		Quest journeyThroughTheEnchantedForest = new JourneyThroughTheEnchantedForest ();
-		Assert.AreEqual ("Journey through the Enchanted Forest", journeyThroughTheEnchantedForest.getCardName());
+		Assert.AreEqual ("Journey through the Enchanted Forest", journeyThroughTheEnchantedForest.GetCardName());
 		Assert.IsTrue (journeyThroughTheEnchantedForest.getShieldsWon() == 3);
 
 		//need to figure out the dominantFoe business before passing the test case as complete

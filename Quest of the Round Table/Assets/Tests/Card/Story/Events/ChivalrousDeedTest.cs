@@ -11,7 +11,7 @@ public class ChivalrousDeedTest {
 	public void ChivalrousDeedTestSimplePasses() {
 		Assert.IsTrue (ChivalrousDeed.frequency == 1);
 		ChivalrousDeed chivalrousDeed = new ChivalrousDeed ();
-		Assert.AreEqual ("Chivalrous Deed", chivalrousDeed.getCardName ());
+		Assert.AreEqual ("Chivalrous Deed", chivalrousDeed.GetCardName ());
 	}
 
 	[Test]

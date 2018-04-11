@@ -10,7 +10,7 @@ public class KingsRecognitionTest {
 	public void KingsRecognitionTestSimplePasses() {
 		Assert.IsTrue (KingsRecognition.frequency == 2);
         KingsRecognition kingsRecognition = new KingsRecognition ();
-		Assert.AreEqual ("King's Recognition", kingsRecognition.getCardName ());
+		Assert.AreEqual ("King's Recognition", kingsRecognition.GetCardName ());
 	}
 
 	[Test]

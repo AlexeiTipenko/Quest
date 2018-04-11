@@ -122,7 +122,7 @@ public class KingsCallToArms : Events {
         Debug.Log("Number of cards discarded: " + dicardedCards.Count);
 
         if (dicardedCards.Count == 1){
-            if (dicardedCards[0].GetType().IsSubclassOf(typeof(Weapon))){
+			if (dicardedCards[0].IsWeapon()){
 				currentPlayer.GetAndRemoveCards ();
 
                 if (board.IsOnlineGame())
@@ -156,7 +156,7 @@ public class KingsCallToArms : Events {
 
         if (dicardedCards.Count == getNumFoeCards()) {
             foreach (Card card in dicardedCards) {
-                if (!card.GetType().IsSubclassOf(typeof(Foe))) {
+				if (!card.IsFoe()) {
                     valid = false;
                 }
             }
@@ -188,7 +188,7 @@ public class KingsCallToArms : Events {
 	private int getNumFoeCards() {
 		int numFoeCards = 0;
 		foreach (Card card in currentPlayer.getHand()) {
-			if (card.GetType ().IsSubclassOf (typeof(Foe))) {
+			if (card.IsFoe()) {
 				numFoeCards++;
 				if (numFoeCards == 2) {
 					return numFoeCards;
@@ -200,7 +200,7 @@ public class KingsCallToArms : Events {
 
 	public bool hasWeapons() {
 		foreach (Card card in currentPlayer.getHand()) {
-			if (card.GetType().IsSubclassOf (typeof(Weapon))) {
+			if (card.IsWeapon()) {
 				return true;
 			}
 		}

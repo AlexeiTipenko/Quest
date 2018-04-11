@@ -123,9 +123,12 @@ public class Localization {
 
 	private static bool CurrentPlayerIsLocal(Player player) {
 		board = BoardManagerMediator.getInstance ();
-		List<Player> players = board.getPlayers ();
-		int playerTurn = players.IndexOf (player) + 1;
-		return (playerTurn == PhotonNetwork.player.ID);
+		if (board.IsOnlineGame ()) {
+			List<Player> players = board.getPlayers ();
+			int playerTurn = players.IndexOf (player) + 1;
+			return (playerTurn == PhotonNetwork.player.ID);
+		}
+		return true;
 	}
 
 	private static string QuestStage(int stageNum) {

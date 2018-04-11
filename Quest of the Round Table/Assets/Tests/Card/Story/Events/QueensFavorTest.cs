@@ -11,7 +11,7 @@ public class QueensFavorTest {
 	public void QueensFavorTestSimplePasses() {
 		Assert.IsTrue (QueensFavor.frequency == 2);
         QueensFavor queensFavor = new QueensFavor ();
-		Assert.AreEqual ("Queen's Favor", queensFavor.getCardName ());
+		Assert.AreEqual ("Queen's Favor", queensFavor.GetCardName ());
 	}
 
 	[Test]

@@ -21,4 +21,8 @@ public abstract class Foe : Adventure {
 		return battlePoints;
 	}
 
+    public int GetMinBattlePoints() {
+        return battlePoints;
+    }
+
 }

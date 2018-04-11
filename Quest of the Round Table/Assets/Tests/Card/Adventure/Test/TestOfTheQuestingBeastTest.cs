@@ -10,7 +10,7 @@ public class TestOfTheQuestingBeastTest {
 		Assert.IsTrue (TestOfTheQuestingBeast.frequency == 2);
 
 		Test testOfTheQuestingBeast = new TestOfTheQuestingBeast();
-		Assert.AreEqual ("Test of the Questing Beast", testOfTheQuestingBeast.getCardName ());
+		Assert.AreEqual ("Test of the Questing Beast", testOfTheQuestingBeast.GetCardName ());
 
 		//If not condition, bid == 3
 		Assert.IsTrue (testOfTheQuestingBeast.getMinBidValue () == 3);

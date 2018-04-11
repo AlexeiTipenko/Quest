@@ -23,7 +23,10 @@ public abstract class Player {
 		playArea = new PlayerPlayArea ();
         board = BoardManagerMediator.getInstance();
 		discarded = false;
-        random = new System.Random();
+		random = new System.Random();
+		if (BoardManagerMediator.getInstance ().IsOnlineGame ()) {
+			random = new System.Random (Deck.seed);
+		}
 	}
 
 
@@ -74,7 +77,7 @@ public abstract class Player {
     {
         foreach (Card card in cards)
         {
-            card.setOwner(this);
+            card.SetOwner(this);
             hand.Add(card);
         }
         if (hand.Count > 12)
@@ -119,7 +122,7 @@ public abstract class Player {
                 hand.RemoveAt(hand.Count - 1);
             } else {
                 for (int i = 0; i < numCards; i++) {
-                    int index = random.Next(hand.Count - 1);
+					int index = random.Next(hand.Count - 1);
                     board.AddToDiscardDeck(hand.ElementAt(index));
                     hand.RemoveAt(index);
                 }
@@ -172,7 +175,7 @@ public abstract class Player {
     public int getHandBid() {
         int availableBids = 0;
         foreach (Card card in hand) {
-            if (card.GetType().IsSubclassOf(typeof(Ally)))
+            if (card.IsAlly())
             {
                 if ( ((Ally)card).getBidPoints() == 0) {
                     availableBids += 1;
@@ -193,7 +196,7 @@ public abstract class Player {
         int availableBids = 0;
         foreach (Card card in playArea.getCards())
         {
-            if (card.GetType().IsSubclassOf(typeof(Ally))) {
+            if (card.IsAlly()) {
                 availableBids += ((Ally)card).getBidPoints();
             }
             else {
@@ -208,7 +211,7 @@ public abstract class Player {
     {
         for (int i = 0; i < hand.Count(); i++)
         {
-            if (card.getCardName() == hand[i].getCardName())
+            if (card.GetCardName() == hand[i].GetCardName())
             {
                 board.AddToDiscardDeck(hand.ElementAt(i));
                 hand.RemoveAt(i);
@@ -255,7 +258,7 @@ public abstract class Player {
 
 	public Player upgradeRank() {
 		rank = rank.upgrade ();
-        Debug.Log("Upgraded " + name + "'s rank to " + rank.getCardName());
+        Debug.Log("Upgraded " + name + "'s rank to " + rank.GetCardName());
 		return this;
 	}
 
@@ -277,7 +280,7 @@ public abstract class Player {
         }
         foreach (Card card in hand)
         {
-            output += card.toString() + ", ";
+            output += card.ToString() + ", ";
         }
         output = output.Substring(0, output.Length - 2);
         return output;

@@ -7,6 +7,14 @@ public class PunManager : Photon.MonoBehaviour {
 
     BoardManagerMediator board;
 
+    [PunRPC]
+	public void AddAI(int aiNum, int aiID) {
+        Logger.getInstance().info("Updating AI for other players");
+		GameObject obj = GameObject.Find ("Canvas/CurrentRoom/PlayerList/Viewport/PlayerLayoutGroup");
+		PlayerLayoutGroup playerLayoutGroup = obj.GetComponent<PlayerLayoutGroup> ();
+		playerLayoutGroup.AddAI(aiNum, aiID);
+    }
+
 	[PunRPC]
 	public void UpdateSeed(int seed) {
         Debug.Log("Updated seed is: " + seed);
@@ -21,8 +29,8 @@ public class PunManager : Photon.MonoBehaviour {
     }
 
     [PunRPC]
-    public void SwitchScene1(string sceneName){
-        PlayerLayoutGroup.SwitchScene1(sceneName);
+	public void SwitchSceneScenario(string sceneName, int scenarioNum) {
+		PlayerLayoutGroup.SwitchSceneScenario(sceneName, scenarioNum);
     }
 
 	[PunRPC]
@@ -34,7 +42,7 @@ public class PunManager : Photon.MonoBehaviour {
 		if (localPlayer != null) {
 			List<Card> localHand = localPlayer.getHand ();
 			foreach (Card localCard in localHand) {
-				if (localCard.getCardName () == card.getCardName ()) {
+				if (localCard.GetCardName () == card.GetCardName ()) {
 					BoardManager.TransferCard (localPlayer, localCard);
 					break;
 				}
@@ -67,7 +75,7 @@ public class PunManager : Photon.MonoBehaviour {
 	[PunRPC]
 	public void DealCardsNextPlayer() {
         PrepareRPC ();
-		if (board.getCardInPlay ().GetType ().IsSubclassOf (typeof(Quest))) {
+		if (board.getCardInPlay().IsQuest()) {
 			((Quest)board.getCardInPlay ()).getCurrentStage ().DealCardsNextPlayer ();
 		} else if (board.getCardInPlay ().GetType () == typeof(QueensFavor)) {
 			((QueensFavor)board.getCardInPlay ()).DealCardsNextPlayer ();

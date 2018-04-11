@@ -12,6 +12,8 @@ public class PlayerLayoutGroup : MonoBehaviour {
         get { return _playerListingPrefab; }
     }
 
+    [NonSerialized]PhotonView view;
+
     public static List<Player> playerList;
 
     public static List<PlayerListing> _playerListings = new List<PlayerListing>();
@@ -28,17 +30,36 @@ public class PlayerLayoutGroup : MonoBehaviour {
         }
     }
 
-    public void SetupAI1()
+	public void SetupAI1()
+	{
+		int aiID = UnityEngine.Random.Range (1, 50);
+		view = PhotonView.Get (GameObject.Find ("DDOL/PunManager"));
+		view.RPC("AddAI", PhotonTargets.All, 1, aiID);
+	}
+
+    public void SetupAI2()
     {
-        GameObject playerListingObj = Instantiate(PlayerListingPrefab);
-        Text[] texts = playerListingObj.transform.GetComponentsInChildren<Text>();
-        texts[0].text = "AI_One" + UnityEngine.Random.Range(1, 50);
-        playerListingObj.transform.SetParent(transform, false);
-
-        PlayerListing playerListing = playerListingObj.GetComponent<PlayerListing>();
-
-        PlayerListings.Add(playerListing);
+		int aiID = UnityEngine.Random.Range (1, 50);
+		view = PhotonView.Get (GameObject.Find ("DDOL/PunManager"));
+		view.RPC("AddAI", PhotonTargets.All, 2, aiID);
     }
+
+	public void AddAI(int aiNum, int aiID) {
+		GameObject playerListingObj = Instantiate(PlayerListingPrefab);
+		Text[] texts = playerListingObj.transform.GetComponentsInChildren<Text>();
+		string aiName = "AI_";
+		if (aiNum == 1) {
+			aiName += "ONE_";
+		} else if (aiNum == 2) {
+			aiName += "TWO_";
+		}
+		texts[0].text = aiName + aiID;
+		playerListingObj.name = aiName + aiID;
+		playerListingObj.transform.SetParent(transform, false);
+
+		PlayerListing playerListing = playerListingObj.GetComponent<PlayerListing>();
+		PlayerListings.Add(playerListing);
+	}
 
     private void OnPhotonPlayerConnected(PhotonPlayer photonPlayer){
         PlayerJoinedRoom(photonPlayer);
@@ -88,29 +109,41 @@ public class PlayerLayoutGroup : MonoBehaviour {
         view.RPC("SwitchScene", PhotonTargets.All, sceneName);
     }
 
-    public void PunSwitchScene1(string sceneName){
+    public void PunSwitchScene1(string sceneName) {
         PhotonView view = PhotonView.Get(GameObject.Find("DDOL/PunManager"));
-        view.RPC("SwitchScene1", PhotonTargets.All, sceneName);
+        view.RPC("SwitchSceneScenario", PhotonTargets.All, sceneName, 1);
     }
 
-    public static void SwitchScene(string SceneName) {
-        playerList = new List<Player>();
-        foreach (var player in PlayerListings)
-        {
-            playerList.Add(new HumanPlayer(player.name));
-        }
-        ButtonManager.playerList = playerList;
-        UnityEngine.SceneManagement.SceneManager.LoadScene(SceneName);
+	public void PunSwitchScene2(string sceneName) {
+		PhotonView view = PhotonView.Get(GameObject.Find("DDOL/PunManager"));
+		view.RPC("SwitchSceneScenario", PhotonTargets.All, sceneName, 2);
+	}
+
+	public void PunSwitchScene3(string sceneName) {
+		PhotonView view = PhotonView.Get(GameObject.Find("DDOL/PunManager"));
+		view.RPC("SwitchSceneScenario", PhotonTargets.All, sceneName, 3);
+	}
+
+    public static void SwitchScene(string sceneName) {
+		playerList = new List<Player>();
+		foreach (var player in PlayerListings)
+		{
+			print("Player name is: " + player.name);
+			if (player.name.Contains ("AI_ONE_")) {
+				playerList.Add (new AIPlayer (player.name, new Strategy1 ()));
+			} else if (player.name.Contains ("AI_TWO_")) {
+				playerList.Add (new AIPlayer (player.name, new Strategy2 ()));
+			}
+			else {
+				playerList.Add(new HumanPlayer(player.name));
+			}
+		}
+		ButtonManager.playerList = playerList;
+        UnityEngine.SceneManagement.SceneManager.LoadScene(sceneName);
     }
 
-    public static void SwitchScene1(string SceneName){
-        playerList = new List<Player>();
-        ButtonManager.scenario = "scenario1";
-        foreach (var player in PlayerListings)
-        {
-            playerList.Add(new HumanPlayer(player.name));
-        }
-        ButtonManager.playerList = playerList;
-        UnityEngine.SceneManagement.SceneManager.LoadScene(SceneName);
+	public static void SwitchSceneScenario(string sceneName, int scenarioNum) {
+        ButtonManager.scenario = "scenario" + scenarioNum;
+		SwitchScene (sceneName);
     }
 }

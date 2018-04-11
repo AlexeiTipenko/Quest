@@ -9,7 +9,7 @@ public class SirPercivalTest {
 	public void SirPercivalTestSimplePasses() {
 		Assert.IsTrue (SirPercival.frequency == 1);
 		Ally sirPercival = new SirPercival();
-		Assert.AreEqual ("Sir Percival", sirPercival.getCardName());
+		Assert.AreEqual ("Sir Percival", sirPercival.GetCardName());
 
 		//unempowered battle points
 		Assert.IsTrue (sirPercival.getBattlePoints() == 5);

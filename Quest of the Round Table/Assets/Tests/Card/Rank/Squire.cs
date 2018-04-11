@@ -9,7 +9,7 @@ public class SquireTest {
 	public void SquireTestSimplePasses() {
 		Assert.IsTrue (Squire.frequency == 4);
 		Squire squire = new Squire ();
-		Assert.AreEqual ("Squire", squire.getCardName());
+		Assert.AreEqual ("Squire", squire.GetCardName());
 		Assert.IsTrue (squire.getBattlePoints() == 5);
 	}
 }

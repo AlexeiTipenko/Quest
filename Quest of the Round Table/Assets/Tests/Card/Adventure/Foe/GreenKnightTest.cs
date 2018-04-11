@@ -9,7 +9,7 @@ public class GreenKnightTest {
 	public void GreenKnightTestSimplePasses() {
 		Assert.IsTrue (GreenKnight.frequency == 2);
 		Foe greenKnight = new GreenKnight();
-		Assert.AreEqual ("Green Knight", greenKnight.getCardName());
+		Assert.AreEqual ("Green Knight", greenKnight.GetCardName());
 
 		//Not empowered
 		Assert.IsTrue (greenKnight.getBattlePoints() == 25);

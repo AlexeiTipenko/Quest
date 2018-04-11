@@ -9,7 +9,7 @@ public class SaxonsTest {
 	public void SaxonsTestSimplePasses() {
 		Assert.IsTrue (Saxons.frequency == 5);
 		Foe saxons = new Saxons();
-		Assert.AreEqual ("Saxons", saxons.getCardName());
+		Assert.AreEqual ("Saxons", saxons.GetCardName());
 
 		//Not empowered
 		Assert.IsTrue (saxons.getBattlePoints() == 10);

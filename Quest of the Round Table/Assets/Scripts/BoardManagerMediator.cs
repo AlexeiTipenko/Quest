@@ -44,18 +44,22 @@ public class BoardManagerMediator
 		this.players = players;
         switch (ButtonManager.scenario)
         {
-            case "scenario1":
-                adventureDeck = (AdventureDeck)Scenario1.getInstance().AdventureDeck();
-                storyDeck = (StoryDeck)Scenario1.getInstance().StoryDeck();
-                break;
-            case "scenario2":
-                adventureDeck = (AdventureDeck)Scenario2.getInstance().AdventureDeck();
-                storyDeck = (StoryDeck)Scenario2.getInstance().StoryDeck();
-                break;
-            default:
-                adventureDeck = new AdventureDeck();
-                storyDeck = new StoryDeck();
-                break;
+        case "scenario1":
+            adventureDeck = (AdventureDeck)Scenario1.getInstance().AdventureDeck();
+            storyDeck = (StoryDeck)Scenario1.getInstance().StoryDeck();
+            break;
+        case "scenario2":
+            adventureDeck = (AdventureDeck)Scenario2.getInstance().AdventureDeck();
+            storyDeck = (StoryDeck)Scenario2.getInstance().StoryDeck();
+            break;
+		case "scenario3":
+			adventureDeck = (AdventureDeck)Scenario3.getInstance ().AdventureDeck ();
+			storyDeck = (StoryDeck)Scenario3.getInstance ().StoryDeck ();
+			break;
+        default:
+            adventureDeck = new AdventureDeck();
+            storyDeck = new StoryDeck();
+            break;
         }
 		adventureDiscard = new DiscardDeck ();
 		storyDiscard = new DiscardDeck ();
@@ -110,7 +114,7 @@ public class BoardManagerMediator
 
         foreach(string name in cardNames){
             foreach (Card card in player.getHand()) {
-                if (card.getCardName() == name) {
+                if (card.GetCardName() == name) {
                     cardList.Add(card);
                     break;
                 }
@@ -133,7 +137,7 @@ public class BoardManagerMediator
         {
             foreach (Card card in player.getHand())
             {
-                if (card.getCardName() == name)
+                if (card.GetCardName() == name)
                 {
                     cardList.Add(card);
                     break;
@@ -148,10 +152,10 @@ public class BoardManagerMediator
         
         foreach (Card card in players[playerTurn].getHand())
         {
-            if (card.getCardName() == cardName)
+            if (card.GetCardName() == cardName)
             {
-                Debug.Log(card.getCardName() + " removed from " + players[playerTurn].getName() + "'s hand.");
-                Logger.getInstance().info(card.getCardName() + " removed from " + players[playerTurn].getName() + "'s hand.");
+                Debug.Log(card.GetCardName() + " removed from " + players[playerTurn].getName() + "'s hand.");
+                Logger.getInstance().info(card.GetCardName() + " removed from " + players[playerTurn].getName() + "'s hand.");
                 players[playerTurn].RemoveCard(card);
                 break;
             }
@@ -163,10 +167,10 @@ public class BoardManagerMediator
         foreach (Player player in players){
             foreach (Card card in player.getPlayArea().getCards())
             {
-                if (card.getCardName() == cardName)
+                if (card.GetCardName() == cardName)
                 {
-                    Debug.Log(card.getCardName() + " removed from " + player.getName() + "'s play area.");
-                    Logger.getInstance().info(card.getCardName() + " removed from " + player.getName() + "'s play area.");
+                    Debug.Log(card.GetCardName() + " removed from " + player.getName() + "'s play area.");
+                    Logger.getInstance().info(card.GetCardName() + " removed from " + player.getName() + "'s play area.");
                     player.getPlayArea().discardAlly(card.GetType());
                     return;
                 }
@@ -199,7 +203,7 @@ public class BoardManagerMediator
 	}
 
     public void AddToDiscardDeck(Card card) {
-        if (card.GetType().IsSubclassOf(typeof(Story))) {
+		if (card.IsStory()) {
             storyDiscard.addCard(card);
         } else {
             adventureDiscard.addCard(card);
@@ -237,7 +241,7 @@ public class BoardManagerMediator
                 storyDeck = new StoryDeck();
             }
             cardInPlay = (Story)storyDeck.drawCard();
-            Debug.Log("Drew card: " + cardInPlay.getCardName());
+            Debug.Log("Drew card: " + cardInPlay.GetCardName());
             cardInPlay.startBehaviour();
         }
         else
@@ -249,23 +253,16 @@ public class BoardManagerMediator
 
     public void nextTurn()
     {
-		Debug.Log ("nextTurn 0");
-        if (cardInPlay.GetType().IsSubclassOf(typeof(Quest))) {
+		if (cardInPlay.IsQuest()) {
             BoardManager.DestroyStages();
         }
         BoardManager.DestroyCards();
         BoardManager.DestroyDiscardArea();
         BoardManager.DestroyMordredDiscardArea();
-        //Debug.Log("ENDING TURN FOR PLAYER: " + players[playerTurn]);
-        //BoardManager.DestroyMordredButton();
         BoardManager.ClearInteractions();
-		Debug.Log ("nextTurn 1");
         BoardManager.SetIsFreshTurn(true);
-		Debug.Log ("nextTurn 2");
         AddToDiscardDeck(cardInPlay);
-		Debug.Log ("nextTurn 3");
         cardInPlay = null;
-		Debug.Log ("nextTurn 4");
         playerTurn = (playerTurn + 1) % players.Count;
 		Debug.Log ("Going to next turn for player " + players[playerTurn] );
         playTurn();
@@ -275,7 +272,7 @@ public class BoardManagerMediator
     {
         foreach (Player player in players)
         {
-            if (player.getRank().getCardName() == "Knight of the Round Table")
+            if (player.getRank().GetCardName() == "Knight of the Round Table")
             {
                 return true;
             }
@@ -474,6 +471,9 @@ public class BoardManagerMediator
             }
         };
         Action action2 = () => {
+			if (IsOnlineGame()) {
+				view.RPC("PromptTestResponse", PhotonTargets.Others, true, 0);
+			}
             stage.PromptTestResponse(true, 0);
         };
         BoardManager.SetInteractionButtons("Continue", "Drop out", action1, action2);
@@ -515,7 +515,7 @@ public class BoardManagerMediator
         BoardManager.DrawCards(player);
 		BoardManager.SetInteractionText(Localization.PromptEnterTournament(player));
         Action action1 = () => {
-			Debug.Log("Action1 (accept) for " + tournament.getCardName() + " for player " + player.getName());
+			Debug.Log("Action1 (accept) for " + tournament.GetCardName() + " for player " + player.getName());
             if (IsOnlineGame()) {
                 view.RPC("PromptEnterTournamentResponse", PhotonTargets.Others, true);
             }
@@ -524,7 +524,7 @@ public class BoardManagerMediator
         };
 
         Action action2 = () => {
-			Debug.Log("Action2 (decline) for " + tournament.getCardName() + " for player " + player.getName());
+			Debug.Log("Action2 (decline) for " + tournament.GetCardName() + " for player " + player.getName());
             if (IsOnlineGame()) {
 				view.RPC("PromptEnterTournamentResponse", PhotonTargets.Others, false);
             }

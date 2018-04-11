@@ -9,6 +9,6 @@ public class AtYorkTest {
 	public void AtYorkTestSimplePasses() {
 		Assert.IsTrue (AtYork.frequency == 1);
 		Tournament york = new AtYork ();
-		Assert.AreEqual("At York", york.getCardName());
+		Assert.AreEqual("At York", york.GetCardName());
 	}
 }

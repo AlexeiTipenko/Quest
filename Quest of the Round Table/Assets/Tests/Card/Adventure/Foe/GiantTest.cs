@@ -9,7 +9,7 @@ public class GiantTest {
 	public void GiantTestSimplePasses() {
 		Assert.IsTrue (Giant.frequency == 2);
 		Foe giant = new Giant();
-		Assert.AreEqual ("Giant", giant.getCardName());
+		Assert.AreEqual ("Giant", giant.GetCardName());
 	
 		Assert.IsTrue (giant.getBattlePoints() == 40);
 	}

@@ -309,7 +309,7 @@ public class BoardManager : MonoBehaviour
         {
             GameObject handArea = GameObject.Find("Canvas/TabletopImage/HandArea");
             GameObject instance = Instantiate(Resources.Load("CardPrefab", typeof(GameObject))) as GameObject;
-            instance.name = card.getCardName();
+            instance.name = card.GetCardName();
             Image cardImg = instance.GetComponent<Image>();
             cardImg.sprite = Resources.Load<Sprite>("cards/" + card.cardImageName);
             instance.tag = "HandCard";
@@ -323,7 +323,7 @@ public class BoardManager : MonoBehaviour
         {
             GameObject playArea = GameObject.Find("Canvas/TabletopImage/PlayerPlayArea");
             GameObject instance = Instantiate(Resources.Load("NoDragCardPrefab", typeof(GameObject))) as GameObject;
-            instance.name = card.getCardName();
+            instance.name = card.GetCardName();
             Image cardImg = instance.GetComponent<Image>();
             cardImg.sprite = Resources.Load<Sprite>("cards/" + card.cardImageName);
             instance.tag = "PlayAreaCard";
@@ -361,15 +361,15 @@ public class BoardManager : MonoBehaviour
         GameObject rankArea = GameObject.Find("Canvas/TabletopImage/RankArea");
         GameObject noDragInstance = Instantiate(Resources.Load("NoDragCardPrefab", typeof(GameObject))) as GameObject;
         Image cardImg = noDragInstance.GetComponent<Image>();
-        noDragInstance.name = player.getRank().getCardName();
-        cardImg.sprite = Resources.Load<Sprite>("cards/ranks/" + player.getRank().getCardName());
+        noDragInstance.name = player.getRank().GetCardName();
+        cardImg.sprite = Resources.Load<Sprite>("cards/ranks/" + player.getRank().GetCardName());
         noDragInstance.tag = "RankCard";
         noDragInstance.transform.SetParent(rankArea.transform, false);
     }
 
     public static void DrawStageAreaCards(Player player) {
         DestroyStageAreaCards();
-        if (BoardManagerMediator.getInstance().getCardInPlay().GetType().IsSubclassOf(typeof(Quest))) {
+		if (BoardManagerMediator.getInstance().getCardInPlay().IsQuest()) {
             Quest questInPlay = (Quest)BoardManagerMediator.getInstance().getCardInPlay();
             for (int i = 0; i < questInPlay.getNumStages(); i++)
             {
@@ -385,12 +385,12 @@ public class BoardManager : MonoBehaviour
                         || (i == questInPlay.getCurrentStage().getStageNum() 
                             && isResolutionOfStage)
                         || (i == questInPlay.getCurrentStage().getStageNum() 
-                            && questInPlay.getStage(i).getStageCard().GetType().IsSubclassOf(typeof(Test)) 
+							&& questInPlay.getStage(i).getStageCard().IsTest() 
                             && questInPlay.getStage(i).IsInProgress())) {
                         foreach (Card card in currentStage.getCards()) {
                             GameObject noDragInstance = Instantiate(Resources.Load("NoDragCardPrefab", typeof(GameObject))) as GameObject;
                             Image cardImg = noDragInstance.GetComponent<Image>();
-                            noDragInstance.name = card.getCardName();
+                            noDragInstance.name = card.GetCardName();
                             cardImg.sprite = Resources.Load<Sprite>("cards/" + card.cardImageName);
                             noDragInstance.tag = "StageCard";
                             noDragInstance.transform.SetParent(boardAreaFoe.transform, false);
@@ -445,7 +445,7 @@ public class BoardManager : MonoBehaviour
 
     public static void DestroyStages()
     {
-        if (BoardManagerMediator.getInstance().getCardInPlay().GetType().IsSubclassOf(typeof(Quest)))
+		if (BoardManagerMediator.getInstance().getCardInPlay().IsQuest())
         {
             Quest questInPlay = (Quest)BoardManagerMediator.getInstance().getCardInPlay();
             for (int i = 0; i < questInPlay.getNumStages(); i++) {
@@ -525,7 +525,7 @@ public class BoardManager : MonoBehaviour
         GameObject noDragInstance = Instantiate(Resources.Load("NoDragCardPrefab", typeof(GameObject))) as GameObject;
         Card cardInPlay = BoardManagerMediator.getInstance().getCardInPlay();
         Image cardImg = noDragInstance.GetComponent<Image>();
-        noDragInstance.name = cardInPlay.getCardName();
+        noDragInstance.name = cardInPlay.GetCardName();
         cardImg.sprite = Resources.Load<Sprite>("cards/" + cardInPlay.cardImageName);
         noDragInstance.tag = "CardInPlay";
         noDragInstance.transform.SetParent(cardInPlayArea.transform, false);
@@ -563,7 +563,7 @@ public class BoardManager : MonoBehaviour
 
     public static List<Stage> CollectStageCards() {
         List<Stage> stages = new List<Stage>();
-        if (BoardManagerMediator.getInstance().getCardInPlay().GetType().IsSubclassOf(typeof(Quest)))
+		if (BoardManagerMediator.getInstance().getCardInPlay().IsQuest())
         {
             Quest questInPlay = (Quest)BoardManagerMediator.getInstance().getCardInPlay();
             for (int i = 0; i < questInPlay.getNumStages(); i++)
@@ -575,7 +575,7 @@ public class BoardManager : MonoBehaviour
                     Type genericType = Type.GetType(child.name.Replace(" ", ""), true);
                     Card card = (Card)Activator.CreateInstance(genericType);
                     card.cardImageName = child.name.Replace(" ", "");
-                    if (genericType.IsSubclassOf(typeof(Weapon))) {
+					if (card.IsWeapon()) {
                         weapons.Add((Weapon)card);
                     } else {
                         stageCard = (Adventure)card;
@@ -593,7 +593,7 @@ public class BoardManager : MonoBehaviour
 		foreach (Transform child in PlayArea.transform) {
 			Logger.getInstance ().info ("Cards in play area: " + child.name);
             foreach(Card card in player.getHand()) {
-				if (child.name.Trim () == card.getCardName ().Trim ()) {
+				if (child.name.Trim () == card.GetCardName ().Trim ()) {
 					cards.Add (card);
 					break;
 				}
@@ -612,7 +612,7 @@ public class BoardManager : MonoBehaviour
 				}
 			}
 			if (!amourExistsInPlayArea || (amourExistsInPlayArea && card.GetType() != typeof(Amour))) {
-				Debug.Log("Moving card from hand to play area: " + card.getCardName());
+				Debug.Log("Moving card from hand to play area: " + card.GetCardName());
 				BoardManagerMediator board = BoardManagerMediator.getInstance ();
 				if (board.IsOnlineGame ()) {
 					board.getPhotonView ().RPC ("TransferCard", PhotonTargets.Others, PunManager.Serialize (player), PunManager.Serialize (card));
@@ -671,7 +671,7 @@ public class BoardManager : MonoBehaviour
 
             //Handle rank images
             Image[] images = CurrentPlayerInfo.transform.GetComponentsInChildren<Image>();
-            images[3].sprite = Resources.Load<Sprite>("cards/ranks/" + currPlayer.getRank().getCardName());
+            images[3].sprite = Resources.Load<Sprite>("cards/ranks/" + currPlayer.getRank().GetCardName());
 
             CurrentPlayerInfo.transform.SetParent(PlayersInfo.transform, false);
 
@@ -716,7 +716,7 @@ public class BoardManager : MonoBehaviour
             foreach (Card card in players[i].getPlayArea().getCards())
             {
                 GameObject instance = Instantiate(Resources.Load("NoDragPlayArea", typeof(GameObject))) as GameObject;
-                instance.name = card.getCardName();
+                instance.name = card.GetCardName();
                 Image cardImg = instance.GetComponent<Image>();
                 cardImg.sprite = Resources.Load<Sprite>("cards/" + card.cardImageName);
                 instance.tag = "CurrentPlayAreaCards";
@@ -792,10 +792,10 @@ public class BoardManager : MonoBehaviour
 
             foreach (Card card in players[i].getPlayArea().getCards())
             {
-                if (card.GetType().IsSubclassOf(typeof(Ally)))
+                if (card.IsAlly())
                 {
                     GameObject instance = Instantiate(Resources.Load("DraggablePlayArea", typeof(GameObject))) as GameObject;
-                    instance.name = card.getCardName();
+                    instance.name = card.GetCardName();
                     Image cardImg = instance.GetComponent<Image>();
                     cardImg.sprite = Resources.Load<Sprite>("cards/" + card.cardImageName);
                     instance.tag = "MordredAreaCards";

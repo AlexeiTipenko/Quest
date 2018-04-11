@@ -11,7 +11,7 @@ public class TestOfTheQuestingBeast : Test {
 	}
 
 	public override int getMinBidValue() {
-        if (BoardManagerMediator.getInstance().getCardInPlay().getCardName() == "Search for the Questing Beast") {
+        if (BoardManagerMediator.getInstance().getCardInPlay().GetCardName() == "Search for the Questing Beast") {
             return empoweredMinBidValue;
         }
 		return minBidValue;

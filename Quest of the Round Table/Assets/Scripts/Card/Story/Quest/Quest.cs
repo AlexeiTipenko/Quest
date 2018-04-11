@@ -66,8 +66,7 @@ public abstract class Quest : Story {
             foreach (Transform child in boardAreaFoe.transform) {
                 Debug.Log("card name is: " + child.name);
                 foreach (Card card in sponsor.getHand()) {
-                    Type cardType = card.GetType();
-                    if (child.name == card.getCardName() && cardType.IsSubclassOf(typeof(Test))) {
+					if (child.name == card.GetCardName() && card.IsTest()) {
                         if (!hasTest) {
                             hasTest = true;
                             currentStageHasTest = true;
@@ -78,7 +77,7 @@ public abstract class Quest : Story {
                             return false;
                         }
                     }
-                    else if (child.name == card.getCardName() && cardType.IsSubclassOf(typeof(Foe))) {
+					else if (child.name == card.GetCardName() && card.IsFoe()) {
                         if (currentStageHasTest) {
                             Debug.Log("Quest setup failed due to test existing in stage with foe/weapon.");
                             Logger.getInstance().warn("Quest setup failed due to test existing in stage with foe/weapon");
@@ -95,14 +94,14 @@ public abstract class Quest : Story {
                             return false;
                         }
                     }
-                    else if (child.name == card.getCardName() && cardType.IsSubclassOf(typeof(Weapon))) {
+					else if (child.name == card.GetCardName() && card.IsWeapon()) {
                         if (currentStageHasTest) {
                             Debug.Log("Quest setup failed due to test existing in stage with foe/weapon.");
                             Logger.getInstance().warn("Quest setup failed due to test existing in stage with foe/weapon");
                             return false;
                         }
-                        if (!weaponsInStage.Contains(cardType)) {
-                            weaponsInStage.Add(cardType);
+						if (!weaponsInStage.Contains(card.GetType())) {
+							weaponsInStage.Add(card.GetType());
                             currentBattlePoints += ((Weapon)card).getBattlePoints();
                             break;
                         } else {
@@ -143,7 +142,7 @@ public abstract class Quest : Story {
             Debug.Log("Stage " + stage.getStageNum());
             stage.SetParentQuest(this);
             foreach (Card card in stage.getCards()) {
-                Debug.Log(card.getCardName());
+                Debug.Log(card.GetCardName());
                 if (sponsor.GetType() != typeof(AIPlayer)) {
                     sponsor.RemoveCard(card);
                 }
@@ -295,8 +294,8 @@ public abstract class Quest : Story {
 	public bool ContainsOnlyValidCards(Player player) {
 		List<Card> cards = BoardManager.GetPlayArea (player);
 		foreach (Card card in cards) {
-			if (!card.GetType ().IsSubclassOf (typeof(Weapon))
-			    && !card.GetType ().IsSubclassOf (typeof(Ally))
+			if (!card.IsWeapon()
+				&& !card.IsAlly()
 			    && card.GetType () != typeof(Amour)) {
 				return false;
 			}

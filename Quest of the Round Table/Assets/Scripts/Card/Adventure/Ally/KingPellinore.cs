@@ -11,7 +11,7 @@ public class KingPellinore : Ally {
 	}
 
 	public override int getBidPoints() {
-        if (BoardManagerMediator.getInstance().getCardInPlay().getCardName() == "Search for the Questing Beast") {
+        if (BoardManagerMediator.getInstance().getCardInPlay().GetCardName() == "Search for the Questing Beast") {
             return empoweredBidPoints;
         }
 		return bidPoints;

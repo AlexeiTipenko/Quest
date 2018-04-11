@@ -132,7 +132,7 @@ public abstract class Tournament : Story
 		int pointsTotal = playerToPrompt.getRank().getBattlePoints();
         foreach (Card card in chosenCards)
         {
-            if (card.GetType().IsSubclassOf(typeof(Adventure)))
+            if (card.IsAdventure())
             {
 				Debug.Log ("Adding to battle point total");
                 pointsTotal += ((Adventure)card).getBattlePoints();
@@ -156,13 +156,13 @@ public abstract class Tournament : Story
     public bool ValidateChosenCards(List<Card> chosenCards) {
         bool cardsValid = true;
         
-        if (chosenCards.GroupBy(c => c.getCardName()).Any(g => g.Count() > 1))
+        if (chosenCards.GroupBy(c => c.GetCardName()).Any(g => g.Count() > 1))
             cardsValid = false;
 
         foreach (Card card in chosenCards)
         {
-            if (!(card.GetType().IsSubclassOf(typeof(Weapon))) &&
-                !(card.GetType().IsSubclassOf(typeof(Ally))) &&
+            if (!(card.IsWeapon()) &&
+                !(card.IsAlly()) &&
                 (card.GetType() != typeof(Amour)))
             {
 
