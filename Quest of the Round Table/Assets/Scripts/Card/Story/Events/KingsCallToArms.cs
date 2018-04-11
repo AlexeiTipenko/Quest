@@ -62,7 +62,7 @@ public class KingsCallToArms : Events {
 		else if (numFoeCards > 1) {
 			Logger.getInstance ().debug ("Player to discard foes.");
             Debug.Log("Player to discard foes");
-			board.PromptToDiscardFoes (currentPlayer, numFoeCards);
+			currentPlayer.PromptDiscardFoesKingsCallToArms (this, numFoeCards);
 		}
 		else {
 			//call same function on next player
@@ -153,14 +153,14 @@ public class KingsCallToArms : Events {
             else {
                 Debug.Log("Player played incorrect card...");
                 Logger.getInstance().debug("Player played incorrect card...");
-                board.PromptToDiscardFoes(currentPlayer, getNumFoeCards());
+				currentPlayer.PromptDiscardFoesKingsCallToArms (this, getNumFoeCards ());
             }
         }
 
         else{
             Debug.Log("Player discarded incorrect number of cards...");
             Logger.getInstance().debug("Player discarded incorrect number of cards...");
-            board.PromptToDiscardFoes(currentPlayer, getNumFoeCards());
+			currentPlayer.PromptDiscardFoesKingsCallToArms (this, getNumFoeCards ());
         }
     }
 

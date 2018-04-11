@@ -98,6 +98,10 @@ public class AIPlayer : Player {
         card.PromptNextPlayer();
 	}
 
+	public override void PromptDiscardFoesKingsCallToArms (KingsCallToArms card, int numFoeCards) {
+		//TODO: AI implementation of kings call to arms
+	}
+
 	public AbstractAI GetStrategy()
     {
         return strategy;

@@ -61,6 +61,8 @@ public abstract class Player {
 
 	public abstract void PromptDiscardWeaponKingsCallToArms (KingsCallToArms card);
 
+	public abstract void PromptDiscardFoesKingsCallToArms (KingsCallToArms card, int numFoeCards);
+
 
     //--------------------------------------------//
     //---------- Non-Abstract Functions ----------//
