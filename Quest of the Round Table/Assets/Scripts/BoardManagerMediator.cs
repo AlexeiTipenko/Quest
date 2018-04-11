@@ -44,18 +44,22 @@ public class BoardManagerMediator
 		this.players = players;
         switch (ButtonManager.scenario)
         {
-            case "scenario1":
-                adventureDeck = (AdventureDeck)Scenario1.getInstance().AdventureDeck();
-                storyDeck = (StoryDeck)Scenario1.getInstance().StoryDeck();
-                break;
-            case "scenario2":
-                adventureDeck = (AdventureDeck)Scenario2.getInstance().AdventureDeck();
-                storyDeck = (StoryDeck)Scenario2.getInstance().StoryDeck();
-                break;
-            default:
-                adventureDeck = new AdventureDeck();
-                storyDeck = new StoryDeck();
-                break;
+        case "scenario1":
+            adventureDeck = (AdventureDeck)Scenario1.getInstance().AdventureDeck();
+            storyDeck = (StoryDeck)Scenario1.getInstance().StoryDeck();
+            break;
+        case "scenario2":
+            adventureDeck = (AdventureDeck)Scenario2.getInstance().AdventureDeck();
+            storyDeck = (StoryDeck)Scenario2.getInstance().StoryDeck();
+            break;
+		case "scenario3":
+			adventureDeck = (AdventureDeck)Scenario3.getInstance ().AdventureDeck ();
+			storyDeck = (StoryDeck)Scenario3.getInstance ().StoryDeck ();
+			break;
+        default:
+            adventureDeck = new AdventureDeck();
+            storyDeck = new StoryDeck();
+            break;
         }
 		adventureDiscard = new DiscardDeck ();
 		storyDiscard = new DiscardDeck ();

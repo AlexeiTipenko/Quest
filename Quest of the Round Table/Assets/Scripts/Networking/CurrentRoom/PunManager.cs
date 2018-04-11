@@ -29,8 +29,8 @@ public class PunManager : Photon.MonoBehaviour {
     }
 
     [PunRPC]
-    public void SwitchScene1(string sceneName){
-        PlayerLayoutGroup.SwitchScene1(sceneName);
+	public void SwitchSceneScenario(string sceneName, int scenarioNum) {
+		PlayerLayoutGroup.SwitchSceneScenario(sceneName, scenarioNum);
     }
 
 	[PunRPC]

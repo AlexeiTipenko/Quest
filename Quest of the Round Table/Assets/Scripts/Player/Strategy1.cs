@@ -121,13 +121,22 @@ public class Strategy1 : AbstractAI
         }
 
         Card previousStageCard = null;
+		Card previousWeaponCard = null;
         while (initializedStages < quest.getNumStages())
         {
 			stageCard = GetStrongestFoe (cardDictionary);
+			List<Card> weaponList = null;
+			Card weaponCard = GetBestDuplicateWeapon (cardDictionary);
+			cardDictionary [stageCard] = true;
+			if (weaponCard != null) {
+				cardDictionary [weaponCard] = true;
+				weaponList = new List<Card> ();
+				weaponList.Add (weaponCard);
+			}
 			int stageNum = quest.getNumStages () - initializedStages - 1;
             Logger.getInstance().info("Stage " + stageNum + ": stage card is " + stageCard.getCardName());
             Debug.Log("Stage " + stageNum + ": stage card is " + stageCard.getCardName());
-            otherStages.Add(InitializeStage(stageCard, null, stageNum));
+			otherStages.Add(InitializeStage(stageCard, weaponList, stageNum));
             initializedStages++;
             previousStageCard = stageCard;
         }

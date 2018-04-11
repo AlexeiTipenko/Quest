@@ -247,6 +247,53 @@ public abstract class AbstractAI {
         return bestWeapon;
     }
 
+	protected Weapon GetBestDuplicateWeapon(Dictionary<Card, bool> cards) {
+		Dictionary<string, List<Card>> cardLists = new Dictionary<string, List<Card>> ();
+		foreach (Card card in cards.Keys) {
+			string cardName = card.getCardName ();
+			List<Card> cardList = new List<Card> ();
+			if (cardLists.ContainsKey (cardName)) {
+				cardList = cardLists [cardName];
+			}
+			cardList.Add (card);
+			cardLists.Add (cardName, cardList);
+		}
+
+		Weapon bestWeapon = null;
+		while (bestWeapon == null) {
+			if (cardLists.Count == 0) {
+				break;
+			}
+			string bestWeaponName = null;
+			int duplicateWeaponCount = 0;
+			foreach (string card in cardLists.Keys) {
+				if (cardLists [card].Count > 1) {
+					duplicateWeaponCount++;
+					if (bestWeaponName == null
+						|| ((Weapon)cardLists [card] [0]).getBattlePoints () > ((Weapon)cardLists [bestWeaponName] [0]).getBattlePoints ()) {
+						bestWeaponName = card;
+					}
+				}
+			}
+			if (duplicateWeaponCount == 0) {
+				break;
+			}
+			if (bestWeaponName != null) {
+				List<Card> cardList = cardLists [bestWeaponName];
+				foreach (Card card in cardList) {
+					if (!cards [card]) {
+						bestWeapon = (Weapon)card;
+						break;
+					}
+				}
+			}
+			if (bestWeapon == null) {
+				cardLists.Remove (bestWeaponName);
+			}
+		}
+		return bestWeapon;
+	}
+
     protected Stage InitializeStage(Card stageCard, List<Card> weapons, int stageNum) {
         Stage stage = new Stage((Adventure)stageCard, weapons, stageNum);
         strategyOwner.RemoveCard(stageCard);

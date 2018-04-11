@@ -109,10 +109,20 @@ public class PlayerLayoutGroup : MonoBehaviour {
         view.RPC("SwitchScene", PhotonTargets.All, sceneName);
     }
 
-    public void PunSwitchScene1(string sceneName){
+    public void PunSwitchScene1(string sceneName) {
         PhotonView view = PhotonView.Get(GameObject.Find("DDOL/PunManager"));
-        view.RPC("SwitchScene1", PhotonTargets.All, sceneName);
+        view.RPC("SwitchSceneScenario", PhotonTargets.All, sceneName, 1);
     }
+
+	public void PunSwitchScene2(string sceneName) {
+		PhotonView view = PhotonView.Get(GameObject.Find("DDOL/PunManager"));
+		view.RPC("SwitchSceneScenario", PhotonTargets.All, sceneName, 2);
+	}
+
+	public void PunSwitchScene3(string sceneName) {
+		PhotonView view = PhotonView.Get(GameObject.Find("DDOL/PunManager"));
+		view.RPC("SwitchSceneScenario", PhotonTargets.All, sceneName, 3);
+	}
 
     public static void SwitchScene(string SceneName) {
         playerList = new List<Player>();
@@ -132,9 +142,9 @@ public class PlayerLayoutGroup : MonoBehaviour {
         UnityEngine.SceneManagement.SceneManager.LoadScene(SceneName);
     }
 
-    public static void SwitchScene1(string SceneName){
+	public static void SwitchSceneScenario(string SceneName, int scenarioNum){
         playerList = new List<Player>();
-        ButtonManager.scenario = "scenario1";
+        ButtonManager.scenario = "scenario" + scenarioNum;
         foreach (var player in PlayerListings)
         {
             playerList.Add(new HumanPlayer(player.name));
