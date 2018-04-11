@@ -54,7 +54,7 @@ public abstract class Quest : Story {
 		}
 	}
 
-    public Boolean isValidQuest() {
+    public Boolean IsValidQuest() {
         int minBattlePoints = 0;
         bool hasTest = false;
         for (int i = 0; i < numStages; i++) {
@@ -64,52 +64,37 @@ public abstract class Quest : Story {
             bool currentStageHasTest = false;
             int currentBattlePoints = 0;
             foreach (Transform child in boardAreaFoe.transform) {
-                Debug.Log("card name is: " + child.name);
-                foreach (Card card in sponsor.getHand()) {
-					if (child.name == card.GetCardName() && card.IsTest()) {
-                        if (!hasTest) {
-                            hasTest = true;
-                            currentStageHasTest = true;
-                            break;
-                        } else {
-                            Debug.Log("Quest setup failed due to multiple tests.");
-                            Logger.getInstance().warn("Quest setup failed due to multiple tests");
-                            return false;
-                        }
-                    }
-					else if (child.name == card.GetCardName() && card.IsFoe()) {
-                        if (currentStageHasTest) {
-                            Debug.Log("Quest setup failed due to test existing in stage with foe/weapon.");
-                            Logger.getInstance().warn("Quest setup failed due to test existing in stage with foe/weapon");
-                            return false;
-                        }
-                        if (!hasFoe) {
-                            hasFoe = true;
-                            currentBattlePoints += ((Foe)card).getBattlePoints();
-                            break;
-                        }
-                        else {
-                            Debug.Log("Quest setup failed due to multiple foes in a stage.");
-                            Logger.getInstance().warn("Quest setup failed due to multiple foes in a stage");
-                            return false;
-                        }
-                    }
-					else if (child.name == card.GetCardName() && card.IsWeapon()) {
-                        if (currentStageHasTest) {
-                            Debug.Log("Quest setup failed due to test existing in stage with foe/weapon.");
-                            Logger.getInstance().warn("Quest setup failed due to test existing in stage with foe/weapon");
-                            return false;
-                        }
-						if (!weaponsInStage.Contains(card.GetType())) {
-							weaponsInStage.Add(card.GetType());
-                            currentBattlePoints += ((Weapon)card).getBattlePoints();
-                            break;
-                        } else {
-                            Debug.Log("Quest setup failed due to multiple weapons of the same type in a stage.");
-                            Logger.getInstance().warn("Quest setup failed due to multiple weapons of the same type in a stage");
-                            return false;
-                        }
-                    }
+				foreach (Adventure card in sponsor.GetHand()) {
+					if (child.name == card.GetCardName ()) {
+						if (card.IsTest ()) {
+							if (hasTest) {
+								Debug.Log("Quest setup failed.");
+								Logger.getInstance().warn("Quest setup failed.");
+								return false;
+							}
+							hasTest = true;
+							currentStageHasTest = true;
+							break;
+						} else if (card.IsFoe ()) {
+							if (currentStageHasTest || hasFoe) {
+								Debug.Log("Quest setup failed.");
+								Logger.getInstance().warn("Quest setup failed.");
+								return false;
+							}
+							hasFoe = true;
+							currentBattlePoints += card.getBattlePoints ();
+							break;
+						} else if (card.IsWeapon ()) {
+							if (currentStageHasTest || weaponsInStage.Contains(card.GetType())) {
+								Debug.Log("Quest setup failed.");
+								Logger.getInstance().warn("Quest setup failed.");
+								return false;
+							}
+							weaponsInStage.Add (card.GetType ());
+							currentBattlePoints += card.getBattlePoints ();
+							break;
+						}
+					}
                 }
             }
             if (!currentStageHasTest) {
@@ -141,7 +126,7 @@ public abstract class Quest : Story {
         foreach (Stage stage in stages) {
             Debug.Log("Stage " + stage.getStageNum());
             stage.SetParentQuest(this);
-            foreach (Card card in stage.getCards()) {
+            foreach (Adventure card in stage.getCards()) {
                 Debug.Log(card.GetCardName());
                 if (sponsor.GetType() != typeof(AIPlayer)) {
                     sponsor.RemoveCard(card);
@@ -201,7 +186,7 @@ public abstract class Quest : Story {
                     }
                     PromptNextAcceptQuest();
                 };
-				if (playerToPrompt.getHand().Count > 12) {
+				if (playerToPrompt.GetHand().Count > 12) {
 					playerToPrompt.DiscardCards(action, completeAction);
 				} else {
 					PromptNextAcceptQuest();
@@ -225,7 +210,7 @@ public abstract class Quest : Story {
 		Debug.Log ("Playing stage: " + currentStage);
         foreach (Player player in board.getPlayers()) {
 			Debug.Log ("Discarding weapons for player: " + player.getName());
-            player.getPlayArea().discardWeapons();
+			player.getPlayArea ().DiscardClass (typeof(Weapon));
         }
         if (currentStage < numStages && participatingPlayers.Count > 0) {
             getStage(currentStage).Prepare();
@@ -236,7 +221,7 @@ public abstract class Quest : Story {
 
 	public void CompleteQuest() {
 		foreach (Player player in board.getPlayers()) {
-			player.getPlayArea ().discardAmours ();
+			player.getPlayArea ().DiscardClass (typeof(Amour));
 		}
 		numShieldsAwarded = numStages;
 		if (KingsRecognitionActive) {
@@ -256,7 +241,7 @@ public abstract class Quest : Story {
 				}				
 				board.nextTurn();
 			};
-            if (playerToPrompt.getHand().Count > 12) {
+            if (playerToPrompt.GetHand().Count > 12) {
                 playerToPrompt.DiscardCards(action, completeAction);
             }
             else {
@@ -264,39 +249,12 @@ public abstract class Quest : Story {
             }
 		};
 		playerToPrompt.DrawCards(totalCardsCounter + numStages, action);
-
-//        if (sponsor.getHand().Count + totalCardsCounter + numStages > 12) {
-//            action = () => {
-//                board.TransferFromHandToPlayArea(playerToPrompt);
-//				playerToPrompt.GetAndRemoveCards ();
-//                if (playerToPrompt.getHand().Count > 12)
-//                {
-//                    board.PromptCardRemoveSelection(playerToPrompt, action);
-//                }
-//
-//                else
-//                {
-//					Logger.getInstance ().debug ("In Quest CompleteQuest(), about to RPC nextTurn");
-//					Debug.Log("In Quest CompleteQuest(), about to RPC nextTurn");
-//					if (board.IsOnlineGame()) {
-//						board.getPhotonView().RPC("nextTurn", PhotonTargets.Others);
-//					}
-//                    board.nextTurn();
-//                }
-//            };
-//            sponsor.DrawCards(totalCardsCounter + numStages, action);
-//        } else {
-//            sponsor.DrawCards(totalCardsCounter + numStages, null);
-//            board.nextTurn();
-//        }
 	}
 
 	public bool ContainsOnlyValidCards(Player player) {
-		List<Card> cards = BoardManager.GetPlayArea (player);
-		foreach (Card card in cards) {
-			if (!card.IsWeapon()
-				&& !card.IsAlly()
-			    && card.GetType () != typeof(Amour)) {
+		List<Adventure> cards = BoardManager.GetPlayArea (player);
+		foreach (Adventure card in cards) {
+			if (!card.IsWeapon() && !card.IsAlly() && !card.IsAmour()) {
 				return false;
 			}
 		}

@@ -16,7 +16,7 @@ public class BoardManagerDataTest {
 		BoardManagerMediator.getInstance().initGame (playerList);
 		foreach (Player player in playerList) {
 			Debug.Log (player.toString ());
-			Assert.AreEqual (player.getHand ().Count, 12);
+			Assert.AreEqual (player.GetHand ().Count, 12);
 		}
 	}
 }

@@ -7,20 +7,19 @@ public class PlayerPlayAreaTest {
 
     private PlayerPlayArea PreparePlayArea() {
         PlayerPlayArea playArea = new PlayerPlayArea();
-        playArea.addCard(new SirTristan());
-        playArea.addCard(new QueenIseult());
-        playArea.addCard(new BoarHunt());
-        playArea.addCard(new Amour());
-        playArea.addCard(new Amour());
-        playArea.addCard(new Excalibur());
-        playArea.addCard(new Horse());
+        playArea.AddCard(new SirTristan());
+        playArea.AddCard(new QueenIseult());
+        playArea.AddCard(new Amour());
+        playArea.AddCard(new Amour());
+        playArea.AddCard(new Excalibur());
+        playArea.AddCard(new Horse());
         return playArea;
     }
 
 	[Test]
 	public void testDiscardWeapons() {
         PlayerPlayArea playArea = PreparePlayArea();
-        playArea.discardWeapons();
+		playArea.DiscardClass (typeof(Weapon));
         foreach (Card card in playArea.getCards()) {
             Assert.AreNotEqual(card.GetType(), typeof(Excalibur));
             Assert.AreNotEqual(card.GetType(), typeof(Horse));
@@ -30,7 +29,7 @@ public class PlayerPlayAreaTest {
     [Test]
     public void testDiscardAmours() {
         PlayerPlayArea playArea = PreparePlayArea();
-        playArea.discardAmours();
+		playArea.DiscardClass(typeof(Amour));
         foreach (Card card in playArea.getCards())
         {
             Assert.AreNotEqual(card.GetType(), typeof(Amour));
@@ -40,7 +39,7 @@ public class PlayerPlayAreaTest {
     [Test]
     public void testDiscardAllies() {
         PlayerPlayArea playArea = PreparePlayArea();
-        playArea.discardAllies();
+		playArea.DiscardClass (typeof(Ally));
         foreach (Card card in playArea.getCards())
         {
             Assert.AreNotEqual(card.GetType(), typeof(SirTristan));
@@ -51,7 +50,7 @@ public class PlayerPlayAreaTest {
     [Test]
     public void testDiscardSpecificAlly() {
         PlayerPlayArea playArea = PreparePlayArea();
-        playArea.discardAlly(typeof(SirTristan));
+        playArea.DiscardChosenAlly(typeof(SirTristan));
         foreach (Card card in playArea.getCards())
         {
             Assert.AreNotEqual(card.GetType(), typeof(SirTristan));

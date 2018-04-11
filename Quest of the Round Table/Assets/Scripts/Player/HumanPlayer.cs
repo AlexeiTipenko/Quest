@@ -77,4 +77,12 @@ public class HumanPlayer : Player {
 	public override void DisplayTournamentResults(Tournament tournament, bool playerEliminated) {
 		board.DisplayTournamentResults (tournament, this, playerEliminated);
 	}
+
+	public override void PromptDiscardWeaponKingsCallToArms (KingsCallToArms card) {
+		board.PromptToDiscardWeapon (card, this);
+	}
+
+	public override void PromptDiscardFoesKingsCallToArms(KingsCallToArms card, int numFoeCards) {
+		board.PromptToDiscardFoes (card, this, numFoeCards);
+	}
 }

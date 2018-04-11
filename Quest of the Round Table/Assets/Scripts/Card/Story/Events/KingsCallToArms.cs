@@ -57,12 +57,12 @@ public class KingsCallToArms : Events {
 		if (hasWeapons ()) {
 			Logger.getInstance ().debug ("Player to discard weapon");
             Debug.Log("Player to discard weapon");
-			board.PromptToDiscardWeapon (currentPlayer);
+			currentPlayer.PromptDiscardWeaponKingsCallToArms (this);
 		} 
 		else if (numFoeCards > 1) {
 			Logger.getInstance ().debug ("Player to discard foes.");
             Debug.Log("Player to discard foes");
-			board.PromptToDiscardFoes (currentPlayer, numFoeCards);
+			currentPlayer.PromptDiscardFoesKingsCallToArms (this, numFoeCards);
 		}
 		else {
 			//call same function on next player
@@ -78,18 +78,6 @@ public class KingsCallToArms : Events {
 		Debug.Log ("Finished King's Call To Arms.");
 	}
 
-    /*
-	public Player getNextPlayer(Player previousPlayer) {
-		int index = highestRankPlayers.IndexOf (previousPlayer);
-		if (index != -1) {
-			return highestRankPlayers [(index + 1) % highestRankPlayers.Count];
-		}
-		Logger.getInstance ().trace ("Next player in getNextPlayer is null, previous player is " + previousPlayer.getName());
-        Debug.Log("Next player in getNextPlayer is null, previous player is " + previousPlayer.getName());
-		return null;
-	}
-	*/
-
     public void PromptNextPlayer()
     {
         currentPlayer = board.getNextPlayer(currentPlayer);
@@ -98,13 +86,6 @@ public class KingsCallToArms : Events {
         {
             Debug.Log("Got finished response from last player, moving onto next player...");
             Logger.getInstance().debug("Got finished response from last player, moving onto next player...");
-
-            /*
-            if (board.IsOnlineGame())
-            {
-                board.getPhotonView().RPC("PromptEventAction", PhotonTargets.Others);
-            }
-            */
             PromptEventAction();
         }
         else
@@ -112,17 +93,16 @@ public class KingsCallToArms : Events {
             board.nextTurn();
         }
     }
-		
 
     public void PlayerDiscardedWeapon()
     {
         Debug.Log("Entered 'PlayerDiscardedWeapon");
         Debug.Log("PLAYER WHOSE CARD WE ARE ABOUT TO REMOVE: " + currentPlayer.getName());
-        List<Card> dicardedCards = board.GetDiscardedCards(currentPlayer);
+        List<Adventure> dicardedCards = board.GetDiscardedCards(currentPlayer);
         Debug.Log("Number of cards discarded: " + dicardedCards.Count);
 
         if (dicardedCards.Count == 1){
-			if (dicardedCards[0].IsWeapon()){
+			if (dicardedCards[0].IsWeapon()) {
 				currentPlayer.GetAndRemoveCards ();
 
                 if (board.IsOnlineGame())
@@ -135,14 +115,14 @@ public class KingsCallToArms : Events {
                 
                 Debug.Log("Player played incorrect card...");
                 Logger.getInstance().debug("Player played incorrect card...");
-                board.PromptToDiscardWeapon(currentPlayer);
+				currentPlayer.PromptDiscardWeaponKingsCallToArms (this);
             }
         }
 
         else{
             Debug.Log("Player discarded incorrect number of cards...");
             Logger.getInstance().debug("Player discarded incorrect number of cards...");
-            board.PromptToDiscardWeapon(currentPlayer);
+			currentPlayer.PromptDiscardWeaponKingsCallToArms (this);
         }
     }
 
@@ -151,7 +131,7 @@ public class KingsCallToArms : Events {
     {
         bool valid = true;
         Debug.Log("Entered 'PLayerDiscardedFoes");
-        List<Card> dicardedCards = board.GetDiscardedCards(currentPlayer);
+        List<Adventure> dicardedCards = board.GetDiscardedCards(currentPlayer);
         Debug.Log("Number of cards discarded: " + dicardedCards.Count);
 
         if (dicardedCards.Count == getNumFoeCards()) {
@@ -173,21 +153,21 @@ public class KingsCallToArms : Events {
             else {
                 Debug.Log("Player played incorrect card...");
                 Logger.getInstance().debug("Player played incorrect card...");
-                board.PromptToDiscardFoes(currentPlayer, getNumFoeCards());
+				currentPlayer.PromptDiscardFoesKingsCallToArms (this, getNumFoeCards ());
             }
         }
 
         else{
             Debug.Log("Player discarded incorrect number of cards...");
             Logger.getInstance().debug("Player discarded incorrect number of cards...");
-            board.PromptToDiscardFoes(currentPlayer, getNumFoeCards());
+			currentPlayer.PromptDiscardFoesKingsCallToArms (this, getNumFoeCards ());
         }
     }
 
 
 	private int getNumFoeCards() {
 		int numFoeCards = 0;
-		foreach (Card card in currentPlayer.getHand()) {
+		foreach (Card card in currentPlayer.GetHand()) {
 			if (card.IsFoe()) {
 				numFoeCards++;
 				if (numFoeCards == 2) {
@@ -199,7 +179,7 @@ public class KingsCallToArms : Events {
 	}
 
 	public bool hasWeapons() {
-		foreach (Card card in currentPlayer.getHand()) {
+		foreach (Card card in currentPlayer.GetHand()) {
 			if (card.IsWeapon()) {
 				return true;
 			}

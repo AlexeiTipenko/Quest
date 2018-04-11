@@ -48,6 +48,10 @@ public abstract class Card {
 		return (GetType ().IsSubclassOf (typeof(Story)));
 	}
 
+	public bool MatchesType(Type type) {
+		return (GetType ().IsSubclassOf (type) || GetType () == type);
+	}
+
 	//Getters
 	public Player GetOwner() {
 		return this.owner;

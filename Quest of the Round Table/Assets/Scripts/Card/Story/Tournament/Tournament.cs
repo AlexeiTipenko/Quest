@@ -60,7 +60,7 @@ public abstract class Tournament : Story
 					}
 					PromptNextPlayer();
 				};
-                if (playerToPrompt.getHand().Count > 12) {
+                if (playerToPrompt.GetHand().Count > 12) {
                     playerToPrompt.DiscardCards(action, completeAction);
                 }
                 else {
@@ -110,10 +110,10 @@ public abstract class Tournament : Story
     }
 
 
-	public void CardsSelectionResponse(List<Card> chosenCards) {
-        foreach (Card card in chosenCards) {
+	public void CardsSelectionResponse(List<Adventure> chosenCards) {
+        foreach (Adventure card in chosenCards) {
             playerToPrompt.RemoveCard(card);
-            playerToPrompt.getPlayArea().addCard(card);
+            playerToPrompt.getPlayArea().AddCard(card);
         }
 
         AddPlayerBattlePoints(chosenCards);
@@ -128,15 +128,12 @@ public abstract class Tournament : Story
     }
 
 
-    public void AddPlayerBattlePoints(List<Card> chosenCards) {
+    public void AddPlayerBattlePoints(List<Adventure> chosenCards) {
 		int pointsTotal = playerToPrompt.getRank().getBattlePoints();
-        foreach (Card card in chosenCards)
+        foreach (Adventure card in chosenCards)
         {
-            if (card.IsAdventure())
-            {
-				Debug.Log ("Adding to battle point total");
-                pointsTotal += ((Adventure)card).getBattlePoints();
-            }
+			Debug.Log ("Adding to battle point total");
+            pointsTotal += card.getBattlePoints();
         }
 		if (winnerList.Count == 0) {
 			winnerList.Add (playerToPrompt);
@@ -153,19 +150,16 @@ public abstract class Tournament : Story
     }
 
 
-    public bool ValidateChosenCards(List<Card> chosenCards) {
+    public bool ValidateChosenCards(List<Adventure> chosenCards) {
         bool cardsValid = true;
         
         if (chosenCards.GroupBy(c => c.GetCardName()).Any(g => g.Count() > 1))
             cardsValid = false;
 
-        foreach (Card card in chosenCards)
+        foreach (Adventure card in chosenCards)
         {
-            if (!(card.IsWeapon()) &&
-                !(card.IsAlly()) &&
-                (card.GetType() != typeof(Amour)))
+            if (!card.IsWeapon() && !card.IsAlly() && !card.IsAmour())
             {
-
                 cardsValid = false;
             }
         }
@@ -207,7 +201,7 @@ public abstract class Tournament : Story
 			DisplayTournamentResults ();
 		} else if (!isLastRound) {
 			foreach (Player player in board.getPlayers()) {
-				player.getPlayArea ().discardWeapons ();
+				player.getPlayArea ().DiscardClass (typeof(Weapon));
 			}
 			Logger.getInstance ().info("Round 2 of tournament started");
 			participatingPlayers = new List<Player>(winnerList);
@@ -218,8 +212,8 @@ public abstract class Tournament : Story
 			playerToPrompt.PromptTournament(this);
 		} else {
 			foreach (Player player in board.getPlayers()) {
-				player.getPlayArea ().discardWeapons ();
-				player.getPlayArea ().discardAmours ();
+				player.getPlayArea ().DiscardClass (typeof(Weapon));
+				player.getPlayArea ().DiscardClass (typeof(Amour));
 			}
 			board.nextTurn ();
 		}

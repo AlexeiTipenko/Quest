@@ -305,7 +305,7 @@ public class BoardManager : MonoBehaviour
     public static void DrawHand(Player player)
     {
         DestroyHand();
-        foreach (Card card in player.getHand())
+        foreach (Card card in player.GetHand())
         {
             GameObject handArea = GameObject.Find("Canvas/TabletopImage/HandArea");
             GameObject instance = Instantiate(Resources.Load("CardPrefab", typeof(GameObject))) as GameObject;
@@ -380,14 +380,11 @@ public class BoardManager : MonoBehaviour
                 }
                 Stage currentStage = questInPlay.getStage(i);
                 if (currentStage != null) {
-                    if (questInPlay.getSponsor() == player 
-                        || i < questInPlay.getCurrentStage().getStageNum() 
-                        || (i == questInPlay.getCurrentStage().getStageNum() 
-                            && isResolutionOfStage)
-                        || (i == questInPlay.getCurrentStage().getStageNum() 
-							&& questInPlay.getStage(i).getStageCard().IsTest() 
-                            && questInPlay.getStage(i).IsInProgress())) {
-                        foreach (Card card in currentStage.getCards()) {
+					int currStageNum = questInPlay.getCurrentStage ().getStageNum ();
+                    if (questInPlay.getSponsor() == player
+						|| i < currStageNum || (i == currStageNum && isResolutionOfStage)
+						|| (i == currStageNum && questInPlay.getStage(i).getStageCard().IsTest() && questInPlay.getStage(i).IsInProgress())) {
+                        foreach (Adventure card in currentStage.getCards()) {
                             GameObject noDragInstance = Instantiate(Resources.Load("NoDragCardPrefab", typeof(GameObject))) as GameObject;
                             Image cardImg = noDragInstance.GetComponent<Image>();
                             noDragInstance.name = card.GetCardName();
@@ -395,7 +392,7 @@ public class BoardManager : MonoBehaviour
                             noDragInstance.tag = "StageCard";
                             noDragInstance.transform.SetParent(boardAreaFoe.transform, false);
                         }
-                        if (i == questInPlay.getCurrentStage().getStageNum()) {
+                        if (i == currStageNum) {
                             isResolutionOfStage = false;
                         }
                     } else {
@@ -570,15 +567,15 @@ public class BoardManager : MonoBehaviour
             {
                 GameObject boardAreaFoe = GameObject.Find("Canvas/TabletopImage/StageAreaFoe" + i);
                 Adventure stageCard = null;
-                List<Card> weapons = new List<Card>();
+                List<Adventure> weapons = new List<Adventure>();
                 foreach (Transform child in boardAreaFoe.transform) {
                     Type genericType = Type.GetType(child.name.Replace(" ", ""), true);
-                    Card card = (Card)Activator.CreateInstance(genericType);
+                    Adventure card = (Adventure)Activator.CreateInstance(genericType);
                     card.cardImageName = child.name.Replace(" ", "");
 					if (card.IsWeapon()) {
-                        weapons.Add((Weapon)card);
+                        weapons.Add(card);
                     } else {
-                        stageCard = (Adventure)card;
+                        stageCard = card;
                     }
                 }
                 stages.Add(new Stage(stageCard, weapons, i));
@@ -587,12 +584,12 @@ public class BoardManager : MonoBehaviour
         return stages;
     }
 
-	public static List<Card> GetPlayArea(Player player) {
-		List<Card> cards = new List<Card> ();
+	public static List<Adventure> GetPlayArea(Player player) {
+		List<Adventure> cards = new List<Adventure> ();
 		GameObject PlayArea = GameObject.Find ("Canvas/TabletopImage/PlayerPlayArea");
 		foreach (Transform child in PlayArea.transform) {
 			Logger.getInstance ().info ("Cards in play area: " + child.name);
-            foreach(Card card in player.getHand()) {
+            foreach(Adventure card in player.GetHand()) {
 				if (child.name.Trim () == card.GetCardName ().Trim ()) {
 					cards.Add (card);
 					break;
@@ -602,16 +599,16 @@ public class BoardManager : MonoBehaviour
 		return cards;
 	}
 
-	public static void TransferCards(Player player, List<Card> cards) {
-		foreach (Card card in cards) {
+	public static void TransferCards(Player player, List<Adventure> cards) {
+		foreach (Adventure card in cards) {
 			bool amourExistsInPlayArea = false;
-			foreach (Card playAreaCard in player.getPlayArea().getCards()) {
-				if (playAreaCard.GetType() == typeof(Amour)) {
+			foreach (Adventure playAreaCard in player.getPlayArea().getCards()) {
+				if (playAreaCard.IsAmour()) {
 					amourExistsInPlayArea = true;
 					break;
 				}
 			}
-			if (!amourExistsInPlayArea || (amourExistsInPlayArea && card.GetType() != typeof(Amour))) {
+			if (!amourExistsInPlayArea || (amourExistsInPlayArea && !card.IsAmour())) {
 				Debug.Log("Moving card from hand to play area: " + card.GetCardName());
 				BoardManagerMediator board = BoardManagerMediator.getInstance ();
 				if (board.IsOnlineGame ()) {
@@ -622,8 +619,8 @@ public class BoardManager : MonoBehaviour
 		}
 	}
 		
-	public static void TransferCard(Player player, Card card) {
-		player.getPlayArea().addCard(card);
+	public static void TransferCard(Player player, Adventure card) {
+		player.getPlayArea().AddCard(card);
 		player.RemoveCard(card);
 	}
 
@@ -666,7 +663,7 @@ public class BoardManager : MonoBehaviour
             //Handle texts
             Text[] texts = CurrentPlayerInfo.transform.GetComponentsInChildren<Text>();
             texts[0].text = "Player: " + currPlayer.getName();
-            texts[1].text = currPlayer.getHand().Count.ToString();
+            texts[1].text = currPlayer.GetHand().Count.ToString();
             texts[2].text = currPlayer.getNumShields().ToString();
 
             //Handle rank images
@@ -747,7 +744,7 @@ public class BoardManager : MonoBehaviour
         DestroyMordredButton();
         bool displayButton = false;
 
-        foreach (Card card in player.getHand())
+        foreach (Card card in player.GetHand())
         {
             if (card.GetType() == typeof(Mordred)) {
                 displayButton = true;

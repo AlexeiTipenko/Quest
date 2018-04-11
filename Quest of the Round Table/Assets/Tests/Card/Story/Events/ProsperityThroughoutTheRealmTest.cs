@@ -41,13 +41,13 @@ public class ProsperityThroughoutTheRealmTest {
 
 		prosperityThroughoutTheRealm.startBehaviour ();
 
-		Debug.Log ("Joey's # Cards: " + joey.getHand().Count);
-		Assert.IsTrue (joey.getHand().Count == 7);
-		Debug.Log ("Julie's # Cards: " + julie.getHand().Count);
-		Assert.IsTrue (julie.getHand().Count == 12);
-		Debug.Log ("Jimmy's # Cards: " + jimmy.getHand().Count);
-		Assert.IsTrue (jimmy.getHand().Count == 3);
-		Debug.Log ("Jesse's # Cards: " + jesse.getHand().Count);
-		Assert.IsTrue (jesse.getHand().Count == 6);
+		Debug.Log ("Joey's # Cards: " + joey.GetHand().Count);
+		Assert.IsTrue (joey.GetHand().Count == 7);
+		Debug.Log ("Julie's # Cards: " + julie.GetHand().Count);
+		Assert.IsTrue (julie.GetHand().Count == 12);
+		Debug.Log ("Jimmy's # Cards: " + jimmy.GetHand().Count);
+		Assert.IsTrue (jimmy.GetHand().Count == 3);
+		Debug.Log ("Jesse's # Cards: " + jesse.GetHand().Count);
+		Assert.IsTrue (jesse.GetHand().Count == 6);
 	}
 }

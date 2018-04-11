@@ -80,12 +80,34 @@ public class AIPlayer : Player {
 
 	public override void PromptTournament(Tournament tournament)
 	{
-		List<Card> chosenCards = strategy.ParticipateTournament ();
+		List<Adventure> chosenCards = strategy.ParticipateTournament ();
         tournament.CardsSelectionResponse(chosenCards);
 	}
 
 	public override void DisplayTournamentResults(Tournament tournament, bool playerEliminated) {
 		tournament.DisplayTournamentResultsResponse ();
+	}
+
+	public override void PromptDiscardWeaponKingsCallToArms (KingsCallToArms card) {
+        List<Adventure> tempHand = new List<Adventure>(GetHand());
+        foreach(Adventure adventureCard in tempHand) {
+            if (adventureCard.IsWeapon()) {
+                GetHand().Remove(adventureCard);
+				break;
+            }
+        }
+        card.PromptNextPlayer();
+	}
+
+	public override void PromptDiscardFoesKingsCallToArms (KingsCallToArms card, int numFoeCards) {
+        List<Adventure> tempHand = new List<Adventure>(GetHand());
+        foreach(Adventure adventureCard in tempHand) {
+            if(numFoeCards != 0 && adventureCard.IsFoe()) {
+                GetHand().Remove(adventureCard);
+                numFoeCards--;
+            }
+        }
+        card.PromptNextPlayer();
 	}
 
 	public AbstractAI GetStrategy()

@@ -10,14 +10,14 @@ public class PlayerTest {
 	public void testDealCards() {
 		Player player = new HumanPlayer ("Joey");
 
-		List<Card> cards = new List<Card> ();
-		cards.Add (new AtCamelot ());
+		List<Adventure> cards = new List<Adventure> ();
+		cards.Add (new TestOfMorganLeFey ());
 		cards.Add (new Merlin ());
 		cards.Add (new BattleAx ());
 
 		player.DealCards (cards, null);
 
-		Assert.IsTrue (player.getHand().Count == cards.Count);
+		Assert.IsTrue (player.GetHand().Count == cards.Count);
 	}
 
 }
