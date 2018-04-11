@@ -64,52 +64,37 @@ public abstract class Quest : Story {
             bool currentStageHasTest = false;
             int currentBattlePoints = 0;
             foreach (Transform child in boardAreaFoe.transform) {
-                Debug.Log("card name is: " + child.name);
-                foreach (Adventure card in sponsor.GetHand()) {
-					if (child.name == card.GetCardName() && card.IsTest()) {
-                        if (!hasTest) {
-                            hasTest = true;
-                            currentStageHasTest = true;
-                            break;
-                        } else {
-                            Debug.Log("Quest setup failed due to multiple tests.");
-                            Logger.getInstance().warn("Quest setup failed due to multiple tests");
-                            return false;
-                        }
-                    }
-					else if (child.name == card.GetCardName() && card.IsFoe()) {
-                        if (currentStageHasTest) {
-                            Debug.Log("Quest setup failed due to test existing in stage with foe/weapon.");
-                            Logger.getInstance().warn("Quest setup failed due to test existing in stage with foe/weapon");
-                            return false;
-                        }
-                        if (!hasFoe) {
-                            hasFoe = true;
-                            currentBattlePoints += card.getBattlePoints();
-                            break;
-                        }
-                        else {
-                            Debug.Log("Quest setup failed due to multiple foes in a stage.");
-                            Logger.getInstance().warn("Quest setup failed due to multiple foes in a stage");
-                            return false;
-                        }
-                    }
-					else if (child.name == card.GetCardName() && card.IsWeapon()) {
-                        if (currentStageHasTest) {
-                            Debug.Log("Quest setup failed due to test existing in stage with foe/weapon.");
-                            Logger.getInstance().warn("Quest setup failed due to test existing in stage with foe/weapon");
-                            return false;
-                        }
-						if (!weaponsInStage.Contains(card.GetType())) {
-							weaponsInStage.Add(card.GetType());
-                            currentBattlePoints += card.getBattlePoints();
-                            break;
-                        } else {
-                            Debug.Log("Quest setup failed due to multiple weapons of the same type in a stage.");
-                            Logger.getInstance().warn("Quest setup failed due to multiple weapons of the same type in a stage");
-                            return false;
-                        }
-                    }
+				foreach (Adventure card in sponsor.GetHand()) {
+					if (child.name == card.GetCardName ()) {
+						if (card.IsTest ()) {
+							if (hasTest) {
+								Debug.Log("Quest setup failed.");
+								Logger.getInstance().warn("Quest setup failed.");
+								return false;
+							}
+							hasTest = true;
+							currentStageHasTest = true;
+							break;
+						} else if (card.IsFoe ()) {
+							if (currentStageHasTest || hasFoe) {
+								Debug.Log("Quest setup failed.");
+								Logger.getInstance().warn("Quest setup failed.");
+								return false;
+							}
+							hasFoe = true;
+							currentBattlePoints += card.getBattlePoints ();
+							break;
+						} else if (card.IsWeapon ()) {
+							if (currentStageHasTest || weaponsInStage.Contains(card.GetType())) {
+								Debug.Log("Quest setup failed.");
+								Logger.getInstance().warn("Quest setup failed.");
+								return false;
+							}
+							weaponsInStage.Add (card.GetType ());
+							currentBattlePoints += card.getBattlePoints ();
+							break;
+						}
+					}
                 }
             }
             if (!currentStageHasTest) {

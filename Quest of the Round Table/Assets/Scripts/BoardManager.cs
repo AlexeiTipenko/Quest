@@ -380,14 +380,11 @@ public class BoardManager : MonoBehaviour
                 }
                 Stage currentStage = questInPlay.getStage(i);
                 if (currentStage != null) {
-                    if (questInPlay.getSponsor() == player 
-                        || i < questInPlay.getCurrentStage().getStageNum() 
-                        || (i == questInPlay.getCurrentStage().getStageNum() 
-                            && isResolutionOfStage)
-                        || (i == questInPlay.getCurrentStage().getStageNum() 
-							&& questInPlay.getStage(i).getStageCard().IsTest() 
-                            && questInPlay.getStage(i).IsInProgress())) {
-                        foreach (Card card in currentStage.getCards()) {
+					int currStageNum = questInPlay.getCurrentStage ().getStageNum ();
+                    if (questInPlay.getSponsor() == player
+						|| i < currStageNum || (i == currStageNum && isResolutionOfStage)
+						|| (i == currStageNum && questInPlay.getStage(i).getStageCard().IsTest() && questInPlay.getStage(i).IsInProgress())) {
+                        foreach (Adventure card in currentStage.getCards()) {
                             GameObject noDragInstance = Instantiate(Resources.Load("NoDragCardPrefab", typeof(GameObject))) as GameObject;
                             Image cardImg = noDragInstance.GetComponent<Image>();
                             noDragInstance.name = card.GetCardName();
@@ -395,7 +392,7 @@ public class BoardManager : MonoBehaviour
                             noDragInstance.tag = "StageCard";
                             noDragInstance.transform.SetParent(boardAreaFoe.transform, false);
                         }
-                        if (i == questInPlay.getCurrentStage().getStageNum()) {
+                        if (i == currStageNum) {
                             isResolutionOfStage = false;
                         }
                     } else {
