@@ -31,29 +31,12 @@ public class AtCamelotTest
         camelot.playerToPrompt = new HumanPlayer("Ghandi");
         int points;
 
-        List<Card> cardList1 = new List<Card>();
+        List<Adventure> cardList1 = new List<Adventure>();
         cardList1.Add(new BattleAx());
         cardList1.Add(new Amour());
         cardList1.Add(new KingArthur());
 
         camelot.AddPlayerBattlePoints(cardList1);
-
-        //camelot.pointsDict.TryGetValue(camelot.playerToPrompt, out points);
-        //Assert.AreEqual(35, points);
-
-        //camelot.pointsDict.Clear();
-
-        /*
-        List<Card> cardList2 = new List<Card>();
-        cardList2.Add(new Sword());
-        cardList2.Add(new Boar());
-        cardList2.Add(new TestOfValor());
-
-        camelot.AddPlayerBattlePoints(cardList2);
-
-        Assert.AreEqual(10, camelot.pointsDict);
-        camelot.pointsDict.Clear();
-        */
     }
 
 
@@ -63,7 +46,7 @@ public class AtCamelotTest
         Tournament camelot = new AtCamelot();
         camelot.playerToPrompt = new HumanPlayer("Ghandi");
 
-        List<Card> cardList1 = new List<Card>();
+        List<Adventure> cardList1 = new List<Adventure>();
         cardList1.Add(new BattleAx());
         cardList1.Add(new Amour());
         cardList1.Add(new KingArthur());
@@ -73,7 +56,7 @@ public class AtCamelotTest
 
 
 
-        List<Card> cardList2 = new List<Card>();
+        List<Adventure> cardList2 = new List<Adventure>();
         cardList2.Add(new Sword());
         cardList2.Add(new Boar());
         cardList2.Add(new TestOfValor());

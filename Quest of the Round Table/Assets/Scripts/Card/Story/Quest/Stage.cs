@@ -9,13 +9,13 @@ public class Stage {
 	public int stageNum, currentBid;
     bool isInProgress;
 	Adventure stageCard;
-	List<Card> weapons;
+	List<Adventure> weapons;
     List<Player> playersToRemove;
     Action action;
 	Quest quest;
     Player playerToPrompt, originalPlayer, highestBiddingPlayer;
 
-	public Stage(Adventure stageCard, List<Card> weapons, int stageNum) {
+	public Stage(Adventure stageCard, List<Adventure> weapons, int stageNum) {
 		Logger.getInstance ().info ("Starting the Stage class");
 		board = BoardManagerMediator.getInstance ();
 
@@ -28,7 +28,7 @@ public class Stage {
 	public int getTotalBattlePoints() {
 		int battlePoints = 0;
 		if (stageCard.IsFoe()) {
-			battlePoints += ((Foe)stageCard).getBattlePoints (); // here is breaking for some reason.
+			battlePoints += stageCard.getBattlePoints ();
             if (weapons != null) {
                 foreach (Weapon weapon in weapons) {
                     battlePoints += weapon.getBattlePoints();
@@ -39,8 +39,8 @@ public class Stage {
 		return battlePoints;
 	}
 
-    public List<Card> getCards() {
-        List<Card> cards = new List<Card>();
+    public List<Adventure> getCards() {
+        List<Adventure> cards = new List<Adventure>();
         cards.Add(stageCard);
         if (weapons != null) {
             foreach (Weapon weapon in weapons) {
@@ -218,9 +218,9 @@ public class Stage {
 	void EvaluatePlayerForFoe() {
         int playerBattlePoints = playerToPrompt.getRank().getBattlePoints();
         bool playerEliminated = false;
-        List<Card> stageCards = playerToPrompt.getPlayArea ().getCards ();
-        foreach (Card card in stageCards) {
-            playerBattlePoints += ((Adventure) card).getBattlePoints ();
+        List<Adventure> stageCards = playerToPrompt.getPlayArea ().getCards ();
+        foreach (Adventure card in stageCards) {
+            playerBattlePoints += card.getBattlePoints ();
         }
         if (playerBattlePoints >= getTotalBattlePoints ()) {
             Logger.getInstance ().trace ("playerBattlePoints >= getTotalbattlePoints");
@@ -275,7 +275,7 @@ public class Stage {
 				}				
 				DealCardsNextPlayer();
 			};
-            if (playerToPrompt.getHand().Count > 12) {
+            if (playerToPrompt.GetHand().Count > 12) {
                 playerToPrompt.DiscardCards(action, completeAction);
             }
             else {

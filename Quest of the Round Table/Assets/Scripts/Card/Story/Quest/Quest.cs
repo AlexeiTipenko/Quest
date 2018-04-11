@@ -65,7 +65,7 @@ public abstract class Quest : Story {
             int currentBattlePoints = 0;
             foreach (Transform child in boardAreaFoe.transform) {
                 Debug.Log("card name is: " + child.name);
-                foreach (Card card in sponsor.getHand()) {
+                foreach (Card card in sponsor.GetHand()) {
 					if (child.name == card.GetCardName() && card.IsTest()) {
                         if (!hasTest) {
                             hasTest = true;
@@ -141,7 +141,7 @@ public abstract class Quest : Story {
         foreach (Stage stage in stages) {
             Debug.Log("Stage " + stage.getStageNum());
             stage.SetParentQuest(this);
-            foreach (Card card in stage.getCards()) {
+            foreach (Adventure card in stage.getCards()) {
                 Debug.Log(card.GetCardName());
                 if (sponsor.GetType() != typeof(AIPlayer)) {
                     sponsor.RemoveCard(card);
@@ -201,7 +201,7 @@ public abstract class Quest : Story {
                     }
                     PromptNextAcceptQuest();
                 };
-				if (playerToPrompt.getHand().Count > 12) {
+				if (playerToPrompt.GetHand().Count > 12) {
 					playerToPrompt.DiscardCards(action, completeAction);
 				} else {
 					PromptNextAcceptQuest();
@@ -256,7 +256,7 @@ public abstract class Quest : Story {
 				}				
 				board.nextTurn();
 			};
-            if (playerToPrompt.getHand().Count > 12) {
+            if (playerToPrompt.GetHand().Count > 12) {
                 playerToPrompt.DiscardCards(action, completeAction);
             }
             else {
@@ -264,39 +264,12 @@ public abstract class Quest : Story {
             }
 		};
 		playerToPrompt.DrawCards(totalCardsCounter + numStages, action);
-
-//        if (sponsor.getHand().Count + totalCardsCounter + numStages > 12) {
-//            action = () => {
-//                board.TransferFromHandToPlayArea(playerToPrompt);
-//				playerToPrompt.GetAndRemoveCards ();
-//                if (playerToPrompt.getHand().Count > 12)
-//                {
-//                    board.PromptCardRemoveSelection(playerToPrompt, action);
-//                }
-//
-//                else
-//                {
-//					Logger.getInstance ().debug ("In Quest CompleteQuest(), about to RPC nextTurn");
-//					Debug.Log("In Quest CompleteQuest(), about to RPC nextTurn");
-//					if (board.IsOnlineGame()) {
-//						board.getPhotonView().RPC("nextTurn", PhotonTargets.Others);
-//					}
-//                    board.nextTurn();
-//                }
-//            };
-//            sponsor.DrawCards(totalCardsCounter + numStages, action);
-//        } else {
-//            sponsor.DrawCards(totalCardsCounter + numStages, null);
-//            board.nextTurn();
-//        }
 	}
 
 	public bool ContainsOnlyValidCards(Player player) {
-		List<Card> cards = BoardManager.GetPlayArea (player);
-		foreach (Card card in cards) {
-			if (!card.IsWeapon()
-				&& !card.IsAlly()
-			    && card.GetType () != typeof(Amour)) {
+		List<Adventure> cards = BoardManager.GetPlayArea (player);
+		foreach (Adventure card in cards) {
+			if (!card.IsWeapon() && !card.IsAlly() && !card.IsAmour()) {
 				return false;
 			}
 		}

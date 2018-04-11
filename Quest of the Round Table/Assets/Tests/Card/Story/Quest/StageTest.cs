@@ -28,7 +28,7 @@ public class StageTest {
     public void testGetTotalBattlePointsWeapons() {
         Story questCard = new SlayTheDragon();
         Adventure stageCard = new Thieves();
-        List<Card> weapons = new List<Card>();
+        List<Adventure> weapons = new List<Adventure>();
         weapons.Add(new Excalibur());
         weapons.Add(new Dagger());
         BoardManagerMediator.getInstance().setCardInPlay(questCard);

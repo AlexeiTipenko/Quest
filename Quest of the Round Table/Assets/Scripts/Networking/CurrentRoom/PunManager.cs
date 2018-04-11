@@ -37,11 +37,11 @@ public class PunManager : Photon.MonoBehaviour {
 	public void TransferCard (byte[] playerBytes, byte[] cardBytes) {
 		board = BoardManagerMediator.getInstance ();
 		Player tempPlayer = (Player)Deserialize (playerBytes);
-		Card card = (Card)Deserialize (cardBytes);
+		Adventure card = (Adventure)Deserialize (cardBytes);
 		Player localPlayer = FindLocalPlayer (tempPlayer);
 		if (localPlayer != null) {
-			List<Card> localHand = localPlayer.getHand ();
-			foreach (Card localCard in localHand) {
+			List<Adventure> localHand = localPlayer.GetHand ();
+			foreach (Adventure localCard in localHand) {
 				if (localCard.GetCardName () == card.GetCardName ()) {
 					BoardManager.TransferCard (localPlayer, localCard);
 					break;
@@ -63,7 +63,7 @@ public class PunManager : Photon.MonoBehaviour {
 	[PunRPC]
 	public void RemoveCardsResponse (byte[] playerBytes, byte[] chosenCardsBytes) {
         PrepareRPC ();
-        List<Card> chosenCards = (List<Card>)Deserialize(chosenCardsBytes);
+        List<Adventure> chosenCards = (List<Adventure>)Deserialize(chosenCardsBytes);
         Player tempPlayer = (Player)Deserialize(playerBytes);
 		Logger.getInstance ().info ("Received player: " + tempPlayer.getName());
 		Player player = FindLocalPlayer (tempPlayer);
@@ -168,7 +168,7 @@ public class PunManager : Photon.MonoBehaviour {
 	public void CardsSelectionResponse(byte[] cardBytes)
     {
 		PrepareRPC ();
-		List<Card> cards = (List<Card>) Deserialize (cardBytes);
+		List<Adventure> cards = (List<Adventure>) Deserialize (cardBytes);
         ((Tournament)board.getCardInPlay()).CardsSelectionResponse(cards);
     }
 

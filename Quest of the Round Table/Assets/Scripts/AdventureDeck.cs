@@ -73,9 +73,9 @@ public class AdventureDeck : Deck {
 			Logger.getInstance().error ("In drawCardByName: Card by the name " + cardName + " does not exist in the Adventure Deck.");
 			return player;
 		}
-		Card card = cards [cardIndex];
+		Adventure card = (Adventure) cards [cardIndex];
 		cards.RemoveAt (cardIndex);
-		player.DealCards (new List<Card>{card}, null);
+		player.DealCards (new List<Adventure>{card}, null);
 		card.SetOwner (player);
 		return player;
 	}

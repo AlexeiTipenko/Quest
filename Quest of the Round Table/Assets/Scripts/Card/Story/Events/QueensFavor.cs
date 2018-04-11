@@ -58,7 +58,7 @@ public class QueensFavor : Events {
 				}
 				DealCardsNextPlayer();
 			};
-            if (playerToPrompt.getHand().Count > 12) {
+            if (playerToPrompt.GetHand().Count > 12) {
                 playerToPrompt.DiscardCards(action, completeAction);
             }
             else {

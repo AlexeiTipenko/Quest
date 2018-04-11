@@ -60,7 +60,7 @@ public abstract class Tournament : Story
 					}
 					PromptNextPlayer();
 				};
-                if (playerToPrompt.getHand().Count > 12) {
+                if (playerToPrompt.GetHand().Count > 12) {
                     playerToPrompt.DiscardCards(action, completeAction);
                 }
                 else {
@@ -110,8 +110,8 @@ public abstract class Tournament : Story
     }
 
 
-	public void CardsSelectionResponse(List<Card> chosenCards) {
-        foreach (Card card in chosenCards) {
+	public void CardsSelectionResponse(List<Adventure> chosenCards) {
+        foreach (Adventure card in chosenCards) {
             playerToPrompt.RemoveCard(card);
             playerToPrompt.getPlayArea().addCard(card);
         }
@@ -128,15 +128,12 @@ public abstract class Tournament : Story
     }
 
 
-    public void AddPlayerBattlePoints(List<Card> chosenCards) {
+    public void AddPlayerBattlePoints(List<Adventure> chosenCards) {
 		int pointsTotal = playerToPrompt.getRank().getBattlePoints();
-        foreach (Card card in chosenCards)
+        foreach (Adventure card in chosenCards)
         {
-            if (card.IsAdventure())
-            {
-				Debug.Log ("Adding to battle point total");
-                pointsTotal += ((Adventure)card).getBattlePoints();
-            }
+			Debug.Log ("Adding to battle point total");
+            pointsTotal += card.getBattlePoints();
         }
 		if (winnerList.Count == 0) {
 			winnerList.Add (playerToPrompt);
@@ -153,19 +150,16 @@ public abstract class Tournament : Story
     }
 
 
-    public bool ValidateChosenCards(List<Card> chosenCards) {
+    public bool ValidateChosenCards(List<Adventure> chosenCards) {
         bool cardsValid = true;
         
         if (chosenCards.GroupBy(c => c.GetCardName()).Any(g => g.Count() > 1))
             cardsValid = false;
 
-        foreach (Card card in chosenCards)
+        foreach (Adventure card in chosenCards)
         {
-            if (!(card.IsWeapon()) &&
-                !(card.IsAlly()) &&
-                (card.GetType() != typeof(Amour)))
+            if (!card.IsWeapon() && !card.IsAlly() && !card.IsAmour())
             {
-
                 cardsValid = false;
             }
         }

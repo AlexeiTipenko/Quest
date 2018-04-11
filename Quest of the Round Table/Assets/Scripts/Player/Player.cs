@@ -9,7 +9,7 @@ public abstract class Player {
 	protected string name;
 	protected int numShields;
 	protected Rank rank;
-	protected List<Card> hand;
+	protected List<Adventure> hand;
 	protected PlayerPlayArea playArea;
     protected BoardManagerMediator board;
 	public bool discarded;
@@ -19,7 +19,7 @@ public abstract class Player {
 		this.name = name;
 		rank = new Squire ();
 		numShields = 0;
-		hand = new List<Card> ();
+		hand = new List<Adventure> ();
 		playArea = new PlayerPlayArea ();
         board = BoardManagerMediator.getInstance();
 		discarded = false;
@@ -66,16 +66,16 @@ public abstract class Player {
 
 
     public void DrawCards(int numCards, Action action) {
-        List<Card> cards = new List<Card>();
+        List<Adventure> cards = new List<Adventure>();
         for (int i = 0; i < numCards; i++) {
             cards.Add(board.drawAdventureCard());
         }
         DealCards(cards, action);
     }
 
-    public void DealCards(List<Card> cards, Action action)
+    public void DealCards(List<Adventure> cards, Action action)
     {
-        foreach (Card card in cards)
+        foreach (Adventure card in cards)
         {
             card.SetOwner(this);
             hand.Add(card);
@@ -147,7 +147,7 @@ public abstract class Player {
 	}
 
 
-	public List<Card> getHand() {
+	public List<Adventure> GetHand() {
 		return this.hand;
 	}
 
@@ -174,14 +174,14 @@ public abstract class Player {
 
     public int getHandBid() {
         int availableBids = 0;
-        foreach (Card card in hand) {
+        foreach (Adventure card in hand) {
             if (card.IsAlly())
             {
-                if ( ((Ally)card).getBidPoints() == 0) {
+                if (card.getBidPoints() == 0) {
                     availableBids += 1;
                 }
                 else {
-                    availableBids += ((Ally)card).getBidPoints();
+                    availableBids += card.getBidPoints();
                 }
             }
             else
@@ -194,10 +194,10 @@ public abstract class Player {
 
     public int getPlayAreaBid() {
         int availableBids = 0;
-        foreach (Card card in playArea.getCards())
+        foreach (Adventure card in playArea.getCards())
         {
             if (card.IsAlly()) {
-                availableBids += ((Ally)card).getBidPoints();
+                availableBids += card.getBidPoints();
             }
             else {
                 availableBids += 1;
@@ -207,7 +207,7 @@ public abstract class Player {
     }
 
 
-    public void RemoveCard(Card card)
+    public void RemoveCard(Adventure card)
     {
         for (int i = 0; i < hand.Count(); i++)
         {
@@ -220,10 +220,10 @@ public abstract class Player {
         }
     }
 
-	public void RemoveCardsResponse(List<Card> chosenCards)
+	public void RemoveCardsResponse(List<Adventure> chosenCards)
     {
 		if (chosenCards.Count > 0) {
-            foreach (Card card in chosenCards) {
+            foreach (Adventure card in chosenCards) {
                 RemoveCard(card);
             }
             Debug.Log("Removed " + chosenCards.Count + " cards from " + name + "'s hand");
@@ -233,7 +233,7 @@ public abstract class Player {
     }
 
 	public void GetAndRemoveCards () {
-		List<Card> chosenCards = board.GetDiscardedCards (this);
+		List<Adventure> chosenCards = board.GetDiscardedCards (this);
 		if (board.IsOnlineGame () && chosenCards.Count > 0) {
             board.getPhotonView ().RPC ("RemoveCardsResponse", PhotonTargets.Others, PunManager.Serialize(this), PunManager.Serialize(chosenCards));
 		}
@@ -278,7 +278,7 @@ public abstract class Player {
         else {
             output += " (Human): ";
         }
-        foreach (Card card in hand)
+        foreach (Adventure card in hand)
         {
             output += card.ToString() + ", ";
         }

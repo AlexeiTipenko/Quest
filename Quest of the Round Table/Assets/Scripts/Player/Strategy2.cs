@@ -68,7 +68,7 @@ public class Strategy2 : AbstractAI
             Logger.getInstance().info("Foe bid is on first stage: " + GetTotalAvailableFoeBids(2));
             if (GetTotalAvailableFoeBids(2) > currentBid && GetTotalAvailableFoeBids(2) < discardableCardsThreshold)
             {
-                foreach(Card card in strategyOwner.getHand()){
+                foreach(Card card in strategyOwner.GetHand()){
                     Debug.Log("CARDS ARE: " + card.GetCardName());
                 }
                 Logger.getInstance().info(strategyOwner.getName() + " AI is preparing to bid: " + GetTotalAvailableFoeBids(2));
@@ -122,25 +122,25 @@ public class Strategy2 : AbstractAI
         Debug.Log(strategyOwner.getName() + " is preparing the quest.");
         List<Stage> stages = new List<Stage>();
         Quest quest = (Quest)board.getCardInPlay();
-        List<Card> cards = strategyOwner.getHand();
+        List<Adventure> cards = strategyOwner.GetHand();
 
         Stage finalStage = null;
         Stage testStage = null;
         List<Stage> otherStages = new List<Stage>();
         int initializedStages = 0, numTestStages = 0;
 
-        Card stageCard = null;
-        List<Card> weapons = new List<Card>();
-        foreach (Card card in cards) {
+        Adventure stageCard = null;
+        List<Adventure> weapons = new List<Adventure>();
+        foreach (Adventure card in cards) {
             if (card.IsFoe()) {
-                if (stageCard == null || ((Foe)card).getBattlePoints() > ((Foe)stageCard).getBattlePoints()) {
+                if (stageCard == null || card.getBattlePoints() > stageCard.getBattlePoints()) {
                     stageCard = card;
                 }
             }
         }
         Logger.getInstance().info("Final stage foe: " + stageCard.GetCardName());
         Debug.Log("Final stage foe: " + stageCard.GetCardName());
-        while (((Foe)stageCard).getBattlePoints() + GetTotalBattlePoints(weapons) < minimumFinalStageBattlePoints) {
+        while (stageCard.getBattlePoints() + GetTotalBattlePoints(weapons) < minimumFinalStageBattlePoints) {
             weapons.Add(GetBestUniqueWeapon(cards, weapons));
         }
 
@@ -157,7 +157,7 @@ public class Strategy2 : AbstractAI
 
         if (ContainsTest(cards)) {
             Debug.Log(strategyOwner.getName() + " has a test in their hand.");
-            foreach (Card card in cards) {
+            foreach (Adventure card in cards) {
 				if (card.IsTest()) {
                     stageCard = card;
                     break;
@@ -169,7 +169,7 @@ public class Strategy2 : AbstractAI
             Debug.Log("Initialized stages: " + initializedStages);
         }
 
-        Card previousStageCard = null;
+        Adventure previousStageCard = null;
         while (initializedStages < quest.getNumStages()) {
             stageCard = GetWeakestFoe(cards, previousStageCard);
             int stageNum = initializedStages - (numTestStages + 1);
@@ -194,7 +194,7 @@ public class Strategy2 : AbstractAI
     {
         Debug.Log("Stage card type is Foe");
         Quest quest = (Quest)board.getCardInPlay();
-        List<Card> cards = strategyOwner.getHand();
+        List<Adventure> cards = strategyOwner.GetHand();
         List<Adventure> sortedList = SortCardsByType(cards);
         List<Adventure> participationList = new List<Adventure>();
 
@@ -216,14 +216,7 @@ public class Strategy2 : AbstractAI
                 if (CanPlayCardForStage(card, participationList)) {
                     Debug.Log(strategyOwner.getName() + " can play card, adding to participation list for stage");
                     participationList.Add(card);
-                    currentBattlePoints += ((Adventure)card).getBattlePoints();
-                    //if (card.GetType() == typeof(Amour)) {
-                    //    currentBattlePoints += ((Amour)card).getBattlePoints();
-                    //} else if (card.IsAlly()) {
-                    //    currentBattlePoints += ((Ally)card).getBattlePoints();
-                    //} else {
-                    //    currentBattlePoints += ((Weapon)card).getBattlePoints();
-                    //}
+                    currentBattlePoints += card.getBattlePoints();
                     Debug.Log(strategyOwner.getName() + "'s current battle points: " + currentBattlePoints);
                     if (currentBattlePoints >= previousStageBattlePoints + 10) {
                         Debug.Log("Sufficient battle points acquired, moving on with stage");
@@ -237,7 +230,7 @@ public class Strategy2 : AbstractAI
             }
             previousStageBattlePoints = currentBattlePoints;
         }
-        foreach (Card card in participationList) {
+        foreach (Adventure card in participationList) {
             Debug.Log("Moving card from " + strategyOwner.getName() + "'s hand to play area: " + card.GetCardName());
             strategyOwner.getPlayArea().addCard(card);
             strategyOwner.RemoveCard(card);
@@ -247,7 +240,7 @@ public class Strategy2 : AbstractAI
 
     bool IncrementableCardsOverEachStage() {
         Quest quest = (Quest)board.getCardInPlay();
-        List<Card> cards = strategyOwner.getHand();
+        List<Adventure> cards = strategyOwner.GetHand();
         List<Adventure> sortedList = SortCardsByType(cards);
         List<Adventure> participationList = new List<Adventure>();
 
@@ -264,7 +257,7 @@ public class Strategy2 : AbstractAI
             foreach (Adventure card in sortedList) {
                 Debug.Log("Adding " + card.GetCardName() + " to " + strategyOwner.getName() + "'s hypothetical play area");
                 currentBattlePoints += card.getBattlePoints();
-                if (card.GetType() == typeof(Amour)) {
+				if (card.IsAmour()) {
                     permanentBattlePoints += card.getBattlePoints();
                 } else if (card.IsAlly()) {
                     permanentBattlePoints += card.getBattlePoints();
@@ -287,11 +280,11 @@ public class Strategy2 : AbstractAI
         return true;
     }
 
-    public override List<Card> ParticipateTournament() {
+    public override List<Adventure> ParticipateTournament() {
         Logger.getInstance().info(strategyOwner.getName() + " is preparing for tournament");
         Debug.Log("AI is preparing for tournament");
-        List<Card> Hand = strategyOwner.getHand();
-        List<Card> PlayedList = new List<Card>();
+        List<Adventure> Hand = strategyOwner.GetHand();
+        List<Adventure> PlayedList = new List<Adventure>();
         List<String> PlayedListName = new List<string>();
         List<Adventure> Sorted = new List<Adventure>();
         Sorted = SortCardsByType(Hand);
@@ -311,12 +304,12 @@ public class Strategy2 : AbstractAI
                 Debug.Log("Adding " + tempCard.GetCardName() + " to AI");
                 PlayedList.Add(tempCard);
                 PlayedListName.Add(tempCard.GetCardName());
-                totalBattlePoints += ((Adventure)tempCard).getBattlePoints();
+                totalBattlePoints += tempCard.getBattlePoints();
             }
             Sorted.Remove(tempCard);
         }
 
-        foreach(Card card in PlayedList) {
+        foreach(Adventure card in PlayedList) {
             Debug.Log("Cards AI will play is: " + card.GetCardName());
         }
         return PlayedList;

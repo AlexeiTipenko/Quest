@@ -41,7 +41,7 @@ public class CourtCalledToCamelotTest {
 		foreach (Player player in players) {
 			playArea = player.getPlayArea ();
 
-			foreach (Card card in player.getHand()) {
+			foreach (Adventure card in player.GetHand()) {
 				if (card.IsAlly()) {
 					playArea.addCard (card);
 				}

@@ -107,13 +107,13 @@ public class BoardManagerMediator
 		return cardInPlay;
 	}
 
-    public List<Card> GetSelectedCards(Player player) {
+    public List<Adventure> GetSelectedCards(Player player) {
         
         List<string> cardNames = BoardManager.GetSelectedCardNames();
-        List<Card> cardList = new List<Card>();
+        List<Adventure> cardList = new List<Adventure>();
 
-        foreach(string name in cardNames){
-            foreach (Card card in player.getHand()) {
+        foreach(string name in cardNames) {
+            foreach (Adventure card in player.GetHand()) {
                 if (card.GetCardName() == name) {
                     cardList.Add(card);
                     break;
@@ -127,15 +127,15 @@ public class BoardManagerMediator
         BoardManager.DestroyDiscardArea();
     }
 
-    public List<Card> GetDiscardedCards(Player player)
+    public List<Adventure> GetDiscardedCards(Player player)
     {
 
         List<string> cardNames = BoardManager.GetSelectedDiscardNames();
-        List<Card> cardList = new List<Card>();
+        List<Adventure> cardList = new List<Adventure>();
 
         foreach (string name in cardNames)
         {
-            foreach (Card card in player.getHand())
+            foreach (Adventure card in player.GetHand())
             {
                 if (card.GetCardName() == name)
                 {
@@ -150,7 +150,7 @@ public class BoardManagerMediator
 
     public void DiscardCard(string cardName) {
         
-        foreach (Card card in players[playerTurn].getHand())
+        foreach (Adventure card in players[playerTurn].GetHand())
         {
             if (card.GetCardName() == cardName)
             {
@@ -184,8 +184,8 @@ public class BoardManagerMediator
         return BoardManager.GetCardsNumHandArea(player);
     }
 
-    public Card drawAdventureCard() {
-        Card card = adventureDeck.drawCard();
+    public Adventure drawAdventureCard() {
+		Adventure card = (Adventure)adventureDeck.drawCard();
         if (adventureDeck.getSize() <= 0) {
             adventureDeck = new AdventureDeck(adventureDiscard);
             adventureDiscard.empty();
@@ -437,7 +437,7 @@ public class BoardManagerMediator
 
 
     public void TransferFromHandToPlayArea(Player player) {
-        List<Card> playAreaCards = BoardManager.GetPlayArea(player);
+        List<Adventure> playAreaCards = BoardManager.GetPlayArea(player);
 		BoardManager.TransferCards (player, playAreaCards);
     }
 
@@ -542,7 +542,7 @@ public class BoardManagerMediator
         BoardManager.DrawCards(player);
 		BoardManager.SetInteractionText(Localization.PrepareTournament(player));
         Action action = () => {
-			List<Card> chosenCards = GetSelectedCards(player);
+			List<Adventure> chosenCards = GetSelectedCards(player);
 			if (tournament.ValidateChosenCards(chosenCards)) {
 				if (IsOnlineGame()) {
 					view.RPC("CardsSelectionResponse", PhotonTargets.Others, PunManager.Serialize(chosenCards));

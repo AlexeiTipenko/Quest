@@ -80,7 +80,7 @@ public class AIPlayer : Player {
 
 	public override void PromptTournament(Tournament tournament)
 	{
-		List<Card> chosenCards = strategy.ParticipateTournament ();
+		List<Adventure> chosenCards = strategy.ParticipateTournament ();
         tournament.CardsSelectionResponse(chosenCards);
 	}
 

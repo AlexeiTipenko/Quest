@@ -118,11 +118,11 @@ public class KingsCallToArms : Events {
     {
         Debug.Log("Entered 'PlayerDiscardedWeapon");
         Debug.Log("PLAYER WHOSE CARD WE ARE ABOUT TO REMOVE: " + currentPlayer.getName());
-        List<Card> dicardedCards = board.GetDiscardedCards(currentPlayer);
+        List<Adventure> dicardedCards = board.GetDiscardedCards(currentPlayer);
         Debug.Log("Number of cards discarded: " + dicardedCards.Count);
 
         if (dicardedCards.Count == 1){
-			if (dicardedCards[0].IsWeapon()){
+			if (dicardedCards[0].IsWeapon()) {
 				currentPlayer.GetAndRemoveCards ();
 
                 if (board.IsOnlineGame())
@@ -151,7 +151,7 @@ public class KingsCallToArms : Events {
     {
         bool valid = true;
         Debug.Log("Entered 'PLayerDiscardedFoes");
-        List<Card> dicardedCards = board.GetDiscardedCards(currentPlayer);
+        List<Adventure> dicardedCards = board.GetDiscardedCards(currentPlayer);
         Debug.Log("Number of cards discarded: " + dicardedCards.Count);
 
         if (dicardedCards.Count == getNumFoeCards()) {
@@ -187,7 +187,7 @@ public class KingsCallToArms : Events {
 
 	private int getNumFoeCards() {
 		int numFoeCards = 0;
-		foreach (Card card in currentPlayer.getHand()) {
+		foreach (Card card in currentPlayer.GetHand()) {
 			if (card.IsFoe()) {
 				numFoeCards++;
 				if (numFoeCards == 2) {
@@ -199,7 +199,7 @@ public class KingsCallToArms : Events {
 	}
 
 	public bool hasWeapons() {
-		foreach (Card card in currentPlayer.getHand()) {
+		foreach (Card card in currentPlayer.GetHand()) {
 			if (card.IsWeapon()) {
 				return true;
 			}

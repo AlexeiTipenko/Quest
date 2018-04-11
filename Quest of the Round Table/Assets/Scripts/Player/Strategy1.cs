@@ -25,7 +25,7 @@ public class Strategy1 : AbstractAI
         if(TwoWeaponsorAlliesPerStage() && FoesUnder20()){
             Logger.getInstance().info("AI Strategy1" + strategyOwner.getName() + " playing in quest");
             Debug.Log("AI Strategy1" + strategyOwner.getName() + " playing in quest");
-            foreach(Card card in strategyOwner.getHand()){
+            foreach(Card card in strategyOwner.GetHand()){
                 Debug.Log(strategyOwner.getName() + "Cards are: " + card.GetCardName());
             }
             return true;
@@ -33,7 +33,7 @@ public class Strategy1 : AbstractAI
         else {
             Logger.getInstance().info("AI Strategy1" + strategyOwner.getName() + " not playing in quest");
             Debug.Log("AI Strategy1" + strategyOwner.getName() + " not playing in quest");
-            foreach (Card card in strategyOwner.getHand())
+            foreach (Card card in strategyOwner.GetHand())
             {
                 Debug.Log(strategyOwner.getName() + " not participating in quest Cards are: " + card.GetCardName());
             }
@@ -100,13 +100,13 @@ public class Strategy1 : AbstractAI
 
         List<Stage> stages = new List<Stage>();
         Quest quest = (Quest)board.getCardInPlay();
-        List<Card> cards = strategyOwner.getHand();
-		Dictionary<Card, bool> cardDictionary = new Dictionary<Card, bool> ();
-		foreach (Card card in cards) {
+        List<Adventure> cards = strategyOwner.GetHand();
+		Dictionary<Adventure, bool> cardDictionary = new Dictionary<Adventure, bool> ();
+		foreach (Adventure card in cards) {
 			cardDictionary.Add (card, false);
 		}
 		Debug.Log ("Card dictionary contains:");
-		foreach (Card card in cardDictionary.Keys) {
+		foreach (Adventure card in cardDictionary.Keys) {
 			Debug.Log ("Card: " + card);
 		}
 
@@ -117,8 +117,8 @@ public class Strategy1 : AbstractAI
 
 		int previousStageBattlePoints = 0;
 
-        Card stageCard = null;
-        List<Card> weapons = new List<Card>();
+        Adventure stageCard = null;
+        List<Adventure> weapons = new List<Adventure>();
 		stageCard = GetStrongestFoe (cardDictionary);
 		if (stageCard == null) {
 			Debug.Log ("Failed to initialize all stages, withdrawing sponsorship");
@@ -128,9 +128,9 @@ public class Strategy1 : AbstractAI
 		cardDictionary [stageCard] = true;
         Logger.getInstance().info("Final stage foe: " + stageCard.GetCardName());
         Debug.Log("Final stage foe: " + stageCard.GetCardName());
-        while (((Foe)stageCard).getBattlePoints() + GetTotalBattlePoints(weapons) < minimumFinalStageBattlePoints)
+        while (stageCard.getBattlePoints() + GetTotalBattlePoints(weapons) < minimumFinalStageBattlePoints)
         {
-			Weapon bestUniqueWeapon = GetBestUniqueWeapon (new List<Card>(cardDictionary.Keys), weapons);
+			Adventure bestUniqueWeapon = GetBestUniqueWeapon (new List<Adventure>(cardDictionary.Keys), weapons);
 			if (bestUniqueWeapon == null) {
 				Debug.Log ("No more weapons found");
 				break;
@@ -152,10 +152,10 @@ public class Strategy1 : AbstractAI
         Debug.Log("Initialized stages: " + initializedStages);
 		previousStageBattlePoints = finalStage.getTotalBattlePoints ();
 
-		if (ContainsTest(new List<Card>(cardDictionary.Keys)))
+		if (ContainsTest(new List<Adventure>(cardDictionary.Keys)))
         {
             Debug.Log(strategyOwner.getName() + " has a test in their hand.");
-			foreach (Card card in cardDictionary.Keys)
+			foreach (Adventure card in cardDictionary.Keys)
             {
 				if (card.IsTest())
                 {
@@ -177,15 +177,15 @@ public class Strategy1 : AbstractAI
 			if (stageCard == null) {
 				break;
 			}
-			List<Card> weaponList = null;
-			Weapon weaponCard = GetBestDuplicateWeapon (cardDictionary);
+			List<Adventure> weaponList = null;
+			Adventure weaponCard = GetBestDuplicateWeapon (cardDictionary);
 			cardDictionary [stageCard] = true;
 			if (weaponCard != null) {
 				cardDictionary [weaponCard] = true;
-				weaponList = new List<Card> ();
+				weaponList = new List<Adventure> ();
 				weaponList.Add (weaponCard);
 			}
-			if (IsValidBattlePoints ((Foe)stageCard, weaponCard, previousStageBattlePoints)) {
+			if (IsValidBattlePoints (stageCard, weaponCard, previousStageBattlePoints)) {
 				Debug.Log ("Created a valid quest");
 				int stageNum = quest.getNumStages () - initializedStages - 1;
 				Logger.getInstance().info("Stage " + stageNum + ": stage card is " + stageCard.GetCardName());
@@ -222,7 +222,7 @@ public class Strategy1 : AbstractAI
 		}
     }
 
-	private bool IsValidBattlePoints(Foe stageCard, Weapon weaponCard, int previousStageBattlePoints) {
+	private bool IsValidBattlePoints(Adventure stageCard, Adventure weaponCard, int previousStageBattlePoints) {
 		int stageCardBattlePoints = 0, weaponCardBattlePoints = 0;
 		stageCardBattlePoints = stageCard.getBattlePoints ();
 		if (weaponCard != null) {
@@ -237,7 +237,7 @@ public class Strategy1 : AbstractAI
     public override void PlayFoeStage(Stage stage)
     {
 		Debug.Log ("Playing out foe for AI strategy 2");
-		List<Card> hand = strategyOwner.getHand ();
+		List<Adventure> hand = strategyOwner.GetHand ();
 		List<Adventure> sortedList = SortCardsByBattlePoints (hand);
 		List<Adventure> participationList = new List<Adventure> ();
 		Quest quest = (Quest)board.getCardInPlay ();
@@ -297,31 +297,30 @@ public class Strategy1 : AbstractAI
 		stage.PromptFoeResponse(false);
     }
 
-    public override List<Card> ParticipateTournament() {
+    public override List<Adventure> ParticipateTournament() {
 		Tournament tournament = (Tournament)board.getCardInPlay();
-		List<Card> hand = strategyOwner.getHand();
+		List<Adventure> hand = strategyOwner.GetHand();
 		List<Adventure> sortedList = SortCardsByType (hand);
-		List<Card> participationList = new List<Card> ();
+		List<Adventure> participationList = new List<Adventure> ();
 		if (PlayersCanEvolveOrWinWithTournament (tournament.participatingPlayers)) {
 			//play strongest possible hand (includes allies, amours and weapons)
-			foreach (Card card in sortedList) {
-				if (((card.GetType () == typeof(Amour) || card.IsWeapon()) && !participationList.Contains (card)) 
-					|| card.IsAlly())
+			foreach (Adventure card in sortedList) {
+				if (((card.IsAmour() || card.IsWeapon()) && !participationList.Contains (card)) || card.IsAlly())
 				{
 					participationList.Add (card);
 				} 
 			}
 		} else {
 			//Else: I play only weapons I have two or more instances of
-			List<Card> weaponList = new List<Card>();
-			foreach (Card card in sortedList) {
+			List<Adventure> weaponList = new List<Adventure>();
+			foreach (Adventure card in sortedList) {
 				if (card.IsWeapon()) {
 					weaponList.Add (card);
 				}
 			}
-			Dictionary<Card, int> weaponCountMap = weaponList.GroupBy( i => i ).ToDictionary(t => t.Key, t=> t.Count());
+			Dictionary<Adventure, int> weaponCountMap = weaponList.GroupBy( i => i ).ToDictionary(t => t.Key, t=> t.Count());
 
-			foreach (Card card in weaponCountMap.Keys) {
+			foreach (Adventure card in weaponCountMap.Keys) {
 				if (weaponCountMap [card] > 1) {
 					participationList.Add (card);
 				}
@@ -334,7 +333,7 @@ public class Strategy1 : AbstractAI
     {
         Quest quest = (Quest)board.getCardInPlay();
         int numWeaponsAndAllies = 0;
-        foreach (Card card in strategyOwner.getHand())
+        foreach (Card card in strategyOwner.GetHand())
         {
             if (card.IsWeapon() || card.IsAlly() || card.IsAmour())
             {
@@ -354,7 +353,7 @@ public class Strategy1 : AbstractAI
     public bool FoesUnder20()
     {
         int foes = 0;
-        foreach (Card card in strategyOwner.getHand())
+        foreach (Card card in strategyOwner.GetHand())
         {
             if (card.IsFoe())
             {

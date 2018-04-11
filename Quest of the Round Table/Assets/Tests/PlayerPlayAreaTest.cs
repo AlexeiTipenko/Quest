@@ -9,7 +9,6 @@ public class PlayerPlayAreaTest {
         PlayerPlayArea playArea = new PlayerPlayArea();
         playArea.addCard(new SirTristan());
         playArea.addCard(new QueenIseult());
-        playArea.addCard(new BoarHunt());
         playArea.addCard(new Amour());
         playArea.addCard(new Amour());
         playArea.addCard(new Excalibur());
