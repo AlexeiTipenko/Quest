@@ -105,11 +105,13 @@ public abstract class AbstractAI {
 
 	protected bool SomeoneElseCanWinOrEvolveWithTournament(List<Player> players) {
 		Debug.Log("Checking if someone else can win or evolve through this tournament.");
+        Logger.getInstance().info("AI Strategy 1 checking if someone else can win/evolve through tournament");
 		Tournament tournament = (Tournament)board.getCardInPlay();
 		foreach (Player player in players) {
 			if (player != strategyOwner) {
 				if (player.getNumShields() + tournament.GetBonusShields() >= player.getRank().getShieldsToProgress()) {
 					Debug.Log("Player " + player.getName() + " can win off this tournament.");
+                    Logger.getInstance().info("AI Strategy 1 found that Player: " + player.getName() + " can win off this tournament.");
 					return true;
 				}
 			}

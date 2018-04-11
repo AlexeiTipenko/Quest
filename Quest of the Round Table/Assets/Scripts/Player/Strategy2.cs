@@ -65,7 +65,7 @@ public class Strategy2 : AbstractAI
         if(stage.getStageNum() == 0){
             Logger.getInstance().info("First stage, only discarding foes in hand less than 25");
             Logger.getInstance().info("Foe bid is on first stage: " + strategyOwner.GetTotalAvailableFoeBids());
-            if (strategyOwner.GetTotalAvailableFoeBids() > currentBid && strategyOwner.GetTotalAvailableFoeBids() < 25)
+            if (strategyOwner.GetTotalAvailableFoeBids() > currentBid && strategyOwner.GetTotalAvailableFoeBids() < discardableCardsThreshold)
             {
                 Logger.getInstance().info(strategyOwner.getName() + " AI is preparing to bid: " + strategyOwner.GetTotalAvailableFoeBids());
                 Debug.Log(strategyOwner.getName() + " AI is preparing to bid: " + strategyOwner.GetTotalAvailableFoeBids());
@@ -86,7 +86,7 @@ public class Strategy2 : AbstractAI
             Debug.Log("Inside second stage for AI");
             Logger.getInstance().info("Foe bid is on not the first stage: " + strategyOwner.GetTotalAvailableFoeBids());
             Logger.getInstance().info("Foe and Dup bid is: " + strategyOwner.getTotalAvailableFoeandDuplicateBids());
-            if (strategyOwner.getTotalAvailableFoeandDuplicateBids() > currentBid && strategyOwner.GetTotalAvailableFoeBids() < 25)
+            if (strategyOwner.getTotalAvailableFoeandDuplicateBids() > currentBid && strategyOwner.GetTotalAvailableFoeBids() < discardableCardsThreshold)
             {
                 Logger.getInstance().info(strategyOwner.getName() + " AI is preparing to bid: " + strategyOwner.GetTotalAvailableFoeBids());
                 Debug.Log(strategyOwner.getName() + " AI is preparing to bid: " + strategyOwner.GetTotalAvailableFoeBids());
@@ -118,7 +118,7 @@ public class Strategy2 : AbstractAI
     public override void SponsorQuest()
     {
         Logger.getInstance().info(strategyOwner.getName() + " is preparing the quest");
-        Debug.Log(strategyOwner.getName() + " is preparing to sponsor the quest.");
+        Debug.Log(strategyOwner.getName() + " is preparing the quest.");
         List<Stage> stages = new List<Stage>();
         Quest quest = (Quest)board.getCardInPlay();
         List<Card> cards = strategyOwner.getHand();
@@ -170,7 +170,7 @@ public class Strategy2 : AbstractAI
 
         Card previousStageCard = null;
         while (initializedStages < quest.getNumStages()) {
-            stageCard = GetWeakestFoe(cards, previousStageCard);
+            stageCard = strategyOwner.GetWeakestFoe(cards, previousStageCard);
             int stageNum = initializedStages - (numTestStages + 1);
             Logger.getInstance().info("Stage " + stageNum + ": stage card is " + stageCard.getCardName());
             Debug.Log("Stage " + stageNum + ": stage card is " + stageCard.getCardName());
@@ -272,20 +272,6 @@ public class Strategy2 : AbstractAI
     {
         Debug.Log("Stage card type is Test");
         throw new NotImplementedException();
-    }
-
-    Foe GetWeakestFoe(List<Card> cards, Card previousStageCard) {
-        Foe weakestFoe = null;
-        foreach (Card card in cards) {
-            if (card.GetType().IsSubclassOf(typeof(Foe))) {
-                if (weakestFoe == null || ((Foe)card).getBattlePoints() < weakestFoe.getBattlePoints()) {
-                    if (previousStageCard == null || ((Foe)previousStageCard).getBattlePoints() < ((Foe)card).getBattlePoints()) {
-                        weakestFoe = (Foe)card;
-                    }
-                }
-            }
-        }
-        return weakestFoe;
     }
 
     bool IncrementableCardsOverEachStage() {
