@@ -48,6 +48,7 @@ public class BoardManager : MonoBehaviour
     public static void SetInteractionText(String text)
     {
         Debug.Log("Setting interaction text: " + text);
+        Logger.getInstance().info("Setting interaction text: " + text);
         GameObject interactionText = GameObject.Find("Canvas/TabletopImage/InteractionPanel/InteractionText");
         interactionText.GetComponent<Text>().text = text;
     }
@@ -324,6 +325,7 @@ public class BoardManager : MonoBehaviour
         DestroyPlayArea();
         foreach (Card card in player.getPlayArea().getCards())
         {
+            Logger.getInstance().info("Player name: " + player.getName() + ", playarea card is: " + card.GetCardName());
             GameObject playArea = GameObject.Find("Canvas/TabletopImage/PlayerPlayArea");
             GameObject instance = Instantiate(Resources.Load("NoDragCardPrefab", typeof(GameObject))) as GameObject;
             instance.name = card.GetCardName();
@@ -391,6 +393,7 @@ public class BoardManager : MonoBehaviour
 							&& questInPlay.getStage(i).getStageCard().IsTest() 
                             && questInPlay.getStage(i).IsInProgress())) {
                         foreach (Card card in currentStage.getCards()) {
+                            Logger.getInstance().info("Stage " + i + ", card: " + card.GetCardName());
                             GameObject noDragInstance = Instantiate(Resources.Load("NoDragCardPrefab", typeof(GameObject))) as GameObject;
                             Image cardImg = noDragInstance.GetComponent<Image>();
                             noDragInstance.name = card.GetCardName();
@@ -670,7 +673,9 @@ public class BoardManager : MonoBehaviour
             Text[] texts = CurrentPlayerInfo.transform.GetComponentsInChildren<Text>();
             texts[0].text = "Player: " + currPlayer.getName();
             texts[1].text = currPlayer.GetHand().Count.ToString();
+            Logger.getInstance().info("Inside display player info, number of cards for player : " + currPlayer.getName() + " is: " + currPlayer.GetHand().Count);
             texts[2].text = currPlayer.getNumShields().ToString();
+            Logger.getInstance().info("Inside display player info, shields for player : " + currPlayer.getName() + " is: " + currPlayer.getNumShields());
 
             //Handle rank images
             Image[] images = CurrentPlayerInfo.transform.GetComponentsInChildren<Image>();

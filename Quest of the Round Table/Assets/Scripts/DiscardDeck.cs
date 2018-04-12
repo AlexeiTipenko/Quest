@@ -7,6 +7,7 @@ public class DiscardDeck : Deck {
 
 	public void addCard (Card card) {
         Debug.Log("Discarded card: " + card.GetCardName());
+        Logger.getInstance().info("Discarded card: " + card.GetCardName());
 		cards.Add (card);
 	}
 

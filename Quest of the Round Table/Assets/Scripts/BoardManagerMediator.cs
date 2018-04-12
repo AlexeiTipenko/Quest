@@ -241,6 +241,7 @@ public class BoardManagerMediator
                 storyDeck = new StoryDeck();
             }
             cardInPlay = (Story)storyDeck.drawCard();
+            Logger.getInstance().info("Drew card: " + cardInPlay.GetCardName());
             Debug.Log("Drew card: " + cardInPlay.GetCardName());
             cardInPlay.startBehaviour();
         }
@@ -516,6 +517,7 @@ public class BoardManagerMediator
 		BoardManager.SetInteractionText(Localization.PromptEnterTournament(player));
         Action action1 = () => {
 			Debug.Log("Action1 (accept) for " + tournament.GetCardName() + " for player " + player.getName());
+            Logger.getInstance().info("Action1 (accept) for " + tournament.GetCardName() + " for player " + player.getName());
             if (IsOnlineGame()) {
                 view.RPC("PromptEnterTournamentResponse", PhotonTargets.Others, true);
             }
@@ -525,6 +527,7 @@ public class BoardManagerMediator
 
         Action action2 = () => {
 			Debug.Log("Action2 (decline) for " + tournament.GetCardName() + " for player " + player.getName());
+            Logger.getInstance().info("Action2 (decline) for " + tournament.GetCardName() + " for player " + player.getName());
             if (IsOnlineGame()) {
 				view.RPC("PromptEnterTournamentResponse", PhotonTargets.Others, false);
             }

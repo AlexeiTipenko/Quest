@@ -71,6 +71,7 @@ public abstract class Player {
 
     public void DrawCards(int numCards, Action action) {
         List<Adventure> cards = new List<Adventure>();
+        Logger.getInstance().info("Dealing cards to player: " + getName() + ", " + numCards);
         for (int i = 0; i < numCards; i++) {
             cards.Add(board.drawAdventureCard());
         }
@@ -247,6 +248,7 @@ public abstract class Player {
 	public void incrementShields(int numShields) {
 		this.numShields += numShields;
         Debug.Log("Awarded " + numShields + " shields to " + name);
+        Logger.getInstance().info("Awarded " + numShields + " shields to " + name);
 		checkForRankUp ();
 	}
 

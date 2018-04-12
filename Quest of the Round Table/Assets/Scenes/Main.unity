@@ -270,6 +270,10 @@ Prefab:
       propertyPath: m_BlockingMask.m_Bits
       value: 4294967295
       objectReference: {fileID: 0}
+    - target: {fileID: 1961487801660316, guid: b1086d82e4c4e4ff78cdf6587cab792e, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b1086d82e4c4e4ff78cdf6587cab792e, type: 2}
   m_IsPrefabParent: 0
@@ -577,6 +581,10 @@ Prefab:
         type: 2}
       propertyPath: m_Pivot.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1568680982214886, guid: 30e8c68771ced4d9cba12500b85238a8, type: 2}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 30e8c68771ced4d9cba12500b85238a8, type: 2}
