@@ -19,11 +19,11 @@
         adventureDeck.moveCardToIndex("Boar", 1);
         adventureDeck.moveCardToIndex("Sword", 2);
         adventureDeck.moveCardToIndex("Dagger", 3);
-        adventureDeck.moveCardToIndex("TestOfMorganLeFey", 4);
+        adventureDeck.moveCardToIndex("TestOfTheQuestingBeast", 4);
         //Player 2
         adventureDeck.moveCardToIndex("Horse", 12);
         adventureDeck.moveCardToIndex("Dagger", 13);
-		adventureDeck.moveCardToIndex("TestOfTheQuestingBeast", 14);
+		adventureDeck.moveCardToIndex("TestOfMorganLeFey", 14);
         //Player 3
         adventureDeck.moveCardToIndex("QueenGuinevere", 24);
         adventureDeck.moveCardToIndex("Mordred", 25);
