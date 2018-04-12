@@ -27,6 +27,7 @@ public class Strategy1 : AbstractAI
             Debug.Log("AI Strategy1" + strategyOwner.getName() + " playing in quest");
             foreach(Card card in strategyOwner.GetHand()){
                 Debug.Log(strategyOwner.getName() + "Cards are: " + card.GetCardName());
+				Logger.getInstance ().info (strategyOwner.getName () + "Cards are: " + card.GetCardName ());
             }
             return true;
         }
@@ -36,6 +37,7 @@ public class Strategy1 : AbstractAI
             foreach (Card card in strategyOwner.GetHand())
             {
                 Debug.Log(strategyOwner.getName() + " not participating in quest Cards are: " + card.GetCardName());
+				Logger.getInstance().info(strategyOwner.getName() + " not participating in quest Cards are: " + card.GetCardName());
             }
             return false;
         }
@@ -45,9 +47,11 @@ public class Strategy1 : AbstractAI
     {
 		if (!PlayersCanEvolveOrWinWithTournament(board.getPlayers())) {
 			Debug.Log("AI has opted to participate in tournament.");
+			Logger.getInstance().info("AI has opted to participate in tournament.");
 			return true;
 		}
 		Debug.Log("AI has opted NOT to participate in tournament.");
+		Logger.getInstance().info("AI has opted NOT to participate in tournament.");
 		return false;
     }
 
@@ -106,8 +110,10 @@ public class Strategy1 : AbstractAI
 			cardDictionary.Add (card, false);
 		}
 		Debug.Log ("Card dictionary contains:");
+		Logger.getInstance ().info ("Card dictionary contains:");
 		foreach (Adventure card in cardDictionary.Keys) {
 			Debug.Log ("Card: " + card);
+			Logger.getInstance().info ("Card: " + card);
 		}
 
         Stage finalStage = null;
@@ -122,6 +128,7 @@ public class Strategy1 : AbstractAI
 		stageCard = GetStrongestFoe (cardDictionary);
 		if (stageCard == null) {
 			Debug.Log ("Failed to initialize all stages, withdrawing sponsorship");
+			Logger.getInstance().info ("Failed to initialize all stages, withdrawing sponsorship");
 			quest.IncrementSponsor ();
 			return;
 		}
@@ -133,6 +140,7 @@ public class Strategy1 : AbstractAI
 			Adventure bestUniqueWeapon = GetBestUniqueWeapon (new List<Adventure>(cardDictionary.Keys), weapons);
 			if (bestUniqueWeapon == null) {
 				Debug.Log ("No more weapons found");
+				Logger.getInstance().info ("No more weapons found");
 				break;
 			}
 			cardDictionary [bestUniqueWeapon] = true;
@@ -145,6 +153,7 @@ public class Strategy1 : AbstractAI
         {
             Logger.getInstance().info(weapon.GetCardName());
             Debug.Log(weapon.GetCardName());
+			Logger.getInstance().info(weapon.GetCardName());
         }
         finalStage = InitializeStage(stageCard, weapons, quest.getNumStages() - 1);
         initializedStages++;
@@ -155,6 +164,7 @@ public class Strategy1 : AbstractAI
 		if (ContainsTest(new List<Adventure>(cardDictionary.Keys)))
         {
             Debug.Log(strategyOwner.getName() + " has a test in their hand.");
+			Logger.getInstance().info(strategyOwner.getName() + " has a test in their hand.");
 			foreach (Adventure card in cardDictionary.Keys)
             {
 				if (card.IsTest())
@@ -168,11 +178,13 @@ public class Strategy1 : AbstractAI
             initializedStages++;
             numTestStages++;
             Debug.Log("Initialized stages: " + initializedStages);
+			Logger.getInstance().info("Initialized stages: " + initializedStages);
         }
 
         while (initializedStages < quest.getNumStages())
         {
 			Debug.Log ("Initializing a new stage");
+			Logger.getInstance().info ("Initializing a new stage");
 			stageCard = GetStrongestFoe (cardDictionary);
 			if (stageCard == null) {
 				break;
@@ -187,6 +199,7 @@ public class Strategy1 : AbstractAI
 			}
 			if (IsValidBattlePoints (stageCard, weaponCard, previousStageBattlePoints)) {
 				Debug.Log ("Created a valid quest");
+				Logger.getInstance().info ("Created a valid quest");
 				int stageNum = quest.getNumStages () - initializedStages - 1;
 				Logger.getInstance().info("Stage " + stageNum + ": stage card is " + stageCard.GetCardName());
 				Debug.Log("Stage " + stageNum + ": stage card is " + stageCard.GetCardName());
@@ -196,17 +209,21 @@ public class Strategy1 : AbstractAI
 				previousStageBattlePoints = newStage.getTotalBattlePoints ();
 			} else {
 				Debug.Log ("Invalid battle point combo");
+				Logger.getInstance().info ("Invalid battle point combo");
 				if (weaponCard != null) {
 					Debug.Log ("Removing weapon");
+					Logger.getInstance().info ("Removing weapon");
 					cardDictionary.Remove (weaponCard);
 				} else {
 					Debug.Log ("Removing stage card");
+					Logger.getInstance().info ("Removing stage card");
 					cardDictionary.Remove (stageCard);
 				}
 			}
         }
 		if (initializedStages == quest.getNumStages ()) {
 			Debug.Log ("All stages have been initialized");
+			Logger.getInstance().info ("All stages have been initialized");
 			foreach (Stage stage in otherStages) {
 				stages.Add (stage);
 			}
@@ -218,6 +235,7 @@ public class Strategy1 : AbstractAI
 			quest.SponsorQuestComplete(stages);
 		} else {
 			Debug.Log ("Failed to initialize all stages, withdrawing sponsorship");
+			Logger.getInstance().info ("Failed to initialize all stages, withdrawing sponsorship");
 			quest.IncrementSponsor ();
 		}
     }
@@ -237,6 +255,7 @@ public class Strategy1 : AbstractAI
     public override void PlayFoeStage(Stage stage)
     {
 		Debug.Log ("Playing out foe for AI strategy 2");
+		Logger.getInstance().info ("Playing out foe for AI strategy 2");
 		List<Adventure> hand = strategyOwner.GetHand ();
 		List<Adventure> sortedList = SortCardsByBattlePoints (hand);
 		List<Adventure> participationList = new List<Adventure> ();
@@ -244,10 +263,13 @@ public class Strategy1 : AbstractAI
 
 		if (stage.getStageNum () == quest.getNumStages () - 1) {
 			Debug.Log ("Final stage! UNLIMITED POWAAAAAAAAAAAAAAAAR");
+			Logger.getInstance().info ("Final stage! UNLIMITED POWAAAAAAAAAAAAAAAAR");
 			foreach (Adventure card in sortedList) {
 				Debug.Log ("Checking " + strategyOwner.getName () + "'s card for eligibility: " + card.GetCardName ());
+				Logger.getInstance().info ("Checking " + strategyOwner.getName () + "'s card for eligibility: " + card.GetCardName ());
 				if (CanPlayCardForStage (card, participationList)) {
 					Debug.Log (strategyOwner.getName () + " can play card, adding to participation list for stage");
+					Logger.getInstance().info (strategyOwner.getName () + " can play card, adding to participation list for stage");
 					participationList.Add (card);
 				}
 			}
@@ -263,6 +285,7 @@ public class Strategy1 : AbstractAI
 					if (card.IsAlly() || card.IsAmour()) {
 						if (CanPlayCardForStage (card, participationList)) {
 							Debug.Log (strategyOwner.getName () + " can play card, adding to participation list for stage");
+							Logger.getInstance().info (strategyOwner.getName () + " can play card, adding to participation list for stage");
 							participationList.Add (card);
 							if (participationList.Count > 1) {
 								break;
@@ -291,6 +314,7 @@ public class Strategy1 : AbstractAI
 		}
 		foreach (Adventure card in participationList) {
 			Debug.Log("Moving card from " + strategyOwner.getName() + "'s hand to play area: " + card.GetCardName());
+			Logger.getInstance().info("Moving card from " + strategyOwner.getName() + "'s hand to play area: " + card.GetCardName());
 			strategyOwner.getPlayArea().AddCard(card);
 			strategyOwner.RemoveCard(card);
 		}
@@ -375,6 +399,7 @@ public class Strategy1 : AbstractAI
 			}
 		}
 		Debug.Log("No player can win off this tournament.");
+		Logger.getInstance().info("No player can win off this tournament.");
 		return false;
 	}
 }
