@@ -56,6 +56,12 @@ public class PunManager : Photon.MonoBehaviour {
 		board.nextTurn ();
 	}
 
+    [PunRPC]
+    public void DiscardChosenAlly(string discardedAlly){
+        PrepareRPC();
+        BoardManagerMediator.getInstance().DiscardChosenAlly(discardedAlly);
+    }
+
     //-----------------------------------------------------------------------//
     //--------------------------- Quest Functions ---------------------------//
     //-----------------------------------------------------------------------//

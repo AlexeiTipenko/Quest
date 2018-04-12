@@ -17,9 +17,11 @@
 
         //Player 1
         adventureDeck.moveCardToIndex("BattleAx", 0);
+        adventureDeck.moveCardToIndex("Mordred", 1);
         //Player 2
         adventureDeck.moveCardToIndex("Saxons", 12);
         adventureDeck.moveCardToIndex("Dragon", 13);
+        adventureDeck.moveCardToIndex("SirGalahad", 14);
 
         return adventureDeck;
     }

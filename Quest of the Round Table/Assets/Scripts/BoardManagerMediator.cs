@@ -149,7 +149,6 @@ public class BoardManagerMediator
 
 
     public void DiscardCard(string cardName) {
-        
         foreach (Adventure card in players[playerTurn].GetHand())
         {
             if (card.GetCardName() == cardName)

@@ -240,6 +240,10 @@ public class BoardManager : MonoBehaviour
         string discardedAlly = discardArea.transform.GetChild(0).gameObject.name;
         Debug.Log("Discarding ally: " + discardedAlly);
         Logger.getInstance().info("Discardeding ally: " + discardedAlly);
+        if (BoardManagerMediator.getInstance().IsOnlineGame())
+        {
+            BoardManagerMediator.getInstance().getPhotonView().RPC("DiscardChosenAlly", PhotonTargets.Others, discardedAlly);
+        }
         BoardManagerMediator.getInstance().DiscardChosenAlly(discardedAlly);
     }
 
@@ -380,11 +384,14 @@ public class BoardManager : MonoBehaviour
                 }
                 Stage currentStage = questInPlay.getStage(i);
                 if (currentStage != null) {
-					int currStageNum = questInPlay.getCurrentStage ().getStageNum ();
-                    if (questInPlay.getSponsor() == player
-						|| i < currStageNum || (i == currStageNum && isResolutionOfStage)
-						|| (i == currStageNum && questInPlay.getStage(i).getStageCard().IsTest() && questInPlay.getStage(i).IsInProgress())) {
-                        foreach (Adventure card in currentStage.getCards()) {
+                    if (questInPlay.getSponsor() == player 
+                        || i < questInPlay.getCurrentStage().getStageNum() 
+                        || (i == questInPlay.getCurrentStage().getStageNum() 
+                            && isResolutionOfStage)
+                        || (i == questInPlay.getCurrentStage().getStageNum() 
+							&& questInPlay.getStage(i).getStageCard().IsTest() 
+                            && questInPlay.getStage(i).IsInProgress())) {
+                        foreach (Card card in currentStage.getCards()) {
                             GameObject noDragInstance = Instantiate(Resources.Load("NoDragCardPrefab", typeof(GameObject))) as GameObject;
                             Image cardImg = noDragInstance.GetComponent<Image>();
                             noDragInstance.name = card.GetCardName();
@@ -392,7 +399,7 @@ public class BoardManager : MonoBehaviour
                             noDragInstance.tag = "StageCard";
                             noDragInstance.transform.SetParent(boardAreaFoe.transform, false);
                         }
-                        if (i == currStageNum) {
+                        if (i == questInPlay.getCurrentStage().getStageNum()) {
                             isResolutionOfStage = false;
                         }
                     } else {
@@ -534,7 +541,7 @@ public class BoardManager : MonoBehaviour
         DestroyRank();
         DestroyCardInPlay();
         DestroyStageAreaCards();
-
+        HideAllyCards();
         //TODO: destroy what's on the table
     }
 
@@ -620,7 +627,7 @@ public class BoardManager : MonoBehaviour
 	}
 		
 	public static void TransferCard(Player player, Adventure card) {
-		player.getPlayArea().AddCard(card);
+        player.getPlayArea().AddCard(card);
 		player.RemoveCard(card);
 	}
 

@@ -57,47 +57,68 @@ public abstract class Quest : Story {
     public Boolean IsValidQuest() {
         int minBattlePoints = 0;
         bool hasTest = false;
-        for (int i = 0; i < numStages; i++) {
+        for (int i = 0; i < numStages; i++)
+        {
             GameObject boardAreaFoe = GameObject.Find("Canvas/TabletopImage/StageAreaFoe" + i);
             List<Type> weaponsInStage = new List<Type>();
             bool hasFoe = false;
             bool currentStageHasTest = false;
             int currentBattlePoints = 0;
-            foreach (Transform child in boardAreaFoe.transform) {
-				foreach (Adventure card in sponsor.GetHand()) {
-					if (child.name == card.GetCardName ()) {
-						if (card.IsTest ()) {
-							if (hasTest) {
-								Debug.Log("Quest setup failed.");
-								Logger.getInstance().warn("Quest setup failed.");
-								return false;
-							}
-							hasTest = true;
-							currentStageHasTest = true;
-							break;
-						} else if (card.IsFoe ()) {
-							if (currentStageHasTest || hasFoe) {
-								Debug.Log("Quest setup failed.");
-								Logger.getInstance().warn("Quest setup failed.");
-								return false;
-							}
-							hasFoe = true;
-							currentBattlePoints += card.getBattlePoints ();
-							break;
-						} else if (card.IsWeapon ()) {
-							if (currentStageHasTest || weaponsInStage.Contains(card.GetType())) {
-								Debug.Log("Quest setup failed.");
-								Logger.getInstance().warn("Quest setup failed.");
-								return false;
-							}
-							weaponsInStage.Add (card.GetType ());
-							currentBattlePoints += card.getBattlePoints ();
-							break;
-						}
-					}
+            foreach (Transform child in boardAreaFoe.transform)
+            {
+                Debug.Log("Evaluating new child: " + child.name);
+                foreach (Adventure card in sponsor.GetHand())
+                {
+                    Debug.Log("Evaluating new card: " + card.GetCardName());
+                    if (child.name == card.GetCardName())
+                    {
+                        Debug.Log("Found matching name");
+                        if (card.IsTest())
+                        {
+                            if (hasTest)
+                            {
+                                Debug.Log("Quest setup failed.");
+                                Logger.getInstance().warn("Quest setup failed.");
+                                return false;
+                            }
+                            Debug.Log("Adding test to quest stage");
+                            hasTest = true;
+                            currentStageHasTest = true;
+                            break;
+                        }
+                        else if (card.IsFoe())
+                        {
+                            if (currentStageHasTest || hasFoe)
+                            {
+                                Debug.Log("Quest setup failed.");
+                                Logger.getInstance().warn("Quest setup failed.");
+                                return false;
+                            }
+                            Debug.Log("Adding foe to quest stage");
+                            hasFoe = true;
+                            currentBattlePoints += card.getBattlePoints();
+                            break;
+                        }
+                        else if (card.IsWeapon())
+                        {
+                            if (currentStageHasTest || weaponsInStage.Contains(card.GetType()))
+                            {
+                                Debug.Log("Quest setup failed.");
+                                Logger.getInstance().warn("Quest setup failed.");
+                                return false;
+                            }
+                            Debug.Log("Adding weapon to quest stage");
+                            weaponsInStage.Add(card.GetType());
+                            currentBattlePoints += card.getBattlePoints();
+                            break;
+                        }
+                    }
                 }
             }
-            if (!currentStageHasTest) {
+            if (!currentStageHasTest)
+            {
+                Debug.Log("Min: " + minBattlePoints);
+                Debug.Log("Curr: " + currentBattlePoints);
                 if (currentBattlePoints > minBattlePoints) {
                     minBattlePoints = currentBattlePoints;
                 }
