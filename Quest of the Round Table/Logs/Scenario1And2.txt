@@ -1,0 +1,502 @@
+-------------------- INITIALIZE LOGGER ---------------------
+2018-04-11T20:23:50.2725580-04:00: Logger initialized
+2018-04-11T20:23:50.2728500-04:00 [INFO]: Creating card: Knight of the Round Table
+2018-04-11T20:23:50.2730690-04:00 [INFO]: Creating card: Champion Knight
+2018-04-11T20:23:50.2732640-04:00 [INFO]: Creating card: Knight
+2018-04-11T20:23:50.2734690-04:00 [INFO]: Creating card: Squire
+2018-04-11T20:23:50.2762400-04:00 [INFO]: Creating card: Knight of the Round Table
+2018-04-11T20:23:50.2764610-04:00 [INFO]: Creating card: Champion Knight
+2018-04-11T20:23:50.2766500-04:00 [INFO]: Creating card: Knight
+2018-04-11T20:23:50.2768380-04:00 [INFO]: Creating card: Squire
+2018-04-11T20:23:50.2786800-04:00 [INFO]: Creating card: Knight of the Round Table
+2018-04-11T20:23:50.2789120-04:00 [INFO]: Creating card: Champion Knight
+2018-04-11T20:23:50.2792700-04:00 [INFO]: Creating card: Knight
+2018-04-11T20:23:50.2796180-04:00 [INFO]: Creating card: Squire
+2018-04-11T20:23:50.2814170-04:00 [INFO]: Creating card: Knight of the Round Table
+2018-04-11T20:23:50.2816120-04:00 [INFO]: Creating card: Champion Knight
+2018-04-11T20:23:50.2818090-04:00 [INFO]: Creating card: Knight
+2018-04-11T20:23:50.2820000-04:00 [INFO]: Creating card: Squire
+2018-04-11T20:23:50.3395750-04:00 [INFO]: Player list passed to BoardManager
+2018-04-11T20:23:50.3406240-04:00 [INFO]: Player entered: P#65 (Human)
+2018-04-11T20:23:50.3411730-04:00 [INFO]: Player entered: P#32 (Human)
+2018-04-11T20:23:50.3417880-04:00 [INFO]: Player entered: P#93 (Human)
+2018-04-11T20:23:50.3423510-04:00 [INFO]: Player entered: P#95 (Human)
+2018-04-11T20:23:50.3439310-04:00 [INFO]: Creating card: Dragon
+2018-04-11T20:23:50.3442900-04:00 [INFO]: Creating card: Giant
+2018-04-11T20:23:50.3445020-04:00 [INFO]: Creating card: Giant
+2018-04-11T20:23:50.3448220-04:00 [INFO]: Creating card: Mordred
+2018-04-11T20:23:50.3450240-04:00 [INFO]: Creating card: Mordred
+2018-04-11T20:23:50.3452220-04:00 [INFO]: Creating card: Mordred
+2018-04-11T20:23:50.3454240-04:00 [INFO]: Creating card: Mordred
+2018-04-11T20:23:50.3457400-04:00 [INFO]: Creating card: Green Knight
+2018-04-11T20:23:50.3459320-04:00 [INFO]: Creating card: Green Knight
+2018-04-11T20:23:50.3462650-04:00 [INFO]: Creating card: Black Knight
+2018-04-11T20:23:50.3464380-04:00 [INFO]: Creating card: Black Knight
+2018-04-11T20:23:50.3466330-04:00 [INFO]: Creating card: Black Knight
+2018-04-11T20:23:50.3469350-04:00 [INFO]: Creating card: Evil Knight
+2018-04-11T20:23:50.3471150-04:00 [INFO]: Creating card: Evil Knight
+2018-04-11T20:23:50.3473380-04:00 [INFO]: Creating card: Evil Knight
+2018-04-11T20:23:50.3475540-04:00 [INFO]: Creating card: Evil Knight
+2018-04-11T20:23:50.3477690-04:00 [INFO]: Creating card: Evil Knight
+2018-04-11T20:23:50.3479730-04:00 [INFO]: Creating card: Evil Knight
+2018-04-11T20:23:50.3482780-04:00 [INFO]: Creating card: Saxon Knight
+2018-04-11T20:23:50.3485110-04:00 [INFO]: Creating card: Saxon Knight
+2018-04-11T20:23:50.3487200-04:00 [INFO]: Creating card: Saxon Knight
+2018-04-11T20:23:50.3489200-04:00 [INFO]: Creating card: Saxon Knight
+2018-04-11T20:23:50.3491290-04:00 [INFO]: Creating card: Saxon Knight
+2018-04-11T20:23:50.3493310-04:00 [INFO]: Creating card: Saxon Knight
+2018-04-11T20:23:50.3495550-04:00 [INFO]: Creating card: Saxon Knight
+2018-04-11T20:23:50.3497540-04:00 [INFO]: Creating card: Saxon Knight
+2018-04-11T20:23:50.3501540-04:00 [INFO]: Creating card: Robber Knight
+2018-04-11T20:23:50.3504010-04:00 [INFO]: Creating card: Robber Knight
+2018-04-11T20:23:50.3506240-04:00 [INFO]: Creating card: Robber Knight
+2018-04-11T20:23:50.3508340-04:00 [INFO]: Creating card: Robber Knight
+2018-04-11T20:23:50.3510390-04:00 [INFO]: Creating card: Robber Knight
+2018-04-11T20:23:50.3512370-04:00 [INFO]: Creating card: Robber Knight
+2018-04-11T20:23:50.3514790-04:00 [INFO]: Creating card: Robber Knight
+2018-04-11T20:23:50.3518080-04:00 [INFO]: Creating card: Saxons
+2018-04-11T20:23:50.3519880-04:00 [INFO]: Creating card: Saxons
+2018-04-11T20:23:50.3521980-04:00 [INFO]: Creating card: Saxons
+2018-04-11T20:23:50.3523930-04:00 [INFO]: Creating card: Saxons
+2018-04-11T20:23:50.3527570-04:00 [INFO]: Creating card: Saxons
+2018-04-11T20:23:50.3530980-04:00 [INFO]: Creating card: Boar
+2018-04-11T20:23:50.3532880-04:00 [INFO]: Creating card: Boar
+2018-04-11T20:23:50.3534870-04:00 [INFO]: Creating card: Boar
+2018-04-11T20:23:50.3536750-04:00 [INFO]: Creating card: Boar
+2018-04-11T20:23:50.3539780-04:00 [INFO]: Creating card: Thieves
+2018-04-11T20:23:50.3541530-04:00 [INFO]: Creating card: Thieves
+2018-04-11T20:23:50.3543780-04:00 [INFO]: Creating card: Thieves
+2018-04-11T20:23:50.3546000-04:00 [INFO]: Creating card: Thieves
+2018-04-11T20:23:50.3548330-04:00 [INFO]: Creating card: Thieves
+2018-04-11T20:23:50.3550510-04:00 [INFO]: Creating card: Thieves
+2018-04-11T20:23:50.3552800-04:00 [INFO]: Creating card: Thieves
+2018-04-11T20:23:50.3554780-04:00 [INFO]: Creating card: Thieves
+2018-04-11T20:23:50.3558310-04:00 [INFO]: Creating card: Test Of Valor
+2018-04-11T20:23:50.3560420-04:00 [INFO]: Creating card: Test Of Valor
+2018-04-11T20:23:50.3563420-04:00 [INFO]: Creating card: Test Of Temptation
+2018-04-11T20:23:50.3565530-04:00 [INFO]: Creating card: Test Of Temptation
+2018-04-11T20:23:50.3568590-04:00 [INFO]: Creating card: Test Of Morgan LeFey
+2018-04-11T20:23:50.3570690-04:00 [INFO]: Creating card: Test Of Morgan LeFey
+2018-04-11T20:23:50.3573810-04:00 [INFO]: Creating card: Test Of The Questing Beast
+2018-04-11T20:23:50.3575890-04:00 [INFO]: Creating card: Test Of The Questing Beast
+2018-04-11T20:23:50.3580620-04:00 [INFO]: Creating card: Sir Galahad
+2018-04-11T20:23:50.3583830-04:00 [INFO]: Creating card: Sir Lancelot
+2018-04-11T20:23:50.3587000-04:00 [INFO]: Creating card: King Arthur
+2018-04-11T20:23:50.3590070-04:00 [INFO]: Creating card: Sir Tristan
+2018-04-11T20:23:50.3593210-04:00 [INFO]: Creating card: King Pellinore
+2018-04-11T20:23:50.3596510-04:00 [INFO]: Creating card: Sir Gawain
+2018-04-11T20:23:50.3599360-04:00 [INFO]: Creating card: Sir Percival
+2018-04-11T20:23:50.3602230-04:00 [INFO]: Creating card: Queen Guinevere
+2018-04-11T20:23:50.3606410-04:00 [INFO]: Creating card: Queen Iseult
+2018-04-11T20:23:50.3610660-04:00 [INFO]: Creating card: Merlin
+2018-04-11T20:23:50.3613780-04:00 [INFO]: Creating card: Amour
+2018-04-11T20:23:50.3615760-04:00 [INFO]: Creating card: Amour
+2018-04-11T20:23:50.3617850-04:00 [INFO]: Creating card: Amour
+2018-04-11T20:23:50.3619850-04:00 [INFO]: Creating card: Amour
+2018-04-11T20:23:50.3622040-04:00 [INFO]: Creating card: Amour
+2018-04-11T20:23:50.3624490-04:00 [INFO]: Creating card: Amour
+2018-04-11T20:23:50.3626540-04:00 [INFO]: Creating card: Amour
+2018-04-11T20:23:50.3628380-04:00 [INFO]: Creating card: Amour
+2018-04-11T20:23:50.3631690-04:00 [INFO]: Creating card: Excalibur
+2018-04-11T20:23:50.3633490-04:00 [INFO]: Creating card: Excalibur
+2018-04-11T20:23:50.3636440-04:00 [INFO]: Creating card: Lance
+2018-04-11T20:23:50.3638170-04:00 [INFO]: Creating card: Lance
+2018-04-11T20:23:50.3640080-04:00 [INFO]: Creating card: Lance
+2018-04-11T20:23:50.3641930-04:00 [INFO]: Creating card: Lance
+2018-04-11T20:23:50.3643750-04:00 [INFO]: Creating card: Lance
+2018-04-11T20:23:50.3645620-04:00 [INFO]: Creating card: Lance
+2018-04-11T20:23:50.3648770-04:00 [INFO]: Creating card: Battle Ax
+2018-04-11T20:23:50.3650510-04:00 [INFO]: Creating card: Battle Ax
+2018-04-11T20:23:50.3652510-04:00 [INFO]: Creating card: Battle Ax
+2018-04-11T20:23:50.3654400-04:00 [INFO]: Creating card: Battle Ax
+2018-04-11T20:23:50.3656360-04:00 [INFO]: Creating card: Battle Ax
+2018-04-11T20:23:50.3658390-04:00 [INFO]: Creating card: Battle Ax
+2018-04-11T20:23:50.3660310-04:00 [INFO]: Creating card: Battle Ax
+2018-04-11T20:23:50.3662170-04:00 [INFO]: Creating card: Battle Ax
+2018-04-11T20:23:50.3665190-04:00 [INFO]: Creating card: Sword
+2018-04-11T20:23:50.3666890-04:00 [INFO]: Creating card: Sword
+2018-04-11T20:23:50.3668890-04:00 [INFO]: Creating card: Sword
+2018-04-11T20:23:50.3670840-04:00 [INFO]: Creating card: Sword
+2018-04-11T20:23:50.3672770-04:00 [INFO]: Creating card: Sword
+2018-04-11T20:23:50.3674960-04:00 [INFO]: Creating card: Sword
+2018-04-11T20:23:50.3678100-04:00 [INFO]: Creating card: Sword
+2018-04-11T20:23:50.3680290-04:00 [INFO]: Creating card: Sword
+2018-04-11T20:23:50.3682380-04:00 [INFO]: Creating card: Sword
+2018-04-11T20:23:50.3684360-04:00 [INFO]: Creating card: Sword
+2018-04-11T20:23:50.3686320-04:00 [INFO]: Creating card: Sword
+2018-04-11T20:23:50.3688920-04:00 [INFO]: Creating card: Sword
+2018-04-11T20:23:50.3690960-04:00 [INFO]: Creating card: Sword
+2018-04-11T20:23:50.3692930-04:00 [INFO]: Creating card: Sword
+2018-04-11T20:23:50.3695340-04:00 [INFO]: Creating card: Sword
+2018-04-11T20:23:50.3697510-04:00 [INFO]: Creating card: Sword
+2018-04-11T20:23:50.3701160-04:00 [INFO]: Creating card: Horse
+2018-04-11T20:23:50.3702970-04:00 [INFO]: Creating card: Horse
+2018-04-11T20:23:50.3705070-04:00 [INFO]: Creating card: Horse
+2018-04-11T20:23:50.3707010-04:00 [INFO]: Creating card: Horse
+2018-04-11T20:23:50.3708960-04:00 [INFO]: Creating card: Horse
+2018-04-11T20:23:50.3712380-04:00 [INFO]: Creating card: Horse
+2018-04-11T20:23:50.3714510-04:00 [INFO]: Creating card: Horse
+2018-04-11T20:23:50.3716610-04:00 [INFO]: Creating card: Horse
+2018-04-11T20:23:50.3718460-04:00 [INFO]: Creating card: Horse
+2018-04-11T20:23:50.3720300-04:00 [INFO]: Creating card: Horse
+2018-04-11T20:23:50.3722140-04:00 [INFO]: Creating card: Horse
+2018-04-11T20:23:50.3725620-04:00 [INFO]: Creating card: Dagger
+2018-04-11T20:23:50.3727830-04:00 [INFO]: Creating card: Dagger
+2018-04-11T20:23:50.3729810-04:00 [INFO]: Creating card: Dagger
+2018-04-11T20:23:50.3731840-04:00 [INFO]: Creating card: Dagger
+2018-04-11T20:23:50.3734040-04:00 [INFO]: Creating card: Dagger
+2018-04-11T20:23:50.3736250-04:00 [INFO]: Creating card: Dagger
+2018-04-11T20:23:50.3867310-04:00 [INFO]: Creating card: At Orkney
+2018-04-11T20:23:50.3871110-04:00 [INFO]: Creating card: At Camelot
+2018-04-11T20:23:50.3874200-04:00 [INFO]: Creating card: At Tintagel
+2018-04-11T20:23:50.3877340-04:00 [INFO]: Creating card: At York
+2018-04-11T20:23:50.3881080-04:00 [INFO]: Creating card: King's Recognition
+2018-04-11T20:23:50.3883250-04:00 [INFO]: Creating card: King's Recognition
+2018-04-11T20:23:50.3886160-04:00 [INFO]: Creating card: Queen's Favor
+2018-04-11T20:23:50.3888050-04:00 [INFO]: Creating card: Queen's Favor
+2018-04-11T20:23:50.3890840-04:00 [INFO]: Creating card: Court Called to Camelot
+2018-04-11T20:23:50.3892770-04:00 [INFO]: Creating card: Court Called to Camelot
+2018-04-11T20:23:50.3895610-04:00 [INFO]: Creating card: Pox
+2018-04-11T20:23:50.3898700-04:00 [INFO]: Creating card: Plague
+2018-04-11T20:23:50.3901490-04:00 [INFO]: Creating card: Chivalrous Deed
+2018-04-11T20:23:50.3905930-04:00 [INFO]: Creating card: Prosperity Throughout the Realm
+2018-04-11T20:23:50.3909240-04:00 [INFO]: Creating card: King's Call to Arms
+2018-04-11T20:23:50.3913810-04:00 [INFO]: Creating card: Search for the Holy Grail
+2018-04-11T20:23:50.3919220-04:00 [INFO]: Creating card: Test of the Green Knight
+2018-04-11T20:23:50.3922240-04:00 [INFO]: Creating card: Search for the Questing Beast
+2018-04-11T20:23:50.3925860-04:00 [INFO]: Creating card: Defend the Queen's Honor
+2018-04-11T20:23:50.3929540-04:00 [INFO]: Creating card: Rescue the Fair Maiden
+2018-04-11T20:23:50.3932870-04:00 [INFO]: Creating card: Journey through the Enchanted Forest
+2018-04-11T20:23:50.3936190-04:00 [INFO]: Creating card: Vanquish King Arthur's Enemies
+2018-04-11T20:23:50.3938490-04:00 [INFO]: Creating card: Vanquish King Arthur's Enemies
+2018-04-11T20:23:50.3941930-04:00 [INFO]: Creating card: Slay the Dragon
+2018-04-11T20:23:50.3945370-04:00 [INFO]: Creating card: Boar Hunt
+2018-04-11T20:23:50.3947400-04:00 [INFO]: Creating card: Boar Hunt
+2018-04-11T20:23:50.3950530-04:00 [INFO]: Creating card: Repel the Saxon Raiders
+2018-04-11T20:23:50.3952610-04:00 [INFO]: Creating card: Repel the Saxon Raiders
+2018-04-11T20:23:50.3996660-04:00 [INFO]: Card decks created
+2018-04-11T20:23:50.4026570-04:00 [INFO]: Game started...
+2018-04-11T20:23:50.4028580-04:00 [INFO]: Starting local game
+2018-04-11T20:23:50.4038430-04:00 [INFO]: P#65'S TURN
+2018-04-11T20:23:50.4049950-04:00 [INFO]: Started Quest behaviour
+2018-04-11T20:23:50.4079250-04:00 [INFO]: Local player id: 1
+2018-04-11T20:23:50.4081230-04:00 [INFO]: Drawing for player (+ 1): 1
+2018-04-11T20:23:50.4096400-04:00 [INFO]: PLAYER PHOTON ID AND TURN IS MATCHING
+2018-04-11T20:23:50.4530710-04:00 [INFO]: P#65's cards drawn to GUI
+2018-04-11T20:23:50.4562170-04:00 [INFO]: Prompted P#65 to sponsor quest.
+2018-04-11T20:23:50.5361430-04:00 [INFO]: Board manager started
+2018-04-11T20:23:54.1819410-04:00 [INFO]: Sponsor accepted: P#65
+2018-04-11T20:23:54.1852390-04:00 [INFO]: Prompted P#65 to setup quest.
+2018-04-11T20:23:59.9002850-04:00 [TRACE]: dominantFoes are System.Collections.Generic.List`1[System.Type]
+2018-04-11T20:23:59.9007180-04:00 [TRACE]: dominantFoes are System.Collections.Generic.List`1[System.Type]
+2018-04-11T20:23:59.9015150-04:00 [INFO]: Creating card: Saxons
+2018-04-11T20:23:59.9018400-04:00 [INFO]: Starting the Stage class
+2018-04-11T20:23:59.9021060-04:00 [INFO]: Creating card: Boar
+2018-04-11T20:23:59.9024170-04:00 [INFO]: Creating card: Sword
+2018-04-11T20:23:59.9026540-04:00 [INFO]: Creating card: Dagger
+2018-04-11T20:23:59.9028370-04:00 [INFO]: Starting the Stage class
+2018-04-11T20:24:00.0157310-04:00 [INFO]: Quest setup complete
+2018-04-11T20:24:00.0169940-04:00 [INFO]: Previous player is: P#65
+2018-04-11T20:24:00.0182140-04:00 [INFO]: Returning player in get next player
+2018-04-11T20:24:00.0200090-04:00 [INFO]: Local player id: 1
+2018-04-11T20:24:00.0202010-04:00 [INFO]: Drawing for player (+ 1): 2
+2018-04-11T20:24:00.0225670-04:00 [INFO]: Inside else statement
+2018-04-11T20:24:00.0416350-04:00 [INFO]: Adding button for Mordred's special ability.
+2018-04-11T20:24:00.0442450-04:00 [INFO]: P#32's cards drawn to GUI
+2018-04-11T20:24:00.0469590-04:00 [INFO]: Prompted P#32 to accept quest.
+2018-04-11T20:24:02.0930500-04:00 [DEBUG]: P#32 has accepted to participate in the quest
+2018-04-11T20:24:02.0969700-04:00 [INFO]: Local player id: 1
+2018-04-11T20:24:02.0972240-04:00 [INFO]: Drawing for player (+ 1): 2
+2018-04-11T20:24:02.1000390-04:00 [INFO]: Inside else statement
+2018-04-11T20:24:02.1078160-04:00 [INFO]: Adding button for Mordred's special ability.
+2018-04-11T20:24:02.1098340-04:00 [INFO]: P#32's cards drawn to GUI
+2018-04-11T20:24:02.1150380-04:00 [INFO]: Prompted P#32 to prepare cards to discard.
+2018-04-11T20:24:06.2076080-04:00 [INFO]: Received player: P#32
+2018-04-11T20:24:06.2081210-04:00 [INFO]: Found matching name
+2018-04-11T20:24:06.2150350-04:00 [INFO]: Previous player is: P#32
+2018-04-11T20:24:06.2163440-04:00 [INFO]: Returning player in get next player
+2018-04-11T20:24:06.2178170-04:00 [INFO]: Local player id: 1
+2018-04-11T20:24:06.2181090-04:00 [INFO]: Drawing for player (+ 1): 3
+2018-04-11T20:24:06.2206090-04:00 [INFO]: Inside else statement
+2018-04-11T20:24:06.2372730-04:00 [INFO]: Adding button for Mordred's special ability.
+2018-04-11T20:24:06.2388450-04:00 [INFO]: P#93's cards drawn to GUI
+2018-04-11T20:24:06.2420620-04:00 [INFO]: Prompted P#93 to accept quest.
+2018-04-11T20:24:11.5891810-04:00 [DEBUG]: P#93 has accepted to participate in the quest
+2018-04-11T20:24:11.5929080-04:00 [INFO]: Local player id: 1
+2018-04-11T20:24:11.5931700-04:00 [INFO]: Drawing for player (+ 1): 3
+2018-04-11T20:24:11.5962600-04:00 [INFO]: Inside else statement
+2018-04-11T20:24:11.6040060-04:00 [INFO]: Adding button for Mordred's special ability.
+2018-04-11T20:24:11.6057100-04:00 [INFO]: P#93's cards drawn to GUI
+2018-04-11T20:24:11.6104020-04:00 [INFO]: Prompted P#93 to prepare cards to discard.
+2018-04-11T20:24:20.3408190-04:00 [INFO]: Received player: P#93
+2018-04-11T20:24:20.3412310-04:00 [INFO]: Found matching name
+2018-04-11T20:24:20.3494980-04:00 [INFO]: Previous player is: P#93
+2018-04-11T20:24:20.3511450-04:00 [INFO]: Returning player in get next player
+2018-04-11T20:24:20.3534380-04:00 [INFO]: Local player id: 1
+2018-04-11T20:24:20.3537410-04:00 [INFO]: Drawing for player (+ 1): 4
+2018-04-11T20:24:20.3574020-04:00 [INFO]: Inside else statement
+2018-04-11T20:24:20.3699280-04:00 [INFO]: P#95's cards drawn to GUI
+2018-04-11T20:24:20.3736910-04:00 [INFO]: Prompted P#95 to accept quest.
+2018-04-11T20:24:22.1001050-04:00 [DEBUG]: P#95 has accepted to participate in the quest
+2018-04-11T20:24:22.1040980-04:00 [INFO]: Local player id: 1
+2018-04-11T20:24:22.1328290-04:00 [INFO]: Drawing for player (+ 1): 4
+2018-04-11T20:24:22.1384630-04:00 [INFO]: Inside else statement
+2018-04-11T20:24:22.1503600-04:00 [INFO]: P#95's cards drawn to GUI
+2018-04-11T20:24:22.1563760-04:00 [INFO]: Prompted P#95 to prepare cards to discard.
+2018-04-11T20:24:26.8584810-04:00 [INFO]: Received player: P#95
+2018-04-11T20:24:26.8589780-04:00 [INFO]: Found matching name
+2018-04-11T20:24:26.8677250-04:00 [INFO]: Previous player is: P#95
+2018-04-11T20:24:26.8695290-04:00 [INFO]: Returning player in get next player
+2018-04-11T20:24:26.8702690-04:00 [TRACE]: The total cards are 1
+2018-04-11T20:24:26.8706010-04:00 [TRACE]: The total cards are 3
+2018-04-11T20:24:26.8708350-04:00 [DEBUG]: Starting quest.
+2018-04-11T20:24:26.8831500-04:00 [DEBUG]: Prepare function has started
+2018-04-11T20:24:26.8835760-04:00 [TRACE]: Stage card is subclass type of foe
+2018-04-11T20:24:26.8882280-04:00 [INFO]: Previous player is: P#65
+2018-04-11T20:24:26.8904510-04:00 [INFO]: Returning player in get next player
+2018-04-11T20:24:26.8951130-04:00 [INFO]: Previous player is: P#65
+2018-04-11T20:24:26.8974920-04:00 [INFO]: Returning player in get next player
+2018-04-11T20:24:26.8997800-04:00 [INFO]: playerToPrompt is: P#32
+2018-04-11T20:24:26.9020810-04:00 [INFO]: Checking amount of players: 3
+2018-04-11T20:24:26.9053590-04:00 [INFO]: Local player id: 1
+2018-04-11T20:24:26.9056820-04:00 [INFO]: Drawing for player (+ 1): 2
+2018-04-11T20:24:26.9107960-04:00 [INFO]: Inside else statement
+2018-04-11T20:24:26.9212390-04:00 [INFO]: Adding button for Mordred's special ability.
+2018-04-11T20:24:26.9242070-04:00 [INFO]: P#32's cards drawn to GUI
+2018-04-11T20:24:34.0901510-04:00 [INFO]: Local player id: 1
+2018-04-11T20:24:34.0905590-04:00 [INFO]: Drawing for player (+ 1): 3
+2018-04-11T20:24:34.0950820-04:00 [INFO]: Inside else statement
+2018-04-11T20:24:34.1054030-04:00 [INFO]: Adding button for Mordred's special ability.
+2018-04-11T20:24:34.1073760-04:00 [INFO]: P#93's cards drawn to GUI
+2018-04-11T20:24:43.5166520-04:00 [INFO]: Found matching name
+2018-04-11T20:24:43.5247100-04:00 [INFO]: Local player id: 1
+2018-04-11T20:24:43.5250410-04:00 [INFO]: Drawing for player (+ 1): 4
+2018-04-11T20:24:43.5300020-04:00 [INFO]: Inside else statement
+2018-04-11T20:24:43.5419350-04:00 [INFO]: P#95's cards drawn to GUI
+2018-04-11T20:24:51.2141650-04:00 [INFO]: Found matching name
+2018-04-11T20:24:51.2220630-04:00 [TRACE]: dominantFoes are System.Collections.Generic.List`1[System.Type]
+2018-04-11T20:24:51.2224400-04:00 [TRACE]: The total battle points are 10
+2018-04-11T20:24:51.2227340-04:00 [TRACE]: Did not pass. Player will be removed: P#32
+2018-04-11T20:24:51.2258040-04:00 [INFO]: Local player id: 1
+2018-04-11T20:24:51.2262760-04:00 [INFO]: Drawing for player (+ 1): 2
+2018-04-11T20:24:51.2326360-04:00 [INFO]: Inside else statement
+2018-04-11T20:24:51.2455910-04:00 [INFO]: Adding button for Mordred's special ability.
+2018-04-11T20:24:51.2488060-04:00 [INFO]: P#32's cards drawn to GUI
+2018-04-11T20:24:51.2533450-04:00 [INFO]: Displaying results of stage to P#32
+2018-04-11T20:24:53.8389800-04:00 [TRACE]: dominantFoes are System.Collections.Generic.List`1[System.Type]
+2018-04-11T20:24:53.8396380-04:00 [TRACE]: The total battle points are 10
+2018-04-11T20:24:53.8399760-04:00 [TRACE]: playerBattlePoints >= getTotalbattlePoints
+2018-04-11T20:24:53.8428470-04:00 [INFO]: Local player id: 1
+2018-04-11T20:24:53.8432360-04:00 [INFO]: Drawing for player (+ 1): 3
+2018-04-11T20:24:53.8479490-04:00 [INFO]: Inside else statement
+2018-04-11T20:24:53.8600460-04:00 [INFO]: Adding button for Mordred's special ability.
+2018-04-11T20:24:53.8626780-04:00 [INFO]: P#93's cards drawn to GUI
+2018-04-11T20:24:53.8672890-04:00 [INFO]: Displaying results of stage to P#93
+2018-04-11T20:24:55.6727760-04:00 [TRACE]: dominantFoes are System.Collections.Generic.List`1[System.Type]
+2018-04-11T20:24:55.6733100-04:00 [TRACE]: The total battle points are 10
+2018-04-11T20:24:55.6738560-04:00 [TRACE]: playerBattlePoints >= getTotalbattlePoints
+2018-04-11T20:24:55.6761170-04:00 [INFO]: Local player id: 1
+2018-04-11T20:24:55.6765490-04:00 [INFO]: Drawing for player (+ 1): 4
+2018-04-11T20:24:55.6812470-04:00 [INFO]: Inside else statement
+2018-04-11T20:24:55.6921180-04:00 [INFO]: P#95's cards drawn to GUI
+2018-04-11T20:24:55.6962160-04:00 [INFO]: Displaying results of stage to P#95
+2018-04-11T20:24:59.1102460-04:00 [TRACE]: P#32 removed from quest
+2018-04-11T20:24:59.1127770-04:00 [INFO]: Previous player is: P#32
+2018-04-11T20:24:59.1150760-04:00 [INFO]: Returning player in get next player
+2018-04-11T20:24:59.1392760-04:00 [DEBUG]: Prepare function has started
+2018-04-11T20:24:59.1396840-04:00 [TRACE]: Stage card is subclass type of foe
+2018-04-11T20:24:59.1456360-04:00 [INFO]: Previous player is: P#65
+2018-04-11T20:24:59.1489040-04:00 [INFO]: Returning player in get next player
+2018-04-11T20:24:59.1553050-04:00 [INFO]: Previous player is: P#65
+2018-04-11T20:24:59.1585310-04:00 [INFO]: Returning player in get next player
+2018-04-11T20:24:59.1615660-04:00 [INFO]: playerToPrompt is: P#32
+2018-04-11T20:24:59.1647330-04:00 [INFO]: Checking amount of players: 2
+2018-04-11T20:24:59.1683510-04:00 [INFO]: Previous player is: P#32
+2018-04-11T20:24:59.1716440-04:00 [INFO]: Returning player in get next player
+2018-04-11T20:24:59.1754600-04:00 [INFO]: Local player id: 1
+2018-04-11T20:24:59.1757830-04:00 [INFO]: Drawing for player (+ 1): 3
+2018-04-11T20:24:59.1828330-04:00 [INFO]: Inside else statement
+2018-04-11T20:24:59.1984690-04:00 [INFO]: Adding button for Mordred's special ability.
+2018-04-11T20:24:59.2027120-04:00 [INFO]: P#93's cards drawn to GUI
+2018-04-11T20:25:02.5897080-04:00 [INFO]: Found matching name
+2018-04-11T20:25:02.5970700-04:00 [INFO]: Local player id: 1
+2018-04-11T20:25:02.5974180-04:00 [INFO]: Drawing for player (+ 1): 4
+2018-04-11T20:25:02.6016090-04:00 [INFO]: Inside else statement
+2018-04-11T20:25:02.6107710-04:00 [INFO]: P#95's cards drawn to GUI
+2018-04-11T20:25:09.1731120-04:00 [INFO]: Found matching name
+2018-04-11T20:25:09.1797240-04:00 [TRACE]: dominantFoes are System.Collections.Generic.List`1[System.Type]
+2018-04-11T20:25:09.1800930-04:00 [TRACE]: The total battle points are 30
+2018-04-11T20:25:09.1803800-04:00 [TRACE]: playerBattlePoints >= getTotalbattlePoints
+2018-04-11T20:25:09.1826190-04:00 [INFO]: Local player id: 1
+2018-04-11T20:25:09.1829150-04:00 [INFO]: Drawing for player (+ 1): 3
+2018-04-11T20:25:09.1871620-04:00 [INFO]: Inside else statement
+2018-04-11T20:25:09.1966570-04:00 [INFO]: Adding button for Mordred's special ability.
+2018-04-11T20:25:09.1992800-04:00 [INFO]: P#93's cards drawn to GUI
+2018-04-11T20:25:09.2031940-04:00 [INFO]: Displaying results of stage to P#93
+2018-04-11T20:25:11.0918630-04:00 [TRACE]: dominantFoes are System.Collections.Generic.List`1[System.Type]
+2018-04-11T20:25:11.0922650-04:00 [TRACE]: The total battle points are 30
+2018-04-11T20:25:11.0925290-04:00 [TRACE]: Did not pass. Player will be removed: P#95
+2018-04-11T20:25:11.0946460-04:00 [INFO]: Local player id: 1
+2018-04-11T20:25:11.0949310-04:00 [INFO]: Drawing for player (+ 1): 4
+2018-04-11T20:25:11.0996090-04:00 [INFO]: Inside else statement
+2018-04-11T20:25:11.1097120-04:00 [INFO]: P#95's cards drawn to GUI
+2018-04-11T20:25:11.1136230-04:00 [INFO]: Displaying results of stage to P#95
+2018-04-11T20:25:13.8080690-04:00 [TRACE]: P#95 removed from quest
+2018-04-11T20:25:13.8222980-04:00 [TRACE]: numShieldsAwarded is 2
+2018-04-11T20:25:13.8344420-04:00 [INFO]: Local player id: 1
+2018-04-11T20:25:13.8350460-04:00 [INFO]: Drawing for player (+ 1): 1
+2018-04-11T20:25:13.8419300-04:00 [INFO]: PLAYER PHOTON ID AND TURN IS MATCHING
+2018-04-11T20:25:13.8645690-04:00 [INFO]: P#65's cards drawn to GUI
+2018-04-11T20:25:13.8737270-04:00 [INFO]: Prompted P#65 to prepare cards to discard.
+2018-04-11T20:25:19.1425650-04:00 [INFO]: P#32'S TURN
+2018-04-11T20:25:19.1461040-04:00 [INFO]: Started Prosperity Throughout the Realm behaviour
+2018-04-11T20:25:19.1505940-04:00 [INFO]: Local player id: 1
+2018-04-11T20:25:19.1509350-04:00 [INFO]: Drawing for player (+ 1): 2
+2018-04-11T20:25:19.1559820-04:00 [INFO]: Inside else statement
+2018-04-11T20:25:19.1697410-04:00 [INFO]: Adding button for Mordred's special ability.
+2018-04-11T20:25:19.1729100-04:00 [INFO]: P#32's cards drawn to GUI
+2018-04-11T20:25:19.1803350-04:00 [INFO]: Prompted P#32 to prepare cards to discard.
+2018-04-11T20:25:19.1808650-04:00 [INFO]: Finished Prosperity Throughout the Realm behaviour
+2018-04-11T20:25:28.8018200-04:00 [INFO]: Received player: P#32
+2018-04-11T20:25:28.8025320-04:00 [INFO]: Found matching name
+2018-04-11T20:25:28.8122990-04:00 [INFO]: Previous player is: P#32
+2018-04-11T20:25:28.8141390-04:00 [INFO]: Returning player in get next player
+2018-04-11T20:25:28.8198470-04:00 [INFO]: Local player id: 1
+2018-04-11T20:25:28.8203190-04:00 [INFO]: Drawing for player (+ 1): 3
+2018-04-11T20:25:28.8264420-04:00 [INFO]: Inside else statement
+2018-04-11T20:25:28.8445080-04:00 [INFO]: Adding button for Mordred's special ability.
+2018-04-11T20:25:28.8476270-04:00 [INFO]: P#93's cards drawn to GUI
+2018-04-11T20:25:28.8560480-04:00 [INFO]: Prompted P#93 to prepare cards to discard.
+2018-04-11T20:25:36.6831990-04:00 [INFO]: Received player: P#93
+2018-04-11T20:25:36.6836660-04:00 [INFO]: Found matching name
+2018-04-11T20:25:36.6936260-04:00 [INFO]: Previous player is: P#93
+2018-04-11T20:25:36.6956720-04:00 [INFO]: Returning player in get next player
+2018-04-11T20:25:36.7001180-04:00 [INFO]: Local player id: 1
+2018-04-11T20:25:36.7005120-04:00 [INFO]: Drawing for player (+ 1): 4
+2018-04-11T20:25:36.7054330-04:00 [INFO]: Inside else statement
+2018-04-11T20:25:36.7183690-04:00 [INFO]: P#95's cards drawn to GUI
+2018-04-11T20:25:36.7254090-04:00 [INFO]: Prompted P#95 to prepare cards to discard.
+2018-04-11T20:25:47.5670010-04:00 [INFO]: Received player: P#95
+2018-04-11T20:25:47.5674130-04:00 [INFO]: Found matching name
+2018-04-11T20:25:47.5769480-04:00 [INFO]: Previous player is: P#95
+2018-04-11T20:25:47.5787650-04:00 [INFO]: Returning player in get next player
+2018-04-11T20:25:47.5827670-04:00 [INFO]: Local player id: 1
+2018-04-11T20:25:47.5830710-04:00 [INFO]: Drawing for player (+ 1): 1
+2018-04-11T20:25:47.5871430-04:00 [INFO]: PLAYER PHOTON ID AND TURN IS MATCHING
+2018-04-11T20:25:47.5987530-04:00 [INFO]: P#65's cards drawn to GUI
+2018-04-11T20:25:47.6045230-04:00 [INFO]: Prompted P#65 to prepare cards to discard.
+2018-04-11T20:26:03.2461620-04:00 [DEBUG]: In ProsperityThroughoutTheRealm in DealCards(), about to RPC DealCardsNextPlayer
+2018-04-11T20:26:03.2506450-04:00 [INFO]: Previous player is: P#65
+2018-04-11T20:26:03.2523830-04:00 [INFO]: Returning player in get next player
+2018-04-11T20:26:03.3202680-04:00 [INFO]: P#93'S TURN
+2018-04-11T20:26:03.3254170-04:00 [INFO]: Started the Chivalrous Deed behaviour
+2018-04-11T20:26:03.3259700-04:00 [DEBUG]: Finished getting list of players with lowest rank
+2018-04-11T20:26:03.3264050-04:00 [DEBUG]: Finished getting list of players with lowest # shields
+2018-04-11T20:26:03.3290030-04:00 [INFO]: Awarded 3 shields to P#65
+2018-04-11T20:26:03.3313390-04:00 [INFO]: Awarded 3 shields to P#32
+2018-04-11T20:26:03.3363440-04:00 [INFO]: Awarded 3 shields to P#95
+2018-04-11T20:26:03.3367950-04:00 [INFO]: Awarded 3 shields to lowest ranked + lowest shields players, finishing behaviour
+2018-04-11T20:26:03.3374890-04:00 [INFO]: Local player id: 1
+2018-04-11T20:26:03.3378610-04:00 [INFO]: Drawing for player (+ 1): 3
+2018-04-11T20:26:03.3427010-04:00 [INFO]: Inside else statement
+2018-04-11T20:26:03.3587530-04:00 [INFO]: Adding button for Mordred's special ability.
+2018-04-11T20:26:03.3618480-04:00 [INFO]: P#93's cards drawn to GUI
+2018-04-11T20:26:09.8618820-04:00 [INFO]: P#95'S TURN
+2018-04-11T20:26:09.8651290-04:00 [INFO]: Started Tournament behaviour
+2018-04-11T20:26:09.8658940-04:00 [INFO]: Local player id: 1
+2018-04-11T20:26:09.8661610-04:00 [INFO]: Drawing for player (+ 1): 4
+2018-04-11T20:26:09.8703490-04:00 [INFO]: Inside else statement
+2018-04-11T20:26:09.8833790-04:00 [INFO]: P#95's cards drawn to GUI
+2018-04-11T20:26:09.8875620-04:00 [INFO]: Prompted P#95 to enter tournament.
+2018-04-11T20:26:39.3902200-04:00 [INFO]: Previous player is: P#95
+2018-04-11T20:26:39.3929750-04:00 [INFO]: Returning player in get next player
+2018-04-11T20:26:39.3962450-04:00 [INFO]: Local player id: 1
+2018-04-11T20:26:39.3967260-04:00 [INFO]: Drawing for player (+ 1): 1
+2018-04-11T20:26:39.4021660-04:00 [INFO]: PLAYER PHOTON ID AND TURN IS MATCHING
+2018-04-11T20:26:39.4162080-04:00 [INFO]: P#65's cards drawn to GUI
+2018-04-11T20:26:39.4223430-04:00 [INFO]: Prompted P#65 to enter tournament.
+2018-04-11T20:26:40.9581410-04:00 [INFO]: Local player id: 1
+2018-04-11T20:26:40.9584980-04:00 [INFO]: Drawing for player (+ 1): 1
+2018-04-11T20:26:40.9627780-04:00 [INFO]: PLAYER PHOTON ID AND TURN IS MATCHING
+2018-04-11T20:26:40.9732370-04:00 [INFO]: P#65's cards drawn to GUI
+2018-04-11T20:26:40.9788100-04:00 [INFO]: Prompted P#65 to prepare cards to discard.
+2018-04-11T20:26:45.9155290-04:00 [DEBUG]: In Tournament PromptEnterTournamentResponse(), about to RPC promptNextPlayer
+2018-04-11T20:26:45.9185240-04:00 [INFO]: Previous player is: P#65
+2018-04-11T20:26:45.9201360-04:00 [INFO]: Returning player in get next player
+2018-04-11T20:26:45.9219850-04:00 [INFO]: Local player id: 1
+2018-04-11T20:26:45.9222380-04:00 [INFO]: Drawing for player (+ 1): 2
+2018-04-11T20:26:45.9257680-04:00 [INFO]: Inside else statement
+2018-04-11T20:26:45.9341900-04:00 [INFO]: Adding button for Mordred's special ability.
+2018-04-11T20:26:45.9364150-04:00 [INFO]: P#32's cards drawn to GUI
+2018-04-11T20:26:45.9399940-04:00 [INFO]: Prompted P#32 to enter tournament.
+2018-04-11T20:26:48.1314350-04:00 [INFO]: Local player id: 1
+2018-04-11T20:26:48.1319720-04:00 [INFO]: Drawing for player (+ 1): 2
+2018-04-11T20:26:48.1367650-04:00 [INFO]: Inside else statement
+2018-04-11T20:26:48.1456560-04:00 [INFO]: Adding button for Mordred's special ability.
+2018-04-11T20:26:48.1482440-04:00 [INFO]: P#32's cards drawn to GUI
+2018-04-11T20:26:48.1543900-04:00 [INFO]: Prompted P#32 to prepare cards to discard.
+2018-04-11T20:26:52.1235620-04:00 [INFO]: Received player: P#32
+2018-04-11T20:26:52.1248850-04:00 [INFO]: Found matching name
+2018-04-11T20:26:52.1397920-04:00 [INFO]: Previous player is: P#32
+2018-04-11T20:26:52.1430760-04:00 [INFO]: Returning player in get next player
+2018-04-11T20:26:52.1459770-04:00 [INFO]: Local player id: 1
+2018-04-11T20:26:52.1465930-04:00 [INFO]: Drawing for player (+ 1): 3
+2018-04-11T20:26:52.1508900-04:00 [INFO]: Inside else statement
+2018-04-11T20:26:52.1627080-04:00 [INFO]: Adding button for Mordred's special ability.
+2018-04-11T20:26:52.1662140-04:00 [INFO]: P#93's cards drawn to GUI
+2018-04-11T20:26:52.1734560-04:00 [INFO]: Prompted P#93 to enter tournament.
+2018-04-11T20:26:53.7903570-04:00 [INFO]: Previous player is: P#93
+2018-04-11T20:26:53.7931600-04:00 [INFO]: Returning player in get next player
+2018-04-11T20:26:53.7967200-04:00 [INFO]: Local player id: 1
+2018-04-11T20:26:53.7971030-04:00 [INFO]: Drawing for player (+ 1): 4
+2018-04-11T20:26:53.8015880-04:00 [INFO]: Inside else statement
+2018-04-11T20:26:53.8098690-04:00 [INFO]: P#95's cards drawn to GUI
+2018-04-11T20:26:53.8143080-04:00 [INFO]: Prompted P#95 to prepare cards.
+2018-04-11T20:27:03.1484480-04:00 [INFO]: P#95 has 35 battle points
+2018-04-11T20:27:03.1499010-04:00 [INFO]: Local player id: 1
+2018-04-11T20:27:03.1502720-04:00 [INFO]: Drawing for player (+ 1): 1
+2018-04-11T20:27:03.1544370-04:00 [INFO]: PLAYER PHOTON ID AND TURN IS MATCHING
+2018-04-11T20:27:03.1655310-04:00 [INFO]: P#65's cards drawn to GUI
+2018-04-11T20:27:03.1696140-04:00 [INFO]: Prompted P#65 to prepare cards.
+2018-04-11T20:27:11.6181710-04:00 [INFO]: P#65 has 45 battle points
+2018-04-11T20:27:11.6189010-04:00 [INFO]: Local player id: 1
+2018-04-11T20:27:11.6191380-04:00 [INFO]: Drawing for player (+ 1): 2
+2018-04-11T20:27:11.6220650-04:00 [INFO]: Inside else statement
+2018-04-11T20:27:11.6300140-04:00 [INFO]: Adding button for Mordred's special ability.
+2018-04-11T20:27:11.6323730-04:00 [INFO]: P#32's cards drawn to GUI
+2018-04-11T20:27:11.6355380-04:00 [INFO]: Prompted P#32 to prepare cards.
+2018-04-11T20:27:22.3552010-04:00 [INFO]: P#32 has 75 battle points
+2018-04-11T20:27:22.3557750-04:00 [INFO]: Tournament round complete
+2018-04-11T20:27:22.3567230-04:00 [INFO]: Tournament complete, awarding shields
+2018-04-11T20:27:22.3589180-04:00 [DEBUG]: There has been an upgrade to Knight
+2018-04-11T20:27:22.3636870-04:00 [INFO]: Local player id: 1
+2018-04-11T20:27:22.3640020-04:00 [INFO]: Drawing for player (+ 1): 4
+2018-04-11T20:27:22.3691060-04:00 [INFO]: Inside else statement
+2018-04-11T20:27:22.3805630-04:00 [INFO]: P#95's cards drawn to GUI
+2018-04-11T20:27:22.3883540-04:00 [INFO]: Displaying tournament results to P#95
+2018-04-11T20:27:27.7815420-04:00 [INFO]: Local player id: 1
+2018-04-11T20:27:27.7820550-04:00 [INFO]: Drawing for player (+ 1): 1
+2018-04-11T20:27:27.7876220-04:00 [INFO]: PLAYER PHOTON ID AND TURN IS MATCHING
+2018-04-11T20:27:27.8028280-04:00 [INFO]: P#65's cards drawn to GUI
+2018-04-11T20:27:27.8075340-04:00 [INFO]: Displaying tournament results to P#65
+2018-04-11T20:27:29.9913710-04:00 [INFO]: Local player id: 1
+2018-04-11T20:27:29.9917360-04:00 [INFO]: Drawing for player (+ 1): 2
+2018-04-11T20:27:29.9955790-04:00 [INFO]: Inside else statement
+2018-04-11T20:27:30.0052620-04:00 [INFO]: Adding button for Mordred's special ability.
+2018-04-11T20:27:30.0073910-04:00 [INFO]: P#32's cards drawn to GUI
+2018-04-11T20:27:30.0107570-04:00 [INFO]: Displaying tournament results to P#32
+2018-04-11T20:27:32.9441930-04:00 [INFO]: P#65'S TURN
+2018-04-11T20:27:32.9477410-04:00 [INFO]: Started Quest behaviour
+2018-04-11T20:27:32.9482690-04:00 [INFO]: Local player id: 1
+2018-04-11T20:27:32.9485290-04:00 [INFO]: Drawing for player (+ 1): 1
+2018-04-11T20:27:32.9537380-04:00 [INFO]: PLAYER PHOTON ID AND TURN IS MATCHING
+2018-04-11T20:27:32.9710320-04:00 [INFO]: P#65's cards drawn to GUI
+2018-04-11T20:27:32.9771080-04:00 [INFO]: Prompted P#65 to sponsor quest.
+2018-04-11T20:27:40.0637870-04:00 [INFO]: P#32'S TURN
+2018-04-11T20:27:40.0659950-04:00 [INFO]: Started Tournament behaviour
+2018-04-11T20:27:40.0662030-04:00 [INFO]: Local player id: 1
+2018-04-11T20:27:40.0663790-04:00 [INFO]: Drawing for player (+ 1): 2
+2018-04-11T20:27:40.0689700-04:00 [INFO]: Inside else statement
+2018-04-11T20:27:40.0765000-04:00 [INFO]: Adding button for Mordred's special ability.
+2018-04-11T20:27:40.0789390-04:00 [INFO]: P#32's cards drawn to GUI
+2018-04-11T20:27:40.0816430-04:00 [INFO]: Prompted P#32 to enter tournament.

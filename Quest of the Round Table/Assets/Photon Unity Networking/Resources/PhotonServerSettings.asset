@@ -66,4 +66,5 @@ MonoBehaviour:
   - AddAI2
   - AddAI
   - SwitchSceneScenario
+  - DisplayTournamentResults
   DisableAutoOpenWizard: 1

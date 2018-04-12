@@ -225,10 +225,11 @@ public class BoardManager : MonoBehaviour
                 Debug.Log("Ally selection is valid.");
                 Logger.getInstance().info("Ally selection is valid.");
                 RemoveAlly(discardArea);
-                BoardManagerMediator.getInstance().DiscardCard("Mordred");
-                DrawHand(BoardManagerMediator.getInstance().getCurrentPlayer());
-                DisplayMordredButton(BoardManagerMediator.getInstance().getCurrentPlayer(),
-                                     BoardManagerMediator.getInstance().getPlayers());
+                BoardManagerMediator.getInstance().DiscardCard("Mordred", previousPlayer);
+				DrawCover (previousPlayer);
+//                DrawHand(BoardManagerMediator.getInstance().getCurrentPlayer());
+//                DisplayMordredButton(BoardManagerMediator.getInstance().getCurrentPlayer(),
+//                                     BoardManagerMediator.getInstance().getPlayers());
             }
 
             InstantiateNewInteraction(interactionText);
