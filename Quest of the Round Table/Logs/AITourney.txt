@@ -1,0 +1,380 @@
+-------------------- INITIALIZE LOGGER ---------------------
+2018-04-12T00:21:18.9704290-04:00: Logger initialized
+2018-04-12T00:21:18.9709450-04:00 [INFO]: Updating AI for other players
+2018-04-12T00:21:19.4750840-04:00 [INFO]: Updating AI for other players
+2018-04-12T00:21:21.5666700-04:00 [INFO]: Creating card: Knight of the Round Table
+2018-04-12T00:21:21.5669730-04:00 [INFO]: Creating card: Champion Knight
+2018-04-12T00:21:21.5678560-04:00 [INFO]: Creating card: Knight
+2018-04-12T00:21:21.5680840-04:00 [INFO]: Creating card: Squire
+2018-04-12T00:21:21.5740800-04:00 [INFO]: Creating card: Knight of the Round Table
+2018-04-12T00:21:21.5743510-04:00 [INFO]: Creating card: Champion Knight
+2018-04-12T00:21:21.5745240-04:00 [INFO]: Creating card: Knight
+2018-04-12T00:21:21.5746760-04:00 [INFO]: Creating card: Squire
+2018-04-12T00:21:21.5774500-04:00 [INFO]: Creating card: Knight of the Round Table
+2018-04-12T00:21:21.5777310-04:00 [INFO]: Creating card: Champion Knight
+2018-04-12T00:21:21.5779140-04:00 [INFO]: Creating card: Knight
+2018-04-12T00:21:21.5780980-04:00 [INFO]: Creating card: Squire
+2018-04-12T00:21:21.6561670-04:00 [INFO]: Player list passed to BoardManager
+2018-04-12T00:21:21.6570700-04:00 [INFO]: Player entered: P#67 (Human)
+2018-04-12T00:21:21.6577950-04:00 [INFO]: Player entered: AI_ONE_39 (AI - Strategy 1)
+2018-04-12T00:21:21.6582860-04:00 [INFO]: Player entered: AI_TWO_5 (AI - Strategy 2)
+2018-04-12T00:21:21.6628510-04:00 [INFO]: Creating card: Dragon
+2018-04-12T00:21:21.6639250-04:00 [INFO]: Creating card: Giant
+2018-04-12T00:21:21.6642000-04:00 [INFO]: Creating card: Giant
+2018-04-12T00:21:21.6650450-04:00 [INFO]: Creating card: Mordred
+2018-04-12T00:21:21.6652860-04:00 [INFO]: Creating card: Mordred
+2018-04-12T00:21:21.6654740-04:00 [INFO]: Creating card: Mordred
+2018-04-12T00:21:21.6656720-04:00 [INFO]: Creating card: Mordred
+2018-04-12T00:21:21.6667000-04:00 [INFO]: Creating card: Green Knight
+2018-04-12T00:21:21.6669790-04:00 [INFO]: Creating card: Green Knight
+2018-04-12T00:21:21.6681110-04:00 [INFO]: Creating card: Black Knight
+2018-04-12T00:21:21.6685520-04:00 [INFO]: Creating card: Black Knight
+2018-04-12T00:21:21.6692650-04:00 [INFO]: Creating card: Black Knight
+2018-04-12T00:21:21.6703450-04:00 [INFO]: Creating card: Evil Knight
+2018-04-12T00:21:21.6706090-04:00 [INFO]: Creating card: Evil Knight
+2018-04-12T00:21:21.6707820-04:00 [INFO]: Creating card: Evil Knight
+2018-04-12T00:21:21.6709490-04:00 [INFO]: Creating card: Evil Knight
+2018-04-12T00:21:21.6711180-04:00 [INFO]: Creating card: Evil Knight
+2018-04-12T00:21:21.6712810-04:00 [INFO]: Creating card: Evil Knight
+2018-04-12T00:21:21.6722110-04:00 [INFO]: Creating card: Saxon Knight
+2018-04-12T00:21:21.6724810-04:00 [INFO]: Creating card: Saxon Knight
+2018-04-12T00:21:21.6726610-04:00 [INFO]: Creating card: Saxon Knight
+2018-04-12T00:21:21.6728280-04:00 [INFO]: Creating card: Saxon Knight
+2018-04-12T00:21:21.6729880-04:00 [INFO]: Creating card: Saxon Knight
+2018-04-12T00:21:21.6731530-04:00 [INFO]: Creating card: Saxon Knight
+2018-04-12T00:21:21.6733200-04:00 [INFO]: Creating card: Saxon Knight
+2018-04-12T00:21:21.6734780-04:00 [INFO]: Creating card: Saxon Knight
+2018-04-12T00:21:21.6743900-04:00 [INFO]: Creating card: Robber Knight
+2018-04-12T00:21:21.6746460-04:00 [INFO]: Creating card: Robber Knight
+2018-04-12T00:21:21.6748200-04:00 [INFO]: Creating card: Robber Knight
+2018-04-12T00:21:21.6749890-04:00 [INFO]: Creating card: Robber Knight
+2018-04-12T00:21:21.6751530-04:00 [INFO]: Creating card: Robber Knight
+2018-04-12T00:21:21.6753180-04:00 [INFO]: Creating card: Robber Knight
+2018-04-12T00:21:21.6754860-04:00 [INFO]: Creating card: Robber Knight
+2018-04-12T00:21:21.6764450-04:00 [INFO]: Creating card: Saxons
+2018-04-12T00:21:21.6766960-04:00 [INFO]: Creating card: Saxons
+2018-04-12T00:21:21.6768770-04:00 [INFO]: Creating card: Saxons
+2018-04-12T00:21:21.6770930-04:00 [INFO]: Creating card: Saxons
+2018-04-12T00:21:21.6773650-04:00 [INFO]: Creating card: Saxons
+2018-04-12T00:21:21.6783230-04:00 [INFO]: Creating card: Boar
+2018-04-12T00:21:21.6785930-04:00 [INFO]: Creating card: Boar
+2018-04-12T00:21:21.6788460-04:00 [INFO]: Creating card: Boar
+2018-04-12T00:21:21.6790150-04:00 [INFO]: Creating card: Boar
+2018-04-12T00:21:21.6798530-04:00 [INFO]: Creating card: Thieves
+2018-04-12T00:21:21.6801010-04:00 [INFO]: Creating card: Thieves
+2018-04-12T00:21:21.6802780-04:00 [INFO]: Creating card: Thieves
+2018-04-12T00:21:21.6804450-04:00 [INFO]: Creating card: Thieves
+2018-04-12T00:21:21.6806100-04:00 [INFO]: Creating card: Thieves
+2018-04-12T00:21:21.6807710-04:00 [INFO]: Creating card: Thieves
+2018-04-12T00:21:21.6809310-04:00 [INFO]: Creating card: Thieves
+2018-04-12T00:21:21.6810930-04:00 [INFO]: Creating card: Thieves
+2018-04-12T00:21:21.6825010-04:00 [INFO]: Creating card: Test Of Valor
+2018-04-12T00:21:21.6827600-04:00 [INFO]: Creating card: Test Of Valor
+2018-04-12T00:21:21.6836300-04:00 [INFO]: Creating card: Test Of Temptation
+2018-04-12T00:21:21.6838840-04:00 [INFO]: Creating card: Test Of Temptation
+2018-04-12T00:21:21.6849320-04:00 [INFO]: Creating card: Test Of Morgan LeFey
+2018-04-12T00:21:21.6852130-04:00 [INFO]: Creating card: Test Of Morgan LeFey
+2018-04-12T00:21:21.6860860-04:00 [INFO]: Creating card: Test Of The Questing Beast
+2018-04-12T00:21:21.6863330-04:00 [INFO]: Creating card: Test Of The Questing Beast
+2018-04-12T00:21:21.6876280-04:00 [INFO]: Creating card: Sir Galahad
+2018-04-12T00:21:21.6889690-04:00 [INFO]: Creating card: Sir Lancelot
+2018-04-12T00:21:21.6899540-04:00 [INFO]: Creating card: King Arthur
+2018-04-12T00:21:21.6909490-04:00 [INFO]: Creating card: Sir Tristan
+2018-04-12T00:21:21.6919100-04:00 [INFO]: Creating card: King Pellinore
+2018-04-12T00:21:21.6929080-04:00 [INFO]: Creating card: Sir Gawain
+2018-04-12T00:21:21.6937820-04:00 [INFO]: Creating card: Sir Percival
+2018-04-12T00:21:21.6946540-04:00 [INFO]: Creating card: Queen Guinevere
+2018-04-12T00:21:21.6955340-04:00 [INFO]: Creating card: Queen Iseult
+2018-04-12T00:21:21.6964650-04:00 [INFO]: Creating card: Merlin
+2018-04-12T00:21:21.6973430-04:00 [INFO]: Creating card: Amour
+2018-04-12T00:21:21.6975950-04:00 [INFO]: Creating card: Amour
+2018-04-12T00:21:21.6977690-04:00 [INFO]: Creating card: Amour
+2018-04-12T00:21:21.6979350-04:00 [INFO]: Creating card: Amour
+2018-04-12T00:21:21.6981340-04:00 [INFO]: Creating card: Amour
+2018-04-12T00:21:21.6984150-04:00 [INFO]: Creating card: Amour
+2018-04-12T00:21:21.6985990-04:00 [INFO]: Creating card: Amour
+2018-04-12T00:21:21.6987600-04:00 [INFO]: Creating card: Amour
+2018-04-12T00:21:21.7001690-04:00 [INFO]: Creating card: Excalibur
+2018-04-12T00:21:21.7004360-04:00 [INFO]: Creating card: Excalibur
+2018-04-12T00:21:21.7014940-04:00 [INFO]: Creating card: Lance
+2018-04-12T00:21:21.7017840-04:00 [INFO]: Creating card: Lance
+2018-04-12T00:21:21.7019640-04:00 [INFO]: Creating card: Lance
+2018-04-12T00:21:21.7021430-04:00 [INFO]: Creating card: Lance
+2018-04-12T00:21:21.7023100-04:00 [INFO]: Creating card: Lance
+2018-04-12T00:21:21.7024710-04:00 [INFO]: Creating card: Lance
+2018-04-12T00:21:21.7033260-04:00 [INFO]: Creating card: Battle Ax
+2018-04-12T00:21:21.7035630-04:00 [INFO]: Creating card: Battle Ax
+2018-04-12T00:21:21.7037380-04:00 [INFO]: Creating card: Battle Ax
+2018-04-12T00:21:21.7039010-04:00 [INFO]: Creating card: Battle Ax
+2018-04-12T00:21:21.7040630-04:00 [INFO]: Creating card: Battle Ax
+2018-04-12T00:21:21.7042250-04:00 [INFO]: Creating card: Battle Ax
+2018-04-12T00:21:21.7043880-04:00 [INFO]: Creating card: Battle Ax
+2018-04-12T00:21:21.7045490-04:00 [INFO]: Creating card: Battle Ax
+2018-04-12T00:21:21.7054110-04:00 [INFO]: Creating card: Sword
+2018-04-12T00:21:21.7056650-04:00 [INFO]: Creating card: Sword
+2018-04-12T00:21:21.7058370-04:00 [INFO]: Creating card: Sword
+2018-04-12T00:21:21.7059990-04:00 [INFO]: Creating card: Sword
+2018-04-12T00:21:21.7061560-04:00 [INFO]: Creating card: Sword
+2018-04-12T00:21:21.7063170-04:00 [INFO]: Creating card: Sword
+2018-04-12T00:21:21.7064770-04:00 [INFO]: Creating card: Sword
+2018-04-12T00:21:21.7066330-04:00 [INFO]: Creating card: Sword
+2018-04-12T00:21:21.7067890-04:00 [INFO]: Creating card: Sword
+2018-04-12T00:21:21.7070150-04:00 [INFO]: Creating card: Sword
+2018-04-12T00:21:21.7071740-04:00 [INFO]: Creating card: Sword
+2018-04-12T00:21:21.7073310-04:00 [INFO]: Creating card: Sword
+2018-04-12T00:21:21.7074860-04:00 [INFO]: Creating card: Sword
+2018-04-12T00:21:21.7076510-04:00 [INFO]: Creating card: Sword
+2018-04-12T00:21:21.7078090-04:00 [INFO]: Creating card: Sword
+2018-04-12T00:21:21.7079680-04:00 [INFO]: Creating card: Sword
+2018-04-12T00:21:21.7089610-04:00 [INFO]: Creating card: Horse
+2018-04-12T00:21:21.7092490-04:00 [INFO]: Creating card: Horse
+2018-04-12T00:21:21.7094300-04:00 [INFO]: Creating card: Horse
+2018-04-12T00:21:21.7095990-04:00 [INFO]: Creating card: Horse
+2018-04-12T00:21:21.7097660-04:00 [INFO]: Creating card: Horse
+2018-04-12T00:21:21.7099340-04:00 [INFO]: Creating card: Horse
+2018-04-12T00:21:21.7100990-04:00 [INFO]: Creating card: Horse
+2018-04-12T00:21:21.7102620-04:00 [INFO]: Creating card: Horse
+2018-04-12T00:21:21.7104260-04:00 [INFO]: Creating card: Horse
+2018-04-12T00:21:21.7105930-04:00 [INFO]: Creating card: Horse
+2018-04-12T00:21:21.7107590-04:00 [INFO]: Creating card: Horse
+2018-04-12T00:21:21.7116970-04:00 [INFO]: Creating card: Dagger
+2018-04-12T00:21:21.7119700-04:00 [INFO]: Creating card: Dagger
+2018-04-12T00:21:21.7121850-04:00 [INFO]: Creating card: Dagger
+2018-04-12T00:21:21.7124210-04:00 [INFO]: Creating card: Dagger
+2018-04-12T00:21:21.7125950-04:00 [INFO]: Creating card: Dagger
+2018-04-12T00:21:21.7127600-04:00 [INFO]: Creating card: Dagger
+2018-04-12T00:21:21.7316530-04:00 [INFO]: Creating card: At Orkney
+2018-04-12T00:21:21.7326660-04:00 [INFO]: Creating card: At Camelot
+2018-04-12T00:21:21.7335980-04:00 [INFO]: Creating card: At Tintagel
+2018-04-12T00:21:21.7345940-04:00 [INFO]: Creating card: At York
+2018-04-12T00:21:21.7360660-04:00 [INFO]: Creating card: King's Recognition
+2018-04-12T00:21:21.7363850-04:00 [INFO]: Creating card: King's Recognition
+2018-04-12T00:21:21.7372610-04:00 [INFO]: Creating card: Queen's Favor
+2018-04-12T00:21:21.7375340-04:00 [INFO]: Creating card: Queen's Favor
+2018-04-12T00:21:21.7383800-04:00 [INFO]: Creating card: Court Called to Camelot
+2018-04-12T00:21:21.7387250-04:00 [INFO]: Creating card: Court Called to Camelot
+2018-04-12T00:21:21.7396850-04:00 [INFO]: Creating card: Pox
+2018-04-12T00:21:21.7405900-04:00 [INFO]: Creating card: Plague
+2018-04-12T00:21:21.7415120-04:00 [INFO]: Creating card: Chivalrous Deed
+2018-04-12T00:21:21.7426770-04:00 [INFO]: Creating card: Prosperity Throughout the Realm
+2018-04-12T00:21:21.7436650-04:00 [INFO]: Creating card: King's Call to Arms
+2018-04-12T00:21:21.7454500-04:00 [INFO]: Creating card: Search for the Holy Grail
+2018-04-12T00:21:21.7467150-04:00 [INFO]: Creating card: Test of the Green Knight
+2018-04-12T00:21:21.7476940-04:00 [INFO]: Creating card: Search for the Questing Beast
+2018-04-12T00:21:21.7486860-04:00 [INFO]: Creating card: Defend the Queen's Honor
+2018-04-12T00:21:21.7497100-04:00 [INFO]: Creating card: Rescue the Fair Maiden
+2018-04-12T00:21:21.7506870-04:00 [INFO]: Creating card: Journey through the Enchanted Forest
+2018-04-12T00:21:21.7517060-04:00 [INFO]: Creating card: Vanquish King Arthur's Enemies
+2018-04-12T00:21:21.7520230-04:00 [INFO]: Creating card: Vanquish King Arthur's Enemies
+2018-04-12T00:21:21.7529180-04:00 [INFO]: Creating card: Slay the Dragon
+2018-04-12T00:21:21.7540790-04:00 [INFO]: Creating card: Boar Hunt
+2018-04-12T00:21:21.7544130-04:00 [INFO]: Creating card: Boar Hunt
+2018-04-12T00:21:21.7553580-04:00 [INFO]: Creating card: Repel the Saxon Raiders
+2018-04-12T00:21:21.7556960-04:00 [INFO]: Creating card: Repel the Saxon Raiders
+2018-04-12T00:21:21.7599150-04:00 [INFO]: Card decks created
+2018-04-12T00:21:21.7604570-04:00 [INFO]: Dealing cards to player: P#67, 12
+2018-04-12T00:21:21.7619190-04:00 [INFO]: Dealing cards to player: AI_ONE_39, 12
+2018-04-12T00:21:21.7629070-04:00 [INFO]: Dealing cards to player: AI_TWO_5, 12
+2018-04-12T00:21:21.7638730-04:00 [INFO]: Game started...
+2018-04-12T00:21:21.7641720-04:00 [INFO]: Starting local game
+2018-04-12T00:21:21.7656460-04:00 [INFO]: P#67'S TURN
+2018-04-12T00:21:21.7663830-04:00 [INFO]: Drew card: At York
+2018-04-12T00:21:21.7670810-04:00 [INFO]: Started Tournament behaviour
+2018-04-12T00:21:21.7703810-04:00 [INFO]: Destroying ally card canvas area.
+2018-04-12T00:21:21.7726970-04:00 [INFO]: Local player id: 1
+2018-04-12T00:21:21.7730050-04:00 [INFO]: Drawing for player (+ 1): 1
+2018-04-12T00:21:21.7748220-04:00 [INFO]: PLAYER PHOTON ID AND TURN IS MATCHING
+2018-04-12T00:21:21.8833270-04:00 [INFO]: Inside display player info, number of cards for player : P#67 is: 12
+2018-04-12T00:21:21.8837550-04:00 [INFO]: Inside display player info, shields for player : P#67 is: 0
+2018-04-12T00:21:21.8854550-04:00 [INFO]: Inside display player info, number of cards for player : AI_ONE_39 is: 12
+2018-04-12T00:21:21.8857850-04:00 [INFO]: Inside display player info, shields for player : AI_ONE_39 is: 0
+2018-04-12T00:21:21.8866290-04:00 [INFO]: Inside display player info, number of cards for player : AI_TWO_5 is: 12
+2018-04-12T00:21:21.8868820-04:00 [INFO]: Inside display player info, shields for player : AI_TWO_5 is: 0
+2018-04-12T00:21:21.8918920-04:00 [INFO]: Adding button for Mordred's special ability.
+2018-04-12T00:21:21.8942720-04:00 [INFO]: P#67's cards drawn to GUI
+2018-04-12T00:21:21.8972010-04:00 [INFO]: Setting interaction text: NEW TOURNAMENT DRAWN
+Would you like to enter this tournament?
+2018-04-12T00:21:21.8985940-04:00 [INFO]: Prompted P#67 to enter tournament.
+2018-04-12T00:21:21.9735550-04:00 [INFO]: Board manager started
+2018-04-12T00:21:23.5843860-04:00 [INFO]: Action1 (accept) for At York for player P#67
+2018-04-12T00:21:23.5876000-04:00 [INFO]: Dealing cards to player: P#67, 1
+2018-04-12T00:21:23.5938120-04:00 [INFO]: Destroying ally card canvas area.
+2018-04-12T00:21:23.5941270-04:00 [INFO]: Local player id: 1
+2018-04-12T00:21:23.5943610-04:00 [INFO]: Drawing for player (+ 1): 1
+2018-04-12T00:21:23.5984250-04:00 [INFO]: PLAYER PHOTON ID AND TURN IS MATCHING
+2018-04-12T00:21:23.6188850-04:00 [INFO]: Inside display player info, number of cards for player : P#67 is: 13
+2018-04-12T00:21:23.6192450-04:00 [INFO]: Inside display player info, shields for player : P#67 is: 0
+2018-04-12T00:21:23.6211420-04:00 [INFO]: Inside display player info, number of cards for player : AI_ONE_39 is: 12
+2018-04-12T00:21:23.6215030-04:00 [INFO]: Inside display player info, shields for player : AI_ONE_39 is: 0
+2018-04-12T00:21:23.6226750-04:00 [INFO]: Inside display player info, number of cards for player : AI_TWO_5 is: 12
+2018-04-12T00:21:23.6229470-04:00 [INFO]: Inside display player info, shields for player : AI_TWO_5 is: 0
+2018-04-12T00:21:23.6247160-04:00 [INFO]: Adding button for Mordred's special ability.
+2018-04-12T00:21:23.6259800-04:00 [INFO]: P#67's cards drawn to GUI
+2018-04-12T00:21:23.6273650-04:00 [INFO]: Setting interaction text: TOO MANY CARDS
+Please discard (or play) cards until you have at most 12.
+2018-04-12T00:21:23.6311920-04:00 [INFO]: Prompted P#67 to prepare cards to discard.
+2018-04-12T00:21:27.3125120-04:00 [INFO]: Discarded card: Mordred
+2018-04-12T00:21:27.3139760-04:00 [DEBUG]: In Tournament PromptEnterTournamentResponse(), about to RPC promptNextPlayer
+2018-04-12T00:21:27.3163090-04:00 [INFO]: Previous player is: P#67
+2018-04-12T00:21:27.3177850-04:00 [INFO]: Returning player in get next player
+2018-04-12T00:21:27.3204480-04:00 [INFO]: AI Strategy 1 checking if someone else can win/evolve through tournament
+2018-04-12T00:21:27.3218420-04:00 [INFO]: No player can win off this tournament.
+2018-04-12T00:21:27.3232730-04:00 [INFO]: AI has opted to participate in tournament.
+2018-04-12T00:21:27.3252040-04:00 [INFO]: Dealing cards to player: AI_ONE_39, 1
+2018-04-12T00:21:27.3310660-04:00 [INFO]: Discarded card: Lance
+2018-04-12T00:21:27.3363520-04:00 [INFO]: Previous player is: AI_ONE_39
+2018-04-12T00:21:27.3384010-04:00 [INFO]: Returning player in get next player
+2018-04-12T00:21:27.3401020-04:00 [INFO]: AI_TWO_5 has decided to enter the tournament.
+2018-04-12T00:21:27.3421310-04:00 [INFO]: Dealing cards to player: AI_TWO_5, 1
+2018-04-12T00:21:27.3474100-04:00 [INFO]: Discarded card: Thieves
+2018-04-12T00:21:27.3519360-04:00 [INFO]: Previous player is: AI_TWO_5
+2018-04-12T00:21:27.3540810-04:00 [INFO]: Returning player in get next player
+2018-04-12T00:21:27.3602670-04:00 [INFO]: Destroying ally card canvas area.
+2018-04-12T00:21:27.3605420-04:00 [INFO]: Local player id: 1
+2018-04-12T00:21:27.3607040-04:00 [INFO]: Drawing for player (+ 1): 1
+2018-04-12T00:21:27.3655260-04:00 [INFO]: PLAYER PHOTON ID AND TURN IS MATCHING
+2018-04-12T00:21:27.3721120-04:00 [INFO]: Inside display player info, number of cards for player : P#67 is: 12
+2018-04-12T00:21:27.3724210-04:00 [INFO]: Inside display player info, shields for player : P#67 is: 0
+2018-04-12T00:21:27.3738370-04:00 [INFO]: Inside display player info, number of cards for player : AI_ONE_39 is: 12
+2018-04-12T00:21:27.3741320-04:00 [INFO]: Inside display player info, shields for player : AI_ONE_39 is: 0
+2018-04-12T00:21:27.3749370-04:00 [INFO]: Inside display player info, number of cards for player : AI_TWO_5 is: 12
+2018-04-12T00:21:27.3751370-04:00 [INFO]: Inside display player info, shields for player : AI_TWO_5 is: 0
+2018-04-12T00:21:27.3776600-04:00 [INFO]: P#67's cards drawn to GUI
+2018-04-12T00:21:27.3800920-04:00 [INFO]: Setting interaction text: PREPARE FOR BATTLE
+Prepare for the tournament using a combination of weapon, ally and amour cards.
+2018-04-12T00:21:27.3828920-04:00 [INFO]: Prompted P#67 to prepare cards.
+2018-04-12T00:21:32.2999220-04:00 [INFO]: Discarded card: Dagger
+2018-04-12T00:21:32.3015240-04:00 [INFO]: Discarded card: Sword
+2018-04-12T00:21:32.3027690-04:00 [INFO]: Discarded card: Battle Ax
+2018-04-12T00:21:32.3067720-04:00 [INFO]: P#67 has 35 battle points
+2018-04-12T00:21:32.3100240-04:00 [INFO]: Available cards:
+2018-04-12T00:21:32.3115490-04:00 [INFO]: Horse
+2018-04-12T00:21:32.3129850-04:00 [INFO]: Dagger
+2018-04-12T00:21:32.3144000-04:00 [INFO]: Test Of Morgan LeFey
+2018-04-12T00:21:32.3158100-04:00 [INFO]: Sword
+2018-04-12T00:21:32.3173050-04:00 [INFO]: Evil Knight
+2018-04-12T00:21:32.3187950-04:00 [INFO]: Horse
+2018-04-12T00:21:32.3201970-04:00 [INFO]: Saxon Knight
+2018-04-12T00:21:32.3215090-04:00 [INFO]: Saxon Knight
+2018-04-12T00:21:32.3230420-04:00 [INFO]: Test Of Morgan LeFey
+2018-04-12T00:21:32.3247640-04:00 [INFO]: Sir Galahad
+2018-04-12T00:21:32.3266370-04:00 [INFO]: Boar
+2018-04-12T00:21:32.3280130-04:00 [INFO]: Black Knight
+2018-04-12T00:21:32.3291670-04:00 [INFO]: Looping through cards
+2018-04-12T00:21:32.3309760-04:00 [INFO]: Sorted valid cards in hand:
+2018-04-12T00:21:32.3323390-04:00 [INFO]: Sir Galahad
+2018-04-12T00:21:32.3335250-04:00 [INFO]: Dagger
+2018-04-12T00:21:32.3348340-04:00 [INFO]: Horse
+2018-04-12T00:21:32.3361610-04:00 [INFO]: Sword
+2018-04-12T00:21:32.3372580-04:00 [INFO]: Horse
+2018-04-12T00:21:32.3387920-04:00 [INFO]: AI Strategy 1 checking if someone else can win/evolve through tournament
+2018-04-12T00:21:32.3404180-04:00 [INFO]: No player can win off this tournament.
+2018-04-12T00:21:32.3612270-04:00 [INFO]: AI_ONE_39 has 5 battle points
+2018-04-12T00:21:32.3618690-04:00 [INFO]: AI_TWO_5 is preparing for tournament
+2018-04-12T00:21:32.3644020-04:00 [INFO]: Available cards:
+2018-04-12T00:21:32.3657490-04:00 [INFO]: Horse
+2018-04-12T00:21:32.3670500-04:00 [INFO]: Excalibur
+2018-04-12T00:21:32.3683730-04:00 [INFO]: Amour
+2018-04-12T00:21:32.3701550-04:00 [INFO]: Thieves
+2018-04-12T00:21:32.3716900-04:00 [INFO]: Thieves
+2018-04-12T00:21:32.3734610-04:00 [INFO]: Sword
+2018-04-12T00:21:32.3751730-04:00 [INFO]: Horse
+2018-04-12T00:21:32.3765430-04:00 [INFO]: Evil Knight
+2018-04-12T00:21:32.3777790-04:00 [INFO]: Queen Iseult
+2018-04-12T00:21:32.3790300-04:00 [INFO]: Test Of The Questing Beast
+2018-04-12T00:21:32.3802480-04:00 [INFO]: Horse
+2018-04-12T00:21:32.3814650-04:00 [INFO]: Sir Percival
+2018-04-12T00:21:32.3827510-04:00 [INFO]: Looping through cards
+2018-04-12T00:21:32.3843100-04:00 [INFO]: Sorted valid cards in hand:
+2018-04-12T00:21:32.3859590-04:00 [INFO]: Amour
+2018-04-12T00:21:32.3872360-04:00 [INFO]: Queen Iseult
+2018-04-12T00:21:32.3885580-04:00 [INFO]: Sir Percival
+2018-04-12T00:21:32.3897720-04:00 [INFO]: Horse
+2018-04-12T00:21:32.3910340-04:00 [INFO]: Horse
+2018-04-12T00:21:32.3923520-04:00 [INFO]: Sword
+2018-04-12T00:21:32.3936780-04:00 [INFO]: Horse
+2018-04-12T00:21:32.3949870-04:00 [INFO]: Excalibur
+2018-04-12T00:21:32.3966320-04:00 [INFO]: Adding Excalibur to AI
+2018-04-12T00:21:32.3981470-04:00 [INFO]: Adding Amour to AI
+2018-04-12T00:21:32.3994700-04:00 [INFO]: Adding Horse to AI
+2018-04-12T00:21:32.4007570-04:00 [INFO]: Cards AI will play is: Excalibur
+2018-04-12T00:21:32.4021530-04:00 [INFO]: Cards AI will play is: Amour
+2018-04-12T00:21:32.4036720-04:00 [INFO]: Cards AI will play is: Horse
+2018-04-12T00:21:32.4053650-04:00 [INFO]: Discarded card: Excalibur
+2018-04-12T00:21:32.4069820-04:00 [INFO]: Discarded card: Amour
+2018-04-12T00:21:32.4085850-04:00 [INFO]: Discarded card: Horse
+2018-04-12T00:21:32.4144660-04:00 [INFO]: AI_TWO_5 has 55 battle points
+2018-04-12T00:21:32.4150080-04:00 [INFO]: Tournament round complete
+2018-04-12T00:21:32.4154650-04:00 [INFO]: Tournament complete, awarding shields
+2018-04-12T00:21:32.4171260-04:00 [INFO]: Awarded 3 shields to AI_TWO_5
+2018-04-12T00:21:32.4209460-04:00 [INFO]: Destroying ally card canvas area.
+2018-04-12T00:21:32.4212510-04:00 [INFO]: Local player id: 1
+2018-04-12T00:21:32.4215520-04:00 [INFO]: Drawing for player (+ 1): 1
+2018-04-12T00:21:32.4250330-04:00 [INFO]: PLAYER PHOTON ID AND TURN IS MATCHING
+2018-04-12T00:21:32.4294610-04:00 [INFO]: Player name: P#67, playarea card is: Dagger battlepoints are : 5 bid points are: 0
+2018-04-12T00:21:32.4299770-04:00 [INFO]: Player name: P#67, playarea card is: Sword battlepoints are : 10 bid points are: 0
+2018-04-12T00:21:32.4303800-04:00 [INFO]: Player name: P#67, playarea card is: Battle Ax battlepoints are : 15 bid points are: 0
+2018-04-12T00:21:32.4313650-04:00 [INFO]: Inside display player info, number of cards for player : P#67 is: 9
+2018-04-12T00:21:32.4315950-04:00 [INFO]: Inside display player info, shields for player : P#67 is: 0
+2018-04-12T00:21:32.4325760-04:00 [INFO]: Inside display player info, number of cards for player : AI_ONE_39 is: 12
+2018-04-12T00:21:32.4328730-04:00 [INFO]: Inside display player info, shields for player : AI_ONE_39 is: 0
+2018-04-12T00:21:32.4337800-04:00 [INFO]: Inside display player info, number of cards for player : AI_TWO_5 is: 9
+2018-04-12T00:21:32.4340090-04:00 [INFO]: Inside display player info, shields for player : AI_TWO_5 is: 3
+2018-04-12T00:21:32.4358680-04:00 [INFO]: P#67's cards drawn to GUI
+2018-04-12T00:21:32.4376590-04:00 [INFO]: Setting interaction text: You lost the tournament...
+2018-04-12T00:21:32.4399400-04:00 [INFO]: Displaying tournament results to P#67
+2018-04-12T00:21:33.5528730-04:00 [INFO]: Discarding all cards of class Weapon from play area
+2018-04-12T00:21:33.5532710-04:00 [INFO]: Discarding all cards of class Amour from play area
+2018-04-12T00:21:33.5542260-04:00 [INFO]: Discarding all cards of class Weapon from play area
+2018-04-12T00:21:33.5545790-04:00 [INFO]: Discarding all cards of class Amour from play area
+2018-04-12T00:21:33.5548510-04:00 [INFO]: Discarding all cards of class Weapon from play area
+2018-04-12T00:21:33.5550810-04:00 [INFO]: Discarding all cards of class Amour from play area
+2018-04-12T00:21:33.5572450-04:00 [INFO]: Destroying ally card canvas area.
+2018-04-12T00:21:33.5619230-04:00 [INFO]: Discarded card: At York
+2018-04-12T00:21:33.5636530-04:00 [INFO]: AI_ONE_39'S TURN
+2018-04-12T00:21:33.5655520-04:00 [INFO]: Drew card: Chivalrous Deed
+2018-04-12T00:21:33.5680250-04:00 [INFO]: Started the Chivalrous Deed behaviour
+2018-04-12T00:21:33.5684060-04:00 [DEBUG]: Finished getting list of players with lowest rank
+2018-04-12T00:21:33.5687500-04:00 [DEBUG]: Finished getting list of players with lowest # shields
+2018-04-12T00:21:33.5709460-04:00 [INFO]: Awarded 3 shields to P#67
+2018-04-12T00:21:33.5730370-04:00 [INFO]: Awarded 3 shields to AI_ONE_39
+2018-04-12T00:21:33.5754120-04:00 [INFO]: Destroying ally card canvas area.
+2018-04-12T00:21:33.5809840-04:00 [INFO]: Discarded card: Chivalrous Deed
+2018-04-12T00:21:33.5829570-04:00 [INFO]: AI_TWO_5'S TURN
+2018-04-12T00:21:33.5847120-04:00 [INFO]: Drew card: Prosperity Throughout the Realm
+2018-04-12T00:21:33.5865260-04:00 [INFO]: Started Prosperity Throughout the Realm behaviour
+2018-04-12T00:21:33.5869560-04:00 [INFO]: Dealing cards to player: AI_TWO_5, 2
+2018-04-12T00:21:33.5913780-04:00 [INFO]: Previous player is: AI_TWO_5
+2018-04-12T00:21:33.5936850-04:00 [INFO]: Returning player in get next player
+2018-04-12T00:21:33.5939240-04:00 [INFO]: Dealing cards to player: P#67, 2
+2018-04-12T00:21:33.5989130-04:00 [INFO]: Previous player is: P#67
+2018-04-12T00:21:33.6016260-04:00 [INFO]: Returning player in get next player
+2018-04-12T00:21:33.6018570-04:00 [INFO]: Dealing cards to player: AI_ONE_39, 2
+2018-04-12T00:21:33.6105940-04:00 [INFO]: Discarded card: Lance
+2018-04-12T00:21:33.6137950-04:00 [INFO]: Discarded card: Test Of Morgan LeFey
+2018-04-12T00:21:33.6194990-04:00 [INFO]: Previous player is: AI_ONE_39
+2018-04-12T00:21:33.6227010-04:00 [INFO]: Returning player in get next player
+2018-04-12T00:21:33.6260320-04:00 [INFO]: Destroying ally card canvas area.
+2018-04-12T00:21:33.6350480-04:00 [INFO]: Discarded card: Prosperity Throughout the Realm
+2018-04-12T00:21:33.6382860-04:00 [INFO]: P#67'S TURN
+2018-04-12T00:21:33.6414060-04:00 [INFO]: Drew card: King's Call to Arms
+2018-04-12T00:21:33.6448240-04:00 [INFO]: Started the Kings Call To Arms behaviour
+2018-04-12T00:21:33.6482740-04:00 [DEBUG]: Populated a list of players with the highest rank
+2018-04-12T00:21:33.6516340-04:00 [DEBUG]: Prompting event action for player P#67
+2018-04-12T00:21:33.6554000-04:00 [TRACE]: numFoeCards for the current player is 2
+2018-04-12T00:21:33.6590130-04:00 [DEBUG]: Player to discard weapon
+2018-04-12T00:21:33.6668500-04:00 [INFO]: Destroying ally card canvas area.
+2018-04-12T00:21:33.6671380-04:00 [INFO]: Local player id: 1
+2018-04-12T00:21:33.6673170-04:00 [INFO]: Drawing for player (+ 1): 1
+2018-04-12T00:21:33.6748210-04:00 [INFO]: PLAYER PHOTON ID AND TURN IS MATCHING
+2018-04-12T00:21:33.6912130-04:00 [INFO]: Inside display player info, number of cards for player : P#67 is: 11
+2018-04-12T00:21:33.6915900-04:00 [INFO]: Inside display player info, shields for player : P#67 is: 3
+2018-04-12T00:21:33.6928360-04:00 [INFO]: Inside display player info, number of cards for player : AI_ONE_39 is: 12
+2018-04-12T00:21:33.6931260-04:00 [INFO]: Inside display player info, shields for player : AI_ONE_39 is: 3
+2018-04-12T00:21:33.6939650-04:00 [INFO]: Inside display player info, number of cards for player : AI_TWO_5 is: 11
+2018-04-12T00:21:33.6941890-04:00 [INFO]: Inside display player info, shields for player : AI_TWO_5 is: 3
+2018-04-12T00:21:33.6980220-04:00 [INFO]: Adding button for Mordred's special ability.
+2018-04-12T00:21:33.7027360-04:00 [INFO]: P#67's cards drawn to GUI
+2018-04-12T00:21:33.7064480-04:00 [INFO]: Setting interaction text: Please discard 1 weapon.
+2018-04-12T00:21:33.7137990-04:00 [INFO]: Prompted P#67 to prepare weapon cards to discard.
+2018-04-12T00:21:33.7175140-04:00 [INFO]: Finished Prosperity Throughout the Realm behaviour
