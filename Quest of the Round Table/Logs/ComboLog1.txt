@@ -1,0 +1,875 @@
+-------------------- INITIALIZE LOGGER ---------------------
+2018-04-12T00:12:06.2377920-04:00: Logger initialized
+2018-04-12T00:12:06.2381480-04:00 [INFO]: Creating card: Knight of the Round Table
+2018-04-12T00:12:06.2383630-04:00 [INFO]: Creating card: Champion Knight
+2018-04-12T00:12:06.2385880-04:00 [INFO]: Creating card: Knight
+2018-04-12T00:12:06.2387820-04:00 [INFO]: Creating card: Squire
+2018-04-12T00:12:06.2402200-04:00 [INFO]: Creating card: Knight of the Round Table
+2018-04-12T00:12:06.2404350-04:00 [INFO]: Creating card: Champion Knight
+2018-04-12T00:12:06.2406990-04:00 [INFO]: Creating card: Knight
+2018-04-12T00:12:06.2409880-04:00 [INFO]: Creating card: Squire
+2018-04-12T00:12:06.2412640-04:00 [INFO]: Creating card: Knight of the Round Table
+2018-04-12T00:12:06.2414500-04:00 [INFO]: Creating card: Champion Knight
+2018-04-12T00:12:06.2416500-04:00 [INFO]: Creating card: Knight
+2018-04-12T00:12:06.2418390-04:00 [INFO]: Creating card: Squire
+2018-04-12T00:12:06.2420670-04:00 [INFO]: Creating card: Knight of the Round Table
+2018-04-12T00:12:06.2422790-04:00 [INFO]: Creating card: Champion Knight
+2018-04-12T00:12:06.2424640-04:00 [INFO]: Creating card: Knight
+2018-04-12T00:12:06.2426580-04:00 [INFO]: Creating card: Squire
+2018-04-12T00:12:06.3129360-04:00 [INFO]: Player list passed to BoardManager
+2018-04-12T00:12:06.3137520-04:00 [INFO]: Player entered: a (Human)
+2018-04-12T00:12:06.3141970-04:00 [INFO]: Player entered: b (Human)
+2018-04-12T00:12:06.3146380-04:00 [INFO]: Player entered: c (Human)
+2018-04-12T00:12:06.3150620-04:00 [INFO]: Player entered: d (Human)
+2018-04-12T00:12:06.3164470-04:00 [INFO]: Creating card: Dragon
+2018-04-12T00:12:06.3167640-04:00 [INFO]: Creating card: Giant
+2018-04-12T00:12:06.3169340-04:00 [INFO]: Creating card: Giant
+2018-04-12T00:12:06.3171890-04:00 [INFO]: Creating card: Mordred
+2018-04-12T00:12:06.3173530-04:00 [INFO]: Creating card: Mordred
+2018-04-12T00:12:06.3175090-04:00 [INFO]: Creating card: Mordred
+2018-04-12T00:12:06.3176640-04:00 [INFO]: Creating card: Mordred
+2018-04-12T00:12:06.3179160-04:00 [INFO]: Creating card: Green Knight
+2018-04-12T00:12:06.3180780-04:00 [INFO]: Creating card: Green Knight
+2018-04-12T00:12:06.3183300-04:00 [INFO]: Creating card: Black Knight
+2018-04-12T00:12:06.3184910-04:00 [INFO]: Creating card: Black Knight
+2018-04-12T00:12:06.3186450-04:00 [INFO]: Creating card: Black Knight
+2018-04-12T00:12:06.3189000-04:00 [INFO]: Creating card: Evil Knight
+2018-04-12T00:12:06.3190760-04:00 [INFO]: Creating card: Evil Knight
+2018-04-12T00:12:06.3192310-04:00 [INFO]: Creating card: Evil Knight
+2018-04-12T00:12:06.3193850-04:00 [INFO]: Creating card: Evil Knight
+2018-04-12T00:12:06.3195390-04:00 [INFO]: Creating card: Evil Knight
+2018-04-12T00:12:06.3196910-04:00 [INFO]: Creating card: Evil Knight
+2018-04-12T00:12:06.3199820-04:00 [INFO]: Creating card: Saxon Knight
+2018-04-12T00:12:06.3201660-04:00 [INFO]: Creating card: Saxon Knight
+2018-04-12T00:12:06.3203410-04:00 [INFO]: Creating card: Saxon Knight
+2018-04-12T00:12:06.3205150-04:00 [INFO]: Creating card: Saxon Knight
+2018-04-12T00:12:06.3206890-04:00 [INFO]: Creating card: Saxon Knight
+2018-04-12T00:12:06.3208620-04:00 [INFO]: Creating card: Saxon Knight
+2018-04-12T00:12:06.3210390-04:00 [INFO]: Creating card: Saxon Knight
+2018-04-12T00:12:06.3212140-04:00 [INFO]: Creating card: Saxon Knight
+2018-04-12T00:12:06.3214980-04:00 [INFO]: Creating card: Robber Knight
+2018-04-12T00:12:06.3216810-04:00 [INFO]: Creating card: Robber Knight
+2018-04-12T00:12:06.3218570-04:00 [INFO]: Creating card: Robber Knight
+2018-04-12T00:12:06.3220310-04:00 [INFO]: Creating card: Robber Knight
+2018-04-12T00:12:06.3222060-04:00 [INFO]: Creating card: Robber Knight
+2018-04-12T00:12:06.3223780-04:00 [INFO]: Creating card: Robber Knight
+2018-04-12T00:12:06.3225530-04:00 [INFO]: Creating card: Robber Knight
+2018-04-12T00:12:06.3228400-04:00 [INFO]: Creating card: Saxons
+2018-04-12T00:12:06.3230240-04:00 [INFO]: Creating card: Saxons
+2018-04-12T00:12:06.3232000-04:00 [INFO]: Creating card: Saxons
+2018-04-12T00:12:06.3233750-04:00 [INFO]: Creating card: Saxons
+2018-04-12T00:12:06.3236300-04:00 [INFO]: Creating card: Saxons
+2018-04-12T00:12:06.3240120-04:00 [INFO]: Creating card: Boar
+2018-04-12T00:12:06.3242560-04:00 [INFO]: Creating card: Boar
+2018-04-12T00:12:06.3244910-04:00 [INFO]: Creating card: Boar
+2018-04-12T00:12:06.3246930-04:00 [INFO]: Creating card: Boar
+2018-04-12T00:12:06.3250070-04:00 [INFO]: Creating card: Thieves
+2018-04-12T00:12:06.3251660-04:00 [INFO]: Creating card: Thieves
+2018-04-12T00:12:06.3253390-04:00 [INFO]: Creating card: Thieves
+2018-04-12T00:12:06.3255120-04:00 [INFO]: Creating card: Thieves
+2018-04-12T00:12:06.3256620-04:00 [INFO]: Creating card: Thieves
+2018-04-12T00:12:06.3258130-04:00 [INFO]: Creating card: Thieves
+2018-04-12T00:12:06.3259640-04:00 [INFO]: Creating card: Thieves
+2018-04-12T00:12:06.3261130-04:00 [INFO]: Creating card: Thieves
+2018-04-12T00:12:06.3264650-04:00 [INFO]: Creating card: Test Of Valor
+2018-04-12T00:12:06.3266660-04:00 [INFO]: Creating card: Test Of Valor
+2018-04-12T00:12:06.3269390-04:00 [INFO]: Creating card: Test Of Temptation
+2018-04-12T00:12:06.3271140-04:00 [INFO]: Creating card: Test Of Temptation
+2018-04-12T00:12:06.3273810-04:00 [INFO]: Creating card: Test Of Morgan LeFey
+2018-04-12T00:12:06.3275540-04:00 [INFO]: Creating card: Test Of Morgan LeFey
+2018-04-12T00:12:06.3278230-04:00 [INFO]: Creating card: Test Of The Questing Beast
+2018-04-12T00:12:06.3279960-04:00 [INFO]: Creating card: Test Of The Questing Beast
+2018-04-12T00:12:06.3282800-04:00 [INFO]: Creating card: Sir Galahad
+2018-04-12T00:12:06.3285560-04:00 [INFO]: Creating card: Sir Lancelot
+2018-04-12T00:12:06.3288560-04:00 [INFO]: Creating card: King Arthur
+2018-04-12T00:12:06.3291350-04:00 [INFO]: Creating card: Sir Tristan
+2018-04-12T00:12:06.3294010-04:00 [INFO]: Creating card: King Pellinore
+2018-04-12T00:12:06.3296520-04:00 [INFO]: Creating card: Sir Gawain
+2018-04-12T00:12:06.3299100-04:00 [INFO]: Creating card: Sir Percival
+2018-04-12T00:12:06.3301610-04:00 [INFO]: Creating card: Queen Guinevere
+2018-04-12T00:12:06.3304080-04:00 [INFO]: Creating card: Queen Iseult
+2018-04-12T00:12:06.3307540-04:00 [INFO]: Creating card: Merlin
+2018-04-12T00:12:06.3310790-04:00 [INFO]: Creating card: Amour
+2018-04-12T00:12:06.3312930-04:00 [INFO]: Creating card: Amour
+2018-04-12T00:12:06.3314940-04:00 [INFO]: Creating card: Amour
+2018-04-12T00:12:06.3316910-04:00 [INFO]: Creating card: Amour
+2018-04-12T00:12:06.3318950-04:00 [INFO]: Creating card: Amour
+2018-04-12T00:12:06.3320710-04:00 [INFO]: Creating card: Amour
+2018-04-12T00:12:06.3322450-04:00 [INFO]: Creating card: Amour
+2018-04-12T00:12:06.3324210-04:00 [INFO]: Creating card: Amour
+2018-04-12T00:12:06.3327460-04:00 [INFO]: Creating card: Excalibur
+2018-04-12T00:12:06.3329530-04:00 [INFO]: Creating card: Excalibur
+2018-04-12T00:12:06.3332720-04:00 [INFO]: Creating card: Lance
+2018-04-12T00:12:06.3334770-04:00 [INFO]: Creating card: Lance
+2018-04-12T00:12:06.3336790-04:00 [INFO]: Creating card: Lance
+2018-04-12T00:12:06.3338760-04:00 [INFO]: Creating card: Lance
+2018-04-12T00:12:06.3340730-04:00 [INFO]: Creating card: Lance
+2018-04-12T00:12:06.3342700-04:00 [INFO]: Creating card: Lance
+2018-04-12T00:12:06.3347030-04:00 [INFO]: Creating card: Battle Ax
+2018-04-12T00:12:06.3349580-04:00 [INFO]: Creating card: Battle Ax
+2018-04-12T00:12:06.3351500-04:00 [INFO]: Creating card: Battle Ax
+2018-04-12T00:12:06.3353210-04:00 [INFO]: Creating card: Battle Ax
+2018-04-12T00:12:06.3354870-04:00 [INFO]: Creating card: Battle Ax
+2018-04-12T00:12:06.3356880-04:00 [INFO]: Creating card: Battle Ax
+2018-04-12T00:12:06.3358470-04:00 [INFO]: Creating card: Battle Ax
+2018-04-12T00:12:06.3360030-04:00 [INFO]: Creating card: Battle Ax
+2018-04-12T00:12:06.3362700-04:00 [INFO]: Creating card: Sword
+2018-04-12T00:12:06.3364320-04:00 [INFO]: Creating card: Sword
+2018-04-12T00:12:06.3365920-04:00 [INFO]: Creating card: Sword
+2018-04-12T00:12:06.3367490-04:00 [INFO]: Creating card: Sword
+2018-04-12T00:12:06.3369050-04:00 [INFO]: Creating card: Sword
+2018-04-12T00:12:06.3370620-04:00 [INFO]: Creating card: Sword
+2018-04-12T00:12:06.3372950-04:00 [INFO]: Creating card: Sword
+2018-04-12T00:12:06.3374590-04:00 [INFO]: Creating card: Sword
+2018-04-12T00:12:06.3376340-04:00 [INFO]: Creating card: Sword
+2018-04-12T00:12:06.3378060-04:00 [INFO]: Creating card: Sword
+2018-04-12T00:12:06.3379800-04:00 [INFO]: Creating card: Sword
+2018-04-12T00:12:06.3381520-04:00 [INFO]: Creating card: Sword
+2018-04-12T00:12:06.3383240-04:00 [INFO]: Creating card: Sword
+2018-04-12T00:12:06.3384970-04:00 [INFO]: Creating card: Sword
+2018-04-12T00:12:06.3386700-04:00 [INFO]: Creating card: Sword
+2018-04-12T00:12:06.3388400-04:00 [INFO]: Creating card: Sword
+2018-04-12T00:12:06.3391360-04:00 [INFO]: Creating card: Horse
+2018-04-12T00:12:06.3392880-04:00 [INFO]: Creating card: Horse
+2018-04-12T00:12:06.3394630-04:00 [INFO]: Creating card: Horse
+2018-04-12T00:12:06.3396370-04:00 [INFO]: Creating card: Horse
+2018-04-12T00:12:06.3398020-04:00 [INFO]: Creating card: Horse
+2018-04-12T00:12:06.3399590-04:00 [INFO]: Creating card: Horse
+2018-04-12T00:12:06.3401170-04:00 [INFO]: Creating card: Horse
+2018-04-12T00:12:06.3402740-04:00 [INFO]: Creating card: Horse
+2018-04-12T00:12:06.3404300-04:00 [INFO]: Creating card: Horse
+2018-04-12T00:12:06.3405840-04:00 [INFO]: Creating card: Horse
+2018-04-12T00:12:06.3407390-04:00 [INFO]: Creating card: Horse
+2018-04-12T00:12:06.3410000-04:00 [INFO]: Creating card: Dagger
+2018-04-12T00:12:06.3411570-04:00 [INFO]: Creating card: Dagger
+2018-04-12T00:12:06.3413130-04:00 [INFO]: Creating card: Dagger
+2018-04-12T00:12:06.3414680-04:00 [INFO]: Creating card: Dagger
+2018-04-12T00:12:06.3416230-04:00 [INFO]: Creating card: Dagger
+2018-04-12T00:12:06.3417780-04:00 [INFO]: Creating card: Dagger
+2018-04-12T00:12:06.3561750-04:00 [INFO]: Creating card: At Orkney
+2018-04-12T00:12:06.3565570-04:00 [INFO]: Creating card: At Camelot
+2018-04-12T00:12:06.3569090-04:00 [INFO]: Creating card: At Tintagel
+2018-04-12T00:12:06.3575200-04:00 [INFO]: Creating card: At York
+2018-04-12T00:12:06.3578470-04:00 [INFO]: Creating card: King's Recognition
+2018-04-12T00:12:06.3580150-04:00 [INFO]: Creating card: King's Recognition
+2018-04-12T00:12:06.3583100-04:00 [INFO]: Creating card: Queen's Favor
+2018-04-12T00:12:06.3584720-04:00 [INFO]: Creating card: Queen's Favor
+2018-04-12T00:12:06.3587710-04:00 [INFO]: Creating card: Court Called to Camelot
+2018-04-12T00:12:06.3589320-04:00 [INFO]: Creating card: Court Called to Camelot
+2018-04-12T00:12:06.3592270-04:00 [INFO]: Creating card: Pox
+2018-04-12T00:12:06.3595030-04:00 [INFO]: Creating card: Plague
+2018-04-12T00:12:06.3597810-04:00 [INFO]: Creating card: Chivalrous Deed
+2018-04-12T00:12:06.3600580-04:00 [INFO]: Creating card: Prosperity Throughout the Realm
+2018-04-12T00:12:06.3603270-04:00 [INFO]: Creating card: King's Call to Arms
+2018-04-12T00:12:06.3607800-04:00 [INFO]: Creating card: Search for the Holy Grail
+2018-04-12T00:12:06.3615650-04:00 [INFO]: Creating card: Test of the Green Knight
+2018-04-12T00:12:06.3618660-04:00 [INFO]: Creating card: Search for the Questing Beast
+2018-04-12T00:12:06.3622360-04:00 [INFO]: Creating card: Defend the Queen's Honor
+2018-04-12T00:12:06.3626950-04:00 [INFO]: Creating card: Rescue the Fair Maiden
+2018-04-12T00:12:06.3631110-04:00 [INFO]: Creating card: Journey through the Enchanted Forest
+2018-04-12T00:12:06.3634010-04:00 [INFO]: Creating card: Vanquish King Arthur's Enemies
+2018-04-12T00:12:06.3635640-04:00 [INFO]: Creating card: Vanquish King Arthur's Enemies
+2018-04-12T00:12:06.3638900-04:00 [INFO]: Creating card: Slay the Dragon
+2018-04-12T00:12:06.3642110-04:00 [INFO]: Creating card: Boar Hunt
+2018-04-12T00:12:06.3643800-04:00 [INFO]: Creating card: Boar Hunt
+2018-04-12T00:12:06.3647860-04:00 [INFO]: Creating card: Repel the Saxon Raiders
+2018-04-12T00:12:06.3649770-04:00 [INFO]: Creating card: Repel the Saxon Raiders
+2018-04-12T00:12:06.3691670-04:00 [INFO]: Card decks created
+2018-04-12T00:12:06.3695800-04:00 [INFO]: Dealing cards to player: a, 12
+2018-04-12T00:12:06.3710020-04:00 [INFO]: Dealing cards to player: b, 12
+2018-04-12T00:12:06.3716580-04:00 [INFO]: Dealing cards to player: c, 12
+2018-04-12T00:12:06.3724530-04:00 [INFO]: Dealing cards to player: d, 12
+2018-04-12T00:12:06.3734740-04:00 [INFO]: Game started...
+2018-04-12T00:12:06.3737060-04:00 [INFO]: Starting local game
+2018-04-12T00:12:06.3748440-04:00 [INFO]: A'S TURN
+2018-04-12T00:12:06.3754520-04:00 [INFO]: Drew card: Slay the Dragon
+2018-04-12T00:12:06.3760960-04:00 [INFO]: Started Quest behaviour
+2018-04-12T00:12:06.3787340-04:00 [INFO]: Destroying ally card canvas area.
+2018-04-12T00:12:06.4756340-04:00 [INFO]: Inside display player info, number of cards for player : a is: 12
+2018-04-12T00:12:06.4760400-04:00 [INFO]: Inside display player info, shields for player : a is: 0
+2018-04-12T00:12:06.4771560-04:00 [INFO]: Inside display player info, number of cards for player : b is: 12
+2018-04-12T00:12:06.4773460-04:00 [INFO]: Inside display player info, shields for player : b is: 0
+2018-04-12T00:12:06.4780600-04:00 [INFO]: Inside display player info, number of cards for player : c is: 12
+2018-04-12T00:12:06.4782270-04:00 [INFO]: Inside display player info, shields for player : c is: 0
+2018-04-12T00:12:06.4789950-04:00 [INFO]: Inside display player info, number of cards for player : d is: 12
+2018-04-12T00:12:06.4792000-04:00 [INFO]: Inside display player info, shields for player : d is: 0
+2018-04-12T00:12:06.4822280-04:00 [INFO]: a's cards drawn to GUI
+2018-04-12T00:12:06.4835680-04:00 [INFO]: Setting interaction text: NEW QUEST DRAWN
+Would you like to sponsor this quest?
+2018-04-12T00:12:06.4851630-04:00 [INFO]: Prompted a to sponsor quest.
+2018-04-12T00:12:06.5588920-04:00 [INFO]: Board manager started
+2018-04-12T00:12:12.5778080-04:00 [INFO]: Sponsor accepted: a
+2018-04-12T00:12:12.5803860-04:00 [INFO]: Setting interaction text: PREPARE YOUR QUEST
+- Each stage contains a foe or a test
+- Maximum one test per quest
+- Foe stages may contain(unique) weapons
+- Battle points must increase between stages
+2018-04-12T00:12:12.5817210-04:00 [INFO]: Prompted a to setup quest.
+2018-04-12T00:12:18.6661290-04:00 [TRACE]: dominantFoes are System.Collections.Generic.List`1[System.Type]
+2018-04-12T00:12:18.6778060-04:00 [TRACE]: dominantFoes are System.Collections.Generic.List`1[System.Type]
+2018-04-12T00:12:18.6803720-04:00 [WARN]: Quest setup failed due to battle points
+2018-04-12T00:12:18.6814260-04:00 [INFO]: Setting interaction text: INVALID QUEST SELECTIONS.
+- Each stage contains a foe or a test
+- Maximum one test per quest
+- Foe stages may contain (unique) weapons
+- Battle points must increase between stages
+2018-04-12T00:12:18.6825210-04:00 [INFO]: Prompted a to setup quest.
+2018-04-12T00:12:24.5814950-04:00 [TRACE]: dominantFoes are System.Collections.Generic.List`1[System.Type]
+2018-04-12T00:12:24.5921020-04:00 [TRACE]: dominantFoes are System.Collections.Generic.List`1[System.Type]
+2018-04-12T00:12:24.6063970-04:00 [INFO]: Creating card: Saxons
+2018-04-12T00:12:24.6068010-04:00 [INFO]: Starting the Stage class
+2018-04-12T00:12:24.6070220-04:00 [INFO]: Creating card: Test Of The Questing Beast
+2018-04-12T00:12:24.6071930-04:00 [INFO]: Starting the Stage class
+2018-04-12T00:12:24.6074830-04:00 [INFO]: Creating card: Boar
+2018-04-12T00:12:24.6077240-04:00 [INFO]: Creating card: Lance
+2018-04-12T00:12:24.6079130-04:00 [INFO]: Starting the Stage class
+2018-04-12T00:12:24.6135110-04:00 [INFO]: Discarded card: Saxons
+2018-04-12T00:12:24.6161330-04:00 [INFO]: Discarded card: Test Of The Questing Beast
+2018-04-12T00:12:24.6188510-04:00 [INFO]: Discarded card: Boar
+2018-04-12T00:12:24.6208290-04:00 [INFO]: Discarded card: Lance
+2018-04-12T00:12:24.6210130-04:00 [INFO]: Quest setup complete
+2018-04-12T00:12:24.6221500-04:00 [INFO]: Previous player is: a
+2018-04-12T00:12:24.6231030-04:00 [INFO]: Returning player in get next player
+2018-04-12T00:12:24.6258350-04:00 [INFO]: Destroying ally card canvas area.
+2018-04-12T00:12:24.6656620-04:00 [INFO]: Inside display player info, number of cards for player : a is: 8
+2018-04-12T00:12:24.6659270-04:00 [INFO]: Inside display player info, shields for player : a is: 0
+2018-04-12T00:12:24.6666440-04:00 [INFO]: Inside display player info, number of cards for player : b is: 12
+2018-04-12T00:12:24.6669100-04:00 [INFO]: Inside display player info, shields for player : b is: 0
+2018-04-12T00:12:24.6675790-04:00 [INFO]: Inside display player info, number of cards for player : c is: 12
+2018-04-12T00:12:24.6677530-04:00 [INFO]: Inside display player info, shields for player : c is: 0
+2018-04-12T00:12:24.6684260-04:00 [INFO]: Inside display player info, number of cards for player : d is: 12
+2018-04-12T00:12:24.6686000-04:00 [INFO]: Inside display player info, shields for player : d is: 0
+2018-04-12T00:12:24.6700050-04:00 [INFO]: b's cards drawn to GUI
+2018-04-12T00:12:24.6713030-04:00 [INFO]: Setting interaction text: NEW QUEST DRAWN
+Would you like to participate in this quest?
+2018-04-12T00:12:24.6728550-04:00 [INFO]: Prompted b to accept quest.
+2018-04-12T00:12:28.3954170-04:00 [DEBUG]: b has accepted to participate in the quest
+2018-04-12T00:12:28.3957860-04:00 [INFO]: Drawing adventure card for player: b
+2018-04-12T00:12:28.3960200-04:00 [INFO]: Dealing cards to player: b, 1
+2018-04-12T00:12:28.4003110-04:00 [INFO]: Destroying ally card canvas area.
+2018-04-12T00:12:28.4037530-04:00 [INFO]: Inside display player info, number of cards for player : a is: 8
+2018-04-12T00:12:28.4198950-04:00 [INFO]: Inside display player info, shields for player : a is: 0
+2018-04-12T00:12:28.4219190-04:00 [INFO]: Inside display player info, number of cards for player : b is: 13
+2018-04-12T00:12:28.4222580-04:00 [INFO]: Inside display player info, shields for player : b is: 0
+2018-04-12T00:12:28.4233050-04:00 [INFO]: Inside display player info, number of cards for player : c is: 12
+2018-04-12T00:12:28.4235580-04:00 [INFO]: Inside display player info, shields for player : c is: 0
+2018-04-12T00:12:28.4244560-04:00 [INFO]: Inside display player info, number of cards for player : d is: 12
+2018-04-12T00:12:28.4247000-04:00 [INFO]: Inside display player info, shields for player : d is: 0
+2018-04-12T00:12:28.4265820-04:00 [INFO]: b's cards drawn to GUI
+2018-04-12T00:12:28.4282170-04:00 [INFO]: Setting interaction text: TOO MANY CARDS
+Please discard (or play) cards until you have at most 12.
+2018-04-12T00:12:28.4318720-04:00 [INFO]: Prompted b to prepare cards to discard.
+2018-04-12T00:13:01.3716160-04:00 [INFO]: Discarded card: Horse
+2018-04-12T00:13:01.3751500-04:00 [INFO]: Previous player is: b
+2018-04-12T00:13:01.3763010-04:00 [INFO]: Returning player in get next player
+2018-04-12T00:13:01.3789380-04:00 [INFO]: Destroying ally card canvas area.
+2018-04-12T00:13:01.4198310-04:00 [INFO]: Inside display player info, number of cards for player : a is: 8
+2018-04-12T00:13:01.4201820-04:00 [INFO]: Inside display player info, shields for player : a is: 0
+2018-04-12T00:13:01.4211210-04:00 [INFO]: Inside display player info, number of cards for player : b is: 12
+2018-04-12T00:13:01.4213250-04:00 [INFO]: Inside display player info, shields for player : b is: 0
+2018-04-12T00:13:01.4220700-04:00 [INFO]: Inside display player info, number of cards for player : c is: 12
+2018-04-12T00:13:01.4222620-04:00 [INFO]: Inside display player info, shields for player : c is: 0
+2018-04-12T00:13:01.4229850-04:00 [INFO]: Inside display player info, number of cards for player : d is: 12
+2018-04-12T00:13:01.4231830-04:00 [INFO]: Inside display player info, shields for player : d is: 0
+2018-04-12T00:13:01.4248350-04:00 [INFO]: Adding button for Mordred's special ability.
+2018-04-12T00:13:01.4275640-04:00 [INFO]: c's cards drawn to GUI
+2018-04-12T00:13:01.4288770-04:00 [INFO]: Setting interaction text: NEW QUEST DRAWN
+Would you like to participate in this quest?
+2018-04-12T00:13:01.4303820-04:00 [INFO]: Prompted c to accept quest.
+2018-04-12T00:13:03.6830760-04:00 [DEBUG]: c has accepted to participate in the quest
+2018-04-12T00:13:03.6834760-04:00 [INFO]: Drawing adventure card for player: c
+2018-04-12T00:13:03.6837500-04:00 [INFO]: Dealing cards to player: c, 1
+2018-04-12T00:13:03.6883810-04:00 [INFO]: Destroying ally card canvas area.
+2018-04-12T00:13:03.6921380-04:00 [INFO]: Inside display player info, number of cards for player : a is: 8
+2018-04-12T00:13:03.6925360-04:00 [INFO]: Inside display player info, shields for player : a is: 0
+2018-04-12T00:13:03.6933290-04:00 [INFO]: Inside display player info, number of cards for player : b is: 12
+2018-04-12T00:13:03.6935210-04:00 [INFO]: Inside display player info, shields for player : b is: 0
+2018-04-12T00:13:03.6943290-04:00 [INFO]: Inside display player info, number of cards for player : c is: 13
+2018-04-12T00:13:03.6945980-04:00 [INFO]: Inside display player info, shields for player : c is: 0
+2018-04-12T00:13:03.6954030-04:00 [INFO]: Inside display player info, number of cards for player : d is: 12
+2018-04-12T00:13:03.6955790-04:00 [INFO]: Inside display player info, shields for player : d is: 0
+2018-04-12T00:13:03.6971210-04:00 [INFO]: Adding button for Mordred's special ability.
+2018-04-12T00:13:03.6985810-04:00 [INFO]: c's cards drawn to GUI
+2018-04-12T00:13:03.7002100-04:00 [INFO]: Setting interaction text: TOO MANY CARDS
+Please discard (or play) cards until you have at most 12.
+2018-04-12T00:13:03.7036760-04:00 [INFO]: Prompted c to prepare cards to discard.
+2018-04-12T00:13:05.6349080-04:00 [INFO]: Discarded card: Saxons
+2018-04-12T00:13:05.6380470-04:00 [INFO]: Previous player is: c
+2018-04-12T00:13:05.6391690-04:00 [INFO]: Returning player in get next player
+2018-04-12T00:13:05.6418660-04:00 [INFO]: Destroying ally card canvas area.
+2018-04-12T00:13:05.6759850-04:00 [INFO]: Inside display player info, number of cards for player : a is: 8
+2018-04-12T00:13:05.6763200-04:00 [INFO]: Inside display player info, shields for player : a is: 0
+2018-04-12T00:13:05.6772120-04:00 [INFO]: Inside display player info, number of cards for player : b is: 12
+2018-04-12T00:13:05.6774580-04:00 [INFO]: Inside display player info, shields for player : b is: 0
+2018-04-12T00:13:05.6782330-04:00 [INFO]: Inside display player info, number of cards for player : c is: 12
+2018-04-12T00:13:05.6784440-04:00 [INFO]: Inside display player info, shields for player : c is: 0
+2018-04-12T00:13:05.6792440-04:00 [INFO]: Inside display player info, number of cards for player : d is: 12
+2018-04-12T00:13:05.6794330-04:00 [INFO]: Inside display player info, shields for player : d is: 0
+2018-04-12T00:13:05.6810930-04:00 [INFO]: Adding button for Mordred's special ability.
+2018-04-12T00:13:05.6827940-04:00 [INFO]: d's cards drawn to GUI
+2018-04-12T00:13:05.6841580-04:00 [INFO]: Setting interaction text: NEW QUEST DRAWN
+Would you like to participate in this quest?
+2018-04-12T00:13:05.6856030-04:00 [INFO]: Prompted d to accept quest.
+2018-04-12T00:13:07.6496380-04:00 [DEBUG]: d has accepted to participate in the quest
+2018-04-12T00:13:07.6500360-04:00 [INFO]: Drawing adventure card for player: d
+2018-04-12T00:13:07.6502800-04:00 [INFO]: Dealing cards to player: d, 1
+2018-04-12T00:13:07.6546050-04:00 [INFO]: Destroying ally card canvas area.
+2018-04-12T00:13:07.6581500-04:00 [INFO]: Inside display player info, number of cards for player : a is: 8
+2018-04-12T00:13:07.6583970-04:00 [INFO]: Inside display player info, shields for player : a is: 0
+2018-04-12T00:13:07.6592790-04:00 [INFO]: Inside display player info, number of cards for player : b is: 12
+2018-04-12T00:13:07.6594880-04:00 [INFO]: Inside display player info, shields for player : b is: 0
+2018-04-12T00:13:07.6605710-04:00 [INFO]: Inside display player info, number of cards for player : c is: 12
+2018-04-12T00:13:07.6607960-04:00 [INFO]: Inside display player info, shields for player : c is: 0
+2018-04-12T00:13:07.6616180-04:00 [INFO]: Inside display player info, number of cards for player : d is: 13
+2018-04-12T00:13:07.6618180-04:00 [INFO]: Inside display player info, shields for player : d is: 0
+2018-04-12T00:13:07.6636370-04:00 [INFO]: Adding button for Mordred's special ability.
+2018-04-12T00:13:07.6652600-04:00 [INFO]: d's cards drawn to GUI
+2018-04-12T00:13:07.6667430-04:00 [INFO]: Setting interaction text: TOO MANY CARDS
+Please discard (or play) cards until you have at most 12.
+2018-04-12T00:13:07.6711920-04:00 [INFO]: Prompted d to prepare cards to discard.
+2018-04-12T00:13:10.5886080-04:00 [INFO]: Discarded card: Lance
+2018-04-12T00:13:10.5923640-04:00 [INFO]: Previous player is: d
+2018-04-12T00:13:10.5937380-04:00 [INFO]: Returning player in get next player
+2018-04-12T00:13:10.5941570-04:00 [TRACE]: The total cards are 1
+2018-04-12T00:13:10.5944020-04:00 [TRACE]: The total cards are 1
+2018-04-12T00:13:10.5946190-04:00 [TRACE]: The total cards are 2
+2018-04-12T00:13:10.5948470-04:00 [DEBUG]: Starting quest.
+2018-04-12T00:13:10.5986350-04:00 [INFO]: Discarding all cards of class Weapon from play area
+2018-04-12T00:13:10.5999000-04:00 [INFO]: Discarding all cards of class Weapon from play area
+2018-04-12T00:13:10.6010910-04:00 [INFO]: Discarding all cards of class Weapon from play area
+2018-04-12T00:13:10.6023830-04:00 [INFO]: Discarding all cards of class Weapon from play area
+2018-04-12T00:13:10.6029890-04:00 [DEBUG]: Prepare function has started
+2018-04-12T00:13:10.6032460-04:00 [TRACE]: Stage card is subclass type of foe
+2018-04-12T00:13:10.6057090-04:00 [INFO]: Previous player is: a
+2018-04-12T00:13:10.6073500-04:00 [INFO]: Returning player in get next player
+2018-04-12T00:13:10.6098660-04:00 [INFO]: Previous player is: a
+2018-04-12T00:13:10.6112820-04:00 [INFO]: Returning player in get next player
+2018-04-12T00:13:10.6126140-04:00 [INFO]: playerToPrompt is: b
+2018-04-12T00:13:10.6142890-04:00 [INFO]: Checking amount of players: 3
+2018-04-12T00:13:10.6181450-04:00 [INFO]: Destroying ally card canvas area.
+2018-04-12T00:13:10.6232010-04:00 [INFO]: Inside display player info, number of cards for player : a is: 8
+2018-04-12T00:13:10.6234680-04:00 [INFO]: Inside display player info, shields for player : a is: 0
+2018-04-12T00:13:10.6242280-04:00 [INFO]: Inside display player info, number of cards for player : b is: 12
+2018-04-12T00:13:10.6244240-04:00 [INFO]: Inside display player info, shields for player : b is: 0
+2018-04-12T00:13:10.6251790-04:00 [INFO]: Inside display player info, number of cards for player : c is: 12
+2018-04-12T00:13:10.6253810-04:00 [INFO]: Inside display player info, shields for player : c is: 0
+2018-04-12T00:13:10.6261390-04:00 [INFO]: Inside display player info, number of cards for player : d is: 12
+2018-04-12T00:13:10.6263630-04:00 [INFO]: Inside display player info, shields for player : d is: 0
+2018-04-12T00:13:10.6279970-04:00 [INFO]: b's cards drawn to GUI
+2018-04-12T00:13:10.6296390-04:00 [INFO]: Setting interaction text: QUEST STAGE 1
+You are facing a foe. You may place any number of cards, or drop out.
+2018-04-12T00:13:25.9521420-04:00 [INFO]: Cards in play area: Sir Tristan
+2018-04-12T00:13:25.9535390-04:00 [INFO]: Cards in play area: Sir Tristan
+2018-04-12T00:13:25.9563600-04:00 [INFO]: Discarded card: Sir Tristan
+2018-04-12T00:13:25.9606910-04:00 [INFO]: Destroying ally card canvas area.
+2018-04-12T00:13:25.9652890-04:00 [INFO]: Inside display player info, number of cards for player : a is: 8
+2018-04-12T00:13:25.9655650-04:00 [INFO]: Inside display player info, shields for player : a is: 0
+2018-04-12T00:13:25.9663630-04:00 [INFO]: Inside display player info, number of cards for player : b is: 11
+2018-04-12T00:13:25.9665790-04:00 [INFO]: Inside display player info, shields for player : b is: 0
+2018-04-12T00:13:25.9673640-04:00 [INFO]: Inside display player info, number of cards for player : c is: 12
+2018-04-12T00:13:25.9676010-04:00 [INFO]: Inside display player info, shields for player : c is: 0
+2018-04-12T00:13:25.9685500-04:00 [INFO]: Inside display player info, number of cards for player : d is: 12
+2018-04-12T00:13:25.9688030-04:00 [INFO]: Inside display player info, shields for player : d is: 0
+2018-04-12T00:13:25.9703340-04:00 [INFO]: Adding button for Mordred's special ability.
+2018-04-12T00:13:25.9718100-04:00 [INFO]: c's cards drawn to GUI
+2018-04-12T00:13:25.9731960-04:00 [INFO]: Setting interaction text: QUEST STAGE 1
+You are facing a foe. You may place any number of cards, or drop out.
+2018-04-12T00:13:35.9704770-04:00 [INFO]: Cards in play area: Amour
+2018-04-12T00:13:35.9708580-04:00 [INFO]: Cards in play area: Queen Guinevere
+2018-04-12T00:13:35.9728000-04:00 [INFO]: Cards in play area: Amour
+2018-04-12T00:13:35.9730530-04:00 [INFO]: Cards in play area: Queen Guinevere
+2018-04-12T00:13:35.9757830-04:00 [INFO]: Discarded card: Amour
+2018-04-12T00:13:35.9781990-04:00 [INFO]: Discarded card: Queen Guinevere
+2018-04-12T00:13:35.9815950-04:00 [INFO]: Destroying ally card canvas area.
+2018-04-12T00:13:35.9860250-04:00 [INFO]: Inside display player info, number of cards for player : a is: 8
+2018-04-12T00:13:35.9862430-04:00 [INFO]: Inside display player info, shields for player : a is: 0
+2018-04-12T00:13:35.9870770-04:00 [INFO]: Inside display player info, number of cards for player : b is: 11
+2018-04-12T00:13:35.9872620-04:00 [INFO]: Inside display player info, shields for player : b is: 0
+2018-04-12T00:13:35.9880440-04:00 [INFO]: Inside display player info, number of cards for player : c is: 10
+2018-04-12T00:13:35.9882490-04:00 [INFO]: Inside display player info, shields for player : c is: 0
+2018-04-12T00:13:35.9890750-04:00 [INFO]: Inside display player info, number of cards for player : d is: 12
+2018-04-12T00:13:35.9892650-04:00 [INFO]: Inside display player info, shields for player : d is: 0
+2018-04-12T00:13:35.9907010-04:00 [INFO]: Adding button for Mordred's special ability.
+2018-04-12T00:13:35.9919210-04:00 [INFO]: d's cards drawn to GUI
+2018-04-12T00:13:35.9932890-04:00 [INFO]: Setting interaction text: QUEST STAGE 1
+You are facing a foe. You may place any number of cards, or drop out.
+2018-04-12T00:13:43.8730300-04:00 [INFO]: Cards in play area: King Arthur
+2018-04-12T00:13:43.8734100-04:00 [INFO]: Cards in play area: Sir Lancelot
+2018-04-12T00:13:43.8736860-04:00 [INFO]: Cards in play area: Queen Iseult
+2018-04-12T00:13:43.8740030-04:00 [INFO]: Cards in play area: Amour
+2018-04-12T00:13:43.8752120-04:00 [INFO]: Cards in play area: King Arthur
+2018-04-12T00:13:43.8754550-04:00 [INFO]: Cards in play area: Sir Lancelot
+2018-04-12T00:13:43.8756980-04:00 [INFO]: Cards in play area: Queen Iseult
+2018-04-12T00:13:43.8759360-04:00 [INFO]: Cards in play area: Amour
+2018-04-12T00:13:43.8785530-04:00 [INFO]: Discarded card: King Arthur
+2018-04-12T00:13:43.8808400-04:00 [INFO]: Discarded card: Sir Lancelot
+2018-04-12T00:13:43.8828300-04:00 [INFO]: Discarded card: Queen Iseult
+2018-04-12T00:13:43.8849370-04:00 [INFO]: Discarded card: Amour
+2018-04-12T00:13:43.8874040-04:00 [TRACE]: dominantFoes are System.Collections.Generic.List`1[System.Type]
+2018-04-12T00:13:43.8877800-04:00 [TRACE]: The total battle points are 10
+2018-04-12T00:13:43.8879860-04:00 [TRACE]: playerBattlePoints >= getTotalbattlePoints
+2018-04-12T00:13:43.8917210-04:00 [INFO]: Destroying ally card canvas area.
+2018-04-12T00:13:43.8955020-04:00 [INFO]: Stage 0, card: Saxons
+2018-04-12T00:13:43.8962920-04:00 [INFO]: Player name: b, playarea card is: Sir Tristan battlepoints are : 20 bid points are: 0
+2018-04-12T00:13:43.8974380-04:00 [INFO]: Inside display player info, number of cards for player : a is: 8
+2018-04-12T00:13:43.8977160-04:00 [INFO]: Inside display player info, shields for player : a is: 0
+2018-04-12T00:13:43.8985990-04:00 [INFO]: Inside display player info, number of cards for player : b is: 11
+2018-04-12T00:13:43.8988760-04:00 [INFO]: Inside display player info, shields for player : b is: 0
+2018-04-12T00:13:43.8996600-04:00 [INFO]: Inside display player info, number of cards for player : c is: 10
+2018-04-12T00:13:43.8998840-04:00 [INFO]: Inside display player info, shields for player : c is: 0
+2018-04-12T00:13:43.9006880-04:00 [INFO]: Inside display player info, number of cards for player : d is: 8
+2018-04-12T00:13:43.9009500-04:00 [INFO]: Inside display player info, shields for player : d is: 0
+2018-04-12T00:13:43.9026700-04:00 [INFO]: b's cards drawn to GUI
+2018-04-12T00:13:43.9040700-04:00 [INFO]: Setting interaction text: STAGE COMPLETE
+You passed!
+2018-04-12T00:13:43.9054050-04:00 [INFO]: Displaying results of stage to b
+2018-04-12T00:13:45.3382340-04:00 [TRACE]: dominantFoes are System.Collections.Generic.List`1[System.Type]
+2018-04-12T00:13:45.3388160-04:00 [TRACE]: The total battle points are 10
+2018-04-12T00:13:45.3394420-04:00 [TRACE]: playerBattlePoints >= getTotalbattlePoints
+2018-04-12T00:13:45.3434770-04:00 [INFO]: Destroying ally card canvas area.
+2018-04-12T00:13:45.3478180-04:00 [INFO]: Stage 0, card: Saxons
+2018-04-12T00:13:45.3486290-04:00 [INFO]: Player name: c, playarea card is: Amour battlepoints are : 10 bid points are: 1
+2018-04-12T00:13:45.3491270-04:00 [INFO]: Player name: c, playarea card is: Queen Guinevere battlepoints are : 0 bid points are: 3
+2018-04-12T00:13:45.3503000-04:00 [INFO]: Inside display player info, number of cards for player : a is: 8
+2018-04-12T00:13:45.3505130-04:00 [INFO]: Inside display player info, shields for player : a is: 0
+2018-04-12T00:13:45.3513030-04:00 [INFO]: Inside display player info, number of cards for player : b is: 11
+2018-04-12T00:13:45.3514980-04:00 [INFO]: Inside display player info, shields for player : b is: 0
+2018-04-12T00:13:45.3523670-04:00 [INFO]: Inside display player info, number of cards for player : c is: 10
+2018-04-12T00:13:45.3526160-04:00 [INFO]: Inside display player info, shields for player : c is: 0
+2018-04-12T00:13:45.3534350-04:00 [INFO]: Inside display player info, number of cards for player : d is: 8
+2018-04-12T00:13:45.3536390-04:00 [INFO]: Inside display player info, shields for player : d is: 0
+2018-04-12T00:13:45.3551830-04:00 [INFO]: Adding button for Mordred's special ability.
+2018-04-12T00:13:45.3567240-04:00 [INFO]: c's cards drawn to GUI
+2018-04-12T00:13:45.3580100-04:00 [INFO]: Setting interaction text: STAGE COMPLETE
+You passed!
+2018-04-12T00:13:45.3592020-04:00 [INFO]: Displaying results of stage to c
+2018-04-12T00:13:46.5720090-04:00 [TRACE]: dominantFoes are System.Collections.Generic.List`1[System.Type]
+2018-04-12T00:13:46.5724210-04:00 [TRACE]: The total battle points are 10
+2018-04-12T00:13:46.5732120-04:00 [TRACE]: playerBattlePoints >= getTotalbattlePoints
+2018-04-12T00:13:46.5769250-04:00 [INFO]: Destroying ally card canvas area.
+2018-04-12T00:13:46.5811850-04:00 [INFO]: Stage 0, card: Saxons
+2018-04-12T00:13:46.5821140-04:00 [INFO]: Player name: d, playarea card is: King Arthur battlepoints are : 10 bid points are: 2
+2018-04-12T00:13:46.5827200-04:00 [INFO]: Player name: d, playarea card is: Sir Lancelot battlepoints are : 15 bid points are: 0
+2018-04-12T00:13:46.5832110-04:00 [INFO]: Player name: d, playarea card is: Queen Iseult battlepoints are : 0 bid points are: 2
+2018-04-12T00:13:46.5836290-04:00 [INFO]: Player name: d, playarea card is: Amour battlepoints are : 10 bid points are: 1
+2018-04-12T00:13:46.5848880-04:00 [INFO]: Inside display player info, number of cards for player : a is: 8
+2018-04-12T00:13:46.5851440-04:00 [INFO]: Inside display player info, shields for player : a is: 0
+2018-04-12T00:13:46.5860440-04:00 [INFO]: Inside display player info, number of cards for player : b is: 11
+2018-04-12T00:13:46.5862900-04:00 [INFO]: Inside display player info, shields for player : b is: 0
+2018-04-12T00:13:46.5872100-04:00 [INFO]: Inside display player info, number of cards for player : c is: 10
+2018-04-12T00:13:46.5874720-04:00 [INFO]: Inside display player info, shields for player : c is: 0
+2018-04-12T00:13:46.5883220-04:00 [INFO]: Inside display player info, number of cards for player : d is: 8
+2018-04-12T00:13:46.5885400-04:00 [INFO]: Inside display player info, shields for player : d is: 0
+2018-04-12T00:13:46.5901140-04:00 [INFO]: Adding button for Mordred's special ability.
+2018-04-12T00:13:46.5917860-04:00 [INFO]: d's cards drawn to GUI
+2018-04-12T00:13:46.5936970-04:00 [INFO]: Setting interaction text: STAGE COMPLETE
+You passed!
+2018-04-12T00:13:46.5952830-04:00 [INFO]: Displaying results of stage to d
+2018-04-12T00:13:48.2379090-04:00 [INFO]: Dealing cards to player: b, 1
+2018-04-12T00:13:48.2398330-04:00 [INFO]: Dealing cards to player: c, 1
+2018-04-12T00:13:48.2417260-04:00 [INFO]: Dealing cards to player: d, 1
+2018-04-12T00:13:48.2475500-04:00 [INFO]: Discarding all cards of class Weapon from play area
+2018-04-12T00:13:48.2497180-04:00 [INFO]: Discarding all cards of class Weapon from play area
+2018-04-12T00:13:48.2523440-04:00 [INFO]: Discarding all cards of class Weapon from play area
+2018-04-12T00:13:48.2543990-04:00 [INFO]: Discarding all cards of class Weapon from play area
+2018-04-12T00:13:48.2545910-04:00 [DEBUG]: Prepare function has started
+2018-04-12T00:13:48.2547940-04:00 [TRACE]: Stage card is NOT subclass type of foe
+2018-04-12T00:13:48.2589170-04:00 [INFO]: Previous player is: a
+2018-04-12T00:13:48.2611490-04:00 [INFO]: Returning player in get next player
+2018-04-12T00:13:48.2615640-04:00 [DEBUG]: prompting Test...
+2018-04-12T00:13:48.2685390-04:00 [INFO]: Destroying ally card canvas area.
+2018-04-12T00:13:48.2742030-04:00 [INFO]: Stage 0, card: Saxons
+2018-04-12T00:13:48.2748860-04:00 [INFO]: Stage 1, card: Test Of The Questing Beast
+2018-04-12T00:13:48.2754470-04:00 [INFO]: Player name: b, playarea card is: Sir Tristan battlepoints are : 20 bid points are: 0
+2018-04-12T00:13:48.2764520-04:00 [INFO]: Inside display player info, number of cards for player : a is: 8
+2018-04-12T00:13:48.2766500-04:00 [INFO]: Inside display player info, shields for player : a is: 0
+2018-04-12T00:13:48.2774400-04:00 [INFO]: Inside display player info, number of cards for player : b is: 12
+2018-04-12T00:13:48.2776390-04:00 [INFO]: Inside display player info, shields for player : b is: 0
+2018-04-12T00:13:48.2783560-04:00 [INFO]: Inside display player info, number of cards for player : c is: 11
+2018-04-12T00:13:48.2785460-04:00 [INFO]: Inside display player info, shields for player : c is: 0
+2018-04-12T00:13:48.2792620-04:00 [INFO]: Inside display player info, number of cards for player : d is: 9
+2018-04-12T00:13:48.2794590-04:00 [INFO]: Inside display player info, shields for player : d is: 0
+2018-04-12T00:13:48.2820730-04:00 [INFO]: b's cards drawn to GUI
+2018-04-12T00:13:48.2844920-04:00 [INFO]: Setting interaction text: QUEST STAGE 1
+The current stage is a test, with a minimum bid of: 3. Do you wish to bid?
+2018-04-12T00:13:48.2872040-04:00 [INFO]: Prompting b to enter TEST inside stage: 1
+2018-04-12T00:14:00.9787350-04:00 [DEBUG]: Prompting Test Response...
+2018-04-12T00:14:00.9829380-04:00 [INFO]: Previous player is: b
+2018-04-12T00:14:00.9840040-04:00 [INFO]: Returning player in get next player
+2018-04-12T00:14:00.9850030-04:00 [DEBUG]: prompting Test...
+2018-04-12T00:14:00.9885380-04:00 [INFO]: Destroying ally card canvas area.
+2018-04-12T00:14:00.9979110-04:00 [INFO]: Stage 0, card: Saxons
+2018-04-12T00:14:00.9983830-04:00 [INFO]: Stage 1, card: Test Of The Questing Beast
+2018-04-12T00:14:00.9989030-04:00 [INFO]: Player name: c, playarea card is: Amour battlepoints are : 10 bid points are: 1
+2018-04-12T00:14:00.9992790-04:00 [INFO]: Player name: c, playarea card is: Queen Guinevere battlepoints are : 0 bid points are: 3
+2018-04-12T00:14:01.0002200-04:00 [INFO]: Inside display player info, number of cards for player : a is: 8
+2018-04-12T00:14:01.0004590-04:00 [INFO]: Inside display player info, shields for player : a is: 0
+2018-04-12T00:14:01.0013440-04:00 [INFO]: Inside display player info, number of cards for player : b is: 12
+2018-04-12T00:14:01.0015650-04:00 [INFO]: Inside display player info, shields for player : b is: 0
+2018-04-12T00:14:01.0023090-04:00 [INFO]: Inside display player info, number of cards for player : c is: 11
+2018-04-12T00:14:01.0025540-04:00 [INFO]: Inside display player info, shields for player : c is: 0
+2018-04-12T00:14:01.0034210-04:00 [INFO]: Inside display player info, number of cards for player : d is: 9
+2018-04-12T00:14:01.0036210-04:00 [INFO]: Inside display player info, shields for player : d is: 0
+2018-04-12T00:14:01.0053460-04:00 [INFO]: Adding button for Mordred's special ability.
+2018-04-12T00:14:01.0073910-04:00 [INFO]: c's cards drawn to GUI
+2018-04-12T00:14:01.0090830-04:00 [INFO]: Setting interaction text: QUEST STAGE 1
+The current stage is a test, with a minimum bid of: 4. Do you wish to bid?
+2018-04-12T00:14:01.0109650-04:00 [INFO]: Prompting c to enter TEST inside stage: 1
+2018-04-12T00:14:05.9101870-04:00 [DEBUG]: Prompting Test Response...
+2018-04-12T00:14:05.9142140-04:00 [INFO]: Previous player is: c
+2018-04-12T00:14:05.9152820-04:00 [INFO]: Returning player in get next player
+2018-04-12T00:14:05.9163400-04:00 [DEBUG]: prompting Test...
+2018-04-12T00:14:05.9195160-04:00 [INFO]: Destroying ally card canvas area.
+2018-04-12T00:14:05.9227890-04:00 [INFO]: Stage 0, card: Saxons
+2018-04-12T00:14:05.9231510-04:00 [INFO]: Stage 1, card: Test Of The Questing Beast
+2018-04-12T00:14:05.9236220-04:00 [INFO]: Player name: d, playarea card is: King Arthur battlepoints are : 10 bid points are: 2
+2018-04-12T00:14:05.9240100-04:00 [INFO]: Player name: d, playarea card is: Sir Lancelot battlepoints are : 15 bid points are: 0
+2018-04-12T00:14:05.9243880-04:00 [INFO]: Player name: d, playarea card is: Queen Iseult battlepoints are : 0 bid points are: 2
+2018-04-12T00:14:05.9247710-04:00 [INFO]: Player name: d, playarea card is: Amour battlepoints are : 10 bid points are: 1
+2018-04-12T00:14:05.9258120-04:00 [INFO]: Inside display player info, number of cards for player : a is: 8
+2018-04-12T00:14:05.9260380-04:00 [INFO]: Inside display player info, shields for player : a is: 0
+2018-04-12T00:14:05.9268390-04:00 [INFO]: Inside display player info, number of cards for player : b is: 12
+2018-04-12T00:14:05.9270550-04:00 [INFO]: Inside display player info, shields for player : b is: 0
+2018-04-12T00:14:05.9279020-04:00 [INFO]: Inside display player info, number of cards for player : c is: 11
+2018-04-12T00:14:05.9282330-04:00 [INFO]: Inside display player info, shields for player : c is: 0
+2018-04-12T00:14:05.9290140-04:00 [INFO]: Inside display player info, number of cards for player : d is: 9
+2018-04-12T00:14:05.9292520-04:00 [INFO]: Inside display player info, shields for player : d is: 0
+2018-04-12T00:14:05.9309380-04:00 [INFO]: Adding button for Mordred's special ability.
+2018-04-12T00:14:05.9323080-04:00 [INFO]: d's cards drawn to GUI
+2018-04-12T00:14:05.9343960-04:00 [INFO]: Setting interaction text: QUEST STAGE 1
+The current stage is a test, with a minimum bid of: 5. Do you wish to bid?
+2018-04-12T00:14:05.9361970-04:00 [INFO]: Prompting d to enter TEST inside stage: 1
+2018-04-12T00:14:16.7797600-04:00 [DEBUG]: Prompting Test Response...
+2018-04-12T00:14:16.7840620-04:00 [INFO]: Previous player is: d
+2018-04-12T00:14:16.7852570-04:00 [INFO]: Returning player in get next player
+2018-04-12T00:14:16.7863990-04:00 [INFO]: Previous player is: a
+2018-04-12T00:14:16.7874220-04:00 [INFO]: Returning player in get next player
+2018-04-12T00:14:16.7883340-04:00 [DEBUG]: prompting Test...
+2018-04-12T00:14:16.7915660-04:00 [INFO]: Destroying ally card canvas area.
+2018-04-12T00:14:16.7951380-04:00 [INFO]: Stage 0, card: Saxons
+2018-04-12T00:14:16.7954940-04:00 [INFO]: Stage 1, card: Test Of The Questing Beast
+2018-04-12T00:14:16.7960410-04:00 [INFO]: Player name: b, playarea card is: Sir Tristan battlepoints are : 20 bid points are: 0
+2018-04-12T00:14:16.7970300-04:00 [INFO]: Inside display player info, number of cards for player : a is: 8
+2018-04-12T00:14:16.7972300-04:00 [INFO]: Inside display player info, shields for player : a is: 0
+2018-04-12T00:14:16.7981310-04:00 [INFO]: Inside display player info, number of cards for player : b is: 12
+2018-04-12T00:14:16.7983730-04:00 [INFO]: Inside display player info, shields for player : b is: 0
+2018-04-12T00:14:16.7992260-04:00 [INFO]: Inside display player info, number of cards for player : c is: 11
+2018-04-12T00:14:16.7994270-04:00 [INFO]: Inside display player info, shields for player : c is: 0
+2018-04-12T00:14:16.8002040-04:00 [INFO]: Inside display player info, number of cards for player : d is: 9
+2018-04-12T00:14:16.8003970-04:00 [INFO]: Inside display player info, shields for player : d is: 0
+2018-04-12T00:14:16.8017880-04:00 [INFO]: b's cards drawn to GUI
+2018-04-12T00:14:16.8030830-04:00 [INFO]: Setting interaction text: QUEST STAGE 1
+The current stage is a test, with a minimum bid of: 8. Do you wish to bid?
+2018-04-12T00:14:16.8044700-04:00 [INFO]: Prompting b to enter TEST inside stage: 1
+2018-04-12T00:14:19.1426570-04:00 [DEBUG]: Prompting Test Response...
+2018-04-12T00:14:19.1460880-04:00 [TRACE]: b removed from quest
+2018-04-12T00:14:19.1472250-04:00 [DEBUG]: prompting Test...
+2018-04-12T00:14:19.1506840-04:00 [INFO]: Destroying ally card canvas area.
+2018-04-12T00:14:19.1541900-04:00 [INFO]: Stage 0, card: Saxons
+2018-04-12T00:14:19.1545680-04:00 [INFO]: Stage 1, card: Test Of The Questing Beast
+2018-04-12T00:14:19.1550220-04:00 [INFO]: Player name: c, playarea card is: Amour battlepoints are : 10 bid points are: 1
+2018-04-12T00:14:19.1553300-04:00 [INFO]: Player name: c, playarea card is: Queen Guinevere battlepoints are : 0 bid points are: 3
+2018-04-12T00:14:19.1562190-04:00 [INFO]: Inside display player info, number of cards for player : a is: 8
+2018-04-12T00:14:19.1563950-04:00 [INFO]: Inside display player info, shields for player : a is: 0
+2018-04-12T00:14:19.1571960-04:00 [INFO]: Inside display player info, number of cards for player : b is: 12
+2018-04-12T00:14:19.1574160-04:00 [INFO]: Inside display player info, shields for player : b is: 0
+2018-04-12T00:14:19.1582340-04:00 [INFO]: Inside display player info, number of cards for player : c is: 11
+2018-04-12T00:14:19.1584770-04:00 [INFO]: Inside display player info, shields for player : c is: 0
+2018-04-12T00:14:19.1592780-04:00 [INFO]: Inside display player info, number of cards for player : d is: 9
+2018-04-12T00:14:19.1594990-04:00 [INFO]: Inside display player info, shields for player : d is: 0
+2018-04-12T00:14:19.1611430-04:00 [INFO]: Adding button for Mordred's special ability.
+2018-04-12T00:14:19.1628640-04:00 [INFO]: c's cards drawn to GUI
+2018-04-12T00:14:19.1643850-04:00 [INFO]: Setting interaction text: QUEST STAGE 1
+The current stage is a test, with a minimum bid of: 8. Do you wish to bid?
+2018-04-12T00:14:19.1662310-04:00 [INFO]: Prompting c to enter TEST inside stage: 1
+2018-04-12T00:14:24.1613820-04:00 [DEBUG]: Prompting Test Response...
+2018-04-12T00:14:24.1648900-04:00 [TRACE]: c removed from quest
+2018-04-12T00:14:24.1661060-04:00 [DEBUG]: prompting Test...
+2018-04-12T00:14:24.1699970-04:00 [INFO]: Destroying ally card canvas area.
+2018-04-12T00:14:24.1732130-04:00 [INFO]: Stage 0, card: Saxons
+2018-04-12T00:14:24.1735850-04:00 [INFO]: Stage 1, card: Test Of The Questing Beast
+2018-04-12T00:14:24.1741300-04:00 [INFO]: Player name: d, playarea card is: King Arthur battlepoints are : 10 bid points are: 2
+2018-04-12T00:14:24.1746120-04:00 [INFO]: Player name: d, playarea card is: Sir Lancelot battlepoints are : 15 bid points are: 0
+2018-04-12T00:14:24.1750960-04:00 [INFO]: Player name: d, playarea card is: Queen Iseult battlepoints are : 0 bid points are: 2
+2018-04-12T00:14:24.1755680-04:00 [INFO]: Player name: d, playarea card is: Amour battlepoints are : 10 bid points are: 1
+2018-04-12T00:14:24.1764790-04:00 [INFO]: Inside display player info, number of cards for player : a is: 8
+2018-04-12T00:14:24.1766920-04:00 [INFO]: Inside display player info, shields for player : a is: 0
+2018-04-12T00:14:24.1773880-04:00 [INFO]: Inside display player info, number of cards for player : b is: 12
+2018-04-12T00:14:24.1775900-04:00 [INFO]: Inside display player info, shields for player : b is: 0
+2018-04-12T00:14:24.1783310-04:00 [INFO]: Inside display player info, number of cards for player : c is: 11
+2018-04-12T00:14:24.1785400-04:00 [INFO]: Inside display player info, shields for player : c is: 0
+2018-04-12T00:14:24.1792950-04:00 [INFO]: Inside display player info, number of cards for player : d is: 9
+2018-04-12T00:14:24.1795230-04:00 [INFO]: Inside display player info, shields for player : d is: 0
+2018-04-12T00:14:24.1810090-04:00 [INFO]: Adding button for Mordred's special ability.
+2018-04-12T00:14:24.1822510-04:00 [INFO]: d's cards drawn to GUI
+2018-04-12T00:14:24.1836960-04:00 [INFO]: Setting interaction text: QUEST STAGE 1
+You are the winner of the test, and you must discard/play a total of 7 bid points.
+2018-04-12T00:14:29.6933770-04:00 [INFO]: Cards in play area: King Arthur
+2018-04-12T00:14:29.6945150-04:00 [INFO]: Cards in play area: Sir Lancelot
+2018-04-12T00:14:29.6950060-04:00 [INFO]: Cards in play area: Queen Iseult
+2018-04-12T00:14:29.6952990-04:00 [INFO]: Cards in play area: Amour
+2018-04-12T00:14:29.6972660-04:00 [INFO]: Destroying ally card canvas area.
+2018-04-12T00:14:29.6993790-04:00 [INFO]: Stage 0, card: Saxons
+2018-04-12T00:14:29.6997880-04:00 [INFO]: Stage 1, card: Test Of The Questing Beast
+2018-04-12T00:14:29.7003900-04:00 [INFO]: Player name: d, playarea card is: King Arthur battlepoints are : 10 bid points are: 2
+2018-04-12T00:14:29.7007660-04:00 [INFO]: Player name: d, playarea card is: Sir Lancelot battlepoints are : 15 bid points are: 0
+2018-04-12T00:14:29.7011430-04:00 [INFO]: Player name: d, playarea card is: Queen Iseult battlepoints are : 0 bid points are: 2
+2018-04-12T00:14:29.7015160-04:00 [INFO]: Player name: d, playarea card is: Amour battlepoints are : 10 bid points are: 1
+2018-04-12T00:14:29.7024950-04:00 [INFO]: Inside display player info, number of cards for player : a is: 8
+2018-04-12T00:14:29.7027180-04:00 [INFO]: Inside display player info, shields for player : a is: 0
+2018-04-12T00:14:29.7034630-04:00 [INFO]: Inside display player info, number of cards for player : b is: 12
+2018-04-12T00:14:29.7036540-04:00 [INFO]: Inside display player info, shields for player : b is: 0
+2018-04-12T00:14:29.7045490-04:00 [INFO]: Inside display player info, number of cards for player : c is: 11
+2018-04-12T00:14:29.7048050-04:00 [INFO]: Inside display player info, shields for player : c is: 0
+2018-04-12T00:14:29.7055910-04:00 [INFO]: Inside display player info, number of cards for player : d is: 9
+2018-04-12T00:14:29.7058090-04:00 [INFO]: Inside display player info, shields for player : d is: 0
+2018-04-12T00:14:29.7070780-04:00 [INFO]: Adding button for Mordred's special ability.
+2018-04-12T00:14:29.7083510-04:00 [INFO]: d's cards drawn to GUI
+2018-04-12T00:14:29.7093310-04:00 [INFO]: Setting interaction text: QUEST STAGE 1
+You are the winner of the test, and you must discard/play a total of 7 bid points.
+2018-04-12T00:14:31.1445190-04:00 [INFO]: Cards in play area: King Arthur
+2018-04-12T00:14:31.1449920-04:00 [INFO]: Cards in play area: Sir Lancelot
+2018-04-12T00:14:31.1458980-04:00 [INFO]: Cards in play area: Queen Iseult
+2018-04-12T00:14:31.1462820-04:00 [INFO]: Cards in play area: Amour
+2018-04-12T00:14:31.1484630-04:00 [INFO]: Destroying ally card canvas area.
+2018-04-12T00:14:31.1508530-04:00 [INFO]: Stage 0, card: Saxons
+2018-04-12T00:14:31.1513410-04:00 [INFO]: Stage 1, card: Test Of The Questing Beast
+2018-04-12T00:14:31.1520060-04:00 [INFO]: Player name: d, playarea card is: King Arthur battlepoints are : 10 bid points are: 2
+2018-04-12T00:14:31.1524600-04:00 [INFO]: Player name: d, playarea card is: Sir Lancelot battlepoints are : 15 bid points are: 0
+2018-04-12T00:14:31.1528880-04:00 [INFO]: Player name: d, playarea card is: Queen Iseult battlepoints are : 0 bid points are: 2
+2018-04-12T00:14:31.1533000-04:00 [INFO]: Player name: d, playarea card is: Amour battlepoints are : 10 bid points are: 1
+2018-04-12T00:14:31.1543520-04:00 [INFO]: Inside display player info, number of cards for player : a is: 8
+2018-04-12T00:14:31.1545760-04:00 [INFO]: Inside display player info, shields for player : a is: 0
+2018-04-12T00:14:31.1554010-04:00 [INFO]: Inside display player info, number of cards for player : b is: 12
+2018-04-12T00:14:31.1556640-04:00 [INFO]: Inside display player info, shields for player : b is: 0
+2018-04-12T00:14:31.1565300-04:00 [INFO]: Inside display player info, number of cards for player : c is: 11
+2018-04-12T00:14:31.1567360-04:00 [INFO]: Inside display player info, shields for player : c is: 0
+2018-04-12T00:14:31.1574880-04:00 [INFO]: Inside display player info, number of cards for player : d is: 9
+2018-04-12T00:14:31.1576840-04:00 [INFO]: Inside display player info, shields for player : d is: 0
+2018-04-12T00:14:31.1589380-04:00 [INFO]: Adding button for Mordred's special ability.
+2018-04-12T00:14:31.1599070-04:00 [INFO]: d's cards drawn to GUI
+2018-04-12T00:14:31.1610450-04:00 [INFO]: Setting interaction text: QUEST STAGE 1
+You are the winner of the test, and you must discard/play a total of 7 bid points.
+2018-04-12T00:14:31.9613870-04:00 [INFO]: Cards in play area: King Arthur
+2018-04-12T00:14:31.9617620-04:00 [INFO]: Cards in play area: Sir Lancelot
+2018-04-12T00:14:31.9620210-04:00 [INFO]: Cards in play area: Queen Iseult
+2018-04-12T00:14:31.9622620-04:00 [INFO]: Cards in play area: Amour
+2018-04-12T00:14:31.9640080-04:00 [INFO]: Destroying ally card canvas area.
+2018-04-12T00:14:31.9660280-04:00 [INFO]: Stage 0, card: Saxons
+2018-04-12T00:14:31.9664110-04:00 [INFO]: Stage 1, card: Test Of The Questing Beast
+2018-04-12T00:14:31.9670520-04:00 [INFO]: Player name: d, playarea card is: King Arthur battlepoints are : 10 bid points are: 2
+2018-04-12T00:14:31.9673880-04:00 [INFO]: Player name: d, playarea card is: Sir Lancelot battlepoints are : 15 bid points are: 0
+2018-04-12T00:14:31.9677310-04:00 [INFO]: Player name: d, playarea card is: Queen Iseult battlepoints are : 0 bid points are: 2
+2018-04-12T00:14:31.9680570-04:00 [INFO]: Player name: d, playarea card is: Amour battlepoints are : 10 bid points are: 1
+2018-04-12T00:14:31.9689650-04:00 [INFO]: Inside display player info, number of cards for player : a is: 8
+2018-04-12T00:14:31.9691590-04:00 [INFO]: Inside display player info, shields for player : a is: 0
+2018-04-12T00:14:31.9699250-04:00 [INFO]: Inside display player info, number of cards for player : b is: 12
+2018-04-12T00:14:31.9701170-04:00 [INFO]: Inside display player info, shields for player : b is: 0
+2018-04-12T00:14:31.9709100-04:00 [INFO]: Inside display player info, number of cards for player : c is: 11
+2018-04-12T00:14:31.9711070-04:00 [INFO]: Inside display player info, shields for player : c is: 0
+2018-04-12T00:14:31.9718810-04:00 [INFO]: Inside display player info, number of cards for player : d is: 9
+2018-04-12T00:14:31.9720670-04:00 [INFO]: Inside display player info, shields for player : d is: 0
+2018-04-12T00:14:31.9734580-04:00 [INFO]: Adding button for Mordred's special ability.
+2018-04-12T00:14:31.9749260-04:00 [INFO]: d's cards drawn to GUI
+2018-04-12T00:14:31.9759290-04:00 [INFO]: Setting interaction text: QUEST STAGE 1
+You are the winner of the test, and you must discard/play a total of 7 bid points.
+2018-04-12T00:14:32.4955890-04:00 [INFO]: Cards in play area: King Arthur
+2018-04-12T00:14:32.4959690-04:00 [INFO]: Cards in play area: Sir Lancelot
+2018-04-12T00:14:32.4962100-04:00 [INFO]: Cards in play area: Queen Iseult
+2018-04-12T00:14:32.4964960-04:00 [INFO]: Cards in play area: Amour
+2018-04-12T00:14:32.4983550-04:00 [INFO]: Destroying ally card canvas area.
+2018-04-12T00:14:32.5004030-04:00 [INFO]: Stage 0, card: Saxons
+2018-04-12T00:14:32.5007740-04:00 [INFO]: Stage 1, card: Test Of The Questing Beast
+2018-04-12T00:14:32.5013370-04:00 [INFO]: Player name: d, playarea card is: King Arthur battlepoints are : 10 bid points are: 2
+2018-04-12T00:14:32.5016640-04:00 [INFO]: Player name: d, playarea card is: Sir Lancelot battlepoints are : 15 bid points are: 0
+2018-04-12T00:14:32.5019990-04:00 [INFO]: Player name: d, playarea card is: Queen Iseult battlepoints are : 0 bid points are: 2
+2018-04-12T00:14:32.5023550-04:00 [INFO]: Player name: d, playarea card is: Amour battlepoints are : 10 bid points are: 1
+2018-04-12T00:14:32.5033080-04:00 [INFO]: Inside display player info, number of cards for player : a is: 8
+2018-04-12T00:14:32.5034970-04:00 [INFO]: Inside display player info, shields for player : a is: 0
+2018-04-12T00:14:32.5042510-04:00 [INFO]: Inside display player info, number of cards for player : b is: 12
+2018-04-12T00:14:32.5045100-04:00 [INFO]: Inside display player info, shields for player : b is: 0
+2018-04-12T00:14:32.5052240-04:00 [INFO]: Inside display player info, number of cards for player : c is: 11
+2018-04-12T00:14:32.5054150-04:00 [INFO]: Inside display player info, shields for player : c is: 0
+2018-04-12T00:14:32.5061450-04:00 [INFO]: Inside display player info, number of cards for player : d is: 9
+2018-04-12T00:14:32.5063330-04:00 [INFO]: Inside display player info, shields for player : d is: 0
+2018-04-12T00:14:32.5078090-04:00 [INFO]: Adding button for Mordred's special ability.
+2018-04-12T00:14:32.5088290-04:00 [INFO]: d's cards drawn to GUI
+2018-04-12T00:14:32.5098650-04:00 [INFO]: Setting interaction text: QUEST STAGE 1
+You are the winner of the test, and you must discard/play a total of 7 bid points.
+2018-04-12T00:14:33.0948890-04:00 [INFO]: Cards in play area: King Arthur
+2018-04-12T00:14:33.0953350-04:00 [INFO]: Cards in play area: Sir Lancelot
+2018-04-12T00:14:33.0962880-04:00 [INFO]: Cards in play area: Queen Iseult
+2018-04-12T00:14:33.0966710-04:00 [INFO]: Cards in play area: Amour
+2018-04-12T00:14:33.0992250-04:00 [INFO]: Destroying ally card canvas area.
+2018-04-12T00:14:33.1517230-04:00 [INFO]: Stage 0, card: Saxons
+2018-04-12T00:14:33.1524400-04:00 [INFO]: Stage 1, card: Test Of The Questing Beast
+2018-04-12T00:14:33.1530770-04:00 [INFO]: Player name: d, playarea card is: King Arthur battlepoints are : 10 bid points are: 2
+2018-04-12T00:14:33.1534820-04:00 [INFO]: Player name: d, playarea card is: Sir Lancelot battlepoints are : 15 bid points are: 0
+2018-04-12T00:14:33.1538830-04:00 [INFO]: Player name: d, playarea card is: Queen Iseult battlepoints are : 0 bid points are: 2
+2018-04-12T00:14:33.1542450-04:00 [INFO]: Player name: d, playarea card is: Amour battlepoints are : 10 bid points are: 1
+2018-04-12T00:14:33.1556540-04:00 [INFO]: Inside display player info, number of cards for player : a is: 8
+2018-04-12T00:14:33.1559010-04:00 [INFO]: Inside display player info, shields for player : a is: 0
+2018-04-12T00:14:33.1570450-04:00 [INFO]: Inside display player info, number of cards for player : b is: 12
+2018-04-12T00:14:33.1573640-04:00 [INFO]: Inside display player info, shields for player : b is: 0
+2018-04-12T00:14:33.1583490-04:00 [INFO]: Inside display player info, number of cards for player : c is: 11
+2018-04-12T00:14:33.1585980-04:00 [INFO]: Inside display player info, shields for player : c is: 0
+2018-04-12T00:14:33.1595310-04:00 [INFO]: Inside display player info, number of cards for player : d is: 9
+2018-04-12T00:14:33.1597450-04:00 [INFO]: Inside display player info, shields for player : d is: 0
+2018-04-12T00:14:33.1614270-04:00 [INFO]: Adding button for Mordred's special ability.
+2018-04-12T00:14:33.1632340-04:00 [INFO]: d's cards drawn to GUI
+2018-04-12T00:14:33.1646850-04:00 [INFO]: Setting interaction text: QUEST STAGE 1
+You are the winner of the test, and you must discard/play a total of 7 bid points.
+2018-04-12T00:14:33.6950120-04:00 [INFO]: Cards in play area: King Arthur
+2018-04-12T00:14:33.6953760-04:00 [INFO]: Cards in play area: Sir Lancelot
+2018-04-12T00:14:33.6963970-04:00 [INFO]: Cards in play area: Queen Iseult
+2018-04-12T00:14:33.6967240-04:00 [INFO]: Cards in play area: Amour
+2018-04-12T00:14:33.6991070-04:00 [INFO]: Destroying ally card canvas area.
+2018-04-12T00:14:33.7014870-04:00 [INFO]: Stage 0, card: Saxons
+2018-04-12T00:14:33.7019450-04:00 [INFO]: Stage 1, card: Test Of The Questing Beast
+2018-04-12T00:14:33.7026310-04:00 [INFO]: Player name: d, playarea card is: King Arthur battlepoints are : 10 bid points are: 2
+2018-04-12T00:14:33.7030720-04:00 [INFO]: Player name: d, playarea card is: Sir Lancelot battlepoints are : 15 bid points are: 0
+2018-04-12T00:14:33.7034950-04:00 [INFO]: Player name: d, playarea card is: Queen Iseult battlepoints are : 0 bid points are: 2
+2018-04-12T00:14:33.7039170-04:00 [INFO]: Player name: d, playarea card is: Amour battlepoints are : 10 bid points are: 1
+2018-04-12T00:14:33.7049790-04:00 [INFO]: Inside display player info, number of cards for player : a is: 8
+2018-04-12T00:14:33.7052030-04:00 [INFO]: Inside display player info, shields for player : a is: 0
+2018-04-12T00:14:33.7061240-04:00 [INFO]: Inside display player info, number of cards for player : b is: 12
+2018-04-12T00:14:33.7064140-04:00 [INFO]: Inside display player info, shields for player : b is: 0
+2018-04-12T00:14:33.7072810-04:00 [INFO]: Inside display player info, number of cards for player : c is: 11
+2018-04-12T00:14:33.7075050-04:00 [INFO]: Inside display player info, shields for player : c is: 0
+2018-04-12T00:14:33.7083330-04:00 [INFO]: Inside display player info, number of cards for player : d is: 9
+2018-04-12T00:14:33.7085460-04:00 [INFO]: Inside display player info, shields for player : d is: 0
+2018-04-12T00:14:33.7099500-04:00 [INFO]: Adding button for Mordred's special ability.
+2018-04-12T00:14:33.7110250-04:00 [INFO]: d's cards drawn to GUI
+2018-04-12T00:14:33.7120230-04:00 [INFO]: Setting interaction text: QUEST STAGE 1
+You are the winner of the test, and you must discard/play a total of 7 bid points.
+2018-04-12T00:14:34.0777210-04:00 [INFO]: Cards in play area: King Arthur
+2018-04-12T00:14:34.0780610-04:00 [INFO]: Cards in play area: Sir Lancelot
+2018-04-12T00:14:34.0787730-04:00 [INFO]: Cards in play area: Queen Iseult
+2018-04-12T00:14:34.0790410-04:00 [INFO]: Cards in play area: Amour
+2018-04-12T00:14:34.0809450-04:00 [INFO]: Destroying ally card canvas area.
+2018-04-12T00:14:34.0829680-04:00 [INFO]: Stage 0, card: Saxons
+2018-04-12T00:14:34.0833550-04:00 [INFO]: Stage 1, card: Test Of The Questing Beast
+2018-04-12T00:14:34.0840140-04:00 [INFO]: Player name: d, playarea card is: King Arthur battlepoints are : 10 bid points are: 2
+2018-04-12T00:14:34.0844260-04:00 [INFO]: Player name: d, playarea card is: Sir Lancelot battlepoints are : 15 bid points are: 0
+2018-04-12T00:14:34.0848030-04:00 [INFO]: Player name: d, playarea card is: Queen Iseult battlepoints are : 0 bid points are: 2
+2018-04-12T00:14:34.0851690-04:00 [INFO]: Player name: d, playarea card is: Amour battlepoints are : 10 bid points are: 1
+2018-04-12T00:14:34.0862030-04:00 [INFO]: Inside display player info, number of cards for player : a is: 8
+2018-04-12T00:14:34.0864320-04:00 [INFO]: Inside display player info, shields for player : a is: 0
+2018-04-12T00:14:34.0872430-04:00 [INFO]: Inside display player info, number of cards for player : b is: 12
+2018-04-12T00:14:34.0874480-04:00 [INFO]: Inside display player info, shields for player : b is: 0
+2018-04-12T00:14:34.0881580-04:00 [INFO]: Inside display player info, number of cards for player : c is: 11
+2018-04-12T00:14:34.0884760-04:00 [INFO]: Inside display player info, shields for player : c is: 0
+2018-04-12T00:14:34.0892360-04:00 [INFO]: Inside display player info, number of cards for player : d is: 9
+2018-04-12T00:14:34.0894330-04:00 [INFO]: Inside display player info, shields for player : d is: 0
+2018-04-12T00:14:34.0907340-04:00 [INFO]: Adding button for Mordred's special ability.
+2018-04-12T00:14:34.0919650-04:00 [INFO]: d's cards drawn to GUI
+2018-04-12T00:14:34.0930310-04:00 [INFO]: Setting interaction text: QUEST STAGE 1
+You are the winner of the test, and you must discard/play a total of 7 bid points.
+2018-04-12T00:14:41.5618680-04:00 [INFO]: Cards in play area: King Arthur
+2018-04-12T00:14:41.5621560-04:00 [INFO]: Cards in play area: Sir Lancelot
+2018-04-12T00:14:41.5623420-04:00 [INFO]: Cards in play area: Queen Iseult
+2018-04-12T00:14:41.5625040-04:00 [INFO]: Cards in play area: Amour
+2018-04-12T00:14:41.5640150-04:00 [INFO]: Discarded card: Lance
+2018-04-12T00:14:41.5653820-04:00 [INFO]: Discarded card: Sword
+2018-04-12T00:14:41.5679430-04:00 [INFO]: Discarding all cards of class Weapon from play area
+2018-04-12T00:14:41.5688480-04:00 [INFO]: Discarding all cards of class Weapon from play area
+2018-04-12T00:14:41.5697400-04:00 [INFO]: Discarding all cards of class Weapon from play area
+2018-04-12T00:14:41.5706120-04:00 [INFO]: Discarding all cards of class Weapon from play area
+2018-04-12T00:14:41.5707570-04:00 [DEBUG]: Prepare function has started
+2018-04-12T00:14:41.5708720-04:00 [TRACE]: Stage card is subclass type of foe
+2018-04-12T00:14:41.5725150-04:00 [INFO]: Previous player is: a
+2018-04-12T00:14:41.5734780-04:00 [INFO]: Returning player in get next player
+2018-04-12T00:14:41.5751470-04:00 [INFO]: Previous player is: a
+2018-04-12T00:14:41.5760280-04:00 [INFO]: Returning player in get next player
+2018-04-12T00:14:41.5768740-04:00 [INFO]: playerToPrompt is: b
+2018-04-12T00:14:41.5776960-04:00 [INFO]: Checking amount of players: 1
+2018-04-12T00:14:41.5786050-04:00 [INFO]: Previous player is: b
+2018-04-12T00:14:41.5794900-04:00 [INFO]: Returning player in get next player
+2018-04-12T00:14:41.5805180-04:00 [INFO]: Previous player is: c
+2018-04-12T00:14:41.5814480-04:00 [INFO]: Returning player in get next player
+2018-04-12T00:14:41.5836330-04:00 [INFO]: Destroying ally card canvas area.
+2018-04-12T00:14:41.5850220-04:00 [INFO]: Stage 0, card: Saxons
+2018-04-12T00:14:41.5852810-04:00 [INFO]: Stage 1, card: Test Of The Questing Beast
+2018-04-12T00:14:41.5856820-04:00 [INFO]: Player name: d, playarea card is: King Arthur battlepoints are : 10 bid points are: 2
+2018-04-12T00:14:41.5859280-04:00 [INFO]: Player name: d, playarea card is: Sir Lancelot battlepoints are : 15 bid points are: 0
+2018-04-12T00:14:41.5861630-04:00 [INFO]: Player name: d, playarea card is: Queen Iseult battlepoints are : 0 bid points are: 2
+2018-04-12T00:14:41.5863970-04:00 [INFO]: Player name: d, playarea card is: Amour battlepoints are : 10 bid points are: 1
+2018-04-12T00:14:41.5871320-04:00 [INFO]: Inside display player info, number of cards for player : a is: 8
+2018-04-12T00:14:41.5872590-04:00 [INFO]: Inside display player info, shields for player : a is: 0
+2018-04-12T00:14:41.5878510-04:00 [INFO]: Inside display player info, number of cards for player : b is: 12
+2018-04-12T00:14:41.5880370-04:00 [INFO]: Inside display player info, shields for player : b is: 0
+2018-04-12T00:14:41.5886720-04:00 [INFO]: Inside display player info, number of cards for player : c is: 11
+2018-04-12T00:14:41.5888100-04:00 [INFO]: Inside display player info, shields for player : c is: 0
+2018-04-12T00:14:41.5894030-04:00 [INFO]: Inside display player info, number of cards for player : d is: 7
+2018-04-12T00:14:41.5895330-04:00 [INFO]: Inside display player info, shields for player : d is: 0
+2018-04-12T00:14:41.5908230-04:00 [INFO]: Adding button for Mordred's special ability.
+2018-04-12T00:14:41.5918730-04:00 [INFO]: d's cards drawn to GUI
+2018-04-12T00:14:41.5929780-04:00 [INFO]: Setting interaction text: QUEST STAGE 3
+You are facing a foe. You may place any number of cards, or drop out.
+2018-04-12T00:15:09.9494440-04:00 [INFO]: Cards in play area: King Arthur
+2018-04-12T00:15:09.9499150-04:00 [INFO]: Cards in play area: Sir Lancelot
+2018-04-12T00:15:09.9502300-04:00 [INFO]: Cards in play area: Queen Iseult
+2018-04-12T00:15:09.9505370-04:00 [INFO]: Cards in play area: Excalibur
+2018-04-12T00:15:09.9508530-04:00 [INFO]: Cards in play area: Amour
+2018-04-12T00:15:09.9520870-04:00 [INFO]: Cards in play area: King Arthur
+2018-04-12T00:15:09.9523680-04:00 [INFO]: Cards in play area: Sir Lancelot
+2018-04-12T00:15:09.9527100-04:00 [INFO]: Cards in play area: Queen Iseult
+2018-04-12T00:15:09.9529440-04:00 [INFO]: Cards in play area: Excalibur
+2018-04-12T00:15:09.9531860-04:00 [INFO]: Cards in play area: Amour
+2018-04-12T00:15:09.9559140-04:00 [INFO]: Discarded card: Excalibur
+2018-04-12T00:15:09.9579430-04:00 [TRACE]: dominantFoes are System.Collections.Generic.List`1[System.Type]
+2018-04-12T00:15:09.9581850-04:00 [TRACE]: The total battle points are 25
+2018-04-12T00:15:09.9583580-04:00 [TRACE]: playerBattlePoints >= getTotalbattlePoints
+2018-04-12T00:15:09.9612060-04:00 [INFO]: Destroying ally card canvas area.
+2018-04-12T00:15:09.9625230-04:00 [INFO]: Stage 0, card: Saxons
+2018-04-12T00:15:09.9628150-04:00 [INFO]: Stage 1, card: Test Of The Questing Beast
+2018-04-12T00:15:09.9631020-04:00 [INFO]: Stage 2, card: Boar
+2018-04-12T00:15:09.9634180-04:00 [INFO]: Stage 2, card: Lance
+2018-04-12T00:15:09.9637600-04:00 [INFO]: Player name: d, playarea card is: King Arthur battlepoints are : 10 bid points are: 2
+2018-04-12T00:15:09.9640530-04:00 [INFO]: Player name: d, playarea card is: Sir Lancelot battlepoints are : 15 bid points are: 0
+2018-04-12T00:15:09.9643320-04:00 [INFO]: Player name: d, playarea card is: Queen Iseult battlepoints are : 0 bid points are: 2
+2018-04-12T00:15:09.9646380-04:00 [INFO]: Player name: d, playarea card is: Amour battlepoints are : 10 bid points are: 1
+2018-04-12T00:15:09.9650050-04:00 [INFO]: Player name: d, playarea card is: Excalibur battlepoints are : 30 bid points are: 0
+2018-04-12T00:15:09.9660500-04:00 [INFO]: Inside display player info, number of cards for player : a is: 8
+2018-04-12T00:15:09.9662960-04:00 [INFO]: Inside display player info, shields for player : a is: 0
+2018-04-12T00:15:09.9670230-04:00 [INFO]: Inside display player info, number of cards for player : b is: 12
+2018-04-12T00:15:09.9672430-04:00 [INFO]: Inside display player info, shields for player : b is: 0
+2018-04-12T00:15:09.9680620-04:00 [INFO]: Inside display player info, number of cards for player : c is: 11
+2018-04-12T00:15:09.9682690-04:00 [INFO]: Inside display player info, shields for player : c is: 0
+2018-04-12T00:15:09.9689520-04:00 [INFO]: Inside display player info, number of cards for player : d is: 6
+2018-04-12T00:15:09.9691340-04:00 [INFO]: Inside display player info, shields for player : d is: 0
+2018-04-12T00:15:09.9706830-04:00 [INFO]: Adding button for Mordred's special ability.
+2018-04-12T00:15:09.9723210-04:00 [INFO]: d's cards drawn to GUI
+2018-04-12T00:15:09.9737060-04:00 [INFO]: Setting interaction text: STAGE COMPLETE
+You passed!
+2018-04-12T00:15:09.9749460-04:00 [INFO]: Displaying results of stage to d
+2018-04-12T00:15:10.9485150-04:00 [INFO]: Dealing cards to player: d, 1
+2018-04-12T00:15:10.9532100-04:00 [INFO]: Discarding all cards of class Weapon from play area
+2018-04-12T00:15:10.9548700-04:00 [INFO]: Discarding all cards of class Weapon from play area
+2018-04-12T00:15:10.9563560-04:00 [INFO]: Discarding all cards of class Weapon from play area
+2018-04-12T00:15:10.9577070-04:00 [INFO]: Discarding all cards of class Weapon from play area
+2018-04-12T00:15:10.9582800-04:00 [INFO]: Discarding all cards of class Amour from play area
+2018-04-12T00:15:10.9584580-04:00 [INFO]: Discarding all cards of class Amour from play area
+2018-04-12T00:15:10.9586230-04:00 [INFO]: Discarding all cards of class Amour from play area
+2018-04-12T00:15:10.9587830-04:00 [INFO]: Discarding all cards of class Amour from play area
+2018-04-12T00:15:10.9589540-04:00 [TRACE]: numShieldsAwarded is 3
+2018-04-12T00:15:10.9606360-04:00 [INFO]: Awarded 3 shields to d
+2018-04-12T00:15:10.9622190-04:00 [INFO]: Dealing cards to player: a, 7
+2018-04-12T00:15:10.9684030-04:00 [INFO]: Destroying ally card canvas area.
+2018-04-12T00:15:10.9792850-04:00 [INFO]: Stage 0, card: Saxons
+2018-04-12T00:15:10.9797440-04:00 [INFO]: Stage 1, card: Test Of The Questing Beast
+2018-04-12T00:15:10.9801590-04:00 [INFO]: Stage 2, card: Boar
+2018-04-12T00:15:10.9806560-04:00 [INFO]: Stage 2, card: Lance
+2018-04-12T00:15:10.9825810-04:00 [INFO]: Inside display player info, number of cards for player : a is: 15
+2018-04-12T00:15:10.9828730-04:00 [INFO]: Inside display player info, shields for player : a is: 0
+2018-04-12T00:15:10.9841020-04:00 [INFO]: Inside display player info, number of cards for player : b is: 12
+2018-04-12T00:15:10.9843180-04:00 [INFO]: Inside display player info, shields for player : b is: 0
+2018-04-12T00:15:10.9850290-04:00 [INFO]: Inside display player info, number of cards for player : c is: 11
+2018-04-12T00:15:10.9852170-04:00 [INFO]: Inside display player info, shields for player : c is: 0
+2018-04-12T00:15:10.9858910-04:00 [INFO]: Inside display player info, number of cards for player : d is: 7
+2018-04-12T00:15:10.9860740-04:00 [INFO]: Inside display player info, shields for player : d is: 3
+2018-04-12T00:15:10.9897390-04:00 [INFO]: Adding button for Mordred's special ability.
+2018-04-12T00:15:10.9913580-04:00 [INFO]: a's cards drawn to GUI
+2018-04-12T00:15:10.9930070-04:00 [INFO]: Setting interaction text: TOO MANY CARDS
+Please discard (or play) cards until you have at most 12.
+2018-04-12T00:15:10.9963720-04:00 [INFO]: Prompted a to prepare cards to discard.

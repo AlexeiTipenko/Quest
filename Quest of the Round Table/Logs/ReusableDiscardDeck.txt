@@ -1,0 +1,611 @@
+-------------------- INITIALIZE LOGGER ---------------------
+2018-04-12T00:33:11.7079320-04:00: Logger initialized
+2018-04-12T00:33:11.7082660-04:00 [INFO]: Creating card: Knight of the Round Table
+2018-04-12T00:33:11.7084540-04:00 [INFO]: Creating card: Champion Knight
+2018-04-12T00:33:11.7086260-04:00 [INFO]: Creating card: Knight
+2018-04-12T00:33:11.7087970-04:00 [INFO]: Creating card: Squire
+2018-04-12T00:33:11.7099990-04:00 [INFO]: Creating card: Knight of the Round Table
+2018-04-12T00:33:11.7101620-04:00 [INFO]: Creating card: Champion Knight
+2018-04-12T00:33:11.7103120-04:00 [INFO]: Creating card: Knight
+2018-04-12T00:33:11.7104570-04:00 [INFO]: Creating card: Squire
+2018-04-12T00:33:11.7683460-04:00 [INFO]: Player list passed to BoardManager
+2018-04-12T00:33:11.7692820-04:00 [INFO]: Player entered: a (Human)
+2018-04-12T00:33:11.7697320-04:00 [INFO]: Player entered: b (Human)
+2018-04-12T00:33:11.7709140-04:00 [INFO]: Creating card: Dragon
+2018-04-12T00:33:11.7712600-04:00 [INFO]: Creating card: Giant
+2018-04-12T00:33:11.7714260-04:00 [INFO]: Creating card: Giant
+2018-04-12T00:33:11.7716750-04:00 [INFO]: Creating card: Mordred
+2018-04-12T00:33:11.7718320-04:00 [INFO]: Creating card: Mordred
+2018-04-12T00:33:11.7719860-04:00 [INFO]: Creating card: Mordred
+2018-04-12T00:33:11.7721360-04:00 [INFO]: Creating card: Mordred
+2018-04-12T00:33:11.7723850-04:00 [INFO]: Creating card: Green Knight
+2018-04-12T00:33:11.7725410-04:00 [INFO]: Creating card: Green Knight
+2018-04-12T00:33:11.7727930-04:00 [INFO]: Creating card: Black Knight
+2018-04-12T00:33:11.7729500-04:00 [INFO]: Creating card: Black Knight
+2018-04-12T00:33:11.7731020-04:00 [INFO]: Creating card: Black Knight
+2018-04-12T00:33:11.7733450-04:00 [INFO]: Creating card: Evil Knight
+2018-04-12T00:33:11.7734990-04:00 [INFO]: Creating card: Evil Knight
+2018-04-12T00:33:11.7736500-04:00 [INFO]: Creating card: Evil Knight
+2018-04-12T00:33:11.7737990-04:00 [INFO]: Creating card: Evil Knight
+2018-04-12T00:33:11.7739460-04:00 [INFO]: Creating card: Evil Knight
+2018-04-12T00:33:11.7741030-04:00 [INFO]: Creating card: Evil Knight
+2018-04-12T00:33:11.7743550-04:00 [INFO]: Creating card: Saxon Knight
+2018-04-12T00:33:11.7745120-04:00 [INFO]: Creating card: Saxon Knight
+2018-04-12T00:33:11.7746670-04:00 [INFO]: Creating card: Saxon Knight
+2018-04-12T00:33:11.7748150-04:00 [INFO]: Creating card: Saxon Knight
+2018-04-12T00:33:11.7749630-04:00 [INFO]: Creating card: Saxon Knight
+2018-04-12T00:33:11.7751100-04:00 [INFO]: Creating card: Saxon Knight
+2018-04-12T00:33:11.7753050-04:00 [INFO]: Creating card: Saxon Knight
+2018-04-12T00:33:11.7754750-04:00 [INFO]: Creating card: Saxon Knight
+2018-04-12T00:33:11.7757600-04:00 [INFO]: Creating card: Robber Knight
+2018-04-12T00:33:11.7759230-04:00 [INFO]: Creating card: Robber Knight
+2018-04-12T00:33:11.7760830-04:00 [INFO]: Creating card: Robber Knight
+2018-04-12T00:33:11.7762390-04:00 [INFO]: Creating card: Robber Knight
+2018-04-12T00:33:11.7763950-04:00 [INFO]: Creating card: Robber Knight
+2018-04-12T00:33:11.7765480-04:00 [INFO]: Creating card: Robber Knight
+2018-04-12T00:33:11.7767160-04:00 [INFO]: Creating card: Robber Knight
+2018-04-12T00:33:11.7769820-04:00 [INFO]: Creating card: Saxons
+2018-04-12T00:33:11.7771390-04:00 [INFO]: Creating card: Saxons
+2018-04-12T00:33:11.7772950-04:00 [INFO]: Creating card: Saxons
+2018-04-12T00:33:11.7774520-04:00 [INFO]: Creating card: Saxons
+2018-04-12T00:33:11.7776050-04:00 [INFO]: Creating card: Saxons
+2018-04-12T00:33:11.7778670-04:00 [INFO]: Creating card: Boar
+2018-04-12T00:33:11.7780230-04:00 [INFO]: Creating card: Boar
+2018-04-12T00:33:11.7781800-04:00 [INFO]: Creating card: Boar
+2018-04-12T00:33:11.7783340-04:00 [INFO]: Creating card: Boar
+2018-04-12T00:33:11.7785900-04:00 [INFO]: Creating card: Thieves
+2018-04-12T00:33:11.7787470-04:00 [INFO]: Creating card: Thieves
+2018-04-12T00:33:11.7790840-04:00 [INFO]: Creating card: Thieves
+2018-04-12T00:33:11.7792760-04:00 [INFO]: Creating card: Thieves
+2018-04-12T00:33:11.7794540-04:00 [INFO]: Creating card: Thieves
+2018-04-12T00:33:11.7796350-04:00 [INFO]: Creating card: Thieves
+2018-04-12T00:33:11.7798850-04:00 [INFO]: Creating card: Thieves
+2018-04-12T00:33:11.7800480-04:00 [INFO]: Creating card: Thieves
+2018-04-12T00:33:11.7804810-04:00 [INFO]: Creating card: Test Of Valor
+2018-04-12T00:33:11.7806430-04:00 [INFO]: Creating card: Test Of Valor
+2018-04-12T00:33:11.7809380-04:00 [INFO]: Creating card: Test Of Temptation
+2018-04-12T00:33:11.7810970-04:00 [INFO]: Creating card: Test Of Temptation
+2018-04-12T00:33:11.7813950-04:00 [INFO]: Creating card: Test Of Morgan LeFey
+2018-04-12T00:33:11.7815560-04:00 [INFO]: Creating card: Test Of Morgan LeFey
+2018-04-12T00:33:11.7818270-04:00 [INFO]: Creating card: Test Of The Questing Beast
+2018-04-12T00:33:11.7819980-04:00 [INFO]: Creating card: Test Of The Questing Beast
+2018-04-12T00:33:11.7822960-04:00 [INFO]: Creating card: Sir Galahad
+2018-04-12T00:33:11.7825580-04:00 [INFO]: Creating card: Sir Lancelot
+2018-04-12T00:33:11.7828250-04:00 [INFO]: Creating card: King Arthur
+2018-04-12T00:33:11.7831280-04:00 [INFO]: Creating card: Sir Tristan
+2018-04-12T00:33:11.7834350-04:00 [INFO]: Creating card: King Pellinore
+2018-04-12T00:33:11.7837420-04:00 [INFO]: Creating card: Sir Gawain
+2018-04-12T00:33:11.7840640-04:00 [INFO]: Creating card: Sir Percival
+2018-04-12T00:33:11.7843410-04:00 [INFO]: Creating card: Queen Guinevere
+2018-04-12T00:33:11.7845930-04:00 [INFO]: Creating card: Queen Iseult
+2018-04-12T00:33:11.7848690-04:00 [INFO]: Creating card: Merlin
+2018-04-12T00:33:11.7851200-04:00 [INFO]: Creating card: Amour
+2018-04-12T00:33:11.7852800-04:00 [INFO]: Creating card: Amour
+2018-04-12T00:33:11.7854550-04:00 [INFO]: Creating card: Amour
+2018-04-12T00:33:11.7856070-04:00 [INFO]: Creating card: Amour
+2018-04-12T00:33:11.7857550-04:00 [INFO]: Creating card: Amour
+2018-04-12T00:33:11.7859030-04:00 [INFO]: Creating card: Amour
+2018-04-12T00:33:11.7860510-04:00 [INFO]: Creating card: Amour
+2018-04-12T00:33:11.7862000-04:00 [INFO]: Creating card: Amour
+2018-04-12T00:33:11.7865260-04:00 [INFO]: Creating card: Excalibur
+2018-04-12T00:33:11.7866920-04:00 [INFO]: Creating card: Excalibur
+2018-04-12T00:33:11.7869350-04:00 [INFO]: Creating card: Lance
+2018-04-12T00:33:11.7870890-04:00 [INFO]: Creating card: Lance
+2018-04-12T00:33:11.7872390-04:00 [INFO]: Creating card: Lance
+2018-04-12T00:33:11.7873870-04:00 [INFO]: Creating card: Lance
+2018-04-12T00:33:11.7875350-04:00 [INFO]: Creating card: Lance
+2018-04-12T00:33:11.7876830-04:00 [INFO]: Creating card: Lance
+2018-04-12T00:33:11.7879430-04:00 [INFO]: Creating card: Battle Ax
+2018-04-12T00:33:11.7881240-04:00 [INFO]: Creating card: Battle Ax
+2018-04-12T00:33:11.7883060-04:00 [INFO]: Creating card: Battle Ax
+2018-04-12T00:33:11.7884800-04:00 [INFO]: Creating card: Battle Ax
+2018-04-12T00:33:11.7886540-04:00 [INFO]: Creating card: Battle Ax
+2018-04-12T00:33:11.7888260-04:00 [INFO]: Creating card: Battle Ax
+2018-04-12T00:33:11.7889990-04:00 [INFO]: Creating card: Battle Ax
+2018-04-12T00:33:11.7891730-04:00 [INFO]: Creating card: Battle Ax
+2018-04-12T00:33:11.7894580-04:00 [INFO]: Creating card: Sword
+2018-04-12T00:33:11.7896410-04:00 [INFO]: Creating card: Sword
+2018-04-12T00:33:11.7898160-04:00 [INFO]: Creating card: Sword
+2018-04-12T00:33:11.7900130-04:00 [INFO]: Creating card: Sword
+2018-04-12T00:33:11.7903250-04:00 [INFO]: Creating card: Sword
+2018-04-12T00:33:11.7905360-04:00 [INFO]: Creating card: Sword
+2018-04-12T00:33:11.7907370-04:00 [INFO]: Creating card: Sword
+2018-04-12T00:33:11.7909320-04:00 [INFO]: Creating card: Sword
+2018-04-12T00:33:11.7910860-04:00 [INFO]: Creating card: Sword
+2018-04-12T00:33:11.7912340-04:00 [INFO]: Creating card: Sword
+2018-04-12T00:33:11.7915100-04:00 [INFO]: Creating card: Sword
+2018-04-12T00:33:11.7916960-04:00 [INFO]: Creating card: Sword
+2018-04-12T00:33:11.7918780-04:00 [INFO]: Creating card: Sword
+2018-04-12T00:33:11.7920590-04:00 [INFO]: Creating card: Sword
+2018-04-12T00:33:11.7922360-04:00 [INFO]: Creating card: Sword
+2018-04-12T00:33:11.7924120-04:00 [INFO]: Creating card: Sword
+2018-04-12T00:33:11.7927440-04:00 [INFO]: Creating card: Horse
+2018-04-12T00:33:11.7929050-04:00 [INFO]: Creating card: Horse
+2018-04-12T00:33:11.7932060-04:00 [INFO]: Creating card: Horse
+2018-04-12T00:33:11.7933950-04:00 [INFO]: Creating card: Horse
+2018-04-12T00:33:11.7935520-04:00 [INFO]: Creating card: Horse
+2018-04-12T00:33:11.7937020-04:00 [INFO]: Creating card: Horse
+2018-04-12T00:33:11.7938610-04:00 [INFO]: Creating card: Horse
+2018-04-12T00:33:11.7940120-04:00 [INFO]: Creating card: Horse
+2018-04-12T00:33:11.7941620-04:00 [INFO]: Creating card: Horse
+2018-04-12T00:33:11.7943170-04:00 [INFO]: Creating card: Horse
+2018-04-12T00:33:11.7944820-04:00 [INFO]: Creating card: Horse
+2018-04-12T00:33:11.7947940-04:00 [INFO]: Creating card: Dagger
+2018-04-12T00:33:11.7949670-04:00 [INFO]: Creating card: Dagger
+2018-04-12T00:33:11.7951430-04:00 [INFO]: Creating card: Dagger
+2018-04-12T00:33:11.7953190-04:00 [INFO]: Creating card: Dagger
+2018-04-12T00:33:11.7954950-04:00 [INFO]: Creating card: Dagger
+2018-04-12T00:33:11.7956750-04:00 [INFO]: Creating card: Dagger
+2018-04-12T00:33:11.7971750-04:00 [INFO]: Creating card: At Orkney
+2018-04-12T00:33:11.7975030-04:00 [INFO]: Creating card: At Camelot
+2018-04-12T00:33:11.7977710-04:00 [INFO]: Creating card: At Tintagel
+2018-04-12T00:33:11.7983120-04:00 [INFO]: Creating card: At York
+2018-04-12T00:33:11.7986150-04:00 [INFO]: Creating card: King's Recognition
+2018-04-12T00:33:11.7987720-04:00 [INFO]: Creating card: King's Recognition
+2018-04-12T00:33:11.7991480-04:00 [INFO]: Creating card: Queen's Favor
+2018-04-12T00:33:11.7993350-04:00 [INFO]: Creating card: Queen's Favor
+2018-04-12T00:33:11.7996250-04:00 [INFO]: Creating card: Court Called to Camelot
+2018-04-12T00:33:11.7998150-04:00 [INFO]: Creating card: Court Called to Camelot
+2018-04-12T00:33:11.8001150-04:00 [INFO]: Creating card: Pox
+2018-04-12T00:33:11.8004120-04:00 [INFO]: Creating card: Plague
+2018-04-12T00:33:11.8007080-04:00 [INFO]: Creating card: Chivalrous Deed
+2018-04-12T00:33:11.8011070-04:00 [INFO]: Creating card: Prosperity Throughout the Realm
+2018-04-12T00:33:11.8014220-04:00 [INFO]: Creating card: King's Call to Arms
+2018-04-12T00:33:11.8018760-04:00 [INFO]: Creating card: Search for the Holy Grail
+2018-04-12T00:33:11.8023600-04:00 [INFO]: Creating card: Test of the Green Knight
+2018-04-12T00:33:11.8026450-04:00 [INFO]: Creating card: Search for the Questing Beast
+2018-04-12T00:33:11.8030400-04:00 [INFO]: Creating card: Defend the Queen's Honor
+2018-04-12T00:33:11.8034870-04:00 [INFO]: Creating card: Rescue the Fair Maiden
+2018-04-12T00:33:11.8038560-04:00 [INFO]: Creating card: Journey through the Enchanted Forest
+2018-04-12T00:33:11.8041550-04:00 [INFO]: Creating card: Vanquish King Arthur's Enemies
+2018-04-12T00:33:11.8043190-04:00 [INFO]: Creating card: Vanquish King Arthur's Enemies
+2018-04-12T00:33:11.8045910-04:00 [INFO]: Creating card: Slay the Dragon
+2018-04-12T00:33:11.8048950-04:00 [INFO]: Creating card: Boar Hunt
+2018-04-12T00:33:11.8050790-04:00 [INFO]: Creating card: Boar Hunt
+2018-04-12T00:33:11.8054650-04:00 [INFO]: Creating card: Repel the Saxon Raiders
+2018-04-12T00:33:11.8056490-04:00 [INFO]: Creating card: Repel the Saxon Raiders
+2018-04-12T00:33:11.8065450-04:00 [INFO]: Card decks created
+2018-04-12T00:33:11.8070010-04:00 [INFO]: Dealing cards to player: a, 12
+2018-04-12T00:33:11.8083430-04:00 [INFO]: Dealing cards to player: b, 12
+2018-04-12T00:33:11.8091820-04:00 [INFO]: Game started...
+2018-04-12T00:33:11.8093730-04:00 [INFO]: Starting local game
+2018-04-12T00:33:11.8104170-04:00 [INFO]: A'S TURN
+2018-04-12T00:33:11.8109610-04:00 [INFO]: Drew card: Plague
+2018-04-12T00:33:11.8115680-04:00 [INFO]: Started Plague behaviour
+2018-04-12T00:33:11.8118500-04:00 [INFO]: Finished Plague behaviour
+2018-04-12T00:33:11.8142790-04:00 [INFO]: Destroying ally card canvas area.
+2018-04-12T00:33:11.8571400-04:00 [INFO]: Inside display player info, number of cards for player : a is: 12
+2018-04-12T00:33:11.8575200-04:00 [INFO]: Inside display player info, shields for player : a is: 0
+2018-04-12T00:33:11.8587460-04:00 [INFO]: Inside display player info, number of cards for player : b is: 12
+2018-04-12T00:33:11.8590690-04:00 [INFO]: Inside display player info, shields for player : b is: 0
+2018-04-12T00:33:11.8618590-04:00 [INFO]: a's cards drawn to GUI
+2018-04-12T00:33:11.8627200-04:00 [INFO]: Setting interaction text: Drawer loses 2 shields if possible.
+2018-04-12T00:33:11.9371460-04:00 [INFO]: Board manager started
+2018-04-12T00:33:23.1038220-04:00 [INFO]: Destroying ally card canvas area.
+2018-04-12T00:33:23.1071430-04:00 [INFO]: Discarded card: Plague
+2018-04-12T00:33:23.1078780-04:00 [INFO]: B'S TURN
+2018-04-12T00:33:23.1086680-04:00 [INFO]: Drew card: At Orkney
+2018-04-12T00:33:23.1096000-04:00 [INFO]: Started Tournament behaviour
+2018-04-12T00:33:23.1111230-04:00 [INFO]: Destroying ally card canvas area.
+2018-04-12T00:33:23.1352280-04:00 [INFO]: Inside display player info, number of cards for player : a is: 12
+2018-04-12T00:33:23.1354740-04:00 [INFO]: Inside display player info, shields for player : a is: 0
+2018-04-12T00:33:23.1362250-04:00 [INFO]: Inside display player info, number of cards for player : b is: 12
+2018-04-12T00:33:23.1364520-04:00 [INFO]: Inside display player info, shields for player : b is: 0
+2018-04-12T00:33:23.1376000-04:00 [INFO]: b's cards drawn to GUI
+2018-04-12T00:33:23.1390740-04:00 [INFO]: Setting interaction text: NEW TOURNAMENT DRAWN
+Would you like to enter this tournament?
+2018-04-12T00:33:23.1400590-04:00 [INFO]: Prompted b to enter tournament.
+2018-04-12T00:33:23.8685810-04:00 [INFO]: Destroying ally card canvas area.
+2018-04-12T00:33:23.8707700-04:00 [INFO]: Discarded card: At Orkney
+2018-04-12T00:33:23.8713810-04:00 [INFO]: A'S TURN
+2018-04-12T00:33:23.8720510-04:00 [INFO]: Drew card: Defend the Queen's Honor
+2018-04-12T00:33:23.8728340-04:00 [INFO]: Started Quest behaviour
+2018-04-12T00:33:23.8741240-04:00 [INFO]: Destroying ally card canvas area.
+2018-04-12T00:33:23.8829760-04:00 [INFO]: Inside display player info, number of cards for player : a is: 12
+2018-04-12T00:33:23.8831920-04:00 [INFO]: Inside display player info, shields for player : a is: 0
+2018-04-12T00:33:23.8838750-04:00 [INFO]: Inside display player info, number of cards for player : b is: 12
+2018-04-12T00:33:23.8840440-04:00 [INFO]: Inside display player info, shields for player : b is: 0
+2018-04-12T00:33:23.8850160-04:00 [INFO]: a's cards drawn to GUI
+2018-04-12T00:33:23.8859410-04:00 [INFO]: Setting interaction text: NEW QUEST DRAWN
+Would you like to sponsor this quest?
+2018-04-12T00:33:23.8873970-04:00 [INFO]: Prompted a to sponsor quest.
+2018-04-12T00:33:24.8196430-04:00 [INFO]: Destroying ally card canvas area.
+2018-04-12T00:33:24.8219140-04:00 [INFO]: Discarded card: Defend the Queen's Honor
+2018-04-12T00:33:24.8226000-04:00 [INFO]: B'S TURN
+2018-04-12T00:33:24.8233710-04:00 [INFO]: Drew card: At Tintagel
+2018-04-12T00:33:24.8241190-04:00 [INFO]: Started Tournament behaviour
+2018-04-12T00:33:24.8252610-04:00 [INFO]: Destroying ally card canvas area.
+2018-04-12T00:33:24.8317410-04:00 [INFO]: Inside display player info, number of cards for player : a is: 12
+2018-04-12T00:33:24.8319320-04:00 [INFO]: Inside display player info, shields for player : a is: 0
+2018-04-12T00:33:24.8326070-04:00 [INFO]: Inside display player info, number of cards for player : b is: 12
+2018-04-12T00:33:24.8327830-04:00 [INFO]: Inside display player info, shields for player : b is: 0
+2018-04-12T00:33:24.8338170-04:00 [INFO]: b's cards drawn to GUI
+2018-04-12T00:33:24.8346230-04:00 [INFO]: Setting interaction text: NEW TOURNAMENT DRAWN
+Would you like to enter this tournament?
+2018-04-12T00:33:24.8354640-04:00 [INFO]: Prompted b to enter tournament.
+2018-04-12T00:33:25.5517500-04:00 [INFO]: Destroying ally card canvas area.
+2018-04-12T00:33:25.5540640-04:00 [INFO]: Discarded card: At Tintagel
+2018-04-12T00:33:25.5547510-04:00 [INFO]: A'S TURN
+2018-04-12T00:33:25.5555000-04:00 [INFO]: Drew card: Repel the Saxon Raiders
+2018-04-12T00:33:25.5562570-04:00 [INFO]: Started Quest behaviour
+2018-04-12T00:33:25.5573580-04:00 [INFO]: Destroying ally card canvas area.
+2018-04-12T00:33:25.5654090-04:00 [INFO]: Inside display player info, number of cards for player : a is: 12
+2018-04-12T00:33:25.5657690-04:00 [INFO]: Inside display player info, shields for player : a is: 0
+2018-04-12T00:33:25.5664780-04:00 [INFO]: Inside display player info, number of cards for player : b is: 12
+2018-04-12T00:33:25.5666580-04:00 [INFO]: Inside display player info, shields for player : b is: 0
+2018-04-12T00:33:25.5676210-04:00 [INFO]: a's cards drawn to GUI
+2018-04-12T00:33:25.5684330-04:00 [INFO]: Setting interaction text: NEW QUEST DRAWN
+Would you like to sponsor this quest?
+2018-04-12T00:33:25.5700130-04:00 [INFO]: Prompted a to sponsor quest.
+2018-04-12T00:33:26.1690730-04:00 [INFO]: Destroying ally card canvas area.
+2018-04-12T00:33:26.1708320-04:00 [INFO]: Discarded card: Repel the Saxon Raiders
+2018-04-12T00:33:26.1713900-04:00 [INFO]: B'S TURN
+2018-04-12T00:33:26.1720340-04:00 [INFO]: Drew card: Boar Hunt
+2018-04-12T00:33:26.1726420-04:00 [INFO]: Started Quest behaviour
+2018-04-12T00:33:26.1736110-04:00 [INFO]: Destroying ally card canvas area.
+2018-04-12T00:33:26.1800200-04:00 [INFO]: Inside display player info, number of cards for player : a is: 12
+2018-04-12T00:33:26.1802610-04:00 [INFO]: Inside display player info, shields for player : a is: 0
+2018-04-12T00:33:26.1809630-04:00 [INFO]: Inside display player info, number of cards for player : b is: 12
+2018-04-12T00:33:26.1811410-04:00 [INFO]: Inside display player info, shields for player : b is: 0
+2018-04-12T00:33:26.1821710-04:00 [INFO]: b's cards drawn to GUI
+2018-04-12T00:33:26.1830050-04:00 [INFO]: Setting interaction text: NEW QUEST DRAWN
+Would you like to sponsor this quest?
+2018-04-12T00:33:26.1844900-04:00 [INFO]: Prompted b to sponsor quest.
+2018-04-12T00:33:26.7871430-04:00 [INFO]: Destroying ally card canvas area.
+2018-04-12T00:33:26.7895940-04:00 [INFO]: Discarded card: Boar Hunt
+2018-04-12T00:33:26.7903540-04:00 [INFO]: A'S TURN
+2018-04-12T00:33:26.7911930-04:00 [INFO]: Drew card: Queen's Favor
+2018-04-12T00:33:26.7923450-04:00 [INFO]: Started Queen's Favor behaviour
+2018-04-12T00:33:26.7926810-04:00 [INFO]: Populated list of players with the lowest rank
+2018-04-12T00:33:26.7932520-04:00 [INFO]: Dealing cards to player: a, 2
+2018-04-12T00:33:26.7967150-04:00 [INFO]: Destroying ally card canvas area.
+2018-04-12T00:33:26.8045930-04:00 [INFO]: Inside display player info, number of cards for player : a is: 14
+2018-04-12T00:33:26.8048930-04:00 [INFO]: Inside display player info, shields for player : a is: 0
+2018-04-12T00:33:26.8059270-04:00 [INFO]: Inside display player info, number of cards for player : b is: 12
+2018-04-12T00:33:26.8061880-04:00 [INFO]: Inside display player info, shields for player : b is: 0
+2018-04-12T00:33:26.8078060-04:00 [INFO]: a's cards drawn to GUI
+2018-04-12T00:33:26.8092520-04:00 [INFO]: Setting interaction text: TOO MANY CARDS
+Please discard (or play) cards until you have at most 12.
+2018-04-12T00:33:26.8130790-04:00 [INFO]: Prompted a to prepare cards to discard.
+2018-04-12T00:33:26.8133070-04:00 [INFO]: Finished Queen's Favor behaviour
+2018-04-12T00:33:27.3861170-04:00 [INFO]: Destroying ally card canvas area.
+2018-04-12T00:33:27.3884550-04:00 [INFO]: Discarded card: Queen's Favor
+2018-04-12T00:33:27.3891680-04:00 [INFO]: B'S TURN
+2018-04-12T00:33:27.3899310-04:00 [INFO]: Drew card: King's Recognition
+2018-04-12T00:33:27.3908150-04:00 [INFO]: Started King's Recognition behaviour
+2018-04-12T00:33:27.3910140-04:00 [INFO]: Finished King's Recognition behaviour
+2018-04-12T00:33:27.3920870-04:00 [INFO]: Destroying ally card canvas area.
+2018-04-12T00:33:27.3987020-04:00 [INFO]: Inside display player info, number of cards for player : a is: 14
+2018-04-12T00:33:27.3988870-04:00 [INFO]: Inside display player info, shields for player : a is: 0
+2018-04-12T00:33:27.3996570-04:00 [INFO]: Inside display player info, number of cards for player : b is: 12
+2018-04-12T00:33:27.3998400-04:00 [INFO]: Inside display player info, shields for player : b is: 0
+2018-04-12T00:33:27.4008040-04:00 [INFO]: b's cards drawn to GUI
+2018-04-12T00:33:27.4016000-04:00 [INFO]: Setting interaction text: The next player(s) to complete a Quest will receive 2 extra shields.
+2018-04-12T00:33:28.0200920-04:00 [INFO]: Destroying ally card canvas area.
+2018-04-12T00:33:28.0225730-04:00 [INFO]: Discarded card: King's Recognition
+2018-04-12T00:33:28.0233710-04:00 [INFO]: A'S TURN
+2018-04-12T00:33:28.0241540-04:00 [INFO]: Drew card: King's Recognition
+2018-04-12T00:33:28.0249630-04:00 [INFO]: Started King's Recognition behaviour
+2018-04-12T00:33:28.0251770-04:00 [INFO]: Finished King's Recognition behaviour
+2018-04-12T00:33:28.0263750-04:00 [INFO]: Destroying ally card canvas area.
+2018-04-12T00:33:28.0303120-04:00 [INFO]: Inside display player info, number of cards for player : a is: 14
+2018-04-12T00:33:28.0304820-04:00 [INFO]: Inside display player info, shields for player : a is: 0
+2018-04-12T00:33:28.0311770-04:00 [INFO]: Inside display player info, number of cards for player : b is: 12
+2018-04-12T00:33:28.0313400-04:00 [INFO]: Inside display player info, shields for player : b is: 0
+2018-04-12T00:33:28.0323150-04:00 [INFO]: a's cards drawn to GUI
+2018-04-12T00:33:28.0331430-04:00 [INFO]: Setting interaction text: The next player(s) to complete a Quest will receive 2 extra shields.
+2018-04-12T00:33:28.6218180-04:00 [INFO]: Destroying ally card canvas area.
+2018-04-12T00:33:28.6241500-04:00 [INFO]: Discarded card: King's Recognition
+2018-04-12T00:33:28.6249070-04:00 [INFO]: B'S TURN
+2018-04-12T00:33:28.6257620-04:00 [INFO]: Drew card: Rescue the Fair Maiden
+2018-04-12T00:33:28.6265500-04:00 [INFO]: Started Quest behaviour
+2018-04-12T00:33:28.6277960-04:00 [INFO]: Destroying ally card canvas area.
+2018-04-12T00:33:28.6355200-04:00 [INFO]: Inside display player info, number of cards for player : a is: 14
+2018-04-12T00:33:28.6357590-04:00 [INFO]: Inside display player info, shields for player : a is: 0
+2018-04-12T00:33:28.6364810-04:00 [INFO]: Inside display player info, number of cards for player : b is: 12
+2018-04-12T00:33:28.6366440-04:00 [INFO]: Inside display player info, shields for player : b is: 0
+2018-04-12T00:33:28.6377180-04:00 [INFO]: b's cards drawn to GUI
+2018-04-12T00:33:28.6385490-04:00 [INFO]: Setting interaction text: NEW QUEST DRAWN
+Would you like to sponsor this quest?
+2018-04-12T00:33:28.6399480-04:00 [INFO]: Prompted b to sponsor quest.
+2018-04-12T00:33:29.2364110-04:00 [INFO]: Destroying ally card canvas area.
+2018-04-12T00:33:29.2388180-04:00 [INFO]: Discarded card: Rescue the Fair Maiden
+2018-04-12T00:33:29.2395970-04:00 [INFO]: A'S TURN
+2018-04-12T00:33:29.2403620-04:00 [INFO]: Drew card: Chivalrous Deed
+2018-04-12T00:33:29.2417470-04:00 [INFO]: Started the Chivalrous Deed behaviour
+2018-04-12T00:33:29.2421110-04:00 [DEBUG]: Finished getting list of players with lowest rank
+2018-04-12T00:33:29.2423590-04:00 [DEBUG]: Finished getting list of players with lowest # shields
+2018-04-12T00:33:29.2433850-04:00 [INFO]: Awarded 3 shields to a
+2018-04-12T00:33:29.2445490-04:00 [INFO]: Awarded 3 shields to b
+2018-04-12T00:33:29.2456170-04:00 [INFO]: Destroying ally card canvas area.
+2018-04-12T00:33:29.2520460-04:00 [INFO]: Inside display player info, number of cards for player : a is: 14
+2018-04-12T00:33:29.2522690-04:00 [INFO]: Inside display player info, shields for player : a is: 3
+2018-04-12T00:33:29.2530050-04:00 [INFO]: Inside display player info, number of cards for player : b is: 12
+2018-04-12T00:33:29.2531950-04:00 [INFO]: Inside display player info, shields for player : b is: 3
+2018-04-12T00:33:29.2541980-04:00 [INFO]: a's cards drawn to GUI
+2018-04-12T00:33:29.2549620-04:00 [INFO]: Setting interaction text: Player with both lowest rank and least amount of shields, receives 3 shields.
+2018-04-12T00:33:29.8860950-04:00 [INFO]: Destroying ally card canvas area.
+2018-04-12T00:33:29.8879790-04:00 [INFO]: Discarded card: Chivalrous Deed
+2018-04-12T00:33:29.8885880-04:00 [INFO]: B'S TURN
+2018-04-12T00:33:29.8893610-04:00 [INFO]: Drew card: Vanquish King Arthur's Enemies
+2018-04-12T00:33:29.8899910-04:00 [INFO]: Started Quest behaviour
+2018-04-12T00:33:29.8909890-04:00 [INFO]: Destroying ally card canvas area.
+2018-04-12T00:33:29.8991030-04:00 [INFO]: Inside display player info, number of cards for player : a is: 14
+2018-04-12T00:33:29.8993480-04:00 [INFO]: Inside display player info, shields for player : a is: 3
+2018-04-12T00:33:29.9002210-04:00 [INFO]: Inside display player info, number of cards for player : b is: 12
+2018-04-12T00:33:29.9004800-04:00 [INFO]: Inside display player info, shields for player : b is: 3
+2018-04-12T00:33:29.9021100-04:00 [INFO]: b's cards drawn to GUI
+2018-04-12T00:33:29.9032210-04:00 [INFO]: Setting interaction text: NEW QUEST DRAWN
+Would you like to sponsor this quest?
+2018-04-12T00:33:29.9048970-04:00 [INFO]: Prompted b to sponsor quest.
+2018-04-12T00:33:30.4872910-04:00 [INFO]: Destroying ally card canvas area.
+2018-04-12T00:33:30.4896070-04:00 [INFO]: Discarded card: Vanquish King Arthur's Enemies
+2018-04-12T00:33:30.4903420-04:00 [INFO]: A'S TURN
+2018-04-12T00:33:30.4911470-04:00 [INFO]: Drew card: At Camelot
+2018-04-12T00:33:30.4918880-04:00 [INFO]: Started Tournament behaviour
+2018-04-12T00:33:30.4930450-04:00 [INFO]: Destroying ally card canvas area.
+2018-04-12T00:33:30.4996330-04:00 [INFO]: Inside display player info, number of cards for player : a is: 14
+2018-04-12T00:33:30.4999040-04:00 [INFO]: Inside display player info, shields for player : a is: 3
+2018-04-12T00:33:30.5007680-04:00 [INFO]: Inside display player info, number of cards for player : b is: 12
+2018-04-12T00:33:30.5009890-04:00 [INFO]: Inside display player info, shields for player : b is: 3
+2018-04-12T00:33:30.5020680-04:00 [INFO]: a's cards drawn to GUI
+2018-04-12T00:33:30.5030640-04:00 [INFO]: Setting interaction text: NEW TOURNAMENT DRAWN
+Would you like to enter this tournament?
+2018-04-12T00:33:30.5040530-04:00 [INFO]: Prompted a to enter tournament.
+2018-04-12T00:33:31.1372050-04:00 [INFO]: Destroying ally card canvas area.
+2018-04-12T00:33:31.1398280-04:00 [INFO]: Discarded card: At Camelot
+2018-04-12T00:33:31.1406170-04:00 [INFO]: B'S TURN
+2018-04-12T00:33:31.1414170-04:00 [INFO]: Drew card: At York
+2018-04-12T00:33:31.1422480-04:00 [INFO]: Started Tournament behaviour
+2018-04-12T00:33:31.1435050-04:00 [INFO]: Destroying ally card canvas area.
+2018-04-12T00:33:31.1503070-04:00 [INFO]: Inside display player info, number of cards for player : a is: 14
+2018-04-12T00:33:31.1505760-04:00 [INFO]: Inside display player info, shields for player : a is: 3
+2018-04-12T00:33:31.1513860-04:00 [INFO]: Inside display player info, number of cards for player : b is: 12
+2018-04-12T00:33:31.1516360-04:00 [INFO]: Inside display player info, shields for player : b is: 3
+2018-04-12T00:33:31.1527700-04:00 [INFO]: b's cards drawn to GUI
+2018-04-12T00:33:31.1536410-04:00 [INFO]: Setting interaction text: NEW TOURNAMENT DRAWN
+Would you like to enter this tournament?
+2018-04-12T00:33:31.1545190-04:00 [INFO]: Prompted b to enter tournament.
+2018-04-12T00:33:31.7709850-04:00 [INFO]: Destroying ally card canvas area.
+2018-04-12T00:33:31.7736530-04:00 [INFO]: Discarded card: At York
+2018-04-12T00:33:31.7744740-04:00 [INFO]: A'S TURN
+2018-04-12T00:33:31.7752750-04:00 [INFO]: Drew card: Test of the Green Knight
+2018-04-12T00:33:31.7760810-04:00 [INFO]: Started Quest behaviour
+2018-04-12T00:33:31.7774000-04:00 [INFO]: Destroying ally card canvas area.
+2018-04-12T00:33:31.7860810-04:00 [INFO]: Inside display player info, number of cards for player : a is: 14
+2018-04-12T00:33:31.7863440-04:00 [INFO]: Inside display player info, shields for player : a is: 3
+2018-04-12T00:33:31.7871240-04:00 [INFO]: Inside display player info, number of cards for player : b is: 12
+2018-04-12T00:33:31.7873250-04:00 [INFO]: Inside display player info, shields for player : b is: 3
+2018-04-12T00:33:31.7883730-04:00 [INFO]: a's cards drawn to GUI
+2018-04-12T00:33:31.7892510-04:00 [INFO]: Setting interaction text: NEW QUEST DRAWN
+Would you like to sponsor this quest?
+2018-04-12T00:33:31.7907620-04:00 [INFO]: Prompted a to sponsor quest.
+2018-04-12T00:33:32.4866280-04:00 [INFO]: Destroying ally card canvas area.
+2018-04-12T00:33:32.4890510-04:00 [INFO]: Discarded card: Test of the Green Knight
+2018-04-12T00:33:32.4899580-04:00 [INFO]: B'S TURN
+2018-04-12T00:33:32.4907840-04:00 [INFO]: Drew card: Court Called to Camelot
+2018-04-12T00:33:32.4919720-04:00 [INFO]: Started the Court Called to Camelot behaviour
+2018-04-12T00:33:32.4924740-04:00 [INFO]: Discarding all cards of class Ally from play area
+2018-04-12T00:33:32.4927340-04:00 [DEBUG]: Discarded all allies for a
+2018-04-12T00:33:32.4929480-04:00 [INFO]: Discarding all cards of class Ally from play area
+2018-04-12T00:33:32.4931600-04:00 [DEBUG]: Discarded all allies for b
+2018-04-12T00:33:32.4933920-04:00 [INFO]: Finishing behaviour
+2018-04-12T00:33:32.4945610-04:00 [INFO]: Destroying ally card canvas area.
+2018-04-12T00:33:32.5011390-04:00 [INFO]: Inside display player info, number of cards for player : a is: 14
+2018-04-12T00:33:32.5014320-04:00 [INFO]: Inside display player info, shields for player : a is: 3
+2018-04-12T00:33:32.5021980-04:00 [INFO]: Inside display player info, number of cards for player : b is: 12
+2018-04-12T00:33:32.5024080-04:00 [INFO]: Inside display player info, shields for player : b is: 3
+2018-04-12T00:33:32.5035810-04:00 [INFO]: b's cards drawn to GUI
+2018-04-12T00:33:32.5045720-04:00 [INFO]: Setting interaction text: All Allies in play must be discarded.
+2018-04-12T00:33:33.1543070-04:00 [INFO]: Destroying ally card canvas area.
+2018-04-12T00:33:33.1568100-04:00 [INFO]: Discarded card: Court Called to Camelot
+2018-04-12T00:33:33.1576260-04:00 [INFO]: A'S TURN
+2018-04-12T00:33:33.1585530-04:00 [INFO]: Drew card: Queen's Favor
+2018-04-12T00:33:33.1594160-04:00 [INFO]: Started Queen's Favor behaviour
+2018-04-12T00:33:33.1596910-04:00 [INFO]: Populated list of players with the lowest rank
+2018-04-12T00:33:33.1599450-04:00 [INFO]: Dealing cards to player: a, 2
+2018-04-12T00:33:33.1631150-04:00 [INFO]: Destroying ally card canvas area.
+2018-04-12T00:33:33.1705470-04:00 [INFO]: Inside display player info, number of cards for player : a is: 16
+2018-04-12T00:33:33.1707900-04:00 [INFO]: Inside display player info, shields for player : a is: 3
+2018-04-12T00:33:33.1715670-04:00 [INFO]: Inside display player info, number of cards for player : b is: 12
+2018-04-12T00:33:33.1717740-04:00 [INFO]: Inside display player info, shields for player : b is: 3
+2018-04-12T00:33:33.1730100-04:00 [INFO]: a's cards drawn to GUI
+2018-04-12T00:33:33.1740720-04:00 [INFO]: Setting interaction text: TOO MANY CARDS
+Please discard (or play) cards until you have at most 12.
+2018-04-12T00:33:33.1762230-04:00 [INFO]: Prompted a to prepare cards to discard.
+2018-04-12T00:33:33.1764630-04:00 [INFO]: Finished Queen's Favor behaviour
+2018-04-12T00:33:33.8703770-04:00 [INFO]: Destroying ally card canvas area.
+2018-04-12T00:33:33.8727600-04:00 [INFO]: Discarded card: Queen's Favor
+2018-04-12T00:33:33.8735490-04:00 [INFO]: B'S TURN
+2018-04-12T00:33:33.8743090-04:00 [INFO]: Drew card: Boar Hunt
+2018-04-12T00:33:33.8750160-04:00 [INFO]: Started Quest behaviour
+2018-04-12T00:33:33.8762390-04:00 [INFO]: Destroying ally card canvas area.
+2018-04-12T00:33:33.8813550-04:00 [INFO]: Inside display player info, number of cards for player : a is: 16
+2018-04-12T00:33:33.8816350-04:00 [INFO]: Inside display player info, shields for player : a is: 3
+2018-04-12T00:33:33.8824280-04:00 [INFO]: Inside display player info, number of cards for player : b is: 12
+2018-04-12T00:33:33.8826420-04:00 [INFO]: Inside display player info, shields for player : b is: 3
+2018-04-12T00:33:33.8837270-04:00 [INFO]: b's cards drawn to GUI
+2018-04-12T00:33:33.8846240-04:00 [INFO]: Setting interaction text: NEW QUEST DRAWN
+Would you like to sponsor this quest?
+2018-04-12T00:33:33.8861480-04:00 [INFO]: Prompted b to sponsor quest.
+2018-04-12T00:33:34.5197290-04:00 [INFO]: Destroying ally card canvas area.
+2018-04-12T00:33:34.5221650-04:00 [INFO]: Discarded card: Boar Hunt
+2018-04-12T00:33:34.5229340-04:00 [INFO]: A'S TURN
+2018-04-12T00:33:34.5237780-04:00 [INFO]: Drew card: Journey through the Enchanted Forest
+2018-04-12T00:33:34.5245420-04:00 [INFO]: Started Quest behaviour
+2018-04-12T00:33:34.5257430-04:00 [INFO]: Destroying ally card canvas area.
+2018-04-12T00:33:34.5345810-04:00 [INFO]: Inside display player info, number of cards for player : a is: 16
+2018-04-12T00:33:34.5349520-04:00 [INFO]: Inside display player info, shields for player : a is: 3
+2018-04-12T00:33:34.5356950-04:00 [INFO]: Inside display player info, number of cards for player : b is: 12
+2018-04-12T00:33:34.5359020-04:00 [INFO]: Inside display player info, shields for player : b is: 3
+2018-04-12T00:33:34.5370630-04:00 [INFO]: a's cards drawn to GUI
+2018-04-12T00:33:34.5379630-04:00 [INFO]: Setting interaction text: NEW QUEST DRAWN
+Would you like to sponsor this quest?
+2018-04-12T00:33:34.5395440-04:00 [INFO]: Prompted a to sponsor quest.
+2018-04-12T00:33:35.1879150-04:00 [INFO]: Destroying ally card canvas area.
+2018-04-12T00:33:35.1904840-04:00 [INFO]: Discarded card: Journey through the Enchanted Forest
+2018-04-12T00:33:35.1912920-04:00 [INFO]: B'S TURN
+2018-04-12T00:33:35.1921530-04:00 [INFO]: Drew card: King's Call to Arms
+2018-04-12T00:33:35.1934490-04:00 [INFO]: Started the Kings Call To Arms behaviour
+2018-04-12T00:33:35.1944200-04:00 [DEBUG]: Populated a list of players with the highest rank
+2018-04-12T00:33:35.1952750-04:00 [DEBUG]: Prompting event action for player a
+2018-04-12T00:33:35.1966450-04:00 [TRACE]: numFoeCards for the current player is 2
+2018-04-12T00:33:35.1977270-04:00 [DEBUG]: Player to discard weapon
+2018-04-12T00:33:35.1996820-04:00 [INFO]: Destroying ally card canvas area.
+2018-04-12T00:33:35.2072380-04:00 [INFO]: Inside display player info, number of cards for player : a is: 16
+2018-04-12T00:33:35.2075350-04:00 [INFO]: Inside display player info, shields for player : a is: 3
+2018-04-12T00:33:35.2084750-04:00 [INFO]: Inside display player info, number of cards for player : b is: 12
+2018-04-12T00:33:35.2087460-04:00 [INFO]: Inside display player info, shields for player : b is: 3
+2018-04-12T00:33:35.2100610-04:00 [INFO]: a's cards drawn to GUI
+2018-04-12T00:33:35.2113680-04:00 [INFO]: Setting interaction text: Please discard 1 weapon.
+2018-04-12T00:33:35.2133480-04:00 [INFO]: Prompted a to prepare weapon cards to discard.
+2018-04-12T00:33:35.8711490-04:00 [INFO]: Destroying ally card canvas area.
+2018-04-12T00:33:35.8734440-04:00 [INFO]: Discarded card: King's Call to Arms
+2018-04-12T00:33:35.8741730-04:00 [INFO]: A'S TURN
+2018-04-12T00:33:35.8749460-04:00 [INFO]: Drew card: Search for the Questing Beast
+2018-04-12T00:33:35.8756650-04:00 [INFO]: Started Quest behaviour
+2018-04-12T00:33:35.8768340-04:00 [INFO]: Destroying ally card canvas area.
+2018-04-12T00:33:35.8861540-04:00 [INFO]: Inside display player info, number of cards for player : a is: 16
+2018-04-12T00:33:35.8864050-04:00 [INFO]: Inside display player info, shields for player : a is: 3
+2018-04-12T00:33:35.8871470-04:00 [INFO]: Inside display player info, number of cards for player : b is: 12
+2018-04-12T00:33:35.8873390-04:00 [INFO]: Inside display player info, shields for player : b is: 3
+2018-04-12T00:33:35.8884230-04:00 [INFO]: a's cards drawn to GUI
+2018-04-12T00:33:35.8892980-04:00 [INFO]: Setting interaction text: NEW QUEST DRAWN
+Would you like to sponsor this quest?
+2018-04-12T00:33:35.8908480-04:00 [INFO]: Prompted a to sponsor quest.
+2018-04-12T00:33:36.5716000-04:00 [INFO]: Destroying ally card canvas area.
+2018-04-12T00:33:36.5743460-04:00 [INFO]: Discarded card: Search for the Questing Beast
+2018-04-12T00:33:36.5751810-04:00 [INFO]: B'S TURN
+2018-04-12T00:33:36.5760210-04:00 [INFO]: Drew card: Pox
+2018-04-12T00:33:36.5771600-04:00 [INFO]: Starting Pox behaviour
+2018-04-12T00:33:36.5774530-04:00 [TRACE]: Finished decrementing shields for player a
+2018-04-12T00:33:36.5776940-04:00 [TRACE]: Finished decrementing shields for player b
+2018-04-12T00:33:36.5779760-04:00 [INFO]: Finished Pox behaviour
+2018-04-12T00:33:36.5791040-04:00 [INFO]: Destroying ally card canvas area.
+2018-04-12T00:33:36.5857230-04:00 [INFO]: Inside display player info, number of cards for player : a is: 16
+2018-04-12T00:33:36.5859670-04:00 [INFO]: Inside display player info, shields for player : a is: 2
+2018-04-12T00:33:36.5868460-04:00 [INFO]: Inside display player info, number of cards for player : b is: 12
+2018-04-12T00:33:36.5870560-04:00 [INFO]: Inside display player info, shields for player : b is: 3
+2018-04-12T00:33:36.5880800-04:00 [INFO]: b's cards drawn to GUI
+2018-04-12T00:33:36.5888980-04:00 [INFO]: Setting interaction text: All players except the player drawing this card lose 1 shield.
+2018-04-12T00:33:37.2713500-04:00 [INFO]: Destroying ally card canvas area.
+2018-04-12T00:33:37.2739340-04:00 [INFO]: Discarded card: Pox
+2018-04-12T00:33:37.2747680-04:00 [INFO]: A'S TURN
+2018-04-12T00:33:37.2755810-04:00 [INFO]: Drew card: Slay the Dragon
+2018-04-12T00:33:37.2764170-04:00 [INFO]: Started Quest behaviour
+2018-04-12T00:33:37.2777010-04:00 [INFO]: Destroying ally card canvas area.
+2018-04-12T00:33:37.2862400-04:00 [INFO]: Inside display player info, number of cards for player : a is: 16
+2018-04-12T00:33:37.2865260-04:00 [INFO]: Inside display player info, shields for player : a is: 2
+2018-04-12T00:33:37.2873430-04:00 [INFO]: Inside display player info, number of cards for player : b is: 12
+2018-04-12T00:33:37.2875580-04:00 [INFO]: Inside display player info, shields for player : b is: 3
+2018-04-12T00:33:37.2886270-04:00 [INFO]: a's cards drawn to GUI
+2018-04-12T00:33:37.2895610-04:00 [INFO]: Setting interaction text: NEW QUEST DRAWN
+Would you like to sponsor this quest?
+2018-04-12T00:33:37.2912090-04:00 [INFO]: Prompted a to sponsor quest.
+2018-04-12T00:33:37.9541970-04:00 [INFO]: Destroying ally card canvas area.
+2018-04-12T00:33:37.9561390-04:00 [INFO]: Discarded card: Slay the Dragon
+2018-04-12T00:33:37.9567880-04:00 [INFO]: B'S TURN
+2018-04-12T00:33:37.9574780-04:00 [INFO]: Drew card: Court Called to Camelot
+2018-04-12T00:33:37.9581590-04:00 [INFO]: Started the Court Called to Camelot behaviour
+2018-04-12T00:33:37.9583730-04:00 [INFO]: Discarding all cards of class Ally from play area
+2018-04-12T00:33:37.9585810-04:00 [DEBUG]: Discarded all allies for a
+2018-04-12T00:33:37.9587810-04:00 [INFO]: Discarding all cards of class Ally from play area
+2018-04-12T00:33:37.9589780-04:00 [DEBUG]: Discarded all allies for b
+2018-04-12T00:33:37.9592270-04:00 [INFO]: Finishing behaviour
+2018-04-12T00:33:37.9603580-04:00 [INFO]: Destroying ally card canvas area.
+2018-04-12T00:33:37.9641210-04:00 [INFO]: Inside display player info, number of cards for player : a is: 16
+2018-04-12T00:33:37.9643660-04:00 [INFO]: Inside display player info, shields for player : a is: 2
+2018-04-12T00:33:37.9651860-04:00 [INFO]: Inside display player info, number of cards for player : b is: 12
+2018-04-12T00:33:37.9654150-04:00 [INFO]: Inside display player info, shields for player : b is: 3
+2018-04-12T00:33:37.9666070-04:00 [INFO]: b's cards drawn to GUI
+2018-04-12T00:33:37.9675680-04:00 [INFO]: Setting interaction text: All Allies in play must be discarded.
+2018-04-12T00:33:38.6867040-04:00 [INFO]: Destroying ally card canvas area.
+2018-04-12T00:33:38.6884860-04:00 [INFO]: Discarded card: Court Called to Camelot
+2018-04-12T00:33:38.6890640-04:00 [INFO]: A'S TURN
+2018-04-12T00:33:38.6897240-04:00 [INFO]: Drew card: Search for the Holy Grail
+2018-04-12T00:33:38.6904220-04:00 [INFO]: Started Quest behaviour
+2018-04-12T00:33:38.6914490-04:00 [INFO]: Destroying ally card canvas area.
+2018-04-12T00:33:38.6990710-04:00 [INFO]: Inside display player info, number of cards for player : a is: 16
+2018-04-12T00:33:38.6993250-04:00 [INFO]: Inside display player info, shields for player : a is: 2
+2018-04-12T00:33:38.7001270-04:00 [INFO]: Inside display player info, number of cards for player : b is: 12
+2018-04-12T00:33:38.7004160-04:00 [INFO]: Inside display player info, shields for player : b is: 3
+2018-04-12T00:33:38.7015370-04:00 [INFO]: a's cards drawn to GUI
+2018-04-12T00:33:38.7025410-04:00 [INFO]: Setting interaction text: NEW QUEST DRAWN
+Would you like to sponsor this quest?
+2018-04-12T00:33:38.7042730-04:00 [INFO]: Prompted a to sponsor quest.
+2018-04-12T00:33:39.4215380-04:00 [INFO]: Destroying ally card canvas area.
+2018-04-12T00:33:39.4242700-04:00 [INFO]: Discarded card: Search for the Holy Grail
+2018-04-12T00:33:39.4250970-04:00 [INFO]: B'S TURN
+2018-04-12T00:33:39.4259710-04:00 [INFO]: Drew card: Vanquish King Arthur's Enemies
+2018-04-12T00:33:39.4268020-04:00 [INFO]: Started Quest behaviour
+2018-04-12T00:33:39.4281970-04:00 [INFO]: Destroying ally card canvas area.
+2018-04-12T00:33:39.4326080-04:00 [INFO]: Inside display player info, number of cards for player : a is: 16
+2018-04-12T00:33:39.4328410-04:00 [INFO]: Inside display player info, shields for player : a is: 2
+2018-04-12T00:33:39.4337670-04:00 [INFO]: Inside display player info, number of cards for player : b is: 12
+2018-04-12T00:33:39.4339780-04:00 [INFO]: Inside display player info, shields for player : b is: 3
+2018-04-12T00:33:39.4350330-04:00 [INFO]: b's cards drawn to GUI
+2018-04-12T00:33:39.4359110-04:00 [INFO]: Setting interaction text: NEW QUEST DRAWN
+Would you like to sponsor this quest?
+2018-04-12T00:33:39.4373970-04:00 [INFO]: Prompted b to sponsor quest.
+2018-04-12T00:33:40.2208440-04:00 [INFO]: Destroying ally card canvas area.
+2018-04-12T00:33:40.2232560-04:00 [INFO]: Discarded card: Vanquish King Arthur's Enemies
+2018-04-12T00:33:40.2240070-04:00 [INFO]: A'S TURN
+2018-04-12T00:33:40.2248200-04:00 [INFO]: Drew card: Prosperity Throughout the Realm
+2018-04-12T00:33:40.2256680-04:00 [INFO]: Started Prosperity Throughout the Realm behaviour
+2018-04-12T00:33:40.2259820-04:00 [INFO]: Dealing cards to player: a, 2
+2018-04-12T00:33:40.2290020-04:00 [INFO]: Destroying ally card canvas area.
+2018-04-12T00:33:40.2364150-04:00 [INFO]: Inside display player info, number of cards for player : a is: 18
+2018-04-12T00:33:40.2366800-04:00 [INFO]: Inside display player info, shields for player : a is: 2
+2018-04-12T00:33:40.2374780-04:00 [INFO]: Inside display player info, number of cards for player : b is: 12
+2018-04-12T00:33:40.2376880-04:00 [INFO]: Inside display player info, shields for player : b is: 3
+2018-04-12T00:33:40.2389630-04:00 [INFO]: a's cards drawn to GUI
+2018-04-12T00:33:40.2400660-04:00 [INFO]: Setting interaction text: TOO MANY CARDS
+Please discard (or play) cards until you have at most 12.
+2018-04-12T00:33:40.2421850-04:00 [INFO]: Prompted a to prepare cards to discard.
+2018-04-12T00:33:40.2423710-04:00 [INFO]: Finished Prosperity Throughout the Realm behaviour
+2018-04-12T00:33:46.2058520-04:00 [INFO]: Destroying ally card canvas area.
+2018-04-12T00:33:46.2082490-04:00 [INFO]: Discarded card: Prosperity Throughout the Realm
+2018-04-12T00:33:46.2090010-04:00 [INFO]: B'S TURN
+2018-04-12T00:33:46.2098750-04:00 [INFO]: Drew card: Repel the Saxon Raiders
+2018-04-12T00:33:46.2106130-04:00 [INFO]: Started Quest behaviour
+2018-04-12T00:33:46.2118410-04:00 [INFO]: Destroying ally card canvas area.
+2018-04-12T00:33:46.2166580-04:00 [INFO]: Inside display player info, number of cards for player : a is: 18
+2018-04-12T00:33:46.2168640-04:00 [INFO]: Inside display player info, shields for player : a is: 2
+2018-04-12T00:33:46.2177700-04:00 [INFO]: Inside display player info, number of cards for player : b is: 12
+2018-04-12T00:33:46.2179410-04:00 [INFO]: Inside display player info, shields for player : b is: 3
+2018-04-12T00:33:46.2189760-04:00 [INFO]: b's cards drawn to GUI
+2018-04-12T00:33:46.2199230-04:00 [INFO]: Setting interaction text: NEW QUEST DRAWN
+Would you like to sponsor this quest?
+2018-04-12T00:33:46.2216560-04:00 [INFO]: Prompted b to sponsor quest.
+2018-04-12T00:33:59.9607420-04:00 [TRACE]: Sponsor declined: b
+2018-04-12T00:33:59.9624950-04:00 [INFO]: Previous player is: b
+2018-04-12T00:33:59.9638960-04:00 [INFO]: Returning player in get next player
+2018-04-12T00:33:59.9657880-04:00 [INFO]: Destroying ally card canvas area.
+2018-04-12T00:33:59.9710110-04:00 [INFO]: Inside display player info, number of cards for player : a is: 18
+2018-04-12T00:33:59.9713680-04:00 [INFO]: Inside display player info, shields for player : a is: 2
+2018-04-12T00:33:59.9722180-04:00 [INFO]: Inside display player info, number of cards for player : b is: 12
+2018-04-12T00:33:59.9724930-04:00 [INFO]: Inside display player info, shields for player : b is: 3
+2018-04-12T00:33:59.9741860-04:00 [INFO]: a's cards drawn to GUI
+2018-04-12T00:33:59.9754920-04:00 [INFO]: Setting interaction text: NEW QUEST DRAWN
+Would you like to sponsor this quest?
+2018-04-12T00:33:59.9777520-04:00 [INFO]: Prompted a to sponsor quest.
+2018-04-12T00:34:04.3758090-04:00 [TRACE]: Sponsor declined: a
+2018-04-12T00:34:04.3773130-04:00 [INFO]: Previous player is: a
+2018-04-12T00:34:04.3785920-04:00 [INFO]: Returning player in get next player
+2018-04-12T00:34:04.3803430-04:00 [INFO]: Destroying ally card canvas area.
+2018-04-12T00:34:04.3836520-04:00 [INFO]: Discarded card: Repel the Saxon Raiders
+2018-04-12T00:34:04.3847400-04:00 [INFO]: A'S TURN
+2018-04-12T00:34:04.3885000-04:00 [INFO]: Shuffling story discard deck back into main deck
+2018-04-12T00:34:04.3887030-04:00 [INFO]: Drew card: Chivalrous Deed
+2018-04-12T00:34:04.3897830-04:00 [INFO]: Started the Chivalrous Deed behaviour
+2018-04-12T00:34:04.3899660-04:00 [DEBUG]: Finished getting list of players with lowest rank
+2018-04-12T00:34:04.3901810-04:00 [DEBUG]: Finished getting list of players with lowest # shields
+2018-04-12T00:34:04.3914220-04:00 [INFO]: Awarded 3 shields to a
+2018-04-12T00:34:04.3917500-04:00 [DEBUG]: There has been an upgrade to Knight
+2018-04-12T00:34:04.3953730-04:00 [INFO]: Destroying ally card canvas area.
+2018-04-12T00:34:04.4062400-04:00 [INFO]: Inside display player info, number of cards for player : a is: 18
+2018-04-12T00:34:04.4066410-04:00 [INFO]: Inside display player info, shields for player : a is: 0
+2018-04-12T00:34:04.4074320-04:00 [INFO]: Inside display player info, number of cards for player : b is: 12
+2018-04-12T00:34:04.4076460-04:00 [INFO]: Inside display player info, shields for player : b is: 3
+2018-04-12T00:34:04.4092490-04:00 [INFO]: a's cards drawn to GUI
+2018-04-12T00:34:04.4106350-04:00 [INFO]: Setting interaction text: Player with both lowest rank and least amount of shields, receives 3 shields.
