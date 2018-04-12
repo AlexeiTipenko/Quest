@@ -50,10 +50,7 @@ public class ChivalrousDeed : Events {
 		//Award 3 shields
 		foreach (Player player in lowestPlayers) {
 			player.incrementShields (3);
-			Logger.getInstance ().info ("Awarded 3 shields to " + player.getName());
 		}
-		Logger.getInstance ().info ("Awarded 3 shields to lowest ranked + lowest shields players, finishing behaviour");
-
         Player currentPlayer = board.getCurrentPlayer();
         if (currentPlayer.GetType() != typeof(AIPlayer)) {
             board.SimpleAlert(currentPlayer, description);

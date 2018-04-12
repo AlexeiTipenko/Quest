@@ -213,7 +213,7 @@ public abstract class Quest : Story {
 					PromptNextAcceptQuest();
 				}
             };
-
+            Logger.getInstance().info("Drawing adventure card for player: " + playerToPrompt.getName());
             playerToPrompt.DrawCards(1, action);
         } else {
             playerToPrompt = board.getNextPlayer(playerToPrompt);
