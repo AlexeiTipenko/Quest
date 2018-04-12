@@ -1,0 +1,309 @@
+-------------------- INITIALIZE LOGGER ---------------------
+2018-04-12T00:21:18.0911740-04:00: Logger initialized
+2018-04-12T00:21:18.0914430-04:00 [INFO]: Creating card: Knight of the Round Table
+2018-04-12T00:21:18.0916540-04:00 [INFO]: Creating card: Champion Knight
+2018-04-12T00:21:18.0918310-04:00 [INFO]: Creating card: Knight
+2018-04-12T00:21:18.0920280-04:00 [INFO]: Creating card: Squire
+2018-04-12T00:21:18.0925870-04:00 [INFO]: Creating card: Knight of the Round Table
+2018-04-12T00:21:18.0927810-04:00 [INFO]: Creating card: Champion Knight
+2018-04-12T00:21:18.0929670-04:00 [INFO]: Creating card: Knight
+2018-04-12T00:21:18.0931490-04:00 [INFO]: Creating card: Squire
+2018-04-12T00:21:18.0933470-04:00 [INFO]: Creating card: Knight of the Round Table
+2018-04-12T00:21:18.0935210-04:00 [INFO]: Creating card: Champion Knight
+2018-04-12T00:21:18.0937010-04:00 [INFO]: Creating card: Knight
+2018-04-12T00:21:18.0938520-04:00 [INFO]: Creating card: Squire
+2018-04-12T00:21:18.0940280-04:00 [INFO]: Creating card: Knight of the Round Table
+2018-04-12T00:21:18.0941880-04:00 [INFO]: Creating card: Champion Knight
+2018-04-12T00:21:18.0943570-04:00 [INFO]: Creating card: Knight
+2018-04-12T00:21:18.0945230-04:00 [INFO]: Creating card: Squire
+2018-04-12T00:21:18.1614620-04:00 [INFO]: Player list passed to BoardManager
+2018-04-12T00:21:18.1625070-04:00 [INFO]: Player entered: a (AI - Strategy 1)
+2018-04-12T00:21:18.1629860-04:00 [INFO]: Player entered: b (Human)
+2018-04-12T00:21:18.1634080-04:00 [INFO]: Player entered: c (Human)
+2018-04-12T00:21:18.1638310-04:00 [INFO]: Player entered: d (Human)
+2018-04-12T00:21:18.1650110-04:00 [INFO]: Creating card: Dragon
+2018-04-12T00:21:18.1654070-04:00 [INFO]: Creating card: Giant
+2018-04-12T00:21:18.1655710-04:00 [INFO]: Creating card: Giant
+2018-04-12T00:21:18.1661340-04:00 [INFO]: Creating card: Mordred
+2018-04-12T00:21:18.1662880-04:00 [INFO]: Creating card: Mordred
+2018-04-12T00:21:18.1664620-04:00 [INFO]: Creating card: Mordred
+2018-04-12T00:21:18.1666470-04:00 [INFO]: Creating card: Mordred
+2018-04-12T00:21:18.1668980-04:00 [INFO]: Creating card: Green Knight
+2018-04-12T00:21:18.1670610-04:00 [INFO]: Creating card: Green Knight
+2018-04-12T00:21:18.1673210-04:00 [INFO]: Creating card: Black Knight
+2018-04-12T00:21:18.1674880-04:00 [INFO]: Creating card: Black Knight
+2018-04-12T00:21:18.1676680-04:00 [INFO]: Creating card: Black Knight
+2018-04-12T00:21:18.1679680-04:00 [INFO]: Creating card: Evil Knight
+2018-04-12T00:21:18.1681250-04:00 [INFO]: Creating card: Evil Knight
+2018-04-12T00:21:18.1682920-04:00 [INFO]: Creating card: Evil Knight
+2018-04-12T00:21:18.1685210-04:00 [INFO]: Creating card: Evil Knight
+2018-04-12T00:21:18.1687090-04:00 [INFO]: Creating card: Evil Knight
+2018-04-12T00:21:18.1688830-04:00 [INFO]: Creating card: Evil Knight
+2018-04-12T00:21:18.1691980-04:00 [INFO]: Creating card: Saxon Knight
+2018-04-12T00:21:18.1693570-04:00 [INFO]: Creating card: Saxon Knight
+2018-04-12T00:21:18.1695290-04:00 [INFO]: Creating card: Saxon Knight
+2018-04-12T00:21:18.1697060-04:00 [INFO]: Creating card: Saxon Knight
+2018-04-12T00:21:18.1698750-04:00 [INFO]: Creating card: Saxon Knight
+2018-04-12T00:21:18.1700460-04:00 [INFO]: Creating card: Saxon Knight
+2018-04-12T00:21:18.1702110-04:00 [INFO]: Creating card: Saxon Knight
+2018-04-12T00:21:18.1703780-04:00 [INFO]: Creating card: Saxon Knight
+2018-04-12T00:21:18.1706600-04:00 [INFO]: Creating card: Robber Knight
+2018-04-12T00:21:18.1708080-04:00 [INFO]: Creating card: Robber Knight
+2018-04-12T00:21:18.1709750-04:00 [INFO]: Creating card: Robber Knight
+2018-04-12T00:21:18.1711400-04:00 [INFO]: Creating card: Robber Knight
+2018-04-12T00:21:18.1713060-04:00 [INFO]: Creating card: Robber Knight
+2018-04-12T00:21:18.1714700-04:00 [INFO]: Creating card: Robber Knight
+2018-04-12T00:21:18.1716260-04:00 [INFO]: Creating card: Robber Knight
+2018-04-12T00:21:18.1719760-04:00 [INFO]: Creating card: Saxons
+2018-04-12T00:21:18.1721840-04:00 [INFO]: Creating card: Saxons
+2018-04-12T00:21:18.1723760-04:00 [INFO]: Creating card: Saxons
+2018-04-12T00:21:18.1725530-04:00 [INFO]: Creating card: Saxons
+2018-04-12T00:21:18.1728700-04:00 [INFO]: Creating card: Saxons
+2018-04-12T00:21:18.1731730-04:00 [INFO]: Creating card: Boar
+2018-04-12T00:21:18.1733260-04:00 [INFO]: Creating card: Boar
+2018-04-12T00:21:18.1735000-04:00 [INFO]: Creating card: Boar
+2018-04-12T00:21:18.1736730-04:00 [INFO]: Creating card: Boar
+2018-04-12T00:21:18.1739650-04:00 [INFO]: Creating card: Thieves
+2018-04-12T00:21:18.1741170-04:00 [INFO]: Creating card: Thieves
+2018-04-12T00:21:18.1742900-04:00 [INFO]: Creating card: Thieves
+2018-04-12T00:21:18.1744620-04:00 [INFO]: Creating card: Thieves
+2018-04-12T00:21:18.1746320-04:00 [INFO]: Creating card: Thieves
+2018-04-12T00:21:18.1748040-04:00 [INFO]: Creating card: Thieves
+2018-04-12T00:21:18.1749760-04:00 [INFO]: Creating card: Thieves
+2018-04-12T00:21:18.1751460-04:00 [INFO]: Creating card: Thieves
+2018-04-12T00:21:18.1754730-04:00 [INFO]: Creating card: Test Of Valor
+2018-04-12T00:21:18.1756260-04:00 [INFO]: Creating card: Test Of Valor
+2018-04-12T00:21:18.1759260-04:00 [INFO]: Creating card: Test Of Temptation
+2018-04-12T00:21:18.1760880-04:00 [INFO]: Creating card: Test Of Temptation
+2018-04-12T00:21:18.1763810-04:00 [INFO]: Creating card: Test Of Morgan LeFey
+2018-04-12T00:21:18.1765380-04:00 [INFO]: Creating card: Test Of Morgan LeFey
+2018-04-12T00:21:18.1768310-04:00 [INFO]: Creating card: Test Of The Questing Beast
+2018-04-12T00:21:18.1769860-04:00 [INFO]: Creating card: Test Of The Questing Beast
+2018-04-12T00:21:18.1773840-04:00 [INFO]: Creating card: Sir Galahad
+2018-04-12T00:21:18.1776560-04:00 [INFO]: Creating card: Sir Lancelot
+2018-04-12T00:21:18.1779340-04:00 [INFO]: Creating card: King Arthur
+2018-04-12T00:21:18.1782030-04:00 [INFO]: Creating card: Sir Tristan
+2018-04-12T00:21:18.1784700-04:00 [INFO]: Creating card: King Pellinore
+2018-04-12T00:21:18.1787350-04:00 [INFO]: Creating card: Sir Gawain
+2018-04-12T00:21:18.1790020-04:00 [INFO]: Creating card: Sir Percival
+2018-04-12T00:21:18.1792940-04:00 [INFO]: Creating card: Queen Guinevere
+2018-04-12T00:21:18.1795610-04:00 [INFO]: Creating card: Queen Iseult
+2018-04-12T00:21:18.1798500-04:00 [INFO]: Creating card: Merlin
+2018-04-12T00:21:18.1801270-04:00 [INFO]: Creating card: Amour
+2018-04-12T00:21:18.1802890-04:00 [INFO]: Creating card: Amour
+2018-04-12T00:21:18.1804750-04:00 [INFO]: Creating card: Amour
+2018-04-12T00:21:18.1806520-04:00 [INFO]: Creating card: Amour
+2018-04-12T00:21:18.1808280-04:00 [INFO]: Creating card: Amour
+2018-04-12T00:21:18.1810020-04:00 [INFO]: Creating card: Amour
+2018-04-12T00:21:18.1811820-04:00 [INFO]: Creating card: Amour
+2018-04-12T00:21:18.1813590-04:00 [INFO]: Creating card: Amour
+2018-04-12T00:21:18.1816810-04:00 [INFO]: Creating card: Excalibur
+2018-04-12T00:21:18.1818500-04:00 [INFO]: Creating card: Excalibur
+2018-04-12T00:21:18.1821480-04:00 [INFO]: Creating card: Lance
+2018-04-12T00:21:18.1822970-04:00 [INFO]: Creating card: Lance
+2018-04-12T00:21:18.1825800-04:00 [INFO]: Creating card: Lance
+2018-04-12T00:21:18.1827710-04:00 [INFO]: Creating card: Lance
+2018-04-12T00:21:18.1829430-04:00 [INFO]: Creating card: Lance
+2018-04-12T00:21:18.1831100-04:00 [INFO]: Creating card: Lance
+2018-04-12T00:21:18.1834180-04:00 [INFO]: Creating card: Battle Ax
+2018-04-12T00:21:18.1835730-04:00 [INFO]: Creating card: Battle Ax
+2018-04-12T00:21:18.1837430-04:00 [INFO]: Creating card: Battle Ax
+2018-04-12T00:21:18.1839110-04:00 [INFO]: Creating card: Battle Ax
+2018-04-12T00:21:18.1840760-04:00 [INFO]: Creating card: Battle Ax
+2018-04-12T00:21:18.1842480-04:00 [INFO]: Creating card: Battle Ax
+2018-04-12T00:21:18.1844180-04:00 [INFO]: Creating card: Battle Ax
+2018-04-12T00:21:18.1846000-04:00 [INFO]: Creating card: Battle Ax
+2018-04-12T00:21:18.1849480-04:00 [INFO]: Creating card: Sword
+2018-04-12T00:21:18.1851430-04:00 [INFO]: Creating card: Sword
+2018-04-12T00:21:18.1853330-04:00 [INFO]: Creating card: Sword
+2018-04-12T00:21:18.1855190-04:00 [INFO]: Creating card: Sword
+2018-04-12T00:21:18.1857040-04:00 [INFO]: Creating card: Sword
+2018-04-12T00:21:18.1858690-04:00 [INFO]: Creating card: Sword
+2018-04-12T00:21:18.1861950-04:00 [INFO]: Creating card: Sword
+2018-04-12T00:21:18.1863760-04:00 [INFO]: Creating card: Sword
+2018-04-12T00:21:18.1865540-04:00 [INFO]: Creating card: Sword
+2018-04-12T00:21:18.1867300-04:00 [INFO]: Creating card: Sword
+2018-04-12T00:21:18.1869030-04:00 [INFO]: Creating card: Sword
+2018-04-12T00:21:18.1870830-04:00 [INFO]: Creating card: Sword
+2018-04-12T00:21:18.1872640-04:00 [INFO]: Creating card: Sword
+2018-04-12T00:21:18.1874420-04:00 [INFO]: Creating card: Sword
+2018-04-12T00:21:18.1876140-04:00 [INFO]: Creating card: Sword
+2018-04-12T00:21:18.1877860-04:00 [INFO]: Creating card: Sword
+2018-04-12T00:21:18.1881690-04:00 [INFO]: Creating card: Horse
+2018-04-12T00:21:18.1883270-04:00 [INFO]: Creating card: Horse
+2018-04-12T00:21:18.1885070-04:00 [INFO]: Creating card: Horse
+2018-04-12T00:21:18.1886860-04:00 [INFO]: Creating card: Horse
+2018-04-12T00:21:18.1888580-04:00 [INFO]: Creating card: Horse
+2018-04-12T00:21:18.1890370-04:00 [INFO]: Creating card: Horse
+2018-04-12T00:21:18.1892080-04:00 [INFO]: Creating card: Horse
+2018-04-12T00:21:18.1894070-04:00 [INFO]: Creating card: Horse
+2018-04-12T00:21:18.1895770-04:00 [INFO]: Creating card: Horse
+2018-04-12T00:21:18.1897470-04:00 [INFO]: Creating card: Horse
+2018-04-12T00:21:18.1899170-04:00 [INFO]: Creating card: Horse
+2018-04-12T00:21:18.1902130-04:00 [INFO]: Creating card: Dagger
+2018-04-12T00:21:18.1903640-04:00 [INFO]: Creating card: Dagger
+2018-04-12T00:21:18.1905390-04:00 [INFO]: Creating card: Dagger
+2018-04-12T00:21:18.1907130-04:00 [INFO]: Creating card: Dagger
+2018-04-12T00:21:18.1909160-04:00 [INFO]: Creating card: Dagger
+2018-04-12T00:21:18.1910930-04:00 [INFO]: Creating card: Dagger
+2018-04-12T00:21:18.1925640-04:00 [INFO]: Creating card: At Orkney
+2018-04-12T00:21:18.1929040-04:00 [INFO]: Creating card: At Camelot
+2018-04-12T00:21:18.1932260-04:00 [INFO]: Creating card: At Tintagel
+2018-04-12T00:21:18.1934980-04:00 [INFO]: Creating card: At York
+2018-04-12T00:21:18.1938090-04:00 [INFO]: Creating card: King's Recognition
+2018-04-12T00:21:18.1939690-04:00 [INFO]: Creating card: King's Recognition
+2018-04-12T00:21:18.1942670-04:00 [INFO]: Creating card: Queen's Favor
+2018-04-12T00:21:18.1944230-04:00 [INFO]: Creating card: Queen's Favor
+2018-04-12T00:21:18.1947300-04:00 [INFO]: Creating card: Court Called to Camelot
+2018-04-12T00:21:18.1948900-04:00 [INFO]: Creating card: Court Called to Camelot
+2018-04-12T00:21:18.1951900-04:00 [INFO]: Creating card: Pox
+2018-04-12T00:21:18.1954690-04:00 [INFO]: Creating card: Plague
+2018-04-12T00:21:18.1957490-04:00 [INFO]: Creating card: Chivalrous Deed
+2018-04-12T00:21:18.1961290-04:00 [INFO]: Creating card: Prosperity Throughout the Realm
+2018-04-12T00:21:18.1964350-04:00 [INFO]: Creating card: King's Call to Arms
+2018-04-12T00:21:18.1969180-04:00 [INFO]: Creating card: Search for the Holy Grail
+2018-04-12T00:21:18.1974460-04:00 [INFO]: Creating card: Test of the Green Knight
+2018-04-12T00:21:18.1977360-04:00 [INFO]: Creating card: Search for the Questing Beast
+2018-04-12T00:21:18.1981050-04:00 [INFO]: Creating card: Defend the Queen's Honor
+2018-04-12T00:21:18.1984590-04:00 [INFO]: Creating card: Rescue the Fair Maiden
+2018-04-12T00:21:18.1987610-04:00 [INFO]: Creating card: Journey through the Enchanted Forest
+2018-04-12T00:21:18.1990500-04:00 [INFO]: Creating card: Vanquish King Arthur's Enemies
+2018-04-12T00:21:18.1992080-04:00 [INFO]: Creating card: Vanquish King Arthur's Enemies
+2018-04-12T00:21:18.1995880-04:00 [INFO]: Creating card: Slay the Dragon
+2018-04-12T00:21:18.1998880-04:00 [INFO]: Creating card: Boar Hunt
+2018-04-12T00:21:18.2000610-04:00 [INFO]: Creating card: Boar Hunt
+2018-04-12T00:21:18.2003840-04:00 [INFO]: Creating card: Repel the Saxon Raiders
+2018-04-12T00:21:18.2005580-04:00 [INFO]: Creating card: Repel the Saxon Raiders
+2018-04-12T00:21:18.2013070-04:00 [INFO]: Card decks created
+2018-04-12T00:21:18.2016740-04:00 [INFO]: Dealing cards to player: a, 12
+2018-04-12T00:21:18.2028700-04:00 [INFO]: Dealing cards to player: b, 12
+2018-04-12T00:21:18.2035350-04:00 [INFO]: Dealing cards to player: c, 12
+2018-04-12T00:21:18.2043540-04:00 [INFO]: Dealing cards to player: d, 12
+2018-04-12T00:21:18.2051390-04:00 [INFO]: Game started...
+2018-04-12T00:21:18.2053020-04:00 [INFO]: Starting local game
+2018-04-12T00:21:18.2062830-04:00 [INFO]: A'S TURN
+2018-04-12T00:21:18.2068230-04:00 [INFO]: Drew card: Search for the Questing Beast
+2018-04-12T00:21:18.2074080-04:00 [INFO]: Started Quest behaviour
+2018-04-12T00:21:18.2077130-04:00 [INFO]: a AI 1 is preparing to sponsor the quest
+2018-04-12T00:21:18.2093550-04:00 [INFO]: Checking if someone else can win or evolve through this quest.
+2018-04-12T00:21:18.2102600-04:00 [INFO]: No player can win off this quest.
+2018-04-12T00:21:18.2116530-04:00 [INFO]: Checking if a has sufficiently valid cards to sponsor quest.
+2018-04-12T00:21:18.2128590-04:00 [TRACE]: dominantFoes are System.Collections.Generic.List`1[System.Type]
+2018-04-12T00:21:18.2137700-04:00 [TRACE]: dominantFoes are System.Collections.Generic.List`1[System.Type]
+2018-04-12T00:21:18.2139470-04:00 [TRACE]: dominantFoes are System.Collections.Generic.List`1[System.Type]
+2018-04-12T00:21:18.2148640-04:00 [INFO]: Unique weapons: Sword
+2018-04-12T00:21:18.2156700-04:00 [INFO]: Unique weapons: Dagger
+2018-04-12T00:21:18.2164520-04:00 [INFO]: Unique weapons: Horse
+2018-04-12T00:21:18.2171800-04:00 [INFO]: Unique weapons: Battle Ax
+2018-04-12T00:21:18.2179230-04:00 [INFO]: a has enough valid cards.
+2018-04-12T00:21:18.2191750-04:00 [INFO]: a has sufficient cards to meet minimumFinalStageBattlePoints requirement.
+2018-04-12T00:21:18.2199740-04:00 [INFO]: a has sufficient cards (using a test) to sponsor this quest.
+2018-04-12T00:21:18.2202660-04:00 [INFO]: Sponsor accepted: a
+2018-04-12T00:21:18.2222970-04:00 [INFO]: a AI 1 is preparing the quest
+2018-04-12T00:21:18.2244460-04:00 [INFO]: Card dictionary contains:
+2018-04-12T00:21:18.2258790-04:00 [INFO]: Card: Saxons
+2018-04-12T00:21:18.2266930-04:00 [INFO]: Card: Sword
+2018-04-12T00:21:18.2276040-04:00 [INFO]: Card: Sword
+2018-04-12T00:21:18.2284450-04:00 [INFO]: Card: SirLancelot
+2018-04-12T00:21:18.2292460-04:00 [INFO]: Card: Dragon
+2018-04-12T00:21:18.2300490-04:00 [INFO]: Card: Thieves
+2018-04-12T00:21:18.2308460-04:00 [INFO]: Card: Dagger
+2018-04-12T00:21:18.2317760-04:00 [INFO]: Card: Horse
+2018-04-12T00:21:18.2326460-04:00 [INFO]: Card: TestOfTheQuestingBeast
+2018-04-12T00:21:18.2334450-04:00 [INFO]: Card: BattleAx
+2018-04-12T00:21:18.2342250-04:00 [INFO]: Card: Sword
+2018-04-12T00:21:18.2350330-04:00 [INFO]: Card: Sword
+2018-04-12T00:21:18.2361850-04:00 [INFO]: Getting strongest foe
+2018-04-12T00:21:18.2370520-04:00 [INFO]: Found a foe
+2018-04-12T00:21:18.2380720-04:00 [INFO]: Replaced strongest foe with: Saxons
+2018-04-12T00:21:18.2391560-04:00 [INFO]: Found a foe
+2018-04-12T00:21:18.2394200-04:00 [TRACE]: dominantFoes are System.Collections.Generic.List`1[System.Type]
+2018-04-12T00:21:18.2396380-04:00 [TRACE]: dominantFoes are System.Collections.Generic.List`1[System.Type]
+2018-04-12T00:21:18.2406360-04:00 [INFO]: Replaced strongest foe with: Dragon
+2018-04-12T00:21:18.2415720-04:00 [INFO]: Found a foe
+2018-04-12T00:21:18.2417960-04:00 [TRACE]: dominantFoes are System.Collections.Generic.List`1[System.Type]
+2018-04-12T00:21:18.2419740-04:00 [TRACE]: dominantFoes are System.Collections.Generic.List`1[System.Type]
+2018-04-12T00:21:18.2425070-04:00 [INFO]: Final stage foe: Dragon
+2018-04-12T00:21:18.2434240-04:00 [TRACE]: dominantFoes are System.Collections.Generic.List`1[System.Type]
+2018-04-12T00:21:18.2437840-04:00 [INFO]: Final stage weapons:
+2018-04-12T00:21:18.2448800-04:00 [INFO]: Starting the Stage class
+2018-04-12T00:21:18.2475380-04:00 [INFO]: Discarded card: Dragon
+2018-04-12T00:21:18.2477650-04:00 [INFO]: Initialized stages 1
+2018-04-12T00:21:18.2488050-04:00 [TRACE]: dominantFoes are System.Collections.Generic.List`1[System.Type]
+2018-04-12T00:21:18.2490420-04:00 [TRACE]: The total battle points are 50
+2018-04-12T00:21:18.2504480-04:00 [INFO]: a has a test in their hand.
+2018-04-12T00:21:18.2507100-04:00 [INFO]: Starting the Stage class
+2018-04-12T00:21:18.2518970-04:00 [INFO]: Discarded card: Test Of The Questing Beast
+2018-04-12T00:21:18.2527340-04:00 [INFO]: Initialized stages: 2
+2018-04-12T00:21:18.2535580-04:00 [INFO]: Initializing a new stage
+2018-04-12T00:21:18.2545580-04:00 [INFO]: Getting strongest foe
+2018-04-12T00:21:18.2555010-04:00 [INFO]: Found a foe
+2018-04-12T00:21:18.2564310-04:00 [INFO]: Replaced strongest foe with: Saxons
+2018-04-12T00:21:18.2574480-04:00 [INFO]: Found a foe
+2018-04-12T00:21:18.2576320-04:00 [TRACE]: dominantFoes are System.Collections.Generic.List`1[System.Type]
+2018-04-12T00:21:18.2578190-04:00 [TRACE]: dominantFoes are System.Collections.Generic.List`1[System.Type]
+2018-04-12T00:21:18.2588040-04:00 [INFO]: Found a foe
+2018-04-12T00:21:18.2589640-04:00 [TRACE]: dominantFoes are System.Collections.Generic.List`1[System.Type]
+2018-04-12T00:21:18.2591270-04:00 [TRACE]: dominantFoes are System.Collections.Generic.List`1[System.Type]
+2018-04-12T00:21:18.2608700-04:00 [INFO]: Getting best duplicate weapon
+2018-04-12T00:21:18.2622860-04:00 [INFO]: Found an unused weapon: Sword
+2018-04-12T00:21:18.2632200-04:00 [INFO]: Found an unused weapon: Sword
+2018-04-12T00:21:18.2641840-04:00 [INFO]: Found an unused weapon: Dagger
+2018-04-12T00:21:18.2651400-04:00 [INFO]: Found an unused weapon: Horse
+2018-04-12T00:21:18.2660730-04:00 [INFO]: Found an unused weapon: Battle Ax
+2018-04-12T00:21:18.2670310-04:00 [INFO]: Found an unused weapon: Sword
+2018-04-12T00:21:18.2679060-04:00 [INFO]: Found an unused weapon: Sword
+2018-04-12T00:21:18.2689750-04:00 [INFO]: Duplicate weapon found: Sword
+2018-04-12T00:21:18.2698870-04:00 [INFO]: Updated best duplicate weapon: Sword
+2018-04-12T00:21:18.2708060-04:00 [INFO]: Retrieved best duplicate weapon
+2018-04-12T00:21:18.2711410-04:00 [TRACE]: dominantFoes are System.Collections.Generic.List`1[System.Type]
+2018-04-12T00:21:18.2721210-04:00 [INFO]: Created a valid quest
+2018-04-12T00:21:18.2722950-04:00 [INFO]: Stage 1: stage card is Saxons
+2018-04-12T00:21:18.2731250-04:00 [INFO]: Starting the Stage class
+2018-04-12T00:21:18.2742230-04:00 [INFO]: Discarded card: Saxons
+2018-04-12T00:21:18.2753150-04:00 [INFO]: Discarded card: Sword
+2018-04-12T00:21:18.2755120-04:00 [TRACE]: dominantFoes are System.Collections.Generic.List`1[System.Type]
+2018-04-12T00:21:18.2756900-04:00 [TRACE]: The total battle points are 20
+2018-04-12T00:21:18.2765090-04:00 [INFO]: Initializing a new stage
+2018-04-12T00:21:18.2774890-04:00 [INFO]: Getting strongest foe
+2018-04-12T00:21:18.2784420-04:00 [INFO]: Found a foe
+2018-04-12T00:21:18.2793210-04:00 [INFO]: Found a foe
+2018-04-12T00:21:18.2802020-04:00 [INFO]: Found a foe
+2018-04-12T00:21:18.2811040-04:00 [INFO]: Replaced strongest foe with: Thieves
+2018-04-12T00:21:18.2820290-04:00 [INFO]: Getting best duplicate weapon
+2018-04-12T00:21:18.2830180-04:00 [INFO]: Found an unused weapon: Sword
+2018-04-12T00:21:18.2839220-04:00 [INFO]: Found an unused weapon: Dagger
+2018-04-12T00:21:18.2849130-04:00 [INFO]: Found an unused weapon: Horse
+2018-04-12T00:21:18.2858600-04:00 [INFO]: Found an unused weapon: Battle Ax
+2018-04-12T00:21:18.2867420-04:00 [INFO]: Found an unused weapon: Sword
+2018-04-12T00:21:18.2876370-04:00 [INFO]: Found an unused weapon: Sword
+2018-04-12T00:21:18.2885240-04:00 [INFO]: Duplicate weapon found: Sword
+2018-04-12T00:21:18.2893840-04:00 [INFO]: Updated best duplicate weapon: Sword
+2018-04-12T00:21:18.2902320-04:00 [INFO]: Retrieved best duplicate weapon
+2018-04-12T00:21:18.2903960-04:00 [TRACE]: dominantFoes are System.Collections.Generic.List`1[System.Type]
+2018-04-12T00:21:18.2913310-04:00 [INFO]: Created a valid quest
+2018-04-12T00:21:18.2915370-04:00 [INFO]: Stage 0: stage card is Thieves
+2018-04-12T00:21:18.2924940-04:00 [INFO]: Starting the Stage class
+2018-04-12T00:21:18.2937430-04:00 [INFO]: Discarded card: Thieves
+2018-04-12T00:21:18.2948170-04:00 [INFO]: Discarded card: Sword
+2018-04-12T00:21:18.2950240-04:00 [TRACE]: dominantFoes are System.Collections.Generic.List`1[System.Type]
+2018-04-12T00:21:18.2952370-04:00 [TRACE]: The total battle points are 15
+2018-04-12T00:21:18.2961920-04:00 [INFO]: All stages have been initialized
+2018-04-12T00:21:18.3070390-04:00 [INFO]: Quest setup complete
+2018-04-12T00:21:18.3088230-04:00 [INFO]: Previous player is: a
+2018-04-12T00:21:18.3098050-04:00 [INFO]: Returning player in get next player
+2018-04-12T00:21:18.3141540-04:00 [INFO]: Destroying ally card canvas area.
+2018-04-12T00:21:18.3808930-04:00 [INFO]: Inside display player info, number of cards for player : a is: 6
+2018-04-12T00:21:18.3811660-04:00 [INFO]: Inside display player info, shields for player : a is: 0
+2018-04-12T00:21:18.3822930-04:00 [INFO]: Inside display player info, number of cards for player : b is: 12
+2018-04-12T00:21:18.3824800-04:00 [INFO]: Inside display player info, shields for player : b is: 0
+2018-04-12T00:21:18.3832350-04:00 [INFO]: Inside display player info, number of cards for player : c is: 12
+2018-04-12T00:21:18.3834490-04:00 [INFO]: Inside display player info, shields for player : c is: 0
+2018-04-12T00:21:18.3843190-04:00 [INFO]: Inside display player info, number of cards for player : d is: 12
+2018-04-12T00:21:18.3845020-04:00 [INFO]: Inside display player info, shields for player : d is: 0
+2018-04-12T00:21:18.3879810-04:00 [INFO]: Adding button for Mordred's special ability.
+2018-04-12T00:21:18.3907050-04:00 [INFO]: b's cards drawn to GUI
+2018-04-12T00:21:18.3925800-04:00 [INFO]: Setting interaction text: NEW QUEST DRAWN
+Would you like to participate in this quest?
+2018-04-12T00:21:18.3943430-04:00 [INFO]: Prompted b to accept quest.
+2018-04-12T00:21:18.4668340-04:00 [INFO]: Board manager started

@@ -1,11 +1,17 @@
 ﻿using System.Collections.Generic;
 using System;
+using UnityEngine;
 
 [Serializable]
 public class StoryDeck : Deck {
 
 	public StoryDeck () {
 		initStoryDeck ();
+	}
+
+	public StoryDeck(Deck discardDeck) : base(discardDeck) {
+		Debug.Log ("Shuffling story discard deck back into main deck");
+		Logger.getInstance().info ("Shuffling story discard deck back into main deck");
 	}
 
 	public void initStoryDeck() {

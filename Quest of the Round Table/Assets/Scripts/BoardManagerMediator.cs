@@ -238,7 +238,7 @@ public class BoardManagerMediator
             Logger.getInstance().info(players[playerTurn].getName().ToUpper() + "'S TURN");
             Debug.Log(players[playerTurn].getName().ToUpper() + "'S TURN");
             if(storyDeck.getSize() <= 0) {
-                storyDeck = new StoryDeck();
+                storyDeck = new StoryDeck(storyDiscard);
             }
             cardInPlay = (Story)storyDeck.drawCard();
             Logger.getInstance().info("Drew card: " + cardInPlay.GetCardName());

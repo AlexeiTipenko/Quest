@@ -157,6 +157,7 @@ public class Strategy2 : AbstractAI
 
         if (ContainsTest(cards)) {
             Debug.Log(strategyOwner.getName() + " has a test in their hand.");
+            Logger.getInstance().info(strategyOwner.getName() + " has a test in their hand.");
             foreach (Adventure card in cards) {
 				if (card.IsTest()) {
                     stageCard = card;
@@ -167,6 +168,7 @@ public class Strategy2 : AbstractAI
             initializedStages++;
             numTestStages++;
             Debug.Log("Initialized stages: " + initializedStages);
+            Logger.getInstance().info("Initialized stages: " + initializedStages);
         }
 
         Adventure previousStageCard = null;
@@ -193,45 +195,54 @@ public class Strategy2 : AbstractAI
     public override void PlayFoeStage(Stage stage)
     {
         Debug.Log("Stage card type is Foe");
+        Logger.getInstance().info("Stage card type is Foe");
         Quest quest = (Quest)board.getCardInPlay();
         List<Adventure> cards = strategyOwner.GetHand();
         List<Adventure> sortedList = SortCardsByType(cards);
         List<Adventure> participationList = new List<Adventure>();
 
         if (stage.getStageNum() == quest.getNumStages() - 1) {
-            Debug.Log("Final stage! UNLIMITED POWAAAAAAAAAAAAAAAAR");
             foreach (Adventure card in sortedList) {
                 Debug.Log("Checking " + strategyOwner.getName() + "'s card for eligibility: " + card.GetCardName());
+                Logger.getInstance().info("Checking " + strategyOwner.getName() + "'s card for eligibility: " + card.GetCardName());
                 if (CanPlayCardForStage(card, participationList)) {
                     Debug.Log(strategyOwner.getName() + " can play card, adding to participation list for stage");
+                    Logger.getInstance().info(strategyOwner.getName() + " can play card, adding to participation list for stage");
                     participationList.Add(card);
                 }
             }
         } else {
             Debug.Log("Not the final stage. Play in increments of 10");
+            Logger.getInstance().info("Not the final stage. Play in increments of 10");
             int currentBattlePoints = strategyOwner.getPlayArea().GetBattlePoints();
             Debug.Log("Minimum battle points to pass: " + (previousStageBattlePoints + 10));
+            Logger.getInstance().info("Minimum battle points to pass: " + (previousStageBattlePoints + 10));
             foreach (Adventure card in sortedList) {
                 Debug.Log("Checking " + strategyOwner.getName() + "'s card for eligibility: " + card.GetCardName());
+                Logger.getInstance().info("Checking " + strategyOwner.getName() + "'s card for eligibility: " + card.GetCardName());
                 if (CanPlayCardForStage(card, participationList)) {
                     Debug.Log(strategyOwner.getName() + " can play card, adding to participation list for stage");
+                    Logger.getInstance().info(strategyOwner.getName() + " can play card, adding to participation list for stage");
                     participationList.Add(card);
                     currentBattlePoints += card.getBattlePoints();
                     Debug.Log(strategyOwner.getName() + "'s current battle points: " + currentBattlePoints);
+                    Logger.getInstance().info(strategyOwner.getName() + "'s current battle points: " + currentBattlePoints);
                     if (currentBattlePoints >= previousStageBattlePoints + 10) {
                         Debug.Log("Sufficient battle points acquired, moving on with stage");
+                        Logger.getInstance().info("Sufficient battle points acquired, moving on with stage");
                         break;
                     }
                 }
             }
             if (currentBattlePoints < previousStageBattlePoints + 10) {
                 Debug.Log("Whoopsies, somehow the participation condition was violated. Dropping out of quest.");
+                Logger.getInstance().info("Whoopsies, somehow the participation condition was violated. Dropping out of quest.");
                 stage.PromptFoeResponse(true);
             }
             previousStageBattlePoints = currentBattlePoints;
         }
         foreach (Adventure card in participationList) {
-            Debug.Log("Moving card from " + strategyOwner.getName() + "'s hand to play area: " + card.GetCardName());
+            Logger.getInstance().info("Moving card from " + strategyOwner.getName() + "'s hand to play area: " + card.GetCardName());
             strategyOwner.getPlayArea().AddCard(card);
             strategyOwner.RemoveCard(card);
         }
@@ -249,13 +260,16 @@ public class Strategy2 : AbstractAI
         int currentBattlePoints = 0;
         for (int i = 0; i < quest.getNumStages(); i++) {
             Debug.Log("Calculating " + strategyOwner.getName() + "'s validity for stage " + i);
+            Logger.getInstance().info("Calculating " + strategyOwner.getName() + "'s validity for stage " + i);
             List<Adventure> tempList = new List<Adventure>(sortedList);
             previousBattlePoints = currentBattlePoints;
             currentBattlePoints = permanentBattlePoints;
             Debug.Log("Required battle points: " + (previousBattlePoints + 10));
+            Logger.getInstance().info("Required battle points: " + (previousBattlePoints + 10));
 
             foreach (Adventure card in sortedList) {
                 Debug.Log("Adding " + card.GetCardName() + " to " + strategyOwner.getName() + "'s hypothetical play area");
+                Logger.getInstance().info("Adding " + card.GetCardName() + " to " + strategyOwner.getName() + "'s hypothetical play area");
                 currentBattlePoints += card.getBattlePoints();
 				if (card.IsAmour()) {
                     permanentBattlePoints += card.getBattlePoints();
@@ -265,6 +279,7 @@ public class Strategy2 : AbstractAI
                 participationList.Add(card);
                 tempList.Remove(card);
                 Debug.Log(strategyOwner.getName() + "'s battle points for stage " + i + ": " + currentBattlePoints);
+                Logger.getInstance().info(strategyOwner.getName() + "'s battle points for stage " + i + ": " + currentBattlePoints);
                 if (currentBattlePoints >= previousBattlePoints + 10) {
                     break;
                 }
@@ -273,10 +288,12 @@ public class Strategy2 : AbstractAI
 
             if (currentBattlePoints < previousBattlePoints + 10) {
                 Debug.Log("Insufficient incrementable cards for " + strategyOwner.getName());
+                Logger.getInstance().info("Insufficient incrementable cards for " + strategyOwner.getName());
                 return false;
             }
         }
         Debug.Log("Sufficient incrementable cards for " + strategyOwner.getName());
+        Logger.getInstance().info("Sufficient incrementable cards for " + strategyOwner.getName());
         return true;
     }
 
@@ -302,6 +319,7 @@ public class Strategy2 : AbstractAI
             if (!PlayedListName.Contains(tempCard.GetCardName()))
             {
                 Debug.Log("Adding " + tempCard.GetCardName() + " to AI");
+                Logger.getInstance().info("Adding " + tempCard.GetCardName() + " to AI");
                 PlayedList.Add(tempCard);
                 PlayedListName.Add(tempCard.GetCardName());
                 totalBattlePoints += tempCard.getBattlePoints();
@@ -311,6 +329,7 @@ public class Strategy2 : AbstractAI
 
         foreach(Adventure card in PlayedList) {
             Debug.Log("Cards AI will play is: " + card.GetCardName());
+            Logger.getInstance().info("Cards AI will play is: " + card.GetCardName());
         }
         return PlayedList;
     }

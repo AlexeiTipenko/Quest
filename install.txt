@@ -1,0 +1,33 @@
+COMP3004 - TEAM 5
+
+Avery Vine - 100999500
+Alexei Tipenko - 100995947
+Maxim Kuzmenko - 101002578
+Kirk Yuan - 101018370
+
+NOTE: SUBMISSION CAN BE FOUND AT THE FOLLOWING URL: https://drive.google.com/drive/folders/1BIcGepdBIR6rfotmkvTGlAuMcltoiaUy?usp=sharing
+THIS INCLUDES THE APPLICATION ITSELF, THE DOCUMENTATION, AND THE CORRECTION GRID.
+
+RUNNING THE GAME IN UNITY
+1. Open the Unity app
+2. Select the project from the file system
+3. Ensure that the "Menu" scene is selected
+4. Press the "Play" button at the top to run
+
+BUILDING/RUNNING THE GAME AS A STANDALONE APPLICATION (if not using provided standalone application)
+1. Open the Unity app
+2. Select the project from the file system
+3. Click File -> Build Settings...
+4. Ensure that "PC, Mac & Linux Standalone" is selected
+5. Click "Build"
+6. Find the application in the file system and run it
+
+BUILDING/RUNNING THE GAME AS A WEBGL APPLICATION (if not using provided webgl application)
+1. Open the Unity app
+2. Select the project from the file system
+3. Click File -> Build Settings...
+4. Ensure that "WebGL" is selected
+5. Click "Build"
+6. Find the application in the file system. It may appear as a folder, or an application
+    - If it's an application, open the contents of the application and run "index.html"
+    - If it's a folder, open the folder and run "index.html"
