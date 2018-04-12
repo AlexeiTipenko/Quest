@@ -1,0 +1,215 @@
+-------------------- INITIALIZE LOGGER ---------------------
+2018-04-11T23:31:00.7598310-04:00: Logger initialized
+2018-04-11T23:31:00.7601230-04:00 [INFO]: Creating card: Knight of the Round Table
+2018-04-11T23:31:00.7605210-04:00 [INFO]: Creating card: Champion Knight
+2018-04-11T23:31:00.7607020-04:00 [INFO]: Creating card: Knight
+2018-04-11T23:31:00.7608810-04:00 [INFO]: Creating card: Squire
+2018-04-11T23:31:00.7621080-04:00 [INFO]: Creating card: Knight of the Round Table
+2018-04-11T23:31:00.7622920-04:00 [INFO]: Creating card: Champion Knight
+2018-04-11T23:31:00.7624580-04:00 [INFO]: Creating card: Knight
+2018-04-11T23:31:00.7626210-04:00 [INFO]: Creating card: Squire
+2018-04-11T23:31:00.8320860-04:00 [INFO]: Player list passed to BoardManager
+2018-04-11T23:31:00.8329600-04:00 [INFO]: Player entered: bob (Human)
+2018-04-11T23:31:00.8333940-04:00 [INFO]: Player entered: nick (Human)
+2018-04-11T23:31:00.8347780-04:00 [INFO]: Creating card: Dragon
+2018-04-11T23:31:00.8350980-04:00 [INFO]: Creating card: Giant
+2018-04-11T23:31:00.8352700-04:00 [INFO]: Creating card: Giant
+2018-04-11T23:31:00.8355460-04:00 [INFO]: Creating card: Mordred
+2018-04-11T23:31:00.8357030-04:00 [INFO]: Creating card: Mordred
+2018-04-11T23:31:00.8358780-04:00 [INFO]: Creating card: Mordred
+2018-04-11T23:31:00.8360510-04:00 [INFO]: Creating card: Mordred
+2018-04-11T23:31:00.8363400-04:00 [INFO]: Creating card: Green Knight
+2018-04-11T23:31:00.8365100-04:00 [INFO]: Creating card: Green Knight
+2018-04-11T23:31:00.8368020-04:00 [INFO]: Creating card: Black Knight
+2018-04-11T23:31:00.8369900-04:00 [INFO]: Creating card: Black Knight
+2018-04-11T23:31:00.8371720-04:00 [INFO]: Creating card: Black Knight
+2018-04-11T23:31:00.8374760-04:00 [INFO]: Creating card: Evil Knight
+2018-04-11T23:31:00.8376590-04:00 [INFO]: Creating card: Evil Knight
+2018-04-11T23:31:00.8378310-04:00 [INFO]: Creating card: Evil Knight
+2018-04-11T23:31:00.8379990-04:00 [INFO]: Creating card: Evil Knight
+2018-04-11T23:31:00.8381710-04:00 [INFO]: Creating card: Evil Knight
+2018-04-11T23:31:00.8383490-04:00 [INFO]: Creating card: Evil Knight
+2018-04-11T23:31:00.8386330-04:00 [INFO]: Creating card: Saxon Knight
+2018-04-11T23:31:00.8387960-04:00 [INFO]: Creating card: Saxon Knight
+2018-04-11T23:31:00.8389690-04:00 [INFO]: Creating card: Saxon Knight
+2018-04-11T23:31:00.8391400-04:00 [INFO]: Creating card: Saxon Knight
+2018-04-11T23:31:00.8393130-04:00 [INFO]: Creating card: Saxon Knight
+2018-04-11T23:31:00.8394960-04:00 [INFO]: Creating card: Saxon Knight
+2018-04-11T23:31:00.8396990-04:00 [INFO]: Creating card: Saxon Knight
+2018-04-11T23:31:00.8399010-04:00 [INFO]: Creating card: Saxon Knight
+2018-04-11T23:31:00.8402460-04:00 [INFO]: Creating card: Robber Knight
+2018-04-11T23:31:00.8404540-04:00 [INFO]: Creating card: Robber Knight
+2018-04-11T23:31:00.8406460-04:00 [INFO]: Creating card: Robber Knight
+2018-04-11T23:31:00.8408150-04:00 [INFO]: Creating card: Robber Knight
+2018-04-11T23:31:00.8409850-04:00 [INFO]: Creating card: Robber Knight
+2018-04-11T23:31:00.8411530-04:00 [INFO]: Creating card: Robber Knight
+2018-04-11T23:31:00.8413260-04:00 [INFO]: Creating card: Robber Knight
+2018-04-11T23:31:00.8416050-04:00 [INFO]: Creating card: Saxons
+2018-04-11T23:31:00.8417710-04:00 [INFO]: Creating card: Saxons
+2018-04-11T23:31:00.8419320-04:00 [INFO]: Creating card: Saxons
+2018-04-11T23:31:00.8420900-04:00 [INFO]: Creating card: Saxons
+2018-04-11T23:31:00.8422510-04:00 [INFO]: Creating card: Saxons
+2018-04-11T23:31:00.8425190-04:00 [INFO]: Creating card: Boar
+2018-04-11T23:31:00.8427050-04:00 [INFO]: Creating card: Boar
+2018-04-11T23:31:00.8428890-04:00 [INFO]: Creating card: Boar
+2018-04-11T23:31:00.8431980-04:00 [INFO]: Creating card: Boar
+2018-04-11T23:31:00.8436680-04:00 [INFO]: Creating card: Thieves
+2018-04-11T23:31:00.8439210-04:00 [INFO]: Creating card: Thieves
+2018-04-11T23:31:00.8441900-04:00 [INFO]: Creating card: Thieves
+2018-04-11T23:31:00.8443890-04:00 [INFO]: Creating card: Thieves
+2018-04-11T23:31:00.8445750-04:00 [INFO]: Creating card: Thieves
+2018-04-11T23:31:00.8447570-04:00 [INFO]: Creating card: Thieves
+2018-04-11T23:31:00.8451290-04:00 [INFO]: Creating card: Thieves
+2018-04-11T23:31:00.8453450-04:00 [INFO]: Creating card: Thieves
+2018-04-11T23:31:00.8457270-04:00 [INFO]: Creating card: Test Of Valor
+2018-04-11T23:31:00.8459270-04:00 [INFO]: Creating card: Test Of Valor
+2018-04-11T23:31:00.8462340-04:00 [INFO]: Creating card: Test Of Temptation
+2018-04-11T23:31:00.8464260-04:00 [INFO]: Creating card: Test Of Temptation
+2018-04-11T23:31:00.8467430-04:00 [INFO]: Creating card: Test Of Morgan LeFey
+2018-04-11T23:31:00.8469360-04:00 [INFO]: Creating card: Test Of Morgan LeFey
+2018-04-11T23:31:00.8472370-04:00 [INFO]: Creating card: Test Of The Questing Beast
+2018-04-11T23:31:00.8474110-04:00 [INFO]: Creating card: Test Of The Questing Beast
+2018-04-11T23:31:00.8477990-04:00 [INFO]: Creating card: Sir Galahad
+2018-04-11T23:31:00.8480780-04:00 [INFO]: Creating card: Sir Lancelot
+2018-04-11T23:31:00.8483510-04:00 [INFO]: Creating card: King Arthur
+2018-04-11T23:31:00.8486490-04:00 [INFO]: Creating card: Sir Tristan
+2018-04-11T23:31:00.8490290-04:00 [INFO]: Creating card: King Pellinore
+2018-04-11T23:31:00.8493370-04:00 [INFO]: Creating card: Sir Gawain
+2018-04-11T23:31:00.8496300-04:00 [INFO]: Creating card: Sir Percival
+2018-04-11T23:31:00.8499240-04:00 [INFO]: Creating card: Queen Guinevere
+2018-04-11T23:31:00.8502090-04:00 [INFO]: Creating card: Queen Iseult
+2018-04-11T23:31:00.8505000-04:00 [INFO]: Creating card: Merlin
+2018-04-11T23:31:00.8507690-04:00 [INFO]: Creating card: Amour
+2018-04-11T23:31:00.8509280-04:00 [INFO]: Creating card: Amour
+2018-04-11T23:31:00.8511050-04:00 [INFO]: Creating card: Amour
+2018-04-11T23:31:00.8512800-04:00 [INFO]: Creating card: Amour
+2018-04-11T23:31:00.8514530-04:00 [INFO]: Creating card: Amour
+2018-04-11T23:31:00.8516260-04:00 [INFO]: Creating card: Amour
+2018-04-11T23:31:00.8517980-04:00 [INFO]: Creating card: Amour
+2018-04-11T23:31:00.8519700-04:00 [INFO]: Creating card: Amour
+2018-04-11T23:31:00.8522890-04:00 [INFO]: Creating card: Excalibur
+2018-04-11T23:31:00.8524460-04:00 [INFO]: Creating card: Excalibur
+2018-04-11T23:31:00.8527320-04:00 [INFO]: Creating card: Lance
+2018-04-11T23:31:00.8528880-04:00 [INFO]: Creating card: Lance
+2018-04-11T23:31:00.8530640-04:00 [INFO]: Creating card: Lance
+2018-04-11T23:31:00.8533370-04:00 [INFO]: Creating card: Lance
+2018-04-11T23:31:00.8535270-04:00 [INFO]: Creating card: Lance
+2018-04-11T23:31:00.8536990-04:00 [INFO]: Creating card: Lance
+2018-04-11T23:31:00.8539910-04:00 [INFO]: Creating card: Battle Ax
+2018-04-11T23:31:00.8541490-04:00 [INFO]: Creating card: Battle Ax
+2018-04-11T23:31:00.8543240-04:00 [INFO]: Creating card: Battle Ax
+2018-04-11T23:31:00.8544970-04:00 [INFO]: Creating card: Battle Ax
+2018-04-11T23:31:00.8546980-04:00 [INFO]: Creating card: Battle Ax
+2018-04-11T23:31:00.8549430-04:00 [INFO]: Creating card: Battle Ax
+2018-04-11T23:31:00.8551330-04:00 [INFO]: Creating card: Battle Ax
+2018-04-11T23:31:00.8553210-04:00 [INFO]: Creating card: Battle Ax
+2018-04-11T23:31:00.8556320-04:00 [INFO]: Creating card: Sword
+2018-04-11T23:31:00.8558190-04:00 [INFO]: Creating card: Sword
+2018-04-11T23:31:00.8559850-04:00 [INFO]: Creating card: Sword
+2018-04-11T23:31:00.8561510-04:00 [INFO]: Creating card: Sword
+2018-04-11T23:31:00.8563170-04:00 [INFO]: Creating card: Sword
+2018-04-11T23:31:00.8564810-04:00 [INFO]: Creating card: Sword
+2018-04-11T23:31:00.8566470-04:00 [INFO]: Creating card: Sword
+2018-04-11T23:31:00.8568090-04:00 [INFO]: Creating card: Sword
+2018-04-11T23:31:00.8569710-04:00 [INFO]: Creating card: Sword
+2018-04-11T23:31:00.8571320-04:00 [INFO]: Creating card: Sword
+2018-04-11T23:31:00.8572920-04:00 [INFO]: Creating card: Sword
+2018-04-11T23:31:00.8574540-04:00 [INFO]: Creating card: Sword
+2018-04-11T23:31:00.8576160-04:00 [INFO]: Creating card: Sword
+2018-04-11T23:31:00.8577780-04:00 [INFO]: Creating card: Sword
+2018-04-11T23:31:00.8579400-04:00 [INFO]: Creating card: Sword
+2018-04-11T23:31:00.8581040-04:00 [INFO]: Creating card: Sword
+2018-04-11T23:31:00.8584480-04:00 [INFO]: Creating card: Horse
+2018-04-11T23:31:00.8587400-04:00 [INFO]: Creating card: Horse
+2018-04-11T23:31:00.8589350-04:00 [INFO]: Creating card: Horse
+2018-04-11T23:31:00.8590980-04:00 [INFO]: Creating card: Horse
+2018-04-11T23:31:00.8592600-04:00 [INFO]: Creating card: Horse
+2018-04-11T23:31:00.8594410-04:00 [INFO]: Creating card: Horse
+2018-04-11T23:31:00.8595970-04:00 [INFO]: Creating card: Horse
+2018-04-11T23:31:00.8597540-04:00 [INFO]: Creating card: Horse
+2018-04-11T23:31:00.8599100-04:00 [INFO]: Creating card: Horse
+2018-04-11T23:31:00.8600830-04:00 [INFO]: Creating card: Horse
+2018-04-11T23:31:00.8602490-04:00 [INFO]: Creating card: Horse
+2018-04-11T23:31:00.8606360-04:00 [INFO]: Creating card: Dagger
+2018-04-11T23:31:00.8608610-04:00 [INFO]: Creating card: Dagger
+2018-04-11T23:31:00.8610430-04:00 [INFO]: Creating card: Dagger
+2018-04-11T23:31:00.8612180-04:00 [INFO]: Creating card: Dagger
+2018-04-11T23:31:00.8613930-04:00 [INFO]: Creating card: Dagger
+2018-04-11T23:31:00.8615740-04:00 [INFO]: Creating card: Dagger
+2018-04-11T23:31:00.8630840-04:00 [INFO]: Creating card: At Orkney
+2018-04-11T23:31:00.8635300-04:00 [INFO]: Creating card: At Camelot
+2018-04-11T23:31:00.8638740-04:00 [INFO]: Creating card: At Tintagel
+2018-04-11T23:31:00.8641640-04:00 [INFO]: Creating card: At York
+2018-04-11T23:31:00.8645010-04:00 [INFO]: Creating card: King's Recognition
+2018-04-11T23:31:00.8646750-04:00 [INFO]: Creating card: King's Recognition
+2018-04-11T23:31:00.8649380-04:00 [INFO]: Creating card: Queen's Favor
+2018-04-11T23:31:00.8651050-04:00 [INFO]: Creating card: Queen's Favor
+2018-04-11T23:31:00.8653830-04:00 [INFO]: Creating card: Court Called to Camelot
+2018-04-11T23:31:00.8813560-04:00 [INFO]: Creating card: Court Called to Camelot
+2018-04-11T23:31:00.8820830-04:00 [INFO]: Creating card: Pox
+2018-04-11T23:31:00.8825690-04:00 [INFO]: Creating card: Plague
+2018-04-11T23:31:00.8830860-04:00 [INFO]: Creating card: Chivalrous Deed
+2018-04-11T23:31:00.8835220-04:00 [INFO]: Creating card: Prosperity Throughout the Realm
+2018-04-11T23:31:00.8839890-04:00 [INFO]: Creating card: King's Call to Arms
+2018-04-11T23:31:00.8848800-04:00 [INFO]: Creating card: Search for the Holy Grail
+2018-04-11T23:31:00.8856020-04:00 [INFO]: Creating card: Test of the Green Knight
+2018-04-11T23:31:00.8860260-04:00 [INFO]: Creating card: Search for the Questing Beast
+2018-04-11T23:31:00.8865650-04:00 [INFO]: Creating card: Defend the Queen's Honor
+2018-04-11T23:31:00.8870610-04:00 [INFO]: Creating card: Rescue the Fair Maiden
+2018-04-11T23:31:00.8874430-04:00 [INFO]: Creating card: Journey through the Enchanted Forest
+2018-04-11T23:31:00.8878490-04:00 [INFO]: Creating card: Vanquish King Arthur's Enemies
+2018-04-11T23:31:00.8880320-04:00 [INFO]: Creating card: Vanquish King Arthur's Enemies
+2018-04-11T23:31:00.8883280-04:00 [INFO]: Creating card: Slay the Dragon
+2018-04-11T23:31:00.8886520-04:00 [INFO]: Creating card: Boar Hunt
+2018-04-11T23:31:00.8888660-04:00 [INFO]: Creating card: Boar Hunt
+2018-04-11T23:31:00.8892140-04:00 [INFO]: Creating card: Repel the Saxon Raiders
+2018-04-11T23:31:00.8894130-04:00 [INFO]: Creating card: Repel the Saxon Raiders
+2018-04-11T23:31:00.8902600-04:00 [INFO]: Card decks created
+2018-04-11T23:31:00.8906650-04:00 [INFO]: Dealing cards to player: bob, 12
+2018-04-11T23:31:00.8919180-04:00 [INFO]: Dealing cards to player: nick, 12
+2018-04-11T23:31:00.8927430-04:00 [INFO]: Game started...
+2018-04-11T23:31:00.8929300-04:00 [INFO]: Starting local game
+2018-04-11T23:31:00.8939290-04:00 [INFO]: BOB'S TURN
+2018-04-11T23:31:00.8945400-04:00 [INFO]: Drew card: Rescue the Fair Maiden
+2018-04-11T23:31:00.8951180-04:00 [INFO]: Started Quest behaviour
+2018-04-11T23:31:00.8985720-04:00 [INFO]: Destroying ally card canvas area.
+2018-04-11T23:31:00.9997590-04:00 [INFO]: Inside display player info, number of cards for player : bob is: 12
+2018-04-11T23:31:01.0002940-04:00 [INFO]: Inside display player info, shields for player : bob is: 0
+2018-04-11T23:31:01.0014520-04:00 [INFO]: Inside display player info, number of cards for player : nick is: 12
+2018-04-11T23:31:01.0016610-04:00 [INFO]: Inside display player info, shields for player : nick is: 0
+2018-04-11T23:31:01.0048970-04:00 [INFO]: bob's cards drawn to GUI
+2018-04-11T23:31:01.0064560-04:00 [INFO]: Setting interaction text: NEW QUEST DRAWN
+Would you like to sponsor this quest?
+2018-04-11T23:31:01.0082230-04:00 [INFO]: Prompted bob to sponsor quest.
+2018-04-11T23:31:01.0725200-04:00 [INFO]: Board manager started
+2018-04-11T23:31:05.6035780-04:00 [TRACE]: Sponsor declined: bob
+2018-04-11T23:31:05.6051330-04:00 [INFO]: Previous player is: bob
+2018-04-11T23:31:05.6063350-04:00 [INFO]: Returning player in get next player
+2018-04-11T23:31:05.6080320-04:00 [INFO]: Destroying ally card canvas area.
+2018-04-11T23:31:05.6504240-04:00 [INFO]: Inside display player info, number of cards for player : bob is: 12
+2018-04-11T23:31:05.6506920-04:00 [INFO]: Inside display player info, shields for player : bob is: 0
+2018-04-11T23:31:05.6513350-04:00 [INFO]: Inside display player info, number of cards for player : nick is: 12
+2018-04-11T23:31:05.6515260-04:00 [INFO]: Inside display player info, shields for player : nick is: 0
+2018-04-11T23:31:05.6529470-04:00 [INFO]: Adding button for Mordred's special ability.
+2018-04-11T23:31:05.6553690-04:00 [INFO]: nick's cards drawn to GUI
+2018-04-11T23:31:05.6566530-04:00 [INFO]: Setting interaction text: NEW QUEST DRAWN
+Would you like to sponsor this quest?
+2018-04-11T23:31:05.6586480-04:00 [INFO]: Prompted nick to sponsor quest.
+2018-04-11T23:31:09.2890650-04:00 [TRACE]: Sponsor declined: nick
+2018-04-11T23:31:09.2905320-04:00 [INFO]: Previous player is: nick
+2018-04-11T23:31:09.2917800-04:00 [INFO]: Returning player in get next player
+2018-04-11T23:31:09.2936970-04:00 [INFO]: Destroying ally card canvas area.
+2018-04-11T23:31:09.2973550-04:00 [INFO]: Discarded card: Rescue the Fair Maiden
+2018-04-11T23:31:09.2984680-04:00 [INFO]: NICK'S TURN
+2018-04-11T23:31:09.2995410-04:00 [INFO]: Drew card: Search for the Holy Grail
+2018-04-11T23:31:09.3008360-04:00 [INFO]: Started Quest behaviour
+2018-04-11T23:31:09.3024010-04:00 [INFO]: Destroying ally card canvas area.
+2018-04-11T23:31:09.3118670-04:00 [INFO]: Inside display player info, number of cards for player : bob is: 12
+2018-04-11T23:31:09.3121850-04:00 [INFO]: Inside display player info, shields for player : bob is: 0
+2018-04-11T23:31:09.3129340-04:00 [INFO]: Inside display player info, number of cards for player : nick is: 12
+2018-04-11T23:31:09.3131480-04:00 [INFO]: Inside display player info, shields for player : nick is: 0
+2018-04-11T23:31:09.3147700-04:00 [INFO]: Adding button for Mordred's special ability.
+2018-04-11T23:31:09.3162090-04:00 [INFO]: nick's cards drawn to GUI
+2018-04-11T23:31:09.3176380-04:00 [INFO]: Setting interaction text: NEW QUEST DRAWN
+Would you like to sponsor this quest?
+2018-04-11T23:31:09.3201390-04:00 [INFO]: Prompted nick to sponsor quest.

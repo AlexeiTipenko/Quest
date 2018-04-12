@@ -1,0 +1,594 @@
+-------------------- INITIALIZE LOGGER ---------------------
+2018-04-11T22:57:53.8579420-04:00: Logger initialized
+2018-04-11T22:57:53.8582290-04:00 [INFO]: Creating card: Knight of the Round Table
+2018-04-11T22:57:53.8585920-04:00 [INFO]: Creating card: Champion Knight
+2018-04-11T22:57:53.8588340-04:00 [INFO]: Creating card: Knight
+2018-04-11T22:57:53.8590300-04:00 [INFO]: Creating card: Squire
+2018-04-11T22:57:53.8630320-04:00 [INFO]: Creating card: Knight of the Round Table
+2018-04-11T22:57:53.8632860-04:00 [INFO]: Creating card: Champion Knight
+2018-04-11T22:57:53.8635230-04:00 [INFO]: Creating card: Knight
+2018-04-11T22:57:53.8637420-04:00 [INFO]: Creating card: Squire
+2018-04-11T22:57:53.8652360-04:00 [INFO]: Creating card: Knight of the Round Table
+2018-04-11T22:57:53.8654880-04:00 [INFO]: Creating card: Champion Knight
+2018-04-11T22:57:53.8658350-04:00 [INFO]: Creating card: Knight
+2018-04-11T22:57:53.8661370-04:00 [INFO]: Creating card: Squire
+2018-04-11T22:57:53.8674980-04:00 [INFO]: Creating card: Knight of the Round Table
+2018-04-11T22:57:53.8677090-04:00 [INFO]: Creating card: Champion Knight
+2018-04-11T22:57:53.8679260-04:00 [INFO]: Creating card: Knight
+2018-04-11T22:57:53.8681100-04:00 [INFO]: Creating card: Squire
+2018-04-11T22:57:53.9510630-04:00 [INFO]: Player list passed to BoardManager
+2018-04-11T22:57:53.9521400-04:00 [INFO]: Player entered: P#94 (Human)
+2018-04-11T22:57:53.9527860-04:00 [INFO]: Player entered: P#83 (Human)
+2018-04-11T22:57:53.9534920-04:00 [INFO]: Player entered: P#45 (Human)
+2018-04-11T22:57:53.9540930-04:00 [INFO]: Player entered: P#64 (Human)
+2018-04-11T22:57:53.9555800-04:00 [INFO]: Creating card: Dragon
+2018-04-11T22:57:53.9559150-04:00 [INFO]: Creating card: Giant
+2018-04-11T22:57:53.9561360-04:00 [INFO]: Creating card: Giant
+2018-04-11T22:57:53.9565290-04:00 [INFO]: Creating card: Mordred
+2018-04-11T22:57:53.9567530-04:00 [INFO]: Creating card: Mordred
+2018-04-11T22:57:53.9569720-04:00 [INFO]: Creating card: Mordred
+2018-04-11T22:57:53.9572170-04:00 [INFO]: Creating card: Mordred
+2018-04-11T22:57:53.9576080-04:00 [INFO]: Creating card: Green Knight
+2018-04-11T22:57:53.9578240-04:00 [INFO]: Creating card: Green Knight
+2018-04-11T22:57:53.9581870-04:00 [INFO]: Creating card: Black Knight
+2018-04-11T22:57:53.9584080-04:00 [INFO]: Creating card: Black Knight
+2018-04-11T22:57:53.9586720-04:00 [INFO]: Creating card: Black Knight
+2018-04-11T22:57:53.9589820-04:00 [INFO]: Creating card: Evil Knight
+2018-04-11T22:57:53.9592190-04:00 [INFO]: Creating card: Evil Knight
+2018-04-11T22:57:53.9594430-04:00 [INFO]: Creating card: Evil Knight
+2018-04-11T22:57:53.9598820-04:00 [INFO]: Creating card: Evil Knight
+2018-04-11T22:57:53.9601420-04:00 [INFO]: Creating card: Evil Knight
+2018-04-11T22:57:53.9603690-04:00 [INFO]: Creating card: Evil Knight
+2018-04-11T22:57:53.9607690-04:00 [INFO]: Creating card: Saxon Knight
+2018-04-11T22:57:53.9609990-04:00 [INFO]: Creating card: Saxon Knight
+2018-04-11T22:57:53.9612600-04:00 [INFO]: Creating card: Saxon Knight
+2018-04-11T22:57:53.9614870-04:00 [INFO]: Creating card: Saxon Knight
+2018-04-11T22:57:53.9616990-04:00 [INFO]: Creating card: Saxon Knight
+2018-04-11T22:57:53.9619570-04:00 [INFO]: Creating card: Saxon Knight
+2018-04-11T22:57:53.9622000-04:00 [INFO]: Creating card: Saxon Knight
+2018-04-11T22:57:53.9624160-04:00 [INFO]: Creating card: Saxon Knight
+2018-04-11T22:57:53.9628070-04:00 [INFO]: Creating card: Robber Knight
+2018-04-11T22:57:53.9630100-04:00 [INFO]: Creating card: Robber Knight
+2018-04-11T22:57:53.9632980-04:00 [INFO]: Creating card: Robber Knight
+2018-04-11T22:57:53.9635860-04:00 [INFO]: Creating card: Robber Knight
+2018-04-11T22:57:53.9639210-04:00 [INFO]: Creating card: Robber Knight
+2018-04-11T22:57:53.9641770-04:00 [INFO]: Creating card: Robber Knight
+2018-04-11T22:57:53.9644160-04:00 [INFO]: Creating card: Robber Knight
+2018-04-11T22:57:53.9647440-04:00 [INFO]: Creating card: Saxons
+2018-04-11T22:57:53.9649300-04:00 [INFO]: Creating card: Saxons
+2018-04-11T22:57:53.9650980-04:00 [INFO]: Creating card: Saxons
+2018-04-11T22:57:53.9652630-04:00 [INFO]: Creating card: Saxons
+2018-04-11T22:57:53.9654790-04:00 [INFO]: Creating card: Saxons
+2018-04-11T22:57:53.9657490-04:00 [INFO]: Creating card: Boar
+2018-04-11T22:57:53.9659280-04:00 [INFO]: Creating card: Boar
+2018-04-11T22:57:53.9660940-04:00 [INFO]: Creating card: Boar
+2018-04-11T22:57:53.9662670-04:00 [INFO]: Creating card: Boar
+2018-04-11T22:57:53.9667210-04:00 [INFO]: Creating card: Thieves
+2018-04-11T22:57:53.9669320-04:00 [INFO]: Creating card: Thieves
+2018-04-11T22:57:53.9671330-04:00 [INFO]: Creating card: Thieves
+2018-04-11T22:57:53.9673110-04:00 [INFO]: Creating card: Thieves
+2018-04-11T22:57:53.9674910-04:00 [INFO]: Creating card: Thieves
+2018-04-11T22:57:53.9676630-04:00 [INFO]: Creating card: Thieves
+2018-04-11T22:57:53.9678440-04:00 [INFO]: Creating card: Thieves
+2018-04-11T22:57:53.9680250-04:00 [INFO]: Creating card: Thieves
+2018-04-11T22:57:53.9684460-04:00 [INFO]: Creating card: Test Of Valor
+2018-04-11T22:57:53.9686500-04:00 [INFO]: Creating card: Test Of Valor
+2018-04-11T22:57:53.9689520-04:00 [INFO]: Creating card: Test Of Temptation
+2018-04-11T22:57:53.9691490-04:00 [INFO]: Creating card: Test Of Temptation
+2018-04-11T22:57:53.9696350-04:00 [INFO]: Creating card: Test Of Morgan LeFey
+2018-04-11T22:57:53.9698550-04:00 [INFO]: Creating card: Test Of Morgan LeFey
+2018-04-11T22:57:53.9702130-04:00 [INFO]: Creating card: Test Of The Questing Beast
+2018-04-11T22:57:53.9704040-04:00 [INFO]: Creating card: Test Of The Questing Beast
+2018-04-11T22:57:53.9707330-04:00 [INFO]: Creating card: Sir Galahad
+2018-04-11T22:57:53.9710210-04:00 [INFO]: Creating card: Sir Lancelot
+2018-04-11T22:57:53.9714860-04:00 [INFO]: Creating card: King Arthur
+2018-04-11T22:57:53.9718830-04:00 [INFO]: Creating card: Sir Tristan
+2018-04-11T22:57:53.9721750-04:00 [INFO]: Creating card: King Pellinore
+2018-04-11T22:57:53.9724580-04:00 [INFO]: Creating card: Sir Gawain
+2018-04-11T22:57:53.9728310-04:00 [INFO]: Creating card: Sir Percival
+2018-04-11T22:57:53.9732530-04:00 [INFO]: Creating card: Queen Guinevere
+2018-04-11T22:57:53.9737140-04:00 [INFO]: Creating card: Queen Iseult
+2018-04-11T22:57:53.9742900-04:00 [INFO]: Creating card: Merlin
+2018-04-11T22:57:53.9747340-04:00 [INFO]: Creating card: Amour
+2018-04-11T22:57:53.9750450-04:00 [INFO]: Creating card: Amour
+2018-04-11T22:57:53.9753330-04:00 [INFO]: Creating card: Amour
+2018-04-11T22:57:53.9756170-04:00 [INFO]: Creating card: Amour
+2018-04-11T22:57:53.9758900-04:00 [INFO]: Creating card: Amour
+2018-04-11T22:57:53.9762110-04:00 [INFO]: Creating card: Amour
+2018-04-11T22:57:53.9765400-04:00 [INFO]: Creating card: Amour
+2018-04-11T22:57:53.9768570-04:00 [INFO]: Creating card: Amour
+2018-04-11T22:57:53.9774470-04:00 [INFO]: Creating card: Excalibur
+2018-04-11T22:57:53.9778320-04:00 [INFO]: Creating card: Excalibur
+2018-04-11T22:57:53.9783900-04:00 [INFO]: Creating card: Lance
+2018-04-11T22:57:53.9788460-04:00 [INFO]: Creating card: Lance
+2018-04-11T22:57:53.9792500-04:00 [INFO]: Creating card: Lance
+2018-04-11T22:57:53.9796040-04:00 [INFO]: Creating card: Lance
+2018-04-11T22:57:53.9799130-04:00 [INFO]: Creating card: Lance
+2018-04-11T22:57:53.9802350-04:00 [INFO]: Creating card: Lance
+2018-04-11T22:57:53.9808190-04:00 [INFO]: Creating card: Battle Ax
+2018-04-11T22:57:53.9812190-04:00 [INFO]: Creating card: Battle Ax
+2018-04-11T22:57:53.9815560-04:00 [INFO]: Creating card: Battle Ax
+2018-04-11T22:57:53.9819000-04:00 [INFO]: Creating card: Battle Ax
+2018-04-11T22:57:53.9822320-04:00 [INFO]: Creating card: Battle Ax
+2018-04-11T22:57:53.9825420-04:00 [INFO]: Creating card: Battle Ax
+2018-04-11T22:57:53.9828730-04:00 [INFO]: Creating card: Battle Ax
+2018-04-11T22:57:53.9832270-04:00 [INFO]: Creating card: Battle Ax
+2018-04-11T22:57:53.9837900-04:00 [INFO]: Creating card: Sword
+2018-04-11T22:57:53.9841680-04:00 [INFO]: Creating card: Sword
+2018-04-11T22:57:53.9844820-04:00 [INFO]: Creating card: Sword
+2018-04-11T22:57:53.9847760-04:00 [INFO]: Creating card: Sword
+2018-04-11T22:57:53.9850530-04:00 [INFO]: Creating card: Sword
+2018-04-11T22:57:53.9853210-04:00 [INFO]: Creating card: Sword
+2018-04-11T22:57:53.9857410-04:00 [INFO]: Creating card: Sword
+2018-04-11T22:57:53.9860700-04:00 [INFO]: Creating card: Sword
+2018-04-11T22:57:53.9863270-04:00 [INFO]: Creating card: Sword
+2018-04-11T22:57:53.9866420-04:00 [INFO]: Creating card: Sword
+2018-04-11T22:57:53.9869630-04:00 [INFO]: Creating card: Sword
+2018-04-11T22:57:53.9873570-04:00 [INFO]: Creating card: Sword
+2018-04-11T22:57:53.9877000-04:00 [INFO]: Creating card: Sword
+2018-04-11T22:57:53.9880190-04:00 [INFO]: Creating card: Sword
+2018-04-11T22:57:53.9883200-04:00 [INFO]: Creating card: Sword
+2018-04-11T22:57:53.9886200-04:00 [INFO]: Creating card: Sword
+2018-04-11T22:57:53.9890830-04:00 [INFO]: Creating card: Horse
+2018-04-11T22:57:53.9894670-04:00 [INFO]: Creating card: Horse
+2018-04-11T22:57:53.9898050-04:00 [INFO]: Creating card: Horse
+2018-04-11T22:57:53.9901700-04:00 [INFO]: Creating card: Horse
+2018-04-11T22:57:53.9904700-04:00 [INFO]: Creating card: Horse
+2018-04-11T22:57:53.9907690-04:00 [INFO]: Creating card: Horse
+2018-04-11T22:57:53.9910030-04:00 [INFO]: Creating card: Horse
+2018-04-11T22:57:53.9912130-04:00 [INFO]: Creating card: Horse
+2018-04-11T22:57:53.9914940-04:00 [INFO]: Creating card: Horse
+2018-04-11T22:57:53.9917080-04:00 [INFO]: Creating card: Horse
+2018-04-11T22:57:53.9920260-04:00 [INFO]: Creating card: Horse
+2018-04-11T22:57:53.9925450-04:00 [INFO]: Creating card: Dagger
+2018-04-11T22:57:53.9928770-04:00 [INFO]: Creating card: Dagger
+2018-04-11T22:57:53.9931760-04:00 [INFO]: Creating card: Dagger
+2018-04-11T22:57:53.9934810-04:00 [INFO]: Creating card: Dagger
+2018-04-11T22:57:53.9937740-04:00 [INFO]: Creating card: Dagger
+2018-04-11T22:57:53.9940370-04:00 [INFO]: Creating card: Dagger
+2018-04-11T22:57:54.0001440-04:00 [INFO]: Creating card: At Orkney
+2018-04-11T22:57:54.0005290-04:00 [INFO]: Creating card: At Camelot
+2018-04-11T22:57:54.0010350-04:00 [INFO]: Creating card: At Tintagel
+2018-04-11T22:57:54.0016750-04:00 [INFO]: Creating card: At York
+2018-04-11T22:57:54.0021790-04:00 [INFO]: Creating card: King's Recognition
+2018-04-11T22:57:54.0023930-04:00 [INFO]: Creating card: King's Recognition
+2018-04-11T22:57:54.0027300-04:00 [INFO]: Creating card: Queen's Favor
+2018-04-11T22:57:54.0029310-04:00 [INFO]: Creating card: Queen's Favor
+2018-04-11T22:57:54.0032410-04:00 [INFO]: Creating card: Court Called to Camelot
+2018-04-11T22:57:54.0034400-04:00 [INFO]: Creating card: Court Called to Camelot
+2018-04-11T22:57:54.0037450-04:00 [INFO]: Creating card: Pox
+2018-04-11T22:57:54.0041520-04:00 [INFO]: Creating card: Plague
+2018-04-11T22:57:54.0045050-04:00 [INFO]: Creating card: Chivalrous Deed
+2018-04-11T22:57:54.0048490-04:00 [INFO]: Creating card: Prosperity Throughout the Realm
+2018-04-11T22:57:54.0051490-04:00 [INFO]: Creating card: King's Call to Arms
+2018-04-11T22:57:54.0056340-04:00 [INFO]: Creating card: Search for the Holy Grail
+2018-04-11T22:57:54.0061630-04:00 [INFO]: Creating card: Test of the Green Knight
+2018-04-11T22:57:54.0064930-04:00 [INFO]: Creating card: Search for the Questing Beast
+2018-04-11T22:57:54.0069070-04:00 [INFO]: Creating card: Defend the Queen's Honor
+2018-04-11T22:57:54.0073360-04:00 [INFO]: Creating card: Rescue the Fair Maiden
+2018-04-11T22:57:54.0076700-04:00 [INFO]: Creating card: Journey through the Enchanted Forest
+2018-04-11T22:57:54.0080350-04:00 [INFO]: Creating card: Vanquish King Arthur's Enemies
+2018-04-11T22:57:54.0082400-04:00 [INFO]: Creating card: Vanquish King Arthur's Enemies
+2018-04-11T22:57:54.0085640-04:00 [INFO]: Creating card: Slay the Dragon
+2018-04-11T22:57:54.0088890-04:00 [INFO]: Creating card: Boar Hunt
+2018-04-11T22:57:54.0091020-04:00 [INFO]: Creating card: Boar Hunt
+2018-04-11T22:57:54.0094220-04:00 [INFO]: Creating card: Repel the Saxon Raiders
+2018-04-11T22:57:54.0097540-04:00 [INFO]: Creating card: Repel the Saxon Raiders
+2018-04-11T22:57:54.0115640-04:00 [INFO]: Card decks created
+2018-04-11T22:57:54.0121520-04:00 [INFO]: Dealing cards to player: P#94, 12
+2018-04-11T22:57:54.0136460-04:00 [INFO]: Dealing cards to player: P#83, 12
+2018-04-11T22:57:54.0144150-04:00 [INFO]: Dealing cards to player: P#45, 12
+2018-04-11T22:57:54.0152080-04:00 [INFO]: Dealing cards to player: P#64, 12
+2018-04-11T22:57:54.0162130-04:00 [INFO]: Game started...
+2018-04-11T22:57:54.0164360-04:00 [INFO]: Starting local game
+2018-04-11T22:57:54.0175080-04:00 [INFO]: P#94'S TURN
+2018-04-11T22:57:54.0181150-04:00 [INFO]: Drew card: Slay the Dragon
+2018-04-11T22:57:54.0188670-04:00 [INFO]: Started Quest behaviour
+2018-04-11T22:57:54.0216770-04:00 [INFO]: Destroying ally card canvas area.
+2018-04-11T22:57:54.0248270-04:00 [INFO]: Local player id: 3
+2018-04-11T22:57:54.0252930-04:00 [INFO]: Drawing for player (+ 1): 1
+2018-04-11T22:57:54.0281530-04:00 [INFO]: Inside else statement
+2018-04-11T22:57:54.0719020-04:00 [INFO]: Inside display player info, number of cards for player : P#94 is: 12
+2018-04-11T22:57:54.0723780-04:00 [INFO]: Inside display player info, shields for player : P#94 is: 0
+2018-04-11T22:57:54.0740520-04:00 [INFO]: Inside display player info, number of cards for player : P#83 is: 12
+2018-04-11T22:57:54.0745970-04:00 [INFO]: Inside display player info, shields for player : P#83 is: 0
+2018-04-11T22:57:54.0762220-04:00 [INFO]: Inside display player info, number of cards for player : P#45 is: 12
+2018-04-11T22:57:54.0767740-04:00 [INFO]: Inside display player info, shields for player : P#45 is: 0
+2018-04-11T22:57:54.0782320-04:00 [INFO]: Inside display player info, number of cards for player : P#64 is: 12
+2018-04-11T22:57:54.0792800-04:00 [INFO]: Inside display player info, shields for player : P#64 is: 0
+2018-04-11T22:57:54.0846770-04:00 [INFO]: P#94's cards drawn to GUI
+2018-04-11T22:57:54.0882620-04:00 [INFO]: Setting interaction text: NEW QUEST DRAWN
+Asking P#94 to sponsor this quest.
+2018-04-11T22:57:54.0909390-04:00 [INFO]: Prompted P#94 to sponsor quest.
+2018-04-11T22:57:54.1703060-04:00 [INFO]: Board manager started
+2018-04-11T22:57:55.9397970-04:00 [TRACE]: Sponsor declined: P#94
+2018-04-11T22:57:55.9424050-04:00 [INFO]: Previous player is: P#94
+2018-04-11T22:57:55.9439980-04:00 [INFO]: Returning player in get next player
+2018-04-11T22:57:55.9459740-04:00 [INFO]: Destroying ally card canvas area.
+2018-04-11T22:57:55.9463210-04:00 [INFO]: Local player id: 3
+2018-04-11T22:57:55.9464920-04:00 [INFO]: Drawing for player (+ 1): 2
+2018-04-11T22:57:55.9499290-04:00 [INFO]: Inside else statement
+2018-04-11T22:57:55.9649910-04:00 [INFO]: Inside display player info, number of cards for player : P#94 is: 12
+2018-04-11T22:57:55.9652690-04:00 [INFO]: Inside display player info, shields for player : P#94 is: 0
+2018-04-11T22:57:55.9661160-04:00 [INFO]: Inside display player info, number of cards for player : P#83 is: 12
+2018-04-11T22:57:55.9664080-04:00 [INFO]: Inside display player info, shields for player : P#83 is: 0
+2018-04-11T22:57:55.9672170-04:00 [INFO]: Inside display player info, number of cards for player : P#45 is: 12
+2018-04-11T22:57:55.9674170-04:00 [INFO]: Inside display player info, shields for player : P#45 is: 0
+2018-04-11T22:57:55.9680720-04:00 [INFO]: Inside display player info, number of cards for player : P#64 is: 12
+2018-04-11T22:57:55.9682690-04:00 [INFO]: Inside display player info, shields for player : P#64 is: 0
+2018-04-11T22:57:55.9703730-04:00 [INFO]: Adding button for Mordred's special ability.
+2018-04-11T22:57:55.9757220-04:00 [INFO]: P#83's cards drawn to GUI
+2018-04-11T22:57:55.9773450-04:00 [INFO]: Setting interaction text: NEW QUEST DRAWN
+Asking P#83 to sponsor this quest.
+2018-04-11T22:57:55.9806460-04:00 [INFO]: Prompted P#83 to sponsor quest.
+2018-04-11T22:57:57.9948840-04:00 [INFO]: Sponsor accepted: P#83
+2018-04-11T22:57:57.9981750-04:00 [INFO]: Setting interaction text: QUEST BEING PREPARED
+P#83 is preparing to sponsor the quest.
+2018-04-11T22:57:58.0002390-04:00 [INFO]: Prompted P#83 to setup quest.
+2018-04-11T22:58:04.5300060-04:00 [INFO]: Found matching name
+2018-04-11T22:58:04.5380280-04:00 [INFO]: Discarded card: Test Of Temptation
+2018-04-11T22:58:04.5418330-04:00 [INFO]: Discarded card: Giant
+2018-04-11T22:58:04.5627730-04:00 [INFO]: Discarded card: Dragon
+2018-04-11T22:58:04.5638100-04:00 [INFO]: Quest setup complete
+2018-04-11T22:58:04.5651440-04:00 [INFO]: Previous player is: P#83
+2018-04-11T22:58:04.5664930-04:00 [INFO]: Returning player in get next player
+2018-04-11T22:58:04.5706030-04:00 [INFO]: Destroying ally card canvas area.
+2018-04-11T22:58:04.5710060-04:00 [INFO]: Local player id: 3
+2018-04-11T22:58:04.5711990-04:00 [INFO]: Drawing for player (+ 1): 3
+2018-04-11T22:58:04.5737780-04:00 [INFO]: PLAYER PHOTON ID AND TURN IS MATCHING
+2018-04-11T22:58:04.5959330-04:00 [INFO]: Inside display player info, number of cards for player : P#94 is: 12
+2018-04-11T22:58:04.5963110-04:00 [INFO]: Inside display player info, shields for player : P#94 is: 0
+2018-04-11T22:58:04.5973240-04:00 [INFO]: Inside display player info, number of cards for player : P#83 is: 9
+2018-04-11T22:58:04.5978720-04:00 [INFO]: Inside display player info, shields for player : P#83 is: 0
+2018-04-11T22:58:04.5994940-04:00 [INFO]: Inside display player info, number of cards for player : P#45 is: 12
+2018-04-11T22:58:04.5997110-04:00 [INFO]: Inside display player info, shields for player : P#45 is: 0
+2018-04-11T22:58:04.6004710-04:00 [INFO]: Inside display player info, number of cards for player : P#64 is: 12
+2018-04-11T22:58:04.6006960-04:00 [INFO]: Inside display player info, shields for player : P#64 is: 0
+2018-04-11T22:58:04.6022140-04:00 [INFO]: P#45's cards drawn to GUI
+2018-04-11T22:58:04.6043370-04:00 [INFO]: Setting interaction text: NEW QUEST DRAWN
+Would you like to participate in this quest?
+2018-04-11T22:58:04.6062620-04:00 [INFO]: Prompted P#45 to accept quest.
+2018-04-11T22:58:06.2006540-04:00 [DEBUG]: P#45 has accepted to participate in the quest
+2018-04-11T22:58:06.2012380-04:00 [INFO]: Drawing adventure card for player: P#45
+2018-04-11T22:58:06.2018460-04:00 [INFO]: Dealing cards to player: P#45, 1
+2018-04-11T22:58:06.2065660-04:00 [INFO]: Destroying ally card canvas area.
+2018-04-11T22:58:06.2070140-04:00 [INFO]: Local player id: 3
+2018-04-11T22:58:06.2072870-04:00 [INFO]: Drawing for player (+ 1): 3
+2018-04-11T22:58:06.2105640-04:00 [INFO]: PLAYER PHOTON ID AND TURN IS MATCHING
+2018-04-11T22:58:06.2176900-04:00 [INFO]: Inside display player info, number of cards for player : P#94 is: 12
+2018-04-11T22:58:06.2181150-04:00 [INFO]: Inside display player info, shields for player : P#94 is: 0
+2018-04-11T22:58:06.2189110-04:00 [INFO]: Inside display player info, number of cards for player : P#83 is: 9
+2018-04-11T22:58:06.2191220-04:00 [INFO]: Inside display player info, shields for player : P#83 is: 0
+2018-04-11T22:58:06.2199660-04:00 [INFO]: Inside display player info, number of cards for player : P#45 is: 13
+2018-04-11T22:58:06.2202310-04:00 [INFO]: Inside display player info, shields for player : P#45 is: 0
+2018-04-11T22:58:06.2210120-04:00 [INFO]: Inside display player info, number of cards for player : P#64 is: 12
+2018-04-11T22:58:06.2212380-04:00 [INFO]: Inside display player info, shields for player : P#64 is: 0
+2018-04-11T22:58:06.2227800-04:00 [INFO]: P#45's cards drawn to GUI
+2018-04-11T22:58:06.2271670-04:00 [INFO]: Setting interaction text: TOO MANY CARDS
+Please discard (or play) cards until you have at most 12.
+2018-04-11T22:58:06.2330690-04:00 [INFO]: Prompted P#45 to prepare cards to discard.
+2018-04-11T22:58:08.7503210-04:00 [INFO]: Discarded card: Sword
+2018-04-11T22:58:08.7546180-04:00 [INFO]: Previous player is: P#45
+2018-04-11T22:58:08.7556980-04:00 [INFO]: Returning player in get next player
+2018-04-11T22:58:08.7584870-04:00 [INFO]: Destroying ally card canvas area.
+2018-04-11T22:58:08.7587300-04:00 [INFO]: Local player id: 3
+2018-04-11T22:58:08.7589140-04:00 [INFO]: Drawing for player (+ 1): 4
+2018-04-11T22:58:08.7615210-04:00 [INFO]: Inside else statement
+2018-04-11T22:58:08.7693750-04:00 [INFO]: Inside display player info, number of cards for player : P#94 is: 12
+2018-04-11T22:58:08.7696370-04:00 [INFO]: Inside display player info, shields for player : P#94 is: 0
+2018-04-11T22:58:08.7703400-04:00 [INFO]: Inside display player info, number of cards for player : P#83 is: 9
+2018-04-11T22:58:08.7706150-04:00 [INFO]: Inside display player info, shields for player : P#83 is: 0
+2018-04-11T22:58:08.7712440-04:00 [INFO]: Inside display player info, number of cards for player : P#45 is: 12
+2018-04-11T22:58:08.7714290-04:00 [INFO]: Inside display player info, shields for player : P#45 is: 0
+2018-04-11T22:58:08.7720650-04:00 [INFO]: Inside display player info, number of cards for player : P#64 is: 12
+2018-04-11T22:58:08.7722480-04:00 [INFO]: Inside display player info, shields for player : P#64 is: 0
+2018-04-11T22:58:08.7749350-04:00 [INFO]: P#64's cards drawn to GUI
+2018-04-11T22:58:08.7770870-04:00 [INFO]: Setting interaction text: NEW QUEST DRAWN
+Asking P#64 to participate in this quest.
+2018-04-11T22:58:08.7791860-04:00 [INFO]: Prompted P#64 to accept quest.
+2018-04-11T22:58:10.3067510-04:00 [DEBUG]: P#64 has accepted to participate in the quest
+2018-04-11T22:58:10.3074950-04:00 [INFO]: Drawing adventure card for player: P#64
+2018-04-11T22:58:10.3078250-04:00 [INFO]: Dealing cards to player: P#64, 1
+2018-04-11T22:58:10.3125180-04:00 [INFO]: Destroying ally card canvas area.
+2018-04-11T22:58:10.3128940-04:00 [INFO]: Local player id: 3
+2018-04-11T22:58:10.3130780-04:00 [INFO]: Drawing for player (+ 1): 4
+2018-04-11T22:58:10.3162820-04:00 [INFO]: Inside else statement
+2018-04-11T22:58:10.3209480-04:00 [INFO]: Inside display player info, number of cards for player : P#94 is: 12
+2018-04-11T22:58:10.3212840-04:00 [INFO]: Inside display player info, shields for player : P#94 is: 0
+2018-04-11T22:58:10.3220070-04:00 [INFO]: Inside display player info, number of cards for player : P#83 is: 9
+2018-04-11T22:58:10.3222340-04:00 [INFO]: Inside display player info, shields for player : P#83 is: 0
+2018-04-11T22:58:10.3232920-04:00 [INFO]: Inside display player info, number of cards for player : P#45 is: 12
+2018-04-11T22:58:10.3237280-04:00 [INFO]: Inside display player info, shields for player : P#45 is: 0
+2018-04-11T22:58:10.3246710-04:00 [INFO]: Inside display player info, number of cards for player : P#64 is: 13
+2018-04-11T22:58:10.3249110-04:00 [INFO]: Inside display player info, shields for player : P#64 is: 0
+2018-04-11T22:58:10.3265720-04:00 [INFO]: P#64's cards drawn to GUI
+2018-04-11T22:58:10.3280290-04:00 [INFO]: Setting interaction text: TOO MANY CARDS
+Prompting P#64 to discard (or play) cards until they have at most 12.
+2018-04-11T22:58:10.3308530-04:00 [INFO]: Prompted P#64 to prepare cards to discard.
+2018-04-11T22:58:12.7404580-04:00 [INFO]: Received player: P#64
+2018-04-11T22:58:12.7408230-04:00 [INFO]: Found matching name
+2018-04-11T22:58:12.7429740-04:00 [INFO]: Discarded card: Sword
+2018-04-11T22:58:12.7481330-04:00 [INFO]: Previous player is: P#64
+2018-04-11T22:58:12.7492640-04:00 [INFO]: Returning player in get next player
+2018-04-11T22:58:12.7519760-04:00 [INFO]: Destroying ally card canvas area.
+2018-04-11T22:58:12.7522550-04:00 [INFO]: Local player id: 3
+2018-04-11T22:58:12.7524250-04:00 [INFO]: Drawing for player (+ 1): 1
+2018-04-11T22:58:12.7559090-04:00 [INFO]: Inside else statement
+2018-04-11T22:58:12.7599660-04:00 [INFO]: Inside display player info, number of cards for player : P#94 is: 12
+2018-04-11T22:58:12.7602490-04:00 [INFO]: Inside display player info, shields for player : P#94 is: 0
+2018-04-11T22:58:12.7609180-04:00 [INFO]: Inside display player info, number of cards for player : P#83 is: 9
+2018-04-11T22:58:12.7611070-04:00 [INFO]: Inside display player info, shields for player : P#83 is: 0
+2018-04-11T22:58:12.7620590-04:00 [INFO]: Inside display player info, number of cards for player : P#45 is: 12
+2018-04-11T22:58:12.7625420-04:00 [INFO]: Inside display player info, shields for player : P#45 is: 0
+2018-04-11T22:58:12.7642070-04:00 [INFO]: Inside display player info, number of cards for player : P#64 is: 12
+2018-04-11T22:58:12.7647980-04:00 [INFO]: Inside display player info, shields for player : P#64 is: 0
+2018-04-11T22:58:12.7678730-04:00 [INFO]: P#94's cards drawn to GUI
+2018-04-11T22:58:12.7698810-04:00 [INFO]: Setting interaction text: NEW QUEST DRAWN
+Asking P#94 to participate in this quest.
+2018-04-11T22:58:12.7726630-04:00 [INFO]: Prompted P#94 to accept quest.
+2018-04-11T22:58:14.6144960-04:00 [DEBUG]: P#94 has accepted to participate in the quest
+2018-04-11T22:58:14.6149810-04:00 [INFO]: Drawing adventure card for player: P#94
+2018-04-11T22:58:14.6152140-04:00 [INFO]: Dealing cards to player: P#94, 1
+2018-04-11T22:58:14.6198530-04:00 [INFO]: Destroying ally card canvas area.
+2018-04-11T22:58:14.6202960-04:00 [INFO]: Local player id: 3
+2018-04-11T22:58:14.6205240-04:00 [INFO]: Drawing for player (+ 1): 1
+2018-04-11T22:58:14.6237490-04:00 [INFO]: Inside else statement
+2018-04-11T22:58:14.6298030-04:00 [INFO]: Inside display player info, number of cards for player : P#94 is: 13
+2018-04-11T22:58:14.6301890-04:00 [INFO]: Inside display player info, shields for player : P#94 is: 0
+2018-04-11T22:58:14.6310400-04:00 [INFO]: Inside display player info, number of cards for player : P#83 is: 9
+2018-04-11T22:58:14.6312490-04:00 [INFO]: Inside display player info, shields for player : P#83 is: 0
+2018-04-11T22:58:14.6323970-04:00 [INFO]: Inside display player info, number of cards for player : P#45 is: 12
+2018-04-11T22:58:14.6328500-04:00 [INFO]: Inside display player info, shields for player : P#45 is: 0
+2018-04-11T22:58:14.6339640-04:00 [INFO]: Inside display player info, number of cards for player : P#64 is: 12
+2018-04-11T22:58:14.6344610-04:00 [INFO]: Inside display player info, shields for player : P#64 is: 0
+2018-04-11T22:58:14.6364250-04:00 [INFO]: Adding button for Mordred's special ability.
+2018-04-11T22:58:14.6382280-04:00 [INFO]: P#94's cards drawn to GUI
+2018-04-11T22:58:14.6397350-04:00 [INFO]: Setting interaction text: TOO MANY CARDS
+Prompting P#94 to discard (or play) cards until they have at most 12.
+2018-04-11T22:58:14.6428080-04:00 [INFO]: Prompted P#94 to prepare cards to discard.
+2018-04-11T22:58:17.5239640-04:00 [INFO]: Received player: P#94
+2018-04-11T22:58:17.5244300-04:00 [INFO]: Found matching name
+2018-04-11T22:58:17.5270630-04:00 [INFO]: Discarded card: Mordred
+2018-04-11T22:58:17.5326420-04:00 [INFO]: Previous player is: P#94
+2018-04-11T22:58:17.5344970-04:00 [INFO]: Returning player in get next player
+2018-04-11T22:58:17.5349900-04:00 [TRACE]: The total cards are 1
+2018-04-11T22:58:17.5352130-04:00 [TRACE]: The total cards are 1
+2018-04-11T22:58:17.5354090-04:00 [TRACE]: The total cards are 1
+2018-04-11T22:58:17.5356100-04:00 [DEBUG]: Starting quest.
+2018-04-11T22:58:17.5396320-04:00 [INFO]: Discarding all cards of class Weapon from play area
+2018-04-11T22:58:17.5409070-04:00 [INFO]: Discarding all cards of class Weapon from play area
+2018-04-11T22:58:17.5422510-04:00 [INFO]: Discarding all cards of class Weapon from play area
+2018-04-11T22:58:17.5434620-04:00 [INFO]: Discarding all cards of class Weapon from play area
+2018-04-11T22:58:17.5439020-04:00 [DEBUG]: Prepare function has started
+2018-04-11T22:58:17.5441590-04:00 [TRACE]: Stage card is NOT subclass type of foe
+2018-04-11T22:58:17.5465580-04:00 [INFO]: Previous player is: P#83
+2018-04-11T22:58:17.5479090-04:00 [INFO]: Returning player in get next player
+2018-04-11T22:58:17.5484390-04:00 [DEBUG]: prompting Test...
+2018-04-11T22:58:17.5533350-04:00 [INFO]: Destroying ally card canvas area.
+2018-04-11T22:58:17.5536850-04:00 [INFO]: Local player id: 3
+2018-04-11T22:58:17.5539750-04:00 [INFO]: Drawing for player (+ 1): 3
+2018-04-11T22:58:17.5569530-04:00 [INFO]: PLAYER PHOTON ID AND TURN IS MATCHING
+2018-04-11T22:58:17.5613730-04:00 [INFO]: Stage 0, card: Test Of Temptation
+2018-04-11T22:58:17.5629360-04:00 [INFO]: Inside display player info, number of cards for player : P#94 is: 12
+2018-04-11T22:58:17.5631810-04:00 [INFO]: Inside display player info, shields for player : P#94 is: 0
+2018-04-11T22:58:17.5640080-04:00 [INFO]: Inside display player info, number of cards for player : P#83 is: 9
+2018-04-11T22:58:17.5642900-04:00 [INFO]: Inside display player info, shields for player : P#83 is: 0
+2018-04-11T22:58:17.5651120-04:00 [INFO]: Inside display player info, number of cards for player : P#45 is: 12
+2018-04-11T22:58:17.5655260-04:00 [INFO]: Inside display player info, shields for player : P#45 is: 0
+2018-04-11T22:58:17.5664230-04:00 [INFO]: Inside display player info, number of cards for player : P#64 is: 12
+2018-04-11T22:58:17.5666450-04:00 [INFO]: Inside display player info, shields for player : P#64 is: 0
+2018-04-11T22:58:17.5686240-04:00 [INFO]: P#45's cards drawn to GUI
+2018-04-11T22:58:17.5705660-04:00 [INFO]: Setting interaction text: QUEST STAGE 0
+The current stage is a test, with a minimum bid of: 3. Do you wish to bid?
+2018-04-11T22:58:17.5748280-04:00 [INFO]: Prompting P#45 to enter TEST inside stage: 0
+2018-04-11T22:58:20.0667350-04:00 [DEBUG]: Prompting Test Response...
+2018-04-11T22:58:20.0713970-04:00 [INFO]: Previous player is: P#45
+2018-04-11T22:58:20.0732830-04:00 [INFO]: Returning player in get next player
+2018-04-11T22:58:20.0750920-04:00 [DEBUG]: prompting Test...
+2018-04-11T22:58:20.0954400-04:00 [INFO]: Destroying ally card canvas area.
+2018-04-11T22:58:20.0958260-04:00 [INFO]: Local player id: 3
+2018-04-11T22:58:20.0960780-04:00 [INFO]: Drawing for player (+ 1): 4
+2018-04-11T22:58:20.0992890-04:00 [INFO]: Inside else statement
+2018-04-11T22:58:20.1018470-04:00 [INFO]: Stage 0, card: Test Of Temptation
+2018-04-11T22:58:20.1030360-04:00 [INFO]: Inside display player info, number of cards for player : P#94 is: 12
+2018-04-11T22:58:20.1032770-04:00 [INFO]: Inside display player info, shields for player : P#94 is: 0
+2018-04-11T22:58:20.1039250-04:00 [INFO]: Inside display player info, number of cards for player : P#83 is: 9
+2018-04-11T22:58:20.1041090-04:00 [INFO]: Inside display player info, shields for player : P#83 is: 0
+2018-04-11T22:58:20.1047940-04:00 [INFO]: Inside display player info, number of cards for player : P#45 is: 12
+2018-04-11T22:58:20.1049910-04:00 [INFO]: Inside display player info, shields for player : P#45 is: 0
+2018-04-11T22:58:20.1056430-04:00 [INFO]: Inside display player info, number of cards for player : P#64 is: 12
+2018-04-11T22:58:20.1058270-04:00 [INFO]: Inside display player info, shields for player : P#64 is: 0
+2018-04-11T22:58:20.1073160-04:00 [INFO]: P#64's cards drawn to GUI
+2018-04-11T22:58:20.1088050-04:00 [INFO]: Setting interaction text: QUEST STAGE 0
+P#64 is bidding on the current test.
+2018-04-11T22:58:20.1106150-04:00 [INFO]: Prompting P#64 to enter TEST inside stage: 0
+2018-04-11T22:58:23.1401900-04:00 [DEBUG]: Prompting Test Response...
+2018-04-11T22:58:23.1446480-04:00 [INFO]: Previous player is: P#64
+2018-04-11T22:58:23.1458980-04:00 [INFO]: Returning player in get next player
+2018-04-11T22:58:23.1472550-04:00 [DEBUG]: prompting Test...
+2018-04-11T22:58:23.1511890-04:00 [INFO]: Destroying ally card canvas area.
+2018-04-11T22:58:23.1520150-04:00 [INFO]: Local player id: 3
+2018-04-11T22:58:23.1522830-04:00 [INFO]: Drawing for player (+ 1): 1
+2018-04-11T22:58:23.1556660-04:00 [INFO]: Inside else statement
+2018-04-11T22:58:23.1580370-04:00 [INFO]: Stage 0, card: Test Of Temptation
+2018-04-11T22:58:23.1592070-04:00 [INFO]: Inside display player info, number of cards for player : P#94 is: 12
+2018-04-11T22:58:23.1595240-04:00 [INFO]: Inside display player info, shields for player : P#94 is: 0
+2018-04-11T22:58:23.1606040-04:00 [INFO]: Inside display player info, number of cards for player : P#83 is: 9
+2018-04-11T22:58:23.1609430-04:00 [INFO]: Inside display player info, shields for player : P#83 is: 0
+2018-04-11T22:58:23.1618370-04:00 [INFO]: Inside display player info, number of cards for player : P#45 is: 12
+2018-04-11T22:58:23.1622960-04:00 [INFO]: Inside display player info, shields for player : P#45 is: 0
+2018-04-11T22:58:23.1632530-04:00 [INFO]: Inside display player info, number of cards for player : P#64 is: 12
+2018-04-11T22:58:23.1635090-04:00 [INFO]: Inside display player info, shields for player : P#64 is: 0
+2018-04-11T22:58:23.1653490-04:00 [INFO]: P#94's cards drawn to GUI
+2018-04-11T22:58:23.1667340-04:00 [INFO]: Setting interaction text: QUEST STAGE 0
+P#94 is bidding on the current test.
+2018-04-11T22:58:23.1689900-04:00 [INFO]: Prompting P#94 to enter TEST inside stage: 0
+2018-04-11T22:58:25.9958550-04:00 [DEBUG]: Prompting Test Response...
+2018-04-11T22:58:26.0021970-04:00 [INFO]: Previous player is: P#94
+2018-04-11T22:58:26.0037310-04:00 [INFO]: Returning player in get next player
+2018-04-11T22:58:26.0052340-04:00 [INFO]: Previous player is: P#83
+2018-04-11T22:58:26.0071150-04:00 [INFO]: Returning player in get next player
+2018-04-11T22:58:26.0084600-04:00 [DEBUG]: prompting Test...
+2018-04-11T22:58:26.0127660-04:00 [INFO]: Destroying ally card canvas area.
+2018-04-11T22:58:26.0131290-04:00 [INFO]: Local player id: 3
+2018-04-11T22:58:26.0133260-04:00 [INFO]: Drawing for player (+ 1): 3
+2018-04-11T22:58:26.0160420-04:00 [INFO]: PLAYER PHOTON ID AND TURN IS MATCHING
+2018-04-11T22:58:26.0206420-04:00 [INFO]: Stage 0, card: Test Of Temptation
+2018-04-11T22:58:26.0218550-04:00 [INFO]: Inside display player info, number of cards for player : P#94 is: 12
+2018-04-11T22:58:26.0220710-04:00 [INFO]: Inside display player info, shields for player : P#94 is: 0
+2018-04-11T22:58:26.0227340-04:00 [INFO]: Inside display player info, number of cards for player : P#83 is: 9
+2018-04-11T22:58:26.0229580-04:00 [INFO]: Inside display player info, shields for player : P#83 is: 0
+2018-04-11T22:58:26.0236260-04:00 [INFO]: Inside display player info, number of cards for player : P#45 is: 12
+2018-04-11T22:58:26.0238430-04:00 [INFO]: Inside display player info, shields for player : P#45 is: 0
+2018-04-11T22:58:26.0246330-04:00 [INFO]: Inside display player info, number of cards for player : P#64 is: 12
+2018-04-11T22:58:26.0248710-04:00 [INFO]: Inside display player info, shields for player : P#64 is: 0
+2018-04-11T22:58:26.0265040-04:00 [INFO]: P#45's cards drawn to GUI
+2018-04-11T22:58:26.0278780-04:00 [INFO]: Setting interaction text: QUEST STAGE 0
+The current stage is a test, with a minimum bid of: 6. Do you wish to bid?
+2018-04-11T22:58:26.0293960-04:00 [INFO]: Prompting P#45 to enter TEST inside stage: 0
+2018-04-11T22:58:28.2741810-04:00 [DEBUG]: Prompting Test Response...
+2018-04-11T22:58:28.2782460-04:00 [INFO]: Previous player is: P#45
+2018-04-11T22:58:28.2796240-04:00 [INFO]: Returning player in get next player
+2018-04-11T22:58:28.2805690-04:00 [DEBUG]: prompting Test...
+2018-04-11T22:58:28.3019940-04:00 [INFO]: Destroying ally card canvas area.
+2018-04-11T22:58:28.3023790-04:00 [INFO]: Local player id: 3
+2018-04-11T22:58:28.3026090-04:00 [INFO]: Drawing for player (+ 1): 4
+2018-04-11T22:58:28.3054970-04:00 [INFO]: Inside else statement
+2018-04-11T22:58:28.3084770-04:00 [INFO]: Stage 0, card: Test Of Temptation
+2018-04-11T22:58:28.3096410-04:00 [INFO]: Inside display player info, number of cards for player : P#94 is: 12
+2018-04-11T22:58:28.3098470-04:00 [INFO]: Inside display player info, shields for player : P#94 is: 0
+2018-04-11T22:58:28.3105580-04:00 [INFO]: Inside display player info, number of cards for player : P#83 is: 9
+2018-04-11T22:58:28.3107610-04:00 [INFO]: Inside display player info, shields for player : P#83 is: 0
+2018-04-11T22:58:28.3114110-04:00 [INFO]: Inside display player info, number of cards for player : P#45 is: 12
+2018-04-11T22:58:28.3116000-04:00 [INFO]: Inside display player info, shields for player : P#45 is: 0
+2018-04-11T22:58:28.3122770-04:00 [INFO]: Inside display player info, number of cards for player : P#64 is: 12
+2018-04-11T22:58:28.3124640-04:00 [INFO]: Inside display player info, shields for player : P#64 is: 0
+2018-04-11T22:58:28.3139830-04:00 [INFO]: P#64's cards drawn to GUI
+2018-04-11T22:58:28.3151610-04:00 [INFO]: Setting interaction text: QUEST STAGE 0
+P#64 is bidding on the current test.
+2018-04-11T22:58:28.3169360-04:00 [INFO]: Prompting P#64 to enter TEST inside stage: 0
+2018-04-11T22:58:29.9956210-04:00 [DEBUG]: Prompting Test Response...
+2018-04-11T22:58:29.9994520-04:00 [TRACE]: P#64 removed from quest
+2018-04-11T22:58:30.0006990-04:00 [DEBUG]: prompting Test...
+2018-04-11T22:58:30.0061130-04:00 [INFO]: Destroying ally card canvas area.
+2018-04-11T22:58:30.0067740-04:00 [INFO]: Local player id: 3
+2018-04-11T22:58:30.0069900-04:00 [INFO]: Drawing for player (+ 1): 1
+2018-04-11T22:58:30.0097870-04:00 [INFO]: Inside else statement
+2018-04-11T22:58:30.0124230-04:00 [INFO]: Stage 0, card: Test Of Temptation
+2018-04-11T22:58:30.0135510-04:00 [INFO]: Inside display player info, number of cards for player : P#94 is: 12
+2018-04-11T22:58:30.0137990-04:00 [INFO]: Inside display player info, shields for player : P#94 is: 0
+2018-04-11T22:58:30.0145420-04:00 [INFO]: Inside display player info, number of cards for player : P#83 is: 9
+2018-04-11T22:58:30.0147630-04:00 [INFO]: Inside display player info, shields for player : P#83 is: 0
+2018-04-11T22:58:30.0156270-04:00 [INFO]: Inside display player info, number of cards for player : P#45 is: 12
+2018-04-11T22:58:30.0158680-04:00 [INFO]: Inside display player info, shields for player : P#45 is: 0
+2018-04-11T22:58:30.0165680-04:00 [INFO]: Inside display player info, number of cards for player : P#64 is: 12
+2018-04-11T22:58:30.0169110-04:00 [INFO]: Inside display player info, shields for player : P#64 is: 0
+2018-04-11T22:58:30.0191270-04:00 [INFO]: P#94's cards drawn to GUI
+2018-04-11T22:58:30.0207700-04:00 [INFO]: Setting interaction text: QUEST STAGE 0
+P#94 is bidding on the current test.
+2018-04-11T22:58:30.0228130-04:00 [INFO]: Prompting P#94 to enter TEST inside stage: 0
+2018-04-11T22:58:31.7343970-04:00 [DEBUG]: Prompting Test Response...
+2018-04-11T22:58:31.7381280-04:00 [TRACE]: P#94 removed from quest
+2018-04-11T22:58:31.7394150-04:00 [DEBUG]: prompting Test...
+2018-04-11T22:58:31.7443050-04:00 [INFO]: Destroying ally card canvas area.
+2018-04-11T22:58:31.7447430-04:00 [INFO]: Local player id: 3
+2018-04-11T22:58:31.7449650-04:00 [INFO]: Drawing for player (+ 1): 3
+2018-04-11T22:58:31.7482040-04:00 [INFO]: PLAYER PHOTON ID AND TURN IS MATCHING
+2018-04-11T22:58:31.7544490-04:00 [INFO]: Stage 0, card: Test Of Temptation
+2018-04-11T22:58:31.7558330-04:00 [INFO]: Inside display player info, number of cards for player : P#94 is: 12
+2018-04-11T22:58:31.7561370-04:00 [INFO]: Inside display player info, shields for player : P#94 is: 0
+2018-04-11T22:58:31.7572740-04:00 [INFO]: Inside display player info, number of cards for player : P#83 is: 9
+2018-04-11T22:58:31.7575290-04:00 [INFO]: Inside display player info, shields for player : P#83 is: 0
+2018-04-11T22:58:31.7582370-04:00 [INFO]: Inside display player info, number of cards for player : P#45 is: 12
+2018-04-11T22:58:31.7584580-04:00 [INFO]: Inside display player info, shields for player : P#45 is: 0
+2018-04-11T22:58:31.7591850-04:00 [INFO]: Inside display player info, number of cards for player : P#64 is: 12
+2018-04-11T22:58:31.7595560-04:00 [INFO]: Inside display player info, shields for player : P#64 is: 0
+2018-04-11T22:58:31.7616780-04:00 [INFO]: P#45's cards drawn to GUI
+2018-04-11T22:58:31.7632980-04:00 [INFO]: Setting interaction text: QUEST STAGE 0
+You are the winner of the test, and you must discard/play a total of 6 bid points.
+2018-04-11T22:58:50.4649670-04:00 [INFO]: Discarded card: Saxon Knight
+2018-04-11T22:58:50.4664360-04:00 [INFO]: Discarded card: Robber Knight
+2018-04-11T22:58:50.4678340-04:00 [INFO]: Discarded card: Horse
+2018-04-11T22:58:50.4694700-04:00 [INFO]: Discarded card: Saxon Knight
+2018-04-11T22:58:50.4713400-04:00 [INFO]: Discarded card: Sir Lancelot
+2018-04-11T22:58:50.4731840-04:00 [INFO]: Discarded card: Thieves
+2018-04-11T22:58:50.4763170-04:00 [INFO]: Discarding all cards of class Weapon from play area
+2018-04-11T22:58:50.4774570-04:00 [INFO]: Discarding all cards of class Weapon from play area
+2018-04-11T22:58:50.4784550-04:00 [INFO]: Discarding all cards of class Weapon from play area
+2018-04-11T22:58:50.4795420-04:00 [INFO]: Discarding all cards of class Weapon from play area
+2018-04-11T22:58:50.4797300-04:00 [DEBUG]: Prepare function has started
+2018-04-11T22:58:50.4799640-04:00 [TRACE]: Stage card is subclass type of foe
+2018-04-11T22:58:50.4817740-04:00 [INFO]: Previous player is: P#83
+2018-04-11T22:58:50.4829390-04:00 [INFO]: Returning player in get next player
+2018-04-11T22:58:50.4847370-04:00 [INFO]: Previous player is: P#83
+2018-04-11T22:58:50.4859220-04:00 [INFO]: Returning player in get next player
+2018-04-11T22:58:50.4869190-04:00 [INFO]: playerToPrompt is: P#45
+2018-04-11T22:58:50.4878940-04:00 [INFO]: Checking amount of players: 1
+2018-04-11T22:58:50.4907160-04:00 [INFO]: Destroying ally card canvas area.
+2018-04-11T22:58:50.4910860-04:00 [INFO]: Local player id: 3
+2018-04-11T22:58:50.4913410-04:00 [INFO]: Drawing for player (+ 1): 3
+2018-04-11T22:58:50.4938210-04:00 [INFO]: PLAYER PHOTON ID AND TURN IS MATCHING
+2018-04-11T22:58:50.4962160-04:00 [INFO]: Stage 0, card: Test Of Temptation
+2018-04-11T22:58:50.4974530-04:00 [INFO]: Inside display player info, number of cards for player : P#94 is: 12
+2018-04-11T22:58:50.4976810-04:00 [INFO]: Inside display player info, shields for player : P#94 is: 0
+2018-04-11T22:58:50.4984730-04:00 [INFO]: Inside display player info, number of cards for player : P#83 is: 9
+2018-04-11T22:58:50.4986980-04:00 [INFO]: Inside display player info, shields for player : P#83 is: 0
+2018-04-11T22:58:50.5144040-04:00 [INFO]: Inside display player info, number of cards for player : P#45 is: 6
+2018-04-11T22:58:50.5147740-04:00 [INFO]: Inside display player info, shields for player : P#45 is: 0
+2018-04-11T22:58:50.5156730-04:00 [INFO]: Inside display player info, number of cards for player : P#64 is: 12
+2018-04-11T22:58:50.5159090-04:00 [INFO]: Inside display player info, shields for player : P#64 is: 0
+2018-04-11T22:58:50.5174820-04:00 [INFO]: P#45's cards drawn to GUI
+2018-04-11T22:58:50.5188600-04:00 [INFO]: Setting interaction text: QUEST STAGE 2
+You are facing a foe. You may place any number of cards, or drop out.
+2018-04-11T22:58:56.7469360-04:00 [TRACE]: dominantFoes are System.Collections.Generic.List`1[System.Type]
+2018-04-11T22:58:56.7473880-04:00 [TRACE]: The total battle points are 40
+2018-04-11T22:58:56.7476850-04:00 [TRACE]: Did not pass. Player will be removed: P#45
+2018-04-11T22:58:56.7509750-04:00 [INFO]: Destroying ally card canvas area.
+2018-04-11T22:58:56.7513940-04:00 [INFO]: Local player id: 3
+2018-04-11T22:58:56.7516460-04:00 [INFO]: Drawing for player (+ 1): 3
+2018-04-11T22:58:56.7550090-04:00 [INFO]: PLAYER PHOTON ID AND TURN IS MATCHING
+2018-04-11T22:58:56.7593720-04:00 [INFO]: Stage 0, card: Test Of Temptation
+2018-04-11T22:58:56.7598840-04:00 [INFO]: Stage 1, card: Giant
+2018-04-11T22:58:56.7608870-04:00 [INFO]: Inside display player info, number of cards for player : P#94 is: 12
+2018-04-11T22:58:56.7610980-04:00 [INFO]: Inside display player info, shields for player : P#94 is: 0
+2018-04-11T22:58:56.7617810-04:00 [INFO]: Inside display player info, number of cards for player : P#83 is: 9
+2018-04-11T22:58:56.7620820-04:00 [INFO]: Inside display player info, shields for player : P#83 is: 0
+2018-04-11T22:58:56.7628880-04:00 [INFO]: Inside display player info, number of cards for player : P#45 is: 6
+2018-04-11T22:58:56.7631090-04:00 [INFO]: Inside display player info, shields for player : P#45 is: 0
+2018-04-11T22:58:56.7637920-04:00 [INFO]: Inside display player info, number of cards for player : P#64 is: 12
+2018-04-11T22:58:56.7640060-04:00 [INFO]: Inside display player info, shields for player : P#64 is: 0
+2018-04-11T22:58:56.7658290-04:00 [INFO]: P#45's cards drawn to GUI
+2018-04-11T22:58:56.7674840-04:00 [INFO]: Setting interaction text: STAGE COMPLETE
+You were eliminated...
+2018-04-11T22:58:56.7690700-04:00 [INFO]: Displaying results of stage to P#45
+2018-04-11T22:58:58.8064680-04:00 [TRACE]: P#45 removed from quest
+2018-04-11T22:58:58.8094590-04:00 [INFO]: Discarding all cards of class Weapon from play area
+2018-04-11T22:58:58.8106530-04:00 [INFO]: Discarding all cards of class Weapon from play area
+2018-04-11T22:58:58.8117680-04:00 [INFO]: Discarding all cards of class Weapon from play area
+2018-04-11T22:58:58.8127370-04:00 [INFO]: Discarding all cards of class Weapon from play area
+2018-04-11T22:58:58.8133220-04:00 [INFO]: Discarding all cards of class Amour from play area
+2018-04-11T22:58:58.8135810-04:00 [INFO]: Discarding all cards of class Amour from play area
+2018-04-11T22:58:58.8138170-04:00 [INFO]: Discarding all cards of class Amour from play area
+2018-04-11T22:58:58.8142710-04:00 [INFO]: Discarding all cards of class Amour from play area
+2018-04-11T22:58:58.8146190-04:00 [TRACE]: numShieldsAwarded is 3
+2018-04-11T22:58:58.8158220-04:00 [INFO]: Dealing cards to player: P#83, 6
+2018-04-11T22:58:58.8200840-04:00 [INFO]: Destroying ally card canvas area.
+2018-04-11T22:58:58.8203900-04:00 [INFO]: Local player id: 3
+2018-04-11T22:58:58.8206080-04:00 [INFO]: Drawing for player (+ 1): 2
+2018-04-11T22:58:58.8236700-04:00 [INFO]: Inside else statement
+2018-04-11T22:58:58.8265580-04:00 [INFO]: Stage 0, card: Test Of Temptation
+2018-04-11T22:58:58.8270400-04:00 [INFO]: Stage 1, card: Giant
+2018-04-11T22:58:58.8273710-04:00 [INFO]: Stage 2, card: Dragon
+2018-04-11T22:58:58.8282320-04:00 [INFO]: Inside display player info, number of cards for player : P#94 is: 12
+2018-04-11T22:58:58.8284460-04:00 [INFO]: Inside display player info, shields for player : P#94 is: 0
+2018-04-11T22:58:58.8291470-04:00 [INFO]: Inside display player info, number of cards for player : P#83 is: 15
+2018-04-11T22:58:58.8293500-04:00 [INFO]: Inside display player info, shields for player : P#83 is: 0
+2018-04-11T22:58:58.8299900-04:00 [INFO]: Inside display player info, number of cards for player : P#45 is: 6
+2018-04-11T22:58:58.8301810-04:00 [INFO]: Inside display player info, shields for player : P#45 is: 0
+2018-04-11T22:58:58.8308600-04:00 [INFO]: Inside display player info, number of cards for player : P#64 is: 12
+2018-04-11T22:58:58.8310930-04:00 [INFO]: Inside display player info, shields for player : P#64 is: 0
+2018-04-11T22:58:58.8341620-04:00 [INFO]: Adding button for Mordred's special ability.
+2018-04-11T22:58:58.8359770-04:00 [INFO]: P#83's cards drawn to GUI
+2018-04-11T22:58:58.8376230-04:00 [INFO]: Setting interaction text: TOO MANY CARDS
+Prompting P#83 to discard (or play) cards until they have at most 12.
+2018-04-11T22:58:58.8406920-04:00 [INFO]: Prompted P#83 to prepare cards to discard.
