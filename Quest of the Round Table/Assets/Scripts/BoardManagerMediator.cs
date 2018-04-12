@@ -148,14 +148,15 @@ public class BoardManagerMediator
     }
 
 
-    public void DiscardCard(string cardName) {
-        foreach (Adventure card in players[playerTurn].GetHand())
+
+	public void DiscardCard(string cardName, Player player) {
+        foreach (Adventure card in player.GetHand())
         {
             if (card.GetCardName() == cardName)
             {
-                Debug.Log(card.GetCardName() + " removed from " + players[playerTurn].getName() + "'s hand.");
-                Logger.getInstance().info(card.GetCardName() + " removed from " + players[playerTurn].getName() + "'s hand.");
-                players[playerTurn].RemoveCard(card);
+                Debug.Log(card.GetCardName() + " removed from " + player.getName() + "'s hand.");
+                Logger.getInstance().info(card.GetCardName() + " removed from " + player.getName() + "'s hand.");
+                player.RemoveCard(card);
                 break;
             }
         }
