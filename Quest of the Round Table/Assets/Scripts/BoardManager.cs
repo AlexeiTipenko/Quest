@@ -323,9 +323,9 @@ public class BoardManager : MonoBehaviour
 
     public static void DrawPlayArea(Player player) {
         DestroyPlayArea();
-        foreach (Card card in player.getPlayArea().getCards())
+        foreach (Adventure card in player.getPlayArea().getCards())
         {
-            Logger.getInstance().info("Player name: " + player.getName() + ", playarea card is: " + card.GetCardName());
+            Logger.getInstance().info("Player name: " + player.getName() + ", playarea card is: " + card.GetCardName() + " battlepoints are : " + card.getBattlePoints() + " bid points are: " + card.getBidPoints());
             GameObject playArea = GameObject.Find("Canvas/TabletopImage/PlayerPlayArea");
             GameObject instance = Instantiate(Resources.Load("NoDragCardPrefab", typeof(GameObject))) as GameObject;
             instance.name = card.GetCardName();
