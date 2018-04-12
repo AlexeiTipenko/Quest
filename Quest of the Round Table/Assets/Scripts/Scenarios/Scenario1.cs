@@ -39,8 +39,8 @@
         storyDeck = new StoryDeck();
 
         storyDeck.moveCardToIndex("BoarHunt", 0);
-        storyDeck.moveCardToIndex("ProsperityThroughoutTheRealm", 1);
-        storyDeck.moveCardToIndex("ChivalrousDeed", 2);
+        storyDeck.moveCardToIndex("ChivalrousDeed", 1);
+        storyDeck.moveCardToIndex("ProsperityThroughoutTheRealm", 2);
         storyDeck.moveCardToIndex("AtYork", 3);
 
         return storyDeck;

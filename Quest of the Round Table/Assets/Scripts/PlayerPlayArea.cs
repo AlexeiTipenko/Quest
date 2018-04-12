@@ -29,6 +29,7 @@ public class PlayerPlayArea {
 	}
 
 	public void DiscardClass(Type type) {
+        Logger.getInstance().info("Discarding all cards of class " + type + " from play area");
 		List<Adventure> tempCards = new List<Adventure> ();
 		foreach (Adventure card in cards) {
 			if (!card.MatchesType(type)) {
