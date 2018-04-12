@@ -19,18 +19,19 @@
         adventureDeck.moveCardToIndex("Boar", 1);
         adventureDeck.moveCardToIndex("Sword", 2);
         adventureDeck.moveCardToIndex("Dagger", 3);
-        adventureDeck.moveCardToIndex("TestOfTemptation", 4);
+        adventureDeck.moveCardToIndex("TestOfMorganLeFey", 4);
         //Player 2
         adventureDeck.moveCardToIndex("Horse", 12);
         adventureDeck.moveCardToIndex("Dagger", 13);
+		adventureDeck.moveCardToIndex("TestOfTheQuestingBeast", 14);
         //Player 3
-        adventureDeck.moveCardToIndex("Horse", 24);
-        adventureDeck.moveCardToIndex("Excalibur", 25);
+        adventureDeck.moveCardToIndex("QueenGuinevere", 24);
+        adventureDeck.moveCardToIndex("Mordred", 25);
         adventureDeck.moveCardToIndex("Amour", 26);
-        adventureDeck.moveCardToIndex("TestOfMorganLeFey", 27);
+        adventureDeck.moveCardToIndex("TestOfTemptation", 27);
         //Player 4
-        adventureDeck.moveCardToIndex("BattleAx", 36);
-        adventureDeck.moveCardToIndex("Lance", 37);
+        adventureDeck.moveCardToIndex("KingArthur", 36);
+        adventureDeck.moveCardToIndex("SirLancelot", 37);
         adventureDeck.moveCardToIndex("Thieves", 38);
 
         return adventureDeck;
