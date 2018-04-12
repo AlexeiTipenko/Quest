@@ -27,7 +27,7 @@
         adventureDeck.moveCardToIndex("Horse", 24);
         adventureDeck.moveCardToIndex("Excalibur", 25);
         adventureDeck.moveCardToIndex("Amour", 26);
-        adventureDeck.moveCardToIndex("TestofMorganLefey", 27);
+        adventureDeck.moveCardToIndex("TestOfMorganLeFey", 27);
         //Player 4
         adventureDeck.moveCardToIndex("BattleAx", 36);
         adventureDeck.moveCardToIndex("Lance", 37);
