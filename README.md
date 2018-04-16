@@ -35,7 +35,10 @@ git clone https://github.com/JKirkYuan/Quest.git
 - Open Unity Project to this path
 Quest/Quest\ of\ the\ Round\ Table/
 
-- Build and Run! (Ctrl+B on Windows, Command(⌘) + B on Mac)
+- Build based on your operating system or WebGL and Run! (Ctrl+B on Windows, Command(⌘) + B on Mac)
+
+- ⚔️ Play Local! Unleash a showdown through one computer or solo play against our 2 AI levels!
+- ⚔️ Play Online! Hit the Online button, create a room and let your friends join. Start a memorable Quest to become the Knight of the Round Table 👑.
 ```
 
 
