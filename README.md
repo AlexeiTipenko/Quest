@@ -37,10 +37,10 @@ Quest/Quest\ of\ the\ Round\ Table/
 
 - Build based on your operating system or WebGL and Run! (Ctrl+B on Windows, Command(⌘) + B on Mac)
 
-- ⚔️ Play Local! Unleash a showdown through one computer or solo play against our 2 AI levels!
-- ⚔️ Play Online! Hit the Online button, create a room and let your friends join. Start a memorable Quest to become the Knight of the Round Table 👑.
 ```
 
+⚔️ Play Local! Hot-Seat with friends or solo play against our 2 AI strategies!
+⚔️ Play Online! Create a room and have up to 3 players join you! Start a memorable Quest to become the Knight of the Round Table 👑.
 
 
 ## Built With
